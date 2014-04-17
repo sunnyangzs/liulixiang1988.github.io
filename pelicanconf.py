@@ -16,10 +16,8 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS =  (('Pelican', 'http://getpelican.com/'),
-          ('Python.org', 'http://python.org/'),
-          ('Jinja2', 'http://jinja.pocoo.org/'),
-          ('You can modify those links in your config file', '#'),)
+LINKS =  (('豆瓣', 'http://www.douban.com/people/liulixiang/'),
+          ('微博', 'http://weibo.com/liulixiang1988'))
 
 # Social widget
 SOCIAL = (('You can add links in your config file', '#'),
