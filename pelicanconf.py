@@ -20,10 +20,9 @@ LINKS =  (('豆瓣', 'http://www.douban.com/people/liulixiang/'),
           ('微博', 'http://weibo.com/liulixiang1988'))
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('微博', 'http://weibo.com/liulixiang1988'),)
 
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+RELATIVE_URLS = True
