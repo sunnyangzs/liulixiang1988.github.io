@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>理想国</title><link>/</link><description></description><atom:link href="/feeds%5Cliu-li-xiang.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 26 Aug 2014 17:08:00 +0200</lastBuildDate><item><title>使用Pelican搭建博客</title><link>/shi-yong-pelicanda-jian-bo-ke.html</link><description>&lt;h2&gt;1 环境配置&lt;/h2&gt;
+&lt;h3&gt;1.1 安装Pelican&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;注&lt;/strong&gt;:以下是在windows环境下安装pelican，Python版本使用的是3.41版本，该版本自带pip工具&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install virtualenv
+virtualenv pelican_env
+&lt;span class="nb"&gt;cd &lt;/span&gt;pelican_env&lt;span class="se"&gt;\s&lt;/span&gt;cript
+.&lt;span class="se"&gt;\a&lt;/span&gt;ctivate.bat
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面的命令创建并激活了pelican_env，下面在该环境下开始安装pelican工具&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install pelican markdown ghp-import
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;1.2 创建Github Page&lt;/h3&gt;
+&lt;p&gt;在Github上创建一个仓库，仓库名是&lt;code&gt;用户名.github.io&lt;/code&gt;，注意这里的用户名是自己的用户名。如下图所示.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Github Page" src="images/github.png" /&gt;&lt;/p&gt;
+&lt;p&gt;创建好后，克隆到本地&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git clone https://github.com/liulixiang1988/liulixiang1988.github.io
+&lt;span class="nb"&gt;cd &lt;/span&gt;liulixiang1988.github.io
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2 使用Pelican写博客&lt;/h2&gt;
+&lt;h3&gt;2.1 创建Pelican博客&lt;/h3&gt;
+&lt;p&gt;创建分支&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git checkout -b &lt;span class="nb"&gt;source&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;创建Pelican&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pelican-quickstart
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;创建的过程中，会问你一些问题，你可以参考下面的回答。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt; Where &lt;span class="k"&gt;do &lt;/span&gt;you want to create your new web site? &lt;span class="o"&gt;[&lt;/span&gt;.&lt;span class="o"&gt;]&lt;/span&gt; 
+&amp;gt; What will be the title of this web site? Buttermilch
+&amp;gt; Who will be the author of this web site? Tony Stark
+&amp;gt; What will be the default language of this web site? &lt;span class="o"&gt;[&lt;/span&gt;en&lt;span class="o"&gt;]&lt;/span&gt; 
+&amp;gt; Do you want to specify a URL prefix? e.g., http://example.com   &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; n
+&amp;gt; Do you want to &lt;span class="nb"&gt;enable &lt;/span&gt;article pagination? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; How many articles per page &lt;span class="k"&gt;do &lt;/span&gt;you want? &lt;span class="o"&gt;[&lt;/span&gt;10&lt;span class="o"&gt;]&lt;/span&gt; 
+&amp;gt; Do you want to generate a Fabfile/Makefile ... and publishing? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; Do you want an auto-reload &amp;amp; simpleHTTP ... and site development? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; Do you want to upload your website using FTP? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; Do you want to upload your website using SSH? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; Do you want to upload your website using Dropbox? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; Do you want to upload your website using S3? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; 
+&amp;gt; Do you want to upload your website using Rackspace Cloud Files? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2.2 创建Markdown的博文&lt;/h3&gt;
+&lt;p&gt;在content目录下创建一个test.md的文件，然后用记事本或者notepad++或者sublime text打开，编写如下内容。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
+&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;
+&lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
+&lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;
+&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;刘理想&lt;/span&gt;
+&lt;span class="n"&gt;Summary&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
+&lt;span class="err"&gt;你好，世界，世界，你好。&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2.3 本地测试&lt;/h3&gt;
+&lt;p&gt;编写好了之后，就可以在本地进行测试了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;make html
+make serve
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2.4 提交更改&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;initial commit&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2.5 发布&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git branch gh-pages
+ghp-import output
+git checkout master
+git merge gh-pages
+git push --all
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;http://ntanjerome.org/blog/how-to-setup-github-user-page-with-pelican&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">刘理想</dc:creator><pubDate>Tue, 26 Aug 2014 17:08:00 +0200</pubDate><guid>tag:,2014-08-26:shi-yong-pelicanda-jian-bo-ke.html</guid><category>Pelican</category></item></channel></rss>
