@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="/" rel="alternate"></link><link href="/feeds%5Cliu-li-xiang.atom.xml" rel="self"></link><id>/</id><updated>2014-08-26T17:08:00+02:00</updated><entry><title>使用Pelican搭建博客</title><link href="/shi-yong-pelicanda-jian-bo-ke.html" rel="alternate"></link><updated>2014-08-26T17:08:00+02:00</updated><author><name>刘理想</name></author><id>tag:,2014-08-26:shi-yong-pelicanda-jian-bo-ke.html</id><summary type="html">&lt;h2&gt;1 环境配置&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="/" rel="alternate"></link><link href="/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>/</id><updated>2014-08-26T17:08:00+02:00</updated><entry><title>使用Pelican搭建博客</title><link href="/shi-yong-pelicanda-jian-bo-ke.html" rel="alternate"></link><updated>2014-08-26T17:08:00+02:00</updated><author><name>刘理想</name></author><id>tag:,2014-08-26:shi-yong-pelicanda-jian-bo-ke.html</id><summary type="html">&lt;h2&gt;1 环境配置&lt;/h2&gt;
 &lt;h3&gt;1.1 安装Pelican&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;注&lt;/strong&gt;:以下是在windows环境下安装pelican，Python版本使用的是3.41版本，该版本自带pip工具&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;pip install virtualenv
