@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>理想国 - python</title>
+        <link rel="stylesheet" href="../theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="../">理想国 </a></h1>
+                <nav><ul>
+                    <li><a href="../category/python.html">Python</a></li>
+                    <li><a href="../category/sheng-huo.html">生活</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="../pythonli-bei-yi-wang-de-else.html">python里被遗忘的else</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-07-20T17:08:00">
+                Published: 日 20 七月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/liu-li-xiang.html">刘理想</a>
+        </address>
+<p>In <a href="../category/python.html">Python</a>. </p>
+<p>tags: <a href="../tag/python.html">python</a> </p>
+</footer><!-- /.post-info --><p>本文讨论的是python中的<code>for … else</code>和<code>while…else</code>语法，最少被用到也最容易被误解的语法特性。</p>
+<p>python中的<code>for</code>和<code>while</code>循环都又一个可选的<code>else</code>（有点像if语句和try语句中的那样），当循环正常完成时执行。也就是说，<code>else</code>只有在循环正常退出时才能执行。<code>break</code>、<code>return</code>或者循环中产生的异常都不会让<code>else</code>正常执行。</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Iterated over everything :)&#39;</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="mo">01234</span><span class="n">Iterated</span> <span class="n">over</span> <span class="n">everything</span> <span class="p">:)</span>
+</pre></div>
+
+
+<p>上面的代码里，我们遍历了<code>range(5)</code>。由于我们让循环正常完成，所以<code>else</code>语句也执行了，并且打印出了Iterated over everything:). 相反的，如果我们用<code>break</code>等语法退出循环，<code>else</code>就不会被执行。</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+<span class="o">...</span>         <span class="k">break</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Iterated over everything :)&#39;</span><span class="p">)</span>
+<span class="o">...</span><span class="mo">01</span>
+</pre></div>
+
+
+<p>注意，即使循环序列是空的，<code>else</code>也会被执行，毕竟所有的循环都已经正常走完。</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[]:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Still iterated over everything (i.e. nothing)&#39;</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">Still</span> <span class="n">iterated</span> <span class="n">over</span> <span class="n">everything</span> <span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">nothing</span><span class="p">)</span>
+
+<span class="err">而且，不要忘了哦，不要忘了哦，上面的内容对</span><span class="sb">`while...else`</span><span class="err">也适用哦。</span>
+
+<span class="sb">``</span><span class="err">`</span><span class="n">python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+<span class="o">...</span>     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="n">i</span>
+<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="s">&#39;Yep&#39;</span>
+<span class="o">...</span> 
+<span class="mi">12345</span><span class="n">Yep</span>
+</pre></div>
+
+
+<p>但是，为什么呢？</p>
+<p><code>else</code>语句在循环中的一个通常用法是实现搜索循环，比如你要实现搜索符合某个条件的元素，如果没有符合条件的元素就执行额外的处理或者引发异常</p>
+<div class="highlight"><pre><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">meets_condition</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>    
+    <span class="c"># raise error or do additional processing </span>
+</pre></div>
+
+
+<p>如果没有<code>else</code>你就需要设置一个标识，然后检察这个标识用来确认是否有符合条件的元素。</p>
+<div class="highlight"><pre><span class="n">condition_is_met</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">meets_condition</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">condition_is_met</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">condition_is_met</span><span class="p">:</span>
+    <span class="c"># raise error or do additional processing</span>
+</pre></div>
+
+
+<p>这并不是啥了不起的大事，毕竟你在其它语言中不得不这样做。但是如同python中的其它特性一样，else语句可以让这种做法更优雅，更Pythonic。在上面的利子中，适用else使你的代码更符合Python之道。</p>
+<p>并不存在不得不在循环中适用<code>else</code>语句的情况，然和情况下你都可以适用标识变量等方法。但是<code>else</code>语句让代码更优雅，可读性更高。有些人认为它更Pythonic，表达的意思更清楚（Hi，我也是呢！），另一些或许认为它让人困惑并且多余。就我个人来说，我件事在循环中适用<code>else</code>语句，除非有更好的方法让代码变的更加易读(对我来说，可以归结为如何保持代码的可读性）</p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://www.douban.com/people/liulixiang/">豆瓣</a></li>
+                            <li><a href="http://weibo.com/liulixiang1988">微博</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="http://weibo.com/liulixiang1988">微博</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
