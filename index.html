@@ -14,24 +14,140 @@
         <header id="banner" class="body">
                 <h1><a href="./">理想国 </a></h1>
                 <nav><ul>
+                    <li><a href="./category/python.html">Python</a></li>
                     <li><a href="./category/sheng-huo.html">生活</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="./2014-04-19.html">醉笑陪公三万场</a></h1>
+                    <h1 class="entry-title"><a href="./shi-yong-pelicanda-jian-bo-ke.html">使用Pelican搭建博客</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2014-04-19T00:00:00">
-                六 19 四月 2014
+        <abbr class="published" title="2014-08-26T17:08:00">
+                Published: 周二 26 八月 2014
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="./author/li-xiang.html">理想</a>
+                By                         <a class="url fn" href="./author/liu-li-xiang.html">刘理想</a>
+        </address>
+<p>In <a href="./category/python.html">Python</a>. </p>
+<p>tags: <a href="./tag/pelican.html">Pelican</a> </p>
+</footer><!-- /.post-info --><h2>1 环境配置</h2>
+<h3>1.1 安装Pelican</h3>
+<p><strong>注</strong>:以下是在windows环境下安装pelican，Python版本使用的是3.41版本，该版本自带pip工具</p>
+<div class="highlight"><pre>pip install virtualenv
+virtualenv pelican_env
+<span class="nb">cd </span>pelican_env<span class="se">\s</span>cript
+.<span class="se">\a</span>ctivate.bat
+</pre></div>
+
+
+<p>上面的命令创建并激活了pelican_env，下面在该环境下开始安装pelican工具</p>
+<div class="highlight"><pre>pip install pelican markdown ghp-import
+</pre></div>
+
+
+<h3>1.2 创建Github Page</h3>
+<p>在Github上创建一个仓库，仓库名是<code>用户名.github.io</code>，注意这里的用户名是自己的用户名。如下图所示.</p>
+<p><img alt="Github Page" src="images/github.png" /></p>
+<p>创建好后，克隆到本地</p>
+<div class="highlight"><pre>git clone https://github.com/liulixiang1988/liulixiang1988.github.io
+<span class="nb">cd </span>liulixiang1988.github.io
+</pre></div>
+
+
+<h2>2 使用Pelican写博客</h2>
+<h3>2.1 创建Pelican博客</h3>
+<p>创建分支</p>
+<div class="highlight"><pre>git checkout -b <span class="nb">source</span> 
+</pre></div>
+
+
+<p>创建Pelican</p>
+<div class="highlight"><pre>pelican-quickstart
+</pre></div>
+
+
+<p>创建的过程中，会问你一些问题，你可以参考下面的回答。</p>
+<div class="highlight"><pre>&gt; Where <span class="k">do </span>you want to create your new web site? <span class="o">[</span>.<span class="o">]</span> 
+&gt; What will be the title of this web site? Buttermilch
+&gt; Who will be the author of this web site? Tony Stark
+&gt; What will be the default language of this web site? <span class="o">[</span>en<span class="o">]</span> 
+&gt; Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span> n
+&gt; Do you want to <span class="nb">enable </span>article pagination? <span class="o">(</span>Y/n<span class="o">)</span> 
+&gt; How many articles per page <span class="k">do </span>you want? <span class="o">[</span>10<span class="o">]</span> 
+&gt; Do you want to generate a Fabfile/Makefile ... and publishing? <span class="o">(</span>Y/n<span class="o">)</span> 
+&gt; Do you want an auto-reload &amp; simpleHTTP ... and site development? <span class="o">(</span>Y/n<span class="o">)</span> 
+&gt; Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span> 
+&gt; Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span> 
+&gt; Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span> 
+&gt; Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span> 
+&gt; Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span>
+</pre></div>
+
+
+<h3>2.2 创建Markdown的博文</h3>
+<p>在content目录下创建一个test.md的文件，然后用记事本或者notepad++或者sublime text打开，编写如下内容。</p>
+<div class="highlight"><pre><span class="n">Title</span><span class="o">:</span> <span class="err">你好，世界！</span>
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2014</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">22</span> <span class="mi">16</span><span class="o">:</span><span class="mi">08</span>
+<span class="n">Category</span><span class="o">:</span> <span class="n">Python</span>
+<span class="n">Tags</span><span class="o">:</span> <span class="n">python</span>
+<span class="n">Author</span><span class="o">:</span> <span class="err">刘理想</span>
+<span class="n">Summary</span><span class="o">:</span> <span class="err">你好，世界！</span>
+<span class="err">你好，世界，世界，你好。</span>
+</pre></div>
+
+
+<h3>2.3 本地测试</h3>
+<p>编写好了之后，就可以在本地进行测试了。</p>
+<div class="highlight"><pre>make html
+make serve
+</pre></div>
+
+
+<h3>2.4 提交更改</h3>
+<div class="highlight"><pre>git add .
+git commit -m <span class="s2">&quot;initial commit&quot;</span>
+</pre></div>
+
+
+<h3>2.5 发布</h3>
+<div class="highlight"><pre>git branch gh-pages
+ghp-import output
+git checkout master
+git merge gh-pages
+git push --all
+</pre></div>
+
+
+<h2>参考</h2>
+<ul>
+<li>http://ntanjerome.org/blog/how-to-setup-github-user-page-with-pelican</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="./2014-04-19.html" rel="bookmark"
+                           title="Permalink to 醉笑陪公三万场">醉笑陪公三万场</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-04-19T00:00:00">
+                Published: 周六 19 四月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="./author/li-xiang.html">理想</a>
         </address>
 <p>In <a href="./category/sheng-huo.html">生活</a>. </p>
-<p>tags: <a href="./tag/life.html">life</a></p>
-</footer><!-- /.post-info --><p>在百度上看到<a href="http://zhidao.baidu.com/link?url=2FYYejydAEvBpdnti51Ul2MPYlCV6SUQkc821EFyfywhbn1rLQv4PCbPJLBvFDwDIvk0NRdaCY7XqTngf80ltq">这篇</a>。昨日参加同事婚礼，不胜唏嘘。</p>
+<p>tags: <a href="./tag/life.html">life</a> </p>
+</footer><!-- /.post-info -->                <p>在百度上看到<a href="http://zhidao.baidu.com/link?url=2FYYejydAEvBpdnti51Ul2MPYlCV6SUQkc821EFyfywhbn1rLQv4PCbPJLBvFDwDIvk0NRdaCY7XqTngf80ltq">这篇</a>。昨日参加同事婚礼，不胜唏嘘。</p>
 <blockquote>
 <p>东武望馀杭<br />
 云海天涯两杳茫<br />
@@ -61,12 +177,10 @@
 这些个千生万生只在 <br />
 踏尽红尘何处是吾乡  </p>
 </blockquote>
-<p><img alt="img" src="./images/2014-04-19.jpeg" /></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p><img alt="img" src="{filename}/images/2014-04-19.jpeg" /></p>
+                <a class="readmore" href="./2014-04-19.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -77,14 +191,14 @@
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-04-17T00:00:00">
-                四 17 四月 2014
+                Published: 周四 17 四月 2014
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="./author/li-xiang.html">理想</a>
+                By                         <a class="url fn" href="./author/li-xiang.html">理想</a>
         </address>
 <p>In <a href="./category/sheng-huo.html">生活</a>. </p>
-<p>tags: <a href="./tag/life.html">life</a></p>
+<p>tags: <a href="./tag/life.html">life</a> </p>
 </footer><!-- /.post-info -->                <p>与媳妇一起去吃烧烤，点的太多，吃的有点撑，回来肚子疼。。。</p>
                 <a class="readmore" href="./bbq.html">read more</a>
                 </div><!-- /.entry-content -->
@@ -99,23 +213,23 @@
                 <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-03-16T00:00:00">
-                日 16 三月 2014
+                Published: 周日 16 三月 2014
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="./author/li-xiang.html">理想</a>
+                By                         <a class="url fn" href="./author/li-xiang.html">理想</a>
         </address>
 <p>In <a href="./category/sheng-huo.html">生活</a>. </p>
-<p>tags: <a href="./tag/pelican.html">pelican</a><a href="./tag/life.html">life</a></p>
+<p>tags: <a href="./tag/pelican.html">pelican</a> <a href="./tag/life.html">life</a> </p>
 </footer><!-- /.post-info -->                <p>你好，世界！这是我使用pelican和github搭建的博客。以前转战多次，这次应该会定下来了。</p>
                 <a class="readmore" href="./hello-world.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-            </ol><!-- /#posts-list -->
+                </ol><!-- /#posts-list -->
 <p class="paginator">
     Page 1 / 1
 </p>
-            </section><!-- /#content -->
+                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>
