@@ -1,44 +1,57 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
-        <meta charset="utf-8" />
         <title>使用Pelican搭建博客</title>
-        <link rel="stylesheet" href="./theme/css/main.css" />
+        <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="http://launchyard.com/images/favicon.png"/>
+        <link rel="stylesheet" href="./theme/css/main.css" type="text/css" />
 
         <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="./css/ie.css"/>
+                <script src="./js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="./css/ie6.css"/><![endif]-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script>
+
+
 </head>
 
 <body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="./">理想国 </a></h1>
-                <nav><ul>
-                    <li><a href="./category/android.html">Android</a></li>
-                    <li class="active"><a href="./category/python.html">Python</a></li>
-                    <li><a href="./category/sheng-huo.html">生活</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-<section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="./shi-yong-pelicanda-jian-bo-ke.html" rel="bookmark"
-           title="Permalink to 使用Pelican搭建博客">使用Pelican搭建博客</a></h1>
-    </header>
+	
+  <!--      <header id="banner" class="body">
+                <h1><a href="./"><img src="http://www.launchyard.com/images/logo.png" /></a></h1>
+        </header> -->
+<!-- /#banner -->
+	      <div class="LaunchyardDetail"><p><a href="./"></a><img src="http://www.launchyard.com/images/LY-identity.png" width="100" height="100" alt="LaunchYard logo"><br/>LaunchYard helps launch startups<br/><a href="http://launchyard.com/" >Learn more &rarr;</a></p></div>
 
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-08-26T17:08:00">
-                Published: 二 26 八月 2014
-        </abbr>
+<section id="content" >
+    <div class="body">
+      <article>
+        <header>
+          <h1 class="entry-title">
+            <a href="./shi-yong-pelicanda-jian-bo-ke.html" rel="bookmark"
+               title="Permalink to 使用Pelican搭建博客">使用Pelican搭建博客</a></h1>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="./author/liu-li-xiang.html">刘理想</a>
-        </address>
-<p>In <a href="./category/python.html">Python</a>. </p>
-<p>tags: <a href="./tag/pelican.html">Pelican</a> </p>
-</footer><!-- /.post-info -->      <h2>1 环境配置</h2>
+        </header>
+
+        <div class="entry-content">
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="./author/liu-li-xiang.html">刘理想</a>
+        </li>
+        <li class="published" title="2014-08-26T17:08:00">
+          on&nbsp;二 26 八月 2014
+        </li>
+
+	</ul>
+<p>Category: <a href="./tag/pelican.html">Pelican</a></p>
+</div><!-- /.post-info -->          <h2>1 环境配置</h2>
 <h3>1.1 安装Pelican</h3>
 <p><strong>注</strong>:以下是在windows环境下安装pelican，Python版本使用的是3.41版本，该版本自带pip工具</p>
 <div class="highlight"><pre>pip install virtualenv
@@ -130,33 +143,25 @@ git push --all
 <ul>
 <li>http://ntanjerome.org/blog/how-to-setup-github-user-page-with-pelican</li>
 </ul>
-    </div><!-- /.entry-content -->
+        </div><!-- /.entry-content -->
 
-  </article>
+      </article>
+    </div>
 </section>
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://www.douban.com/people/liulixiang/">豆瓣</a></li>
-                            <li><a href="http://weibo.com/liulixiang1988">微博</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="http://weibo.com/liulixiang1988">微博</a></li>
-                        </ul>
-                </div><!-- /.social -->
+        <section id="extras" >
+       
+        
         </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+	
+        <footer id="contentinfo" >
+                <address id="about" class="vcard ">
+                Proudly powered by <a href="http://getpelican.com/" target="_blank">Pelican</a>, which takes
+                great advantage of <a href="http://python.org" target="_blank">Python</a>. &copy; <a class="url fn" href="http://launchyard.com">LaunchYard</a>
+		
                 </address><!-- /#about -->
+		
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                
         </footer><!-- /#contentinfo -->
 
 </body>
