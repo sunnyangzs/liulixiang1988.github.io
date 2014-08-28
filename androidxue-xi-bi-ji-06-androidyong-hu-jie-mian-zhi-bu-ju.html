@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Android学习笔记-06 Android用户界面之布局</title>
+        <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="http://launchyard.com/images/favicon.png"/>
+        <link rel="stylesheet" href="./theme/css/main.css" type="text/css" />
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="./css/ie.css"/>
+                <script src="./js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="./css/ie6.css"/><![endif]-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script>
+
+
+</head>
+
+<body id="index" class="home">
+	
+  <!--      <header id="banner" class="body">
+                <h1><a href="./"><img src="http://www.launchyard.com/images/logo.png" /></a></h1>
+        </header> -->
+<!-- /#banner -->
+	      <div class="LaunchyardDetail"><p><a href="./"></a><img src="https://avatars2.githubusercontent.com/u/2088356?v=2&s=100" width="100" height="100" alt="liulixiang"><br/>刘理想<br/><a href="https://github.com/liulixiang1988" >about &rarr;</a></p></div>
+
+<section id="content" >
+    <div class="body">
+      <article>
+        <header>
+          <h1 class="entry-title">
+            <a href="./androidxue-xi-bi-ji-06-androidyong-hu-jie-mian-zhi-bu-ju.html" rel="bookmark"
+               title="Permalink to Android学习笔记-06 Android用户界面之布局">Android学习笔记-06 Android用户界面之布局</a></h1>
+
+        </header>
+
+        <div class="entry-content">
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="./author/liu-li-xiang.html">刘理想</a>
+        </li>
+        <li class="published" title="2014-08-28T08:36:00">
+          on&nbsp;四 28 八月 2014
+        </li>
+
+	</ul>
+<p>Category: <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a><a href="./tag/android.html">Android</a></p>
+</div><!-- /.post-info -->          <h2>1 Relative Layout</h2>
+<p>根据子元素来调整位置</p>
+<h2>2 Framely Layout</h2>
+<p>一直在左上角，速度快</p>
+<h2>3 Linear Layout</h2>
+<p>一个挨着一个排列，可以水平排列，也可以垂直排列。</p>
+<p>有一个weight属性，表示子对象分割父级对象分割的比例。</p>
+<h2>4 Table Layout</h2>
+<p>最外层是Table Layout，垂直布局
+里层是Table Row，水平布局</p>
+<h2>5 通过应用程序动态的添加子对象</h2>
+<h3>5.1 创建一个Layout文件</h3>
+<div class="highlight"><pre><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+              <span class="na">android:orientation=</span><span class="s">&quot;vertical&quot;</span>
+              <span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
+              <span class="na">android:layout_height=</span><span class="s">&quot;fill_parent&quot;</span>
+              <span class="na">android:id =</span> <span class="s">&quot;@+id/linear_layout&quot;</span>
+        <span class="nt">&gt;</span>
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</pre></div>
+
+
+<h3>5.2 在Activity中添加</h3>
+<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Button</span> <span class="n">btn</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">LinearLayout</span> <span class="n">linearLayout</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span> <span class="n">onClickListern</span> <span class="o">=</span> <span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">linearLayout</span><span class="o">.</span><span class="na">removeView</span><span class="o">(</span><span class="n">v</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">};</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * Called when the activity is first created.</span>
+<span class="cm">     */</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">main</span><span class="o">);</span>
+
+        <span class="n">linearLayout</span> <span class="o">=</span> <span class="o">(</span><span class="n">LinearLayout</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">linear_layout</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">;</span> <span class="n">i</span> <span class="o">++){</span>
+            <span class="n">btn</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+            <span class="n">btn</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;点我&quot;</span><span class="o">+</span><span class="n">i</span><span class="o">);</span>
+            <span class="n">btn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="n">onClickListern</span><span class="o">);</span>
+            <span class="n">linearLayout</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">btn</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>其中，btn是在程序中声明的，Layout的addView方法添加子元素</p>
+        </div><!-- /.entry-content -->
+
+      </article>
+    </div>
+</section>
+        <section id="extras" >
+       
+        
+        </section><!-- /#extras -->
+	
+        <footer id="contentinfo" >
+                <address id="about" class="vcard ">
+                Proudly powered by <a href="http://getpelican.com/" target="_blank">Pelican</a>, which takes
+                great advantage of <a href="http://python.org" target="_blank">Python</a>. &copy; <a class="url fn" href="http://launchyard.com">LaunchYard</a>
+		
+                </address><!-- /#about -->
+		
+
+                
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
