@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Android学习笔记-01 Android四大核心组件之Actity</title>
+        <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="http://launchyard.com/images/favicon.png"/>
+        <link rel="stylesheet" href="./theme/css/main.css" type="text/css" />
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="./css/ie.css"/>
+                <script src="./js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="./css/ie6.css"/><![endif]-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script>
+
+
+</head>
+
+<body id="index" class="home">
+	
+  <!--      <header id="banner" class="body">
+                <h1><a href="./"><img src="http://www.launchyard.com/images/logo.png" /></a></h1>
+        </header> -->
+<!-- /#banner -->
+	      <div class="LaunchyardDetail"><p><a href="./"></a><img src="https://avatars2.githubusercontent.com/u/2088356?v=2&s=100" width="100" height="100" alt="liulixiang"><br/>刘理想<br/><a href="https://github.com/liulixiang1988" >about &rarr;</a></p></div>
+
+<section id="content" >
+    <div class="body">
+      <article>
+        <header>
+          <h1 class="entry-title">
+            <a href="./androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html" rel="bookmark"
+               title="Permalink to Android学习笔记-01 Android四大核心组件之Actity">Android学习笔记-01 Android四大核心组件之Actity</a></h1>
+
+        </header>
+
+        <div class="entry-content">
+<div class="post-info">
+	<ul>
+        <li class="vcard author">
+                 by&nbsp;<a class="url fn" href="./author/liu-li-xiang.html">刘理想</a>
+        </li>
+        <li class="published" title="2014-08-27T09:48:00">
+          on&nbsp;三 27 八月 2014
+        </li>
+
+	</ul>
+<p>Category: <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a><a href="./tag/android.html">Android</a></p>
+</div><!-- /.post-info -->          <h1>Android学习笔记-01 Android四大核心组件之Actity</h1>
+<h2>一、Actity生命周期</h2>
+<h3>1、生命周期的七个方法</h3>
+<p><strong>eclipse快捷键alt+/自动提示</strong></p>
+<h2>二、新建Activity</h2>
+<h3>1、添加Activity类</h3>
+<h3>2、在manifest中添加</h3>
+<h3>3、添加layout</h3>
+<h3>4、重写actiy的<code>onCreate</code>方法，使用<code>setContentView</code>设置layout</h3>
+<h2>三、通信</h2>
+<ol>
+<li>在main的acity中添加button 按钮</li>
+<li>在<code>onCreate</code>中添加<code>findViewById(R.id.btnId)</code>,使用<code>cmd+1</code>自动转换</li>
+<li>添加点击事件</li>
+</ol>
+<div class="highlight"><pre><span class="c1">//点击</span>
+<span class="n">btn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListern</span><span class="o">(){</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">){</span>
+        <span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">MainAcitity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">Acty1</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">})</span>
+</pre></div>
+
+
+<h2>四、关闭Aty</h2>
+<h3>1、添加按钮</h3>
+<p>在click中添加<code>finish()</code></p>
+<h2>五、在aty间传递数据</h2>
+<p>两种传递进去，一种传递出来</p>
+<h3>1、Intent <code>i.putExtra("数据名称", "文本内容")</code></h3>
+<p>在第二个Aty中：
+<code>getIntent().getStringExtra("数据名称")</code></p>
+<h3>2、Intent.putExtra(string, bundle)</h3>
+<div class="highlight"><pre><span class="c1">//存</span>
+<span class="n">Bundle</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundle</span><span class="o">();</span>
+<span class="n">data</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">&quot;txt&quot;</span><span class="o">,</span> <span class="s">&quot;hello&quot;</span><span class="o">)</span>
+<span class="n">i</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="c1">//取</span>
+<span class="n">Bundle</span> <span class="n">data</span> <span class="o">=</span> <span class="n">getIntent</span><span class="o">().</span><span class="na">getExtras</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">txt</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;txt&quot;</span><span class="o">);</span>
+</pre></div>
+
+
+<h3>3、取得第二个Aty传回的数据</h3>
+<div class="highlight"><pre><span class="n">startActivityForResult</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
+
+<span class="kd">protected</span> <span class="nf">onActivityResult</span><span class="o">(</span><span class="kt">int</span> <span class="n">requestCode</span><span class="o">,</span> <span class="kt">int</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">data</span><span class="o">){</span>
+    <span class="n">string</span> <span class="n">result</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">&quot;result&quot;</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="c1">//存</span>
+<span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">();</span>
+<span class="n">i</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">&quot;result&quot;</span><span class="o">,</span> <span class="s">&quot;hello&quot;</span><span class="o">)</span>
+<span class="n">setResult</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+<span class="n">finish</span><span class="o">();</span>
+</pre></div>
+        </div><!-- /.entry-content -->
+
+      </article>
+    </div>
+</section>
+        <section id="extras" >
+       
+        
+        </section><!-- /#extras -->
+	
+        <footer id="contentinfo" >
+                <address id="about" class="vcard ">
+                Proudly powered by <a href="http://getpelican.com/" target="_blank">Pelican</a>, which takes
+                great advantage of <a href="http://python.org" target="_blank">Python</a>. &copy; <a class="url fn" href="http://launchyard.com">LaunchYard</a>
+		
+                </address><!-- /#about -->
+		
+
+                
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

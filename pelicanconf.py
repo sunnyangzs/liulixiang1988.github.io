@@ -4,9 +4,9 @@ from __future__ import unicode_literals
 
 AUTHOR = '理想'
 SITENAME = '理想国'
-SITEURL = ''
+SITEURL = 'http://liulixiang1988.github.io'
 
-TIMEZONE = 'Europe/Paris'
+TIMEZONE = 'Asia/Shanghai'
 
 DEFAULT_LANG = 'zh'
 
@@ -16,8 +16,7 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS =  (('豆瓣', 'http://www.douban.com/people/liulixiang/'),
-          ('微博', 'http://weibo.com/liulixiang1988'))
+LINKS =  (('GitHub', 'https://github.com/liulixiang1988/'),)
 
 # Social widget
 SOCIAL = (('微博', 'http://weibo.com/liulixiang1988'),)
@@ -26,3 +25,5 @@ DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
+
+THEME="pelican-themes/SoMA"
