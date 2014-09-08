@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh"
+>
+<head>
+    <title>Django REST Framework笔记-01 介绍与安装 - 理想国</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="./django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html">
+
+        <meta name="author" content="刘理想" />
+        <meta name="keywords" content="Python,Django" />
+        <meta name="description" content="Django REST Framework笔记-01 介绍与安装" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="./theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="./theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="./theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="./" class="navbar-brand">
+理想国            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="./category/android.html">Android</a>
+                        </li>
+                        <li class="active">
+                            <a href="./category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="./category/sheng-huo.html">生活</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="./archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="./django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html"
+                       rel="bookmark"
+                       title="Permalink to Django REST Framework笔记-01 介绍与安装">
+                        Django REST Framework笔记-01 介绍与安装
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-09-08T22:15:00"> 一 08 九月 2014</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="./tag/python.html">Python</a>
+        /
+	<a href="./tag/django.html">Django</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h2>一、 Django Rest Framework介绍</h2>
+<p>项目地址：http://www.django-rest-framework.org/</p>
+<p>Django REST framewrok（简称DRF），强大而且灵活的工具箱，它使创建Web API变得简单。</p>
+<p>你需要使用REST框架的一些原因：</p>
+<ul>
+<li>基于Web可浏览的API能让你赢得更多开发者</li>
+<li>包含OAuth1a和OAuth2的认证机制</li>
+<li>序列化同时支持ORM和非ORM的数据源</li>
+<li>自定义，如果不想用更为强大的功能，可以只使用常规的函数视图</li>
+<li>大量的文档，牛叉的社区支持</li>
+<li>大公司比如Mozilla和Eventbrite都用它，靠谱~</li>
+</ul>
+<p><img alt="Browsable API" src="http://www.django-rest-framework.org/img/quickstart.png" /></p>
+<h2>二、安装需求</h2>
+<p>REST框架具有以下要求：</p>
+<ul>
+<li>Python(2.6.5+, 2.7, 3.2, 3.3)</li>
+<li>Django(1.4.2+, 1.5, 1.6, 1.7)</li>
+</ul>
+<p>下面的包是可选的：</p>
+<ul>
+<li><a href="http://pypi.python.org/pypi/Markdown/">Markdown</a> (2.1.0+) - 支持可浏览的API</li>
+<li><a href="http://pypi.python.org/pypi/PyYAML">PyYAML</a> (3.10+) - 支持YAML的content-type</li>
+<li><a href="https://pypi.python.org/pypi/defusedxml">defusedxml</a> (0.3+) - 支持XML的content-type</li>
+<li><a href="http://pypi.python.org/pypi/django-filter">django-filter</a> (0.5.4+) - 支持过滤</li>
+<li><a href="https://bitbucket.org/david/django-oauth-plus/wiki/Home">django-oauth-plus</a> (2.0+)和<a href="https://github.com/simplegeo/python-oauth2">oauth2</a> (1.5.211+) - 支持OAuth 1.0a</li>
+<li><a href="https://github.com/caffeinehit/django-oauth2-provider">django-oauth2-provider</a> (0.2.3+) - 支持OAuth 2.0</li>
+<li><a href="https://github.com/lukaszb/django-guardian">django-guardian</a> (1.1.1+) - 支持对象级别的权限控制</li>
+</ul>
+<p><strong>注意</strong>: <code>oauth2</code>包很容易让人误解为OAuth2，其实只支持OAuth 1.0a，并且注意在Python3中OAuth 1.0a和Oauth2.0不能同时存在。</p>
+<h2>三、安装</h2>
+<p>1、使用<code>pip</code>进行安装，包含那些你想要的可选包：</p>
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">djangorestframework</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">markdown</span>       <span class="err">#</span> <span class="n">Markdown</span> <span class="n">support</span> <span class="k">for</span> <span class="n">the</span> <span class="n">browsable</span> <span class="n">API</span><span class="p">.</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">django</span><span class="o">-</span><span class="n">filter</span>  <span class="err">#</span> <span class="n">Filtering</span> <span class="n">support</span>
+</pre></div>
+
+
+<p>或者从github上克隆：</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="err">@</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">:</span><span class="n">tomchristie</span><span class="o">/</span><span class="n">django</span><span class="o">-</span><span class="n">rest</span><span class="o">-</span><span class="n">framework</span><span class="p">.</span><span class="n">git</span>
+</pre></div>
+
+
+<p>2、添加<code>rest_framework</code>到settings.py的<code>INSTALLED_APPS</code></p>
+<div class="highlight"><pre><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">...</span>
+    <span class="s">&#39;rest_framework&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>3、(可选)如果想要增加可浏览的API，你也将需要添加REST框架的login和logout视图。添加如下行到根<code>urls.py</code>文件中。</p>
+<div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="o">...</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^api-auth/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;rest_framework.urls&#39;</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s">&#39;rest_framework&#39;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p><strong>注意</strong>，URL路径可以是任意的。但是必须使用<code>'rest_framework'</code>命名空间来包含<code>'rest_framework.urls'</code></p>
+<h2>四、例子</h2>
+<p>来看一个用REST框架建立基于model的简单API例子。</p>
+<p>我们将创建一个获取获取工程用户信息的读写API。</p>
+<p>所有REST框架的全局设置都被保存到一个叫做<code>REST_FRAMEWORK</code>的配置字典中。我们在<code>settings.py</code>模块中添加下面的内容：</p>
+<div class="highlight"><pre><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c"># 使用Django标准的`django.contrib.auth`权限,</span>
+    <span class="c"># 或者对未验证的用户使用只读权限</span>
+    <span class="s">&#39;DEFAULT_PERMISSION_CLASSES&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s">&#39;rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly&#39;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>不要忘了在<code>INSTALLED_APPS</code>中添加<code>rest_framework</code>。</p>
+<p>现在我们已经准备好了创建API了。下面是项目的根<code>urls.py</code>模块：</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">routers</span><span class="p">,</span> <span class="n">serializers</span><span class="p">,</span> <span class="n">viewsets</span>
+
+<span class="c"># Serializers 定义了如何展示API</span>
+<span class="k">class</span> <span class="nc">UserSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">HyperlinkedModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;url&#39;</span><span class="p">,</span> <span class="s">&#39;username&#39;</span><span class="p">,</span> <span class="s">&#39;email&#39;</span><span class="p">,</span> <span class="s">&#39;is_staff&#39;</span><span class="p">)</span>
+
+<span class="c"># ViewSets定义了View的行为</span>
+<span class="k">class</span> <span class="nc">UserViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">UserSerializer</span>
+
+<span class="c"># Routers提供了一种简单的方法来自动决定如何路由</span>
+<span class="n">router</span> <span class="o">=</span> <span class="n">routers</span><span class="o">.</span><span class="n">DefaultRouter</span><span class="p">()</span>
+<span class="n">router</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s">r&#39;users&#39;</span><span class="p">,</span> <span class="n">UserViewSet</span><span class="p">)</span>
+
+<span class="c"># 使用自动路由来提供API</span>
+<span class="c"># 另外，提供了登录查看web API的功能</span>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">router</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^api-auth/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;rest_framework.urls&#39;</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s">&#39;rest_framework&#39;</span><span class="p">))</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<p>现在可以在浏览器中输入http://127.0.0.1:8000/来打开API了。并且查看你刚创建的'users' API。如果你在右上角点登录，那么现在就应该可以添加、创建和删除用户了。</p>
+<h2>五、快速开始</h2>
+<p>迫不及待的想要开始了？<a href="http://www.django-rest-framework.org/tutorial/quickstart">快速开始</a>是最快的方法让你能够创建并运行REST API的方法。</p>
+<h2>六、教程</h2>
+<p>教程将让你通过REST框架创建每一部分。学习它需要一些时间，但是它会让你对每一部分如何相互匹配在一起邮个全方位的了解，强烈建议读一下。</p>
+<ul>
+<li><a href="http://www.django-rest-framework.org/tutorial/1-serialization">1-序列化</a></li>
+<li><a href="http://www.django-rest-framework.org/tutorial/2-requests-and-responses">2-请求和相应</a></li>
+<li><a href="http://www.django-rest-framework.org/tutorial/3-class-based-views">3-基于类的视图</a></li>
+<li><a href="http://www.django-rest-framework.org/tutorial/4-authentication-and-permissions">4-认证与权限</a></li>
+<li><a href="http://www.django-rest-framework.org/tutorial/5-relationships-and-hyperlinked-apis">5-关系和超链接API</a></li>
+<li><a href="http://www.django-rest-framework.org/tutorial/6-viewsets-and-routers">6-视图集合和路由</a></li>
+</ul>
+<p>为了测试，我们提供了一个API教程结束时的例子，在<a href="http://restframework.herokuapp.com/">这里</a>.</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+                  <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="http://weibo.com/liulixiang1988"><i class="fa fa-微博-square fa-lg"></i> 微博</a></li>
+                  </ul>
+                </li>
+
+
+
+                <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group " id="tags">
+                        <li class="list-group-item tag-0">
+                            <a href="./tag/android.html">
+                                Android
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-0">
+                            <a href="./tag/androidxue-xi-bi-ji.html">
+                                Android学习笔记
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="./tag/life.html">
+                                life
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="./tag/pelican.html">
+                                Pelican
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="./tag/python.html">
+                                Python
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="./tag/django.html">
+                                Django
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="https://github.com/liulixiang1988/" target="_blank">
+                GitHub
+            </a>
+        </li>
+      </ul>
+    </li>
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 理想
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="./theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="./theme/js/respond.min.js"></script>
+
+</body>
+</html>
