@@ -1,193 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh"
+>
 <head>
-        <title>理想国 - pelican</title>
-        <meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="http://launchyard.com/images/favicon.png"/>
-        <link rel="stylesheet" href="../theme/css/main.css" type="text/css" />
+    <title>pelican - 理想国</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--[if IE]>
-                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-        <!--[if lte IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="../css/ie.css"/>
-                <script src="../js/IE8.js" type="text/javascript"></script><![endif]-->
 
-        <!--[if lt IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="../css/ie6.css"/><![endif]-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script>
+
+    <meta name="author" content="理想" />
+    <meta name="keywords" content="pelican" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="理想国" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="理想国"/>
+        <meta property="og:url" content=".."/>
+        <meta property="og:description" content="理想国"/>
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="../theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="../theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="../theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="../theme/css/style.css" type="text/css"/>
 
 
 </head>
+<body>
 
-<body id="index" class="home">
-	
-  <!--      <header id="banner" class="body">
-                <h1><a href="../"><img src="http://www.launchyard.com/images/logo.png" /></a></h1>
-        </header> -->
-<!-- /#banner -->
-	      <div class="LaunchyardDetail"><p><a href="../"></a><img src="https://avatars2.githubusercontent.com/u/2088356?v=2&s=100" width="100" height="100" alt="liulixiang"><br/>刘理想<br/><a href="https://github.com/liulixiang1988" >about &rarr;</a></p></div>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../" class="navbar-brand">
+理想国            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="../category/android.html">Android</a>
+                        </li>
+                        <li >
+                            <a href="../category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="../category/sheng-huo.html">生活</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
 
-        
-        
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
 
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="../shi-yong-pelicanda-jian-bo-ke.html">使用Pelican搭建博客</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="../author/liu-li-xiang.html">刘理想</a>
-        </li>
-        <li class="published" title="2014-08-26T17:08:00">
-          on&nbsp;二 26 八月 2014
-        </li>
-
-	</ul>
-<p>Category: <a href="../tag/pelican.html">Pelican</a></p>
-</div><!-- /.post-info --><h2>1 环境配置</h2>
-<h3>1.1 安装Pelican</h3>
-<p><strong>注</strong>:以下是在windows环境下安装pelican，Python版本使用的是3.41版本，该版本自带pip工具</p>
-<div class="highlight"><pre>pip install virtualenv
-virtualenv pelican_env
-<span class="nb">cd </span>pelican_env<span class="se">\s</span>cript
-.<span class="se">\a</span>ctivate.bat
-</pre></div>
-
-
-<p>上面的命令创建并激活了pelican_env，下面在该环境下开始安装pelican工具</p>
-<div class="highlight"><pre>pip install pelican markdown ghp-import
-</pre></div>
-
-
-<h3>1.2 创建Github Page</h3>
-<p>在Github上创建一个仓库，仓库名是<code>用户名.github.io</code>，注意这里的用户名是自己的用户名。如下图所示.</p>
-<p><img alt="Github Page" src="images/github.png" /></p>
-<p>创建好后，克隆到本地</p>
-<div class="highlight"><pre>git clone https://github.com/liulixiang1988/liulixiang1988.github.io
-<span class="nb">cd </span>liulixiang1988.github.io
-</pre></div>
-
-
-<h2>2 使用Pelican写博客</h2>
-<h3>2.1 创建Pelican博客</h3>
-<p>创建分支</p>
-<div class="highlight"><pre>git checkout -b <span class="nb">source</span> 
-</pre></div>
-
-
-<p>创建Pelican</p>
-<div class="highlight"><pre>pelican-quickstart
-</pre></div>
-
-
-<p>创建的过程中，会问你一些问题，你可以参考下面的回答。</p>
-<div class="highlight"><pre>&gt; Where <span class="k">do </span>you want to create your new web site? <span class="o">[</span>.<span class="o">]</span> 
-&gt; What will be the title of this web site? Buttermilch
-&gt; Who will be the author of this web site? Tony Stark
-&gt; What will be the default language of this web site? <span class="o">[</span>en<span class="o">]</span> 
-&gt; Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span> n
-&gt; Do you want to <span class="nb">enable </span>article pagination? <span class="o">(</span>Y/n<span class="o">)</span> 
-&gt; How many articles per page <span class="k">do </span>you want? <span class="o">[</span>10<span class="o">]</span> 
-&gt; Do you want to generate a Fabfile/Makefile ... and publishing? <span class="o">(</span>Y/n<span class="o">)</span> 
-&gt; Do you want an auto-reload &amp; simpleHTTP ... and site development? <span class="o">(</span>Y/n<span class="o">)</span> 
-&gt; Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span> 
-&gt; Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span> 
-&gt; Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span> 
-&gt; Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span> 
-&gt; Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span>
-</pre></div>
-
-
-<h3>2.2 创建Markdown的博文</h3>
-<p>在content目录下创建一个test.md的文件，然后用记事本或者notepad++或者sublime text打开，编写如下内容。</p>
-<div class="highlight"><pre><span class="n">Title</span><span class="o">:</span> <span class="err">你好，世界！</span>
-<span class="n">Date</span><span class="o">:</span> <span class="mi">2014</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">22</span> <span class="mi">16</span><span class="o">:</span><span class="mi">08</span>
-<span class="n">Category</span><span class="o">:</span> <span class="n">Python</span>
-<span class="n">Tags</span><span class="o">:</span> <span class="n">python</span>
-<span class="n">Author</span><span class="o">:</span> <span class="err">刘理想</span>
-<span class="n">Summary</span><span class="o">:</span> <span class="err">你好，世界！</span>
-<span class="err">你好，世界，世界，你好。</span>
-</pre></div>
-
-
-<h3>2.3 本地测试</h3>
-<p>编写好了之后，就可以在本地进行测试了。</p>
-<div class="highlight"><pre>make html
-make serve
-</pre></div>
-
-
-<h3>2.4 提交更改</h3>
-<div class="highlight"><pre>git add .
-git commit -m <span class="s2">&quot;initial commit&quot;</span>
-</pre></div>
-
-
-<h3>2.5 发布</h3>
-<div class="highlight"><pre>git branch gh-pages
-ghp-import output
-git checkout master
-git merge gh-pages
-git push --all
-</pre></div>
-
-
-<h2>参考</h2>
-<ul>
-<li>http://ntanjerome.org/blog/how-to-setup-github-user-page-with-pelican</li>
-</ul>
-                    </article>
+            <article>
+                <h2><a href="../shi-yong-pelicanda-jian-bo-ke.html">使用Pelican搭建博客</a></h2>
+                <div class="summary"><p>使用Pelican搭建博客</p>
+                    <a class="btn btn-default btn-xs" href="../shi-yong-pelicanda-jian-bo-ke.html">more ...</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="../hello-world.html">你好，世界！</a></h2>
+                <div class="summary"><p>你好，世界！这是我使用pelican和github搭建的博客。以前转战多次，这次应该会定下来了。</p>
+                    <a class="btn btn-default btn-xs" href="../hello-world.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
 
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="../hello-world.html">你好，世界！</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="../author/li-xiang.html">理想</a>
-        </li>
-        <li class="published" title="2014-03-16T00:00:00">
-          on&nbsp;日 16 三月 2014
-        </li>
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
 
-	</ul>
-<p>Category: <a href="../tag/pelican.html">pelican</a><a href="../tag/life.html">life</a></p>
-</div><!-- /.post-info --><p>你好，世界！这是我使用pelican和github搭建的博客。以前转战多次，这次应该会定下来了。</p>
-                    </article>
- 
-<div class="paginator">
-    <div class="navButton">Page 1 / 1</div>
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+                  <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="http://weibo.com/liulixiang1988"><i class="fa fa-微博-square fa-lg"></i> 微博</a></li>
+                  </ul>
+                </li>
+
+
+
+                <li class="list-group-item"><a href="../"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group " id="tags">
+                        <li class="list-group-item tag-0">
+                            <a href="../tag/androidxue-xi-bi-ji.html">
+                                Android学习笔记
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-0">
+                            <a href="../tag/android.html">
+                                Android
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="../tag/pelican.html">
+                                Pelican
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="../tag/life.html">
+                                life
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="../tag/python.html">
+                                python
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="https://github.com/liulixiang1988/" target="_blank">
+                GitHub
+            </a>
+        </li>
+      </ul>
+    </li>
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
 </div>
-                </div>
-            </aside><!-- /#featured -->
-            
-        
-        <section id="extras" >
-       
-        
-        </section><!-- /#extras -->
-	
-        <footer id="contentinfo" >
-                <address id="about" class="vcard ">
-                Proudly powered by <a href="http://getpelican.com/" target="_blank">Pelican</a>, which takes
-                great advantage of <a href="http://python.org" target="_blank">Python</a>. &copy; <a class="url fn" href="http://launchyard.com">LaunchYard</a>
-		
-                </address><!-- /#about -->
-		
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 理想
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="../theme/js/jquery.min.js"></script>
 
-                
-        </footer><!-- /#contentinfo -->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="../theme/js/respond.min.js"></script>
 
 </body>
 </html>

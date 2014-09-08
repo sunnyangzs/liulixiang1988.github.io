@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh"
+>
+<head>
+    <title>[翻译]使用Python的魔术方法创造更好的正则API - 理想国</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="./fan-yi-shi-yong-pythonde-mo-zhu-fang-fa-chuang-zao-geng-hao-de-zheng-ze-api.html">
+
+        <meta name="author" content="刘理想" />
+        <meta name="keywords" content="python" />
+        <meta name="description" content="原文在此 我的一个同事说他怀念Ruby的正则表达式语法糖。我没有用过Ruby的正则表达式，但是我熟悉Python的，并且知道它的API需要一些语法糖来弥补一下。 首先，从正则表达式中获取分组需要2步。第一步，调用match()或者search()，并且将结果付值给一个变量。然后，需要检察结果是否为None(表示是否有找到匹配)。最后，如果匹配确实存在，你可以安全地取出分组。下面是一个例子： &gt;&gt;&gt; import re &gt;&gt;&gt; match_obj = re.match(&#39;([0-9]+)&#39;, &#39;123foo&#39;) &gt;&gt;&gt; match_obj # What is `match_obj`? &lt;_sre.SRE_Match object at 0x7fd1bb000828&gt; &gt;&gt;&gt; match_obj.groups()(&#39;123&#39;,) &gt;&gt;&gt; match_obj = re.match(&#39;([0-9]+)&#39;, &#39;abc&#39;) &gt;&gt;&gt; match_objNone 依我来看，如果能像下面这样就更好了： &gt;&gt;&gt; re ..." />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="./theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="./theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="./theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="./" class="navbar-brand">
+理想国            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="./category/android.html">Android</a>
+                        </li>
+                        <li class="active">
+                            <a href="./category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="./category/sheng-huo.html">生活</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="./archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="./fan-yi-shi-yong-pythonde-mo-zhu-fang-fa-chuang-zao-geng-hao-de-zheng-ze-api.html"
+                       rel="bookmark"
+                       title="Permalink to [翻译]使用Python的魔术方法创造更好的正则API">
+                        [翻译]使用Python的魔术方法创造更好的正则API
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-07-27T10:28:00"> 日 27 七月 2014</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="./tag/python.html">python</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>原文<a href="http://charlesleifer.com/blog/playing-with-python-magic-methods-to-make-a-nicer-regex-api/">在此</a></p>
+<p>我的一个同事说他怀念Ruby的正则表达式语法糖。我没有用过Ruby的正则表达式，但是我熟悉Python的，并且知道它的API需要一些语法糖来弥补一下。</p>
+<p>首先，从正则表达式中获取分组需要2步。第一步，调用match()或者search()，并且将结果付值给一个变量。然后，需要检察结果是否为None(表示是否有找到匹配)。最后，如果匹配确实存在，你可以安全地取出分组。下面是一个例子：</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">import</span> <span class="n">re</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match_obj</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="err">&#39;</span><span class="p">([</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="mf">123f</span><span class="n">oo</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match_obj</span>  <span class="err">#</span> <span class="n">What</span> <span class="n">is</span> <span class="err">`</span><span class="n">match_obj</span><span class="err">`</span><span class="o">?</span>
+<span class="o">&lt;</span><span class="n">_sre</span><span class="p">.</span><span class="n">SRE_Match</span> <span class="n">object</span> <span class="n">at</span> <span class="mh">0x7fd1bb000828</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match_obj</span><span class="p">.</span><span class="n">groups</span><span class="p">()(</span><span class="err">&#39;</span><span class="mi">123</span><span class="err">&#39;</span><span class="p">,)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match_obj</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="err">&#39;</span><span class="p">([</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">abc</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match_objNone</span>
+</pre></div>
+
+
+<p>依我来看，如果能像下面这样就更好了：</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="p">.</span><span class="n">get_matches</span><span class="p">(</span><span class="err">&#39;</span><span class="p">([</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="mf">123f</span><span class="n">oo</span><span class="err">&#39;</span><span class="p">)(</span><span class="err">&#39;</span><span class="mi">123</span><span class="err">&#39;</span><span class="p">,)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="p">.</span><span class="n">get_matches</span><span class="p">(</span><span class="err">&#39;</span><span class="p">([</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">abc</span><span class="err">&#39;</span><span class="p">)</span><span class="n">None</span>
+</pre></div>
+
+
+<p>另一个我常遇到的问题是弄混re.sub的参数，re.sub是用来查找和替换用的。所需要的参数按照顺序依次是模式(pattern)，替换(replacement)，还有字符串。由于更重各样的原因，对我来说search_string放在replacement前面看着更起来更直接。</p>
+<p>不幸的是，弄混这些参数将会导致看上去正确的结果。下面是个例子，为了把单词foo用bar来代替。</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="err">&#39;</span><span class="n">foo</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">replace</span> <span class="n">foo</span> <span class="n">with</span> <span class="n">bar</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">bar</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="err">&#39;</span><span class="n">bar</span><span class="err">&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="err">&#39;</span><span class="n">foo</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">bar</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">replace</span> <span class="n">foo</span> <span class="n">with</span> <span class="n">bar</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="err">&#39;</span><span class="n">replace</span> <span class="n">bar</span> <span class="n">with</span> <span class="n">bar</span><span class="err">&#39;</span>
+</pre></div>
+
+
+<p>在上面例子中，有时我们会推测输入的字符串仅仅是foo</p>
+<h2>糖</h2>
+<p>为了有趣，我把加了一些语法糖的helper class和python的正则表达式放在了一起。我不是要每个人都这样做，我的目的是为了让它更有趣，能给你在改进其它库的语法时给你一些启发。</p>
+<p>在我展示具体实现之前，先说说我设计的几个API的例子。</p>
+<p>在一步操作中同事完成查找和匹配。</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">def</span> <span class="n">has_lower</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">:</span>
+<span class="p">...</span>     <span class="k">return</span> <span class="kt">bool</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="err">&#39;</span><span class="p">[</span><span class="n">a</span><span class="o">-</span><span class="n">z</span><span class="p">]</span><span class="o">+</span><span class="err">&#39;</span><span class="o">/</span><span class="n">s</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">has_lower</span><span class="p">(</span><span class="err">&#39;</span><span class="n">This</span> <span class="n">contains</span> <span class="n">lower</span><span class="o">-</span><span class="k">case</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">has_lower</span><span class="p">(</span><span class="err">&#39;</span><span class="n">NO</span> <span class="n">LOWER</span><span class="o">-</span><span class="n">CASE</span> <span class="n">HERE</span><span class="o">!</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="n">False</span>
+</pre></div>
+
+
+<p>获取分组也很简单</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">list</span><span class="p">(</span><span class="n">R</span><span class="o">/</span><span class="err">&#39;</span><span class="p">([</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="sc">&#39;/&#39;</span><span class="n">extract</span> <span class="mi">12</span> <span class="n">the</span> <span class="mi">456</span> <span class="n">numbers</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="err">&#39;</span><span class="mi">12</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="mi">456</span><span class="err">&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>最后，你可以适用字符串插入操作来执行替换。</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">R</span><span class="o">/</span><span class="err">&#39;</span><span class="p">(</span><span class="n">foo</span><span class="o">|</span><span class="n">bar</span><span class="p">)</span><span class="sc">&#39;/&#39;</span><span class="n">replace</span> <span class="n">foo</span> <span class="n">and</span> <span class="n">bar</span><span class="err">&#39;</span> <span class="o">%</span> <span class="err">&#39;</span><span class="n">Huey</span><span class="o">!</span><span class="err">&#39;</span>
+<span class="err">&#39;</span><span class="n">replace</span> <span class="n">Huey</span><span class="o">!</span> <span class="n">and</span> <span class="n">Huey</span><span class="o">!</span><span class="err">&#39;</span>
+</pre></div>
+
+
+<p>则么样，是不是很有意思？</p>
+<h2>实现</h2>
+<p>具体的实现时非常直接的，并且依赖于Python的魔术方法来提供API。如果有一个简单的技巧，那就是使用元类(metaclass)来实现classmethod的操作符重载。</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">re</span>
+
+<span class="n">class</span> <span class="n">_R</span><span class="p">(</span><span class="n">type</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">def</span> <span class="n">__div__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">regex</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="n">R</span><span class="p">(</span><span class="n">regex</span><span class="p">)</span>
+
+<span class="n">class</span> <span class="n">R</span><span class="p">(</span><span class="n">object</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">_R</span>
+
+    <span class="n">def</span> <span class="n">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">regex</span><span class="p">)</span><span class="o">:</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">_regex</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">compile</span><span class="p">(</span><span class="n">regex</span><span class="p">)</span>
+
+    <span class="n">def</span> <span class="n">__div__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="n">RegexOperation</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">_regex</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+<span class="n">class</span> <span class="n">RegexOperation</span><span class="p">(</span><span class="n">object</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">def</span> <span class="n">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">regex</span><span class="p">,</span> <span class="n">search</span><span class="p">)</span><span class="o">:</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">_regex</span> <span class="o">=</span> <span class="n">regex</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">_search</span> <span class="o">=</span> <span class="n">search</span>
+
+    <span class="n">def</span> <span class="n">search</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
+        <span class="n">match</span> <span class="o">=</span>  <span class="n">self</span><span class="p">.</span><span class="n">_regex</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">_search</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">match</span> <span class="n">is</span> <span class="n">not</span> <span class="n">None</span><span class="o">:</span>
+            <span class="k">return</span> <span class="n">match</span><span class="p">.</span><span class="n">groups</span><span class="p">()</span>
+
+    <span class="n">def</span> <span class="n">__len__</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">_regex</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">_search</span><span class="p">)</span> <span class="n">is</span> <span class="n">not</span> <span class="n">None</span>
+
+    <span class="n">def</span> <span class="n">__mod__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">replacement</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">_regex</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="n">replacement</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">_search</span><span class="p">)</span>
+
+    <span class="n">def</span> <span class="n">__iter__</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="n">iter</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">_regex</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">_search</span><span class="p">))</span>
+</pre></div>
+
+
+<p>一步一步的分解操作，希望它能简化背后发生了什么。</p>
+<p>调用R/<something>将会调用_R类的__div__方法，它使一个工厂方法，用来生产R实例。</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">R</span><span class="o">/</span><span class="err">&#39;</span><span class="n">foo</span><span class="err">&#39;</span>
+<span class="o">&lt;</span><span class="n">rx</span><span class="p">.</span><span class="n">R</span> <span class="n">at</span> <span class="mh">0x7f77c00831d0</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>然后，通过调用R对象的__div__，我们获得一个RegexOperation实例，所以R.__div__是另一种工厂方法。</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">r_obj</span> <span class="o">=</span> <span class="n">R</span><span class="o">/</span><span class="err">&#39;</span><span class="n">foo</span><span class="err">&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r_obj</span> <span class="o">/</span> <span class="err">&#39;</span><span class="n">bar</span><span class="err">&#39;</span>
+<span class="o">&lt;</span><span class="n">rx</span><span class="p">.</span><span class="n">RegexOperation</span> <span class="n">at</span> <span class="mh">0x7f77c00837d0</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>最后一个对象，RegexOperation，实现了一些魔术方法来匹配、替换和测试匹配的存在性。</p>
+<h2>评论</h2>
+<h3>1楼</h3>
+<p>很酷的运算符重载＋1 造轮子-1</p>
+<p>你的代码：
+    &gt;&gt;&gt; list(R/'([0-9]+)'/'extract 12 the 456 numbers')
+    ['12', '456']</p>
+<p>我认为比Python本身的要复杂：</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="err">&#39;</span><span class="p">([</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">extract</span> <span class="mi">12</span> <span class="n">the</span> <span class="mi">456</span> <span class="n">numbers</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="err">&#39;</span><span class="mi">12</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="mi">456</span><span class="err">&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>如果没有明显的分组，re.findall()将会返回一个group 0的匹配的list；如果定义了多个分组，re.findall()返回由每个分组组成的tuple构成的list：</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="err">&#39;</span><span class="p">([</span><span class="n">A</span><span class="o">-</span><span class="n">Z</span><span class="p">])([</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">A133</span> <span class="n">B873</span> <span class="n">xxx</span> <span class="n">yyy</span> <span class="n">C946</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="p">[(</span><span class="sc">&#39;A&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="mi">133</span><span class="err">&#39;</span><span class="p">),</span> <span class="p">(</span><span class="sc">&#39;B&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="mi">873</span><span class="err">&#39;</span><span class="p">),</span> <span class="p">(</span><span class="sc">&#39;C&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="mi">946</span><span class="err">&#39;</span><span class="p">)]</span>
+</pre></div>
+
+
+<p>非常有趣的文章。我赞同你对re.sub参数列表顺序的看法。</p>
+<p>我想说re.findall()返回空列表，如果没有匹配就返回空列表。</p>
+<p>同样，re.finditer()提供了一个匹配对象的迭代器。</p>
+<h3>2楼</h3>
+<p>正则表达式高级教程：
+http://www.cofoh.com/advanced-regex-tutorial-python/traps</p>
+<h3>3楼</h3>
+<p>使用parsely库可以用来写复杂的正则。</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
+
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+                  <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="http://weibo.com/liulixiang1988"><i class="fa fa-微博-square fa-lg"></i> 微博</a></li>
+                  </ul>
+                </li>
+
+
+
+                <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group " id="tags">
+                        <li class="list-group-item tag-0">
+                            <a href="./tag/androidxue-xi-bi-ji.html">
+                                Android学习笔记
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-0">
+                            <a href="./tag/android.html">
+                                Android
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="./tag/pelican.html">
+                                Pelican
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="./tag/life.html">
+                                life
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="./tag/python.html">
+                                python
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="https://github.com/liulixiang1988/" target="_blank">
+                GitHub
+            </a>
+        </li>
+      </ul>
+    </li>
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 理想
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="./theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="./theme/js/respond.min.js"></script>
+
+</body>
+</html>
