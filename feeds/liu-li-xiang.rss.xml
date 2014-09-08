@@ -1,5 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>理想国</title><link>http://liulixiang1988.github.io/</link><description></description><atom:link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 28 Aug 2014 08:36:00 +0800</lastBuildDate><item><title>Android学习笔记-06 Android用户界面之布局</title><link>http://liulixiang1988.github.io/androidxue-xi-bi-ji-06-androidyong-hu-jie-mian-zhi-bu-ju.html</link><description>&lt;h2&gt;1 Relative Layout&lt;/h2&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>理想国</title><link>http://liulixiang1988.github.io/</link><description></description><atom:link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 08 Sep 2014 22:15:00 +0800</lastBuildDate><item><title>Django REST Framework笔记-01 介绍与安装</title><link>http://liulixiang1988.github.io/django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html</link><description>&lt;h2&gt;一、 Django Rest Framework介绍&lt;/h2&gt;
+&lt;p&gt;项目地址：http://www.django-rest-framework.org/&lt;/p&gt;
+&lt;p&gt;Django REST framewrok（简称DRF），强大而且灵活的工具箱，它使创建Web API变得简单。&lt;/p&gt;
+&lt;p&gt;你需要使用REST框架的一些原因：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基于Web可浏览的API能让你赢得更多开发者&lt;/li&gt;
+&lt;li&gt;包含OAuth1a和OAuth2的认证机制&lt;/li&gt;
+&lt;li&gt;序列化同时支持ORM和非ORM的数据源&lt;/li&gt;
+&lt;li&gt;自定义，如果不想用更为强大的功能，可以只使用常规的函数视图&lt;/li&gt;
+&lt;li&gt;大量的文档，牛叉的社区支持&lt;/li&gt;
+&lt;li&gt;大公司比如Mozilla和Eventbrite都用它，靠谱~&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="Browsable API" src="http://www.django-rest-framework.org/img/quickstart.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;二、安装需求&lt;/h2&gt;
+&lt;p&gt;REST框架具有以下要求：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Python(2.6.5+, 2.7, 3.2, 3.3)&lt;/li&gt;
+&lt;li&gt;Django(1.4.2+, 1.5, 1.6, 1.7)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面的包是可选的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://pypi.python.org/pypi/Markdown/"&gt;Markdown&lt;/a&gt; (2.1.0+) - 支持可浏览的API&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://pypi.python.org/pypi/PyYAML"&gt;PyYAML&lt;/a&gt; (3.10+) - 支持YAML的content-type&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pypi.python.org/pypi/defusedxml"&gt;defusedxml&lt;/a&gt; (0.3+) - 支持XML的content-type&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://pypi.python.org/pypi/django-filter"&gt;django-filter&lt;/a&gt; (0.5.4+) - 支持过滤&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://bitbucket.org/david/django-oauth-plus/wiki/Home"&gt;django-oauth-plus&lt;/a&gt; (2.0+)和&lt;a href="https://github.com/simplegeo/python-oauth2"&gt;oauth2&lt;/a&gt; (1.5.211+) - 支持OAuth 1.0a&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/caffeinehit/django-oauth2-provider"&gt;django-oauth2-provider&lt;/a&gt; (0.2.3+) - 支持OAuth 2.0&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/lukaszb/django-guardian"&gt;django-guardian&lt;/a&gt; (1.1.1+) - 支持对象级别的权限控制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;: &lt;code&gt;oauth2&lt;/code&gt;包很容易让人误解为OAuth2，其实只支持OAuth 1.0a，并且注意在Python3中OAuth 1.0a和Oauth2.0不能同时存在。&lt;/p&gt;
+&lt;h2&gt;三、安装&lt;/h2&gt;
+&lt;p&gt;1、使用&lt;code&gt;pip&lt;/code&gt;进行安装，包含那些你想要的可选包：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;djangorestframework&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;markdown&lt;/span&gt;       &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Markdown&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;browsable&lt;/span&gt; &lt;span class="n"&gt;API&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;  &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Filtering&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;或者从github上克隆：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;tomchristie&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rest&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;framework&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2、添加&lt;code&gt;rest_framework&lt;/code&gt;到settings.py的&lt;code&gt;INSTALLED_APPS&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;rest_framework&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;3、(可选)如果想要增加可浏览的API，你也将需要添加REST框架的login和logout视图。添加如下行到根&lt;code&gt;urls.py&lt;/code&gt;文件中。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^api-auth/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;rest_framework.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;namespace&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;rest_framework&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;，URL路径可以是任意的。但是必须使用&lt;code&gt;'rest_framework'&lt;/code&gt;命名空间来包含&lt;code&gt;'rest_framework.urls'&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;四、例子&lt;/h2&gt;
+&lt;p&gt;来看一个用REST框架建立基于model的简单API例子。&lt;/p&gt;
+&lt;p&gt;我们将创建一个获取获取工程用户信息的读写API。&lt;/p&gt;
+&lt;p&gt;所有REST框架的全局设置都被保存到一个叫做&lt;code&gt;REST_FRAMEWORK&lt;/code&gt;的配置字典中。我们在&lt;code&gt;settings.py&lt;/code&gt;模块中添加下面的内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;REST_FRAMEWORK&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c"&gt;# 使用Django标准的`django.contrib.auth`权限,&lt;/span&gt;
+    &lt;span class="c"&gt;# 或者对未验证的用户使用只读权限&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;DEFAULT_PERMISSION_CLASSES&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly&amp;#39;&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;不要忘了在&lt;code&gt;INSTALLED_APPS&lt;/code&gt;中添加&lt;code&gt;rest_framework&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;现在我们已经准备好了创建API了。下面是项目的根&lt;code&gt;urls.py&lt;/code&gt;模块：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;rest_framework&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;routers&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;serializers&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;viewsets&lt;/span&gt;
+
+&lt;span class="c"&gt;# Serializers 定义了如何展示API&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;UserSerializer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;serializers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;HyperlinkedModelSerializer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;
+        &lt;span class="n"&gt;fields&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;url&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;username&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;email&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;is_staff&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# ViewSets定义了View的行为&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;UserViewSet&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;viewsets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ModelViewSet&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;queryset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;serializer_class&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;UserSerializer&lt;/span&gt;
+
+&lt;span class="c"&gt;# Routers提供了一种简单的方法来自动决定如何路由&lt;/span&gt;
+&lt;span class="n"&gt;router&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;routers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DefaultRouter&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;users&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;UserViewSet&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# 使用自动路由来提供API&lt;/span&gt;
+&lt;span class="c"&gt;# 另外，提供了登录查看web API的功能&lt;/span&gt;
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;router&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^api-auth/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;rest_framework.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;namespace&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;rest_framework&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;现在可以在浏览器中输入http://127.0.0.1:8000/来打开API了。并且查看你刚创建的'users' API。如果你在右上角点登录，那么现在就应该可以添加、创建和删除用户了。&lt;/p&gt;
+&lt;h2&gt;五、快速开始&lt;/h2&gt;
+&lt;p&gt;迫不及待的想要开始了？&lt;a href="http://www.django-rest-framework.org/tutorial/quickstart"&gt;快速开始&lt;/a&gt;是最快的方法让你能够创建并运行REST API的方法。&lt;/p&gt;
+&lt;h2&gt;六、教程&lt;/h2&gt;
+&lt;p&gt;教程将让你通过REST框架创建每一部分。学习它需要一些时间，但是它会让你对每一部分如何相互匹配在一起邮个全方位的了解，强烈建议读一下。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.django-rest-framework.org/tutorial/1-serialization"&gt;1-序列化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.django-rest-framework.org/tutorial/2-requests-and-responses"&gt;2-请求和相应&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.django-rest-framework.org/tutorial/3-class-based-views"&gt;3-基于类的视图&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.django-rest-framework.org/tutorial/4-authentication-and-permissions"&gt;4-认证与权限&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.django-rest-framework.org/tutorial/5-relationships-and-hyperlinked-apis"&gt;5-关系和超链接API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.django-rest-framework.org/tutorial/6-viewsets-and-routers"&gt;6-视图集合和路由&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为了测试，我们提供了一个API教程结束时的例子，在&lt;a href="http://restframework.herokuapp.com/"&gt;这里&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">刘理想</dc:creator><pubDate>Mon, 08 Sep 2014 22:15:00 +0800</pubDate><guid>tag:liulixiang1988.github.io,2014-09-08:django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html</guid><category>Python</category><category>Django</category></item><item><title>Android学习笔记-06 Android用户界面之布局</title><link>http://liulixiang1988.github.io/androidxue-xi-bi-ji-06-androidyong-hu-jie-mian-zhi-bu-ju.html</link><description>&lt;h2&gt;1 Relative Layout&lt;/h2&gt;
 &lt;p&gt;根据子元素来调整位置&lt;/p&gt;
 &lt;h2&gt;2 Framely Layout&lt;/h2&gt;
 &lt;p&gt;一直在左上角，速度快&lt;/p&gt;
