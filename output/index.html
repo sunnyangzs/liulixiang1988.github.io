@@ -1,836 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh"
+>
 <head>
-        <title>理想国</title>
-        <meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="http://launchyard.com/images/favicon.png"/>
-        <link rel="stylesheet" href="./theme/css/main.css" type="text/css" />
+    <title>理想国</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--[if IE]>
-                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-        <!--[if lte IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="./css/ie.css"/>
-                <script src="./js/IE8.js" type="text/javascript"></script><![endif]-->
 
-        <!--[if lt IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="./css/ie6.css"/><![endif]-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript"></script>
+<link rel="canonical" href=".">
+        <meta name="author" content="理想" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="理想国" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="理想国"/>
+        <meta property="og:url" content="."/>
+        <meta property="og:description" content="理想国"/>
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="./theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="./theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="./theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="./theme/css/style.css" type="text/css"/>
 
 
 </head>
+<body>
 
-<body id="index" class="home">
-	
-  <!--      <header id="banner" class="body">
-                <h1><a href="./"><img src="http://www.launchyard.com/images/logo.png" /></a></h1>
-        </header> -->
-<!-- /#banner -->
-	      <div class="LaunchyardDetail"><p><a href="./"></a><img src="https://avatars2.githubusercontent.com/u/2088356?v=2&s=100" width="100" height="100" alt="liulixiang"><br/>刘理想<br/><a href="https://github.com/liulixiang1988" >about &rarr;</a></p></div>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="./" class="navbar-brand">
+理想国            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="./category/android.html">Android</a>
+                        </li>
+                        <li >
+                            <a href="./category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="./category/sheng-huo.html">生活</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="./archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
 
-        
-        
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
 
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="./androidxue-xi-bi-ji-06-androidyong-hu-jie-mian-zhi-bu-ju.html">Android学习笔记-06 Android用户界面之布局</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="./author/liu-li-xiang.html">刘理想</a>
-        </li>
-        <li class="published" title="2014-08-28T08:36:00">
-          on&nbsp;四 28 八月 2014
-        </li>
-
-	</ul>
-<p>Category: <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a><a href="./tag/android.html">Android</a></p>
-</div><!-- /.post-info --><h2>1 Relative Layout</h2>
-<p>根据子元素来调整位置</p>
-<h2>2 Framely Layout</h2>
-<p>一直在左上角，速度快</p>
-<h2>3 Linear Layout</h2>
-<p>一个挨着一个排列，可以水平排列，也可以垂直排列。</p>
-<p>有一个weight属性，表示子对象分割父级对象分割的比例。</p>
-<h2>4 Table Layout</h2>
-<p>最外层是Table Layout，垂直布局
-里层是Table Row，水平布局</p>
-<h2>5 通过应用程序动态的添加子对象</h2>
-<h3>5.1 创建一个Layout文件</h3>
-<div class="highlight"><pre><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
-              <span class="na">android:orientation=</span><span class="s">&quot;vertical&quot;</span>
-              <span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
-              <span class="na">android:layout_height=</span><span class="s">&quot;fill_parent&quot;</span>
-              <span class="na">android:id =</span> <span class="s">&quot;@+id/linear_layout&quot;</span>
-        <span class="nt">&gt;</span>
-<span class="nt">&lt;/LinearLayout&gt;</span>
-</pre></div>
-
-
-<h3>5.2 在Activity中添加</h3>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="n">Button</span> <span class="n">btn</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">LinearLayout</span> <span class="n">linearLayout</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span> <span class="n">onClickListern</span> <span class="o">=</span> <span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">linearLayout</span><span class="o">.</span><span class="na">removeView</span><span class="o">(</span><span class="n">v</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">};</span>
-
-    <span class="cm">/**</span>
-<span class="cm">     * Called when the activity is first created.</span>
-<span class="cm">     */</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">main</span><span class="o">);</span>
-
-        <span class="n">linearLayout</span> <span class="o">=</span> <span class="o">(</span><span class="n">LinearLayout</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">linear_layout</span><span class="o">);</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">;</span> <span class="n">i</span> <span class="o">++){</span>
-            <span class="n">btn</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
-            <span class="n">btn</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">&quot;点我&quot;</span><span class="o">+</span><span class="n">i</span><span class="o">);</span>
-            <span class="n">btn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="n">onClickListern</span><span class="o">);</span>
-            <span class="n">linearLayout</span><span class="o">.</span><span class="na">addView</span><span class="o">(</span><span class="n">btn</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<p>其中，btn是在程序中声明的，Layout的addView方法添加子元素</p>
-                    </article>
+            <article>
+                <h2><a href="./androidxue-xi-bi-ji-06-androidyong-hu-jie-mian-zhi-bu-ju.html">Android学习笔记-06 Android用户界面之布局</a></h2>
+                <div class="summary"><p>Android学习笔记-06 Android用户界面之布局</p>
+                    <a class="btn btn-default btn-xs" href="./androidxue-xi-bi-ji-06-androidyong-hu-jie-mian-zhi-bu-ju.html">more ...</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
-
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="./androidxue-xi-bi-ji-04-androidsi-da-he-xin-zu-jian-zhi-content-provider.html">Android学习笔记 - 04 Android四大核心组件之Content Provider</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="./author/liu-li-xiang.html">刘理想</a>
-        </li>
-        <li class="published" title="2014-08-27T09:52:00">
-          on&nbsp;三 27 八月 2014
-        </li>
-
-	</ul>
-<p>Category: <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a><a href="./tag/android.html">Android</a></p>
-</div><!-- /.post-info --><h1>Android学习笔记 - 04 Android四大核心组件之Content Provider</h1>
-<h2>一、概述</h2>
-<p>Content Provider用于应用之间共享数据，比如读取联系人数据，或者自己应用的数据共享给其它的应用</p>
-<p>如果要共享数据，必须指定一个URI</p>
-<p>本节主要读取其它应用的数据，这里以联系人数据为例。</p>
-<h2>二、用法</h2>
-<h3>1、读取联系人，使用查询，返回游标，然后遍历游标</h3>
-<div class="highlight"><pre><span class="n">Cursor</span> <span class="n">c</span> <span class="o">=</span> <span class="n">getContentResolver</span><span class="o">().</span><span class="na">query</span><span class="o">(</span><span class="n">ContactsContract</span><span class="o">.</span><span class="na">Contacts</span><span class="o">.</span><span class="na">CONTENT_URI</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
-
-<span class="k">while</span><span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">moveToNext</span><span class="o">()){</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">getColumnIndex</span><span class="o">(</span><span class="n">ContactsContract</span><span class="o">.</span><span class="na">Contacts</span><span class="o">.</span><span class="na">DISPLAY_NAME</span><span class="o">))</span> <span class="o">+</span>
-            <span class="s">&quot;\t&quot;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">getColumnIndex</span><span class="o">(</span><span class="n">ContactsContract</span><span class="o">.</span><span class="na">Contacts</span><span class="o">.</span><span class="na">PHONETIC_NAME</span><span class="o">)));</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<h3>2、在AndroidManifest.xml的<mainifest>节点下添加读取权限：</h3>
-<div class="highlight"><pre><span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.READ_CONTACTS&quot;</span> <span class="o">/&gt;</span>
-</pre></div>
-                    </article>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="./androidxue-xi-bi-ji-04-androidsi-da-he-xin-zu-jian-zhi-content-provider.html">Android学习笔记 - 04 Android四大核心组件之Content Provider</a></h2>
+                <div class="summary"><p>Android学习笔记 - 04 Android四大核心组件之Content Provider</p>
+                    <a class="btn btn-default btn-xs" href="./androidxue-xi-bi-ji-04-androidsi-da-he-xin-zu-jian-zhi-content-provider.html">more ...</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
-
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="./androidxue-xi-bi-ji-05-androidying-yong-he-xin-zhi-intent.html">Android学习笔记 - 05 Android应用核心之Intent</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="./author/liu-li-xiang.html">刘理想</a>
-        </li>
-        <li class="published" title="2014-08-27T09:52:00">
-          on&nbsp;三 27 八月 2014
-        </li>
-
-	</ul>
-<p>Category: <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a><a href="./tag/android.html">Android</a></p>
-</div><!-- /.post-info --><h1>Android学习笔记 - 05 Android应用核心之Intent</h1>
-<h2>1 Intent IntentFilter对象介绍</h2>
-<p>Intent是与基本组件相关联的数据对象，每个基本组件都有一个对应的Intent，Intent指定了对应的组件对象。</p>
-<p>IntentFilter用来描述一个Intent</p>
-<h3>1.1 使用Component引用对象</h3>
-<div class="highlight"><pre><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">();</span>
-<span class="n">i</span><span class="o">.</span><span class="na">setComponent</span><span class="o">(</span><span class="k">new</span> <span class="n">ComponentName</span><span class="o">(</span><span class="s">&quot;liulx.L06Intent&quot;</span><span class="o">,</span> <span class="s">&quot;liulx.L06Intent.Aty1&quot;</span><span class="o">));</span>
-<span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-</pre></div>
-
-
-<p><code>setComponent</code>用来设置Component</p>
-<p><code>ComponentName</code>用来通过包名和类名来创建对象</p>
-<p>这种使用<code>ComponentName</code>的方法创建Acitivity的方法属于<strong>显示创建对象</strong></p>
-<h3>1.2 使用Action建立对象</h3>
-<h4>1.2.1 创建Action</h4>
-<p>如果需要使用Action来启动一个Activity的话，需要给这个Activity配置一个<code>intent-filter</code>，打开AndroidManifest.xml文件，找到相应的Acitivity，添加<code>intent-filter</code>节点：</p>
-<div class="highlight"><pre><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&quot;.Aty1&quot;</span> <span class="na">android:label=</span><span class="s">&quot;Aty1&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;intent-filter&gt;</span>
-        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&quot;liulx.L06Intent.intent.action.Aty1&quot;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.category.DEFAULT&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/intent-filter&gt;</span>
-<span class="nt">&lt;/activity&gt;</span>
-</pre></div>
-
-
-<p><code>intent-filter</code>的作用是给Activity添加地址，其中的<code>action</code>的名字规则是<code>包名.intent.action.名称</code>，它就是Activity的地址。</p>
-<p>一般还需添加一个<code>category</code>,使用<code>DEFAULT</code>即可。</p>
-<h4>1.2.2 根据Action来创建对象</h4>
-<p>在需要创建对象（Activity/Service等)的地方，使用Action来创建：</p>
-<div class="highlight"><pre><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="s">&quot;liulx.L06Intent.intent.action.Aty1&quot;</span><span class="o">);</span>
-</pre></div>
-
-
-<p><strong>注意：</strong>与<code>setComponent</code>方法不同，通过action创建的方法叫做<strong>隐式创建</strong>,它不需要知道类的包名和类的全名，只需要知道Action地址就可以了。</p>
-<h2>2 实例：打开图片</h2>
-<h3>2.1 使用默认图片查看工具打开图片</h3>
-<div class="highlight"><pre><span class="n">File</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;/storage/sdcard0/001.jpg&quot;</span><span class="o">);</span>
-<span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">);</span>
-<span class="n">i</span><span class="o">.</span><span class="na">setDataAndType</span><span class="o">(</span><span class="n">Uri</span><span class="o">.</span><span class="na">fromFile</span><span class="o">(</span><span class="n">f</span><span class="o">),</span> <span class="s">&quot;image/*&quot;</span><span class="o">);</span>
-<span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-</pre></div>
-
-
-<h3>2.2 使用自己的Activity打开图片</h3>
-<p>首先，创建一个Activity,并且，它设置对应的AndroidManifest.xml</p>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ImageViewer</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
-    <span class="n">ImageView</span> <span class="n">iv</span><span class="o">;</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
-        <span class="n">iv</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ImageView</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
-        <span class="c1">//使用iv来做ContentView</span>
-        <span class="n">setContentView</span><span class="o">(</span><span class="n">iv</span><span class="o">);</span> 
-
-        <span class="c1">//设置图片的URI</span>
-        <span class="n">iv</span><span class="o">.</span><span class="na">setImageURI</span><span class="o">(</span><span class="n">getIntent</span><span class="o">().</span><span class="na">getData</span><span class="o">());</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<p>注意，<code>intent-filter</code>的设置，action name用VIEW，category用DEFAULT, data的mimeType为"image/*"， schema为"file"表示本地文件。</p>
-<div class="highlight"><pre><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&quot;.ImageViewer&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;intent-filter&gt;</span>
-        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.action.VIEW&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.category.DEFAULT&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;data</span> <span class="na">android:mimeType=</span><span class="s">&quot;image/*&quot;</span> <span class="na">android:scheme=</span><span class="s">&quot;file&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/intent-filter&gt;</span>
-<span class="nt">&lt;/activity&gt;</span>
-</pre></div>
-
-
-<h2>3 实例：打电话与打开网页</h2>
-<h3>3.1 打电话</h3>
-<div class="highlight"><pre><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">);</span>
-<span class="n">i</span><span class="o">.</span><span class="na">setData</span><span class="o">(</span><span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&quot;tel:10086&quot;</span><span class="o">));</span>
-<span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-</pre></div>
-
-
-<h3>3.2 打开网页</h3>
-<div class="highlight"><pre><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&quot;http://www.baidu.com&quot;</span><span class="o">));</span>
-<span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-</pre></div>
-                    </article>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="./androidxue-xi-bi-ji-05-androidying-yong-he-xin-zhi-intent.html">Android学习笔记 - 05 Android应用核心之Intent</a></h2>
+                <div class="summary"><p>Android学习笔记 - 05 Android应用核心之Intent</p>
+                    <a class="btn btn-default btn-xs" href="./androidxue-xi-bi-ji-05-androidying-yong-he-xin-zhi-intent.html">more ...</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
-
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="./androidxue-xi-bi-ji-03-androidsi-da-he-xin-zu-jian-zhi-broadcast.html">Android学习笔记 - 03 Android四大核心组件之BroadCast</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="./author/liu-li-xiang.html">刘理想</a>
-        </li>
-        <li class="published" title="2014-08-27T09:51:00">
-          on&nbsp;三 27 八月 2014
-        </li>
-
-	</ul>
-<p>Category: <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a><a href="./tag/android.html">Android</a></p>
-</div><!-- /.post-info --><h1>Android学习笔记 - 03 Android四大核心组件之BroadCast</h1>
-<h2>一、BroadCast Receiver静态声明</h2>
-<h3>1、声明BroadCast Receiver</h3>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBroadCast</span> <span class="kd">extends</span> <span class="n">BroadcastReceiver</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onReceive</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<p>一旦广播接收器接收到消息，就会执行<code>onReceive</code>方法</p>
-<h3>2、Activity发送消息给BroadCast</h3>
-<p>消息的发送是使用<code>sendBroadcast</code>方法，传递给它一个<code>Intent</code></p>
-<div class="highlight"><pre><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnSendBroadCast_click</span><span class="o">(){</span>
-    <span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">MyBroadCast</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-    <span class="n">i</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">&quot;txt&quot;</span><span class="o">,</span> <span class="s">&quot;理想，你好&quot;</span><span class="o">);</span>
-    <span class="n">sendBroadcast</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<h3>3、Broadcast Receiver接收消息的处理方法</h3>
-<div class="highlight"><pre><span class="nd">@Override</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onReceive</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Receive Message:&quot;</span> <span class="o">+</span> <span class="n">intent</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">&quot;txt&quot;</span><span class="o">));</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<h2>二、 Broad Receiver动态声明</h2>
-<h3>1、声明一个Broadcast Receiver</h3>
-<p>这里声明广播接收器时同时声明了一个ACTION用来给别的应用或Activity注册使用</p>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBroadCast2</span> <span class="kd">extends</span> <span class="n">BroadcastReceiver</span> <span class="o">{</span>
-
-    <span class="c1">//Action格式：包名+intent.action.类名</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ACTION</span><span class="o">=</span><span class="s">&quot;liulx.L04BroadCast.intent.action.MyBroadCast2&quot;</span><span class="o">;</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onReceive</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;接收数据：&quot;</span> <span class="o">+</span> <span class="n">intent</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">&quot;txt&quot;</span><span class="o">));</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<h3>2、打开AndroidManifest.xml文件</h3>
-<p>注释掉<code>&lt;!--&lt;receiver android:name=".MyBroadCast2"/&gt;--&gt;</code></p>
-<h3>3、打开Activity</h3>
-<ul>
-<li>添加3个按钮，分别是<code>btnRegisterBC</code>，<code>btnUnregiserBC</code>, <code>btnSendBC</code></li>
-<li>添加一个BroadCastReceiver实例 
-    private final MyBroadCast2 mybc = new MyBroadCast2() ;</li>
-<li>按钮的点击方法分别为：</li>
-</ul>
-<div class="highlight"><pre><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnRegisterBC_click</span><span class="o">(){</span>
-    <span class="n">registerReceiver</span><span class="o">(</span><span class="n">mybc</span><span class="o">,</span> <span class="k">new</span> <span class="n">IntentFilter</span><span class="o">(</span><span class="n">MyBroadCast2</span><span class="o">.</span><span class="na">ACTION</span><span class="o">));</span>
-<span class="o">}</span>
-
-<span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnUnregisterBC_click</span><span class="o">(){</span>
-    <span class="n">unregisterReceiver</span><span class="o">(</span><span class="n">mybc</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnSendBroadCast2_click</span><span class="o">(){</span>
-    <span class="c1">//这里使用Action来声明Intent</span>
-    <span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">MyBroadCast2</span><span class="o">.</span><span class="na">ACTION</span><span class="o">);</span>
-    <span class="n">i</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">&quot;txt&quot;</span><span class="o">,</span> <span class="s">&quot;Hello, 理想&quot;</span><span class="o">);</span>
-    <span class="n">sendBroadcast</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<p><strong>说明：</strong> 
-- 注册Broadcast使用<code>registerReceiver</code>，其中的IntentFilter是用之前的Action来声明，起到过滤的作用;
-- 取消注册，使用<code>unregisterReceiver</code>;
-- 发送消息给广播，是用Action声明的Intent.</p>
-                    </article>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="./androidxue-xi-bi-ji-03-androidsi-da-he-xin-zu-jian-zhi-broadcast.html">Android学习笔记 - 03 Android四大核心组件之BroadCast</a></h2>
+                <div class="summary"><p>Android学习笔记 - 03 Android四大核心组件之BroadCast</p>
+                    <a class="btn btn-default btn-xs" href="./androidxue-xi-bi-ji-03-androidsi-da-he-xin-zu-jian-zhi-broadcast.html">more ...</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
-
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="./androidxue-xi-bi-ji-02-android-si-da-he-xin-zu-jian-zhi-service.html">Android学习笔记-02 Android 四大核心组件之Service</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="./author/liu-li-xiang.html">刘理想</a>
-        </li>
-        <li class="published" title="2014-08-27T09:50:00">
-          on&nbsp;三 27 八月 2014
-        </li>
-
-	</ul>
-<p>Category: <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a><a href="./tag/android.html">Android</a></p>
-</div><!-- /.post-info --><h1>Android学习笔记-02 Android 四大核心组件之Service</h1>
-<h2>一、Service声明</h2>
-<ol>
-<li>新建基于Service的类</li>
-<li>在Mainifest中添加Service</li>
-<li>在aty中添加两个按钮btnStart, btnStop</li>
-<li>添加方法，让main实现OnClickListener</li>
-</ol>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">){</span>
-    <span class="k">switch</span> <span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">()){</span>
-    <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btnStart</span><span class="o">:</span>
-        <span class="k">break</span><span class="o">;</span>
-    <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btnStop</span><span class="o">:</span>
-        <span class="k">break</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<ol>
-<li>创建Intent 
-serviceIntent = new Intent(this, EchoService.class)</li>
-<li>
-<p>在btn的click方法中startService(serviceIntent)和stopService(serviceIntent)</p>
-</li>
-<li>
-<p>在service类中重写onCreate() onDestroy()方法
-eclipse cmd+d:删除行</p>
-</li>
-</ol>
-<h2>二、绑定服务</h2>
-<ol>
-<li>创建btn1,2</li>
-<li>在click中bindService(serviceIntent, this, Content)，unBind</li>
-<li>让class实现</li>
-<li>在Service中创建onBind()</li>
-</ol>
-<div class="highlight"><pre><span class="kd">public</span> <span class="n">IBinder</span> <span class="nf">onBind</span><span class="o">(</span><span class="n">Intent</span> <span class="n">arg0</span><span class="o">){</span><span class="k">return</span> <span class="n">esb</span><span class="o">;}</span>
-<span class="kd">private</span> <span class="kd">final</span> <span class="n">EchoServiceBinder</span> <span class="n">esb</span> <span class="o">=</span> <span class="k">new</span> <span class="o">...{}</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EchoServiceBinder</span> <span class="kd">extends</span> <span class="n">Binder</span><span class="o">{</span>
-    <span class="o">...</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<p><strong>注意</strong>：</p>
-<ul>
-<li>通过start service的服务在aty销毁时不会销毁</li>
-<li>bind service的夫妇在aty销毁时会跟着销毁</li>
-</ul>
-<h2>三、service与aty通信</h2>
-<ol>
-<li>在service中添加timer和tasktimer</li>
-</ol>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">startTimer</span><span class="o">(){</span>
-    <span class="k">if</span> <span class="o">(</span><span class="n">timer</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
-        <span class="n">timer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Timer</span><span class="o">();</span>
-        <span class="n">timerTask</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TimerTask</span><span class="o">()</span> <span class="o">{</span>
-
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-                <span class="n">i</span><span class="o">++;</span>
-                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-
-            <span class="o">}</span>
-        <span class="o">};</span>
-
-        <span class="n">timer</span><span class="o">.</span><span class="na">schedule</span><span class="o">(</span><span class="n">timerTask</span><span class="o">,</span> <span class="mi">1000</span><span class="o">,</span> <span class="mi">1000</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">stopTimer</span><span class="o">(){</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">timer</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
-        <span class="n">timerTask</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
-        <span class="n">timer</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
-        <span class="n">timer</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-        <span class="n">timerTask</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-<span class="kd">private</span> <span class="n">Timer</span> <span class="n">timer</span><span class="o">;</span>
-<span class="kd">private</span> <span class="n">TimerTask</span> <span class="n">timerTask</span><span class="o">;</span>
-</pre></div>
-
-
-<p><strong>这一步与service和activity通信无关，但是这一步可以用来做服务与服务器的通信</strong></p>
-<ol>
-<li>在service的<code>onCreate</code>和<code>unDestroy</code>方法中启动和停止timer</li>
-</ol>
-<div class="highlight"><pre><span class="nd">@Override</span>
-<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onUnbind</span><span class="o">(</span><span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;服务-取消服务绑定&quot;</span><span class="o">);</span>
-    <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">onUnbind</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Override</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Service Create&quot;</span><span class="o">);</span>
-    <span class="n">startTimer</span><span class="o">();</span>
-    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<ol>
-<li>在service类中，提供公共方法，以备后面通信时使用，比如：</li>
-</ol>
-<div class="highlight"><pre><span class="kd">private</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getInt</span><span class="o">(){</span>
-    <span class="k">return</span> <span class="n">i</span><span class="o">;</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<ol>
-<li>在Activity方法中获取Service对象</li>
-</ol>
-<div class="highlight"><pre><span class="kd">private</span> <span class="n">EchoService</span> <span class="n">echoService</span><span class="o">;</span>
-
-<span class="nd">@Override</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onServiceConnected</span><span class="o">(</span><span class="n">ComponentName</span> <span class="n">name</span><span class="o">,</span> <span class="n">IBinder</span> <span class="n">binder</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;应用已经绑定服务&quot;</span><span class="o">);</span>
-    <span class="n">echoService</span> <span class="o">=</span> <span class="o">((</span><span class="n">EchoService</span><span class="o">.</span><span class="na">EchoBinder</span><span class="o">)</span><span class="n">binder</span><span class="o">).</span><span class="na">getService</span><span class="o">();</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<ol>
-<li>最后就可以在Activity中使用Service了</li>
-</ol>
-<div class="highlight"><pre><span class="nd">@Override</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">switch</span><span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">()){</span>
-    <span class="c1">//...</span>
-    <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btnUnbindService</span><span class="o">:</span>
-        <span class="n">unbindService</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
-        <span class="n">echoService</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-        <span class="k">break</span><span class="o">;</span>
-    <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btnGetCurrentNumber</span><span class="o">:</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">echoService</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;当前获取的数字是：&quot;</span><span class="o">+</span><span class="n">echoService</span><span class="o">.</span><span class="na">getInt</span><span class="o">());</span>
-        <span class="o">}</span>
-        <span class="k">break</span><span class="o">;</span>
-
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-                    </article>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="./androidxue-xi-bi-ji-02-android-si-da-he-xin-zu-jian-zhi-service.html">Android学习笔记-02 Android 四大核心组件之Service</a></h2>
+                <div class="summary"><p>Android学习笔记-02 Android 四大核心组件之Service</p>
+                    <a class="btn btn-default btn-xs" href="./androidxue-xi-bi-ji-02-android-si-da-he-xin-zu-jian-zhi-service.html">more ...</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
-
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="./androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html">Android学习笔记-01 Android四大核心组件之Actity</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="./author/liu-li-xiang.html">刘理想</a>
-        </li>
-        <li class="published" title="2014-08-27T09:48:00">
-          on&nbsp;三 27 八月 2014
-        </li>
-
-	</ul>
-<p>Category: <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a><a href="./tag/android.html">Android</a></p>
-</div><!-- /.post-info --><h1>Android学习笔记-01 Android四大核心组件之Actity</h1>
-<h2>一、Actity生命周期</h2>
-<h3>1、生命周期的七个方法</h3>
-<p><strong>eclipse快捷键alt+/自动提示</strong></p>
-<h2>二、新建Activity</h2>
-<h3>1、添加Activity类</h3>
-<h3>2、在manifest中添加</h3>
-<h3>3、添加layout</h3>
-<h3>4、重写actiy的<code>onCreate</code>方法，使用<code>setContentView</code>设置layout</h3>
-<h2>三、通信</h2>
-<ol>
-<li>在main的acity中添加button 按钮</li>
-<li>在<code>onCreate</code>中添加<code>findViewById(R.id.btnId)</code>,使用<code>cmd+1</code>自动转换</li>
-<li>添加点击事件</li>
-</ol>
-<div class="highlight"><pre><span class="c1">//点击</span>
-<span class="n">btn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListern</span><span class="o">(){</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">){</span>
-        <span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">MainAcitity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">Acty1</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-        <span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">})</span>
-</pre></div>
-
-
-<h2>四、关闭Aty</h2>
-<h3>1、添加按钮</h3>
-<p>在click中添加<code>finish()</code></p>
-<h2>五、在aty间传递数据</h2>
-<p>两种传递进去，一种传递出来</p>
-<h3>1、Intent <code>i.putExtra("数据名称", "文本内容")</code></h3>
-<p>在第二个Aty中：
-<code>getIntent().getStringExtra("数据名称")</code></p>
-<h3>2、Intent.putExtra(string, bundle)</h3>
-<div class="highlight"><pre><span class="c1">//存</span>
-<span class="n">Bundle</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundle</span><span class="o">();</span>
-<span class="n">data</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">&quot;txt&quot;</span><span class="o">,</span> <span class="s">&quot;hello&quot;</span><span class="o">)</span>
-<span class="n">i</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-
-<span class="c1">//取</span>
-<span class="n">Bundle</span> <span class="n">data</span> <span class="o">=</span> <span class="n">getIntent</span><span class="o">().</span><span class="na">getExtras</span><span class="o">();</span>
-<span class="n">String</span> <span class="n">txt</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;txt&quot;</span><span class="o">);</span>
-</pre></div>
-
-
-<h3>3、取得第二个Aty传回的数据</h3>
-<div class="highlight"><pre><span class="n">startActivityForResult</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
-
-<span class="kd">protected</span> <span class="nf">onActivityResult</span><span class="o">(</span><span class="kt">int</span> <span class="n">requestCode</span><span class="o">,</span> <span class="kt">int</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">data</span><span class="o">){</span>
-    <span class="n">string</span> <span class="n">result</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">&quot;result&quot;</span><span class="o">)</span>
-<span class="o">}</span>
-
-<span class="c1">//存</span>
-<span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">();</span>
-<span class="n">i</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">&quot;result&quot;</span><span class="o">,</span> <span class="s">&quot;hello&quot;</span><span class="o">)</span>
-<span class="n">setResult</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
-<span class="n">finish</span><span class="o">();</span>
-</pre></div>
-                    </article>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="./androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html">Android学习笔记-01 Android四大核心组件之Actity</a></h2>
+                <div class="summary"><p>Android学习笔记-01 Android四大核心组件之Actity</p>
+                    <a class="btn btn-default btn-xs" href="./androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html">more ...</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
-
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="./shi-yong-pelicanda-jian-bo-ke.html">使用Pelican搭建博客</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="./author/liu-li-xiang.html">刘理想</a>
-        </li>
-        <li class="published" title="2014-08-26T17:08:00">
-          on&nbsp;二 26 八月 2014
-        </li>
-
-	</ul>
-<p>Category: <a href="./tag/pelican.html">Pelican</a></p>
-</div><!-- /.post-info --><h2>1 环境配置</h2>
-<h3>1.1 安装Pelican</h3>
-<p><strong>注</strong>:以下是在windows环境下安装pelican，Python版本使用的是3.41版本，该版本自带pip工具</p>
-<div class="highlight"><pre>pip install virtualenv
-virtualenv pelican_env
-<span class="nb">cd </span>pelican_env<span class="se">\s</span>cript
-.<span class="se">\a</span>ctivate.bat
-</pre></div>
-
-
-<p>上面的命令创建并激活了pelican_env，下面在该环境下开始安装pelican工具</p>
-<div class="highlight"><pre>pip install pelican markdown ghp-import
-</pre></div>
-
-
-<h3>1.2 创建Github Page</h3>
-<p>在Github上创建一个仓库，仓库名是<code>用户名.github.io</code>，注意这里的用户名是自己的用户名。如下图所示.</p>
-<p><img alt="Github Page" src="images/github.png" /></p>
-<p>创建好后，克隆到本地</p>
-<div class="highlight"><pre>git clone https://github.com/liulixiang1988/liulixiang1988.github.io
-<span class="nb">cd </span>liulixiang1988.github.io
-</pre></div>
-
-
-<h2>2 使用Pelican写博客</h2>
-<h3>2.1 创建Pelican博客</h3>
-<p>创建分支</p>
-<div class="highlight"><pre>git checkout -b <span class="nb">source</span> 
-</pre></div>
-
-
-<p>创建Pelican</p>
-<div class="highlight"><pre>pelican-quickstart
-</pre></div>
-
-
-<p>创建的过程中，会问你一些问题，你可以参考下面的回答。</p>
-<div class="highlight"><pre>&gt; Where <span class="k">do </span>you want to create your new web site? <span class="o">[</span>.<span class="o">]</span> 
-&gt; What will be the title of this web site? Buttermilch
-&gt; Who will be the author of this web site? Tony Stark
-&gt; What will be the default language of this web site? <span class="o">[</span>en<span class="o">]</span> 
-&gt; Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span> n
-&gt; Do you want to <span class="nb">enable </span>article pagination? <span class="o">(</span>Y/n<span class="o">)</span> 
-&gt; How many articles per page <span class="k">do </span>you want? <span class="o">[</span>10<span class="o">]</span> 
-&gt; Do you want to generate a Fabfile/Makefile ... and publishing? <span class="o">(</span>Y/n<span class="o">)</span> 
-&gt; Do you want an auto-reload &amp; simpleHTTP ... and site development? <span class="o">(</span>Y/n<span class="o">)</span> 
-&gt; Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span> 
-&gt; Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span> 
-&gt; Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span> 
-&gt; Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span> 
-&gt; Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span>
-</pre></div>
-
-
-<h3>2.2 创建Markdown的博文</h3>
-<p>在content目录下创建一个test.md的文件，然后用记事本或者notepad++或者sublime text打开，编写如下内容。</p>
-<div class="highlight"><pre><span class="n">Title</span><span class="o">:</span> <span class="err">你好，世界！</span>
-<span class="n">Date</span><span class="o">:</span> <span class="mi">2014</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">22</span> <span class="mi">16</span><span class="o">:</span><span class="mi">08</span>
-<span class="n">Category</span><span class="o">:</span> <span class="n">Python</span>
-<span class="n">Tags</span><span class="o">:</span> <span class="n">python</span>
-<span class="n">Author</span><span class="o">:</span> <span class="err">刘理想</span>
-<span class="n">Summary</span><span class="o">:</span> <span class="err">你好，世界！</span>
-<span class="err">你好，世界，世界，你好。</span>
-</pre></div>
-
-
-<h3>2.3 本地测试</h3>
-<p>编写好了之后，就可以在本地进行测试了。</p>
-<div class="highlight"><pre>make html
-make serve
-</pre></div>
-
-
-<h3>2.4 提交更改</h3>
-<div class="highlight"><pre>git add .
-git commit -m <span class="s2">&quot;initial commit&quot;</span>
-</pre></div>
-
-
-<h3>2.5 发布</h3>
-<div class="highlight"><pre>git branch gh-pages
-ghp-import output
-git checkout master
-git merge gh-pages
-git push --all
-</pre></div>
-
-
-<h2>参考</h2>
-<ul>
-<li>http://ntanjerome.org/blog/how-to-setup-github-user-page-with-pelican</li>
-</ul>
-                    </article>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="./shi-yong-pelicanda-jian-bo-ke.html">使用Pelican搭建博客</a></h2>
+                <div class="summary"><p>使用Pelican搭建博客</p>
+                    <a class="btn btn-default btn-xs" href="./shi-yong-pelicanda-jian-bo-ke.html">more ...</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
-
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="./pythonli-bei-yi-wang-de-else.html">python里被遗忘的else</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="./author/liu-li-xiang.html">刘理想</a>
-        </li>
-        <li class="published" title="2014-07-20T17:08:00">
-          on&nbsp;日 20 七月 2014
-        </li>
-
-	</ul>
-<p>Category: <a href="./tag/python.html">python</a></p>
-</div><!-- /.post-info --><p>本文讨论的是python中的<code>for … else</code>和<code>while…else</code>语法，最少被用到也最容易被误解的语法特性。</p>
-<p>python中的<code>for</code>和<code>while</code>循环都又一个可选的<code>else</code>（有点像if语句和try语句中的那样），当循环正常完成时执行。也就是说，<code>else</code>只有在循环正常退出时才能执行。<code>break</code>、<code>return</code>或者循环中产生的异常都不会让<code>else</code>正常执行。</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Iterated over everything :)&#39;</span><span class="p">)</span>
-<span class="o">...</span>
-<span class="mo">01234</span><span class="n">Iterated</span> <span class="n">over</span> <span class="n">everything</span> <span class="p">:)</span>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="./fan-yi-shi-yong-pythonde-mo-zhu-fang-fa-chuang-zao-geng-hao-de-zheng-ze-api.html">[翻译]使用Python的魔术方法创造更好的正则API</a></h2>
+                <div class="summary"><p>原文<a href="http://charlesleifer.com/blog/playing-with-python-magic-methods-to-make-a-nicer-regex-api/">在此</a></p>
+<p>我的一个同事说他怀念Ruby的正则表达式语法糖。我没有用过Ruby的正则表达式，但是我熟悉Python的，并且知道它的API需要一些语法糖来弥补一下。</p>
+<p>首先，从正则表达式中获取分组需要2步。第一步，调用match()或者search()，并且将结果付值给一个变量。然后，需要检察结果是否为None(表示是否有找到匹配)。最后，如果匹配确实存在，你可以安全地取出分组。下面是一个例子：</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">import</span> <span class="n">re</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match_obj</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="err">&#39;</span><span class="p">([</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="mf">123f</span><span class="n">oo</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match_obj</span>  <span class="err">#</span> <span class="n">What</span> <span class="n">is</span> <span class="err">`</span><span class="n">match_obj</span><span class="err">`</span><span class="o">?</span>
+<span class="o">&lt;</span><span class="n">_sre</span><span class="p">.</span><span class="n">SRE_Match</span> <span class="n">object</span> <span class="n">at</span> <span class="mh">0x7fd1bb000828</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match_obj</span><span class="p">.</span><span class="n">groups</span><span class="p">()(</span><span class="err">&#39;</span><span class="mi">123</span><span class="err">&#39;</span><span class="p">,)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match_obj</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="err">&#39;</span><span class="p">([</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">abc</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">match_objNone</span>
 </pre></div>
 
 
-<p>上面的代码里，我们遍历了<code>range(5)</code>。由于我们让循环正常完成，所以<code>else</code>语句也执行了，并且打印出了Iterated over everything:). 相反的，如果我们用<code>break</code>等语法退出循环，<code>else</code>就不会被执行。</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-<span class="o">...</span>     <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-<span class="o">...</span>         <span class="k">break</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Iterated over everything :)&#39;</span><span class="p">)</span>
-<span class="o">...</span><span class="mo">01</span>
-</pre></div>
-
-
-<p>注意，即使循环序列是空的，<code>else</code>也会被执行，毕竟所有的循环都已经正常走完。</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[]:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Still iterated over everything (i.e. nothing)&#39;</span><span class="p">)</span>
-<span class="o">...</span>
-<span class="n">Still</span> <span class="n">iterated</span> <span class="n">over</span> <span class="n">everything</span> <span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">nothing</span><span class="p">)</span>
-
-<span class="err">而且，不要忘了哦，不要忘了哦，上面的内容对</span><span class="sb">`while...else`</span><span class="err">也适用哦。</span>
-
-<span class="sb">``</span><span class="err">`</span><span class="n">python</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
-<span class="o">...</span>     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="o">...</span>     <span class="k">print</span> <span class="n">i</span>
-<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span> <span class="s">&#39;Yep&#39;</span>
-<span class="o">...</span> 
-<span class="mi">12345</span><span class="n">Yep</span>
-</pre></div>
-
-
-<p>但是，为什么呢？</p>
-<p><code>else</code>语句在循环中的一个通常用法是实现搜索循环，比如你要实现搜索符合某个条件的元素，如果没有符合条件的元素就执行额外的处理或者引发异常</p>
-<div class="highlight"><pre><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">meets_condition</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="k">break</span>
-<span class="k">else</span><span class="p">:</span>    
-    <span class="c"># raise error or do additional processing </span>
-</pre></div>
-
-
-<p>如果没有<code>else</code>你就需要设置一个标识，然后检察这个标识用来确认是否有符合条件的元素。</p>
-<div class="highlight"><pre><span class="n">condition_is_met</span> <span class="o">=</span> <span class="bp">False</span>
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">meets_condition</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="n">condition_is_met</span> <span class="o">=</span> <span class="bp">True</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">condition_is_met</span><span class="p">:</span>
-    <span class="c"># raise error or do additional processing</span>
-</pre></div>
-
-
-<p>这并不是啥了不起的大事，毕竟你在其它语言中不得不这样做。但是如同python中的其它特性一样，else语句可以让这种做法更优雅，更Pythonic。在上面的利子中，适用else使你的代码更符合Python之道。</p>
-<p>并不存在不得不在循环中适用<code>else</code>语句的情况，然和情况下你都可以适用标识变量等方法。但是<code>else</code>语句让代码更优雅，可读性更高。有些人认为它更Pythonic，表达的意思更清楚（Hi，我也是呢！），另一些或许认为它让人困惑并且多余。就我个人来说，我件事在循环中适用<code>else</code>语句，除非有更好的方法让代码变的更加易读(对我来说，可以归结为如何保持代码的可读性）</p>
-                    </article>
+<p>依我来看，如果能像下面这样就更好了：</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">re ...</span></pre></div>
+                    <a class="btn btn-default btn-xs" href="./fan-yi-shi-yong-pythonde-mo-zhu-fang-fa-chuang-zao-geng-hao-de-zheng-ze-api.html">more ...</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
-
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="./2014-04-19.html">醉笑陪公三万场</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="./author/li-xiang.html">理想</a>
-        </li>
-        <li class="published" title="2014-04-19T00:00:00">
-          on&nbsp;六 19 四月 2014
-        </li>
-
-	</ul>
-<p>Category: <a href="./tag/life.html">life</a></p>
-</div><!-- /.post-info --><p>在百度上看到<a href="http://zhidao.baidu.com/link?url=2FYYejydAEvBpdnti51Ul2MPYlCV6SUQkc821EFyfywhbn1rLQv4PCbPJLBvFDwDIvk0NRdaCY7XqTngf80ltq">这篇</a>。昨日参加同事婚礼，不胜唏嘘。</p>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="./pythonli-bei-yi-wang-de-else.html">python里被遗忘的else</a></h2>
+                <div class="summary"><p>python里被遗忘的else</p>
+                    <a class="btn btn-default btn-xs" href="./pythonli-bei-yi-wang-de-else.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="./2014-04-19.html">醉笑陪公三万场</a></h2>
+                <div class="summary"><p>在百度上看到<a href="http://zhidao.baidu.com/link?url=2FYYejydAEvBpdnti51Ul2MPYlCV6SUQkc821EFyfywhbn1rLQv4PCbPJLBvFDwDIvk0NRdaCY7XqTngf80ltq">这篇</a>。昨日参加同事婚礼，不胜唏嘘。</p>
 <blockquote>
 <p>东武望馀杭<br />
 云海天涯两杳茫<br />
@@ -861,55 +178,98 @@ git push --all
 踏尽红尘何处是吾乡  </p>
 </blockquote>
 <p><img alt="img" src="./images/2014-04-19.jpeg" /></p>
-                    </article>
+                    <a class="btn btn-default btn-xs" href="./2014-04-19.html">more ...</a>
                 </div>
-            </aside><!-- /#featured -->
-            
-        
-        
+            </article>
+            <hr/>
 
-    
-            <aside id="featured">
-                <div class="body">
-                    <article>
-                        <h1 class="entry-title"><a href="./bbq.html">吃烧烤！</a></h1>
-<div class="post-info">
-	<ul>
-        <li class="vcard author">
-                 by&nbsp;<a class="url fn" href="./author/li-xiang.html">理想</a>
-        </li>
-        <li class="published" title="2014-04-17T00:00:00">
-          on&nbsp;四 17 四月 2014
-        </li>
+        <ul class="pagination">
+                <li class="prev disabled"><a href="#">&laquo;</a></li>
+                    <li class="active"><a
+                            href="./index.html">1</a></li>
+                    <li class=""><a
+                            href="./index2.html">2</a></li>
+                <li class="next"><a
+                        href="./index2.html">&raquo;</a></li>
+        </ul>
+        </div>
+        <div class="col-sm-3 well well-sm" id="sidebar">
 
-	</ul>
-<p>Category: <a href="./tag/life.html">life</a></p>
-</div><!-- /.post-info --><p>与媳妇一起去吃烧烤，点的太多，吃的有点撑，回来肚子疼。。。</p>
-                    </article>
- 
-<div class="paginator">
-    <div class="navButton">Page 1 / 2</div>
-        <div class="navButton"><a href="./index2.html" >Next</a></div>
+<aside>
+    <section>
+        <ul class="list-group list-group-flush">
+                <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+                  <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="http://weibo.com/liulixiang1988"><i class="fa fa-微博-square fa-lg"></i> 微博</a></li>
+                  </ul>
+                </li>
+
+
+
+                <li class="list-group-item"><a href="./"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                    <ul class="list-group " id="tags">
+                        <li class="list-group-item tag-0">
+                            <a href="./tag/androidxue-xi-bi-ji.html">
+                                Android学习笔记
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-0">
+                            <a href="./tag/android.html">
+                                Android
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="./tag/pelican.html">
+                                Pelican
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="./tag/life.html">
+                                life
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-2">
+                            <a href="./tag/python.html">
+                                python
+                            </a>
+                        </li>
+                    </ul>
+                </li>    
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="https://github.com/liulixiang1988/" target="_blank">
+                GitHub
+            </a>
+        </li>
+      </ul>
+    </li>
+
+        </ul>
+    </section>
+
+</aside>        </div>
+    </div>
 </div>
-                </div>
-            </aside><!-- /#featured -->
-            
-        
-        <section id="extras" >
-       
-        
-        </section><!-- /#extras -->
-	
-        <footer id="contentinfo" >
-                <address id="about" class="vcard ">
-                Proudly powered by <a href="http://getpelican.com/" target="_blank">Pelican</a>, which takes
-                great advantage of <a href="http://python.org" target="_blank">Python</a>. &copy; <a class="url fn" href="http://launchyard.com">LaunchYard</a>
-		
-                </address><!-- /#about -->
-		
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 理想
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="./theme/js/jquery.min.js"></script>
 
-                
-        </footer><!-- /#contentinfo -->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="./theme/js/respond.min.js"></script>
 
 </body>
 </html>
