@@ -1,5 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>理想国</title><link>http://liulixiang1988.github.io/</link><description></description><atom:link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 12 Sep 2014 23:39:00 +0800</lastBuildDate><item><title>Nancy Web框架</title><link>http://liulixiang1988.github.io/nancy-webkuang-jia.html</link><description>&lt;p&gt;[TOC]&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>理想国</title><link>http://liulixiang1988.github.io/</link><description></description><atom:link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 19 Sep 2014 21:36:00 +0800</lastBuildDate><item><title>使用Android开发一个博客阅读器-01 使用Master-Detail模板</title><link>http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html</link><description>&lt;p&gt;项目地址：https://github.com/liulixiang1988/android_demo/tree/master/MasterDetailExample&lt;/p&gt;
+&lt;p&gt;我们使用Master-Detail模板来做本应用的模板。&lt;/p&gt;
+&lt;h2&gt;建立Master-Detail模板&lt;/h2&gt;
+&lt;p&gt;新建Android项目，命名为MasterDetailExample，模板类型选择为Master-Detail。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;理解Master-Details模板&lt;/h2&gt;
+&lt;p&gt;ListFraments和DetailFragments&lt;/p&gt;
+&lt;p&gt;DummyContent用来作为MVC中的Model，保存List数据。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Fragments中几种方法的调用顺序&lt;/h2&gt;
+&lt;h3&gt;1.&lt;code&gt;onAttach(Activity activity)&lt;/code&gt;第一个被调用&lt;/h3&gt;
+&lt;p&gt;包含Fragment的Activity必须实现&lt;code&gt;Callbacks&lt;/code&gt;接口。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@Override&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;onAttach&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Activity&lt;/span&gt; &lt;span class="n"&gt;activity&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;super&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;onAttach&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;activity&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// Activities containing this fragment must implement its callbacks.&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(!(&lt;/span&gt;&lt;span class="n"&gt;activity&lt;/span&gt; &lt;span class="k"&gt;instanceof&lt;/span&gt; &lt;span class="n"&gt;Callbacks&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;throw&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nf"&gt;IllegalStateException&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Activity must implement fragment&amp;#39;s callbacks.&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;mCallbacks&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Callbacks&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;activity&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2. &lt;code&gt;onCreate(Bundle savedInstanceState)&lt;/code&gt;第二个被调用&lt;/h3&gt;
+&lt;p&gt;这里设置一些数据项。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@Override&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;onCreate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;super&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;onCreate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// TODO: replace with a real list adapter.&lt;/span&gt;
+    &lt;span class="n"&gt;setListAdapter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ArrayAdapter&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;DummyContent&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;DummyItem&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;getActivity&lt;/span&gt;&lt;span class="o"&gt;(),&lt;/span&gt;
+            &lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;simple_list_item_activated_1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;text1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;DummyContent&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;ITEMS&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3.&lt;code&gt;onViewCreated(View view, Bundle savedInstanceState)&lt;/code&gt;第三个被调用&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@Override&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;onViewCreated&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;View&lt;/span&gt; &lt;span class="n"&gt;view&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;super&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;onViewCreated&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// Restore the previously serialized activated item position.&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;savedInstanceState&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;
+            &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;containsKey&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;STATE_ACTIVATED_POSITION&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;setActivatedPosition&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getInt&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;STATE_ACTIVATED_POSITION&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;4. 对于ListFragment，当点击时，&lt;code&gt;onListItemClick(ListView listView, View view, int position, long id)&lt;/code&gt;被调用&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@Override&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;onListItemClick&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ListView&lt;/span&gt; &lt;span class="n"&gt;listView&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;View&lt;/span&gt; &lt;span class="n"&gt;view&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;long&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;super&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;onListItemClick&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;listView&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;view&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// Notify the active callbacks interface (the activity, if the&lt;/span&gt;
+    &lt;span class="c1"&gt;// fragment is attached to one) that an item has been selected.&lt;/span&gt;
+    &lt;span class="n"&gt;mCallbacks&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;onItemSelected&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;DummyContent&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;ITEMS&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="o"&gt;).&lt;/span&gt;&lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2&gt;理解DetailActivity源码&lt;/h2&gt;
+&lt;p&gt;DetailActivity中包含的Fragment是手工添加的，而非通过Layout文件添加。添加的代码在&lt;code&gt;onCreate&lt;/code&gt;方法中。
+我们使用&lt;code&gt;fragment.setArguments(arguments)&lt;/code&gt;来设置参数，其中参数&lt;code&gt;arguments&lt;/code&gt;是&lt;code&gt;Bundle&lt;/code&gt;类型。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@Override&lt;/span&gt;
+&lt;span class="kd"&gt;protected&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;onCreate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;super&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;onCreate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;setContentView&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;activity_blogpost_detail&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// 添加返回按钮&lt;/span&gt;
+    &lt;span class="n"&gt;getActionBar&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;setDisplayHomeAsUpEnabled&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// savedInstanceState is non-null when there is fragment state&lt;/span&gt;
+    &lt;span class="c1"&gt;// saved from previous configurations of this activity&lt;/span&gt;
+    &lt;span class="c1"&gt;// (e.g. when rotating the screen from portrait to landscape).&lt;/span&gt;
+    &lt;span class="c1"&gt;// In this case, the fragment will automatically be re-added&lt;/span&gt;
+    &lt;span class="c1"&gt;// to its container so we don&amp;#39;t need to manually add it.&lt;/span&gt;
+    &lt;span class="c1"&gt;// For more information, see the Fragments API guide at:&lt;/span&gt;
+    &lt;span class="c1"&gt;//&lt;/span&gt;
+    &lt;span class="c1"&gt;// http://developer.android.com/guide/components/fragments.html&lt;/span&gt;
+    &lt;span class="c1"&gt;//&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;savedInstanceState&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="c1"&gt;// Create the detail fragment and add it to the activity&lt;/span&gt;
+        &lt;span class="c1"&gt;// using a fragment transaction.&lt;/span&gt;
+        &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="n"&gt;arguments&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Bundle&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+        &lt;span class="c1"&gt;//传递列表行到Fragment中&lt;/span&gt;
+        &lt;span class="n"&gt;arguments&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;putString&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BlogPostDetailFragment&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;ARG_ITEM_ID&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+                &lt;span class="n"&gt;getIntent&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;getStringExtra&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BlogPostDetailFragment&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;ARG_ITEM_ID&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+        &lt;span class="c1"&gt;//创建Fragment&lt;/span&gt;
+        &lt;span class="n"&gt;BlogPostDetailFragment&lt;/span&gt; &lt;span class="n"&gt;fragment&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;BlogPostDetailFragment&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+        &lt;span class="n"&gt;fragment&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setArguments&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;arguments&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="n"&gt;getFragmentManager&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;beginTransaction&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+                &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;add&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;blogpost_detail_container&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fragment&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+                &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;commit&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;理解DetailFragment源码&lt;/h2&gt;
+&lt;p&gt;DetailFragment中包含一个&lt;code&gt;mItem&lt;/code&gt;，它是&lt;code&gt;DummyContent.DummyItem&lt;/code&gt;类型。
+在&lt;code&gt;onCreate&lt;/code&gt;方法中，我们使用&lt;code&gt;getArguments&lt;/code&gt;来获取传递的&lt;code&gt;Bundle&lt;/code&gt;类型的参数，然后再调用&lt;code&gt;Bundle.getString()&lt;/code&gt;方法就能获取&lt;code&gt;Bundle&lt;/code&gt;中的数据。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="nd"&gt;@Override&lt;/span&gt;
+    &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;onCreate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="kd"&gt;super&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;onCreate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;getArguments&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;containsKey&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ARG_ITEM_ID&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+            &lt;span class="c1"&gt;// Load the dummy content specified by the fragment&lt;/span&gt;
+            &lt;span class="c1"&gt;// arguments. In a real-world scenario, use a Loader&lt;/span&gt;
+            &lt;span class="c1"&gt;// to load content from a content provider.&lt;/span&gt;
+            &lt;span class="n"&gt;mItem&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DummyContent&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;ITEM_MAP&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;getArguments&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;getString&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ARG_ITEM_ID&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+        &lt;span class="o"&gt;}&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;再来看看&lt;code&gt;onCreateView&lt;/code&gt;方法，用&lt;code&gt;mItem.content&lt;/code&gt;来填充数据，我们也可以换成其他的数据类型。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="nd"&gt;@Override&lt;/span&gt;
+    &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;View&lt;/span&gt; &lt;span class="nf"&gt;onCreateView&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LayoutInflater&lt;/span&gt; &lt;span class="n"&gt;inflater&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ViewGroup&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;View&lt;/span&gt; &lt;span class="n"&gt;rootView&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;inflater&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;inflate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;fragment_blogpost_detail&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+        &lt;span class="c1"&gt;// Show the dummy content as text in a TextView.&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mItem&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+            &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="n"&gt;TextView&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;rootView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;findViewById&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;blogpost_detail&lt;/span&gt;&lt;span class="o"&gt;)).&lt;/span&gt;&lt;span class="na"&gt;setText&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mItem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="o"&gt;}&lt;/span&gt;
+
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;rootView&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">刘理想</dc:creator><pubDate>Fri, 19 Sep 2014 21:36:00 +0800</pubDate><guid>tag:liulixiang1988.github.io,2014-09-19:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html</guid><category>Android学习笔记</category><category>Android</category></item><item><title>Nancy Web框架</title><link>http://liulixiang1988.github.io/nancy-webkuang-jia.html</link><description>&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;h1&gt;Nancy框架&lt;/h1&gt;
 &lt;h2&gt;一、创建第一个Nancy应用&lt;/h2&gt;
 &lt;ol&gt;
