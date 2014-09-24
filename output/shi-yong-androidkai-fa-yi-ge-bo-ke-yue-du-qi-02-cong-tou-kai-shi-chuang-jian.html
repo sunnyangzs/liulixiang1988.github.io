@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>使用Android开发一个博客阅读器-02 从头开始创建</title>
+  <meta name="author" content="理想">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="./favicon.png" rel="icon">
+  <link href="./theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="./theme/js/modernizr-2.0.js"></script>
+  <script src="./theme/js/ender.js"></script>
+  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="./">理想国</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+
+<ul class="main-navigation">
+    <li class="active">
+    <a href="./category/android.html">Android</a>
+    </li>
+    <li >
+    <a href="./category/net.html">.net</a>
+    </li>
+    <li >
+    <a href="./category/python.html">Python</a>
+    </li>
+    <li >
+    <a href="./category/sheng-huo.html">生活</a>
+    </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">使用Android开发一个博客阅读器-02 从头开始创建</h1>
+      <p class="meta"><time datetime="2014-09-24T16:16:00" pubdate>三 24 九月 2014</time></p>
+</header>
+
+  <div class="entry-content"><h2>1创建项目和ListActivity</h2>
+<h3>1.1 创建项目</h3>
+<p>创建Android项目，项目名称BlogReader，视图名称为MainListActivity。</p>
+<h3>1.2 更改Activity</h3>
+<p>打开MainListActivity.java文件，修改继承为<code>ListActivity</code>，如下</p>
+<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainListActivity</span> <span class="kd">extends</span> <span class="n">ListActivity</span>
+</pre></div>
+
+
+<p>此时，会提示有错，主要是因为没有导入ListActivity这个类。在eclipse中，有一个快捷键可以快速修正这个错误：<code>ctrl+shift+o</code>。这个快捷键不仅会导入没有使用到的快捷键，还会去除没有使用的import。</p>
+<h3>1.3 更改activity_main_list.xml</h3>
+<ol>
+<li>
+<p>删除生成的TextView</p>
+</li>
+<li>
+<p>添加<code>ListView</code>，如下所示：</p>
+</li>
+</ol>
+<div class="highlight"><pre><span class="nt">&lt;ListView</span>
+    <span class="na">android:id=</span><span class="s">&quot;@+id/listView1&quot;</span>
+    <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+    <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
+    <span class="na">android:layout_alignParentLeft=</span><span class="s">&quot;true&quot;</span>
+    <span class="na">android:layout_alignParentTop=</span><span class="s">&quot;true&quot;</span> <span class="nt">&gt;</span>
+<span class="nt">&lt;/ListView&gt;</span>
+</pre></div>
+
+
+<ol>
+<li>更改<code>ListView</code>的ID</li>
+</ol>
+<p>如果我们给<code>ListView</code>分配了一个特殊的ID，Android会自动为<code>ListActivity</code>调用这个<code>ListView</code>，修改上面的<code>ListView</code>如下：</p>
+<div class="highlight"><pre><span class="nt">&lt;ListView</span>
+    <span class="na">android:id=</span><span class="s">&quot;@android:id/list&quot;</span>
+    <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+    <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
+    <span class="na">android:layout_alignParentLeft=</span><span class="s">&quot;true&quot;</span>
+    <span class="na">android:layout_alignParentTop=</span><span class="s">&quot;true&quot;</span> <span class="nt">&gt;</span>
+<span class="nt">&lt;/ListView&gt;</span>
+</pre></div>
+
+
+<ol>
+<li>删除<code>RelativeLayout</code>自动生成的padding，整个layout文件如下：</li>
+</ol>
+<div class="highlight"><pre><span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="na">xmlns:tools=</span><span class="s">&quot;http://schemas.android.com/tools&quot;</span>
+    <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+    <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
+    <span class="na">tools:context=</span><span class="s">&quot;liulx.blogreader.MainListActivity&quot;</span> <span class="nt">&gt;</span>
+
+    <span class="nt">&lt;ListView</span>
+        <span class="na">android:id=</span><span class="s">&quot;@android:id/list&quot;</span>
+        <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+        <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
+        <span class="na">android:layout_alignParentLeft=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">android:layout_alignParentTop=</span><span class="s">&quot;true&quot;</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;/ListView&gt;</span>
+
+<span class="nt">&lt;/RelativeLayout&gt;</span>
+</pre></div>
+
+
+<p>预览图：</p>
+<p><img alt="预览图" src="images/android-blog-reader-02-01.png" /></p>
+<hr />
+<h2>2 处理没有数据的情况</h2>
+<p>当博客列表中没有数据时，我们最好给用户一个提醒，让用户知道是没有数据，而不是在加载数据。<code>ListActivity</code>提供了一个简单的方法来完成这件事。我们添加一个<code>TextView</code>，它能同<code>ListActivity</code>协同工作来完成这个工作，不过需要给它添加一个特殊的<code>id</code>，用来在list为空时显示。</p>
+<div class="highlight"><pre><span class="nt">&lt;TextView</span> 
+    <span class="na">android:id=</span><span class="s">&quot;@android:id/empty&quot;</span>
+    <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+    <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+    <span class="na">android:layout_alignParentLeft=</span><span class="s">&quot;true&quot;</span>
+    <span class="na">android:layout_alignParentTop=</span><span class="s">&quot;true&quot;</span>
+    <span class="na">android:text=</span><span class="s">&quot;@string/no_data&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>当list中包含数据时，<code>TextView</code>就会自动隐藏。</p>
+<p>此时，因为没有数据，程序运行后是这个样子：</p>
+<p><img alt="预览图" src="images/android-blog-reader-02-02.png" /></p>
+<hr />
+<h2>3 向List中添加数据</h2>
+<h3>3.1 添加数组数据</h3>
+<p>打开MainListActivity.java，添加数组变量：</p>
+<div class="highlight"><pre><span class="kd">protected</span> <span class="n">String</span><span class="o">[]</span> <span class="n">names</span> <span class="o">=</span> <span class="o">{</span>
+        <span class="s">&quot;刘理想&quot;</span><span class="o">,</span>
+        <span class="s">&quot;Andrew&quot;</span><span class="o">,</span>
+        <span class="s">&quot;Bubble&quot;</span><span class="o">,</span>
+        <span class="s">&quot;Cellia&quot;</span><span class="o">,</span>
+        <span class="s">&quot;Mark&quot;</span><span class="o">,</span>
+        <span class="s">&quot;Stone&quot;</span><span class="o">,</span>
+        <span class="s">&quot;Bingo&quot;</span><span class="o">,</span>
+        <span class="s">&quot;Stefanie&quot;</span>
+        <span class="o">};</span>
+</pre></div>
+
+
+<h3>3.2 添加<code>ArrayAdapter</code></h3>
+<p>在<code>onCreate</code>中添加如下两行：</p>
+<div class="highlight"><pre><span class="n">ArrayAdapter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayAdapter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="k">this</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_list_item_1</span><span class="o">,</span> <span class="n">names</span><span class="o">);</span>
+<span class="n">setListAdapter</span><span class="o">(</span><span class="n">adapter</span><span class="o">);</span>
+</pre></div>
+
+
+<p>其中<code>ArrayAdapter(Context context, int resource, T[] objects)</code>的变量分别如下：</p>
+<ul>
+<li>context上下文</li>
+<li>对应列表项的layout，使用系统自带的<code>android.R.layout.simple_list_item_1</code></li>
+<li>objects是数据源，我们使用了<code>names</code>这个数组</li>
+</ul>
+<p>运行后效果图</p>
+<p><img alt="预览图" src="images/android-blog-reader-02-03.png" /></p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">刘理想</span>
+  </span>
+<time datetime="2014-09-24T16:16:00" pubdate>三 24 九月 2014</time>  <span class="categories">
+    <a class="category" href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>
+    <a class="category" href="./tag/android.html">Android</a>
+    <a class="category" href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>
+  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html" data-title="使用Android开发一个博客阅读器-02 从头开始创建" data-url="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+    </div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html">使用Android开发一个博客阅读器-02 从头开始创建</a>
+      </li>
+      <li class="post">
+          <a href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html">使用Android开发一个博客阅读器-01 使用Master-Detail模板</a>
+      </li>
+      <li class="post">
+          <a href="./nancy-webkuang-jia.html">Nancy Web框架</a>
+      </li>
+      <li class="post">
+          <a href="./django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html">Django REST Framework笔记-01 介绍与安装</a>
+      </li>
+      <li class="post">
+          <a href="./androidxue-xi-bi-ji-06-androidyong-hu-jie-mian-zhi-bu-ju.html">Android学习笔记-06 Android用户界面之布局</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="./category/android.html">Android</a></li>
+        <li><a href="./category/net.html">.NET</a></li>
+        <li><a href="./category/python.html">Python</a></li>
+        <li><a href="./category/sheng-huo.html">生活</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="./tag/web.html">web</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>  </section>
+
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
+        </ul>
+    </section>
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2014  - 理想 -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+</body>
+</html>
