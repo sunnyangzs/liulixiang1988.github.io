@@ -29,3 +29,15 @@ RELATIVE_URLS = True
 THEME='octopress-themes'
 
 DUOSHUO_SITENAME = "liulixiang1988"
+
+GITHUB_USER="liulixiang1988"
+GITHUB_SHOW_USER_LINK=True
+
+SIDEBAR_IMAGE="images/avatar.jpg"
+SIDEBAR_IMAGE_ALT="刘理想"
+
+SEARCH_BOX=True
+
+
+
+

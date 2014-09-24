@@ -135,3 +135,49 @@ setListAdapter(adapter);
 运行后效果图
 
 ![预览图](images/android-blog-reader-02-03.png)
+
+---
+
+##4. 关于@String资源
+
+###4.1 在java文件中引用res/values/strings.xml中定义的字符串
+
+使用`Context`类的`getString`方法：
+
+```java
+getString(R.string.hello)
+```
+
+###4.2 添加字符串数组
+
+打开res/values/strings.xml文件，添加字符串数组如下：
+
+```xml
+<string-array name="names">
+    <item>刘理想</item>
+	<item>Andrew</item>
+	<item>Bubble</item>
+	<item>Cellia</item>
+	<item>Mark</item>
+	<item>Stone</item>
+	<item>Bingo</item>
+	<item>Stefanie</item>
+</string-array>
+```
+
+更改java 文件中的数组声明：
+
+```java
+protected String[] names ;
+```
+
+###4.3 调用字符串数组
+
+通过以下方法
+
+```java
+Resources resource = getResources();
+names = resource.getStringArray(R.array.names);
+```
+
+其中`getResources`获得资源，`resource.getStringArrary`获得数组。
