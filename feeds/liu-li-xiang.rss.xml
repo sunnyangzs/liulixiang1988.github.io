@@ -112,7 +112,43 @@
 &lt;li&gt;objects是数据源，我们使用了&lt;code&gt;names&lt;/code&gt;这个数组&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;运行后效果图&lt;/p&gt;
-&lt;p&gt;&lt;img alt="预览图" src="images/android-blog-reader-02-03.png" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">刘理想</dc:creator><pubDate>Wed, 24 Sep 2014 16:16:00 +0800</pubDate><guid>tag:liulixiang1988.github.io,2014-09-24:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html</guid><category>Android学习笔记</category><category>Android</category><category>Androi博客阅读</category></item><item><title>使用Android开发一个博客阅读器-01 使用Master-Detail模板</title><link>http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html</link><description>&lt;p&gt;项目地址：https://github.com/liulixiang1988/android_demo/tree/master/MasterDetailExample&lt;/p&gt;
+&lt;p&gt;&lt;img alt="预览图" src="images/android-blog-reader-02-03.png" /&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;4. 关于@String资源&lt;/h2&gt;
+&lt;h3&gt;4.1 在java文件中引用res/values/strings.xml中定义的字符串&lt;/h3&gt;
+&lt;p&gt;使用&lt;code&gt;Context&lt;/code&gt;类的&lt;code&gt;getString&lt;/code&gt;方法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;getString&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;hello&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;4.2 添加字符串数组&lt;/h3&gt;
+&lt;p&gt;打开res/values/strings.xml文件，添加字符串数组如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;string-array&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;names&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;item&amp;gt;&lt;/span&gt;刘理想&lt;span class="nt"&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;item&amp;gt;&lt;/span&gt;Andrew&lt;span class="nt"&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;item&amp;gt;&lt;/span&gt;Bubble&lt;span class="nt"&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;item&amp;gt;&lt;/span&gt;Cellia&lt;span class="nt"&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;item&amp;gt;&lt;/span&gt;Mark&lt;span class="nt"&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;item&amp;gt;&lt;/span&gt;Stone&lt;span class="nt"&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;item&amp;gt;&lt;/span&gt;Bingo&lt;span class="nt"&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;item&amp;gt;&lt;/span&gt;Stefanie&lt;span class="nt"&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/string-array&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;更改java 文件中的数组声明：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;protected&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;names&lt;/span&gt; &lt;span class="o"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;4.3 调用字符串数组&lt;/h3&gt;
+&lt;p&gt;通过以下方法&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Resources&lt;/span&gt; &lt;span class="n"&gt;resource&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;getResources&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+&lt;span class="n"&gt;names&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;resource&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getStringArray&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;array&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;names&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;其中&lt;code&gt;getResources&lt;/code&gt;获得资源，&lt;code&gt;resource.getStringArrary&lt;/code&gt;获得数组。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">刘理想</dc:creator><pubDate>Wed, 24 Sep 2014 16:16:00 +0800</pubDate><guid>tag:liulixiang1988.github.io,2014-09-24:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html</guid><category>Android学习笔记</category><category>Android</category><category>Androi博客阅读</category></item><item><title>使用Android开发一个博客阅读器-01 使用Master-Detail模板</title><link>http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html</link><description>&lt;p&gt;项目地址：https://github.com/liulixiang1988/android_demo/tree/master/MasterDetailExample&lt;/p&gt;
 &lt;p&gt;我们使用Master-Detail模板来做本应用的模板。&lt;/p&gt;
 &lt;h2&gt;建立Master-Detail模板&lt;/h2&gt;
 &lt;p&gt;新建Android项目，命名为MasterDetailExample，模板类型选择为Master-Detail。&lt;/p&gt;

@@ -35,6 +35,12 @@
 </ul>
 
 
+<form action="//google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
 
 <ul class="main-navigation">
     <li class="active">
@@ -172,7 +178,43 @@
 <li>objects是数据源，我们使用了<code>names</code>这个数组</li>
 </ul>
 <p>运行后效果图</p>
-<p><img alt="预览图" src="images/android-blog-reader-02-03.png" /></p></div>
+<p><img alt="预览图" src="images/android-blog-reader-02-03.png" /></p>
+<hr />
+<h2>4. 关于@String资源</h2>
+<h3>4.1 在java文件中引用res/values/strings.xml中定义的字符串</h3>
+<p>使用<code>Context</code>类的<code>getString</code>方法：</p>
+<div class="highlight"><pre><span class="n">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">hello</span><span class="o">)</span>
+</pre></div>
+
+
+<h3>4.2 添加字符串数组</h3>
+<p>打开res/values/strings.xml文件，添加字符串数组如下：</p>
+<div class="highlight"><pre><span class="nt">&lt;string-array</span> <span class="na">name=</span><span class="s">&quot;names&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;item&gt;</span>刘理想<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item&gt;</span>Andrew<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item&gt;</span>Bubble<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item&gt;</span>Cellia<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item&gt;</span>Mark<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item&gt;</span>Stone<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item&gt;</span>Bingo<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;item&gt;</span>Stefanie<span class="nt">&lt;/item&gt;</span>
+<span class="nt">&lt;/string-array&gt;</span>
+</pre></div>
+
+
+<p>更改java 文件中的数组声明：</p>
+<div class="highlight"><pre><span class="kd">protected</span> <span class="n">String</span><span class="o">[]</span> <span class="n">names</span> <span class="o">;</span>
+</pre></div>
+
+
+<h3>4.3 调用字符串数组</h3>
+<p>通过以下方法</p>
+<div class="highlight"><pre><span class="n">Resources</span> <span class="n">resource</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">();</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="na">getStringArray</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">array</span><span class="o">.</span><span class="na">names</span><span class="o">);</span>
+</pre></div>
+
+
+<p>其中<code>getResources</code>获得资源，<code>resource.getStringArrary</code>获得数组。</p></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -211,6 +253,9 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 </div>
 <aside class="sidebar">
   <section>
+	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
+  </section>
+  <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
@@ -244,8 +289,36 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 
   <section>
   <h1>Tags</h1>
-    <a href="./tag/web.html">web</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>  </section>
+    <a href="./tag/life.html">life</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/web.html">web</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>  </section>
 
+
+
+  <section>
+    <h1>GitHub Repos</h1>
+    <ul id="gh_repos">
+      <li class="loading">Status updating...</li>
+    </ul>
+      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
+    <script type="text/javascript">
+      $.domReady(function(){
+          if (!window.jXHR){
+              var jxhr = document.createElement('script');
+              jxhr.type = 'text/javascript';
+              jxhr.src = './theme/js/jXHR.js';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(jxhr, s);
+          }
+
+          github.showRepos({
+              user: 'liulixiang1988',
+              count: 5,
+              skip_forks: false,
+              target: '#gh_repos'
+          });
+      });
+    </script>
+    <script src="./theme/js/github.js" type="text/javascript"> </script>
+  </section>
 
     <section>
         <h1>Social</h1>
