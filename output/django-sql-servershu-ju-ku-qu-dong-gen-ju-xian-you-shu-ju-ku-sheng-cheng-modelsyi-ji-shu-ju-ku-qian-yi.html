@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>醉笑陪公三万场</title>
+  <title>Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移</title>
   <meta name="author" content="理想">
 
 
@@ -49,10 +49,10 @@
     <li >
     <a href="./category/net.html">.net</a>
     </li>
-    <li >
+    <li class="active">
     <a href="./category/python.html">Python</a>
     </li>
-    <li class="active">
+    <li >
     <a href="./category/sheng-huo.html">生活</a>
     </li>
 </ul></nav>
@@ -61,48 +61,93 @@
 <div>
   <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">醉笑陪公三万场</h1>
-      <p class="meta"><time datetime="2014-04-19T00:00:00" pubdate>六 19 四月 2014</time></p>
+      <h1 class="entry-title">Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移</h1>
+      <p class="meta"><time datetime="2014-09-26T18:55:00" pubdate>五 26 九月 2014</time></p>
 </header>
 
-  <div class="entry-content"><p>在百度上看到<a href="http://zhidao.baidu.com/link?url=2FYYejydAEvBpdnti51Ul2MPYlCV6SUQkc821EFyfywhbn1rLQv4PCbPJLBvFDwDIvk0NRdaCY7XqTngf80ltq">这篇</a>。昨日参加同事婚礼，不胜唏嘘。</p>
-<blockquote>
-<p>东武望馀杭<br />
-云海天涯两杳茫<br />
-何日功成名遂了，还乡<br />
-醉笑陪公三万场<br />
-不用诉离觞<br />
-痛饮从来别有肠<br />
-今夜送归灯火冷，河塘<br />
-堕泪羊公却姓杨  </p>
-</blockquote>
-<p>再后来，又有滚滚红尘中进行了改编：</p>
-<blockquote>
-<p>楼高日尽<br />
-望断天涯路 <br />
-来时陌上初熏 <br />
-有情风万里卷潮来 <br />
-推枕惘然不见<br />
-分携如昨到处萍漂泊<br />
-浩然相对今夕何年<br />
-谁道人生无再少<br />
-依旧梦魂中<br />
-但有旧欢新怨<br />
-人生底事往来如梭<br />
-醉笑陪君三万场 不诉离伤 <br />
-禅心已失人间爱<br />
-又何曾梦觉<br />
-这些个千生万生只在 <br />
-踏尽红尘何处是吾乡  </p>
-</blockquote>
-<p><img alt="img" src="./images/2014-04-19.jpeg" /></p></div>
+  <div class="entry-content"><h2>1. SQL Sever驱动</h2>
+<h3>1.1 安装</h3>
+<p>mssql数据库 使用django-mssql，依赖pywin32，如果安装时发生错误，请用下面这种方法：</p>
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">django</span><span class="o">-</span><span class="n">mssql</span> <span class="o">--</span><span class="n">pre</span>
+</pre></div>
+
+
+<h3>1.2 配置</h3>
+<p>在settings.py中，设置：</p>
+<div class="highlight"><pre><span class="cp"># Database</span>
+<span class="cp"># https:</span><span class="c1">//docs.djangoproject.com/en/1.6/ref/settings/#databases</span>
+
+<span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="err">&#39;</span><span class="k">default</span><span class="err">&#39;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="err">&#39;</span><span class="n">ENGINE</span><span class="err">&#39;</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">sqlserver_ado</span><span class="err">&#39;</span><span class="p">,</span>
+        <span class="err">&#39;</span><span class="n">NAME</span><span class="err">&#39;</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">data_center</span><span class="err">&#39;</span><span class="p">,</span>
+        <span class="err">&#39;</span><span class="n">USER</span><span class="err">&#39;</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">sa</span><span class="err">&#39;</span><span class="p">,</span>
+        <span class="err">&#39;</span><span class="n">PASSWORD</span><span class="err">&#39;</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">test</span><span class="err">&#39;</span><span class="p">,</span>
+        <span class="err">&#39;</span><span class="n">HOST</span><span class="err">&#39;</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">localhost</span><span class="err">&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr />
+<h2>2. 根据现有数据库生产models</h2>
+<div class="highlight"><pre><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">inspectdb</span> <span class="o">&gt;</span> <span class="n">models</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+
+
+<hr />
+<h2>3. 数据库迁移</h2>
+<h3>3.1 south安装</h3>
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">south</span>
+<span class="p">.</span><span class="o">/</span><span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">syncdb</span>
+</pre></div>
+
+
+<h3>3.2 在新建的App中使用South</h3>
+<p>a. 前期准备
+创建信app,并将其添加到INSTALL_APPS中：</p>
+<div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">testapp</span>
+</pre></div>
+
+
+<p>打开app的models.py，创建model：</p>
+<p>b. 第一次迁移</p>
+<div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">schemamigration</span> <span class="n">testapp</span> <span class="o">--</span><span class="n">initial</span>
+<span class="p">.</span><span class="o">/</span><span class="n">mange</span><span class="p">.</span><span class="n">py</span> <span class="n">migrate</span> <span class="n">testapp</span>
+</pre></div>
+
+
+<p>c.之后的迁移</p>
+<div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">schemamigration</span> <span class="n">testapp</span> <span class="o">--</span><span class="k">auto</span>
+<span class="p">.</span><span class="o">/</span><span class="n">mange</span><span class="p">.</span><span class="n">py</span> <span class="n">migrate</span> <span class="n">testapp</span>
+</pre></div>
+
+
+<hr />
+<h2>4. Django 1.7中的数据库迁移</h2>
+<h3>4.1 创建工程之后，进行第一次迁移</h3>
+<p>当使用<code>django-admin.py startproject mysite</code>之后，进行第一次：</p>
+<div class="highlight"><pre><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">migrate</span>
+</pre></div>
+
+
+<h3>4.2 之后的迁移分为3部走</h3>
+<ul>
+<li>修改model</li>
+<li>使用<code>python manage.py makemigrations 迁移名称</code>创建迁移</li>
+<li>使用<code>python manage.py migrate</code>应用迁移</li>
+</ul>
+<p><strong>注意</strong>，可以使用<code>python mange.py sqlmigrate 迁移名 版本号</code>查看迁移，比如：</p>
+<div class="highlight"><pre><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">sqlmigrate</span> <span class="n">polls</span> <span class="mo">00001</span>
+</pre></div></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
-    Posted by <span class="fn">理想</span>
+    Posted by <span class="fn">刘理想</span>
   </span>
-<time datetime="2014-04-19T00:00:00" pubdate>六 19 四月 2014</time>  <span class="categories">
-    <a class="category" href="./tag/life.html">life</a>
+<time datetime="2014-09-26T18:55:00" pubdate>五 26 九月 2014</time>  <span class="categories">
+    <a class="category" href="./tag/python.html">Python</a>
+    <a class="category" href="./tag/django.html">Django</a>
   </span>
 </p><div class="sharing">
 </div>    </footer>
@@ -112,7 +157,7 @@
     <h1>Comments</h1>
     <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2014-04-19.html" data-title="醉笑陪公三万场" data-url="./2014-04-19.html"></div>
+	<div class="ds-thread" data-thread-key="django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html" data-title="Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移" data-url="./django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

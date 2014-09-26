@@ -1,5 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2014-09-24T16:16:00+08:00</updated><entry><title>使用Android开发一个博客阅读器-02 从头开始创建</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html" rel="alternate"></link><updated>2014-09-24T16:16:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-09-24:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html</id><summary type="html">&lt;h2&gt;1创建项目和ListActivity&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2014-09-26T18:55:00+08:00</updated><entry><title>Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移</title><link href="http://liulixiang1988.github.io/django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html" rel="alternate"></link><updated>2014-09-26T18:55:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-09-26:django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html</id><summary type="html">&lt;h2&gt;1. SQL Sever驱动&lt;/h2&gt;
+&lt;h3&gt;1.1 安装&lt;/h3&gt;
+&lt;p&gt;mssql数据库 使用django-mssql，依赖pywin32，如果安装时发生错误，请用下面这种方法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mssql&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;pre&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;1.2 配置&lt;/h3&gt;
+&lt;p&gt;在settings.py中，设置：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# Database&lt;/span&gt;
+&lt;span class="cp"&gt;# https:&lt;/span&gt;&lt;span class="c1"&gt;//docs.djangoproject.com/en/1.6/ref/settings/#databases&lt;/span&gt;
+
+&lt;span class="n"&gt;DATABASES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;ENGINE&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;sqlserver_ado&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;NAME&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;data_center&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;PASSWORD&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;HOST&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;localhost&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2&gt;2. 根据现有数据库生产models&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;inspectdb&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2&gt;3. 数据库迁移&lt;/h2&gt;
+&lt;h3&gt;3.1 south安装&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;south&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;syncdb&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3.2 在新建的App中使用South&lt;/h3&gt;
+&lt;p&gt;a. 前期准备
+创建信app,并将其添加到INSTALL_APPS中：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;startapp&lt;/span&gt; &lt;span class="n"&gt;testapp&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;打开app的models.py，创建model：&lt;/p&gt;
+&lt;p&gt;b. 第一次迁移&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;schemamigration&lt;/span&gt; &lt;span class="n"&gt;testapp&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;initial&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mange&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;migrate&lt;/span&gt; &lt;span class="n"&gt;testapp&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;c.之后的迁移&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;schemamigration&lt;/span&gt; &lt;span class="n"&gt;testapp&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;auto&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mange&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;migrate&lt;/span&gt; &lt;span class="n"&gt;testapp&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2&gt;4. Django 1.7中的数据库迁移&lt;/h2&gt;
+&lt;h3&gt;4.1 创建工程之后，进行第一次迁移&lt;/h3&gt;
+&lt;p&gt;当使用&lt;code&gt;django-admin.py startproject mysite&lt;/code&gt;之后，进行第一次：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;migrate&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;4.2 之后的迁移分为3部走&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;修改model&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;python manage.py makemigrations 迁移名称&lt;/code&gt;创建迁移&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;python manage.py migrate&lt;/code&gt;应用迁移&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;，可以使用&lt;code&gt;python mange.py sqlmigrate 迁移名 版本号&lt;/code&gt;查看迁移，比如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;sqlmigrate&lt;/span&gt; &lt;span class="n"&gt;polls&lt;/span&gt; &lt;span class="mo"&gt;00001&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Python"></category><category term="Django"></category></entry><entry><title>使用Android开发一个博客阅读器-02 从头开始创建</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html" rel="alternate"></link><updated>2014-09-24T16:16:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-09-24:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html</id><summary type="html">&lt;h2&gt;1创建项目和ListActivity&lt;/h2&gt;
 &lt;h3&gt;1.1 创建项目&lt;/h3&gt;
 &lt;p&gt;创建Android项目，项目名称BlogReader，视图名称为MainListActivity。&lt;/p&gt;
 &lt;h3&gt;1.2 更改Activity&lt;/h3&gt;
