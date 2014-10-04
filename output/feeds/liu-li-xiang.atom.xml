@@ -1,5 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2014-10-01T13:30:00+08:00</updated><entry><title>使用Android开发一个博客阅读器-05 使用Intent显示和共享博客</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html" rel="alternate"></link><updated>2014-10-01T13:30:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-01:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html</id><summary type="html">&lt;h2&gt;1 在浏览器中打开网页&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2014-10-04T09:48:00+08:00</updated><entry><title>使用Android开发阅后即焚应用-01 开始</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html" rel="alternate"></link><updated>2014-10-04T09:48:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-04:shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html</id><summary type="html">&lt;h2&gt;1.阅后即焚应用介绍&lt;/h2&gt;
+&lt;p&gt;阅后即焚是一款应用，用户可以适用它分享文字、照片给他的朋友，朋友们看过发来的消息之后该消息会自动销毁。&lt;/p&gt;
+&lt;p&gt;阅后即焚包含用户登录、用户注册、收件箱、好友列表、好友编辑、拍照等功能。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;2.开始项目&lt;/h2&gt;
+&lt;p&gt;本次项目适用Android Stuidio进行开发。&lt;/p&gt;
+&lt;p&gt;打开Android Studio，选择"New Project"，然后输入信息如下：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="新建项目" src="images/Snip20141004_1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;选择最小SDK，我们选定4.0版本为最小SDK：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="选择SDK" src="images/Snip20141004_2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;选择"Tabbed Activity"标签页作为基础Activity：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="选择Tabbed Activity" src="images/Snip20141004_3.png" /&gt;&lt;/p&gt;
+&lt;p&gt;最后，设置项目的MainActivity、Title和Navigation Style。注意，Navigation Style选择"Action Bar Tabs(with ViewPager)"：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="设置Activity" src="images/Snip20141004_4.png" /&gt;&lt;/p&gt;
+&lt;p&gt;现在，我们设置好了项目，但是还有一件事情要做，我们只希望应用是垂直的，而不希望手机放平时，应用也跟着水平。我们需要编辑AndroidManifest.xml文件。双击AndroidManifest.xml，文件打开，我们在&lt;code&gt;activity&lt;/code&gt;中添加属性&lt;code&gt;android:screenOrientation="portrait"&lt;/code&gt;。与eclipse不同，Android Studio目前还没有图形化编辑AndroidManifest.xml的界面。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;3. 添加用户登录Activity&lt;/h2&gt;
+&lt;p&gt;我们可以到http://www.mobile-patterns.com/ 查看一些优秀的设计，看看别人时怎么做登录设计的。&lt;/p&gt;
+&lt;p&gt;要添加登录页面，在菜单中选择"File"-&amp;gt;"New..."-&amp;gt;"Activity"-&amp;gt;"Blank Activity"(注意，还有一个"Login Activity"，但在这里我们不选用它，而是从头创建)。弹出对话框中输入：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="添加Login Activity" src="images/Snip20141004_5.png" /&gt;&lt;/p&gt;
+&lt;p&gt;设置用户界面为垂直的，方法同设置MainActivity相同，添加&lt;code&gt;android:screenOrientation="portrait"&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;构建用户登录界面如下：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="用户" src="images/Snip20141004_6.png" /&gt;&lt;/p&gt;
+&lt;p&gt;对应的xml如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;RelativeLayout&lt;/span&gt; &lt;span class="na"&gt;xmlns:android=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;xmlns:tools=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.android.com/tools&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:paddingLeft=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@dimen/activity_horizontal_margin&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:paddingRight=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@dimen/activity_horizontal_margin&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:paddingTop=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@dimen/activity_vertical_margin&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:paddingBottom=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@dimen/activity_vertical_margin&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;tools:context=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;io.github.liulixiang1988.rabbit.LoginActivity&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;EditText&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wrap_content&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/username&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentTop=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentLeft=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentStart=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:hint=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@string/username&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;EditText&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wrap_content&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:inputType=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;textPassword&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:ems=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;10&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/password&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_below=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/username&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentLeft=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentStart=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:hint=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@string/password&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;Button&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wrap_content&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:text=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@string/login_btn_label&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/btnLogin&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_below=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/password&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_centerHorizontal=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;TextView&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wrap_content&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wrap_content&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:textAppearance=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;?android:attr/textAppearanceSmall&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:text=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@string/signup_text_label&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/txtSignUp&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_marginTop=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;78dp&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_below=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/btnLogin&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_centerHorizontal=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/RelativeLayout&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;现在，我们想运行一下看看效果，但是启动界面时&lt;code&gt;MainActivity&lt;/code&gt;，因此，我们在&lt;code&gt;MainActivity&lt;/code&gt;的&lt;code&gt;onCreate&lt;/code&gt;方法中添加：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@Override&lt;/span&gt;
+&lt;span class="kd"&gt;protected&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;onCreate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;super&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;onCreate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;setContentView&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;activity_main&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+    &lt;span class="c1"&gt;//用户登录界面&lt;/span&gt;
+    &lt;span class="n"&gt;Intent&lt;/span&gt; &lt;span class="n"&gt;intent&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Intent&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;LoginActivity&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;startActivity&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;intent&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2&gt;4. 添加用户注册Activity&lt;/h2&gt;
+&lt;p&gt;新建Activity，添加的Activity名称为&lt;code&gt;SignupActivity&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;设置界面垂直。&lt;/p&gt;
+&lt;p&gt;设置Layout如下：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="设置Layout" src="images/Snip20141004_7.png" /&gt;&lt;/p&gt;
+&lt;p&gt;对应的xml如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;RelativeLayout&lt;/span&gt; &lt;span class="na"&gt;xmlns:android=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;xmlns:tools=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.android.com/tools&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:paddingLeft=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@dimen/activity_horizontal_margin&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:paddingRight=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@dimen/activity_horizontal_margin&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:paddingTop=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@dimen/activity_vertical_margin&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:paddingBottom=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@dimen/activity_vertical_margin&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;tools:context=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;io.github.liulixiang1988.rabbit.SignupActivity&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;EditText&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wrap_content&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/usernameField&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentTop=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentLeft=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentStart=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:hint=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@string/username&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;EditText&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wrap_content&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:inputType=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;textPassword&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:ems=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;10&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/passwordField&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_below=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/usernameField&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentLeft=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentStart=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:hint=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@string/password&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;EditText&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wrap_content&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:inputType=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;textEmailAddress&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:ems=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;10&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/emailField&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_below=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/passwordField&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentLeft=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentStart=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:hint=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@string/email_text_label&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;Button&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wrap_content&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:text=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@string/signup_btn_label&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/btnSignup&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_below=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@+id/emailField&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentLeft=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentStart=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/RelativeLayout&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;添加从登录LoginActivity到注册SignupActivity的跳转。打开LoginActivity，添加如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;protected&lt;/span&gt; &lt;span class="n"&gt;TextView&lt;/span&gt; &lt;span class="n"&gt;txtSignup&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="nd"&gt;@Override&lt;/span&gt;
+&lt;span class="kd"&gt;protected&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;onCreate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;super&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;onCreate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;setContentView&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;activity_login&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+    &lt;span class="n"&gt;txtSignup&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TextView&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;findViewById&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;txtSignUp&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;txtSignup&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setOnClickListener&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;View&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;OnClickListener&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="nd"&gt;@Override&lt;/span&gt;
+        &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;onClick&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;View&lt;/span&gt; &lt;span class="n"&gt;view&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;Intent&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Intent&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LoginActivity&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;this&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SignupActivity&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+            &lt;span class="n"&gt;startActivity&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="o"&gt;}&lt;/span&gt;
+    &lt;span class="o"&gt;});&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2&gt;5. Back和Up导航&lt;/h2&gt;
+&lt;p&gt;Up导航是在app内导航到上一级别，&lt;strong&gt;始终是在同一个app内&lt;/strong&gt;, 而Back导航则是根据用户的历史记录进行导航，比如导航到桌面或者其他应用中。&lt;/p&gt;
+&lt;p&gt;现在我们想要设置Signup(注册)的Up导航是Login(登录)，该怎么办呢？&lt;/p&gt;
+&lt;p&gt;打开AndroidManifest.xml，在Signup中添加&lt;code&gt;android:parentActivityName&lt;/code&gt;，如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;activity&lt;/span&gt;
+    &lt;span class="na"&gt;android:name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;.SignupActivity&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:label=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@string/title_activity_signup&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:parentActivityName=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;.LoginActivity&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/activity&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;，&lt;code&gt;android:parentActivityName&lt;/code&gt;的值设置为Activity类名，也可以设置全名，比如&lt;code&gt;io.github.liulixiang1988.rabbit.LoginActivity&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;现在，我们再次运行程序，点击"注册"后，界面切换到注册，如下：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="up导航注册界面" src="images/Snip20141004_8.png" /&gt;&lt;/p&gt;
+&lt;p&gt;请注意图中用红色线框住的那一部分，有一个返回图标，点击它就会返回到登录界面。&lt;/p&gt;
+&lt;p&gt;另一个问题，如果我们在登录界面按鼠标上的返回按钮，那会发生什么呢？我们点击一下看看，竟然是收件箱画面：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="收件箱" src="images/Snip20141004_9.png" /&gt;&lt;/p&gt;
+&lt;p&gt;这肯定不对，因为用户没有登录，不应该看到这个画面。&lt;/p&gt;
+&lt;p&gt;这种是由于什么原因导致的呢？Android在Activity跳转的过程中，会自己维护一个堆栈用来存放Activity的顺序，该堆栈适用后进先出的方式，在按返回按钮时会逐层返回Activity。有时我们想开辟一个新的堆栈，这个时候就需要添加一些flag来告诉Android我们的想法。对于Rabbit应用，我们希望用户在登录界面点击返回按钮时不要回到收件箱。这个时候，我们需要在MainActivity中设置flag。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Intent&lt;/span&gt; &lt;span class="n"&gt;intent&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Intent&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;LoginActivity&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="c1"&gt;//第1种方法&lt;/span&gt;
+&lt;span class="c1"&gt;//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);&lt;/span&gt;
+&lt;span class="c1"&gt;//第2种方法&lt;/span&gt;
+&lt;span class="n"&gt;intent&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;addFlags&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Intent&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;FLAG_ACTIVITY_NEW_TASK&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;intent&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;addFlags&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Intent&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;FLAG_ACTIVITY_CLEAR_TASK&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;startActivity&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;intent&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样，当在登录界面时按返回按钮就不会有到收件箱这种现象了。&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category><category term="Androi阅后即焚"></category></entry><entry><title>使用Android开发一个博客阅读器-05 使用Intent显示和共享博客</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html" rel="alternate"></link><updated>2014-10-01T13:30:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-01:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html</id><summary type="html">&lt;h2&gt;1 在浏览器中打开网页&lt;/h2&gt;
 &lt;h3&gt;1.1 &lt;code&gt;ListView&lt;/code&gt;添加单击事件响应&lt;/h3&gt;
 &lt;p&gt;要是&lt;code&gt;ListView&lt;/code&gt;响应单击事件，重载函数：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@Override&lt;/span&gt;
@@ -3237,12 +3437,12 @@ virtualenv pelican_env
 
 &lt;h3&gt;2.2 创建Markdown的博文&lt;/h3&gt;
 &lt;p&gt;在content目录下创建一个test.md的文件，然后用记事本或者notepad++或者sublime text打开，编写如下内容。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
-&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;
-&lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
-&lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;
-&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;刘理想&lt;/span&gt;
-&lt;span class="n"&gt;Summary&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;Title:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
+&lt;span class="nl"&gt;Date:&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;
+&lt;span class="nl"&gt;Category:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
+&lt;span class="nl"&gt;Tags:&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;
+&lt;span class="nl"&gt;Author:&lt;/span&gt; &lt;span class="err"&gt;刘理想&lt;/span&gt;
+&lt;span class="nl"&gt;Summary:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
 &lt;span class="err"&gt;你好，世界，世界，你好。&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
