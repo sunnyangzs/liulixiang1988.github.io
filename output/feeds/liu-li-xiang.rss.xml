@@ -1,5 +1,397 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>理想国</title><link>http://liulixiang1988.github.io/</link><description></description><atom:link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 04 Oct 2014 09:48:00 +0800</lastBuildDate><item><title>使用Android开发阅后即焚应用-01 开始</title><link>http://liulixiang1988.github.io/shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html</link><description>&lt;h2&gt;1.阅后即焚应用介绍&lt;/h2&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>理想国</title><link>http://liulixiang1988.github.io/</link><description></description><atom:link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 30 Oct 2014 00:00:00 +0800</lastBuildDate><item><title>使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</title><link>http://liulixiang1988.github.io/shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html</link><description>&lt;h1&gt;使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)&lt;/h1&gt;
+&lt;h2&gt;0. 简介&lt;/h2&gt;
+&lt;h3&gt;0.1 Token认证&lt;/h3&gt;
+&lt;h3&gt;0.2 Web API&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;h2&gt;1. 创建后端API&lt;/h2&gt;
+&lt;h3&gt;1.1 第一步 创建Web API项目&lt;/h3&gt;
+&lt;p&gt;使用VS2013，创建"ASP.NET Web应用程序"，解决方案名为AngularJSAuthentication，项目名为AngularJSAuthentication.API:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="./1414648763551.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;1.2 第二步 安装必要的NuGet包&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Install&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Package&lt;/span&gt; &lt;span class="n"&gt;Microsoft&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AspNet&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;WebApi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Owin&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mf"&gt;5.1.2&lt;/span&gt;
+&lt;span class="n"&gt;Install&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Package&lt;/span&gt; &lt;span class="n"&gt;Microsoft&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Owin&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Host&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SystemWeb&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mf"&gt;2.1.0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;其中，&lt;code&gt;Microsoft.Owin.Host.SystemWeb&lt;/code&gt;包是用来Owin服务器的API能够在IIS上运行&lt;/p&gt;
+&lt;h3&gt;1.3 第三步 添加Owin"启动(Startup)"类&lt;/h3&gt;
+&lt;p&gt;右键，添加新类&lt;code&gt;Startup&lt;/code&gt;，我们会修改好几次这个类，现在它应该是这个样子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;System&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Web&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Http&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;AngularJSAuthentication&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;API&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;Microsoft&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Owin&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;Owin&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;assembly&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;OwinStartup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;typeof&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Startup&lt;/span&gt;&lt;span class="p"&gt;))]&lt;/span&gt;
+
+&lt;span class="n"&gt;namespace&lt;/span&gt; &lt;span class="n"&gt;AngularJSAuthentication&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;API&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Startup&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="n"&gt;Configuration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;IAppBuilder&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;HttpConfiguration&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+            &lt;span class="n"&gt;WebApiConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UseWebApi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;assembly&lt;/code&gt;属性声明了启动时启动的类，也就是说&lt;code&gt;Startup&lt;/code&gt;类在应用启动的时候会被调用。&lt;code&gt;Configuration&lt;/code&gt;方法接收的参数&lt;code&gt;IAppBuilder&lt;/code&gt;实例app是主机传过来的。&lt;code&gt;app&lt;/code&gt;是一个接口，用来组成我们服务器的应用。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;HttpConfiguration&lt;/code&gt;对象用来配置路由，因此，我们把它传递给&lt;code&gt;WebApiConfig&lt;/code&gt;类的&lt;code&gt;Register&lt;/code&gt;方法。&lt;/p&gt;
+&lt;p&gt;最后，我们把&lt;code&gt;config&lt;/code&gt;对象传递给&lt;code&gt;UserWebApi&lt;/code&gt;扩展方法，实现ASP.NET Web API和Owin Server的管道。&lt;/p&gt;
+&lt;p&gt;通常，&lt;code&gt;WebApiConfig&lt;/code&gt;由模板自动生成。如果没有，就在&lt;code&gt;App_Start&lt;/code&gt;文件夹下创建：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="nf"&gt;static&lt;/span&gt; &lt;span class="nb"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;WebApiConfig&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="nf"&gt;static&lt;/span&gt; &lt;span class="bp"&gt;void&lt;/span&gt; &lt;span class="nb"&gt;Register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;HttpConfiguration&lt;/span&gt; &lt;span class="nx"&gt;config&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+
+        &lt;span class="c1"&gt;// Web API routes&lt;/span&gt;
+        &lt;span class="nx"&gt;config.MapHttpAttributeRoutes&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+        &lt;span class="nx"&gt;config.Routes.MapHttpRoute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="nb"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;DefaultApi&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="nx"&gt;routeTemplate&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;api/{controller}/{id}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="nx"&gt;defaults&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;new&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;RouteParameter.Optional&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="n"&gt;jsonFormatter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;config.Formatters.OfType&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;JsonMediaTypeFormatter&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="bp"&gt;.&lt;/span&gt;&lt;span class="nb"&gt;First&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="n"&gt;jsonFormatter.SerializerSettings.ContractResolver&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;CamelCasePropertyNamesContractResolver&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;1.4 第四步 删除Global.asax类&lt;/h3&gt;
+&lt;p&gt;不再需要这个类，也不需要&lt;code&gt;Application_Start&lt;/code&gt;事件，因为我们已经配置了&lt;code&gt;Startup&lt;/code&gt;类，所以放心删除它吧。&lt;/p&gt;
+&lt;h3&gt;1.5 第五步 添加Windows Identity System(Windows身份认证系统)&lt;/h3&gt;
+&lt;p&gt;配置过Web API后，现在可以添加支持注册和验证用户的包了，安装如下包&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Install&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Package&lt;/span&gt; &lt;span class="n"&gt;Microsoft&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AspNet&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Identity&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Owin&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mf"&gt;2.0.1&lt;/span&gt;
+&lt;span class="n"&gt;Install&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Package&lt;/span&gt; &lt;span class="n"&gt;Microsoft&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AspNet&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Identity&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;EntityFramework&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mf"&gt;2.0.1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;第一个包用来支持ASP.NET Identity Owin，第二个包可以让ASP.NET Identity使用Entity Framework,这样我们就能保存用户到SQL Server数据库了。&lt;/p&gt;
+&lt;p&gt;现在我们需要添加一个Database context类，用来负责与数据库交互。因此，添加&lt;code&gt;AuthContext&lt;/code&gt;类：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="nf"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;AuthContext&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;IdentityDbContext&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;IdentityUser&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="nf"&gt;AuthContext&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="nx"&gt;base&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AuthContext&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;能看到这个类继承自&lt;code&gt;IdentityDbContext&lt;/code&gt;类。可以把这个特殊类型的&lt;code&gt;DbContext&lt;/code&gt;类。它支持所有Entity Framework的code-first映射，以及DbSet属性用来管理数据库的身份表。可以读&lt;a href="http://odetocode.com/blogs/scott/archive/2014/01/03/asp-net-identity-with-the-entity-framework.aspx"&gt;Scott Allen的博客&lt;/a&gt;了解更多。&lt;/p&gt;
+&lt;p&gt;现在，我们在&lt;code&gt;Models&lt;/code&gt;文件夹下添加一个&lt;code&gt;UserModel&lt;/code&gt;类，它包含一些用来验证注册请求。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;System&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ComponentModel&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataAnnotations&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;namespace&lt;/span&gt; &lt;span class="n"&gt;AngularJSAuthentication&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;API&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Models&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;UserModel&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Required&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Display&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;用户名&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+        &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt; &lt;span class="n"&gt;UserName&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Required&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;StringLength&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ErrorMessage&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;{0}至少要有{2}个字符&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MinimumLength&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;DataType&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;DataType&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Password&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Display&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;密码&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+        &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt; &lt;span class="n"&gt;Password&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;DataType&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;DataType&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Password&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Display&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;确认密码&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Compare&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Password&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ErrorMessage&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;两次密码输入不一致&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+        &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt; &lt;span class="n"&gt;ConfirmedPassword&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;最后，我们在web.config中添加连接字符串：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;connectionStrings&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;add&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;AuthContext&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;connectionString=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Data Source=.;Initial Catalog=AngularJSAuth;Integrated Security=SSPI;&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;providerName=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;System.Data.SqlClient&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/connectionStrings&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;1.6 第六步 添加仓库类来支持ASP.NET Identity System&lt;/h3&gt;
+&lt;p&gt;现在，我们要实现两个方法&lt;code&gt;RegisterUser&lt;/code&gt;和&lt;code&gt;FindUser&lt;/code&gt;，因此，我们添加一个名为&lt;code&gt;AuthRepository&lt;/code&gt;的类：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="nf"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;AuthRepository&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;IDisposable&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;private&lt;/span&gt; &lt;span class="nf"&gt;readonly&lt;/span&gt; &lt;span class="nx"&gt;AuthContext&lt;/span&gt; &lt;span class="nx"&gt;_ctx&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="k"&gt;private&lt;/span&gt; &lt;span class="nf"&gt;readonly&lt;/span&gt; &lt;span class="nx"&gt;UserManager&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;IdentityUser&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;_userManager&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="nf"&gt;AuthRepository&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;_ctx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;AuthContext&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="n"&gt;_userManager&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;UserManager&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;IdentityUser&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="na"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;UserStore&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;IdentityUser&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="na"&gt;_ctx&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="nf"&gt;void&lt;/span&gt; &lt;span class="nx"&gt;Dispose&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;_ctx.Dispose&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="nx"&gt;_userManager.Dispose&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="nf"&gt;async&lt;/span&gt; &lt;span class="nx"&gt;Task&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;IdentityResult&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;RegisterUser&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;UserModel&lt;/span&gt; &lt;span class="nx"&gt;userModel&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;IdentityUser&lt;/span&gt;
+        &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;UserName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;userModel.UserName&lt;/span&gt;
+        &lt;span class="p"&gt;};&lt;/span&gt;
+
+        &lt;span class="nx"&gt;IdentityResult&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;await&lt;/span&gt; &lt;span class="nx"&gt;_userManager.CreateAsync&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;user&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;userModel.Password&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;result&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="nf"&gt;async&lt;/span&gt; &lt;span class="nx"&gt;Task&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;IdentityUser&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;FindUser&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="nx"&gt;username&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt; &lt;span class="nx"&gt;password&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;IdentityUser&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;await&lt;/span&gt; &lt;span class="nx"&gt;_userManager.FindAsync&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;username&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;password&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;user&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;我们依赖&lt;code&gt;UserManager&lt;/code&gt;来提供用户信息的逻辑操作。&lt;code&gt;UserManager&lt;/code&gt;指导什么时候hash密码，怎么以及何时验证用户，以及如何管理请求。读&lt;a href="http://odetocode.com/blogs/scott/archive/2014/01/20/implementing-asp-net-identity.aspx"&gt;ASP.NET Identity System&lt;/a&gt;来了解更多。&lt;/p&gt;
+&lt;h3&gt;1.7 第七步 添加我们的“账户”控制器("Account" Controller)&lt;/h3&gt;
+&lt;p&gt;现在是时候添加我们的第一个Web API控制器了，这个控制器用来注册新用户。在&lt;code&gt;Controllers&lt;/code&gt;文件夹下添加一个空Web API 2的控制器&lt;code&gt;AccountController&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;[RoutePrefix(&amp;quot;api/account&amp;quot;)]&lt;/span&gt;
+&lt;span class="err"&gt;public&lt;/span&gt; &lt;span class="err"&gt;class&lt;/span&gt; &lt;span class="err"&gt;AccountController&lt;/span&gt; &lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;ApiController&lt;/span&gt;
+&lt;span class="err"&gt;{&lt;/span&gt;
+    &lt;span class="na"&gt;private AuthRepository _repo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;null;&lt;/span&gt;
+
+    &lt;span class="err"&gt;public&lt;/span&gt; &lt;span class="err"&gt;AccountController()&lt;/span&gt;
+    &lt;span class="err"&gt;{&lt;/span&gt;
+        &lt;span class="na"&gt;_repo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;new AuthRepository();&lt;/span&gt;
+&lt;span class="s"&gt;    }&lt;/span&gt;
+
+    &lt;span class="err"&gt;//POST&lt;/span&gt; &lt;span class="err"&gt;/api/Acount/Register&lt;/span&gt;
+    &lt;span class="k"&gt;[AllowAnonymous]&lt;/span&gt;
+    &lt;span class="k"&gt;[Route(&amp;quot;Register&amp;quot;)]&lt;/span&gt;
+    &lt;span class="err"&gt;public&lt;/span&gt; &lt;span class="err"&gt;async&lt;/span&gt; &lt;span class="err"&gt;Task&amp;lt;IHttpActionResult&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;Register(UserModel&lt;/span&gt; &lt;span class="err"&gt;userModel)&lt;/span&gt;
+    &lt;span class="err"&gt;{&lt;/span&gt;
+        &lt;span class="err"&gt;if&lt;/span&gt; &lt;span class="err"&gt;(!ModelState.IsValid)&lt;/span&gt;
+        &lt;span class="err"&gt;{&lt;/span&gt;
+            &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;BadRequest(ModelState)&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+        &lt;span class="err"&gt;}&lt;/span&gt;
+
+        &lt;span class="na"&gt;IdentityResult result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;await _repo.RegisterUser(userModel);&lt;/span&gt;
+&lt;span class="s"&gt;        IHttpActionResult errorResult = GetErrorResult(result);&lt;/span&gt;
+&lt;span class="s"&gt;        if (errorResult != null)&lt;/span&gt;
+&lt;span class="s"&gt;        {&lt;/span&gt;
+&lt;span class="s"&gt;            return errorResult;&lt;/span&gt;
+&lt;span class="s"&gt;        }&lt;/span&gt;
+
+        &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;Ok()&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;}&lt;/span&gt;
+
+    &lt;span class="err"&gt;protected&lt;/span&gt; &lt;span class="err"&gt;override&lt;/span&gt; &lt;span class="err"&gt;void&lt;/span&gt; &lt;span class="err"&gt;Dispose(bool&lt;/span&gt; &lt;span class="err"&gt;disposing)&lt;/span&gt;
+    &lt;span class="err"&gt;{&lt;/span&gt;
+        &lt;span class="err"&gt;if&lt;/span&gt; &lt;span class="err"&gt;(disposing)&lt;/span&gt;
+        &lt;span class="err"&gt;{&lt;/span&gt;
+            &lt;span class="err"&gt;_repo.Dispose()&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+        &lt;span class="err"&gt;}&lt;/span&gt;
+        &lt;span class="err"&gt;base.Dispose(disposing)&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;}&lt;/span&gt;
+
+    &lt;span class="err"&gt;private&lt;/span&gt; &lt;span class="err"&gt;IHttpActionResult&lt;/span&gt; &lt;span class="err"&gt;GetErrorResult(IdentityResult&lt;/span&gt; &lt;span class="err"&gt;result)&lt;/span&gt;
+    &lt;span class="err"&gt;{&lt;/span&gt;
+        &lt;span class="na"&gt;if (result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;= null)&lt;/span&gt;
+&lt;span class="s"&gt;        {&lt;/span&gt;
+&lt;span class="s"&gt;            return InternalServerError();&lt;/span&gt;
+&lt;span class="s"&gt;        }&lt;/span&gt;
+
+        &lt;span class="err"&gt;if&lt;/span&gt; &lt;span class="err"&gt;(!result.Succeeded)&lt;/span&gt;
+        &lt;span class="err"&gt;{&lt;/span&gt;
+            &lt;span class="na"&gt;if (result.Errors !&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;null)&lt;/span&gt;
+&lt;span class="s"&gt;            {&lt;/span&gt;
+&lt;span class="s"&gt;                foreach (var error in result.Errors)&lt;/span&gt;
+&lt;span class="s"&gt;                {&lt;/span&gt;
+&lt;span class="s"&gt;                    ModelState.AddModelError(&amp;quot;&amp;quot;, error);&lt;/span&gt;
+&lt;span class="s"&gt;                }&lt;/span&gt;
+&lt;span class="s"&gt;            }&lt;/span&gt;
+
+            &lt;span class="err"&gt;if&lt;/span&gt; &lt;span class="err"&gt;(ModelState.IsValid)&lt;/span&gt;
+            &lt;span class="err"&gt;{&lt;/span&gt;
+                &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;BadRequest()&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+            &lt;span class="err"&gt;}&lt;/span&gt;
+            &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;BadRequest(ModelState)&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+        &lt;span class="err"&gt;}&lt;/span&gt;
+        &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;null&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;}&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;任何人想要注册，必须使用HTTP POST请求'/api/account/register'，而且请求必须包含如下的JSON对象：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;userName&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;liu&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;123456&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;confirmPassword&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;123456&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;现在可以使用HTTP POST请求网址：“http://localhost:port/api/account/register”，如果一切正常就会收到HTTP状态码200，而且数据库会自动在表&lt;code&gt;dbo.AspNetUsers&lt;/code&gt;中创建一个用户。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;通过HTTPS发送POST请求非常重要，因为敏感信息会被加密。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;GetErrorResult&lt;/code&gt;方法是一个帮助方法用来验证&lt;code&gt;UserModel&lt;/code&gt;，并且返回相应的HTTP状态码。&lt;/p&gt;
+&lt;h3&gt;1.8 第八步 添加具有安全保护的“订单”控制器(Order Controller)&lt;/h3&gt;
+&lt;p&gt;现在我们想要添加控制器来处理我们的订单，我们设定这个控制器为认证用户返回订单，为了保持简单我们返回静态数据。因此在&lt;code&gt;Controllers&lt;/code&gt;下添加一个&lt;code&gt;OrdersController&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;[RoutePrefix(&amp;quot;api/Orders&amp;quot;)]&lt;/span&gt;
+&lt;span class="err"&gt;public&lt;/span&gt; &lt;span class="err"&gt;class&lt;/span&gt; &lt;span class="err"&gt;OrdersController&lt;/span&gt; &lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="err"&gt;ApiController&lt;/span&gt;
+&lt;span class="err"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;//&lt;/span&gt; &lt;span class="err"&gt;GET&lt;/span&gt; &lt;span class="err"&gt;api/&amp;lt;controller&amp;gt;&lt;/span&gt;
+    &lt;span class="k"&gt;[Authorize]&lt;/span&gt;
+    &lt;span class="k"&gt;[Route(&amp;quot;&amp;quot;)]&lt;/span&gt;
+    &lt;span class="err"&gt;public&lt;/span&gt; &lt;span class="err"&gt;IHttpActionResult&lt;/span&gt; &lt;span class="err"&gt;Get()&lt;/span&gt;
+    &lt;span class="err"&gt;{&lt;/span&gt;
+        &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;Ok(Order.CreateOrders())&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;}&lt;/span&gt;
+
+    &lt;span class="c1"&gt;#region Helpers&lt;/span&gt;
+
+    &lt;span class="err"&gt;public&lt;/span&gt; &lt;span class="err"&gt;class&lt;/span&gt; &lt;span class="err"&gt;Order&lt;/span&gt;
+    &lt;span class="err"&gt;{&lt;/span&gt;
+        &lt;span class="err"&gt;public&lt;/span&gt; &lt;span class="err"&gt;int&lt;/span&gt; &lt;span class="err"&gt;OrderID&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt; &lt;span class="err"&gt;get&lt;/span&gt;&lt;span class="c1"&gt;; set; }&lt;/span&gt;
+        &lt;span class="err"&gt;public&lt;/span&gt; &lt;span class="err"&gt;string&lt;/span&gt; &lt;span class="err"&gt;CustomerName&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt; &lt;span class="err"&gt;get&lt;/span&gt;&lt;span class="c1"&gt;; set; }&lt;/span&gt;
+        &lt;span class="err"&gt;public&lt;/span&gt; &lt;span class="err"&gt;string&lt;/span&gt; &lt;span class="err"&gt;ShipperCity&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt; &lt;span class="err"&gt;get&lt;/span&gt;&lt;span class="c1"&gt;; set; }&lt;/span&gt;
+        &lt;span class="err"&gt;public&lt;/span&gt; &lt;span class="err"&gt;Boolean&lt;/span&gt; &lt;span class="err"&gt;IsShipped&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt; &lt;span class="err"&gt;get&lt;/span&gt;&lt;span class="c1"&gt;; set; }&lt;/span&gt;
+
+        &lt;span class="err"&gt;public&lt;/span&gt; &lt;span class="err"&gt;static&lt;/span&gt; &lt;span class="err"&gt;List&amp;lt;Order&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;CreateOrders()&lt;/span&gt;
+        &lt;span class="err"&gt;{&lt;/span&gt;
+            &lt;span class="na"&gt;var OrderList&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;new List&amp;lt;Order&amp;gt; &lt;/span&gt;
+&lt;span class="s"&gt;            {&lt;/span&gt;
+&lt;span class="s"&gt;                new Order {OrderID = 10248, CustomerName = &amp;quot;Taiseer Joudeh&amp;quot;, ShipperCity = &amp;quot;Amman&amp;quot;, IsShipped = true },&lt;/span&gt;
+&lt;span class="s"&gt;                new Order {OrderID = 10249, CustomerName = &amp;quot;Ahmad Hasan&amp;quot;, ShipperCity = &amp;quot;Dubai&amp;quot;, IsShipped = false},&lt;/span&gt;
+&lt;span class="s"&gt;                new Order {OrderID = 10250,CustomerName = &amp;quot;Tamer Yaser&amp;quot;, ShipperCity = &amp;quot;Jeddah&amp;quot;, IsShipped = false },&lt;/span&gt;
+&lt;span class="s"&gt;                new Order {OrderID = 10251,CustomerName = &amp;quot;Lina Majed&amp;quot;, ShipperCity = &amp;quot;Abu Dhabi&amp;quot;, IsShipped = false},&lt;/span&gt;
+&lt;span class="s"&gt;                new Order {OrderID = 10252,CustomerName = &amp;quot;Yasmeen Rami&amp;quot;, ShipperCity = &amp;quot;Kuwait&amp;quot;, IsShipped = true}&lt;/span&gt;
+&lt;span class="s"&gt;            };&lt;/span&gt;
+
+            &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;OrderList&lt;/span&gt;&lt;span class="c1"&gt;;&lt;/span&gt;
+        &lt;span class="err"&gt;}&lt;/span&gt;
+    &lt;span class="err"&gt;}&lt;/span&gt;
+
+    &lt;span class="c1"&gt;#endregion&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;注意我们在&lt;code&gt;Get&lt;/code&gt;上加了一个&lt;code&gt;Authorize&lt;/code&gt;属性，此时，如果访问 “http://localhost:port/api/orders”就会收到401未授权状态码。因为我们的请求当中并没有包含授权头信息。&lt;/p&gt;
+&lt;h3&gt;1.9 第九步 添加支持OAuth Token生成功能&lt;/h3&gt;
+&lt;p&gt;现在我们该让API增加OAuth功能&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Install&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Package&lt;/span&gt; &lt;span class="n"&gt;Microsoft&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Owin&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Security&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;OAuth&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mf"&gt;2.1.0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;打开&lt;code&gt;Startup&lt;/code&gt;类，添加&lt;code&gt;ConfigureOAuth&lt;/code&gt;方法，并在&lt;code&gt;Configuration&lt;/code&gt;方法的第一行调用它：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Startup&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="n"&gt;Configuration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;IAppBuilder&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;HttpConfiguration&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+            &lt;span class="n"&gt;WebApiConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UseWebApi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="n"&gt;ConfigreOAuth&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;IAppBuilder&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;oauthServerOptions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;OAuthAuthorizationServerOptions&lt;/span&gt;
+            &lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="n"&gt;AllowInsecureHttp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="n"&gt;TokenEndpointPath&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;PathString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/token&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                &lt;span class="n"&gt;AccessTokenExpireTimeSpan&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TimeSpan&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FromDays&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                &lt;span class="n"&gt;Provider&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;SimpleAuthorizationServerProvider&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+            &lt;span class="p"&gt;};&lt;/span&gt;
+
+            &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UseOAuthAuthorizationServer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;oauthServerOptions&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UseOAuthBearerAuthentication&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;OAuthBearerAuthenticationOptions&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;我们创建了一个&lt;code&gt;OAuthAuthorizationServerOptions&lt;/code&gt;类的实例，并且设置了如下的一些选项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;产生令牌的路径&lt;code&gt;http://localhost:port/token&lt;/code&gt;。后面我们会看到如何使用HTTP POST请求产生令牌&lt;/li&gt;
+&lt;li&gt;令牌24小时过期&lt;/li&gt;
+&lt;li&gt;我们指明如何验证用户的凭据，来返回令牌，就是使用后面我们要定义的一个类&lt;code&gt;SimpleAuthorizationServerProvider&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然后将选项实例传递给扩展方法&lt;code&gt;UseOAuthAuthorizationServer&lt;/code&gt;，这样我们就将认证中间件添加到了管道当中去了。&lt;/p&gt;
+&lt;h3&gt;1.10 第十步 实现"SimpleAuthorizationServerProvider"类&lt;/h3&gt;
+&lt;p&gt;创建一个&lt;code&gt;Providers&lt;/code&gt;文件夹，然后添加一个&lt;code&gt;SimpleAuthorizationServerProvider&lt;/code&gt;类：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;SimpleAuthorizationServerProvider&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;OAuthAuthorizationServerProvider&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;override&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="n"&gt;Task&lt;/span&gt; &lt;span class="n"&gt;ValidateClientAuthentication&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;OAuthValidateClientAuthenticationContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Validated&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;override&lt;/span&gt; &lt;span class="n"&gt;async&lt;/span&gt; &lt;span class="n"&gt;Task&lt;/span&gt; &lt;span class="n"&gt;GrantResourceOwnerCredentials&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;OAuthGrantResourceOwnerCredentialsContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;OwinContext&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Response&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Headers&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Access-Control-Allow-Origin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="p"&gt;[]{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;*&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;
+
+        &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;_repo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;AuthRepository&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+        &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;IdentityUser&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;await&lt;/span&gt; &lt;span class="n"&gt;_repo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FindUser&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UserName&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Password&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SetError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;invalid_grant&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;用户名或者密码不正确&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+                &lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+
+            &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;identity&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ClaimsIdentity&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Options&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AuthenticationType&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="n"&gt;identity&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AddClaim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Claim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sub&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UserName&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+            &lt;span class="n"&gt;identity&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AddClaim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Claim&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;role&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;user&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+
+            &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Validated&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;identity&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;该类继承自&lt;code&gt;OAuthAuthorizationServerProvider&lt;/code&gt;，我们重写了两个方法，第一个是用来验证客户端的。本例中我们只有一个客户端，因此永远验证成功。&lt;/p&gt;
+&lt;p&gt;第二个方法&lt;code&gt;GrantResourceOwnerCredentials&lt;/code&gt;负责验证发送给认证服务器令牌端的用户名和密码。&lt;/p&gt;
+&lt;p&gt;如果认证成功，我们创建一个&lt;code&gt;ClaimsIdentity&lt;/code&gt;类，并且传递认证类型给它。然后添加两个请求(&lt;code&gt;sub&lt;/code&gt;和&lt;code&gt;role&lt;/code&gt;)，他们会被包含在签名令牌中。也可以添加别的,但是会增加令牌的大小。&lt;/p&gt;
+&lt;p&gt;最后使用&lt;code&gt;context.Validate(identity)&lt;/code&gt;生成令牌。&lt;/p&gt;
+&lt;p&gt;为了让令牌中间件提供者允许CORS，我们需要添加头"Access-Control-Allow-Origin"到Owin的上下文中。如果忘记这么做，从浏览器中调用生成令牌就会失败。&lt;/p&gt;
+&lt;h3&gt;1.11 第十一步 允许ASP.NET Web API支持CORS&lt;/h3&gt;
+&lt;p&gt;首先，需要安装对应的NuGet包：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Install&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Package&lt;/span&gt; &lt;span class="n"&gt;Microsoft&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Owin&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Cors&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后再次打开类&lt;code&gt;Startup&lt;/code&gt;，并添加&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;Configuration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;IAppBuilder&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;HttpConfiguration&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="n"&gt;ConfigreOAuth&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="n"&gt;WebApiConfig&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="c1"&gt;//添加这行&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UseCors&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CorsOptions&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AllowAll&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UseWebApi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;1.12 第十二步 测试后端API&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="./1414678902732.png" /&gt;&lt;/p&gt;
+&lt;p&gt;注意，content-type和payload type都是"x-www-form-urlencoded"类型，因此payload body将是form(grant_type=password&amp;amp;username="liulx"&amp;amp;password="123456")。如果一切正常我们会在响应中收到一个签名令牌。&lt;/p&gt;
+&lt;p&gt;"grant_type"指明授权类型，此处是密码。&lt;/p&gt;
+&lt;p&gt;现在既然有了token，我们就可以访问安全数据/api/Orders了：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="./1414679319878.png" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">刘理想</dc:creator><pubDate>Thu, 30 Oct 2014 00:00:00 +0800</pubDate><guid>tag:liulixiang1988.github.io,2014-10-30:shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html</guid></item><item><title>使用Android开发阅后即焚应用-01 开始</title><link>http://liulixiang1988.github.io/shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html</link><description>&lt;h2&gt;1.阅后即焚应用介绍&lt;/h2&gt;
 &lt;p&gt;阅后即焚是一款应用，用户可以适用它分享文字、照片给他的朋友，朋友们看过发来的消息之后该消息会自动销毁。&lt;/p&gt;
 &lt;p&gt;阅后即焚包含用户登录、用户注册、收件箱、好友列表、好友编辑、拍照等功能。&lt;/p&gt;
 &lt;hr /&gt;
@@ -3437,12 +3829,12 @@ virtualenv pelican_env
 
 &lt;h3&gt;2.2 创建Markdown的博文&lt;/h3&gt;
 &lt;p&gt;在content目录下创建一个test.md的文件，然后用记事本或者notepad++或者sublime text打开，编写如下内容。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;Title:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
-&lt;span class="nl"&gt;Date:&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;
-&lt;span class="nl"&gt;Category:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
-&lt;span class="nl"&gt;Tags:&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;
-&lt;span class="nl"&gt;Author:&lt;/span&gt; &lt;span class="err"&gt;刘理想&lt;/span&gt;
-&lt;span class="nl"&gt;Summary:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
+&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;
+&lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
+&lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;
+&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;刘理想&lt;/span&gt;
+&lt;span class="n"&gt;Summary&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
 &lt;span class="err"&gt;你好，世界，世界，你好。&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

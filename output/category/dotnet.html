@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>理想国 - Articles by 理想</title>
+  <title>理想国</title>
   <meta name="author" content="理想">
 
 
@@ -46,7 +46,7 @@
     <li >
     <a href="../category/android.html">Android</a>
     </li>
-    <li >
+    <li class="active">
     <a href="../category/dotnet.html">Dotnet</a>
     </li>
     <li >
@@ -65,62 +65,26 @@
   		<article>
 <header>
       <h1 class="entry-title">
-        <a href="../2014-04-19.html">醉笑陪公三万场</a>
+        <a href="../shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html">使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</a>
       </h1>
-      <p class="meta"><time datetime="2014-04-19T00:00:00" pubdate>六 19 四月 2014</time></p>
+      <p class="meta"><time datetime="2014-10-30T00:00:00" pubdate>四 30 十月 2014</time></p>
 </header>
 
-  <div class="entry-content"><p>在百度上看到<a href="http://zhidao.baidu.com/link?url=2FYYejydAEvBpdnti51Ul2MPYlCV6SUQkc821EFyfywhbn1rLQv4PCbPJLBvFDwDIvk0NRdaCY7XqTngf80ltq">这篇</a>。昨日参加同事婚礼，不胜唏嘘。</p>
-<blockquote>
-<p>东武望馀杭<br />
-云海天涯两杳茫<br />
-何日功成名遂了，还乡<br />
-醉笑陪公三万场<br />
-不用诉离觞<br />
-痛饮从来别有肠<br />
-今夜送归灯火冷，河塘<br />
-堕泪羊公却姓杨  </p>
-</blockquote>
-<p>再后来，又有滚滚红尘中进行了改编：</p>
-<blockquote>
-<p>楼高日尽<br />
-望断天涯路 <br />
-来时陌上初熏 <br />
-有情风万里卷潮来 <br />
-推枕惘然不见<br />
-分携如昨到处萍漂泊<br />
-浩然相对今夕何年<br />
-谁道人生无再少<br />
-依旧梦魂中<br />
-但有旧欢新怨<br />
-人生底事往来如梭<br />
-醉笑陪君三万场 不诉离伤 <br />
-禅心已失人间爱<br />
-又何曾梦觉<br />
-这些个千生万生只在 <br />
-踏尽红尘何处是吾乡  </p>
-</blockquote>
-<p><img alt="img" src="../images/2014-04-19.jpeg" /></p></div>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../bbq.html">吃烧烤！</a>
-      </h1>
-      <p class="meta"><time datetime="2014-04-17T00:00:00" pubdate>四 17 四月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>与媳妇一起去吃烧烤，点的太多，吃的有点撑，回来肚子疼。。。</p></div>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../hello-world.html">你好，世界！</a>
-      </h1>
-      <p class="meta"><time datetime="2014-03-16T00:00:00" pubdate>日 16 三月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>你好，世界！这是我使用pelican和github搭建的博客。以前转战多次，这次应该会定下来了。</p></div>
+  <div class="entry-content"><h1>使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</h1>
+<h2>0. 简介</h2>
+<h3>0.1 Token认证</h3>
+<h3>0.2 Web API</h3>
+<hr />
+<h2>1. 创建后端API</h2>
+<h3>1.1 第一步 创建Web API项目</h3>
+<p>使用VS2013，创建"ASP.NET Web应用程序"，解决方案名为AngularJSAuthentication，项目名为AngularJSAuthentication.API:</p>
+<p><img alt="Alt text" src="./1414648763551.png" /></p>
+<h3>1.2 第二步 安装必要的NuGet包</h3>
+<div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AspNet</span><span class="p">.</span><span class="n">WebApi</span><span class="p">.</span><span class="n">Owin</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">5.1.2</span>
+<span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Owin</span><span class="p">.</span><span class="n">Host ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html">Read On &crarr;</a>
+  </footer>
   		</article>
 <div class="pagination">
 
@@ -134,13 +98,7 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="../2014-04-19.html">醉笑陪公三万场</a>
-      </li>
-      <li class="post">
-          <a href="../bbq.html">吃烧烤！</a>
-      </li>
-      <li class="post">
-          <a href="../hello-world.html">你好，世界！</a>
+          <a href="../shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html">使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</a>
       </li>
     </ul>
   </section>
