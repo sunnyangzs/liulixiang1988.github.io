@@ -20,7 +20,7 @@ Tag: .Net, C#, ASP.NET
 
 使用VS2013，创建"ASP.NET Web应用程序"，解决方案名为AngularJSAuthentication，项目名为AngularJSAuthentication.API:
 
-![Alt text](./1414648763551.png)
+![Alt text](1414648763551.png)
 
 
 ###1.2 第二步 安装必要的NuGet包
@@ -445,7 +445,7 @@ public void Configuration(IAppBuilder app)
 
 ###1.12 第十二步 测试后端API
 
-![Alt text](./1414678902732.png)
+![Alt text](1414678902732.png)
 
 注意，content-type和payload type都是"x-www-form-urlencoded"类型，因此payload body将是form(grant_type=password&username="liulx"&password="123456")。如果一切正常我们会在响应中收到一个签名令牌。
 
@@ -453,4 +453,4 @@ public void Configuration(IAppBuilder app)
 
 现在既然有了token，我们就可以访问安全数据/api/Orders了：
 
-![Alt text](./1414679319878.png)
+![Alt text](1414679319878.png)

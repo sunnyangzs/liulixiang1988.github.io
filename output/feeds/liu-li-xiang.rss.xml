@@ -7,7 +7,7 @@
 &lt;h2&gt;1. 创建后端API&lt;/h2&gt;
 &lt;h3&gt;1.1 第一步 创建Web API项目&lt;/h3&gt;
 &lt;p&gt;使用VS2013，创建"ASP.NET Web应用程序"，解决方案名为AngularJSAuthentication，项目名为AngularJSAuthentication.API:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt text" src="./1414648763551.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="1414648763551.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;1.2 第二步 安装必要的NuGet包&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Install&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Package&lt;/span&gt; &lt;span class="n"&gt;Microsoft&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AspNet&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;WebApi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Owin&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mf"&gt;5.1.2&lt;/span&gt;
 &lt;span class="n"&gt;Install&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Package&lt;/span&gt; &lt;span class="n"&gt;Microsoft&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Owin&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Host&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SystemWeb&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mf"&gt;2.1.0&lt;/span&gt;
@@ -387,11 +387,11 @@
 
 
 &lt;h3&gt;1.12 第十二步 测试后端API&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="Alt text" src="./1414678902732.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="1414678902732.png" /&gt;&lt;/p&gt;
 &lt;p&gt;注意，content-type和payload type都是"x-www-form-urlencoded"类型，因此payload body将是form(grant_type=password&amp;amp;username="liulx"&amp;amp;password="123456")。如果一切正常我们会在响应中收到一个签名令牌。&lt;/p&gt;
 &lt;p&gt;"grant_type"指明授权类型，此处是密码。&lt;/p&gt;
 &lt;p&gt;现在既然有了token，我们就可以访问安全数据/api/Orders了：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt text" src="./1414679319878.png" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">刘理想</dc:creator><pubDate>Thu, 30 Oct 2014 00:00:00 +0800</pubDate><guid>tag:liulixiang1988.github.io,2014-10-30:shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html</guid></item><item><title>使用Android开发阅后即焚应用-01 开始</title><link>http://liulixiang1988.github.io/shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html</link><description>&lt;h2&gt;1.阅后即焚应用介绍&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="1414679319878.png" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">刘理想</dc:creator><pubDate>Thu, 30 Oct 2014 00:00:00 +0800</pubDate><guid>tag:liulixiang1988.github.io,2014-10-30:shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html</guid></item><item><title>使用Android开发阅后即焚应用-01 开始</title><link>http://liulixiang1988.github.io/shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html</link><description>&lt;h2&gt;1.阅后即焚应用介绍&lt;/h2&gt;
 &lt;p&gt;阅后即焚是一款应用，用户可以适用它分享文字、照片给他的朋友，朋友们看过发来的消息之后该消息会自动销毁。&lt;/p&gt;
 &lt;p&gt;阅后即焚包含用户登录、用户注册、收件箱、好友列表、好友编辑、拍照等功能。&lt;/p&gt;
 &lt;hr /&gt;
