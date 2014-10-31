@@ -1,6 +1,6 @@
 Title: Nancy Web框架
 Date: 2014-09-12 23:39
-Category: .NET
+Category: DotNET
 Tags: Nancy, C#, .NET, web
 Author: 刘理想
 Summary:.Net Nancy框架, https://github.com/NancyFx/Nancy
