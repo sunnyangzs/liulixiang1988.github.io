@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>使用Android开发一个阅后即焚-02 使用Parse.com添加用户</title>
+  <meta name="author" content="理想">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="./favicon.png" rel="icon">
+  <link href="./theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="./theme/js/modernizr-2.0.js"></script>
+  <script src="./theme/js/ender.js"></script>
+  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="./">理想国</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<form action="//google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+    <li class="active">
+    <a href="./category/android.html">Android</a>
+    </li>
+    <li >
+    <a href="./category/dotnet.html">Dotnet</a>
+    </li>
+    <li >
+    <a href="./category/python.html">Python</a>
+    </li>
+    <li >
+    <a href="./category/sheng-huo.html">生活</a>
+    </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">使用Android开发一个阅后即焚-02 使用Parse.com添加用户</h1>
+      <p class="meta"><time datetime="2014-10-05T10:12:00" pubdate>日 05 十月 2014</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 创建Parse.com账户和应用</h2>
+<h3>1.1 创建Parse.com的账户</h3>
+<h3>1.2 添加Parse.com的SDK</h3>
+<p>直接将Paser.com的SDK添加到app/libs文件夹内即可。</p>
+<h3>1.3 创建一个继承自Application的对象</h3>
+<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RabbitApplication</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
+        <span class="n">Parse</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">&quot;6wZyARdh21YE1SFqceoIh24beo9WCzpYnjMCgqCV&quot;</span><span class="o">,</span> <span class="s">&quot;9KT8jUIBizQbLh2yo5QLUWz74LJcRnIUcorTDuN8&quot;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>Application通常在app启动的时候就会自动创建。Application在app中是一个单例模式，而且Application也是整个app生命周期最长的对象。所有的Activity和Service都是共用着一个Application，所以Application通常用来共享数据，数据传递和数据缓存。</p>
+<p>其中的<code>Parse.initialize()</code>时根据每个账户不同而不同，具体参见https://parse.com/apps/quickstart#parse_data/mobile/android/native/existing </p>
+<p>仅仅自定义一个Application类时不行的，还需要在AndroidManifest.xml中的<code>&lt;Application&gt;</code>节点添加<code>android:name=".RabbitApplication"</code>属性.</p>
+<h3>1.4 添加Parse.com所需要的权限</h3>
+<div class="highlight"><pre><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.INTERNET&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.ACCESS_NETWORK_STATE&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+
+
+<h3>1.5 测试Parse</h3>
+<p>在RabbitApplication中的<code>onCreate</code>方法中添加</p>
+<div class="highlight"><pre><span class="n">ParseObject</span> <span class="n">testObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParseObject</span><span class="o">(</span><span class="s">&quot;TestObject&quot;</span><span class="o">);</span>
+<span class="n">testObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span><span class="o">);</span>
+<span class="n">testObject</span><span class="o">.</span><span class="na">saveInBackground</span><span class="o">();</span>
+</pre></div>
+
+
+<p>此时，点击运行程序。然后在Parse.com中的core里查看，我们可以看到一个表格。</p>
+<p><img alt="Parse.com后台测试数据" src="images/Snip20141005_1.png" /></p>
+<h2>2. 使用对话框处理错误</h2>
+<p>在SignUpActivity中的<code>onCreate</code>添加：</p>
+<div class="highlight"><pre><span class="n">mUserName</span> <span class="o">=</span> <span class="o">(</span><span class="n">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">usernameField</span><span class="o">);</span>
+<span class="n">mPassword</span> <span class="o">=</span> <span class="o">(</span><span class="n">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">passwordField</span><span class="o">);</span>
+<span class="n">mEmail</span> <span class="o">=</span> <span class="o">(</span><span class="n">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">emailField</span><span class="o">);</span>
+<span class="n">mSendBtn</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btnSignup</span><span class="o">);</span>
+
+<span class="n">mSendBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">mUserName</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">trim</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">password</span> <span class="o">=</span> <span class="n">mPassword</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">trim</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">email</span> <span class="o">=</span> <span class="n">mEmail</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">trim</span><span class="o">();</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">username</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">||</span> <span class="n">password</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">||</span> <span class="n">email</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
+            <span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">SignUpActivity</span><span class="o">.</span><span class="na">this</span><span class="o">);</span>
+            <span class="n">builder</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">signup_error_title</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">setMessage</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">signup_error_message</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">setPositiveButton</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">ok</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+            <span class="n">AlertDialog</span> <span class="n">alertDialog</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+            <span class="n">alertDialog</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">else</span><span class="o">{</span>
+            <span class="c1">//todo: new user here</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</pre></div>
+
+
+<h2>3. 使用Parse创建用户</h2>
+<p>创建用户很简单，文档在https://parse.com/docs/android_guide#users-signup</p>
+<div class="highlight"><pre><span class="n">mSendBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//...</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">username</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">||</span> <span class="n">password</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">||</span> <span class="n">email</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
+            <span class="c1">//...</span>
+        <span class="o">}</span>
+        <span class="k">else</span><span class="o">{</span>
+            <span class="n">ParseUser</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParseUser</span><span class="o">();</span>
+            <span class="n">user</span><span class="o">.</span><span class="na">setUsername</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
+            <span class="n">user</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="n">password</span><span class="o">);</span>
+            <span class="n">user</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">email</span><span class="o">);</span>
+
+            <span class="n">user</span><span class="o">.</span><span class="na">signUpInBackground</span><span class="o">(</span><span class="k">new</span> <span class="n">SignUpCallback</span><span class="o">()</span> <span class="o">{</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">done</span><span class="o">(</span><span class="n">ParseException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">e</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+                        <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">SignUpActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">MainActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+                        <span class="n">intent</span><span class="o">.</span><span class="na">addFlags</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_NEW_TASK</span><span class="o">);</span>
+                        <span class="n">intent</span><span class="o">.</span><span class="na">addFlags</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_CLEAR_TASK</span><span class="o">);</span>
+                        <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
+                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                        <span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">SignUpActivity</span><span class="o">.</span><span class="na">this</span><span class="o">);</span>
+                        <span class="n">builder</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">signup_error_title</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">setMessage</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">())</span>
+                                <span class="o">.</span><span class="na">setPositiveButton</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">ok</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+                        <span class="n">AlertDialog</span> <span class="n">alertDialog</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+                        <span class="n">alertDialog</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">});</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</pre></div>
+
+
+<p>运行程序并注册，然后到https://www.parse.com/apps/rabbit--45/collections#class/_User 可以看到已经注册了一个用户</p>
+<p><img alt="用户注册" src="images/Snip20141005_2.png" /></p>
+<h2>4. 用户登录</h2>
+<h3>4.1 用户登录代码</h3>
+<p>使用Parse.com登录的文档在：https://parse.com/docs/android_guide#users-login</p>
+<p>打开LoginActivity，添加如下代码</p>
+<div class="highlight"><pre><span class="kd">protected</span> <span class="n">EditText</span> <span class="n">mUserName</span><span class="o">;</span>
+<span class="kd">protected</span> <span class="n">EditText</span> <span class="n">mPassword</span><span class="o">;</span>
+<span class="kd">protected</span> <span class="n">Button</span> <span class="n">mLoginBtn</span><span class="o">;</span>
+
+<span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_login</span><span class="o">);</span>
+
+    <span class="c1">//...</span>
+
+    <span class="n">mUserName</span> <span class="o">=</span> <span class="o">(</span><span class="n">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">usernameField</span><span class="o">);</span>
+    <span class="n">mPassword</span> <span class="o">=</span> <span class="o">(</span><span class="n">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">passwordField</span><span class="o">);</span>
+    <span class="n">mLoginBtn</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btnLogin</span><span class="o">);</span>
+
+    <span class="n">mLoginBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">mUserName</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">trim</span><span class="o">();</span>
+            <span class="n">String</span> <span class="n">password</span> <span class="o">=</span> <span class="n">mPassword</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">trim</span><span class="o">();</span>
+
+            <span class="c1">//用户名密码不能为空</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">username</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">||</span> <span class="n">password</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
+                <span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">LoginActivity</span><span class="o">.</span><span class="na">this</span><span class="o">);</span>
+                <span class="n">builder</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">login_error_title</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">setMessage</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">login_error_message</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">setPositiveButton</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">ok</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+                <span class="n">AlertDialog</span> <span class="n">alertDialog</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+                <span class="n">alertDialog</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="k">else</span><span class="o">{</span>
+                <span class="c1">//登录</span>
+                <span class="n">ParseUser</span><span class="o">.</span><span class="na">logInInBackground</span><span class="o">(</span><span class="n">username</span><span class="o">,</span> <span class="n">password</span><span class="o">,</span> <span class="k">new</span> <span class="n">LogInCallback</span><span class="o">()</span> <span class="o">{</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">done</span><span class="o">(</span><span class="n">ParseUser</span> <span class="n">parseUser</span><span class="o">,</span> <span class="n">ParseException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="n">e</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+                            <span class="c1">//登录成功</span>
+                            <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">LoginActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">MainActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+                            <span class="n">intent</span><span class="o">.</span><span class="na">addFlags</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_NEW_TASK</span><span class="o">);</span>
+                            <span class="n">intent</span><span class="o">.</span><span class="na">addFlags</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_CLEAR_TASK</span><span class="o">);</span>
+                            <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
+                        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                            <span class="c1">//登录失败</span>
+                            <span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">LoginActivity</span><span class="o">.</span><span class="na">this</span><span class="o">);</span>
+                            <span class="n">builder</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">login_error_title</span><span class="o">)</span>
+                                    <span class="o">.</span><span class="na">setMessage</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">())</span>
+                                    <span class="o">.</span><span class="na">setPositiveButton</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">ok</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+                            <span class="n">AlertDialog</span> <span class="n">alertDialog</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+                            <span class="n">alertDialog</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">});</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">});</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h3>4.2 修改MainActivity</h3>
+<p>Parse获取当前用户的方法：https://parse.com/docs/android_guide#users-current</p>
+<p>打开MainActivity.java，修改<code>onCreate</code>方法：</p>
+<div class="highlight"><pre><span class="n">ParseUser</span> <span class="n">currentUser</span> <span class="o">=</span> <span class="n">ParseUser</span><span class="o">.</span><span class="na">getCurrentUser</span><span class="o">();</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">currentUser</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Log</span><span class="o">.</span><span class="na">v</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="n">currentUser</span><span class="o">.</span><span class="na">getUsername</span><span class="o">());</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="c1">// show the signup or login screen</span>
+    <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">LoginActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="c1">//第1种方法</span>
+    <span class="c1">//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);</span>
+    <span class="c1">//第2种方法</span>
+    <span class="n">intent</span><span class="o">.</span><span class="na">addFlags</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_NEW_TASK</span><span class="o">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="na">addFlags</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_CLEAR_TASK</span><span class="o">);</span>
+    <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h2>5. 用户登出</h2>
+<p>Parse登出用户的方法也在：https://parse.com/docs/android_guide#users-current</p>
+<p>同时，我们还需要考虑一个问题，在哪里添加登出按钮比较合适呢？一般我们可以在菜单栏中添加退出按钮。</p>
+<h3>5.1 添加菜单</h3>
+<p>Android的菜单是在<code>onCreateOptionsMenu</code>方法中定义，打开MainActivity.java，我们看到它的菜单定义是：</p>
+<div class="highlight"><pre><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onCreateOptionsMenu</span><span class="o">(</span><span class="n">Menu</span> <span class="n">menu</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// Inflate the menu; this adds items to the action bar if it is present.</span>
+    <span class="n">getMenuInflater</span><span class="o">().</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">menu</span><span class="o">.</span><span class="na">main</span><span class="o">,</span> <span class="n">menu</span><span class="o">);</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>从上面的代码我们知道，MainActivity对应的菜单是在<code>res/menu/main.xml</code>中定义。打开这个文件，我们在里面定义菜单如下：</p>
+<div class="highlight"><pre><span class="nt">&lt;menu</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="na">xmlns:tools=</span><span class="s">&quot;http://schemas.android.com/tools&quot;</span>
+    <span class="na">tools:context=</span><span class="s">&quot;.MainActivity&quot;</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;item</span> <span class="na">android:id=</span><span class="s">&quot;@+id/action_logout&quot;</span>
+        <span class="na">android:title=</span><span class="s">&quot;@string/menu_logout_label&quot;</span>
+        <span class="na">android:orderInCategory=</span><span class="s">&quot;100&quot;</span>
+        <span class="na">android:showAsAction=</span><span class="s">&quot;never&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/menu&gt;</span>
+</pre></div>
+
+
+<p>说明：
+- orderInCategory:定义了一个顺序，值越小越在上面，值越大越在下面
+- showAsAction:定义了是否在菜单栏中显示该动作，<code>always</code>表示一直显示，<code>ifRoom</code>表示有足够空间时显示， <code>never</code>表示不显示.</p>
+<h3>5.2 菜单事件处理方法</h3>
+<p>Android的菜单事件处理方法是在<code>onOptionsItemSelected</code>中处理的。比如我们要处理登出事件，在<code>onOptionsItemSelected</code>中添加：</p>
+<div class="highlight"><pre><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onOptionsItemSelected</span><span class="o">(</span><span class="n">MenuItem</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// Handle action bar item clicks here. The action bar will</span>
+    <span class="c1">// automatically handle clicks on the Home/Up button, so long</span>
+    <span class="c1">// as you specify a parent activity in AndroidManifest.xml.</span>
+    <span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="na">getItemId</span><span class="o">();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">id</span> <span class="o">==</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">action_logout</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//登出</span>
+        <span class="n">ParseUser</span><span class="o">.</span><span class="na">logOut</span><span class="o">();</span>
+        <span class="n">navigateToLoginScreen</span><span class="o">();</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">onOptionsItemSelected</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>其中<code>navigateToLoginScreent()</code>方法如下：</p>
+<div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">navigateToLoginScreen</span><span class="o">(){</span>
+    <span class="c1">// show the signup or login screen</span>
+    <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">LoginActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="c1">//第1种方法</span>
+    <span class="c1">//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);</span>
+    <span class="c1">//第2种方法</span>
+    <span class="n">intent</span><span class="o">.</span><span class="na">addFlags</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_NEW_TASK</span><span class="o">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="na">addFlags</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_CLEAR_TASK</span><span class="o">);</span>
+    <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h2>6. 添加指示器表示登录状态</h2>
+<p>之前在使用Android创建博客阅读器的过程中，我们使用在layout中添加指示器的方法来添加指示器。除了这种方法之外，我们还可以使用另外一种方法在菜单中添加指示器。</p>
+<p>打开SignUpActivity.java，在<code>onCreate</code>中添加：</p>
+<div class="highlight"><pre><span class="n">requestWindowFeature</span><span class="o">(</span><span class="n">Window</span><span class="o">.</span><span class="na">FEATURE_INDETERMINATE_PROGRESS</span><span class="o">);</span>
+<span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_login</span><span class="o">);</span>
+</pre></div>
+
+
+<p>注意这两个的顺序，不能搞混，否则会导致程序崩溃。</p>
+<p>后面就可以使用<code>setProgressBarIndeterminateVisibility();</code>来显示和隐藏指示器了。比如</p>
+<div class="highlight"><pre><span class="n">setProgressBarIndeterminateVisibility</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">ParseUser</span><span class="o">.</span><span class="na">logInInBackground</span><span class="o">(</span><span class="n">username</span><span class="o">,</span> <span class="n">password</span><span class="o">,</span> <span class="k">new</span> <span class="n">LogInCallback</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">done</span><span class="o">(</span><span class="n">ParseUser</span> <span class="n">parseUser</span><span class="o">,</span> <span class="n">ParseException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">setProgressBarIndeterminateVisibility</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+        <span class="c1">//...</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h2>7. 总结</h2>
+<p>本节，我们学习了如何使用Parse，如何将Parse SDK添加到现有项目中，如何创建用户、用户登录、用户登出、使用对话框处理错误和使用指示器来显示注册、登录状态等等。</p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">刘理想</span>
+  </span>
+<time datetime="2014-10-05T10:12:00" pubdate>日 05 十月 2014</time>  <span class="categories">
+    <a class="category" href="./tag/android.html">Android</a>
+  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html" data-title="使用Android开发一个阅后即焚-02 使用Parse.com添加用户" data-url="./shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+    </div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
+  </section>
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="./shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html">使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</a>
+      </li>
+      <li class="post">
+          <a href="./shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html">使用Android开发一个阅后即焚-03 在tab中使用fragment</a>
+      </li>
+      <li class="post">
+          <a href="./shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html">使用Android开发一个阅后即焚-02 使用Parse.com添加用户</a>
+      </li>
+      <li class="post">
+          <a href="./shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html">使用Android开发阅后即焚应用-01 开始</a>
+      </li>
+      <li class="post">
+          <a href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html">使用Android开发一个博客阅读器-05 使用Intent显示和共享博客</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="./category/android.html">Android</a></li>
+        <li><a href="./category/dotnet.html">DotNET</a></li>
+        <li><a href="./category/python.html">Python</a></li>
+        <li><a href="./category/sheng-huo.html">生活</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/web.html">web</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/net.html">.NET</a>  </section>
+
+
+
+  <section>
+    <h1>GitHub Repos</h1>
+    <ul id="gh_repos">
+      <li class="loading">Status updating...</li>
+    </ul>
+      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
+    <script type="text/javascript">
+      $.domReady(function(){
+          if (!window.jXHR){
+              var jxhr = document.createElement('script');
+              jxhr.type = 'text/javascript';
+              jxhr.src = './theme/js/jXHR.js';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(jxhr, s);
+          }
+
+          github.showRepos({
+              user: 'liulixiang1988',
+              count: 5,
+              skip_forks: false,
+              target: '#gh_repos'
+          });
+      });
+    </script>
+    <script src="./theme/js/github.js" type="text/javascript"> </script>
+  </section>
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
+        </ul>
+    </section>
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2014  - 理想 -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+</body>
+</html>
