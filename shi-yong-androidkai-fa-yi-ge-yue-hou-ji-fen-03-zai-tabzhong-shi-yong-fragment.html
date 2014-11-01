@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>使用Android开发一个阅后即焚-03 在tab中使用fragment</title>
+  <meta name="author" content="理想">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="./favicon.png" rel="icon">
+  <link href="./theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="./theme/js/modernizr-2.0.js"></script>
+  <script src="./theme/js/ender.js"></script>
+  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="./">理想国</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<form action="//google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+    <li class="active">
+    <a href="./category/android.html">Android</a>
+    </li>
+    <li >
+    <a href="./category/dotnet.html">Dotnet</a>
+    </li>
+    <li >
+    <a href="./category/python.html">Python</a>
+    </li>
+    <li >
+    <a href="./category/sheng-huo.html">生活</a>
+    </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">使用Android开发一个阅后即焚-03 在tab中使用fragment</h1>
+      <p class="meta"><time datetime="2014-10-15T23:06:00" pubdate>三 15 十月 2014</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 为什么使用fragment?</h2>
+<p>简而言之，fragment可以让我们复用设计和代码。</p>
+<h2>2. fragment如何作为tab使用</h2>
+<ul>
+<li>在Activity里创建一个fragment container</li>
+<li>创建fragment对应的class和layout</li>
+<li>在Activity中添加初始化的fragment。当Activity加载时，初始化的fragment也应该加载</li>
+<li>添加tab到Action Bar。Action Bar用来控制和显示tab</li>
+<li>添加<code>TabListener</code>来加载新的fragment</li>
+</ul>
+<p>可以在layout中使用fragment元素来显示的包含fragment。</p>
+<h2>3. 从模板中修改tab</h2>
+<p>tab中的fragment到底是在哪里定义的呢？我们打开MainActivity，看到文件最后，定义了静态类：</p>
+<div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">PlaceholderFragment</span> <span class="kd">extends</span> <span class="n">Fragment</span> <span class="o">{</span>
+    <span class="cm">/**</span>
+<span class="cm">     * The fragment argument representing the section number for this</span>
+<span class="cm">     * fragment.</span>
+<span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ARG_SECTION_NUMBER</span> <span class="o">=</span> <span class="s">&quot;section_number&quot;</span><span class="o">;</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * Returns a new instance of this fragment for the given section</span>
+<span class="cm">     * number.</span>
+<span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">PlaceholderFragment</span> <span class="nf">newInstance</span><span class="o">(</span><span class="kt">int</span> <span class="n">sectionNumber</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">PlaceholderFragment</span> <span class="n">fragment</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PlaceholderFragment</span><span class="o">();</span>
+        <span class="n">Bundle</span> <span class="n">args</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundle</span><span class="o">();</span>
+        <span class="n">args</span><span class="o">.</span><span class="na">putInt</span><span class="o">(</span><span class="n">ARG_SECTION_NUMBER</span><span class="o">,</span> <span class="n">sectionNumber</span><span class="o">);</span>
+        <span class="n">fragment</span><span class="o">.</span><span class="na">setArguments</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">fragment</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">PlaceholderFragment</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">View</span> <span class="nf">onCreateView</span><span class="o">(</span><span class="n">LayoutInflater</span> <span class="n">inflater</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">container</span><span class="o">,</span>
+            <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">View</span> <span class="n">rootView</span> <span class="o">=</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">fragment_main</span><span class="o">,</span> <span class="n">container</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">rootView</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>现在先不对这个类做太多深入了解，我们往上看，会看到一个<code>SectionsPagerAdapter</code>类的定义，这个类用可以看作是mvc中的控制器，用来连接视图和模型，其中视图就是屏幕，模型就是Fragment。</p>
+<p>我们把它抽出来存放到一个单独的类中：</p>
+<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SectionsPagerAdapter</span> <span class="kd">extends</span> <span class="n">FragmentPagerAdapter</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">Context</span> <span class="n">mContext</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">SectionsPagerAdapter</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">FragmentManager</span> <span class="n">fm</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">fm</span><span class="o">);</span>
+        <span class="n">mContext</span> <span class="o">=</span> <span class="n">context</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Fragment</span> <span class="nf">getItem</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// getItem is called to instantiate the fragment for the given page.</span>
+        <span class="c1">// Return a PlaceholderFragment (defined as a static inner class below).</span>
+        <span class="k">return</span> <span class="n">MainActivity</span><span class="o">.</span><span class="na">PlaceholderFragment</span><span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="n">position</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getCount</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// Show 2 total pages.</span>
+        <span class="k">return</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">CharSequence</span> <span class="nf">getPageTitle</span><span class="o">(</span><span class="kt">int</span> <span class="n">position</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Locale</span> <span class="n">l</span> <span class="o">=</span> <span class="n">Locale</span><span class="o">.</span><span class="na">getDefault</span><span class="o">();</span>
+        <span class="k">switch</span> <span class="o">(</span><span class="n">position</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+                <span class="k">return</span> <span class="n">mContext</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">title_section1</span><span class="o">).</span><span class="na">toUpperCase</span><span class="o">(</span><span class="n">l</span><span class="o">);</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+                <span class="k">return</span> <span class="n">mContext</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">title_section2</span><span class="o">).</span><span class="na">toUpperCase</span><span class="o">(</span><span class="n">l</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>注意，因为<code>getString</code>是<code>Context</code>类的方法。因此，我们需要传进来<code>Context</code>，而<code>Activity</code>类是<code>Context</code>的子类，所以调用时将<code>Activity</code>传给它即可。</p>
+<div class="highlight"><pre><span class="c1">// Create the adapter that will return a fragment for each of the three</span>
+<span class="c1">// primary sections of the activity.</span>
+<span class="n">mSectionsPagerAdapter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SectionsPagerAdapter</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">getFragmentManager</span><span class="o">());</span>
+</pre></div>
+
+
+<p>另外，更改数量为2，两个的标题分别为“收件箱”和“好友”。</p>
+<h2>4. 从模板中修改fragment</h2>
+<p>现在我们已经有了所有的一切，除了fragement，目前用来的还是默认的fragment。</p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">刘理想</span>
+  </span>
+<time datetime="2014-10-15T23:06:00" pubdate>三 15 十月 2014</time>  <span class="categories">
+    <a class="category" href="./tag/android.html">Android</a>
+  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html" data-title="使用Android开发一个阅后即焚-03 在tab中使用fragment" data-url="./shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+    </div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
+  </section>
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="./shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html">使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</a>
+      </li>
+      <li class="post">
+          <a href="./shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html">使用Android开发一个阅后即焚-03 在tab中使用fragment</a>
+      </li>
+      <li class="post">
+          <a href="./shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html">使用Android开发一个阅后即焚-02 使用Parse.com添加用户</a>
+      </li>
+      <li class="post">
+          <a href="./shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html">使用Android开发阅后即焚应用-01 开始</a>
+      </li>
+      <li class="post">
+          <a href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html">使用Android开发一个博客阅读器-05 使用Intent显示和共享博客</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="./category/android.html">Android</a></li>
+        <li><a href="./category/dotnet.html">DotNET</a></li>
+        <li><a href="./category/python.html">Python</a></li>
+        <li><a href="./category/sheng-huo.html">生活</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/web.html">web</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/net.html">.NET</a>  </section>
+
+
+
+  <section>
+    <h1>GitHub Repos</h1>
+    <ul id="gh_repos">
+      <li class="loading">Status updating...</li>
+    </ul>
+      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
+    <script type="text/javascript">
+      $.domReady(function(){
+          if (!window.jXHR){
+              var jxhr = document.createElement('script');
+              jxhr.type = 'text/javascript';
+              jxhr.src = './theme/js/jXHR.js';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(jxhr, s);
+          }
+
+          github.showRepos({
+              user: 'liulixiang1988',
+              count: 5,
+              skip_forks: false,
+              target: '#gh_repos'
+          });
+      });
+    </script>
+    <script src="./theme/js/github.js" type="text/javascript"> </script>
+  </section>
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
+        </ul>
+    </section>
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2014  - 理想 -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+</body>
+</html>
