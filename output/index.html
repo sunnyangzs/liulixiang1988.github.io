@@ -86,6 +86,43 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="./flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html">Flask笔记－01 基本应用框架</a>
+      </h1>
+      <p class="meta"><time datetime="2014-10-18T23:11:00" pubdate>六 18 十月 2014</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 初始化</h2>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+</pre></div>
+
+
+<p><code>__name__</code>的作用是用来给Flask来判断应用的根路径的。</p>
+<h2>2. 路由和视图函数</h2>
+<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">&#39;Hello World!&#39;</span>
+</pre></div>
+
+
+<p>如果要给路由添加参数，可以这样:</p>
+<div class="highlight"><pre>
+</pre></div>
+
+
+<p>其中<code>&lt;name&gt;</code>就是参数，如果你想给参数加上类型，可以使用<code>/user/&lt;int:id&gt;</code>，Flask支持在路由中使用<code>int</code>, <code>float</code>和<code>path</code>等类型。<code>path</code>是字符串，但是并不把<code>/</code>当作分隔符，而是把它看作动态组成的一部分。</p>
+<h2>3. 启动服务器</h2>
+<p>Flask包含了一个小型的开发服务器，启动它：</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="./flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="./shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html">使用Android开发一个阅后即焚-03 在tab中使用fragment</a>
       </h1>
       <p class="meta"><time datetime="2014-10-15T23:06:00" pubdate>三 15 十月 2014</time></p>
@@ -187,19 +224,6 @@
     <a rel="full-article" href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html">使用Android开发一个博客阅读器-01 使用Master-Detail模板</a>
-      </h1>
-      <p class="meta"><time datetime="2014-09-19T21:36:00" pubdate>五 19 九月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>Android实战开发，使用Android开发一个博客阅读器</p></div>
-  <footer>
-    <a rel="full-article" href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="./index2.html">&larr; Older</a>
 
@@ -216,6 +240,9 @@
           <a href="./shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html">使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</a>
       </li>
       <li class="post">
+          <a href="./flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html">Flask笔记－01 基本应用框架</a>
+      </li>
+      <li class="post">
           <a href="./shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html">使用Android开发一个阅后即焚-03 在tab中使用fragment</a>
       </li>
       <li class="post">
@@ -223,9 +250,6 @@
       </li>
       <li class="post">
           <a href="./shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html">使用Android开发阅后即焚应用-01 开始</a>
-      </li>
-      <li class="post">
-          <a href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html">使用Android开发一个博客阅读器-05 使用Intent显示和共享博客</a>
       </li>
     </ul>
   </section>
@@ -243,7 +267,7 @@
 
   <section>
   <h1>Tags</h1>
-    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/web.html">web</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/net.html">.NET</a>  </section>
+    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/web.html">web</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/net.html">.NET</a>  </section>
 
 
 
