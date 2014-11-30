@@ -638,7 +638,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;下一章我们将介绍模板。&lt;/p&gt;</summary><category term="Flask"></category><category term="Flask笔记"></category></entry><entry><title>使用Android开发一个阅后即焚-03 在tab中使用fragment</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html" rel="alternate"></link><updated>2014-10-15T23:06:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-15:shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html</id><summary type="html">&lt;h2&gt;1. 为什么使用fragment?&lt;/h2&gt;
+&lt;p&gt;下一章我们将介绍模板。&lt;/p&gt;</summary><category term="Flask"></category><category term="Flask笔记"></category></entry><entry><title>使用Android开发一个阅后即焚－03 在tab中使用fragment</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html" rel="alternate"></link><updated>2014-10-15T23:06:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-15:shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html</id><summary type="html">&lt;h2&gt;1. 为什么使用fragment?&lt;/h2&gt;
 &lt;p&gt;简而言之，fragment可以让我们复用设计和代码。&lt;/p&gt;
 &lt;h2&gt;2. fragment如何作为tab使用&lt;/h2&gt;
 &lt;ul&gt;
@@ -731,7 +731,114 @@
 
 &lt;p&gt;另外，更改数量为2，两个的标题分别为“收件箱”和“好友”。&lt;/p&gt;
 &lt;h2&gt;4. 从模板中修改fragment&lt;/h2&gt;
-&lt;p&gt;现在我们已经有了所有的一切，除了fragement，目前用来的还是默认的fragment。&lt;/p&gt;</summary><category term="Android"></category></entry><entry><title>使用Android开发一个阅后即焚-02 使用Parse.com添加用户</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html" rel="alternate"></link><updated>2014-10-05T10:12:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-05:shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html</id><summary type="html">&lt;h2&gt;1. 创建Parse.com账户和应用&lt;/h2&gt;
+&lt;p&gt;现在我们已经有了所有的一切，除了fragement，目前用来的还是默认的fragment。我们要做的就是把它给替换掉。&lt;/p&gt;
+&lt;h3&gt;4.1 添加&lt;code&gt;InboxFragment&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;新建一个类，类名是&lt;code&gt;InboxFragment&lt;/code&gt;, 这个类继承自，继承自&lt;code&gt;android.app.ListFragment&lt;/code&gt;(也可以继承自&lt;code&gt;android.support.v4.app.ListFragment&lt;/code&gt;，这样Android4.0之前的版本也能够使用）。
+这里需要说明的是因为我们创建的是List类型的视图，所以创建了ListFragment，如同ListActivity对应Activity一样，ListFragment也对应继承自Fragment。&lt;/p&gt;
+&lt;p&gt;打开MainActivity，复制其中的PlaceHolderFragment的&lt;code&gt;onCreateView&lt;/code&gt;方法到&lt;code&gt;InboxFragment&lt;/code&gt;之中。Fragment像Activity一样也有&lt;code&gt;onCreate&lt;/code&gt;方法，但是这里我们关注的是&lt;code&gt;onCreateView&lt;/code&gt;方法，该方法在对应的Layout画面渲染时调用。修改后的类如下所示，同时，删除MainActivity中对应的PlaceHolderFragment。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;InboxFragment&lt;/span&gt; &lt;span class="kd"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;ListFragment&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@Override&lt;/span&gt;
+    &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;View&lt;/span&gt; &lt;span class="nf"&gt;onCreateView&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LayoutInflater&lt;/span&gt; &lt;span class="n"&gt;inflater&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ViewGroup&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+                             &lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;View&lt;/span&gt; &lt;span class="n"&gt;rootView&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;inflater&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;inflate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;layout&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;fragment_main&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;rootView&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面的例子中&lt;code&gt;inflater.inflate(R.layout.fragment_main, container, false)&lt;/code&gt;可以当作Activity中的&lt;code&gt;setContentView&lt;/code&gt;方法，其中第一个参数就是layout，第二个参数是MainActivity中的&lt;code&gt;ViewPage&lt;/code&gt;，第三个参数始终是&lt;code&gt;false&lt;/code&gt;。&lt;/p&gt;
+&lt;h3&gt;4.2 修改InboxFragment对应的layout&lt;/h3&gt;
+&lt;p&gt;首先，重构&lt;code&gt;fragment_main.xml&lt;/code&gt;为&lt;code&gt;fragment_inbox.xml&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;然后，修改&lt;code&gt;fragment_inbox&lt;/code&gt;的内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;RelativeLayout&lt;/span&gt; &lt;span class="na"&gt;xmlns:android=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;xmlns:tools=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.android.com/tools&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+    &lt;span class="na"&gt;tools:context=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;io.github.liulixiang1988.rabbit.InboxFragment&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+
+
+    &lt;span class="nt"&gt;&amp;lt;ListView&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@android:id/list&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentTop=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentLeft=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_alignParentStart=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;TextView&lt;/span&gt;
+        &lt;span class="na"&gt;android:id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@android:id/empty&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;match_parent&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:layout_height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wrap_content&amp;quot;&lt;/span&gt;
+        &lt;span class="na"&gt;android:text=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;@string/empty_inbox_label&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/RelativeLayout&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;我们在这里做了一个列表，并且列表为空时显示“没有新消息”（在empty_inbox_label中定义）。&lt;/p&gt;
+&lt;h3&gt;4.3 添加好友列表&lt;/h3&gt;
+&lt;p&gt;类似的，添加&lt;code&gt;FriendsFragment&lt;/code&gt;,&lt;code&gt;fragment_friends.xml&lt;/code&gt;等，然后修改SectionPagerAdapter`。&lt;/p&gt;
+&lt;h3&gt;4.4 修改&lt;code&gt;SectionsPagerAdapter&lt;/code&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Fragment&lt;/span&gt; &lt;span class="nf"&gt;getItem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;switch&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; :
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;InboxFragment&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;:
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;FriendsFragment&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;最后，运行如下：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="images" src="images/Snip20141104_1.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;5 理解基于Fragment的代码的其他部分&lt;/h2&gt;
+&lt;p&gt;我们知道，创建一个Fragment程序分为以下几步：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在Activity中创建一个Fragment的容器（创建&lt;code&gt;SectionsPagerAdapter&lt;/code&gt;，并且在&lt;code&gt;MainActivity&lt;/code&gt;中添加了&lt;code&gt;SectionsPagerAdapter&lt;/code&gt;实例）&lt;/li&gt;
+&lt;li&gt;创建Fragment的类和布局（创建&lt;code&gt;FriendsFragment&lt;/code&gt;和&lt;code&gt;InboxFragment&lt;/code&gt;和对应的xml）&lt;/li&gt;
+&lt;li&gt;在Activity中初始化Fragment（在&lt;code&gt;SectionsPagerAdapter&lt;/code&gt;中的&lt;code&gt;getItem&lt;/code&gt;中创建）&lt;/li&gt;
+&lt;li&gt;在Action Bar中添加tab&lt;/li&gt;
+&lt;li&gt;添加TabListener来加载新的Fragment&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们已经做了步骤1、2、3，现在我们打开&lt;code&gt;MainActivity&lt;/code&gt;来看看它的&lt;code&gt;onCreate&lt;/code&gt;方法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;protected&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;onCreate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Bundle&lt;/span&gt; &lt;span class="n"&gt;savedInstanceState&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;//...&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// 设置Action Bar&lt;/span&gt;
+    &lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="n"&gt;ActionBar&lt;/span&gt; &lt;span class="n"&gt;actionBar&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;getActionBar&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="n"&gt;actionBar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setNavigationMode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ActionBar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;NAVIGATION_MODE_TABS&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// 设置返回fragment的adapter&lt;/span&gt;
+    &lt;span class="n"&gt;mSectionsPagerAdapter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;SectionsPagerAdapter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;getFragmentManager&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// 设置ViewPager&lt;/span&gt;
+    &lt;span class="n"&gt;mViewPager&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ViewPager&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;findViewById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pager&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;mViewPager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setAdapter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mSectionsPagerAdapter&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="c1"&gt;//在不同的区域滑动时，选择对应的tab，并且使用对应的ActionBar.Tab#select()来完成这些&lt;/span&gt;
+    &lt;span class="n"&gt;mViewPager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setOnPageChangeListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ViewPager&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SimpleOnPageChangeListener&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;Override&lt;/span&gt;
+        &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="n"&gt;onPageSelected&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;actionBar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setSelectedNavigationItem&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;});&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// 对每一节，添加tab到action bar&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;mSectionsPagerAdapter&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getCount&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="c1"&gt;// Create a tab with text corresponding to the page title defined by&lt;/span&gt;
+        &lt;span class="c1"&gt;// the adapter. Also specify this Activity object, which implements&lt;/span&gt;
+        &lt;span class="c1"&gt;// the TabListener interface, as the callback (listener) for when&lt;/span&gt;
+        &lt;span class="c1"&gt;// this tab is selected.&lt;/span&gt;
+        &lt;span class="n"&gt;actionBar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addTab&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="n"&gt;actionBar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;newTab&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+                        &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setText&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mSectionsPagerAdapter&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getPageTitle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+                        &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setTabListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android"></category></entry><entry><title>使用Android开发一个阅后即焚-02 使用Parse.com添加用户</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html" rel="alternate"></link><updated>2014-10-05T10:12:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-05:shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html</id><summary type="html">&lt;h2&gt;1. 创建Parse.com账户和应用&lt;/h2&gt;
 &lt;h3&gt;1.1 创建Parse.com的账户&lt;/h3&gt;
 &lt;h3&gt;1.2 添加Parse.com的SDK&lt;/h3&gt;
 &lt;p&gt;直接将Paser.com的SDK添加到app/libs文件夹内即可。&lt;/p&gt;
