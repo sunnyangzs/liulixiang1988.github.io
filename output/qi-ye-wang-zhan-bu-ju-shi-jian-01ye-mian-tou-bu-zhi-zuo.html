@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>企业网站布局实践-01页面头部制作</title>
+  <meta name="author" content="理想">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="./favicon.png" rel="icon">
+  <link href="./theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="./theme/js/modernizr-2.0.js"></script>
+  <script src="./theme/js/ender.js"></script>
+  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="./">理想国</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<form action="//google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+    <li >
+    <a href="./category/android.html">Android</a>
+    </li>
+    <li >
+    <a href="./category/dotnet.html">Dotnet</a>
+    </li>
+    <li >
+    <a href="./category/python.html">Python</a>
+    </li>
+    <li >
+    <a href="./category/sheng-huo.html">生活</a>
+    </li>
+    <li class="active">
+    <a href="./category/web.html">Web</a>
+    </li>
+    <li >
+    <a href="./category/yi-dong-kai-fa.html">移动开发</a>
+    </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">企业网站布局实践-01页面头部制作</h1>
+      <p class="meta"><time datetime="2015-04-01T09:05:00" pubdate>三 01 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 总体分析</h2>
+<p>网站的架构采用自顶向下渐进明细的过程进行规划。</p>
+<p>网站首页设计如下：
+<img alt="" src="images/qy-web-01.png" /></p>
+<h2>2. 页面头部制作</h2>
+<p>1、居中 </p>
+<div class="highlight"><pre><span class="n">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="n">auto</span><span class="o">;</span>
+</pre></div>
+
+
+<p>2、更改li的图标</p>
+<div class="highlight"><pre><span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">-</span><span class="n">image</span><span class="o">:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">li_bg</span><span class="p">.</span><span class="n">gif</span><span class="p">);</span>
+</pre></div>
+
+
+<p>3、浮动菜单右侧</p>
+<div class="highlight"><pre><span class="n">float</span><span class="o">:</span> <span class="n">right</span><span class="o">;</span>
+</pre></div>
+
+
+<p>4、菜单的宽度直接设置li的width</p>
+<p>5、文本垂直居中
+设置元素文字行高等于盒子的高度</p>
+<div class="highlight"><pre><span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span> <span class="mi">27</span><span class="n">px</span><span class="p">;</span>
+</pre></div>
+
+
+<p>6、去掉a链接的下划线</p>
+<div class="highlight"><pre><span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
+</pre></div>
+
+
+<p>设置链接正常状态：</p>
+<div class="highlight"><pre><span class="n">a</span><span class="p">{</span>
+    <span class="o">&amp;:</span><span class="n">link</span><span class="p">,</span> <span class="o">&amp;:</span><span class="n">visited</span><span class="p">{</span>
+        <span class="nl">color:</span><span class="err">#</span><span class="mf">8E8</span><span class="n">E8E</span><span class="p">;</span>
+        <span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="o">&amp;:</span><span class="n">hover</span><span class="p">,</span> <span class="o">&amp;:</span><span class="n">active</span><span class="p">{</span>
+    <span class="nl">color:</span><span class="err">#</span><span class="n">D90</span><span class="p">;</span>
+    <span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>7、文字与图片水平中间对齐</p>
+<div class="highlight"><pre><span class="n">img</span><span class="p">{</span>
+    <span class="n">vertical</span><span class="o">-</span><span class="n">align</span><span class="o">:</span> <span class="n">middle</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>效果如下：
+<img alt="" src="images/qy-web-02.png" /></p>
+<p>代码如下：
+html</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;top&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;top_content&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>加入我们<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>添加收藏<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>设为首页<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- top结束 --&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrap&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;logo&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;logo_left&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/logo.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;慕课网&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;logo_right&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/tel.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;服务热线&quot;</span><span class="nt">&gt;</span>24小时服务热线:<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;tel&quot;</span><span class="nt">&gt;</span>123-456-7890<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- logo结束 --&gt;</span>
+<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- wrap结束 --&gt;</span>
+</pre></div>
+
+
+<p>对应的LESS</p>
+<div class="highlight"><pre><span class="p">.</span><span class="n">top</span><span class="p">{</span>
+    <span class="nl">width:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+    <span class="nl">height:</span><span class="mi">27</span><span class="n">px</span><span class="p">;</span>
+    <span class="nl">background:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">top_bg</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span> <span class="n">repert</span><span class="o">-</span><span class="n">x</span><span class="p">;</span>
+
+    <span class="o">&amp;</span><span class="n">_content</span><span class="p">{</span>
+        <span class="nl">width:</span><span class="mi">1000</span><span class="n">px</span><span class="p">;</span>
+        <span class="nl">margin:</span> <span class="mi">0</span> <span class="k">auto</span><span class="p">;</span>
+
+        <span class="n">li</span><span class="p">{</span>
+            <span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">-</span><span class="n">image</span><span class="o">:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">li_bg</span><span class="p">.</span><span class="n">gif</span><span class="p">);</span>
+            <span class="nl">float:</span> <span class="n">right</span><span class="p">;</span>
+            <span class="nl">width:</span> <span class="mi">80</span><span class="n">px</span><span class="p">;</span>
+            <span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span> <span class="mi">27</span><span class="n">px</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">a</span><span class="p">{</span>
+            <span class="o">&amp;:</span><span class="n">link</span><span class="p">,</span> <span class="o">&amp;:</span><span class="n">visited</span><span class="p">{</span>
+                <span class="nl">color:</span><span class="err">#</span><span class="mf">8E8</span><span class="n">E8E</span><span class="p">;</span>
+                <span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="o">&amp;:</span><span class="n">hover</span><span class="p">,</span> <span class="o">&amp;:</span><span class="n">active</span><span class="p">{</span>
+            <span class="nl">color:</span><span class="err">#</span><span class="n">D90</span><span class="p">;</span>
+            <span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="n">wrap</span><span class="p">{</span>
+    <span class="nl">width:</span><span class="mi">1000</span><span class="n">px</span><span class="p">;</span>
+    <span class="nl">margin:</span> <span class="mi">0</span> <span class="k">auto</span><span class="p">;</span>
+    <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="o">:</span> <span class="err">#</span><span class="n">FFF</span><span class="p">;</span>
+
+    <span class="p">.</span><span class="n">logo</span><span class="p">{</span>
+        <span class="nl">height:</span> <span class="mi">80</span><span class="n">px</span><span class="p">;</span>
+
+        <span class="o">&amp;</span><span class="n">_left</span><span class="p">{</span>
+            <span class="nl">width:</span><span class="mi">200</span><span class="n">px</span><span class="p">;</span>
+            <span class="nl">float:</span><span class="n">left</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="o">&amp;</span><span class="n">_right</span><span class="p">{</span>
+            <span class="nl">width:</span><span class="mi">300</span><span class="n">px</span><span class="p">;</span>
+            <span class="nl">float:</span><span class="n">right</span><span class="p">;</span>
+            <span class="nl">height:</span><span class="mi">28</span><span class="n">px</span><span class="p">;</span>
+            <span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="o">:</span><span class="mi">30</span><span class="n">px</span><span class="p">;</span>
+            <span class="nl">color:</span><span class="err">#</span><span class="mf">8E8</span><span class="n">E8E</span><span class="p">;</span>
+
+            <span class="n">img</span><span class="p">{</span>
+                <span class="n">vertical</span><span class="o">-</span><span class="n">align</span><span class="o">:</span> <span class="n">middle</span><span class="p">;</span>
+                <span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="n">tel</span><span class="p">{</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="s">&quot;微软雅黑&quot;</span><span class="p">;</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span> <span class="mi">16</span><span class="n">px</span><span class="p">;</span>
+    <span class="nl">color:</span> <span class="err">#</span><span class="n">C00</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">刘理想</span>
+  </span>
+<time datetime="2015-04-01T09:05:00" pubdate>三 01 四月 2015</time>  <span class="categories">
+    <a class="category" href="./tag/css.html">CSS</a>
+    <a class="category" href="./tag/html.html">HTML</a>
+    <a class="category" href="./tag/less.html">LESS</a>
+  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html" data-title="企业网站布局实践-01页面头部制作" data-url="./qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+    </div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
+  </section>
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html">企业网站布局实践-02导航部分制作</a>
+      </li>
+      <li class="post">
+          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html">企业网站布局实践-01页面头部制作</a>
+      </li>
+      <li class="post">
+          <a href="./wang-ye-bu-ju-ji-chu.html">网页布局基础</a>
+      </li>
+      <li class="post">
+          <a href="./phonegapming-ling-xing-de-shi-yong.html">PhoneGap命令行的使用</a>
+      </li>
+      <li class="post">
+          <a href="./aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html">ASP.NET MVC5 学习笔记-5 测试</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="./category/android.html">Android</a></li>
+        <li><a href="./category/dotnet.html">DotNet</a></li>
+        <li><a href="./category/python.html">Python</a></li>
+        <li><a href="./category/sheng-huo.html">生活</a></li>
+        <li><a href="./category/web.html">Web</a></li>
+        <li><a href="./category/yi-dong-kai-fa.html">移动开发</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/flask.html">Flask</a>  </section>
+
+
+
+  <section>
+    <h1>GitHub Repos</h1>
+    <ul id="gh_repos">
+      <li class="loading">Status updating...</li>
+    </ul>
+      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
+    <script type="text/javascript">
+      $.domReady(function(){
+          if (!window.jXHR){
+              var jxhr = document.createElement('script');
+              jxhr.type = 'text/javascript';
+              jxhr.src = './theme/js/jXHR.js';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(jxhr, s);
+          }
+
+          github.showRepos({
+              user: 'liulixiang1988',
+              count: 5,
+              skip_forks: false,
+              target: '#gh_repos'
+          });
+      });
+    </script>
+    <script src="./theme/js/github.js" type="text/javascript"> </script>
+  </section>
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
+        </ul>
+    </section>
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2014-2015  - 理想 -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+</body>
+</html>
