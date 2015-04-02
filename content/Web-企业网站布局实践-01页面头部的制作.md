@@ -25,6 +25,14 @@ margin: 0 auto;
 list-style-image: url(../images/li_bg.gif);
 ```
 
+去除li的默认图标
+
+```
+list-style-type:none;
+//或者
+list-style:none
+```
+
 3、浮动菜单右侧
 
 ```

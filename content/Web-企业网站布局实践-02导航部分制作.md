@@ -89,7 +89,7 @@ Author: 刘理想
             list-style: none; //去掉默认list-style
             width:100px;
             text-align: center; //文本中间对齐
-            line-height: 40px; //文本垂直居中
+            line-height: 40px; //文本垂直居中，与对应的盒子高度对齐
         }
 
         a{
@@ -124,3 +124,55 @@ Author: 刘理想
 }
 ```
 
+###更改菜单背景颜色
+
+由于a标签属于内联元素，无高度和宽度属性，因此控制鼠标经过状态改变背景颜色时，仅在有文字的地方显示背景颜色。解决的办法是把a标签变为块级元素.
+
+```
+display:block
+```
+
+综上，实现一个菜单基本如下：
+```
+<ul>
+    <li><a href="#">全部</a></li>
+    <li><a href="#">初级</a></li>
+    <li><a href="#">中级</a></li>
+    <li><a href="#">高级</a></li>
+</ul>
+```
+
+```
+/*1. 每个列表项的宽度为50px，高度为30px */
+ul{
+    height:30px;
+}
+
+/*2. 列表中的文字在水平和垂直方向上均居中显示*/
+li{
+    list-style:none;
+    float:left;
+    width:50px;
+    text-align:center;
+    line-height:30px;
+}
+
+/*3. 超链接初始状态和访问后的状态均为黑色无下划线，鼠标经过和点击时文字均为白色，无下划线，背景颜色为#BE3948。*/
+li a {
+    display:block;
+}
+li a:link, li a:visited{
+    color:#000;
+    text-decoration:none;
+}
+
+li a:hover, li a:active{
+    color:#FFF;
+    text-decoration:none;
+    background-color:#BE3948;
+}
+```
+
+效果图：
+
+![菜单效果图](images/qy-web-03.jpg)
