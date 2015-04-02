@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ASP.NET MVC5 学习笔记-5 测试</title>
+  <meta name="author" content="理想">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="./favicon.png" rel="icon">
+  <link href="./theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="./theme/js/modernizr-2.0.js"></script>
+  <script src="./theme/js/ender.js"></script>
+  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="./">理想国</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<form action="//google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+    <li >
+    <a href="./category/android.html">Android</a>
+    </li>
+    <li class="active">
+    <a href="./category/dotnet.html">Dotnet</a>
+    </li>
+    <li >
+    <a href="./category/python.html">Python</a>
+    </li>
+    <li >
+    <a href="./category/sheng-huo.html">生活</a>
+    </li>
+    <li >
+    <a href="./category/web.html">Web</a>
+    </li>
+    <li >
+    <a href="./category/yi-dong-kai-fa.html">移动开发</a>
+    </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">ASP.NET MVC5 学习笔记-5 测试</h1>
+      <p class="meta"><time datetime="2014-12-04T22:15:00" pubdate>四 04 十二月 2014</time></p>
+</header>
+
+  <div class="entry-content"><p>[TOC]</p>
+<h1>ASP.NET MVC5 学习笔记-5 测试</h1>
+<h2>1. 测试步骤</h2>
+<ul>
+<li>准备</li>
+<li>执行</li>
+<li>检查</li>
+</ul>
+<h2>2. 创建单元测试</h2>
+<p><strong>注意：单元测试不要包含数据库操作，包含数据库操作的一般成为集成测试。</strong></p>
+<h3>2.1 编写测试代码</h3>
+<div class="highlight"><pre><span class="n">namespace</span> <span class="n">AspNetMVCEssential</span><span class="p">.</span><span class="n">Tests</span><span class="p">.</span><span class="n">Controllers</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">TestClass</span><span class="p">]</span>
+    <span class="n">public</span> <span class="n">class</span> <span class="n">HomeControllerTest</span>
+    <span class="p">{</span>
+        <span class="p">[</span><span class="n">TestMethod</span><span class="p">]</span>
+        <span class="n">public</span> <span class="kt">void</span> <span class="n">Index</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="c1">// Arrange</span>
+            <span class="n">HomeController</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">new</span> <span class="n">HomeController</span><span class="p">();</span>
+
+            <span class="c1">// Act</span>
+            <span class="n">ViewResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">Index</span><span class="p">()</span> <span class="n">as</span> <span class="n">ViewResult</span><span class="p">;</span>
+
+            <span class="c1">// Assert</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">IsNotNull</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="n">TestMethod</span><span class="p">]</span>
+        <span class="n">public</span> <span class="kt">void</span> <span class="n">About</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="c1">// Arrange</span>
+            <span class="n">HomeController</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">new</span> <span class="n">HomeController</span><span class="p">();</span>
+
+            <span class="c1">// Act</span>
+            <span class="n">ViewResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">About</span><span class="p">()</span> <span class="n">as</span> <span class="n">ViewResult</span><span class="p">;</span>
+
+            <span class="c1">// Assert</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="s">&quot;Your application description page.&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">ViewBag</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="n">TestMethod</span><span class="p">]</span>
+        <span class="n">public</span> <span class="kt">void</span> <span class="n">Contact</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="c1">// Arrange</span>
+            <span class="n">HomeController</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">new</span> <span class="n">HomeController</span><span class="p">();</span>
+
+            <span class="c1">// Act</span>
+            <span class="n">ViewResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">Contact</span><span class="p">()</span> <span class="n">as</span> <span class="n">ViewResult</span><span class="p">;</span>
+
+            <span class="c1">// Assert</span>
+            <span class="n">Assert</span><span class="p">.</span><span class="n">IsNotNull</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>2.2 运行测试</h3>
+<p>选定菜单“测试”-&gt;“运行”-&gt;运行所有测试或者未成功的测试。
+可以在“测试”-&gt;“窗口”-&gt;“测试资源管理器”中对测试进行管理。</p>
+<hr />
+<h2>3 Mock测试</h2>
+<p>Mock测试就是在测试过程中，对于某些不容易构造或者不容易获取的对象，用一个虚拟的对象来创建以便测试的测试方法。</p>
+<p>我们要对<code>TransactionController.cs</code>进行测试，直接操作数据库不行，怎么办呢？我们可以使用虚拟的接口来进行测试。这需要我们更改一些代码.</p>
+<h3>3.1 首先，我们更改<code>TransactionController.cs</code></h3>
+<p>更改db为<code>IApplicationDbContext</code>类型，并且添加构造方法：</p>
+<div class="highlight"><pre><span class="n">private</span> <span class="n">IApplicationDbContext</span> <span class="n">db</span><span class="p">;</span>
+
+<span class="c1">//实际使用</span>
+<span class="n">public</span> <span class="nf">TransactionController</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ApplicationDbContext</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">//生成使用</span>
+<span class="n">public</span> <span class="nf">TransactionController</span><span class="p">(</span><span class="n">IApplicationDbContext</span> <span class="n">dbContext</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">dbContext</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>3.2 创建IApplicationDbContext对象</h3>
+<div class="highlight"><pre><span class="k">public</span> <span class="nf">interface</span> <span class="nx">IApplication</span>
+<span class="p">{</span>
+    <span class="nx">IDbSet</span><span class="o">&lt;</span><span class="nx">CheckingAccount</span><span class="o">&gt;</span> <span class="nx">CheckingAccounts</span><span class="p">{</span><span class="nb">get</span><span class="p">;</span><span class="nb">set</span><span class="p">;}</span>
+    <span class="nx">IDbSet</span><span class="o">&lt;</span><span class="nx">Transaction</span><span class="o">&gt;</span> <span class="nx">Transactions</span><span class="p">{</span><span class="nb">get</span><span class="p">;</span> <span class="nb">set</span><span class="p">;}</span>
+
+    <span class="k">public</span> <span class="nf">int</span> <span class="nx">SaveChanges</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>让实际的ApplicationDbContext实现IApplicationDbContext。</p>
+<p>另外创建一个假的FakeApplicationDbContext实现IApplicationDbContext</p>
+<div class="highlight"><pre><span class="k">public</span> <span class="nf">class</span> <span class="nx">FakeApplicationDbContext</span><span class="p">:</span><span class="nx">IApplicationDbContext</span>
+<span class="p">{</span>
+    <span class="nx">IDbSet</span><span class="o">&lt;</span><span class="nx">CheckingAccount</span><span class="o">&gt;</span> <span class="nx">CheckingAccounts</span><span class="p">{</span><span class="nb">get</span><span class="p">;</span><span class="nb">set</span><span class="p">;}</span>
+    <span class="nx">IDbSet</span><span class="o">&lt;</span><span class="nx">Transaction</span><span class="o">&gt;</span> <span class="nx">Transactions</span><span class="p">{</span><span class="nb">get</span><span class="p">;</span> <span class="nb">set</span><span class="p">;}</span>
+
+    <span class="k">public</span> <span class="nf">int</span> <span class="nx">SaveChanges</span><span class="p">(){</span><span class="k">return</span> <span class="mi">0</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>再创建一个FakeDbSet</p>
+<div class="highlight"><pre><span class="nx">using</span> <span class="nx">System</span><span class="p">;</span>
+<span class="nx">using</span> <span class="nx">System.Collections.Generic</span><span class="p">;</span>
+<span class="nx">using</span> <span class="nx">System.Linq</span><span class="p">;</span>
+<span class="nx">using</span> <span class="nx">System.Text</span><span class="p">;</span>
+
+<span class="nx">namespace</span> <span class="nx">EntityExtensions</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="nf">class</span> <span class="nx">FakeDbSet</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="nx">System.Data.Entity.IDbSet</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="nb">T</span> <span class="p">:</span> <span class="nb">class</span> <span class="p">{</span>
+        <span class="k">private</span> <span class="nf">readonly</span> <span class="nb">List</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="nb">new</span> <span class="nb">List</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="k">public</span> <span class="nf">FakeDbSet</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">list</span> <span class="o">=</span> <span class="nb">new</span> <span class="nb">List</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="nf">FakeDbSet</span><span class="p">(</span><span class="na">IEnumerable</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span> <span class="nb">contents</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">this.list</span> <span class="o">=</span> <span class="nx">contents.ToList</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="vi">#region</span> <span class="nx">IDbSet</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span> <span class="nb">Members</span>
+
+        <span class="k">public</span> <span class="nf">T</span> <span class="nb">Add</span><span class="p">(</span><span class="na">T</span> <span class="nx">entity</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">this.list.Add</span><span class="p">(</span><span class="nx">entity</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">entity</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="nf">T</span> <span class="nx">Attach</span><span class="p">(</span><span class="nb">T</span> <span class="nx">entity</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">this.list.Add</span><span class="p">(</span><span class="nx">entity</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">entity</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="nf">TDerivedEntity</span> <span class="nb">Create</span><span class="o">&lt;</span><span class="nx">TDerivedEntity</span><span class="o">&gt;</span><span class="p">()</span> <span class="k">where</span> <span class="nx">TDerivedEntity</span> <span class="p">:</span> <span class="nb">class</span><span class="p">,</span> <span class="nb">T</span> <span class="p">{</span>
+            <span class="nb">throw</span> <span class="nb">new</span> <span class="nx">NotImplementedException</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="nf">T</span> <span class="nb">Create</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nb">throw</span> <span class="nb">new</span> <span class="nx">NotImplementedException</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="nf">T</span> <span class="nb">Find</span><span class="p">(</span><span class="k">params</span> <span class="nb">object</span><span class="err">[</span><span class="cp">]</span> keyValues) {
+            throw new NotImplementedException();
+        }
+
+        public System.Collections.ObjectModel.ObservableCollection<span class="nt">&lt;T&gt;</span> Local {
+            get {
+                throw new NotImplementedException();
+            }
+        }
+
+        public T Remove(T entity) {
+            this.list.Remove(entity);
+            return entity;
+        }
+
+        #endregion
+
+        #region IEnumerable<span class="nt">&lt;T&gt;</span> Members
+
+        public IEnumerator<span class="nt">&lt;T&gt;</span> GetEnumerator() {
+            return this.list.GetEnumerator();
+        }
+
+        #endregion
+
+        #region IEnumerable Members
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() {
+            return this.list.GetEnumerator();
+        }
+
+        #endregion
+
+        #region IQueryable Members
+
+        public Type ElementType {
+            get { return this.list.AsQueryable().ElementType; }
+        }
+
+        public System.Linq.Expressions.Expression Expression {
+            get { return this.list.AsQueryable().Expression; }
+        }
+
+        public IQueryProvider Provider {
+            get { return this.list.AsQueryable().Provider; }
+        }
+
+        #endregion
+    }
+}
+</pre></div>
+
+
+<p>另外一种方法是使用</p>
+<div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">FakeDbSet</span>
+</pre></div>
+
+
+<h2>4 TDD</h2>
+<h3>4.1 TDD基本流程</h3>
+<p>创建失败的测试
+用最简单的方法实现
+优化</p>
+<h3>4.2 创建测试</h3>
+<p>注意，测试应该也引用EF。</p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">刘理想</span>
+  </span>
+<time datetime="2014-12-04T22:15:00" pubdate>四 04 十二月 2014</time>  <span class="categories">
+    <a class="category" href="./tag/dotnet.html">DotNet</a>
+    <a class="category" href="./tag/web.html">Web</a>
+    <a class="category" href="./tag/aspnet-mvc.html">ASP.NET MVC</a>
+  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html" data-title="ASP.NET MVC5 学习笔记-5 测试" data-url="./aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+    </div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
+  </section>
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html">企业网站布局实践-02导航部分制作</a>
+      </li>
+      <li class="post">
+          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html">企业网站布局实践-01页面头部制作</a>
+      </li>
+      <li class="post">
+          <a href="./wang-ye-bu-ju-ji-chu.html">网页布局基础</a>
+      </li>
+      <li class="post">
+          <a href="./phonegapming-ling-xing-de-shi-yong.html">PhoneGap命令行的使用</a>
+      </li>
+      <li class="post">
+          <a href="./aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html">ASP.NET MVC5 学习笔记-5 测试</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="./category/android.html">Android</a></li>
+        <li><a href="./category/dotnet.html">DotNet</a></li>
+        <li><a href="./category/python.html">Python</a></li>
+        <li><a href="./category/sheng-huo.html">生活</a></li>
+        <li><a href="./category/web.html">Web</a></li>
+        <li><a href="./category/yi-dong-kai-fa.html">移动开发</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/flask.html">Flask</a>  </section>
+
+
+
+  <section>
+    <h1>GitHub Repos</h1>
+    <ul id="gh_repos">
+      <li class="loading">Status updating...</li>
+    </ul>
+      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
+    <script type="text/javascript">
+      $.domReady(function(){
+          if (!window.jXHR){
+              var jxhr = document.createElement('script');
+              jxhr.type = 'text/javascript';
+              jxhr.src = './theme/js/jXHR.js';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(jxhr, s);
+          }
+
+          github.showRepos({
+              user: 'liulixiang1988',
+              count: 5,
+              skip_forks: false,
+              target: '#gh_repos'
+          });
+      });
+    </script>
+    <script src="./theme/js/github.js" type="text/javascript"> </script>
+  </section>
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
+        </ul>
+    </section>
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2014-2015  - 理想 -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+</body>
+</html>

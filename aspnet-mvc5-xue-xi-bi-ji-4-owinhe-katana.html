@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ASP.NET MVC5 学习笔记-4 OWIN和Katana</title>
+  <meta name="author" content="理想">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="./favicon.png" rel="icon">
+  <link href="./theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="./theme/js/modernizr-2.0.js"></script>
+  <script src="./theme/js/ender.js"></script>
+  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="./">理想国</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<form action="//google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+    <li >
+    <a href="./category/android.html">Android</a>
+    </li>
+    <li class="active">
+    <a href="./category/dotnet.html">Dotnet</a>
+    </li>
+    <li >
+    <a href="./category/python.html">Python</a>
+    </li>
+    <li >
+    <a href="./category/sheng-huo.html">生活</a>
+    </li>
+    <li >
+    <a href="./category/web.html">Web</a>
+    </li>
+    <li >
+    <a href="./category/yi-dong-kai-fa.html">移动开发</a>
+    </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">ASP.NET MVC5 学习笔记-4 OWIN和Katana</h1>
+      <p class="meta"><time datetime="2014-10-31T20:48:00" pubdate>五 31 十月 2014</time></p>
+</header>
+
+  <div class="entry-content"><p>[TOC]</p>
+<h1>ASP.NET MVC5 学习笔记-4 OWIN和Katana</h1>
+<h2>1. Owin</h2>
+<p>OWIN全名：Open Web Interface for .NET. 它是一个说明，而非一个框架，该声明用来实现Web服务器和框架的松耦合。它提供了模块化、轻量级和便携的设计。类似Node.js, WSGI.</p>
+<p>Katana是微软实现的OWIN组件的集合。包含基础设施组件和功能性组件。并且暴露出了OWIN管道用来添加组件。可以在IIS、OwinHost.exe或者自定义的服务器中托管。</p>
+<p>比如OWIN提供了新的登录模式，比如，打开Web.config文件，我们看到：</p>
+<div class="highlight"><pre><span class="nt">&lt;system.web&gt;</span>
+    <span class="nt">&lt;authentication</span> <span class="na">mode=</span><span class="s">&quot;None&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;compilation</span> <span class="na">debug=</span><span class="s">&quot;true&quot;</span> <span class="na">targetFramework=</span><span class="s">&quot;4.5&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;httpRuntime</span> <span class="na">targetFramework=</span><span class="s">&quot;4.5&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/system.web&gt;</span>
+</pre></div>
+
+
+<p>我们看到<code>&lt;authentication mode="None"/&gt;</code>，这里我们不在使用传统的Form认证，而是使用Owin的认证。我们打开Startup.cs文件，看到如下内容：</p>
+<div class="highlight"><pre><span class="n">public</span> <span class="n">partial</span> <span class="n">class</span> <span class="n">Startup</span>
+<span class="p">{</span>
+    <span class="n">public</span> <span class="kt">void</span> <span class="n">Configuration</span><span class="p">(</span><span class="n">IAppBuilder</span> <span class="n">app</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ConfigureAuth</span><span class="p">(</span><span class="n">app</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>这里我们使用<code>ConfigureAuth(app)</code>来配置认证，打开这个方法的定义，可以看到如下方法：</p>
+<div class="highlight"><pre><span class="n">public</span> <span class="kt">void</span> <span class="nf">ConfigureAuth</span><span class="p">(</span><span class="n">IAppBuilder</span> <span class="n">app</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// 使应用程序可以使用 Cookie 来存储已登录用户的信息</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">UseCookieAuthentication</span><span class="p">(</span><span class="n">new</span> <span class="n">CookieAuthenticationOptions</span>
+    <span class="p">{</span>
+        <span class="n">AuthenticationType</span> <span class="o">=</span> <span class="n">DefaultAuthenticationTypes</span><span class="p">.</span><span class="n">ApplicationCookie</span><span class="p">,</span>
+        <span class="n">LoginPath</span> <span class="o">=</span> <span class="n">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">&quot;/Account/Login&quot;</span><span class="p">)</span>
+    <span class="p">});</span>
+    <span class="c1">// Use a cookie to temporarily store information about a user logging in with a third party login provider</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">UseExternalSignInCookie</span><span class="p">(</span><span class="n">DefaultAuthenticationTypes</span><span class="p">.</span><span class="n">ExternalCookie</span><span class="p">);</span>
+
+    <span class="c1">// 取消注释以下行可允许使用第三方登录提供程序登录</span>
+    <span class="c1">//app.UseMicrosoftAccountAuthentication(</span>
+    <span class="c1">//    clientId: &quot;&quot;,</span>
+    <span class="c1">//    clientSecret: &quot;&quot;);</span>
+
+    <span class="c1">//app.UseTwitterAuthentication(</span>
+    <span class="c1">//   consumerKey: &quot;&quot;,</span>
+    <span class="c1">//   consumerSecret: &quot;&quot;);</span>
+
+    <span class="c1">//app.UseFacebookAuthentication(</span>
+    <span class="c1">//   appId: &quot;&quot;,</span>
+    <span class="c1">//   appSecret: &quot;&quot;);</span>
+
+    <span class="c1">//app.UseGoogleAuthentication();</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr />
+<h2>2. 本地认证Local Authentication</h2>
+<p>默认就是本地认证：</p>
+<div class="highlight"><pre><span class="c1">// 使应用程序可以使用 Cookie 来存储已登录用户的信息</span>
+<span class="n">app</span><span class="p">.</span><span class="n">UseCookieAuthentication</span><span class="p">(</span><span class="k">new</span> <span class="n">CookieAuthenticationOptions</span>
+<span class="p">{</span>
+    <span class="n">AuthenticationType</span> <span class="o">=</span> <span class="n">DefaultAuthenticationTypes</span><span class="p">.</span><span class="n">ApplicationCookie</span><span class="p">,</span>
+    <span class="n">LoginPath</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">&quot;/Account/Login&quot;</span><span class="p">)</span>
+<span class="p">});</span>
+<span class="c1">// Use a cookie to temporarily store information about a user logging in with a third party login provider</span>
+<span class="n">app</span><span class="p">.</span><span class="n">UseExternalSignInCookie</span><span class="p">(</span><span class="n">DefaultAuthenticationTypes</span><span class="p">.</span><span class="n">ExternalCookie</span><span class="p">);</span>
+</pre></div>
+
+
+<h2>3. 添加Facebook认证</h2>
+<div class="highlight"><pre><span class="c1">// 取消注释以下行可允许使用第三方登录提供程序登录</span>
+<span class="c1">//app.UseMicrosoftAccountAuthentication(</span>
+<span class="c1">//    clientId: &quot;&quot;,</span>
+<span class="c1">//    clientSecret: &quot;&quot;);</span>
+
+<span class="c1">//app.UseTwitterAuthentication(</span>
+<span class="c1">//   consumerKey: &quot;&quot;,</span>
+<span class="c1">//   consumerSecret: &quot;&quot;);</span>
+
+<span class="c1">//app.UseFacebookAuthentication(</span>
+<span class="c1">//   appId: &quot;&quot;,</span>
+<span class="c1">//   appSecret: &quot;&quot;);</span>
+
+<span class="c1">//app.UseGoogleAuthentication();</span>
+</pre></div>
+
+
+<p>取消注释对应的行，并且添加appId和appSecret。</p>
+<p>第二步，如果在创建账户后需要做一些其他的操作，修改AccountController.cs中的<code>ExternalLoginConfirmation</code>方法。</p>
+<h2>4. Identity身份</h2>
+<h3>4.1 使用Claim添加自定义的字段</h3>
+<p>Identity 是第一个产生出来为每个用户识别身份的。<code>Account</code>的<code>Register</code>方法先生成创建一个<code>IdentityResult</code>，然后再使用<code>SignInAsync</code>。</p>
+<p>Claim是一个关于用户的声明，由Identity provider提供，比如用户1有Admin角色。</p>
+<p>Asp.Net生成的数据库中有<code>AspNetUsers</code>，<code>AspNetUserRoles</code>和<code>AspNetUserClaims</code>表，其中<code>AspNetUserClaims</code>用来存储用户自定义的一些信息。
+比如给用户在注册时添加一个名称：</p>
+<div class="highlight"><pre><span class="k">public</span> <span class="nf">async</span> <span class="nx">Task</span><span class="o">&lt;</span><span class="nx">ActionResult</span><span class="o">&gt;</span> <span class="nb">Register</span><span class="p">(</span><span class="nx">RegisterViewModel</span> <span class="nx">model</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ModelState.IsValid</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kd">var</span> <span class="n">user</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">ApplicationUser</span><span class="p">()</span> <span class="p">{</span> <span class="n">UserName</span> <span class="o">=</span> <span class="nx">model.Email</span><span class="p">,</span> <span class="n">Email</span> <span class="o">=</span> <span class="nx">model.Email</span><span class="p">};</span>
+        <span class="kd">var</span> <span class="n">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">UserManager.CreateAsync</span><span class="p">(</span><span class="nb">user</span><span class="p">,</span> <span class="nx">model.Password</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result.Succeeded</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">//添加Claims</span>
+            <span class="nx">UserManager.AddClaim</span><span class="p">(</span><span class="nx">user.Id</span><span class="p">,</span> <span class="nb">new</span> <span class="nx">Claim</span><span class="p">(</span><span class="nx">ClaimTypes.GivenName</span><span class="p">,</span> <span class="nx">model.FirstName</span><span class="p">));</span>
+            <span class="kd">var</span> <span class="n">service</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">CheckingAccountService</span><span class="p">(</span><span class="nx">HttpContext.GetOwinContext</span><span class="p">()</span>
+                <span class="bp">.</span><span class="nb">Get</span><span class="o">&lt;</span><span class="nx">ApplicationDbContext</span><span class="o">&gt;</span><span class="p">());</span>
+            <span class="nx">service.CreateCheckingAccount</span><span class="p">(</span><span class="nx">model.FirstName</span><span class="p">,</span> <span class="nx">model.LastName</span><span class="p">,</span>
+                <span class="nx">user.Id</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="nx">await</span> <span class="nx">SignInAsync</span><span class="p">(</span><span class="nb">user</span><span class="p">,</span> <span class="nx">isPersistent</span><span class="p">:</span> <span class="kc">false</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">RedirectToAction</span><span class="p">(</span><span class="s2">&quot;Index&quot;</span><span class="p">,</span> <span class="s2">&quot;Home&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="nx">AddErrors</span><span class="p">(</span><span class="nb">result</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 如果我们进行到这一步时某个地方出错，则重新显示表单</span>
+    <span class="k">return</span> <span class="nx">View</span><span class="p">(</span><span class="nx">model</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>获取Claims</p>
+<div class="highlight"><pre><span class="n">var</span> <span class="n">identity</span> <span class="o">=</span> <span class="p">(</span><span class="n">ClaimsIdentity</span><span class="p">)</span> <span class="n">User</span><span class="p">.</span><span class="n">Identity</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">name</span> <span class="o">=</span> <span class="n">identity</span><span class="p">.</span><span class="n">FindFirstValue</span><span class="p">(</span><span class="n">ClaimTypes</span><span class="p">.</span><span class="n">GivenName</span><span class="p">)</span> <span class="o">??</span> <span class="n">identity</span><span class="p">.</span><span class="n">GetUserName</span><span class="p">();</span>
+</pre></div>
+
+
+<h3>4.2 在model中添加自定义的字段</h3>
+<p>打开<code>IdentityModels.cs</code>，在<code>ApplicationUser</code>中添加:</p>
+<div class="highlight"><pre><span class="k">public</span> <span class="nf">class</span> <span class="nx">ApplicationUser</span> <span class="p">:</span> <span class="nx">IdentityUser</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">async</span> <span class="nx">Task</span><span class="o">&lt;</span><span class="nx">ClaimsIdentity</span><span class="o">&gt;</span> <span class="nx">GenerateUserIdentityAsync</span><span class="p">(</span><span class="nx">UserManager</span><span class="o">&lt;</span><span class="nx">ApplicationUser</span><span class="o">&gt;</span> <span class="nx">manager</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kd">var</span> <span class="n">userIdentity</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">manager.CreateIdentityAsync</span><span class="p">(</span><span class="nx">this</span><span class="p">,</span> <span class="nx">DefaultAuthenticationTypes.ApplicationCookie</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">userIdentity</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="nf">string</span> <span class="nx">Pin</span> <span class="p">{</span> <span class="nb">get</span><span class="p">;</span> <span class="nb">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>5 基于角色的认证</h2>
+<h3>5.1 为每个用户添加余额显示</h3>
+<p>每个Controller都有一个User属性，获取当前UserId的方法如下：</p>
+<div class="highlight"><pre><span class="n">var</span> <span class="n">userId</span> <span class="o">=</span> <span class="n">User</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">GetUserId</span><span class="p">();</span>
+</pre></div>
+
+
+<p>比如，我们要获取之前定义的账户余额，可以打开<code>CheckingAccountController.cs</code>中添加下面的代码</p>
+<div class="highlight"><pre><span class="n">private</span> <span class="n">ApplicationDbContext</span> <span class="n">db</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ApplicationDbContext</span><span class="p">();</span>
+
+<span class="c1">//</span>
+<span class="c1">// GET: /CheckingAccount/Details/</span>
+<span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">Details</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">var</span> <span class="n">userId</span> <span class="o">=</span> <span class="n">User</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">GetUserId</span><span class="p">();</span>
+    <span class="n">var</span> <span class="n">checkingAccount</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="n">CheckoutAccounts</span><span class="p">.</span><span class="n">First</span><span class="p">(</span><span class="n">c</span> <span class="o">=&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">ApplicationUserId</span> <span class="o">==</span> <span class="n">userId</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">View</span><span class="p">(</span><span class="n">checkingAccount</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>这样每个用户就都能看到自己的账户余额了。</p>
+<h3>5.2 显示用户账户余额列表</h3>
+<p>在<code>CheckingAccountController.cs</code>中添加：</p>
+<div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">List</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">View</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">CheckoutAccounts</span><span class="p">.</span><span class="n">ToList</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>现在，我们为List添加视图，右键：
+<img alt="Alt text" src="images/1416841607073.png" /></p>
+<p><strong>注意</strong>，如果按照上图配置发生错误，并且错误是“运行所选代码生成器时出错”，那么应该将数据上下文类留空，这样就可以了。</p>
+<p>然后编辑生成的模板，将编辑改为：</p>
+<div class="highlight"><pre><span class="err">@</span><span class="n">Html</span><span class="p">.</span><span class="n">ActionLink</span><span class="p">(</span><span class="s">&quot;详细&quot;</span><span class="p">,</span> <span class="s">&quot;DetailsForAdmin&quot;</span><span class="p">,</span> <span class="n">new</span> <span class="p">{</span> <span class="n">id</span><span class="o">=</span><span class="n">item</span><span class="p">.</span><span class="n">Id</span> <span class="p">})</span> <span class="o">|</span>
+</pre></div>
+
+
+<p>并且，在<code>CheckingAccountController.cs</code>中添加：</p>
+<div class="highlight"><pre><span class="k">[Authorize(Roles = &quot;Admin&quot;)]</span>
+<span class="err">public</span> <span class="err">ActionResult</span> <span class="err">DetailsForAdmin(int</span> <span class="err">id)</span>
+<span class="err">{</span>
+    <span class="na">var checkingAccount</span> <span class="o">=</span> <span class="s">db.CheckoutAccounts.First(c =&gt; c.Id == id);</span>
+<span class="s">    return View(&quot;Details&quot;, checkingAccount);</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>请注意，我们添加了<code>[Authorize(Roles="Admin")]</code>来限定只有Admin组的才能访问，下一节我们讲介绍如何使用角色分配。</p>
+<h2>6 给用户赋值角色</h2>
+<p>打开<code>Migrations\Configurations</code>，在<code>Seed</code>方法中添加如下：</p>
+<div class="highlight"><pre><span class="k">protected</span> <span class="nf">override</span> <span class="bp">void</span> <span class="nx">Seed</span><span class="p">(</span><span class="nx">AspNetMVCEssential.Models.ApplicationDbContext</span> <span class="nx">context</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//UserStore一定要使用context作为参数</span>
+    <span class="kd">var</span> <span class="n">userStore</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">UserStore</span><span class="o">&lt;</span><span class="nx">ApplicationUser</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="n">userManager</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">UserManager</span><span class="o">&lt;</span><span class="nx">ApplicationUser</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">userStore</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">context.Users.Any</span><span class="p">(</span><span class="n">u</span> <span class="o">=&gt;</span> <span class="nx">u.UserName</span> <span class="o">==</span> <span class="s2">&quot;liulixiang1988&quot;</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="c1">//1、创建用户</span>
+        <span class="kd">var</span> <span class="n">user</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">ApplicationUser</span> <span class="p">{</span> <span class="n">UserName</span> <span class="o">=</span> <span class="s2">&quot;liulixiang1988&quot;</span><span class="p">,</span> <span class="n">Email</span> <span class="o">=</span> <span class="s2">&quot;liulixiang1988@gmail.com&quot;</span> <span class="p">};</span>
+        <span class="c1">//下面这句会创建一个用户并且会立即执行，不需调用SaveChanges</span>
+        <span class="nx">userManager.Create</span><span class="p">(</span><span class="nb">user</span><span class="p">,</span> <span class="s2">&quot;passW0rd&quot;</span><span class="p">);</span>
+
+        <span class="c1">//2、创建用户相关的账户</span>
+        <span class="kd">var</span> <span class="n">service</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">CheckingAccountService</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+        <span class="nx">service.CreateCheckingAccount</span><span class="p">(</span><span class="s2">&quot;liulixiang1988&quot;</span><span class="p">,</span> <span class="s2">&quot;管理员&quot;</span><span class="p">,</span> <span class="nx">user.Id</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+
+        <span class="c1">//3、添加角色并保存</span>
+        <span class="nx">context.Roles.AddOrUpdate</span><span class="p">(</span><span class="n">r</span> <span class="o">=&gt;</span> <span class="nx">r.Name</span><span class="p">,</span> <span class="nb">new</span> <span class="nx">IdentityRole</span> <span class="p">{</span> <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Admin&quot;</span> <span class="p">});</span>
+        <span class="nx">context.SaveChanges</span><span class="p">();</span>
+
+        <span class="c1">//4、给用户添加角色，指定Id和角色名</span>
+        <span class="nx">userManager.AddToRole</span><span class="p">(</span><span class="nx">user.Id</span><span class="p">,</span> <span class="s2">&quot;Admin&quot;</span><span class="p">);</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">刘理想</span>
+  </span>
+<time datetime="2014-10-31T20:48:00" pubdate>五 31 十月 2014</time>  <span class="categories">
+    <a class="category" href="./tag/dotnet.html">DotNet</a>
+    <a class="category" href="./tag/web.html">Web</a>
+    <a class="category" href="./tag/aspnet-mvc.html">ASP.NET MVC</a>
+  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html" data-title="ASP.NET MVC5 学习笔记-4 OWIN和Katana" data-url="./aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+    </div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
+  </section>
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html">企业网站布局实践-02导航部分制作</a>
+      </li>
+      <li class="post">
+          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html">企业网站布局实践-01页面头部制作</a>
+      </li>
+      <li class="post">
+          <a href="./wang-ye-bu-ju-ji-chu.html">网页布局基础</a>
+      </li>
+      <li class="post">
+          <a href="./phonegapming-ling-xing-de-shi-yong.html">PhoneGap命令行的使用</a>
+      </li>
+      <li class="post">
+          <a href="./aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html">ASP.NET MVC5 学习笔记-5 测试</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="./category/android.html">Android</a></li>
+        <li><a href="./category/dotnet.html">DotNet</a></li>
+        <li><a href="./category/python.html">Python</a></li>
+        <li><a href="./category/sheng-huo.html">生活</a></li>
+        <li><a href="./category/web.html">Web</a></li>
+        <li><a href="./category/yi-dong-kai-fa.html">移动开发</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/flask.html">Flask</a>  </section>
+
+
+
+  <section>
+    <h1>GitHub Repos</h1>
+    <ul id="gh_repos">
+      <li class="loading">Status updating...</li>
+    </ul>
+      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
+    <script type="text/javascript">
+      $.domReady(function(){
+          if (!window.jXHR){
+              var jxhr = document.createElement('script');
+              jxhr.type = 'text/javascript';
+              jxhr.src = './theme/js/jXHR.js';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(jxhr, s);
+          }
+
+          github.showRepos({
+              user: 'liulixiang1988',
+              count: 5,
+              skip_forks: false,
+              target: '#gh_repos'
+          });
+      });
+    </script>
+    <script src="./theme/js/github.js" type="text/javascript"> </script>
+  </section>
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
+        </ul>
+    </section>
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2014-2015  - 理想 -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+</body>
+</html>
