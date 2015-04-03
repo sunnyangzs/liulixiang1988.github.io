@@ -68,6 +68,92 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">企业网站布局实践-05 新闻中心制作</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-03T14:00:00" pubdate>五 03 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1、结构分析</h2>
+<p><img alt="新闻中心" src="images/qy-web-07.png" /></p>
+<p>从上到下可以分为新闻标题、图片新闻和图片新闻。</p>
+<h2>2、创建结构</h2>
+<p>新闻中心分为标题、图片新闻和新闻列表3部分。
+其中，新闻列表还是使用无序列表。</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;h2&gt;</span>新闻中心<span class="nt">&lt;/h2&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;news.html&quot;</span><span class="nt">&gt;</span>More<span class="ni">&amp;gt;&amp;gt;</span><span class="nt">&lt;/a&gt;</span>
+ <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- title结束 --&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pic_news&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/news.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;h2&gt;</span>520 慕女神喊你来表白！<span class="nt">&lt;/h2&gt;</span>
+     <span class="nt">&lt;p&gt;</span>
+         活动时间：5月20日—5月25日<span class="nt">&lt;br&gt;</span>获奖公布时间：5月26日<span class="nt">&lt;br ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html">企业网站布局实践-04 信息展示区制作</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-03T11:22:00" pubdate>五 03 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 结构分析</h2>
+<p><img alt="结构分析" src="images/qy-web-05.png" /></p>
+<p>分析如下：</p>
+<p><img alt="结构分析" src="images/qy-web-06.png" /></p>
+<p>盒子之间的间距应该是多少呢？</p>
+<p>整个盒子宽度是1000px，3个盒子宽度是340、410以及230px(总和为980px)，那么外边据是否就是10px了呢（10*2+980=1000）？不是的，因为每个小盒子左右都有1px的边框，一共6px，因此是(20-6)/2 = 7px.</p>
+<h2>2. 实现</h2>
+<p>首先定义结构：</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;course&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;sidebar&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- main结束 --&gt;</span>
+</pre></div>
+
+
+<p>其次是LESS</p>
+<div class="highlight"><pre><span class="c1">//定义区域整体高度</span>
+<span class="p">.</span><span class="n">main</span><span class="p">{</span>
+    <span class="nl">height:</span><span class="mh">250</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">margin</span><span class="o">-</span><span class="nl">top:</span> <span class="mh">5</span><span class="n">px ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html">企业网站布局实践-03焦点图制作</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-02T01:19:00" pubdate>四 02 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 使用myFocus焦点图库</h2>
+<p>http://demo.jb51.net/js/myfocus/download.html</p>
+<p>选择demo演示下载解压，拷贝js文件夹与当前js文件夹合并。</p>
+<h3>1.1 引入myFocus库文件和样式文件</h3>
+<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/myFocus-2.0.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/mf-pattern/mF_YSlider.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;js/mf-pattern/mF_YSlider.css&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<h3>1.2 构建页面中使用的图片</h3>
+<p>首先添加图片</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ad&quot;</span> <span class="na">id=</span><span class="s">&quot;picBox&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;ul&gt;</span>
+     <span class="nt">&lt;li ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html">企业网站布局实践-02导航部分制作</a>
       </h1>
       <p class="meta"><time datetime="2015-04-01T23:59:00" pubdate>三 01 四月 2015</time></p>
@@ -116,6 +202,13 @@
 </pre></div>
 
 
+<p>去除li的默认图标</p>
+<div class="highlight"><pre><span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">-</span><span class="n">type</span><span class="o">:</span><span class="n">none</span><span class="p">;</span>
+<span class="c1">//或者</span>
+<span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">:</span><span class="n">none</span>
+</pre></div>
+
+
 <p>3、浮动菜单右侧</p>
 <div class="highlight"><pre><span class="n">float</span><span class="o">:</span> <span class="n">right</span><span class="o">;</span>
 </pre></div>
@@ -135,12 +228,7 @@
 
 <p>设置链接正常状态：</p>
 <div class="highlight"><pre><span class="n">a</span><span class="p">{</span>
-    <span class="o">&amp;:</span><span class="n">link</span><span class="p">,</span> <span class="o">&amp;:</span><span class="n">visited</span><span class="p">{</span>
-        <span class="nl">color:</span><span class="err">#</span><span class="mf">8E8</span><span class="n">E8E</span><span class="p">;</span>
-        <span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="o">&amp;:</span><span class="n">hover</span><span class="p">,</span> <span class="o">&amp;:</span><span class="n">active ...</span></pre></div></div>
+    <span class="o">&amp;:</span><span class="n">link ...</span></pre></div></div>
   <footer>
     <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html">Read On &crarr;</a>
   </footer>
@@ -178,6 +266,67 @@
     <a rel="full-article" href="../wang-ye-bu-ju-ji-chu.html">Read On &crarr;</a>
   </footer>
   		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../lessxue-xi-bi-ji.html">LESS学习笔记</a>
+      </h1>
+      <p class="meta"><time datetime="2015-03-29T08:59:00" pubdate>日 29 三月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. LESS注释</h2>
+<div class="highlight"><pre><span class="c1">//不会被编译到CSS中</span>
+<span class="cm">/*编译到CSS*/</span>
+</pre></div>
+
+
+<h2>2. 变量</h2>
+<div class="highlight"><pre><span class="c1">//定义</span>
+<span class="p">@</span><span class="nl">test_width:</span> <span class="mh">10</span><span class="n">px</span><span class="p">;</span>
+
+<span class="p">.</span><span class="n">box</span><span class="p">{</span>
+    <span class="nl">width:</span><span class="p">@</span><span class="n">test_width</span><span class="p">;</span> <span class="c1">//调用</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>3. 混合</h2>
+<div class="highlight"><pre><span class="c1">//第一种</span>
+<span class="p">.</span><span class="n">box1</span><span class="p">{</span>
+    <span class="nl">border:</span> <span class="mh">5</span><span class="n">px</span> <span class="n">solid</span> <span class="n">pink</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="n">box2</span><span class="p">{</span>
+    <span class="p">.</span><span class="n">box1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//第二种</span>
+
+<span class="p">.</span><span class="n">box3</span><span class="p">(@</span><span class="n">border_width</span><span class="p">){</span>
+    <span class="nl">border:</span> <span class="p">@</span><span class="n">border_width</span> <span class="n">solid</span> <span class="n">yellow</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="n">box3_1</span><span class="p">{</span>
+    <span class="p">.</span><span class="n">box3</span><span class="p">(</span><span class="mh">3</span><span class="n">px</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//第三种</span>
+<span class="p">.</span><span class="n">box4</span><span class="p">(@</span><span class="nl">border_width:</span><span class="mh">1</span><span class="n">px</span><span class="p">){</span>
+    <span class="nl">border:</span> <span class="p">@</span><span class="n">border_width</span> <span class="n">solid</span> <span class="n">yellow</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="n">box4_1</span><span class="p">{</span>
+    <span class="p">.</span><span class="n">box4</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>4. 匹配模式</h2>
+<div class="highlight"><pre><span class="p">.</span><span class="n">traingle ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../lessxue-xi-bi-ji.html">Read On &crarr;</a>
+  </footer>
+  		</article>
 <div class="pagination">
 
   <br />
@@ -190,13 +339,19 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">企业网站布局实践-05 新闻中心制作</a>
+      </li>
+      <li class="post">
+          <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html">企业网站布局实践-04 信息展示区制作</a>
+      </li>
+      <li class="post">
+          <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html">企业网站布局实践-03焦点图制作</a>
+      </li>
+      <li class="post">
           <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html">企业网站布局实践-02导航部分制作</a>
       </li>
       <li class="post">
           <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html">企业网站布局实践-01页面头部制作</a>
-      </li>
-      <li class="post">
-          <a href="../wang-ye-bu-ju-ji-chu.html">网页布局基础</a>
       </li>
     </ul>
   </section>
@@ -216,7 +371,7 @@
 
   <section>
   <h1>Tags</h1>
-    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/flask.html">Flask</a>  </section>
+    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/python.html">Python</a>  </section>
 
 
 
