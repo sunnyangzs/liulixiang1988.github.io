@@ -149,7 +149,7 @@
             <span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span> <span class="c1">//去掉默认list-style</span>
             <span class="nl">width:</span><span class="mi">100</span><span class="n">px</span><span class="p">;</span>
             <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="o">:</span> <span class="n">center</span><span class="p">;</span> <span class="c1">//文本中间对齐</span>
-            <span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span> <span class="mi">40</span><span class="n">px</span><span class="p">;</span> <span class="c1">//文本垂直居中</span>
+            <span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span> <span class="mi">40</span><span class="n">px</span><span class="p">;</span> <span class="c1">//文本垂直居中，与对应的盒子高度对齐</span>
         <span class="p">}</span>
 
         <span class="n">a</span><span class="p">{</span>
@@ -181,7 +181,58 @@
     <span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="o">:</span> <span class="mi">7</span><span class="n">px</span><span class="p">;</span> <span class="c1">//处于导航中间</span>
     <span class="nl">boader:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="err">#</span><span class="n">FFF</span><span class="p">;</span> <span class="c1">//边框白色为1</span>
 <span class="p">}</span>
-</pre></div></div>
+</pre></div>
+
+
+<h3>更改菜单背景颜色</h3>
+<p>由于a标签属于内联元素，无高度和宽度属性，因此控制鼠标经过状态改变背景颜色时，仅在有文字的地方显示背景颜色。解决的办法是把a标签变为块级元素.</p>
+<div class="highlight"><pre><span class="n">display</span><span class="o">:</span><span class="n">block</span>
+</pre></div>
+
+
+<p>综上，实现一个菜单基本如下：</p>
+<div class="highlight"><pre><span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>全部<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>初级<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>中级<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>高级<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="cm">/*1. 每个列表项的宽度为50px，高度为30px */</span>
+<span class="n">ul</span><span class="p">{</span>
+    <span class="nl">height:</span><span class="mh">30</span><span class="n">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*2. 列表中的文字在水平和垂直方向上均居中显示*/</span>
+<span class="n">li</span><span class="p">{</span>
+    <span class="n">list</span><span class="o">-</span><span class="nl">style:</span><span class="n">none</span><span class="p">;</span>
+    <span class="nl">float:</span><span class="n">left</span><span class="p">;</span>
+    <span class="nl">width:</span><span class="mh">50</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">text</span><span class="o">-</span><span class="nl">align:</span><span class="n">center</span><span class="p">;</span>
+    <span class="n">line</span><span class="o">-</span><span class="nl">height:</span><span class="mh">30</span><span class="n">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*3. 超链接初始状态和访问后的状态均为黑色无下划线，鼠标经过和点击时文字均为白色，无下划线，背景颜色为#BE3948。*/</span>
+<span class="n">li</span> <span class="n">a</span> <span class="p">{</span>
+    <span class="nl">display:</span><span class="n">block</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">li</span> <span class="nl">a:</span><span class="n">link</span><span class="p">,</span> <span class="n">li</span> <span class="nl">a:</span><span class="n">visited</span><span class="p">{</span>
+    <span class="nl">color:</span><span class="p">#</span><span class="mh">000</span><span class="p">;</span>
+    <span class="n">text</span><span class="o">-</span><span class="nl">decoration:</span><span class="n">none</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">li</span> <span class="nl">a:</span><span class="n">hover</span><span class="p">,</span> <span class="n">li</span> <span class="nl">a:</span><span class="n">active</span><span class="p">{</span>
+    <span class="nl">color:</span><span class="p">#</span><span class="no">FFF</span><span class="p">;</span>
+    <span class="n">text</span><span class="o">-</span><span class="nl">decoration:</span><span class="n">none</span><span class="p">;</span>
+    <span class="n">background</span><span class="o">-</span><span class="nl">color:</span><span class="p">#</span><span class="no">BE3948</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>效果图：</p>
+<p><img alt="菜单效果图" src="images/qy-web-03.jpg" /></p></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -226,19 +277,19 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">企业网站布局实践-05 新闻中心制作</a>
+      </li>
+      <li class="post">
+          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html">企业网站布局实践-04 信息展示区制作</a>
+      </li>
+      <li class="post">
+          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html">企业网站布局实践-03焦点图制作</a>
+      </li>
+      <li class="post">
           <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html">企业网站布局实践-02导航部分制作</a>
       </li>
       <li class="post">
           <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html">企业网站布局实践-01页面头部制作</a>
-      </li>
-      <li class="post">
-          <a href="./wang-ye-bu-ju-ji-chu.html">网页布局基础</a>
-      </li>
-      <li class="post">
-          <a href="./phonegapming-ling-xing-de-shi-yong.html">PhoneGap命令行的使用</a>
-      </li>
-      <li class="post">
-          <a href="./aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html">ASP.NET MVC5 学习笔记-5 测试</a>
       </li>
     </ul>
   </section>
@@ -258,7 +309,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 
   <section>
   <h1>Tags</h1>
-    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/flask.html">Flask</a>  </section>
+    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/python.html">Python</a>  </section>
 
 
 
