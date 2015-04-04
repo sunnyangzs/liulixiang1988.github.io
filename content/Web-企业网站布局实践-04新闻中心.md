@@ -36,7 +36,7 @@ Author: 刘理想
 </div><!-- news结束 -->
 ```
 
-##3、创建CSS
+##3、创建新闻中心标题的CSS
 
 新闻标题是title节
 
@@ -50,6 +50,7 @@ Author: 刘理想
         height: 35px;
         border-bottom: 2px solid #E8E8E8;
 
+        //“新闻中心”几个字左对齐
         &_left{
             width: 70%;
             line-height: 35px; //居中
@@ -61,6 +62,7 @@ Author: 刘理想
             padding-left: 20px;
         }
 
+        //"more"右对齐
         &_right{
             width:20%;
             line-height: 35px;
@@ -68,7 +70,7 @@ Author: 刘理想
             text-align: right;
 
             a{
-                text-decoration: none;
+                text-decoration: none; 
                 color: #999999;
                 font-family: "宋体";
                 font-size: 10px;
@@ -79,3 +81,73 @@ Author: 刘理想
     }
 }
 ```
+
+说明：
+- `text-decoration`去除a的下划线
+- `line-height`设置行高可以设置居中对齐
+
+运行结果如下：
+
+![新闻中心标题](images/qy-web-08.png)
+
+##4、新闻中心之图片新闻
+
+
+```
+//图片新闻
+.pic_news{
+    height:80px;
+    margin-top: 10px;
+    line-height: 22px; //设置行高
+    img{
+        float: left;
+        margin-top: 0 5px;
+    }
+
+    a{
+        color:#C00;
+        text-decoration: none;
+    }
+}
+```
+
+说明：
+- `line-height`设置行高可以增大文字行间距。
+
+##5、新闻中心之新闻列表
+
+```
+//新闻列表
+.news_list(){
+    margin-top: 20px;
+    li{   
+        list-style-type: none; //去除默认样式
+        background: url(../images/list.jpg) no-repeat; //添加新样式
+        padding-left: 10px; //保持图标与文字一段距离
+        margin: 8px; //设置周围间距
+        border-bottom: 1px dotted #CCC; //每条新闻下加虚线
+        //新闻链接样式
+        a{
+            &:link, &:visited{
+                text-decoration: none;
+                color: #000;
+            }
+
+            &:hover, &:active{
+                text-decoration: none;
+                color: #F00;
+            }
+        }
+        //日期
+        span{
+            color: #999;
+            float: right;
+        }
+    }
+}
+```
+
+注意li符号可以通过background、padding-left、list-style-type 3者结合进行设置，也可使用list-style-image进行设置。
+
+list-style-type可以设置列表项目符号为：none无项目符号，disc实心圆，circle空心圆，square实心方块等但是不可以设置图片为项目符号。
+
