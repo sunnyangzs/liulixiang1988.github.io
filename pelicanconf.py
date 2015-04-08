@@ -16,7 +16,7 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS =  (('GitHub', 'https://github.com/liulixiang1988/'),)
+LINKS = (('GitHub', 'https://github.com/liulixiang1988/'),)
 
 # Social widget
 SOCIAL = (('微博', 'http://weibo.com/liulixiang1988'),)
@@ -26,18 +26,14 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-THEME='octopress-themes'
+THEME = 'octopress-themes'
 
 DUOSHUO_SITENAME = "liulixiang1988"
 
-GITHUB_USER="liulixiang1988"
-GITHUB_SHOW_USER_LINK=True
+GITHUB_USER = "liulixiang1988"
+GITHUB_SHOW_USER_LINK = True
 
-SIDEBAR_IMAGE="images/avatar.jpg"
-SIDEBAR_IMAGE_ALT="刘理想"
+SIDEBAR_IMAGE = "images/avatar.jpg"
+SIDEBAR_IMAGE_ALT = "刘理想"
 
-SEARCH_BOX=True
-
-
-
-
+SEARCH_BOX = True
