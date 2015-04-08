@@ -50,6 +50,9 @@
     <a href="./category/dotnet.html">Dotnet</a>
     </li>
     <li >
+    <a href="./category/java.html">Java</a>
+    </li>
+    <li >
     <a href="./category/python.html">Python</a>
     </li>
     <li >
@@ -65,6 +68,165 @@
   <div id="main">
     <div id="content">
 <div class="blog-index">
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="./aspnet-mvc5-xue-xi-bi-ji-2-razor.html">ASP.NET MVC5 学习笔记-2 Razor</a>
+      </h1>
+      <p class="meta"><time datetime="2014-10-31T09:28:00" pubdate>五 31 十月 2014</time></p>
+</header>
+
+  <div class="entry-content"><p>[TOC]</p>
+<h1>ASP.NET MVC5 学习笔记-2 Razor</h1>
+<h2>1. Razor</h2>
+<div class="highlight"><pre><span class="p">@</span><span class="o">*</span><span class="nx">注释</span><span class="o">*</span><span class="p">@</span>
+
+<span class="nx">你在用</span> <span class="p">@</span><span class="nx">Request.Browser.Browser</span><span class="p">,</span> <span class="nx">发送邮件给support</span><span class="p">@</span><span class="nx">qq.com</span><span class="p">,</span> <span class="nx">转义</span><span class="p">@@</span><span class="nx">qq</span>
+
+<span class="p">@{</span>
+    <span class="kd">var</span> <span class="n">amounts</span> <span class="o">=</span> <span class="nb">new</span> <span class="nb">List</span><span class="o">&lt;</span><span class="kt">Decimal</span><span class="o">&gt;</span> <span class="p">{</span><span class="mi">100</span><span class="p">,</span> <span class="mf">25.00</span><span class="nx">m</span><span class="p">,</span> <span class="mf">30.0</span><span class="nx">m</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">};</span> 
+<span class="p">}</span>
+
+<span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+    <span class="p">@</span><span class="nb">foreach</span> <span class="p">(</span><span class="kt">decimal</span> <span class="n">amount</span> <span class="k">in</span> <span class="nx">amounts</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">@</span><span class="nx">formatAmount</span><span class="p">(</span><span class="nx">amount</span><span class="p">)</span><span class="o">&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">text</span><span class="o">&gt;</span><span class="nx">普通文本</span><span class="o">&lt;/</span><span class="nx">text</span><span class="o">&gt;</span>
+        <span class="p">@:</span><span class="nx">普通文本</span>
+    <span class="p">}</span>
+<span class="o">&lt;/</span><span class="nx">ul</span><span class="o">&gt;</span>
+
+<span class="p">@</span><span class="nx">helper</span> <span class="nx">formatAmount</span><span class="p">(</span><span class="kt">decimal</span> <span class="nx">amount ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="./aspnet-mvc5-xue-xi-bi-ji-2-razor.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="./shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html">使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</a>
+      </h1>
+      <p class="meta"><time datetime="2014-10-30T00:00:00" pubdate>四 30 十月 2014</time></p>
+</header>
+
+  <div class="entry-content"><h1>使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</h1>
+<h2>0. 简介</h2>
+<h3>0.1 Token认证</h3>
+<h3>0.2 Web API</h3>
+<hr />
+<h2>1. 创建后端API</h2>
+<h3>1.1 第一步 创建Web API项目</h3>
+<p>使用VS2013，创建"ASP.NET Web应用程序"，解决方案名为AngularJSAuthentication，项目名为AngularJSAuthentication.API:</p>
+<p><img alt="Alt text" src="images/dot-net-owin-1.png" /></p>
+<h3>1.2 第二步 安装必要的NuGet包</h3>
+<div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AspNet</span><span class="p">.</span><span class="n">WebApi</span><span class="p">.</span><span class="n">Owin</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">5.1.2</span>
+<span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Owin</span><span class="p">.</span><span class="n">Host ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="./shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="./flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html">Flask笔记－01 基本应用框架</a>
+      </h1>
+      <p class="meta"><time datetime="2014-10-18T23:11:00" pubdate>六 18 十月 2014</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 初始化</h2>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+</pre></div>
+
+
+<p><code>__name__</code>的作用是用来给Flask来判断应用的根路径的。</p>
+<h2>2. 路由和视图函数</h2>
+<div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">&#39;Hello World!&#39;</span>
+</pre></div>
+
+
+<p>如果要给路由添加参数，可以这样:</p>
+<div class="highlight"><pre>
+</pre></div>
+
+
+<p>其中<code>&lt;name&gt;</code>就是参数，如果你想给参数加上类型，可以使用<code>/user/&lt;int:id&gt;</code>，Flask支持在路由中使用<code>int</code>, <code>float</code>和<code>path</code>等类型。<code>path</code>是字符串，但是并不把<code>/</code>当作分隔符，而是把它看作动态组成的一部分。</p>
+<h2>3. 启动服务器</h2>
+<p>Flask包含了一个小型的开发服务器，启动它：</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="./flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="./shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html">使用Android开发一个阅后即焚－03 在tab中使用fragment</a>
+      </h1>
+      <p class="meta"><time datetime="2014-10-15T23:06:00" pubdate>三 15 十月 2014</time></p>
+</header>
+
+  <div class="entry-content"><p>在tab中使用fragment</p></div>
+  <footer>
+    <a rel="full-article" href="./shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="./shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html">使用Android开发一个阅后即焚-02 使用Parse.com添加用户</a>
+      </h1>
+      <p class="meta"><time datetime="2014-10-05T10:12:00" pubdate>日 05 十月 2014</time></p>
+</header>
+
+  <div class="entry-content"><p>使用Parse.com添加用户</p></div>
+  <footer>
+    <a rel="full-article" href="./shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="./shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html">使用Android开发阅后即焚应用-01 开始</a>
+      </h1>
+      <p class="meta"><time datetime="2014-10-04T09:48:00" pubdate>六 04 十月 2014</time></p>
+</header>
+
+  <div class="entry-content"><p>使用Android开发阅后即焚应用，项目介绍以及项目的搭建。</p></div>
+  <footer>
+    <a rel="full-article" href="./shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html">使用Android开发一个博客阅读器-05 使用Intent显示和共享博客</a>
+      </h1>
+      <p class="meta"><time datetime="2014-10-01T13:30:00" pubdate>三 01 十月 2014</time></p>
+</header>
+
+  <div class="entry-content"><p>Android实战开发，使用Android开发一个博客阅读器，第五篇，使用Intent显示和共享博客</p></div>
+  <footer>
+    <a rel="full-article" href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-04-zai-listzhong-zhan-xian-shu-ju.html">使用Android开发一个博客阅读器-04 在List中展现数据</a>
+      </h1>
+      <p class="meta"><time datetime="2014-09-27T11:30:00" pubdate>六 27 九月 2014</time></p>
+</header>
+
+  <div class="entry-content"><p>Android实战开发，使用Android开发一个博客阅读器，第四篇，在List中展现数据</p></div>
+  <footer>
+    <a rel="full-article" href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-04-zai-listzhong-zhan-xian-shu-ju.html">Read On &crarr;</a>
+  </footer>
+  		</article>
   		<article>
 <header>
       <h1 class="entry-title">
@@ -91,110 +253,6 @@
     <a rel="full-article" href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-03-cong-wang-luo-zhong-huo-qu-shu-ju.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html">使用Android开发一个博客阅读器-02 从头开始创建</a>
-      </h1>
-      <p class="meta"><time datetime="2014-09-24T16:16:00" pubdate>三 24 九月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>Android实战开发，使用Android开发一个博客阅读器，第二篇，从头创建</p></div>
-  <footer>
-    <a rel="full-article" href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html">使用Android开发一个博客阅读器-01 使用Master-Detail模板</a>
-      </h1>
-      <p class="meta"><time datetime="2014-09-19T21:36:00" pubdate>五 19 九月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>Android实战开发，使用Android开发一个博客阅读器</p></div>
-  <footer>
-    <a rel="full-article" href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./nancy-webkuang-jia.html">Nancy Web框架</a>
-      </h1>
-      <p class="meta"><time datetime="2014-09-12T23:39:00" pubdate>五 12 九月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>.Net Nancy框架, https://github.com/NancyFx/Nancy</p></div>
-  <footer>
-    <a rel="full-article" href="./nancy-webkuang-jia.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html">Django REST Framework笔记-01 介绍与安装</a>
-      </h1>
-      <p class="meta"><time datetime="2014-09-08T22:15:00" pubdate>一 08 九月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>Django REST Framework笔记-01 介绍与安装</p></div>
-  <footer>
-    <a rel="full-article" href="./django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./androidxue-xi-bi-ji-06-androidyong-hu-jie-mian-zhi-bu-ju.html">Android学习笔记-06 Android用户界面之布局</a>
-      </h1>
-      <p class="meta"><time datetime="2014-08-28T08:36:00" pubdate>四 28 八月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>Android学习笔记-06 Android用户界面之布局</p></div>
-  <footer>
-    <a rel="full-article" href="./androidxue-xi-bi-ji-06-androidyong-hu-jie-mian-zhi-bu-ju.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./androidxue-xi-bi-ji-04-androidsi-da-he-xin-zu-jian-zhi-content-provider.html">Android学习笔记 - 04 Android四大核心组件之Content Provider</a>
-      </h1>
-      <p class="meta"><time datetime="2014-08-27T09:52:00" pubdate>三 27 八月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>Android学习笔记 - 04 Android四大核心组件之Content Provider</p></div>
-  <footer>
-    <a rel="full-article" href="./androidxue-xi-bi-ji-04-androidsi-da-he-xin-zu-jian-zhi-content-provider.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./androidxue-xi-bi-ji-05-androidying-yong-he-xin-zhi-intent.html">Android学习笔记 - 05 Android应用核心之Intent</a>
-      </h1>
-      <p class="meta"><time datetime="2014-08-27T09:52:00" pubdate>三 27 八月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>Android学习笔记 - 05 Android应用核心之Intent</p></div>
-  <footer>
-    <a rel="full-article" href="./androidxue-xi-bi-ji-05-androidying-yong-he-xin-zhi-intent.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./androidxue-xi-bi-ji-03-androidsi-da-he-xin-zu-jian-zhi-broadcast.html">Android学习笔记 - 03 Android四大核心组件之BroadCast</a>
-      </h1>
-      <p class="meta"><time datetime="2014-08-27T09:51:00" pubdate>三 27 八月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>Android学习笔记 - 03 Android四大核心组件之BroadCast</p></div>
-  <footer>
-    <a rel="full-article" href="./androidxue-xi-bi-ji-03-androidsi-da-he-xin-zu-jian-zhi-broadcast.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="./index4.html">&larr; Older</a>
 
@@ -209,19 +267,19 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">企业网站布局实践-05 新闻中心制作</a>
+          <a href="./java-webzhi-jsp-02-jspji-chu-yu-fa.html">Java Web之JSP-02 JSP基础语法</a>
       </li>
       <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html">企业网站布局实践-04 信息展示区制作</a>
+          <a href="./java-webzhi-jsp-01-java-webjian-jie.html">Java Web之JSP-01 Java Web简介</a>
       </li>
       <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html">企业网站布局实践-03焦点图制作</a>
+          <a href="./htmlcssbu-yi.html">HTML\CSS补遗</a>
       </li>
       <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html">企业网站布局实践-02导航部分制作</a>
+          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html">企业网站布局实践-10 新闻详情页的制作</a>
       </li>
       <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html">企业网站布局实践-01页面头部制作</a>
+          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html">企业网站布局实践-09 新闻列表页制作</a>
       </li>
     </ul>
   </section>
@@ -231,6 +289,7 @@
     <ul id="recent_posts">
         <li><a href="./category/android.html">Android</a></li>
         <li><a href="./category/dotnet.html">DotNet</a></li>
+        <li><a href="./category/java.html">Java</a></li>
         <li><a href="./category/python.html">Python</a></li>
         <li><a href="./category/sheng-huo.html">生活</a></li>
         <li><a href="./category/web.html">Web</a></li>
@@ -241,7 +300,7 @@
 
   <section>
   <h1>Tags</h1>
-    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/python.html">Python</a>  </section>
+    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/java.html">Java</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/css.html">CSS</a>  </section>
 
 
 
