@@ -1,5 +1,1453 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2015-04-03T14:00:00+08:00</updated><entry><title>企业网站布局实践-05 新闻中心制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html" rel="alternate"></link><updated>2015-04-03T14:00:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-03:qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html</id><summary type="html">&lt;h2&gt;1、结构分析&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2015-04-08T00:30:00+08:00</updated><entry><title>Java Web之JSP-02 JSP基础语法</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-02-jspji-chu-yu-fa.html" rel="alternate"></link><updated>2015-04-08T00:30:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-08:java-webzhi-jsp-02-jspji-chu-yu-fa.html</id><summary type="html">&lt;h2&gt;1. JSP简介&lt;/h2&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-01 Java Web简介</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-01-java-webjian-jie.html" rel="alternate"></link><updated>2015-04-07T21:40:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-07:java-webzhi-jsp-01-java-webjian-jie.html</id><summary type="html">&lt;h2&gt;1. Tomcat配置&lt;/h2&gt;
+&lt;h3&gt;1.1 创建环境变量&lt;/h3&gt;
+&lt;p&gt;创建环境变量&lt;code&gt;CATALINA_HOME&lt;/code&gt;,值为Tomcat所在根目录（比如，windows下可能为为&lt;code&gt;C:\Program Files (x86)\Apache Software Foundation\Tomcat 7.0&lt;/code&gt;).&lt;/p&gt;
+&lt;h3&gt;1.2 启动Tomcat&lt;/h3&gt;
+&lt;p&gt;在&lt;code&gt;CATALINA_HOME&lt;/code&gt;的bin目录下有startup脚本。&lt;/p&gt;
+&lt;h3&gt;1.3 测试&lt;/h3&gt;
+&lt;p&gt;地址：http://localhost:8080&lt;/p&gt;
+&lt;h2&gt;2. Tomcat目录结构&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="tomcat" src="images/java-web-jsp-01.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;3. 手工编写第一个Java  Web应用程序&lt;/h2&gt;
+&lt;h3&gt;3.1 创建Web App目录&lt;/h3&gt;
+&lt;p&gt;在Tomcat的webapps目录下创建目录myhome&lt;/p&gt;
+&lt;h3&gt;3.2 在myhome目录下创建内容&lt;/h3&gt;
+&lt;p&gt;1、创建index.jsp:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;html&lt;/span&gt; &lt;span class="na"&gt;lang=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;charset=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;UTF-8&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;你好&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;你好世界&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2、创建WEB-INF目录
+从Tomcat的webapps/examples/WEB-INF下拷贝web.xml，并且只保留根标签&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;ISO-8859-1&amp;quot;?&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;web-app&lt;/span&gt; &lt;span class="na"&gt;xmlns=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://java.sun.com/xml/ns/javaee&amp;quot;&lt;/span&gt;
+  &lt;span class="na"&gt;xmlns:xsi=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;&lt;/span&gt;
+  &lt;span class="na"&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://java.sun.com/xml/ns/javaee&lt;/span&gt;
+&lt;span class="s"&gt;                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&amp;quot;&lt;/span&gt;
+  &lt;span class="na"&gt;version=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;3.0&amp;quot;&lt;/span&gt;
+  &lt;span class="na"&gt;metadata-complete=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/web-app&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;创建classes和lib子文件夹&lt;/p&gt;
+&lt;h2&gt;4. WEB-INF目录详解&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;WEB-INF目录是一个安全目录，只有通过服务器才能访问。&lt;/li&gt;
+&lt;li&gt;web.xml,项目部署文件，比如配置项目的欢迎页面。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="nt"&gt;&amp;lt;welcome-file-list&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;welcome-file&amp;gt;&lt;/span&gt;/haha.jsp&lt;span class="nt"&gt;&amp;lt;/welcome-file&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/welcome-file-list&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;classes文件夹，用以放置*.class文件。&lt;/li&gt;
+&lt;li&gt;lib文件夹，用于存放需要的jar包。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;5. 使用eclipse开发web&lt;/h2&gt;
+&lt;h3&gt;5.1 MyEclipse配置JRE&lt;/h3&gt;
+&lt;p&gt;windows-&amp;gt;preference-&amp;gt;java-&amp;gt;Installed JREs&lt;/p&gt;
+&lt;h3&gt;5.2 MyEclipse集成Tomcat服务器&lt;/h3&gt;
+&lt;p&gt;windows-&amp;gt;preference-&amp;gt;Myeclipse-&amp;gt;server-&amp;gt;Runtime Environments&lt;/p&gt;
+&lt;p&gt;启动Tomcat&lt;/p&gt;
+&lt;h3&gt;5.3 使用MyEclipse创建Java web应用&lt;/h3&gt;
+&lt;p&gt;新建web project，命名为MyFirstWebApp，其余默认&lt;/p&gt;
+&lt;h3&gt;5.4 修改字体&lt;/h3&gt;
+&lt;p&gt;windows-&amp;gt;preference-&amp;gt;General-&amp;gt;Appearance-&amp;gt;Colors and Fonts，然后修改Text Font。&lt;/p&gt;
+&lt;h2&gt;6. 修改Tomcat服务器默认端口&lt;/h2&gt;
+&lt;p&gt;修改conf/server.xml文件&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Connector&lt;/span&gt; &lt;span class="n"&gt;executor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tomcatThreadPool&amp;quot;&lt;/span&gt;
+           &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;8080&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;protocol&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;HTTP/1.1&amp;quot;&lt;/span&gt;
+           &lt;span class="n"&gt;connectionTimeout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;20000&amp;quot;&lt;/span&gt;
+           &lt;span class="n"&gt;redirectPort&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;8443&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>HTML\CSS补遗</title><link href="http://liulixiang1988.github.io/htmlcssbu-yi.html" rel="alternate"></link><updated>2015-04-06T21:36:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-06:htmlcssbu-yi.html</id><summary type="html">&lt;h2&gt;1. HTML标签&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;：有了段落又有了标题，现在如果想在一段话中特别强调某几个文字，这时候就可以用到&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;或&lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;标签。但两者在强调的语气上有区别:&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt; 表示强调，&lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt; 表示更强烈的强调。并且在浏览器中&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt; 默认用&lt;em&gt;斜体&lt;/em&gt;表示，&lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;用&lt;strong&gt;粗体&lt;/strong&gt;表示。两个标签相比，目前国内前端程序员更喜欢使用&lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;表示强调。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;span&amp;gt;&lt;/code&gt;标签是没有语义的，它的作用就是为了设置单独的样式用的。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;q&amp;gt;&lt;/code&gt;标签，短文本引用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;blockquote&amp;gt;&lt;/code&gt;的作用也是引用别人的文本。但它是对长文本的引用，如在文章中引入大段某知名作家的文字，这时需要这个标签。  等等，上一节&lt;code&gt;&amp;lt;q&amp;gt;&lt;/code&gt;标签不是也是对文本的引用吗？不要忘记&lt;code&gt;&amp;lt;q&amp;gt;&lt;/code&gt;标签是对简短文本的引用，比如说引用一句话就用到&lt;code&gt;&amp;lt;q&amp;gt;&lt;/code&gt;标签。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;标签分行显示文本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;amp;nbsp;&lt;/code&gt;空格&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;hr&amp;gt;&lt;/code&gt;标签，添加水平横线&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;address&amp;gt;&lt;/code&gt;标签，为网页加入地址信息,在浏览器上显示的样式为斜体:&lt;code&gt;&amp;lt;address&amp;gt;北京市西城区德外大街10号&amp;lt;/address&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;code&amp;gt;&lt;/code&gt;标签:在介绍语言技术的网站中，必免不了在网页中显示一些计算机专业的编程代码，当代码为一行代码时，你就可以使用&lt;code&gt;&amp;lt;code&amp;gt;&lt;/code&gt;标签了，如下面例子：&lt;code&gt;&amp;lt;code&amp;gt;var i=i+300;&amp;lt;/code&amp;gt;&lt;/code&gt;.注意：在文章中一般如果要插入多行代码时不能使用&lt;code&gt;标签了。如果是多行代码，可以使用&lt;code&gt;&amp;lt;pre&amp;gt;&lt;/code&gt;标签.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;pre&amp;gt;&lt;/code&gt;标签为你的网页加入大段代码&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;ol&amp;gt;&lt;/code&gt;无序和有序列表&lt;/li&gt;
+&lt;li&gt;table &lt;code&gt;&amp;lt;table summary=""&amp;gt;&amp;lt;caption&amp;gt;&amp;lt;/caption&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;a:&lt;code&gt;&amp;lt;a  href="目标网址"  title="鼠标滑过显示的文本"&amp;gt;链接显示的文本&amp;lt;/a&amp;gt;&lt;/code&gt;.&lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt;标签在默认情况下，链接的网页是在当前浏览器窗口中打开，有时我们需要在新的浏览器窗口中打开，需要：&lt;code&gt;&amp;lt;a href="目标网址" target="_blank"&amp;gt;click here!&amp;lt;/a&amp;gt;&lt;/code&gt;, href属性还可以是&lt;code&gt;mailto:550488300@qq.com&lt;/code&gt;这种形式，其中参数如下图：&lt;img alt="" src="images/web-htmlcss-01.png" /&gt;。&lt;/li&gt;
+&lt;li&gt;img: &lt;code&gt;&amp;lt;img src="图片地址" alt="下载失败时的替换文本" title = "提示文本"&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;2. Form标签&lt;/h2&gt;
+&lt;h3&gt;2.1 文本域，支持多行文本输入&lt;/h3&gt;
+&lt;p&gt;当用户需要在表单中输入大段文字时，需要用到文本输入域。
+语法：
+&lt;code&gt;&amp;lt;textarea  rows="行数" cols="列数"&amp;gt;文本&amp;lt;/textarea&amp;gt;&lt;/code&gt;
+1、&lt;code&gt;&amp;lt;textarea&amp;gt;&lt;/code&gt;标签是成对出现的，以&lt;code&gt;&amp;lt;textarea&amp;gt;&lt;/code&gt;开始，以&lt;code&gt;&amp;lt;/textarea&amp;gt;&lt;/code&gt;结束。
+2、cols ：多行输入域的列数。
+3、rows ：多行输入域的行数。
+4、在&lt;code&gt;&amp;lt;textarea&amp;gt;&amp;lt;/textarea&amp;gt;&lt;/code&gt;标签之间可以输入默认值。&lt;/p&gt;
+&lt;h3&gt;2.2 使用单选框、复选框，让用户选择&lt;/h3&gt;
+&lt;p&gt;在使用表单设计调查表时，为了减少用户的操作，使用选择框是一个好主意，html中有两种选择框，即单选框和复选框，两者的区别是单选框中的选项用户只能选择一项，而复选框中用户可以任意选择多项，甚至全选。请看下面的例子:
+语法：
+&lt;code&gt;&amp;lt;input   type="radio/checkbox"   value="值"    name="名称"   checked="checked"/&amp;gt;&lt;/code&gt;
+1、type:
+   当 type="radio" 时，控件为单选框
+   当 type="checkbox" 时，控件为复选框
+2、value：提交数据到服务器的值（后台程序PHP使用）
+3、name：为控件命名，以备后台程序 ASP、PHP 使用
+4、checked：当设置 checked="checked" 时，该选项被默认选中&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;:同一组的单选按钮，name 取值一定要一致，比如上面例子为同一个名称“radioLove”，这样同一组的单选按钮才可以起到单选的作用。&lt;/p&gt;
+&lt;h3&gt;2.3 select&lt;/h3&gt;
+&lt;p&gt;单选：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;select&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;看书&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;看书&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;旅游&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;selected=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;selected&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;旅游&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;运动&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;运动&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;购物&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;购物&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;使用下拉列表框进行多选
+下拉列表也可以进行多选操作，在&lt;code&gt;&amp;lt;select&amp;gt;&lt;/code&gt;标签中设置&lt;code&gt;multiple="multiple"&lt;/code&gt;属性，就可以实现多选功能，在 widows 操作系统下，进行多选时按下Ctrl键同时进行单击（在 Mac下使用 Command +单击），可以选择多个选项。如下代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;select&lt;/span&gt; &lt;span class="na"&gt;multiple=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;multiple&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;看书&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;看书&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;旅游&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;旅游&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;运动&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;运动&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;购物&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;购物&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2.4 使用提交按钮，提交数据&lt;/h3&gt;
+&lt;p&gt;在表单中有两种按钮可以使用，分别为：提交按钮、重置。这一小节讲解提交按钮：当用户需要提交表单信息到服务器时，需要用到提交按钮。
+语法：
+&lt;code&gt;&amp;lt;input   type="submit"   value="提交"&amp;gt;&lt;/code&gt;
+type：只有当&lt;code&gt;type&lt;/code&gt;值设置为&lt;code&gt;submit&lt;/code&gt;时，按钮才有提交作用
+value：按钮上显示的文字&lt;/p&gt;
+&lt;h3&gt;2.5 使用重置按钮，重置表单信息&lt;/h3&gt;
+&lt;p&gt;当用户需要重置表单信息到初始时的状态时，比如用户输入“用户名”后，发现书写有误，可以使用重置按钮使输入框恢复到初始状态。只需要把type设置为"reset"就可以。
+语法：
+&lt;code&gt;&amp;lt;input type="reset" value="重置"&amp;gt;&lt;/code&gt;
+type：只有当type值设置为reset时，按钮才有重置作用
+value：按钮上显示的文字&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;form&lt;/span&gt; &lt;span class="na"&gt;action=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;save.php&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;method=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;label&amp;gt;&lt;/span&gt;爱好:&lt;span class="nt"&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;select&amp;gt;&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;看书&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;看书&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;旅游&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;selected=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;selected&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;旅游&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;运动&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;运动&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;购物&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;购物&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;submit&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;确定&amp;quot;&lt;/span&gt;  &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;reset&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;重置&amp;quot;&lt;/span&gt;  &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2.6 form表单中的label标签&lt;/h3&gt;
+&lt;p&gt;小伙伴们，你们在前面学习表单各种控件的时候，有没有发现一个标签--label，这一小节就来揭晓它的作用。
+label标签不会向用户呈现任何特殊效果，它的作用是为鼠标用户改进了可用性。如果你在 label 标签内点击文本，就会触发此控件。就是说，当用户单击选中该label标签时，浏览器就会自动将焦点转到和标签相关的表单控件上（就自动选中和该label标签相关连的表单控件上）。
+语法：
+&lt;code&gt;&amp;lt;label for="控件id名称"&amp;gt;&lt;/code&gt;
+注意：标签的 for 属性中的值应当与相关控件的 id 属性值一定要相同。
+例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;form&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;label&lt;/span&gt; &lt;span class="na"&gt;for=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;male&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;男&lt;span class="nt"&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;radio&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sex&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;male&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;br&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;label&lt;/span&gt; &lt;span class="na"&gt;for=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;female&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;女&lt;span class="nt"&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;radio&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sex&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;female&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;label&lt;/span&gt; &lt;span class="na"&gt;for=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;email&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;输入你的邮箱地址&lt;span class="nt"&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;email&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;email&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;placeholder=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Enter email&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;3. CSS基础&lt;/h2&gt;
+&lt;p&gt;优先级：内联式 &amp;gt; 嵌入式 &amp;gt; 外部式&lt;/p&gt;
+&lt;h3&gt;3.1 子选择器&lt;/h3&gt;
+&lt;p&gt;还有一个比较有用的选择器子选择器，即大于符号(&amp;gt;),用于选择指定标签元素的第一代子元素。&lt;code&gt;.food&amp;gt;li{border:1px solid red;}&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;3.2 包含(后代)选择器&lt;/h3&gt;
+&lt;p&gt;包含选择器，即加入空格,用于选择指定标签元素下的后辈元素。&lt;code&gt;.first  span{color:red;}&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;3.3 通用选择器&lt;/h3&gt;
+&lt;p&gt;通用选择器是功能最强大的选择器，它使用一个（*）号指定，它的作用是匹配html中所有标签元素，如下使用下面代码使用html中任意标签元素字体颜色全部设置为红色：&lt;code&gt;* {color:red;}&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;3.4 伪类选择符&lt;/h3&gt;
+&lt;p&gt;更有趣的是伪类选择符，为什么叫做伪类选择符，它允许给html不存在的标签（标签的某种状态）设置样式，比如说我们给html中一个标签元素的鼠标滑过的状态来设置字体颜色：
+&lt;code&gt;a:hover{color:red;}&lt;/code&gt;
+上面一行代码就是为 a 标签鼠标滑过的状态设置字体颜色变红。这样就会使第一段文字内容中的“胆小如鼠”文字加入鼠标滑过字体颜色变为红色特效。
+关于伪选择符：
+关于伪类选择符，到目前为止，可以兼容所有浏鉴器的“伪类选择符”就是 a 标签上使用 :hover 了（其实伪类选择符还有很多，尤其是 css3 中，但是因为不能兼容所有浏鉴器，本教程只是讲了这一种最常用的）。其实 :hover 可以放在任意的标签上，比如说 p:hover，但是它们的兼容性也是很不好的，所以现在比较常用的还是 a:hover 的组合。&lt;/p&gt;
+&lt;h3&gt;3.5 分组选择符&lt;/h3&gt;
+&lt;p&gt;当你想为html中多个标签元素设置同一个样式时，可以使用分组选择符（，），如下代码为右侧代码编辑器中的h1、span标签同时设置字体颜色为红色：
+&lt;code&gt;h1,span{color:red;}&lt;/code&gt;
+它相当于下面两行代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3.6 CSS的继承、层叠和特殊性&lt;/h3&gt;
+&lt;h4&gt;3.6.1 继承&lt;/h4&gt;
+&lt;p&gt;CSS的某些样式是具有继承性的，那么什么是继承呢？继承是一种规则，它允许样式不仅应用于某个特定html标签元素，而且应用于其后代。比如下面代码：如某种颜色应用于p标签，这个颜色设置不仅应用p标签，还应用于p标签中的所有子元素文本，这里子元素为span标签。
+&lt;code&gt;p{color:red;}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;p&amp;gt;三年级时，我还是一个&amp;lt;span&amp;gt;胆小如鼠&amp;lt;/span&amp;gt;的小女孩。&amp;lt;/p&amp;gt;&lt;/code&gt;
+可见右侧结果窗口中p中的文本与span中的文本都设置为了红色。但注意有一些css样式是不具有继承性的。如&lt;code&gt;border:1px solid red;&lt;/code&gt;
+&lt;code&gt;p{border:1px solid red;}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;p&amp;gt;三年级时，我还是一个&amp;lt;span&amp;gt;胆小如鼠&amp;lt;/span&amp;gt;的小女孩。&amp;lt;/p&amp;gt;&lt;/code&gt;
+在上面例子中它代码的作用只是给p标签设置了边框为1像素、红色、实心边框线，而对于子元素span是没用起到作用的。&lt;/p&gt;
+&lt;h4&gt;3.6.2 特殊性&lt;/h4&gt;
+&lt;p&gt;有的时候我们为同一个元素设置了不同的CSS样式代码，那么元素会启用哪一个CSS样式呢?我们来看一下面的代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;first&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;green&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;&amp;lt;p class="first"&amp;gt;三年级时，我还是一个&amp;lt;span&amp;gt;胆小如鼠&amp;lt;/span&amp;gt;的小女孩。&amp;lt;/p&amp;gt;&lt;/code&gt;
+p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？green是正确的颜色，那么为什么呢？是因为浏览器是根据权值来判断使用哪种css样式的，权值高的就使用哪种css样式。
+下面是权值的规则：
+标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100。例如下面的代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt; &lt;span class="cm"&gt;/*权值为1*/&lt;/span&gt;
+&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;green&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt; &lt;span class="cm"&gt;/*权值为1+1=2*/&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;warning&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;white&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt; &lt;span class="cm"&gt;/*权值为10*/&lt;/span&gt;
+&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;warning&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;purple&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt; &lt;span class="cm"&gt;/*权值为1+1+10=12*/&lt;/span&gt;
+&lt;span class="cp"&gt;#footer .note p{color:yellow;} &lt;/span&gt;&lt;span class="cm"&gt;/*权值为100+10+1=111*/&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;注意：还有一个权值比较特殊--继承也有权值但很低，有的文献提出它只有0.1，所以可以理解为继承的权值最低。&lt;/p&gt;
+&lt;h4&gt;3.6.3 层叠&lt;/h4&gt;
+&lt;p&gt;我们来思考一个问题：如果在html文件中对于同一个元素可以有多个css样式存在并且这多个css样式具有相同权重值怎么办？好，这一小节中的层叠帮你解决这个问题。
+层叠就是在html文件中对于同一个元素可以有多个css样式存在，当有相同权重的样式存在时，会根据这些css样式的前后顺序来决定，处于最后面的css样式会被应用。
+如下面代码:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;green&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;first&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;三年级时&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;的小女孩&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;最后 p 中的文本会设置为green，这个层叠很好理解，理解为后面的样式会覆盖前面的样式。
+所以前面的css样式优先级就不难理解了：
+内联样式表（标签内部）&amp;gt; 嵌入样式表（当前文件中）&amp;gt; 外部样式表（外部文件中）。&lt;/p&gt;
+&lt;h4&gt;3.6.4 重要性&lt;/h4&gt;
+&lt;p&gt;我们在做网页代码的时，有些特殊的情况需要为某些样式设置具有最高权值，怎么办？这时候我们可以使用&lt;code&gt;!important&lt;/code&gt;来解决。
+如下代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;red&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;important&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;green&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;first&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;三年级时&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;的小女孩&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这时 p 段落中的文本会显示的red红色。
+&lt;strong&gt;注意：&lt;code&gt;!important&lt;/code&gt;要写在分号的前面&lt;/strong&gt;
+这里注意当网页制作者不设置css样式时，浏览器会按照自己的一套样式来显示网页。并且用户也可以在浏览器中设置自己习惯的样式，比如有的用户习惯把字号设置为大一些，使其查看网页的文本更加清楚。这时注意样式优先级为：浏览器默认的样式 &amp;lt; 网页制作者样式 &amp;lt; 用户自己设置的样式，但记住&lt;code&gt;!important&lt;/code&gt;优先级样式是个例外，权值高于用户自己设置的样式。&lt;/p&gt;
+&lt;h3&gt;3.7 CSS格式化排版&lt;/h3&gt;
+&lt;h4&gt;3.7.1 文字排版--字体&lt;/h4&gt;
+&lt;p&gt;我们可以使用css样式为网页中的文字设置字体、字号、颜色等样式属性。下面我们来看一个例子，下面代码实现：为网页中的文字设置字体为宋体。
+&lt;code&gt;body{font-family:"宋体";}&lt;/code&gt;
+这里注意不要设置不常用的字体，因为如果用户本地电脑上如果没有安装你设置的字体，就会显示浏览器默认的字体。（因为用户是否可以看到你设置的字体样式取决于用户本地电脑上是否安装你设置的字体。）
+现在一般网页喜欢设置“微软雅黑”，如下代码：
+&lt;code&gt;body{font-family:"Microsoft Yahei";}&lt;/code&gt;
+或
+&lt;code&gt;body{font-family:"微软雅黑";}&lt;/code&gt;
+注意：第一种方法比第二种方法兼容性更好一些。
+因为这种字体即美观又可以在客户端安全的显示出来（用户本地一般都是默认安装的）。&lt;/p&gt;
+&lt;h4&gt;3.7.2 文字排版--字号、颜色&lt;/h4&gt;
+&lt;p&gt;可以使用下面代码设置网页中文字的字号为12像素，并把字体颜色设置为#666(灰色)：
+&lt;code&gt;body{font-size:12px;color:#666}&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;3.7.3 文字排版--粗体&lt;/h4&gt;
+&lt;p&gt;我们还可以使用css样式来改变文字的样式：粗体、斜体、下划线、删除线，可以使用下面代码实现设置文字以粗体样式显示出来。
+&lt;code&gt;p span{font-weight:bold;}&lt;/code&gt;
+在这里大家可以看到，如果想为文字设置粗体是有单独的css样式来实现的，再不用为了实现粗体样式而使用h1-h6或strong标签了。&lt;/p&gt;
+&lt;h4&gt;3.7.4 文字排版--斜体&lt;/h4&gt;
+&lt;p&gt;以下代码可以实现文字以斜体样式在浏览器中显示：
+&lt;code&gt;p a{font-style:italic;}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;p&amp;gt;三年级时，我还是一个&amp;lt;a&amp;gt;胆小如鼠&amp;lt;/a&amp;gt;的小女孩。&amp;lt;/p&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;3.7.5 文字排版--下划线&lt;/h4&gt;
+&lt;p&gt;有些情况下想为文字设置为下划线样式，这样可以在视觉上强调文字，可以使用下面代码来实现：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-decoration&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;underline&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;三年级时&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;的小女孩&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;3.7.6 文字排版--删除线&lt;/h4&gt;
+&lt;p&gt;如果想在网页上设置删除线怎么办, 使用下面代码就可以实现：
+&lt;code&gt;.oldPrice{text-decoration:line-through;}&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;3.7.7 段落排版--缩进&lt;/h4&gt;
+&lt;p&gt;中文文字中的段前习惯空两个文字的空白，这个特殊的样式可以用下面代码来实现：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-indent&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nx"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;1922&lt;/span&gt;&lt;span class="nx"&gt;年的春天&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;一个想要成名名叫尼克卡拉威&lt;/span&gt;&lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="nx"&gt;托比&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="nx"&gt;马奎尔Tobey&lt;/span&gt; &lt;span class="nx"&gt;Maguire&lt;/span&gt; &lt;span class="nx"&gt;饰&lt;/span&gt;&lt;span class="err"&gt;）&lt;/span&gt;&lt;span class="nx"&gt;的作家&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;离开了美国中西部&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;来到了纽约&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="nx"&gt;那是一个道德感渐失&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;爵士乐流行&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;走私为王&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;股票飞涨的时代&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="nx"&gt;为了追寻他的美国梦&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;他搬入纽约附近一海湾居住&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;注意：2em的意思就是文字的2倍大小。&lt;/p&gt;
+&lt;h4&gt;3.7.8 段落排版--行间距（行高）&lt;/h4&gt;
+&lt;p&gt;这一小节我们来学习一下另一个在段落排版中起重要作用的行间距（行高）属性（line-height），如下代码实现设置段落行间距为1.5倍。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="na"&gt;-height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="nx"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;菲茨杰拉德&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;二十世纪美国文学巨擘之一&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;兼具作家和编剧双重身份&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="nx"&gt;他以诗人的敏感和戏剧家的想象为&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;爵士乐时代&amp;quot;&lt;/span&gt;&lt;span class="nx"&gt;吟唱华丽挽歌&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;其诗人和梦想家的气质亦为那个奢靡年代的不二注解&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;3.7.9 段落排版--字间距、字母间距&lt;/h4&gt;
+&lt;p&gt;文字间隔、字母间隔设置：
+如果想在网页排版中设置文字间隔或者字母间隔就可以使用    letter-spacing来实现，如下面代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;letter&lt;/span&gt;&lt;span class="na"&gt;-spacing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;注意：这个样式使用在英文单词时，是设置字母与字母之间的间距。
+单词间距设置：
+如果我想设置英文单词之间的间距呢？可以使用word-spacing来实现。如下代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;word&lt;/span&gt;&lt;span class="na"&gt;-spacing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;welcome&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;imooc&lt;/span&gt;&lt;span class="o"&gt;!&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;3.7.10 段落排版--对齐&lt;/h4&gt;
+&lt;p&gt;想为块状元素中的文本、图片设置居中样式吗？可以使用text-align样式代码，如下代码可实现文本居中显示。(那么什么是块状元素呢？在后面的11-1、11-2小节中会讲到。)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;同样可以设置居左：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;还可以设置居右：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;right&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3.8 CSS盒子模型&lt;/h3&gt;
+&lt;h4&gt;3.8.1 元素分类&lt;/h4&gt;
+&lt;p&gt;在讲解CSS布局之前，我们需要提前知道一些知识，在CSS中，html中的标签元素大体被分为三种不同的类型：块状元素、内联元素(又叫行内元素)和内联块状元素。
+常用的块状元素有：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;...&lt;span class="nt"&gt;&amp;lt;h6&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;ol&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;dl&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;table&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;address&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt; 、&lt;span class="nt"&gt;&amp;lt;form&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;常用的内联元素有：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;a&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;span&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;br&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;i&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;em&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;strong&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;label&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;q&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;var&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;cite&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;code&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;常用的内联块状元素有：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;img&amp;gt;&lt;/span&gt;、&lt;span class="nt"&gt;&amp;lt;input&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;3.8.2 元素分类--块级元素&lt;/h4&gt;
+&lt;p&gt;什么是块级元素？在html中&lt;code&gt;&amp;lt;div&amp;gt;、 &amp;lt;p&amp;gt;、&amp;lt;h1&amp;gt;、&amp;lt;form&amp;gt;、&amp;lt;ul&amp;gt;&lt;/code&gt; 和 &lt;code&gt;&amp;lt;li&amp;gt;&lt;/code&gt;就是块级元素。设置&lt;code&gt;display:block&lt;/code&gt;就是将元素显示为块级元素。如下代码就是将内联元素a转换为块状元素，从而使a元素具有块状元素特点。
+&lt;code&gt;a{display:block;}&lt;/code&gt;
+块级元素特点：
+1、每个块级元素都从新的一行开始，并且其后的元素也另起一行。（真霸道，一个块级元素独占一行）
+2、元素的高度、宽度、行高以及顶和底边距都可设置。
+3、元素宽度在不设置的情况下，是它本身父容器的100%（和父元素的宽度一致），除非设定一个宽度。&lt;/p&gt;
+&lt;h4&gt;3.8.3 元素分类--内联元素&lt;/h4&gt;
+&lt;p&gt;在html中，&lt;code&gt;&amp;lt;span&amp;gt;、&amp;lt;a&amp;gt;、&amp;lt;label&amp;gt;、&amp;lt;input&amp;gt;、 &amp;lt;img&amp;gt;、 &amp;lt;strong&amp;gt; 和&amp;lt;em&amp;gt;&lt;/code&gt;就是典型的内联元素（行内元素）（inline）元素。当然块状元素也可以通过代码&lt;code&gt;display:inline&lt;/code&gt;将元素设置为内联元素。如下代码就是将块状元素div转换为内联元素，从页使用div元素具有内联元素特点。
+内联元素特点：
+1、和其他元素都在一行上；
+2、元素的高度、宽度、行高及顶部和底部边距不可设置；
+3、元素的宽度就是它包含的文字或图片的宽度，不可改变。
+小伙伴们你们观查一下右侧代码段，有没有发现一个问题，内联元素之间有一个间距问题，这个问题在本小节的wiki中有介绍，感兴趣的小伙伴可以去查看。&lt;/p&gt;
+&lt;h4&gt;3.8.4 元素分类--内联块状元素&lt;/h4&gt;
+&lt;p&gt;内联块状元素（inline-block）就是同时具备内联元素、块状元素的特点，代码&lt;code&gt;display:inline-block&lt;/code&gt;就是将元素设置为内联块状元素。(css2.1新增)，&lt;code&gt;&amp;lt;img&amp;gt;、&amp;lt;input&amp;gt;&lt;/code&gt;标签就是这种内联块状标签。
+&lt;code&gt;inline-block&lt;/code&gt;元素特点：
+1、和其他元素都在一行上；
+2、元素的高度、宽度、行高以及顶和底边距都可设置。
+提示：下一小节是用视频动画来讲解css中的盒模型。&lt;/p&gt;
+&lt;h4&gt;3.8.5 盒模型--边框&lt;/h4&gt;
+&lt;p&gt;盒子模型的边框就是围绕着内容及补白的线，这条线你可以设置它的粗细、样式和颜色(边框三个属性)。
+如下面代码为 div 来设置边框粗细为 2px、样式为实心的、颜色为红色的边框：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;div&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;border:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;  &lt;span class="n"&gt;solid&lt;/span&gt;  &lt;span class="n"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面是 border 代码的缩写形式，可以分开写：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;div&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;border&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;border&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;solid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;border&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;注意：
+1、border-style（边框样式）常见样式有：
+&lt;code&gt;dashed（虚线）| dotted（点线）| solid（实线）&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;2、border-color（边框颜色）中的颜色可设置为十六进制颜色，如:
+&lt;code&gt;border-color:#888;//前面的井号不要忘掉。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;3、border-width（边框宽度）中的宽度也可以设置为：
+&lt;code&gt;thin | medium | thick（但不是很常用），最常还是用象素（px）。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;现在有一个问题，如果有想为 p 标签单独设置下边框，而其它三边都不设置边框样式怎么办呢？css 样式中允许只为一个方向的边框设置样式：
+&lt;code&gt;div{border-bottom:1px solid red;}&lt;/code&gt;
+同样可以使用下面代码实现其它三边(上、右、左)边框的设置：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;border&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;solid&lt;/span&gt; &lt;span class="n"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;border&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;solid&lt;/span&gt; &lt;span class="n"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+&lt;span class="n"&gt;border&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;solid&lt;/span&gt; &lt;span class="n"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;3.8.6 盒模型--宽度和高度&lt;/h4&gt;
+&lt;p&gt;盒模型宽度和高度和我们平常所说的物体的宽度和高度理解是不一样的，css内定义的宽（width）和高（height），指的是填充以里的内容范围。
+因此一个元素实际宽度（盒子的宽度）=左边界+左边框+左填充+内容宽度+右填充+右边框+右边界。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;width&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;200px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;20px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;border&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;1px&lt;/span&gt; &lt;span class="k"&gt;solid&lt;/span&gt; &lt;span class="nb"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;10px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;    
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;3.8.7 盒模型--填充&lt;/h4&gt;
+&lt;p&gt;元素内容与边框之间是可以设置距离的，称之为“填充”。填充也可分为上、右、下、左(顺时针)。如下代码：
+&lt;code&gt;div{padding:20px 10px 15px 30px;}&lt;/code&gt;
+顺序一定不要搞混。可以分开写上面代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;div&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+   &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+   &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+   &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bottom&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+   &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果上、右、下、左的填充都为10px;可以这么写&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;10px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果上下填充一样为10px，左右一样为20px，可以这么写：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;10px&lt;/span&gt; &lt;span class="m"&gt;20px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;3.8.8 盒模型--边界&lt;/h4&gt;
+&lt;p&gt;元素与其它元素之间的距离可以使用边界（margin）来设置。边界也是可分为上、右、下、左。如下代码：
+&lt;code&gt;div{margin:20px 10px 15px 30px;}&lt;/code&gt;
+也可以分开写：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;div&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+   &lt;span class="n"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+   &lt;span class="n"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+   &lt;span class="n"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bottom&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+   &lt;span class="n"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果上右下左的边界都为10px;可以这么写：
+&lt;code&gt;div{ margin:10px;}&lt;/code&gt;
+如果上下边界一样为10px，左右一样为20px，可以这么写：
+&lt;code&gt;div{ margin:10px 20px;}&lt;/code&gt;
+总结一下：padding和margin的区别，padding在边框里，margin在边框外。&lt;/p&gt;
+&lt;h3&gt;3.9 CSS布局模型&lt;/h3&gt;
+&lt;h4&gt;3.9.1 css布局模型&lt;/h4&gt;
+&lt;p&gt;清楚了CSS 盒模型的基本概念、 盒模型类型， 我们就可以深入探讨网页布局的基本模型了。布局模型与盒模型一样都是 CSS 最基本、 最核心的概念。 但布局模型是建立在盒模型基础之上，又不同于我们常说的 CSS 布局样式或 CSS 布局模板。如果说布局模型是本，那么 CSS 布局模板就是末了，是外在的表现形式。 
+CSS包含3种基本的布局模型，用英文概括为：Flow、Layer 和 Float。
+在网页中，元素有三种布局模型：
+1、流动模型（Flow）
+2、浮动模型 (Float)
+3、层模型（Layer）
+这三个布局模型究竟是什么布局？下面几个小节会详细给大家介绍。&lt;/p&gt;
+&lt;h4&gt;3.9.2 流动模型&lt;/h4&gt;
+&lt;p&gt;先来说一说流动模型，流动（Flow）是默认的网页布局模式。也就是说网页在默认状态下的 HTML 网页元素都是根据流动模型来分布网页内容的。
+流动布局模型具有2个比较典型的特征：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;块状元素都会在所处的包含元素内自上而下按顺序垂直延伸分布，因为在默认状态下，块状元素的宽度都为100%。实际上，块状元素都会以行的形式占据位置。&lt;/li&gt;
+&lt;li&gt;在流动模型下，内联元素都会在所处的包含元素内从左到右水平分布显示。（内联元素可不像块状元素这么霸道独占一行）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;3.9.3 浮动模型&lt;/h4&gt;
+&lt;p&gt;块状元素这么霸道都是独占一行，如果现在我们想让两个块状元素并排显示，怎么办呢？不要着急，设置元素浮动就可以实现这一愿望。
+任何元素在默认情况下是不能浮动的，但可以用 CSS 定义为浮动，如 div、p、table、img 等元素都可以被定义为浮动。如下代码可以实现两个 div 元素一行显示。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;div&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nb"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nx"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt; &lt;span class="nb"&gt;red&lt;/span&gt; &lt;span class="nx"&gt;solid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nx"&gt;float&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;div1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;div2&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;3.9.4 什么是层模型？&lt;/h4&gt;
+&lt;p&gt;什么是层布局模型？层布局模型就像是图像软件PhotoShop中非常流行的图层编辑功能一样，每个图层能够精确定位操作，但在网页设计领域，由于网页大小的活动性，层布局没能受到热捧。但是在网页上局部使用层布局还是有其方便之处的。下面我们来学习一下html中的层布局。
+如何让html元素在网页中精确定位，就像图像软件PhotoShop中的图层一样可以对每个图层能够精确定位操作。CSS定义了一组定位（positioning）属性来支持层布局模型。
+层模型有三种形式：
+1. 绝对定位(position: absolute)
+2. 相对定位(position: relative)
+3. 固定定位(position: fixed)&lt;/p&gt;
+&lt;h4&gt;3.9.5 层模型--绝对定位&lt;/h4&gt;
+&lt;p&gt;如果想为元素设置层模型中的绝对定位，需要设置position:absolute(表示绝对定位)，这条语句的作用将元素从文档流中拖出来，然后使用left、right、top、bottom属性相对于其最接近的一个具有定位属性的父包含块进行绝对定位。如果不存在这样的包含块，则相对于body元素，即相对于浏览器窗口。
+如下面代码可以实现div元素相对于浏览器窗口向右移动100px，向下移动50px。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;div&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nb"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nx"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt; &lt;span class="nb"&gt;red&lt;/span&gt; &lt;span class="nx"&gt;solid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nb"&gt;position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;absolute&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nb"&gt;left&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nb"&gt;top&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;div1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;3.9.6 层模型--相对定位&lt;/h4&gt;
+&lt;p&gt;如果想为元素设置层模型中的相对定位，需要设置position:relative（表示相对定位），它通过left、right、top、bottom属性确定元素在正常文档流中的偏移位置。相对定位完成的过程是首先按static(float)方式生成一个元素(并且元素像层一样浮动了起来)，然后相对于以前的位置移动，移动的方向和幅度由left、right、top、bottom属性确定，偏移前的位置保留不动。
+如下代码实现相对于以前位置向下移动50px，向右移动100px;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="vi"&gt;#div1&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nb"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nx"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt; &lt;span class="nb"&gt;red&lt;/span&gt; &lt;span class="nx"&gt;solid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nb"&gt;position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;relative&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nb"&gt;left&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nb"&gt;top&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;div1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="relative" src="images/web-htmlcss-02.png" /&gt;&lt;/p&gt;
+&lt;p&gt;什么叫做“偏移前的位置保留不动”呢？
+大家可以做一个实验，在右侧代码编辑器的19行div标签的后面加入一个span标签，在标并在span标签中写入一些文字。如下代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;div1&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;span&amp;gt;&lt;/span&gt;偏移前的位置还保留不动，覆盖不了前面的div没有偏移前的位置&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="relative" src="images/web-htmlcss-03.png" /&gt;
+从效果图中可以明显的看出，虽然div元素相对于以前的位置产生了偏移，但是div元素以前的位置还是保留着，所以后面的span元素是显示在了div元素以前位置的后面。&lt;/p&gt;
+&lt;h4&gt;3.9.7 层模型--固定定位&lt;/h4&gt;
+&lt;p&gt;fixed：表示固定定位，与absolute定位类型类似，但它的相对移动的坐标是视图（屏幕内的网页窗口）本身。由于视图本身是固定的，它不会随浏览器窗口的滚动条滚动而变化，除非你在屏幕中移动浏览器窗口的屏幕位置，或改变浏览器窗口的显示大小，因此固定定位的元素会始终位于浏览器窗口内视图的某个位置，不会受文档流动影响，这与background-attachment:fixed;属性功能相同。以下代码可以实现相对于浏览器视图向右移动100px，向下移动50px。并且拖动滚动条时位置固定不变。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="vi"&gt;#div1&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;width&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nb"&gt;height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nx"&gt;border&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt; &lt;span class="nb"&gt;red&lt;/span&gt; &lt;span class="nx"&gt;solid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nb"&gt;position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;fixed&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nb"&gt;left&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nb"&gt;top&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nx"&gt;....&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;3.9.8 Relative与Absolute组合使用&lt;/h4&gt;
+&lt;p&gt;小伙伴们学习了绝对定位的方法：使用position:absolute可以实现被设置元素相对于浏览器（body）设置定位以后，大家有没有想过可不可以相对于其它元素进行定位呢？答案是肯定的，当然可以。使用position:relative来帮忙，但是必须遵守下面规范：
+1、参照定位的元素必须是相对定位元素的前辈元素：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;box1&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!--参照定位的元素--&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;box2&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;相对参照元素进行定位&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!--相对定位元素--&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;从上面代码可以看出box1是box2的父元素（父元素当然也是前辈元素了）。
+2、参照定位的元素必须加入position:relative;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#box1{&lt;/span&gt;
+    &lt;span class="nl"&gt;width:&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;height:&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;position:&lt;/span&gt;&lt;span class="n"&gt;relative&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;        
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;3、定位元素加入position:absolute，便可以使用top、bottom、left、right来进行偏移定位了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#box2{&lt;/span&gt;
+    &lt;span class="nl"&gt;position:&lt;/span&gt;&lt;span class="n"&gt;absolute&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;top:&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;left:&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;         
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样box2就可以相对于父元素box1定位了（这里注意参照物就可以不是浏览器了，而可以自由设置了）。&lt;/p&gt;
+&lt;h3&gt;3.10 CSS代码缩写，占用更少的带宽&lt;/h3&gt;
+&lt;h4&gt;3.10.1 盒模型代码简写&lt;/h4&gt;
+&lt;p&gt;还记得在讲盒模型时外边距(margin)、内边距(padding)和边框(border)设置上下左右四个方向的边距是按照顺时针方向设置的：上右下左。具体应用在margin和padding的例子如下：
+&lt;code&gt;margin:10px 15px 12px 14px;/*上设置为10px、右设置为15px、下设置为12px、左设置为14px*/&lt;/code&gt;
+通常有下面三种缩写方法:
+1、如果top、right、bottom、left的值相同，如下面代码：
+&lt;code&gt;margin:10px 10px 10px 10px;&lt;/code&gt;
+可缩写为：
+&lt;code&gt;margin:10px;&lt;/code&gt;
+2、如果top和bottom值相同、left和 right的值相同，如下面代码：
+&lt;code&gt;margin:10px 20px 10px 20px;&lt;/code&gt;
+可缩写为：
+&lt;code&gt;margin:10px 20px;&lt;/code&gt;
+3、如果left和right的值相同，如下面代码：
+&lt;code&gt;margin:10px 20px 30px 20px;&lt;/code&gt;
+可缩写为：
+&lt;code&gt;margin:10px 20px 30px;&lt;/code&gt;
+注意：padding、border的缩写方法和margin是一致的。&lt;/p&gt;
+&lt;h4&gt;3.10.2 颜色值缩写&lt;/h4&gt;
+&lt;p&gt;关于颜色的css样式也是可以缩写的，当你设置的颜色是16进制的色彩值时，如果每两位的值相同，可以缩写一半。
+例子1：
+&lt;code&gt;p{color:#000000;}&lt;/code&gt;
+可以缩写为：
+&lt;code&gt;p{color: #000;}&lt;/code&gt;
+例子2：
+&lt;code&gt;p{color: #336699;}&lt;/code&gt;
+可以缩写为：
+&lt;code&gt;p{color: #369;}&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;3.10.3 字体缩写&lt;/h4&gt;
+&lt;p&gt;网页中的字体css样式代码也有他自己的缩写方式，下面是给网页设置字体的代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;italic&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;variant&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;small&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;caps&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+    &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;bold&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+    &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+    &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="n"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+    &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;family&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;宋体&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;sans&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这么多行的代码其实可以缩写为一句：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;font:&lt;/span&gt;&lt;span class="n"&gt;italic&lt;/span&gt;  &lt;span class="n"&gt;small&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;caps&lt;/span&gt;  &lt;span class="n"&gt;bold&lt;/span&gt;  &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="n"&gt;em&lt;/span&gt;  &lt;span class="s"&gt;&amp;quot;宋体&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;sans&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;注意：
+1、使用这一简写方式你至少要指定 font-size 和 font-family 属性，其他的属性(如 font-weight、font-style、font-varient、line-height)如未指定将自动使用默认值。
+2、在缩写时 font-size 与 line-height 中间要加入“/”斜扛。
+一般情况下因为对于中文网站，英文还是比较少的，所以下面缩写代码比较常用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;font:&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="n"&gt;em&lt;/span&gt;  &lt;span class="s"&gt;&amp;quot;宋体&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;sans&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;只是有字号、行间距、中文字体、英文字体设置。&lt;/p&gt;
+&lt;h3&gt;3.11 单位和值&lt;/h3&gt;
+&lt;h4&gt;3.11.1 颜色值&lt;/h4&gt;
+&lt;p&gt;在网页中的颜色设置是非常重要，有字体颜色（color）、背景颜色（background-color）、边框颜色（border）等，设置颜色的方法也有很多种：
+1、英文命令颜色
+前面几个小节中经常用到的就是这种设置方法：
+&lt;code&gt;p{color:red;}&lt;/code&gt;
+2、RGB颜色
+这个与 photoshop 中的 RGB 颜色是一致的，由 R(red)、G(green)、B(blue) 三种颜色的比例来配色。
+&lt;code&gt;p{color:rgb(133,45,200);}&lt;/code&gt;
+每一项的值可以是 0~255 之间的整数，也可以是 0%~100% 的百分数。如：
+&lt;code&gt;p{color:rgb(20%,33%,25%);}&lt;/code&gt;
+3、十六进制颜色
+这种颜色设置方法是现在比较普遍使用的方法，其原理其实也是 RGB 设置，但是其每一项的值由 0-255 变成了十六进制 00-ff。
+&lt;code&gt;p{color:#00ffff;}&lt;/code&gt;
+配色表：
+&lt;img alt="配色表" src="images/web-htmlcss-04.jpg" /&gt;&lt;/p&gt;
+&lt;h4&gt;3.11.2 长度值&lt;/h4&gt;
+&lt;p&gt;长度单位总结一下，目前比较常用到px（像素）、em、% 百分比，要注意其实这三种单位都是相对单位。
+1、像素
+像素为什么是相对单位呢？因为像素指的是显示器上的小点（CSS规范中假设“90像素=1英寸”）。实际情况是浏览器会使用显示器的实际像素值有关，在目前大多数的设计者都倾向于使用像素（px）作为单位。
+2、em
+就是本元素给定字体的 font-size 值，如果元素的 font-size 为 14px ，那么 1em = 14px；如果 font-size 为 18px，那么 1em = 18px。如下代码：
+&lt;code&gt;p{font-size:12px;text-indent:2em;}&lt;/code&gt;
+上面代码就是可以实现段落首行缩进 24px（也就是两个字体大小的距离）。
+下面注意一个特殊情况：
+但当给 font-size 设置单位为 em 时，此时计算的标准以 p 的父元素的 font-size 为基础。如下代码：
+html:
+&lt;code&gt;&amp;lt;p&amp;gt;以这个&amp;lt;span&amp;gt;例子&amp;lt;/span&amp;gt;为例。&amp;lt;/p&amp;gt;&lt;/code&gt;
+css:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;0.8&lt;/span&gt;&lt;span class="n"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;结果 span 中的字体“例子”字体大小就为 11.2px（14 * 0.8 = 11.2px）。
+3、百分比
+&lt;code&gt;p{font-size:12px;line-height:130%}&lt;/code&gt;
+设置行高（行间距）为字体的130%（12 * 1.3 = 15.6px）。&lt;/p&gt;
+&lt;h3&gt;3.12 css样式设置小技巧&lt;/h3&gt;
+&lt;h4&gt;3.12.1 水平居中设置-行内元素&lt;/h4&gt;
+&lt;p&gt;我们在实际工作中常会遇到需要设置水平居中场景，今天我们就来看看怎么设置水平居中的。
+如果被设置元素为文本、图片等行内元素时，水平居中是通过给父元素设置 text-align:center 来实现的。如下代码：
+html代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;txtCenter&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;我是文本，哈哈，我想要在父容器中水平居中显示。&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+css代码：
+&lt;span class="nt"&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
+  div.txtCenter{
+    text-align:center;
+  }
+&lt;span class="nt"&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;3.12.2 水平居中设置-定宽块状元素&lt;/h4&gt;
+&lt;p&gt;当被设置元素为块状元素时用 text-align：center 就不起作用了，这时也分两种情况：定宽块状元素和不定宽块状元素。这一小节我们先来讲一讲定宽块状元素。
+满足定宽和块状两个条件的元素是可以通过设置“左右margin”值为“auto”来实现居中的。我们来看个例子就是设置 div 这个块状元素水平居中：
+html代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;div&amp;gt;&lt;/span&gt;我是定宽块状元素，哈哈，我要水平居中显示。&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;css代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
+div{
+    border:1px solid red;/*为了显示居中效果明显为 div 设置了边框*/
+
+    width:500px;/*定宽*/
+    margin:20px auto;/* margin-left 与 margin-right 设置为 auto */
+}
+&lt;span class="nt"&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;也可以写成：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;注意：元素的“上下 margin” 是可以随意设置的。&lt;/p&gt;
+&lt;h4&gt;3.12.3 水平居中总结-不定宽块状元素方法（一）&lt;/h4&gt;
+&lt;p&gt;在实际工作中我们会遇到需要为“不定宽度的块状元素”设置居中，比如网页上的分页导航，因为分页的数量是不确定的，所以我们不能通过设置宽度来限制它的弹性。
+不定宽度的块状元素有三种方法居中（这三种方法目前使用的都比多）：
+1. 加入 table 标签
+2. 设置 display:inline 方法
+3. 设置 position:relative 和 left:50%;&lt;/p&gt;
+&lt;p&gt;这一小节我们来讲一下第一种方法：
+第一步：为需要设置的居中的元素外面加入一个 table 标签 ( 包括 &lt;tbody&gt;、&lt;tr&gt;、&lt;td&gt; )。
+第二步：为这个 table 设置“左右 margin 居中”（这个和定宽块状元素的方法一样）。
+举例如下：
+html代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;table&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;tbody&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;1&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;2&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;3&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;/tbody&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;css代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
+table{
+    margin:0 auto;
+}
+
+ul{list-style:none;margin:0;padding:0;}
+li{float:left;display:inline;margin-right:8px;}
+&lt;span class="nt"&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
+ ```
+
+ ####3.12.4 水平居中总结-不定宽块状元素方法（二）
+第二种方法：改变块级元素的 dispaly 为 inline 类型，然后使用 text-align:center 来实现居中效果。如下例子：
+html代码：
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;body&gt;
+&lt;div class="container"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;css&lt;/span&gt;&lt;span class="err"&gt;代码：&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;style&gt;
+.container{
+    text-align:center;
+}
+.container ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:inline;
+}
+.container li{
+    margin-right:8px;
+    display:inline;
+}
+&lt;/style&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="s-Atom"&gt;这种方法相比第一种方法的优势是不用增加无语义标签，简化了标签的嵌套深度，但也存在着一些问题：它将块状元素的&lt;/span&gt; &lt;span class="s-Atom"&gt;display&lt;/span&gt; &lt;span class="s-Atom"&gt;类型改为&lt;/span&gt; &lt;span class="s-Atom"&gt;inline，变成了行内元素，所以少了一些功能，比如设定长度值。&lt;/span&gt;
+
+&lt;span class="s-Atom"&gt;####&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="m"&gt;12&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt; &lt;span class="s-Atom"&gt;水平居中总结-不定宽块状元素方法（三）&lt;/span&gt;
+&lt;span class="s-Atom"&gt;方法三：通过给父元素设置&lt;/span&gt; &lt;span class="s-Atom"&gt;float，然后给父元素设置&lt;/span&gt; &lt;span class="nn"&gt;position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s-Atom"&gt;relative&lt;/span&gt; &lt;span class="s-Atom"&gt;和&lt;/span&gt; &lt;span class="nn"&gt;left&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="m"&gt;50&lt;/span&gt;&lt;span class="c1"&gt;%，子元素设置 position:relative 和 left:-50% 来实现水平居中。&lt;/span&gt;
+&lt;span class="s-Atom"&gt;代码如下：&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;body&gt;
+&lt;div class="container"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;css&lt;/span&gt;&lt;span class="err"&gt;代码：&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;style&gt;
+.container{
+    float:left;
+    position:relative;
+    left:50%
+}
+
+.container ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+
+    position:relative;
+    left:-50%;
+}
+.container li{float:left;display:inline;margin-right:8px;}
+&lt;/style&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;这种方法可以保留块状元素仍以&lt;/span&gt; &lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;block&lt;/span&gt; &lt;span class="err"&gt;的形式显示，优点不添加无语议表标签，不增加嵌套深度，但它的缺点是设置了&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;relative&lt;/span&gt;&lt;span class="err"&gt;，带来了一定的副作用。&lt;/span&gt;
+&lt;span class="err"&gt;这三种方法使用得都非常广泛，各有优缺点，具体选用哪种方法，可以视具体情况而定。&lt;/span&gt;
+
+&lt;span class="cp"&gt;####3.12.6 垂直居中-父元素高度确定的单行文本&lt;/span&gt;
+&lt;span class="err"&gt;父元素高度确定的单行文本的竖直居中的方法是通过设置父元素的&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="err"&gt;和&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="err"&gt;高度一致来实现的。如下代码：&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="container"&gt;
+    hi,imooc!
+&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;css&lt;/span&gt;&lt;span class="err"&gt;代码：&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;style&gt;
+.container{
+    height:100px;
+    line-height:100px;
+    background:#999;
+}
+&lt;/style&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;####3.12.7 垂直居中-父元素高度确定的多行文本（方法一）&lt;/span&gt;
+&lt;span class="err"&gt;父元素高度确定的多行文本、图片、块状元素的竖直居中的方法有两种：&lt;/span&gt;
+&lt;span class="err"&gt;方法一：使用插入&lt;/span&gt; &lt;span class="n"&gt;table&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;包括&lt;/span&gt;&lt;span class="n"&gt;tbody&lt;/span&gt;&lt;span class="err"&gt;、&lt;/span&gt;&lt;span class="n"&gt;tr&lt;/span&gt;&lt;span class="err"&gt;、&lt;/span&gt;&lt;span class="n"&gt;td&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;标签，同时设置&lt;/span&gt; &lt;span class="n"&gt;vertical&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;align&lt;/span&gt;&lt;span class="err"&gt;：&lt;/span&gt;&lt;span class="n"&gt;middle&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
+&lt;span class="err"&gt;说到竖直居中，&lt;/span&gt;&lt;span class="n"&gt;css&lt;/span&gt; &lt;span class="err"&gt;中有一个用于竖直居中的属性&lt;/span&gt; &lt;span class="n"&gt;vertical&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;align&lt;/span&gt;&lt;span class="err"&gt;，但这个样式只有在父元素为&lt;/span&gt; &lt;span class="n"&gt;td&lt;/span&gt; &lt;span class="err"&gt;或&lt;/span&gt; &lt;span class="n"&gt;th&lt;/span&gt; &lt;span class="err"&gt;时，才会生效。所以又要插入&lt;/span&gt; &lt;span class="n"&gt;table&lt;/span&gt; &lt;span class="err"&gt;标签了。下面看一下例子：&lt;/span&gt;
+&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="err"&gt;代码：&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;body&gt;
+&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="wrap"&gt;
+&lt;div&gt;
+    &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+    &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+    &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+    &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+    &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/body&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;css&lt;/span&gt;&lt;span class="err"&gt;代码：&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;table td{height:500px;background:#ccc}&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;因为&lt;/span&gt; &lt;span class="n"&gt;td&lt;/span&gt; &lt;span class="err"&gt;标签默认情况下就默认设置了&lt;/span&gt; &lt;span class="n"&gt;vertical&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;align&lt;/span&gt; &lt;span class="err"&gt;为&lt;/span&gt; &lt;span class="n"&gt;middle&lt;/span&gt;&lt;span class="err"&gt;，所以我们不需要显式地设置了。&lt;/span&gt;
+
+&lt;span class="cp"&gt;####3.12.8 垂直居中-父元素高度确定的多行文本（方法二）&lt;/span&gt;
+&lt;span class="err"&gt;在&lt;/span&gt; &lt;span class="n"&gt;chrome&lt;/span&gt;&lt;span class="err"&gt;、&lt;/span&gt;&lt;span class="n"&gt;firefox&lt;/span&gt; &lt;span class="err"&gt;及&lt;/span&gt; &lt;span class="n"&gt;IE8&lt;/span&gt; &lt;span class="err"&gt;以上的浏览器下可以设置块级元素的&lt;/span&gt; &lt;span class="n"&gt;display&lt;/span&gt; &lt;span class="err"&gt;为&lt;/span&gt; &lt;span class="n"&gt;table&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;cell&lt;/span&gt;&lt;span class="err"&gt;，激活&lt;/span&gt; &lt;span class="n"&gt;vertical&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;align&lt;/span&gt; &lt;span class="err"&gt;属性，但注意&lt;/span&gt; &lt;span class="n"&gt;IE6&lt;/span&gt;&lt;span class="err"&gt;、&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="err"&gt;并不支持这个样式。&lt;/span&gt;
+&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="err"&gt;代码：&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="container"&gt;
+    &lt;div&gt;
+        &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+        &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+        &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+        &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+        &lt;p&gt;看我是否可以居中。&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;css&lt;/span&gt;&lt;span class="err"&gt;代码：&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;style&gt;
+.container{
+    height:300px;
+    background:#ccc;
+    display:table-cell;/*IE8以上及Chrome、Firefox*/
+    vertical-align:middle;/*IE8以上及Chrome、Firefox*/
+}
+&lt;/style&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;这种方法的好处是不用添加多余的无意义的标签，但缺点也很明显，它的兼容性不是很好，不兼容&lt;/span&gt; &lt;span class="n"&gt;IE6&lt;/span&gt;&lt;span class="err"&gt;、&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;
+
+&lt;span class="cp"&gt;####3.12.9 隐性改变display类型&lt;/span&gt;
+&lt;span class="err"&gt;有一个有趣的现象就是当为元素（不论之前是什么类型元素，&lt;/span&gt;&lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;none&lt;/span&gt; &lt;span class="err"&gt;除外）设置以下&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="err"&gt;个句之一：&lt;/span&gt;
+&lt;span class="n"&gt;position&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;absolute&lt;/span&gt;
+&lt;span class="kt"&gt;float&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt; &lt;span class="err"&gt;或&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;
+&lt;span class="err"&gt;元素会自动变为以&lt;/span&gt; &lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kr"&gt;inline&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;block&lt;/span&gt; &lt;span class="err"&gt;的方式显示，当然就可以设置元素的&lt;/span&gt; &lt;span class="n"&gt;width&lt;/span&gt; &lt;span class="err"&gt;和&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="err"&gt;了且默认宽度不占满父元素。&lt;/span&gt;
+&lt;span class="err"&gt;如下面的代码，小伙伴们都知道&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="err"&gt;标签是行内元素，所以设置它的&lt;/span&gt; &lt;span class="n"&gt;width&lt;/span&gt; &lt;span class="err"&gt;是&lt;/span&gt; &lt;span class="err"&gt;没有效果的，但是设置为&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;absolute&lt;/span&gt; &lt;span class="err"&gt;以后，就可以了。&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="container"&gt;
+    &lt;a href="#" title=""&gt;进入课程请单击这里&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;css&lt;/span&gt;&lt;span class="err"&gt;代码&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;style&gt;
+.container a{
+    position:absolute;
+    width:200px;
+    background:#ccc;
+}
+&lt;/style&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+&lt;p&gt;想不起 display:inline-block 是做什么的小伙伴们，单击“元素分类--内联块状元素”可返回到前面小节进行复习。&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-10 新闻详情页的制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html" rel="alternate"></link><updated>2015-04-05T20:14:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-05:qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html</id><summary type="html">&lt;h2&gt;1. 页面结构&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list_box&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;新闻中心&lt;span class="nt"&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;【慕客访谈▪用户篇】“有为屌丝”在路上&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;p&lt;/span&gt;  &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list_box_newsInfo&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;发布人：Admin 发布时间：2015-04-06 浏览3246次&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list_box_newsContent&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2. 样式&lt;/h2&gt;
+&lt;p&gt;text-indent: 2em; 缩进2个文本尺寸&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;//新闻列表区域&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list_box&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;width:&lt;/span&gt; &lt;span class="mh"&gt;770&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;min&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;350&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;_height:&lt;/span&gt; &lt;span class="mh"&gt;350&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;border:&lt;/span&gt; &lt;span class="mh"&gt;1&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;solid&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;E8E8E8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;float:&lt;/span&gt; &lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;background&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;FFF&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="c1"&gt;//新闻类别头部标题&lt;/span&gt;
+    &lt;span class="n"&gt;h2&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nl"&gt;height:&lt;/span&gt;&lt;span class="mh"&gt;35&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;35&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;size:&lt;/span&gt; &lt;span class="mh"&gt;14&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;family:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;微软雅黑&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="mh"&gt;666&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;background:&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(..&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;type_bg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;repeat&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;left:&lt;/span&gt; &lt;span class="mh"&gt;20&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="c1"&gt;//新闻标题&lt;/span&gt;
+    &lt;span class="n"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;family:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;微软雅黑&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;size:&lt;/span&gt; &lt;span class="mh"&gt;20&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;align:&lt;/span&gt; &lt;span class="n"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;margin:&lt;/span&gt; &lt;span class="mh"&gt;10&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="mh"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;_newsInfo&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="mh"&gt;666&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;align:&lt;/span&gt; &lt;span class="n"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;border&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;bottom:&lt;/span&gt; &lt;span class="mh"&gt;1&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;dotted&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="mh"&gt;666&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;_newsContent&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;size:&lt;/span&gt;&lt;span class="mh"&gt;14&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;padding:&lt;/span&gt; &lt;span class="mh"&gt;20&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;25&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;indent:&lt;/span&gt; &lt;span class="mh"&gt;2&lt;/span&gt;&lt;span class="n"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="c1"&gt;//缩进2个文本尺寸&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-09 新闻列表页制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html" rel="alternate"></link><updated>2015-04-04T22:12:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-04:qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html</id><summary type="html">&lt;h2&gt;1. 新闻列表页的制作&lt;/h2&gt;
+&lt;p&gt;新闻列表页和首页对比如下：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="对比" src="images/qy-web-13.png" /&gt;&lt;/p&gt;
+&lt;p&gt;主要是两点不同，第一个是新闻列表页焦点图不再具有切换效果，图片大小也不一样；第二个就是内容区是2栏可变长的。&lt;/p&gt;
+&lt;h2&gt;2. 页面结构&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ad&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;picBox&amp;quot;&lt;/span&gt;  &lt;span class="na"&gt;style=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;height:243px&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+   &lt;span class="nt"&gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;images/ad.jpg&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;alt=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ad&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- ad结束 --&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list_main&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news_type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- news_type结束 --&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list_box&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- list_box结束 --&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- list_main结束 --&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;3. 内容展示区制作&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*--------------------新闻列表页----------------------------*/&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list_main&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;350&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;background&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;FFF&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;top:&lt;/span&gt; &lt;span class="mh"&gt;10&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;news_type&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;width:&lt;/span&gt;&lt;span class="mh"&gt;220&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;min&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;350&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;_height:&lt;/span&gt; &lt;span class="mh"&gt;350&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;border:&lt;/span&gt; &lt;span class="mh"&gt;1&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;solid&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;E8E8E8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;background&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;F9C&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;float:&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list_box&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;width:&lt;/span&gt; &lt;span class="mh"&gt;770&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;min&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;350&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;_height:&lt;/span&gt; &lt;span class="mh"&gt;350&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;background&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;F9F&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;border:&lt;/span&gt; &lt;span class="mh"&gt;1&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;solid&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;E8E8E8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;float:&lt;/span&gt; &lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;4. 左侧列表制作&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news_type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;新闻中心&lt;span class="nt"&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news_type_content&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;公司新闻&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;行业新闻&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;媒体报道&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;活动专题&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;精彩视频&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;资源下载&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;公司内刊&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- news_type结束 --&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;//新闻类别&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;news_type&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;width:&lt;/span&gt;&lt;span class="mh"&gt;220&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;min&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;350&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;_height:&lt;/span&gt; &lt;span class="mh"&gt;350&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;border:&lt;/span&gt; &lt;span class="mh"&gt;1&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;solid&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;E8E8E8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;float:&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="c1"&gt;//新闻类别头部标题&lt;/span&gt;
+    &lt;span class="n"&gt;h2&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nl"&gt;height:&lt;/span&gt;&lt;span class="mh"&gt;35&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;35&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;size:&lt;/span&gt; &lt;span class="mh"&gt;14&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;family:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;微软雅黑&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="mh"&gt;666&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;background:&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(..&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;title_bg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gif&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;repeat&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;left:&lt;/span&gt; &lt;span class="mh"&gt;20&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="c1"&gt;//列表区域&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;_content&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;265&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;background:&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(..&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;content_bg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gif&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;repeat&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+        &lt;span class="n"&gt;li&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;30&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;30&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+            &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="mh"&gt;666&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+                &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;decoration:&lt;/span&gt; &lt;span class="n"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+                &lt;span class="nl"&gt;background:&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(..&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;li_bg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gif&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;repeat&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt; &lt;span class="n"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//图像左侧居中&lt;/span&gt;
+                &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;left:&lt;/span&gt; &lt;span class="mh"&gt;15&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+                &lt;span class="nl"&gt;display:&lt;/span&gt; &lt;span class="n"&gt;block&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+                &lt;span class="o"&gt;&amp;amp;:&lt;/span&gt;&lt;span class="n"&gt;hover&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+                    &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="mh"&gt;009&lt;/span&gt;&lt;span class="no"&gt;CDF&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+                    &lt;span class="nl"&gt;background:&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(..&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;li_bg2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gif&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;repeat&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt; &lt;span class="n"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+                    &lt;span class="n"&gt;background&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;F2F2F2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//即设置背景图像又设置背景颜色&lt;/span&gt;
+                &lt;span class="p"&gt;}&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;5. 新闻列表制作&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list_box&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;新闻中心&lt;span class="nt"&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news_list&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;span&amp;gt;&lt;/span&gt;2015-04-06&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;【慕客访谈 用户篇】“有为屌丝”在路上&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;span&amp;gt;&lt;/span&gt;2015-04-06&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;【有奖活动】给父亲的三行书信&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;span&amp;gt;&lt;/span&gt;2015-04-06&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;《程序猿，请晒出你的童年》活动获奖公告&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;span&amp;gt;&lt;/span&gt;2015-04-06&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;【慕课访谈】破茧成蝶——美女程序员的蜕变史&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;span&amp;gt;&lt;/span&gt;2015-04-06&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;【有奖活动】给父亲的三行书信&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;span&amp;gt;&lt;/span&gt;2015-04-06&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;【慕客访谈 用户篇】“有为屌丝”在路上&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;span&amp;gt;&lt;/span&gt;2015-04-06&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;《程序猿，请晒出你的童年》活动获奖公告&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;span&amp;gt;&lt;/span&gt;2015-04-06&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;【慕课访谈】破茧成蝶——美女程序员的蜕变史&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;span&amp;gt;&lt;/span&gt;2015-04-06&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;【慕客访谈 用户篇】“有为屌丝”在路上&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;span&amp;gt;&lt;/span&gt;2015-04-06&lt;span class="nt"&gt;&amp;lt;/span&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;《程序猿，请晒出你的童年》活动获奖公告&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- news_list结束 --&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- list_box结束 --&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;//新闻列表区域&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list_box&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;width:&lt;/span&gt; &lt;span class="mh"&gt;770&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;min&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;350&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;_height:&lt;/span&gt; &lt;span class="mh"&gt;350&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;border:&lt;/span&gt; &lt;span class="mh"&gt;1&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;solid&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;E8E8E8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;float:&lt;/span&gt; &lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+        &lt;span class="c1"&gt;//新闻类别头部标题&lt;/span&gt;
+    &lt;span class="n"&gt;h2&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nl"&gt;height:&lt;/span&gt;&lt;span class="mh"&gt;35&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;35&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;size:&lt;/span&gt; &lt;span class="mh"&gt;14&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;family:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;微软雅黑&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="mh"&gt;666&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;background:&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(..&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;type_bg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;repeat&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;left:&lt;/span&gt; &lt;span class="mh"&gt;20&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;//新闻列表&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;news_list&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;news_list&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;6. 页码制作&lt;/h2&gt;
+&lt;p&gt;a标签是内联元素，为了使内联元素具有块级元素的一些属性同时使所有的a标签显示在同一行上，我们需要把a标签设置为行内块元素inline-block。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;page&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;首页&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;1&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;2&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;3&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;...&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;末页&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- page结束 --&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;//页码&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;40&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;top:&lt;/span&gt; &lt;span class="mh"&gt;10&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;align:&lt;/span&gt; &lt;span class="n"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nl"&gt;border:&lt;/span&gt; &lt;span class="mh"&gt;1&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;solid&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;E8E8E8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;decoration:&lt;/span&gt; &lt;span class="n"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;margin:&lt;/span&gt; &lt;span class="mh"&gt;5&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;padding:&lt;/span&gt; &lt;span class="mh"&gt;5&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="mh"&gt;10&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;display:&lt;/span&gt; &lt;span class="n"&gt;inline&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;block&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//行内块级元素&lt;/span&gt;
+
+        &lt;span class="o"&gt;&amp;amp;:&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;:&lt;/span&gt;&lt;span class="n"&gt;visited&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="mh"&gt;000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="o"&gt;&amp;amp;:&lt;/span&gt;&lt;span class="n"&gt;hover&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;:&lt;/span&gt;&lt;span class="n"&gt;active&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;FFF&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="n"&gt;background&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="n"&gt;cc1b1b&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-08 底部版权区制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-08-di-bu-ban-quan-qu-zhi-zuo.html" rel="alternate"></link><updated>2015-04-04T21:31:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-04:qi-ye-wang-zhan-bu-ju-shi-jian-08-di-bu-ban-quan-qu-zhi-zuo.html</id><summary type="html">&lt;h2&gt;1. 结构分析&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="底部版权区" src="images/qy-web-12.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;2. 文档结构&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;copyright_content&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;关于
+                &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;品牌故事&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;联系我们&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;加入我们&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;版权声明&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;课程
+                &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;PHP开发&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;前端开发&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;JAVA开发&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Android开发&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;关注
+                &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;新浪微博&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;新浪微博&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;企业微信&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;QQ空间&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;留言
+                &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;意见反馈&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;问题留言&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;媒体联络&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;在线客服&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;images/weixin.png&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;alt=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;微信&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;30px&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;27px&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;微信
+                &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;images/qrcode.jpg&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;alt=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;扫描关注慕课网官方微信&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;102&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;102&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- copyright_content结束 --&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- copyright结束 --&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;3. LESS实现&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copyright&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;clear:&lt;/span&gt; &lt;span class="n"&gt;both&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;width:&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;background&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;E8E8E8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copyright_content&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;width:&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;margin:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;top&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="n"&gt;li&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;float:&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;width:&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;align&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;background:&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(..&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;repeat&lt;/span&gt; &lt;span class="n"&gt;right&lt;/span&gt; &lt;span class="n"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;family&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;微软雅黑&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;999&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+        &lt;span class="n"&gt;ul&lt;/span&gt; &lt;span class="n"&gt;li&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-07 侧边栏制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-07-ce-bian-lan-zhi-zuo.html" rel="alternate"></link><updated>2015-04-04T21:01:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-04:qi-ye-wang-zhan-bu-ju-shi-jian-07-ce-bian-lan-zhi-zuo.html</id><summary type="html">&lt;h2&gt;1. 结构分析&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="侧边栏" src="images/qy-web-11.png" /&gt;&lt;/p&gt;
+&lt;p&gt;从图中我们知道，除标题外，其余内容大致分成上下两部分。分别是上面的视频和下面的广告。下面我们来实现这个效果。&lt;/p&gt;
+&lt;h2&gt;2. 文档结构&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sidebar&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;video&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;title&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+           &lt;span class="nt"&gt;&amp;lt;h2&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;title_left&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;媒体聚焦&lt;span class="nt"&gt;&amp;lt;/h2&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;title_right&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;More&lt;span class="ni"&gt;&amp;amp;gt;&amp;amp;gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- title结束 --&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;p&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;video_content&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;embed&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://player.youku.com/player.php/sid/XNjkzMDE5MTUy/v.swf&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;allowfullscreen=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;true&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;quality=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;high&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;220&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;140&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;align=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;middle&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;allowscriptaccess=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;always&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;application/x-shockwave-flash&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- video_content结束 --&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- video结束 --&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;service&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;images/app.jpg&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;alt=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;app&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- services结束 --&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- sidebar结束 --&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;3. LESS实现&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;width:&lt;/span&gt;&lt;span class="mi"&gt;230&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;video&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mi"&gt;185&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bottom&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;border:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;solid&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;E8E8E8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+        &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;_content&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nl"&gt;height:&lt;/span&gt;&lt;span class="mi"&gt;150&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;align&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;service&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;height:&lt;/span&gt;&lt;span class="mi"&gt;55&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;border:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;solid&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;E8E8E8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-06 课程中心制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-06-ke-cheng-zhong-xin-zhi-zuo.html" rel="alternate"></link><updated>2015-04-03T21:33:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-03:qi-ye-wang-zhan-bu-ju-shi-jian-06-ke-cheng-zhong-xin-zhi-zuo.html</id><summary type="html">&lt;h2&gt;1. 结构分析&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="课程中心" src="images/qy-web-09.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;2. 网页结构&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;course&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;title&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;h2&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;title_left&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;课程中心&lt;span class="nt"&gt;&amp;lt;/h2&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;title_right&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;More&lt;span class="ni"&gt;&amp;amp;gt;&amp;amp;gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- title结束 --&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;course_pic&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+     &lt;span class="nt"&gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;images/css.jpg&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;alt=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;css&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;h2&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;news.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;CSS圆角进化论&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/h2&amp;gt;&amp;lt;p&amp;gt;&lt;/span&gt;CSS圆角的实现，经历了三大发展阶段：背景图片方式、CSS2.0+HTML标签模拟、CSS3.0圆角属性）。本案例详细讲解每一种的实现方式，并对实现的优缺点进行对比分析。&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- course_pic结束 --&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;course_type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+     &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+         &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;PHP开发&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+         &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;前端开发&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+         &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;JAVA开发&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+         &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Android开发&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+     &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+ &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- course_type结束 --&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class="c"&gt;&amp;lt;!-- course结束 --&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;course分为3部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;title部分与新闻中心类似&lt;/li&gt;
+&lt;li&gt;course_pic图片课程部分与新闻中心也类似&lt;/li&gt;
+&lt;li&gt;course_type部分就是一个列表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;3. LESS实现&lt;/h2&gt;
+&lt;p&gt;1、首先是course整个框架，在之前已经定义过&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;news&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;course&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mi"&gt;250&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;float:&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2、title部分与新闻中心的title是使用同一套&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;//标题&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;35&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;border&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;bottom:&lt;/span&gt; &lt;span class="mh"&gt;2&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;solid&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;E8E8E8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="c1"&gt;//新闻中心&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;_left&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nl"&gt;width:&lt;/span&gt; &lt;span class="mh"&gt;70&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;35&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//垂直居中&lt;/span&gt;
+        &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;family:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;微软雅黑&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;size:&lt;/span&gt; &lt;span class="mh"&gt;14&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;weight:&lt;/span&gt; &lt;span class="n"&gt;bold&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="mf"&gt;786F&lt;/span&gt;&lt;span class="mh"&gt;66&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;float:&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+        &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;left:&lt;/span&gt; &lt;span class="mh"&gt;20&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="c1"&gt;//更多&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;_right&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nl"&gt;width:&lt;/span&gt;&lt;span class="mh"&gt;20&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;35&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;float:&lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;align:&lt;/span&gt; &lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+        &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;decoration:&lt;/span&gt; &lt;span class="n"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="mh"&gt;999999&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;family:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;宋体&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;size:&lt;/span&gt; &lt;span class="mh"&gt;10&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;weight:&lt;/span&gt; &lt;span class="n"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;right:&lt;/span&gt; &lt;span class="mh"&gt;10&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;3、图片&lt;/p&gt;
+&lt;p&gt;因为这部分与新闻中心的有些类似，只是高度不同，因此，我们将它提取为一个通用LESS&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;//图片内容&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pic_content&lt;/span&gt;&lt;span class="p"&gt;(@&lt;/span&gt;&lt;span class="n"&gt;pic_height&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="nl"&gt;height:&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="n"&gt;pic_height&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;top:&lt;/span&gt; &lt;span class="mh"&gt;10&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;22&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//设置行高&lt;/span&gt;
+    &lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nl"&gt;float:&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;margin:&lt;/span&gt; &lt;span class="mh"&gt;0&lt;/span&gt; &lt;span class="mh"&gt;5&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nl"&gt;color:&lt;/span&gt;&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;C00&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;decoration:&lt;/span&gt; &lt;span class="n"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;//调用&lt;/span&gt;
+&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;_pic&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pic_content&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mh"&gt;120&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;4、课程类型&lt;/p&gt;
+&lt;p&gt;先固定高度与宽度，居中，设置背景图。&lt;/p&gt;
+&lt;p&gt;然后再设置其中的li，使其居中，左右间距为15px&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;_type&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mi"&gt;37&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;width:&lt;/span&gt; &lt;span class="mi"&gt;372&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;background:&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(..&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;product_type_bg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jpg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;repeat&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;margin:&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="k"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="n"&gt;li&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;float:&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;37&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nl"&gt;margin:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;align&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;效果图如下：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="images/qy-web-10.png" src="images/qy-web-10.png" /&gt;&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-05 新闻中心制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html" rel="alternate"></link><updated>2015-04-03T14:00:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-03:qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html</id><summary type="html">&lt;h2&gt;1、结构分析&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="新闻中心" src="images/qy-web-07.png" /&gt;&lt;/p&gt;
 &lt;p&gt;从上到下可以分为新闻标题、图片新闻和图片新闻。&lt;/p&gt;
 &lt;h2&gt;2、创建结构&lt;/h2&gt;
@@ -27,7 +1475,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;3、创建CSS&lt;/h2&gt;
+&lt;h2&gt;3、创建新闻中心标题的CSS&lt;/h2&gt;
 &lt;p&gt;新闻标题是title节&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;news&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nl"&gt;width:&lt;/span&gt;&lt;span class="mi"&gt;340&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -38,6 +1486,7 @@
         &lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
         &lt;span class="n"&gt;border&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bottom&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;solid&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;E8E8E8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
+        &lt;span class="c1"&gt;//“新闻中心”几个字左对齐&lt;/span&gt;
         &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;_left&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
             &lt;span class="nl"&gt;width:&lt;/span&gt; &lt;span class="mi"&gt;70&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
             &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//居中&lt;/span&gt;
@@ -49,6 +1498,7 @@
             &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
         &lt;span class="p"&gt;}&lt;/span&gt;
 
+        &lt;span class="c1"&gt;//&amp;quot;more&amp;quot;右对齐&lt;/span&gt;
         &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;_right&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
             &lt;span class="nl"&gt;width:&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
             &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -56,8 +1506,8 @@
             &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;align&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
             &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-                &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;decoration&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-                &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;999999&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+                &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;decoration&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+                &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;999999&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
                 &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;family&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;宋体&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
                 &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
                 &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;weight&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -66,7 +1516,69 @@
         &lt;span class="p"&gt;}&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-04 信息展示区制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html" rel="alternate"></link><updated>2015-04-03T11:22:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-03:qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html</id><summary type="html">&lt;h2&gt;1. 结构分析&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;说明：
+- &lt;code&gt;text-decoration&lt;/code&gt;去除a的下划线
+- &lt;code&gt;line-height&lt;/code&gt;设置行高可以设置居中对齐&lt;/p&gt;
+&lt;p&gt;运行结果如下：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="新闻中心标题" src="images/qy-web-08.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;4、新闻中心之图片新闻&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;//图片新闻&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pic_news&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;height:&lt;/span&gt;&lt;span class="mh"&gt;80&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;top:&lt;/span&gt; &lt;span class="mh"&gt;10&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;height:&lt;/span&gt; &lt;span class="mh"&gt;22&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//设置行高&lt;/span&gt;
+    &lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nl"&gt;float:&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;top:&lt;/span&gt; &lt;span class="mh"&gt;0&lt;/span&gt; &lt;span class="mh"&gt;5&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nl"&gt;color:&lt;/span&gt;&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;C00&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;decoration:&lt;/span&gt; &lt;span class="n"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;说明：
+- &lt;code&gt;line-height&lt;/code&gt;设置行高可以增大文字行间距。&lt;/p&gt;
+&lt;h2&gt;5、新闻中心之新闻列表&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;//新闻列表&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;news_list&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+    &lt;span class="n"&gt;margin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;top:&lt;/span&gt; &lt;span class="mh"&gt;20&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;li&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;   
+        &lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//去除默认样式&lt;/span&gt;
+        &lt;span class="nl"&gt;background:&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(..&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jpg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;repeat&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//添加新样式&lt;/span&gt;
+        &lt;span class="n"&gt;padding&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;left:&lt;/span&gt; &lt;span class="mh"&gt;10&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//保持图标与文字一段距离&lt;/span&gt;
+        &lt;span class="nl"&gt;margin:&lt;/span&gt; &lt;span class="mh"&gt;8&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//设置周围间距&lt;/span&gt;
+        &lt;span class="n"&gt;border&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;bottom:&lt;/span&gt; &lt;span class="mh"&gt;1&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt; &lt;span class="n"&gt;dotted&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;CCC&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//每条新闻下加虚线&lt;/span&gt;
+        &lt;span class="c1"&gt;//新闻链接样式&lt;/span&gt;
+        &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="o"&gt;&amp;amp;:&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;:&lt;/span&gt;&lt;span class="n"&gt;visited&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;decoration:&lt;/span&gt; &lt;span class="n"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+                &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="mh"&gt;000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+
+            &lt;span class="o"&gt;&amp;amp;:&lt;/span&gt;&lt;span class="n"&gt;hover&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;:&lt;/span&gt;&lt;span class="n"&gt;active&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;decoration:&lt;/span&gt; &lt;span class="n"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+                &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="no"&gt;F00&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="c1"&gt;//日期&lt;/span&gt;
+        &lt;span class="n"&gt;span&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="mh"&gt;999&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="nl"&gt;float:&lt;/span&gt; &lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;注意li符号可以通过background、padding-left、list-style-type 3者结合进行设置，也可使用list-style-image进行设置。&lt;/p&gt;
+&lt;p&gt;list-style-type可以设置列表项目符号为：none无项目符号，disc实心圆，circle空心圆，square实心方块等但是不可以设置图片为项目符号。&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-04 信息展示区制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html" rel="alternate"></link><updated>2015-04-03T11:22:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-03:qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html</id><summary type="html">&lt;h2&gt;1. 结构分析&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="结构分析" src="images/qy-web-05.png" /&gt;&lt;/p&gt;
 &lt;p&gt;分析如下：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="结构分析" src="images/qy-web-06.png" /&gt;&lt;/p&gt;
