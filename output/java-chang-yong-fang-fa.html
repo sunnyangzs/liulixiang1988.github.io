@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Java Web之JSP-02 JSP基础语法</title>
+  <title>Java-常用方法</title>
   <meta name="author" content="理想">
 
 
@@ -70,118 +70,19 @@
 <div>
   <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">Java Web之JSP-02 JSP基础语法</h1>
+      <h1 class="entry-title">Java-常用方法</h1>
       <p class="meta"><time datetime="2015-04-08T00:30:00" pubdate>三 08 四月 2015</time></p>
 </header>
 
-  <div class="entry-content"><article class="markdown-body"><h2 id="1-jsp"><a name="user-content-1-jsp" href="#1-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. JSP简介</h2>
-<p>JSP页面元素构成：</p>
-<ol>
-<li>静态内容</li>
-<li>注释</li>
-<li>声明</li>
-<li>小脚本</li>
-<li>表达式</li>
-<li>指令</li>
-</ol>
-<h3 id="11-jsp"><a name="user-content-11-jsp" href="#11-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.1 jsp指令</h3>
-<p>page指令：通常位于jsp页面的顶端，同一个页面可以有多个page指令。<br />
-include指令：将一个外部文件嵌入到当前jsp文件中，同时解析这个页面中的jsp语句。<br />
-taglib指令：使用标签库定义心得自定义标签。在jsp页面中启用定制行为</p>
-<p>page指令语法：</p>
-<pre><code>&lt;%@page 属性1=&quot;value&quot; 属性2=&quot;value1, value2&quot; ... %&gt;
-</code></pre>
+  <div class="entry-content"><p>之前一直用C#比较多，最近开始研究Java，两者之间的库设计差别很大，故再次做个总结。</p>
+<h2>1. 日期</h2>
+<p>1.日期格式化</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">SimpleDateFormat</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">Date</span><span class="p">;</span>
 
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>language</td>
-<td>指定jsp页面使用的脚本语言</td>
-<td>java</td>
-</tr>
-<tr>
-<td>import</td>
-<td>通过该属性来引用脚本语言中使用到的类文件</td>
-<td>无</td>
-</tr>
-<tr>
-<td>contentType</td>
-<td>用来指定jsp页面所采用的编码方式</td>
-<td>text/html,ISO-8859-1</td>
-</tr>
-</tbody>
-</table>
-<h3 id="12-jsp"><a name="user-content-12-jsp" href="#12-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.2 JSP注释</h3>
-<ol>
-<li>html注释 <code>&lt;!--html注释--&gt;</code></li>
-<li>jsp注释<code>&lt;%--注释--%&gt;</code></li>
-<li>jsp脚本注释 <code>// /**/</code></li>
-</ol>
-<h3 id="13-jsp"><a name="user-content-13-jsp" href="#13-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.3 jsp脚本</h3>
-<p>语法：</p>
-<pre><code>&lt;%
-out.println(&quot;大家好，欢迎大家学习javaee开发&quot;);
-%&gt;
-</code></pre>
-
-<h3 id="14-jsp"><a name="user-content-14-jsp" href="#14-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.4 jsp声明</h3>
-<p>在jsp页面中定义变量或者方法</p>
-<pre><code>&lt;%!java代码 %&gt;
-
-&lt;%! String s = &quot;lixiang&quot;; 
-int add(int x, int y){
-    return x+y;
-}
-</code></pre>
-
-<h3 id="15-jsp"><a name="user-content-15-jsp" href="#15-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.5 jsp表达式</h3>
-<pre><code>&lt;%=表达式%&gt; //注意：表达式不以分号结束
-
-&lt;%=s%&gt;
-&lt;%=add(5+4)%&gt;
-</code></pre>
-
-<h3 id="16-jsp"><a name="user-content-16-jsp" href="#16-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.6 jsp页面生命周期</h3>
-<p><img alt="img" src="/Users/liulixiang/Documents/blog/liulixiang1988.github.io/content/images/java-web-jsp-02.png" /></p>
-<p><code>jspService()</code>方法被调用来处理客户端的请求。对每一个请求，JSP引擎创建一个新的线程来处理该请求。如果有多个客户端同时请求该JSP文件，则JSP引擎会创建多个线程。每个客户端请求对应一个线程。以多线程方式执行可以大大降低对系统的资源需求，提高系统的并发量及响应时间。但也要注意多线程的编程带来的同步问题，由于该Servlet始终驻于内存，所以响应时间是非常快的。</p>
-<h3 id="17-jsp"><a name="user-content-17-jsp" href="#17-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.7 jsp练习：打印乘法表</h3>
-<pre><code>
-&lt;%!
-  String printMultiTable(){
-    String s = &quot;&quot;;
-    for(int i = 1; i &lt;= 9; i++){
-      for(int j=1; j&lt;=i; j++){
-        s += j + &quot;*&quot; + i + &quot;=&quot; + i*j+&quot;&amp;nbsp;&amp;nbsp;&quot;;
-      }
-      s+=&quot;&lt;br/&gt;&quot;;
-    }
-    return s;
-  }
-
-  void printMultiTable2(JspWriter out) throws IOException {
-    for(int i=1; i&lt;=9; i++){
-      for(int j=1; j&lt;=i; j++){
-        out.println(j+&quot;*&quot;+i+&quot;=&quot;+i*j+&quot;&amp;nbsp;&amp;nbsp;&quot;);
-      }
-      out.println(&quot;&lt;br&gt;&quot;);
-    }
-  }
-%&gt;
-
-&lt;h1&gt;九九乘法表&lt;/h1&gt;
-&lt;hr/&gt;
-&lt;%=printMultiTable()%&gt;
-
-&lt;hr/&gt;
-&lt;% printMultiTable2(out); %&gt;
-</code></pre></article></div>
+<span class="n">SimpleDateFormat</span> <span class="n">sdf</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;yyyy年MM月dd日&quot;</span><span class="p">);</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">new</span> <span class="n">Date</span><span class="p">());</span>
+</pre></div></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -200,7 +101,7 @@ int add(int x, int y){
     <h1>Comments</h1>
     <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="java-webzhi-jsp-02-jspji-chu-yu-fa.html" data-title="Java Web之JSP-02 JSP基础语法" data-url="./java-webzhi-jsp-02-jspji-chu-yu-fa.html"></div>
+	<div class="ds-thread" data-thread-key="java-chang-yong-fang-fa.html" data-title="Java-常用方法" data-url="./java-chang-yong-fang-fa.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

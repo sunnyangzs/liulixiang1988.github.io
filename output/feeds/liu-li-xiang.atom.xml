@@ -1,5 +1,470 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2015-04-08T00:30:00+08:00</updated><entry><title>Java Web之JSP-02 JSP基础语法</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-02-jspji-chu-yu-fa.html" rel="alternate"></link><updated>2015-04-08T00:30:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-08:java-webzhi-jsp-02-jspji-chu-yu-fa.html</id><summary type="html">&lt;h2&gt;1. JSP简介&lt;/h2&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-01 Java Web简介</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-01-java-webjian-jie.html" rel="alternate"></link><updated>2015-04-07T21:40:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-07:java-webzhi-jsp-01-java-webjian-jie.html</id><summary type="html">&lt;h2&gt;1. Tomcat配置&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2015-04-09T16:47:00+08:00</updated><entry><title>Java Web之JSP-03 JSP内置对象</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html" rel="alternate"></link><updated>2015-04-09T16:47:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-09:java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html</id><summary type="html">&lt;h2&gt;1. jsp内置对象简介&lt;/h2&gt;
+&lt;p&gt;1、JSP内置对象是Web容器创建的一组对象，【不使用new关键字】就可以使用的内置对象。
+2、九大内置对象:
+out,request,response,session,application（五大常用对象）
+Page,pageContext,exception.config（四个不太常用对象）&lt;/p&gt;
+&lt;h2&gt;2. out对象&lt;/h2&gt;
+&lt;p&gt;缓冲区Buffer：就是内存的一块区域涌来保存临时数据。&lt;/p&gt;
+&lt;p&gt;out是JspWriter 的实例,是向客户端输出内容的常用对象.
+常用方法:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;void println() 向客户端打印字符串.&lt;/li&gt;
+&lt;li&gt;void clear() 清除缓冲区,在flush之后调用会抛出异常.&lt;/li&gt;
+&lt;li&gt;void clearBuffer() 清除缓冲区,在flush之后调用不会抛出异常.&lt;/li&gt;
+&lt;li&gt;void flush() 将缓冲区内容输出到客户端.&lt;/li&gt;
+&lt;li&gt;int getBufferSize() &lt;/li&gt;
+&lt;li&gt;int getRemaining()&lt;/li&gt;
+&lt;li&gt;boolean isAutoFlush() 返回缓冲区满时，是自动清空还是抛出异常&lt;/li&gt;
+&lt;li&gt;void close() 关闭输出流&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;3. Get和Post提交方式的区别&lt;/h2&gt;
+&lt;p&gt;表单有两种提交方式：get与post。定义在&lt;code&gt;&amp;lt;form action="dologin.jsp" name="loginForm" method="提交方式***"&amp;gt;&amp;lt;/form&amp;gt;&lt;/code&gt; 动作／名称等顺序无所谓。
+1.get：以【明文】方式，通过URL提交数据，数据在URL中【可以看到】。提交数据最多不超过【2KB】。安全性较低，但效率比post方式高。适合提交数据量不大，且安全要求不高的数据：比如：搜索、查询等功能。
+2.post：将用户提交的信息封装在HTML HEADER内。适合提交数据量大，安全性高的用户信息。如：注册、修改、上传等功能。&lt;/p&gt;
+&lt;h2&gt;4. request对象&lt;/h2&gt;
+&lt;p&gt;客户端的请求信息被封装在request对象中，它是HttpServletRequest类的实例。request对象具有请求域，即完成客户端的请求之前，该对象一直有效。常用方法如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;String getParameter(String name) 返回name制定的参数值&lt;/li&gt;
+&lt;li&gt;String[] getParameterValues(String name) 返回包含参数name的所有值的数组（如复选框的值）。&lt;/li&gt;
+&lt;li&gt;void setAttribute(String, Object) 存储此请求中的属性&lt;/li&gt;
+&lt;li&gt;object getAttribute(String name) 返回制定属性的属性值&lt;/li&gt;
+&lt;li&gt;String getContentType() 得到请求体的mime类型&lt;/li&gt;
+&lt;li&gt;String getProtocol() 返回请求用的协议类型及版本号&lt;/li&gt;
+&lt;li&gt;String getServerName() 返回接受请求的服务器主机名&lt;/li&gt;
+&lt;li&gt;int getServerPort();//返回服务器接受此请求所用的端口号&lt;/li&gt;
+&lt;li&gt;String getCharacterEncoding();//返回字符编码方式&lt;/li&gt;
+&lt;li&gt;void setCharacterEncodinng();//设置请求的字符编码方式&lt;/li&gt;
+&lt;li&gt;int getContentLength();//返回请求体的长途(以字节数)&lt;/li&gt;
+&lt;li&gt;String getRemoteAddr();//返回发送此请求的客户端IP地址,IP地址为IPv6本地环回地址。&lt;/li&gt;
+&lt;li&gt;String getRealPath(String path);//返回虚拟路径的真实路径&lt;/li&gt;
+&lt;li&gt;String request.getContextPath();//返回上下文路径&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;使用关键：
+1. 单个参数的获取使用getParameter(String name), 多个参数的获取getParameterValues(String name)。在使用这两个方法是，需传递对应的参数name，这个name应是在表格中声明的对象。
+2. 不存在参数值的方法，直接使用表达式即可获取，例如：&lt;code&gt;&amp;lt;%=request.getContentType()%&amp;gt;&lt;/code&gt;
+3. 传递中文参数时，可能会出现乱码情况，需声明：&lt;code&gt;request.setCharacterEncoding("utf-8");&lt;/code&gt;但此方法不能解决使用url传递中文时出现的乱码，若想解决这个，需要在server.xml的connector的末尾加上:&lt;code&gt;URIEncoding="utf-8"&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;5. response对象&lt;/h2&gt;
+&lt;p&gt;response对象包含了响应客户请求的有关信息，但在JSP中很少直接用到它，它是HttpServletResponse类的实例，response对象具有页面作用域，即访问一个页面时，该页面内的response对象只能对这次访问有效，其它页面的response对象对当前页面无效。
+常用方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;String getCharacterEncoding();//返回响应的是何种字符编码&lt;/li&gt;
+&lt;li&gt;void setContentType(String type);//设置响应MIME类型&lt;/li&gt;
+&lt;li&gt;PrintWriter getWriter();//返回可以想客户端输出字符的一个对象PrintWriter&lt;/li&gt;
+&lt;li&gt;sendRedirect(java.lang.String location);//重新定向客户端请求&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;PrintWriter比out对象先打印。调用out.flush()可以解决&lt;/p&gt;
+&lt;h3&gt;5.1 JSP内置对象——请求转发与请求重定向的区别&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;请求重定向：服务端responce.sendRedirect("xx.jsp")重定向。【客户端行为】：即客户端会访问两次，第一次访问后会立即跳转到第二个重定向页面上，【从本质上讲等于两次请求】，而前一次的请求封装的request对象不会保存，地址栏的URL地址会改变。&lt;/li&gt;
+&lt;li&gt;请求转发：服务端request.getRequestDispatcher("xx.jsp").forward(request,response)请求转发。forward(request,response)用于保存内置对象request和response。【服务器行为】：服务器会代替客户端去访问转发页面，【从本质是一次请求】，转发后请求对象会保存，地址栏的URL地址不会改变。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;6. session对象&lt;/h2&gt;
+&lt;h3&gt;6.1 什么是session&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;session表示客户端与服务器的一次会话&lt;/li&gt;
+&lt;li&gt;Web中的session指：用户在浏览某个网站时，从进入网站到浏览器关闭所经过的这段时间，也就是用户浏览网站所花费的时间。&lt;/li&gt;
+&lt;li&gt;从上述定义中可以看到，session实际是一个【特定的时间概念】&lt;/li&gt;
+&lt;li&gt;服务器的内存中，保存着不同用户的不同的session。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;6.2 session对象常用方法&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;long getCreationTime() 返回session创建时间&lt;/li&gt;
+&lt;li&gt;public String getId() 返回创建时jsp引擎为它设的唯一id号&lt;/li&gt;
+&lt;li&gt;public Ojbect setAttribute(String name, Object value) 使用指定名称将对象绑定到此对话&lt;/li&gt;
+&lt;li&gt;public Object getAttribute(String name) 返回此会话中的指定名称绑定在一起的对象，如果没有对象绑定在该名称下，则返回null&lt;/li&gt;
+&lt;li&gt;String[] getValueNames() 返回一个包含此session中所有可用属性的数组&lt;/li&gt;
+&lt;li&gt;int getMaxInactiveInterval() 返回两次请求间隔多长时间此session被取消（单位秒）&lt;/li&gt;
+&lt;li&gt;setMaxInactiveInterval(int)可以设置session存活的最长时间，在时间过了之后，服务器会创建全新的一个session。前一个session的内容无法被传递到新的session。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;6.3 session的生命周期&lt;/h3&gt;
+&lt;p&gt;1、创建阶段：当客户端第一次访问某个jsp或者servlet时候，服务器会为当前会话创建一个SessionId，每次客户端向服务端发送请求时，都会将此SessionId携带过去，服务端会对此SessionId进行校验。
+2、活动阶段
+- 某次会话当中通过超链接打开的新页面属于同一次会话。
+- 只要当前会话没有全部关闭，重新打开新的浏览器窗口访问统一项目资源时属于同一次会话。
+- 除非本次会话的所有页面【都关闭后】，再重新访问某个Jsp或者Servlet将创建新的会话&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意：原有会话在超时前会一直存在，只是再没有客户端携带原SessionId交予服务端校验了！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;3、销毁阶段：Session的销毁只有三种方式
+- 调用了session.invalidate()方法
+- Session过期（超时）
+- 服务器重启&lt;/p&gt;
+&lt;p&gt;4、设置session对象超时时间：默认为30分钟
+- session.setMaxInactiveInterval()
+- 在web.xml文档配置中,单位是分钟.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;session-config&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;session-timeout&amp;gt;&lt;/span&gt;2&lt;span class="nt"&gt;&amp;lt;/session-timeout&amp;gt;&lt;/span&gt; // 设置为2分钟过期
+&lt;span class="nt"&gt;&amp;lt;/session-config&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;7. application对象&lt;/h2&gt;
+&lt;h3&gt;7.1 application介绍&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;实现了用户间数据的共享，可存放全局变量。（类似静态对象）&lt;/li&gt;
+&lt;li&gt;开始于服务器启动，终止于服务器的关闭（生命周期）&lt;/li&gt;
+&lt;li&gt;在用户的前后连接或不同用户之间的连接中，可以对application对象的同一属性进行操作&lt;/li&gt;
+&lt;li&gt;在任何地方对application对象属性进行操作，都将影响到其他用户对此的访问&lt;/li&gt;
+&lt;li&gt;application对象是ServletContext类的实例&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;7.2 常用方法如下&lt;/h3&gt;
+&lt;p&gt;application对象常用方法：
+1. pblic void setAttribute(String name,Object value);//使用指定名称将对象绑定到此会话
+2. public Object getAttribute(String name);//返回与此会话中的指定名称绑定在一起的对象，如果没有对象绑定在该名称下，则返回null.
+3. Enumeration getAttributeNames();//返回所有可用属性那个名的枚举
+4. String getServerInfo();//返回JSP（SERVER）引擎及版本号&lt;/p&gt;
+&lt;h2&gt;8. page对象&lt;/h2&gt;
+&lt;p&gt;page对象就是指向当前JSP页面本身，有点像类中的this指针，它是java.lang.Object类的实例。常用方法如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;class getClass();   //返回此Object类&lt;/li&gt;
+&lt;li&gt;int hashCode(); //返回此Object的hash码&lt;/li&gt;
+&lt;li&gt;boolean equals(Object obj); //判断此Object是否与指定的Object对象相等&lt;/li&gt;
+&lt;li&gt;void copy(Object obj);  //把此Object复制到指定的Object对象中&lt;/li&gt;
+&lt;li&gt;Object clone(); //克隆此Object对象&lt;/li&gt;
+&lt;li&gt;String toString();  //把此Object对象转换为String类的对象&lt;/li&gt;
+&lt;li&gt;void notify();  //唤醒一个等待的线程&lt;/li&gt;
+&lt;li&gt;void notyfyAll();   //唤醒所有等待的线程&lt;/li&gt;
+&lt;li&gt;void wait(int timeout); //使一个线程处于等待直到timeout结束或被唤醒&lt;/li&gt;
+&lt;li&gt;void wait();    //使一个线程处于等待直到被唤醒&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;9. pageContext对象和config对象&lt;/h2&gt;
+&lt;h3&gt;9.1 pageContext对象&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;pageContext对象提供了对JSP页面内所有的对象及名字空间的访问&lt;/li&gt;
+&lt;li&gt;pageContext对象可以访问到本页所在的session，也可以本页所在的application的某一属性值&lt;/li&gt;
+&lt;li&gt;pageContext对象相当于页面中所有功能的集大成者&lt;/li&gt;
+&lt;li&gt;pageContext对象的本类名也叫pageContext&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;常用方法如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;JspWriter   getOut();   //返回当前客户端响应被使用的JspWriter流(out)&lt;/li&gt;
+&lt;li&gt;HttpSession getSession();   //返回当前页面中HttpSession对象(session)&lt;/li&gt;
+&lt;li&gt;Object  getPage();  //返回当前页面的Object对象(Object)&lt;/li&gt;
+&lt;li&gt;ServeletRequest getRequest();   //返回当前页面的ServletRequest对象(request)&lt;/li&gt;
+&lt;li&gt;ServeletResponse getResponse(); //返回当前页面的ServletResponse对象(response)&lt;/li&gt;
+&lt;li&gt;void setAttribute(String name,Object attribute);    //设置属性及属性值&lt;/li&gt;
+&lt;li&gt;void getAttribute(String name,int scope);   //在指定范围内取属性的值&lt;/li&gt;
+&lt;li&gt;int getAttributeScope(String name); //返回某属性的作用范围&lt;/li&gt;
+&lt;li&gt;void forward(String relativeUrlPath);   //使当前页面重导到另一页面，页面URL不会变&lt;/li&gt;
+&lt;li&gt;void include(String relativeUrlPath);   //在当前位置包含另一文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;9.2 Config对象：&lt;/h3&gt;
+&lt;p&gt;config对象是在一个servlet初始化时，JSP引擎向它传递信息用的，此信息包括Servlet初始化时所要用到的参数(通过属性名和属性值构成)以及服务器的有关信息（通过传递一个ServletContext对象）&lt;/p&gt;
+&lt;p&gt;常用方法：
+1. ServletContext getServletContext();//返回含有服务器相关信息的ServletContext对象
+2. String getInitParameter(String name);//返回初始化参数的值
+3. Enumeration getInitParameterNames();//返回Servlet初始化所需所有参数的枚举&lt;/p&gt;
+&lt;h2&gt;10. exception对象&lt;/h2&gt;
+&lt;p&gt;exception对象是一个异常对象，当一个页面在运行过程中规发生了异常，就会产生这个对象。如果一个JSP页面要应用此对象，就必须把&lt;code&gt;isErrorPage&lt;/code&gt;设为true,否则无法编译。他实际上是java.lang.Throwable的对象。&lt;/p&gt;
+&lt;h3&gt;10.1 exception对象常用方法&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;String getMessage();//返回描述异常的消息&lt;/li&gt;
+&lt;li&gt;String toString();//返回关于异常的简短描述消息&lt;/li&gt;
+&lt;li&gt;void printStackTrace();//显示异常及其栈轨迹&lt;/li&gt;
+&lt;li&gt;Throwable FillInStackTrace();//重写异常的执行栈轨迹&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;10.2 exception对象使用方法：&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;在可能会抛出异常的页面page指令里，设置errorPage="xxx.jsp"，表示出现异常将抛给xxx页面去处理&lt;/li&gt;
+&lt;li&gt;在xxx页面里，要使用Exception对象，需要把page指令里的isErrorPage属性设置为true。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;11. 阶段案例-实现用户登录&lt;/h2&gt;
+&lt;p&gt;用户登录页login.jsp&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="n"&gt;contentType&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;text/html;charset=UTF-8&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;language&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;java&amp;quot;&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;login&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;form&lt;/span&gt; &lt;span class="na"&gt;action=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;dologin.jsp&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;method=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;label&lt;/span&gt; &lt;span class="na"&gt;for=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;user name&lt;span class="nt"&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;username&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;placeholder=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;用户名&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;label&lt;/span&gt; &lt;span class="na"&gt;for=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;password&lt;span class="nt"&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;password&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;submit&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;login&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;处理用户登录页dologin.jsp&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="n"&gt;contentType&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;text/html;charset=UTF-8&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;language&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;java&amp;quot;&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;
+  &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="n"&gt;username&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setCharacterEncoding&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;utf-8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;username&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getParameter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getParameter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;admin&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;equals&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;  &lt;span class="s2"&gt;&amp;quot;admin&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;equals&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;)){&lt;/span&gt;
+    &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setAttribute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;loginUser&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getRequestDispatcher&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;login_success.jsp&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;forward&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sendRedirect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;login_failure.jsp&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;登录成功页login_success.jsp&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="n"&gt;contentType&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;text/html;charset=UTF-8&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;language&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;java&amp;quot;&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;login success!&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;
+  &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="n"&gt;loginUser&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getAttribute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;loginUser&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="n"&gt;loginUser&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getAttribute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;loginUser&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;toString&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;欢迎，&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt;&lt;span class="n"&gt;loginUser&lt;/span&gt;&lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;登录失败页&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="n"&gt;contentType&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;text/html;charset=UTF-8&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;language&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;java&amp;quot;&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;login failure.&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;hr/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;login.jsp&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;返回登录页&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java-常用方法</title><link href="http://liulixiang1988.github.io/java-chang-yong-fang-fa.html" rel="alternate"></link><updated>2015-04-08T00:30:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-08:java-chang-yong-fang-fa.html</id><summary type="html">&lt;p&gt;之前一直用C#比较多，最近开始研究Java，两者之间的库设计差别很大，故再次做个总结。&lt;/p&gt;
+&lt;h2&gt;1. 日期&lt;/h2&gt;
+&lt;p&gt;1.日期格式化&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SimpleDateFormat&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;SimpleDateFormat&lt;/span&gt; &lt;span class="n"&gt;sdf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;SimpleDateFormat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;yyyy年MM月dd日&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sdf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-02 JSP基础语法</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-02-jspji-chu-yu-fa.html" rel="alternate"></link><updated>2015-04-08T00:30:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-08:java-webzhi-jsp-02-jspji-chu-yu-fa.html</id><summary type="html">&lt;article class="markdown-body"&gt;&lt;h2 id="1-jsp"&gt;&lt;a name="user-content-1-jsp" href="#1-jsp" class="headeranchor-link" aria-hidden="true"&gt;&lt;span class="headeranchor"&gt;&lt;/span&gt;&lt;/a&gt;1. JSP简介&lt;/h2&gt;
+&lt;p&gt;JSP页面元素构成：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;静态内容&lt;/li&gt;
+&lt;li&gt;注释&lt;/li&gt;
+&lt;li&gt;声明&lt;/li&gt;
+&lt;li&gt;小脚本&lt;/li&gt;
+&lt;li&gt;表达式&lt;/li&gt;
+&lt;li&gt;指令&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="11-jsp"&gt;&lt;a name="user-content-11-jsp" href="#11-jsp" class="headeranchor-link" aria-hidden="true"&gt;&lt;span class="headeranchor"&gt;&lt;/span&gt;&lt;/a&gt;1.1 jsp指令&lt;/h3&gt;
+&lt;p&gt;page指令：通常位于jsp页面的顶端，同一个页面可以有多个page指令。&lt;br /&gt;
+include指令：将一个外部文件嵌入到当前jsp文件中，同时解析这个页面中的jsp语句。&lt;br /&gt;
+taglib指令：使用标签库定义心得自定义标签。在jsp页面中启用定制行为&lt;/p&gt;
+&lt;p&gt;page指令语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;%@page 属性1=&amp;quot;value&amp;quot; 属性2=&amp;quot;value1, value2&amp;quot; ... %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;属性&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;默认值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;language&lt;/td&gt;
+&lt;td&gt;指定jsp页面使用的脚本语言&lt;/td&gt;
+&lt;td&gt;java&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;import&lt;/td&gt;
+&lt;td&gt;通过该属性来引用脚本语言中使用到的类文件&lt;/td&gt;
+&lt;td&gt;无&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;contentType&lt;/td&gt;
+&lt;td&gt;用来指定jsp页面所采用的编码方式&lt;/td&gt;
+&lt;td&gt;text/html,ISO-8859-1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="12-jsp"&gt;&lt;a name="user-content-12-jsp" href="#12-jsp" class="headeranchor-link" aria-hidden="true"&gt;&lt;span class="headeranchor"&gt;&lt;/span&gt;&lt;/a&gt;1.2 JSP注释&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;html注释 &lt;code&gt;&amp;lt;!--html注释--&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;jsp注释&lt;code&gt;&amp;lt;%--注释--%&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;jsp脚本注释 &lt;code&gt;// /**/&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="13-jsp"&gt;&lt;a name="user-content-13-jsp" href="#13-jsp" class="headeranchor-link" aria-hidden="true"&gt;&lt;span class="headeranchor"&gt;&lt;/span&gt;&lt;/a&gt;1.3 jsp脚本&lt;/h3&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;%
+out.println(&amp;quot;大家好，欢迎大家学习javaee开发&amp;quot;);
+%&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="14-jsp"&gt;&lt;a name="user-content-14-jsp" href="#14-jsp" class="headeranchor-link" aria-hidden="true"&gt;&lt;span class="headeranchor"&gt;&lt;/span&gt;&lt;/a&gt;1.4 jsp声明&lt;/h3&gt;
+&lt;p&gt;在jsp页面中定义变量或者方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;%!java代码 %&amp;gt;
+
+&amp;lt;%! String s = &amp;quot;lixiang&amp;quot;; 
+int add(int x, int y){
+    return x+y;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="15-jsp"&gt;&lt;a name="user-content-15-jsp" href="#15-jsp" class="headeranchor-link" aria-hidden="true"&gt;&lt;span class="headeranchor"&gt;&lt;/span&gt;&lt;/a&gt;1.5 jsp表达式&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;%=表达式%&amp;gt; //注意：表达式不以分号结束
+
+&amp;lt;%=s%&amp;gt;
+&amp;lt;%=add(5+4)%&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="16-jsp"&gt;&lt;a name="user-content-16-jsp" href="#16-jsp" class="headeranchor-link" aria-hidden="true"&gt;&lt;span class="headeranchor"&gt;&lt;/span&gt;&lt;/a&gt;1.6 jsp页面生命周期&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="img" src="/Users/liulixiang/Documents/blog/liulixiang1988.github.io/content/images/java-web-jsp-02.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;jspService()&lt;/code&gt;方法被调用来处理客户端的请求。对每一个请求，JSP引擎创建一个新的线程来处理该请求。如果有多个客户端同时请求该JSP文件，则JSP引擎会创建多个线程。每个客户端请求对应一个线程。以多线程方式执行可以大大降低对系统的资源需求，提高系统的并发量及响应时间。但也要注意多线程的编程带来的同步问题，由于该Servlet始终驻于内存，所以响应时间是非常快的。&lt;/p&gt;
+&lt;h3 id="17-jsp"&gt;&lt;a name="user-content-17-jsp" href="#17-jsp" class="headeranchor-link" aria-hidden="true"&gt;&lt;span class="headeranchor"&gt;&lt;/span&gt;&lt;/a&gt;1.7 jsp练习：打印乘法表&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;
+&amp;lt;%!
+  String printMultiTable(){
+    String s = &amp;quot;&amp;quot;;
+    for(int i = 1; i &amp;lt;= 9; i++){
+      for(int j=1; j&amp;lt;=i; j++){
+        s += j + &amp;quot;*&amp;quot; + i + &amp;quot;=&amp;quot; + i*j+&amp;quot;&amp;amp;nbsp;&amp;amp;nbsp;&amp;quot;;
+      }
+      s+=&amp;quot;&amp;lt;br/&amp;gt;&amp;quot;;
+    }
+    return s;
+  }
+
+  void printMultiTable2(JspWriter out) throws IOException {
+    for(int i=1; i&amp;lt;=9; i++){
+      for(int j=1; j&amp;lt;=i; j++){
+        out.println(j+&amp;quot;*&amp;quot;+i+&amp;quot;=&amp;quot;+i*j+&amp;quot;&amp;amp;nbsp;&amp;amp;nbsp;&amp;quot;);
+      }
+      out.println(&amp;quot;&amp;lt;br&amp;gt;&amp;quot;);
+    }
+  }
+%&amp;gt;
+
+&amp;lt;h1&amp;gt;九九乘法表&amp;lt;/h1&amp;gt;
+&amp;lt;hr/&amp;gt;
+&amp;lt;%=printMultiTable()%&amp;gt;
+
+&amp;lt;hr/&amp;gt;
+&amp;lt;% printMultiTable2(out); %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/article&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-02 JSP基础语法</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-02-jspji-chu-yu-fa.html" rel="alternate"></link><updated>2015-04-08T00:30:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-08:java-webzhi-jsp-02-jspji-chu-yu-fa.html</id><summary type="html">&lt;h2&gt;1. JSP简介&lt;/h2&gt;
+&lt;p&gt;JSP页面元素构成：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;静态内容&lt;/li&gt;
+&lt;li&gt;注释&lt;/li&gt;
+&lt;li&gt;声明&lt;/li&gt;
+&lt;li&gt;小脚本&lt;/li&gt;
+&lt;li&gt;表达式&lt;/li&gt;
+&lt;li&gt;指令&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;1.1 jsp指令&lt;/h3&gt;
+&lt;p&gt;page指令：通常位于jsp页面的顶端，同一个页面可以有多个page指令。
+include指令：将一个外部文件嵌入到当前jsp文件中，同时解析这个页面中的jsp语句。
+taglib指令：使用标签库定义心得自定义标签。在jsp页面中启用定制行为&lt;/p&gt;
+&lt;p&gt;page指令语法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;&lt;span class="vi"&gt;@page&lt;/span&gt; &lt;span class="err"&gt;属性&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;value&amp;quot;&lt;/span&gt; &lt;span class="err"&gt;属性&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;value1, value2&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;.&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;属性&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;默认值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;language&lt;/td&gt;
+&lt;td&gt;指定jsp页面使用的脚本语言&lt;/td&gt;
+&lt;td&gt;java&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;import&lt;/td&gt;
+&lt;td&gt;通过该属性来引用脚本语言中使用到的类文件&lt;/td&gt;
+&lt;td&gt;无&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;contentType&lt;/td&gt;
+&lt;td&gt;用来指定jsp页面所采用的编码方式&lt;/td&gt;
+&lt;td&gt;text/html,ISO-8859-1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;1.2 JSP注释&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;html注释 &lt;code&gt;&amp;lt;!--html注释--&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;jsp注释&lt;code&gt;&amp;lt;%--注释--%&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;jsp脚本注释 &lt;code&gt;// /**/&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;1.3 jsp脚本&lt;/h3&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;
+&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;大家好，欢迎大家学习javaee开发&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;1.4 jsp声明&lt;/h3&gt;
+&lt;p&gt;在jsp页面中定义变量或者方法&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="err"&gt;代码&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+
+&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;lixiang&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;1.5 jsp表达式&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt;&lt;span class="err"&gt;表达式&lt;/span&gt;&lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt; //注意：表达式不以分号结束&lt;/span&gt;
+
+&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;1.6 jsp页面生命周期&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="img" src="images/java-web-jsp-02.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;jspService()&lt;/code&gt;方法被调用来处理客户端的请求。对每一个请求，JSP引擎创建一个新的线程来处理该请求。如果有多个客户端同时请求该JSP文件，则JSP引擎会创建多个线程。每个客户端请求对应一个线程。以多线程方式执行可以大大降低对系统的资源需求，提高系统的并发量及响应时间。但也要注意多线程的编程带来的同步问题，由于该Servlet始终驻于内存，所以响应时间是非常快的。&lt;/p&gt;
+&lt;h3&gt;1.7 jsp练习：打印乘法表&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+  &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="n"&gt;printMultiTable&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+    &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+      &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;*&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;=&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;amp;nbsp;&amp;amp;nbsp;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="p"&gt;}&lt;/span&gt;
+      &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;lt;br/&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;printMultiTable2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;JspWriter&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;throws&lt;/span&gt; &lt;span class="no"&gt;IOException&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+      &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;=&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;*&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;=&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;amp;nbsp;&amp;amp;nbsp;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="p"&gt;}&lt;/span&gt;
+      &lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;lt;br&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;九九乘法表&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;hr/&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt;&lt;span class="n"&gt;printMultiTable&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;hr/&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="n"&gt;printMultiTable2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-01 Java Web简介</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-01-java-webjian-jie.html" rel="alternate"></link><updated>2015-04-07T21:40:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-07:java-webzhi-jsp-01-java-webjian-jie.html</id><summary type="html">&lt;h2&gt;1. Tomcat配置&lt;/h2&gt;
 &lt;h3&gt;1.1 创建环境变量&lt;/h3&gt;
 &lt;p&gt;创建环境变量&lt;code&gt;CATALINA_HOME&lt;/code&gt;,值为Tomcat所在根目录（比如，windows下可能为为&lt;code&gt;C:\Program Files (x86)\Apache Software Foundation\Tomcat 7.0&lt;/code&gt;).&lt;/p&gt;
 &lt;h3&gt;1.2 启动Tomcat&lt;/h3&gt;
@@ -233,7 +698,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 如下面代码:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
 &lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;green&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;first&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;三年级时&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;的小女孩&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;first&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;三年级时，我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;的小女孩。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -245,7 +710,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 如下代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;red&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;important&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
 &lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;green&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;first&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;三年级时&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;的小女孩&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;first&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;三年级时，我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;的小女孩。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -277,7 +742,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 &lt;h4&gt;3.7.5 文字排版--下划线&lt;/h4&gt;
 &lt;p&gt;有些情况下想为文字设置为下划线样式，这样可以在视觉上强调文字，可以使用下面代码来实现：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-decoration&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;underline&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;三年级时&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;的小女孩&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;三年级时，我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;的小女孩。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -287,7 +752,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 &lt;h4&gt;3.7.7 段落排版--缩进&lt;/h4&gt;
 &lt;p&gt;中文文字中的段前习惯空两个文字的空白，这个特殊的样式可以用下面代码来实现：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-indent&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nx"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;1922&lt;/span&gt;&lt;span class="nx"&gt;年的春天&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;一个想要成名名叫尼克卡拉威&lt;/span&gt;&lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="nx"&gt;托比&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="nx"&gt;马奎尔Tobey&lt;/span&gt; &lt;span class="nx"&gt;Maguire&lt;/span&gt; &lt;span class="nx"&gt;饰&lt;/span&gt;&lt;span class="err"&gt;）&lt;/span&gt;&lt;span class="nx"&gt;的作家&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;离开了美国中西部&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;来到了纽约&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="nx"&gt;那是一个道德感渐失&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;爵士乐流行&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;走私为王&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;股票飞涨的时代&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="nx"&gt;为了追寻他的美国梦&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;他搬入纽约附近一海湾居住&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;1922&lt;/span&gt;&lt;span class="err"&gt;年的春天，一个想要成名名叫尼克卡拉威（托比&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="err"&gt;马奎尔&lt;/span&gt;&lt;span class="nx"&gt;Tobey&lt;/span&gt; &lt;span class="nx"&gt;Maguire&lt;/span&gt; &lt;span class="err"&gt;饰）的作家，离开了美国中西部，来到了纽约。那是一个道德感渐失，爵士乐流行，走私为王，股票飞涨的时代。为了追寻他的美国梦，他搬入纽约附近一海湾居住。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -295,7 +760,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 &lt;h4&gt;3.7.8 段落排版--行间距（行高）&lt;/h4&gt;
 &lt;p&gt;这一小节我们来学习一下另一个在段落排版中起重要作用的行间距（行高）属性（line-height），如下代码实现设置段落行间距为1.5倍。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="na"&gt;-height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="nx"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;菲茨杰拉德&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;二十世纪美国文学巨擘之一&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;兼具作家和编剧双重身份&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="nx"&gt;他以诗人的敏感和戏剧家的想象为&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;爵士乐时代&amp;quot;&lt;/span&gt;&lt;span class="nx"&gt;吟唱华丽挽歌&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;其诗人和梦想家的气质亦为那个奢靡年代的不二注解&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;菲茨杰拉德，二十世纪美国文学巨擘之一，兼具作家和编剧双重身份。他以诗人的敏感和戏剧家的想象为&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;爵士乐时代&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;吟唱华丽挽歌，其诗人和梦想家的气质亦为那个奢靡年代的不二注解。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -306,7 +771,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
     &lt;span class="nx"&gt;letter&lt;/span&gt;&lt;span class="na"&gt;-spacing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -326,7 +791,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
     &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -335,7 +800,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
     &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -343,7 +808,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;right&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -561,7 +1026,7 @@ CSS包含3种基本的布局模型，用英文概括为：Flow、Layer 和 Float
     &lt;span class="nb"&gt;left&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="nb"&gt;top&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="nx"&gt;....&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -2708,7 +3173,7 @@ after_prepare, after_build, after_build, etc&lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;row&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;col-md-6 col-md-offset-3&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;账户查询&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;账户查询&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
         &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;dl&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dl-horizontal&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
             &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;dt&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
                 &lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Html.DisplayNameFor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;model.AccountNumber&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2792,9 +3257,9 @@ after_prepare, after_build, after_build, etc&lt;/p&gt;
 &lt;span class="sb"&gt;- `&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Html.LabelFor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;model.Account&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="sb"&gt;`产生Label&lt;/span&gt;
 &lt;span class="sb"&gt;- `&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Html.EditorFor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;model.Account&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="sb"&gt;`产生input&lt;/span&gt;
 &lt;span class="sb"&gt;- `&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Html.ValidationMessageFor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;model.AccountNumber&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="sb"&gt;`验证信息&lt;/span&gt;
-&lt;span class="sb"&gt;- `&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Html.ValidationSummary&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="nx"&gt;验证汇总&lt;/span&gt;
+&lt;span class="sb"&gt;- `&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Html.ValidationSummary&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;`验证汇总&lt;/span&gt;
 
-&lt;span class="err"&gt;##&lt;/span&gt;&lt;span class="vi"&gt;#2&lt;/span&gt;&lt;span class="mf"&gt;.4&lt;/span&gt; &lt;span class="nx"&gt;修改CheckAccount&lt;/span&gt;
+&lt;span class="err"&gt;##&lt;/span&gt;&lt;span class="vi"&gt;#2&lt;/span&gt;&lt;span class="mf"&gt;.4&lt;/span&gt; &lt;span class="err"&gt;修改&lt;/span&gt;&lt;span class="nx"&gt;CheckAccount&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3614,9 +4079,9 @@ PM&gt; Update-Database -Verbose -Force
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="DotNet"></category><category term="Web"></category><category term="ASP.NET MVC"></category></entry><entry><title>ASP.NET MVC5 学习笔记-2 Razor</title><link href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-2-razor.html" rel="alternate"></link><updated>2014-10-31T09:28:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-31:aspnet-mvc5-xue-xi-bi-ji-2-razor.html</id><summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;h1&gt;ASP.NET MVC5 学习笔记-2 Razor&lt;/h1&gt;
 &lt;h2&gt;1. Razor&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;注释&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="err"&gt;注释&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;
 
-&lt;span class="nx"&gt;你在用&lt;/span&gt; &lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Request.Browser.Browser&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;发送邮件给support&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;qq.com&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;转义&lt;/span&gt;&lt;span class="p"&gt;@@&lt;/span&gt;&lt;span class="nx"&gt;qq&lt;/span&gt;
+&lt;span class="err"&gt;你在用&lt;/span&gt; &lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Request.Browser.Browser&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;发送邮件给&lt;/span&gt;&lt;span class="nx"&gt;support&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;qq.com&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;转义&lt;/span&gt;&lt;span class="p"&gt;@@&lt;/span&gt;&lt;span class="nx"&gt;qq&lt;/span&gt;
 
 &lt;span class="p"&gt;@{&lt;/span&gt;
     &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="n"&gt;amounts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;new&lt;/span&gt; &lt;span class="nb"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;Decimal&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;25.00&lt;/span&gt;&lt;span class="nx"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;30.0&lt;/span&gt;&lt;span class="nx"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt; 
@@ -3626,8 +4091,8 @@ PM&gt; Update-Database -Verbose -Force
     &lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nb"&gt;foreach&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;decimal&lt;/span&gt; &lt;span class="n"&gt;amount&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nx"&gt;amounts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;li&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;formatAmount&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;amount&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;li&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;普通文本&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="p"&gt;@:&lt;/span&gt;&lt;span class="nx"&gt;普通文本&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;普通文本&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="p"&gt;@:&lt;/span&gt;&lt;span class="err"&gt;普通文本&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;ul&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 
@@ -8356,12 +8821,12 @@ virtualenv pelican_env
 
 &lt;h3&gt;2.2 创建Markdown的博文&lt;/h3&gt;
 &lt;p&gt;在content目录下创建一个test.md的文件，然后用记事本或者notepad++或者sublime text打开，编写如下内容。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
-&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;
-&lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
-&lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;
-&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;刘理想&lt;/span&gt;
-&lt;span class="n"&gt;Summary&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;Title:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
+&lt;span class="nl"&gt;Date:&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;
+&lt;span class="nl"&gt;Category:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
+&lt;span class="nl"&gt;Tags:&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;
+&lt;span class="nl"&gt;Author:&lt;/span&gt; &lt;span class="err"&gt;刘理想&lt;/span&gt;
+&lt;span class="nl"&gt;Summary:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
 &lt;span class="err"&gt;你好，世界，世界，你好。&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
