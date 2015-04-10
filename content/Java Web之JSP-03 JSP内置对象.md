@@ -200,4 +200,84 @@ exception对象是一个异常对象，当一个页面在运行过程中规发�
 
 ##11. 阶段案例-实现用户登录
 
+用户登录页login.jsp
+
+```
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>login</title>
+</head>
+<body>
+<form action="dologin.jsp" method="post">
+  <label for="username">user name</label>
+  <input type="text" name="username" placeholder="用户名"/>
+  <label for="password">password</label>
+  <input type="password" name="password"/>
+  <input type="submit" value="login"/>
+</form>
+</body>
+</html>
+```
+
+处理用户登录页dologin.jsp
+
+```
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+  String username = "";
+  String password = "";
+  request.setCharacterEncoding("utf-8");
+  username = request.getParameter("username");
+  password = request.getParameter("password");
+  if ("admin".equals(username) &&  "admin".equals(password)){
+    session.setAttribute("loginUser", username);
+    request.getRequestDispatcher("login_success.jsp").forward(request, response);
+  }
+  else{
+    response.sendRedirect("login_failure.jsp");
+  }
+%>
+```
+
+登录成功页login_success.jsp
+
+```
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<h1>login success!</h1>
+<%
+  String loginUser = "";
+  if(session.getAttribute("loginUser") != null){
+    loginUser = session.getAttribute("loginUser").toString();
+  }
+%>
+
+<p>欢迎，<%=loginUser%></p>
+</body>
+</html>
+```
+
+登录失败页
+
+```
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<h1>login failure.</h1>
+<hr/>
+<a href="login.jsp">返回登录页</a>
+</body>
+</html>
+```
+
+
 
