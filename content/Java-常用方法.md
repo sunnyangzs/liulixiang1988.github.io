@@ -17,3 +17,10 @@ import java.util.Date;
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
 String s = sdf.format(new Date());
 ```
+
+2. 字符串转化为日期
+
+```
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+Date d = sdf.parse("2015年04月13日");
+```
