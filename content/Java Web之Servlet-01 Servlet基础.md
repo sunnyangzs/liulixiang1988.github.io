@@ -81,6 +81,21 @@ Servlet跳转类似jsp
 
 对于boolean类型的值，不要使用is，否则java bean中生成的不是get开头的属性。
 
+##8. Servlet的路径跳转
+
+###8.1 JSP跳转到Servlet
+
+1、相对路径,如`href="servlet/TestServlet"`
+***注意：如果写成`/servlet/TestServlet`会报错，因为第一个'/'表示的是【服务器根目录：`http://localhost:8080/`】
+2、绝对路径，通过内置成员变量path实现，如`href="<%=path%>/servlet/TestServlet"`。
+注意：这里的path得到的是项目根目录，如【`http://localhost:8080/Servlet002_GetFormDemo`】
+
+###8.2 Servlet跳转JSP
+
+1、请求重定向：`response.sendRedirect(request.getContextPath()+"/xxx.jsp");`这里通过`request.getContextPath()`方法获得项目根目录，或者通过`../xxx.jsp`取得上层路径得到
+2、服务器内部转发：`request.getRequestDispatcher("../xxx.jsp").forward(req,resp);`
+小结：都可以通过../xxx.jsp得到
+
 
 
 
