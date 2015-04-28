@@ -6,7 +6,7 @@ Author: 刘理想
 
 ##1. @media
 
-sass中的@median跟CSS区别：
+sass中的@media跟CSS区别：
 
 sass中的media query可以内嵌在css规则中，在生成CSS的时候，
 media query 才会被提到样式的最高级

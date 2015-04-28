@@ -8,6 +8,11 @@ Author: 刘理想
 
 ![images/compass-1.png](images/compass-1.png)
 
+Reset(`@import "compass/reset";`)和Layout(`@import "compass/layout";`)并没有包含在compass的核心模块中，需要单独引用。
+
+`@import "compass";`包含了CSS3/Helpers/Typography/Utilities模块：
+- CSS3模块
+
 ##2. 使用normalize.css替换reset
 
 《grunt beginer》
