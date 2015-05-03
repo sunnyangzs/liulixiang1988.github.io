@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS学习笔记03 双向数据绑定</title>
+  <meta name="author" content="理想">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="./favicon.png" rel="icon">
+  <link href="./theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="./theme/js/modernizr-2.0.js"></script>
+  <script src="./theme/js/ender.js"></script>
+  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="./">理想国</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<form action="//google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+    <li >
+    <a href="./category/android.html">Android</a>
+    </li>
+    <li >
+    <a href="./category/dotnet.html">Dotnet</a>
+    </li>
+    <li >
+    <a href="./category/java.html">Java</a>
+    </li>
+    <li >
+    <a href="./category/python.html">Python</a>
+    </li>
+    <li >
+    <a href="./category/sheng-huo.html">生活</a>
+    </li>
+    <li class="active">
+    <a href="./category/web.html">Web</a>
+    </li>
+    <li >
+    <a href="./category/yi-dong-kai-fa.html">移动开发</a>
+    </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">AngularJS学习笔记03 双向数据绑定</h1>
+      <p class="meta"><time datetime="2015-05-01T00:20:00" pubdate>五 01 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><p>内容简介：</p>
+<ul>
+<li>简单的例子</li>
+<li>取值表达式和ng-bind指令</li>
+<li>双向绑定的典型场景-表单</li>
+<li>动态切换标签样式</li>
+<li>ng-show, ng-hide</li>
+<li>ng-class</li>
+<li>ngAnimate</li>
+</ul>
+<h2>双向数据绑定</h2>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">ng-app=</span><span class="s">&quot;UserInfoModule&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=edge&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>数据绑定<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;stylesheets/bootstrap.min.css&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body</span> <span class="err">ng-app</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-primary&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading&quot;</span><span class="nt">&gt;</span>双向数据绑定<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-body&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-12&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span> <span class="na">ng-controller=</span><span class="s">&quot;UserInfoCtrl&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-2 control-label&quot;</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/label&gt;</span>
+                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-10&quot;</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span>  <span class="na">placeholder=</span><span class="s">&quot;邮箱&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;userInfo.email&quot;</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-2 control-label&quot;</span><span class="nt">&gt;</span>密码<span class="nt">&lt;/label&gt;</span>
+                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-10&quot;</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span>  <span class="na">placeholder=</span><span class="s">&quot;请输入密码&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;userInfo.password&quot;</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-offset-2 col-md-10&quot;</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;checkbox&quot;</span><span class="nt">&gt;</span>
+                                        <span class="nt">&lt;label&gt;</span>
+                                            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;userInfo.autoLogin&quot;</span><span class="nt">&gt;</span>自动登录
+                                        <span class="nt">&lt;/label&gt;</span>
+                                    <span class="nt">&lt;/div&gt;</span>
+                                <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-offset-2 col-md-10&quot;</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;label&gt;</span>
+                                        <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">&quot;getFormData()&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>获取FormData<span class="nt">&lt;/button&gt;</span>
+                                        <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">&quot;setFormData()&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>设置FormData<span class="nt">&lt;/button&gt;</span>
+                                        <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">&quot;resetFormData()&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>重置FormData<span class="nt">&lt;/button&gt;</span>
+                                    <span class="nt">&lt;/label&gt;</span>
+                                <span class="nt">&lt;/div&gt;</span>
+                            <span class="nt">&lt;/div&gt;</span>
+                        <span class="nt">&lt;/form&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script&gt;</span>
+        var userInfoModule = angular.module(&#39;UserInfoModule&#39;, <span class="cp">[]</span>);
+        userInfoModule.controller(&#39;UserInfoCtrl&#39;, <span class="cp">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="nx">function</span> <span class="p">(</span><span class="nv">$scope</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$scope.userInfo</span><span class="o">=</span><span class="p">{</span>
+                <span class="nx">email</span><span class="p">:</span> <span class="s2">&quot;550488300@qq.com&quot;</span><span class="p">,</span>
+                <span class="nx">password</span><span class="p">:</span> <span class="s2">&quot;550488300&quot;</span><span class="p">,</span>
+                <span class="nx">autoLogin</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">};</span>
+            <span class="nv">$scope.getFormData</span> <span class="o">=</span> <span class="nx">function</span><span class="p">(){</span>
+                <span class="nx">console.log</span><span class="p">(</span><span class="s2">&quot;email:&quot;</span><span class="o">+</span><span class="nv">$scope.userInfo.email</span><span class="o">+</span><span class="s2">&quot;;&quot;</span><span class="o">+</span><span class="s2">&quot;password:&quot;</span><span class="o">+</span><span class="nv">$scope.userInfo.password</span><span class="p">);</span>
+            <span class="p">};</span>
+            <span class="nv">$scope.setFormData</span> <span class="o">=</span> <span class="nx">function</span><span class="p">(){</span>
+                <span class="nv">$scope.userInfo.email</span> <span class="o">=</span> <span class="s2">&quot;liulixiang1988@gmail.com&quot;</span><span class="p">;</span>
+                <span class="nv">$scope.userInfo.password</span> <span class="o">=</span> <span class="s2">&quot;liulixiang1988&quot;</span><span class="p">;</span>
+                <span class="nv">$scope.userInfo.autoLogin</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="nx">console.log</span><span class="p">(</span><span class="s2">&quot;email:&quot;</span><span class="o">+</span><span class="nv">$scope.userInfo.email</span><span class="o">+</span><span class="s2">&quot;;&quot;</span><span class="o">+</span><span class="s2">&quot;password:&quot;</span><span class="o">+</span><span class="nv">$scope.userInfo.password</span><span class="p">);</span>
+            <span class="p">};</span>
+            <span class="nv">$scope.resetFormData</span> <span class="o">=</span> <span class="nx">function</span><span class="p">(){</span>
+                <span class="nv">$scope.userInfo.email</span><span class="o">=</span><span class="s2">&quot;550488300@qq.com&quot;</span><span class="p">;</span>
+                <span class="nv">$scope.userInfo.password</span><span class="o">=</span><span class="s2">&quot;550488300&quot;</span><span class="p">;</span>
+                <span class="nv">$scope.userInfo.autoLogin</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+                <span class="nx">console.log</span><span class="p">(</span><span class="s2">&quot;email:&quot;</span><span class="o">+</span><span class="nv">$scope.userInfo.email</span><span class="o">+</span><span class="s2">&quot;;&quot;</span><span class="o">+</span><span class="s2">&quot;password:&quot;</span><span class="o">+</span><span class="nv">$scope.userInfo.password</span><span class="p">);</span>
+            <span class="p">};</span>
+        <span class="p">}</span><span class="cp">]</span>)
+        <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<h2>ng-class</h2>
+<div class="highlight"><pre><span class="n">div</span> <span class="n">ng</span><span class="o">-</span><span class="n">class</span><span class="o">=</span><span class="err">&#39;</span><span class="p">{</span><span class="n">error</span><span class="o">:</span> <span class="n">isError</span><span class="p">,</span> <span class="n">warning</span><span class="o">:</span><span class="n">isWarning</span><span class="p">}</span><span class="err">&#39;</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>当isError为ture时，使用.error, 当isWaring为ture时，使用.waring</p>
+<h2>ng-show， ng-hide</h2>
+<div class="highlight"><pre><span class="o">&lt;</span><span class="n">div</span> <span class="n">ng</span><span class="o">-</span><span class="n">show</span><span class="o">=</span><span class="err">&#39;</span><span class="n">menuState</span><span class="p">.</span><span class="n">show</span><span class="err">&#39;</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>当<code>menuState.show</code>为true时显示，为false时隐藏;
+ng-hide与ng-show相反，为true时隐藏，为false时显示。</p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">刘理想</span>
+  </span>
+<time datetime="2015-05-01T00:20:00" pubdate>五 01 五月 2015</time>  <span class="categories">
+    <a class="category" href="./tag/angular.html">Angular</a>
+    <a class="category" href="./tag/web.html">Web</a>
+  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html" data-title="AngularJS学习笔记03 双向数据绑定" data-url="./angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+    </div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
+  </section>
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="./angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">AngularJS学习笔记03 双向数据绑定</a>
+      </li>
+      <li class="post">
+          <a href="./angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">AngularJS学习笔记02-路由、模块和依赖注入</a>
+      </li>
+      <li class="post">
+          <a href="./angularjsxue-xi-bi-ji-01-mvc.html">AngularJS学习笔记01-MVC</a>
+      </li>
+      <li class="post">
+          <a href="./java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html">Java Web开发技术应用-过滤器</a>
+      </li>
+      <li class="post">
+          <a href="./sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Sass和Compass必备技能之Compass篇-02 模块简介</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="./category/android.html">Android</a></li>
+        <li><a href="./category/dotnet.html">DotNet</a></li>
+        <li><a href="./category/java.html">Java</a></li>
+        <li><a href="./category/python.html">Python</a></li>
+        <li><a href="./category/sheng-huo.html">生活</a></li>
+        <li><a href="./category/web.html">Web</a></li>
+        <li><a href="./category/yi-dong-kai-fa.html">移动开发</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/servlet.html">Servlet</a>,    <a href="./tag/sass.html">SASS</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/angular.html">Angular</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/java.html">Java</a>  </section>
+
+
+
+  <section>
+    <h1>GitHub Repos</h1>
+    <ul id="gh_repos">
+      <li class="loading">Status updating...</li>
+    </ul>
+      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
+    <script type="text/javascript">
+      $.domReady(function(){
+          if (!window.jXHR){
+              var jxhr = document.createElement('script');
+              jxhr.type = 'text/javascript';
+              jxhr.src = './theme/js/jXHR.js';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(jxhr, s);
+          }
+
+          github.showRepos({
+              user: 'liulixiang1988',
+              count: 5,
+              skip_forks: false,
+              target: '#gh_repos'
+          });
+      });
+    </script>
+    <script src="./theme/js/github.js" type="text/javascript"> </script>
+  </section>
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
+        </ul>
+    </section>
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2014-2015  - 理想 -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+</body>
+</html>

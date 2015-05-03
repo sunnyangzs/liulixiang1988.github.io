@@ -71,6 +71,316 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="../angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">AngularJS学习笔记03 双向数据绑定</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-01T00:20:00" pubdate>五 01 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><p>内容简介：</p>
+<ul>
+<li>简单的例子</li>
+<li>取值表达式和ng-bind指令</li>
+<li>双向绑定的典型场景-表单</li>
+<li>动态切换标签样式</li>
+<li>ng-show, ng-hide</li>
+<li>ng-class</li>
+<li>ngAnimate</li>
+</ul>
+<h2>双向数据绑定</h2>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">ng-app=</span><span class="s">&quot;UserInfoModule&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=edge&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>数据绑定<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;stylesheets/bootstrap.min.css&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body</span> <span class="err">ng-app</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-primary&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading&quot;</span><span class="nt">&gt;</span>双向数据绑定<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">AngularJS学习笔记02-路由、模块和依赖注入</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-30T22:36:00" pubdate>四 30 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><p>内容简介：</p>
+<ul>
+<li>AngularJS的模块化实现</li>
+<li>一个完整项目结构</li>
+<li>使用ngRoute进行视图之间的路由</li>
+<li>一切都是从模块开始的</li>
+<li>ng官方推荐的模块切分方式是什么？</li>
+<li>模块之间的依赖该怎么做？--依赖注入</li>
+</ul>
+<h2>1. 模块</h2>
+<p>模块就是功能的集合</p>
+<h2>2. 目录结构</h2>
+<div class="highlight"><pre><span class="n">BookStore</span>
+<span class="o">|-</span><span class="n">app</span>
+    <span class="o">|-</span><span class="n">css</span>
+    <span class="o">|-</span><span class="n">img</span>
+    <span class="o">|-</span><span class="n">js</span>
+        <span class="o">|-</span><span class="n">app</span><span class="p">.</span><span class="n">js</span>
+        <span class="o">|-</span><span class="n">controllers</span><span class="p">.</span><span class="n">js</span>
+        <span class="o">|-</span><span class="n">directives</span><span class="p">.</span><span class="n">js</span>
+        <span class="o">|-</span><span class="n">filters</span><span class="p">.</span><span class="n">js</span>
+        <span class="o">|-</span><span class="n">services</span><span class="p">.</span><span class="n">js</span>
+    <span class="o">|-</span><span class="n">framework</span>
+    <span class="o">|-</span><span class="n">tpls</span><span class="c1">//模板</span>
+    <span class="o">|-</span><span class="n">index</span><span class="p">.</span><span class="n">html</span>
+<span class="o">|-</span><span class="n">node_modules</span>
+<span class="o">|-</span><span class="n">package</span><span class="p">.</span><span class="n">json</span>
+</pre></div>
+
+
+<h2>3. ngRoute进行视图之间的路由</h2>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">bookStoreApp</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;bookStoreApp&#39;</span><span class="p">,</span>
+ <span class="cp">[</span><span class="s1">&#39;ngRoute&#39;</span><span class="p">,</span> <span class="s1">&#39;ngAnimate&#39;</span><span class="p">,</span> <span class="s1">&#39;bookStoreCtrls&#39;</span><span class="p">,</span> <span class="s1">&#39;BookStoreFilters&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;bookStoreServices&#39;</span><span class="p">,</span> <span class="s1">&#39;bookStoreDirectives&#39;</span><span class="cp">]</span><span class="p">);</span>
+
+<span class="nx">bookStoreApp ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../angularjsxue-xi-bi-ji-01-mvc.html">AngularJS学习笔记01-MVC</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-30T20:51:00" pubdate>四 30 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 为什么需要MVC?</h2>
+<p>MVC只是手段，终极目标是模块化与复用。</p>
+<h2>2. 控制器(ng-controller)</h2>
+<div class="highlight"><pre><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">&quot;helloAngularApp&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">&quot;HelloCtrl&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>{{greeting.text}},world!<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">&quot;test()&quot;</span><span class="nt">&gt;</span>test<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+    var helloAngularApp = angular.module(&#39;helloAngularApp&#39;, <span class="cp">[]</span>);
+    helloAngularApp.controller(&#39;HelloCtrl&#39;, function ($scope) {
+            $scope.greeting = {
+                text:&quot;Hello&quot;
+            };
+            $scope.test = function(){
+                alert ...</pre></div></div>
+  <footer>
+    <a rel="full-article" href="../angularjsxue-xi-bi-ji-01-mvc.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Sass和Compass必备技能之Compass篇-02 模块简介</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-20T21:43:00" pubdate>一 20 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. Layout简介</h2>
+<p>http://compass-style.org/reference/compass/layout/</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/layout&quot;</span>
+<span class="cp">@import</span> <span class="s2">&quot;compass/layout/grid-background&quot;</span>
+<span class="cp">@import</span> <span class="s2">&quot;compass/layout/sticky-footer&quot;</span>
+<span class="cp">@import</span> <span class="s2">&quot;compass/layout/stretching&quot;</span>
+</pre></div>
+
+
+<h2>2. CSS3模块</h2>
+<p>使用率最高的模块，提高跨浏览器的CSS3效果
+http://compass-style.org/reference/compass/css3/</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/css3&quot;</span><span class="p">;</span>
+<span class="p">.</span><span class="n">webdemo</span><span class="o">-</span><span class="n">sec</span><span class="p">{</span>
+    <span class="err">@</span><span class="n">include</span> <span class="n">box</span><span class="o">-</span><span class="nf">shadow</span><span class="p">(</span><span class="mi">1</span><span class="n">px</span> <span class="mi">1</span><span class="n">px</span> <span class="mi">3</span><span class="n">px</span> <span class="mi">2</span><span class="n">px</span> <span class="cp">#cfcecf ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Sass和Compass必备技能之Compass篇-01 Compass核心模块概述及Reset模块</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-20T20:51:00" pubdate>一 20 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. Compass核心模块</h2>
+<p><img alt="images/compass-1.png" src="images/compass-1.png" /></p>
+<p>Reset(<code>@import "compass/reset";</code>)和Layout(<code>@import "compass/layout";</code>)并没有包含在compass的核心模块中，需要单独引用。</p>
+<p><code>@import "compass";</code>包含了CSS3/Helpers/Typography/Utilities模块：
+- CSS3模块</p>
+<h2>2. 使用normalize.css替换reset</h2>
+<p>《grunt beginer》</p>
+<p>http://necolas.github.io/normalize.css/</p>
+<p>可以使用compass插件：</p>
+<h3>2.1 安装</h3>
+<p><code>gem install compass-normalize</code></p>
+<h3>2.2 在config.rb中引入</h3>
+<p><code>require 'compass-normalize'</code>
+<strong>注意：config.rb中的require 'compass/import-once/activate'是防止多次引入 ...</strong></p></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html">Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-17T23:19:00" pubdate>五 17 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. @media</h2>
+<p>sass中的@media跟CSS区别：</p>
+<p>sass中的media query可以内嵌在css规则中，在生成CSS的时候，
+media query 才会被提到样式的最高级</p>
+<p>好处：避免了重复书写选择器或者打乱样式表的流程。</p>
+<div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="p">){</span>
+    <span class="err">@</span><span class="n">media</span><span class="p">(</span><span class="n">min</span><span class="o">-</span><span class="n">width</span><span class="o">:</span> <span class="mi">768</span><span class="n">px</span><span class="p">){</span>
+        <span class="nl">width:</span> <span class="err">$</span><span class="n">width</span><span class="p">;</span>
+        <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>2. @at-root</h2>
+<p>指定嵌套的内容生成CSS时，在最底层</p>
+<div class="highlight"><pre><span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="p">{</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
+    <span class="err">@</span><span class="n">at</span><span class="o">-</span><span class="n">root</span><span class="p">{</span>
+        <span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">headline</span><span class="p">{</span>
+            <span class="nl">font:</span><span class="p">{</span>
+                <span class="nl">family:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
+                <span class="nl">size:</span> <span class="mi">16</span><span class="n">px</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html">Sass和Compass必备技能之Sass篇-03 Sass语法介绍(进阶篇)</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-17T22:46:00" pubdate>五 17 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 变量操作</h2>
+<p>变量操作有两种方式，第一种是直接操作，第二种是通过函数。</p>
+<p>通过函数：
+- 跟代码块无关的函数，多是自己内置函数，称functions
+- 可重用的代码块，称mixin: @include和 @extand的方式来应用，</p>
+<p>运算符： <code>&gt;= &lt;= &gt; &lt; == != ()</code></p>
+<p>CSS3增加了HSL的颜色，SASS会自动转换HSL为RGB,完美解决兼容。</p>
+<p>sass支持@function来声明函数。</p>
+<h2>2. mixin和include</h2>
+<div class="highlight"><pre><span class="c1">//声明</span>
+<span class="p">@</span><span class="n">mixin</span> <span class="n">col</span><span class="o">-</span><span class="mh">6</span><span class="p">{</span>
+    <span class="nl">width:</span> <span class="mh">50</span><span class="o">%</span><span class="p">;</span>
+    <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//调用</span>
+<span class="p">.</span><span class="n">webdemo</span><span class="o">-</span><span class="n">sec</span> <span class="p">{</span>
+    <span class="p">@</span><span class="k">include</span> <span class="n">col</span><span class="o">-</span><span class="mh">6</span><span class="p">();</span>
+
+    <span class="o">&amp;:</span><span class="n">hover</span><span class="p">{</span>
+        <span class="n">background</span><span class="o">-</span><span class="nl">color:</span> <span class="p">#</span><span class="no">F5F5F5</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>CSS中class最好使用语义化的命名。IE6不支持多个class。</p>
+<p>带参数以及默认参数：</p>
+<div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="o">:</span><span class="mi">50</span><span class="o">%</span><span class="p">){</span>
+    <span class="nl">width:</span> <span class="err">$</span><span class="n">width</span><span class="p">;</span>
+    <span class="nl">float:</span> <span class="n">left ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-02-sassyu-fa-jie-shao-ji-chu-pian.html">Sass和Compass必备技能之Sass篇-02 Sass语法介绍(基础篇)</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-17T22:09:00" pubdate>五 17 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. sass和scss形式的相互转换</h2>
+<div class="highlight"><pre><span class="err">$</span><span class="n">sass</span><span class="o">-</span><span class="n">convert</span> <span class="n">main</span><span class="p">.</span><span class="n">sass</span> <span class="n">main</span><span class="p">.</span><span class="n">scss</span>
+<span class="err">或者</span>
+<span class="err">$</span><span class="n">sass</span><span class="o">-</span><span class="n">convert</span> <span class="n">main</span><span class="p">.</span><span class="n">scss</span> <span class="n">main</span><span class="p">.</span><span class="n">sass</span>
+</pre></div>
+
+
+<h2>2. 创建应用</h2>
+<div class="highlight"><pre><span class="err">$</span><span class="n">compass</span> <span class="n">create</span> <span class="n">learn</span><span class="o">-</span><span class="n">sass</span><span class="o">-</span><span class="n">syntax</span>
+<span class="err">$</span><span class="n">cd</span> <span class="n">learn</span><span class="o">-</span><span class="n">sass</span><span class="o">-</span><span class="n">syntax</span>
+<span class="err">$</span><span class="n">compass</span> <span class="n">watch</span>
+</pre></div>
+
+
+<h2>3. 语法</h2>
+<p>SASS CSS默认都是UTF-8，所以写不写<code>@charset "UTF-8"</code></p>
+<h3>3.1 引用@import</h3>
+<p>使用下划线命名的文件比如_variables.scss，sass称为局部文件，是用到其它文件中的。如果在其他文件中引用，请使用:</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;variables&quot;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>这个不是css中的import，css中的import指令有两大弊端，一 ...</p></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-02-sassyu-fa-jie-shao-ji-chu-pian.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-01-an-zhuang.html">Sass和Compass必备技能之Sass篇-01 安装</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-16T14:55:00" pubdate>四 16 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. ruby安装</h2>
+<p>RVM: Ruby Version Manager（Ruby多版本管理器）</p>
+<p>安装RVM</p>
+<p>mac下安装homebrew cakebrew</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">--</span><span class="n">remove</span> <span class="n">https</span><span class="o">:</span><span class="c1">//rubygems.org/</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">-</span><span class="n">a</span> <span class="n">https</span><span class="o">:</span><span class="c1">//ruby.taobao.org/</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">-</span><span class="n">l</span>
+<span class="o">***</span> <span class="n">CURRENT</span> <span class="n">SOURCES</span> <span class="o">***</span>
+<span class="nl">https:</span><span class="c1">//ruby.taobao.org</span>
+
+<span class="cp"># 请确保只有 ruby.taobao.org</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">rails</span> <span class="err">#安装</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">update</span> <span class="err">#更新</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">sass</span> <span class="o">--</span><span class="n">version</span><span class="o">=</span><span class="mf">3.3</span>
+<span class="err">$</span><span class="n">gem ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-01-an-zhuang.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="../htmlcssbu-yi.html">HTML\CSS补遗</a>
       </h1>
       <p class="meta"><time datetime="2015-04-06T21:36:00" pubdate>一 06 四月 2015</time></p>
@@ -86,264 +396,6 @@
     <a rel="full-article" href="../htmlcssbu-yi.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html">企业网站布局实践-10 新闻详情页的制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-05T20:14:00" pubdate>日 05 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 页面结构</h2>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;list_box&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>新闻中心<span class="nt">&lt;/h2&gt;</span>
-    <span class="nt">&lt;h1&gt;</span>【慕客访谈▪用户篇】“有为屌丝”在路上<span class="nt">&lt;/h1&gt;</span>
-    <span class="nt">&lt;p</span>  <span class="na">class=</span><span class="s">&quot;list_box_newsInfo&quot;</span><span class="nt">&gt;</span>发布人：Admin 发布时间：2015-04-06 浏览3246次<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;list_box_newsContent&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</pre></div>
-
-
-<h2>2. 样式</h2>
-<p>text-indent: 2em; 缩进2个文本尺寸</p>
-<div class="highlight"><pre><span class="c1">//新闻列表区域</span>
-<span class="p">.</span><span class="n">list_box</span><span class="p">{</span>
-    <span class="nl">width:</span> <span class="mh">770</span><span class="n">px</span><span class="p">;</span>
-    <span class="n">min</span><span class="o">-</span><span class="nl">height:</span> <span class="mh">350</span><span class="n">px</span><span class="p">;</span>
-    <span class="nl">_height:</span> <span class="mh">350</span><span class="n">px</span><span class="p">;</span>
-    <span class="nl">border:</span> <span class="mh">1</span><span class="n">px</span> <span class="n">solid</span> <span class="p">#</span><span class="no">E8E8E8 ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html">企业网站布局实践-09 新闻列表页制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-04T22:12:00" pubdate>六 04 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 新闻列表页的制作</h2>
-<p>新闻列表页和首页对比如下：</p>
-<p><img alt="对比" src="images/qy-web-13.png" /></p>
-<p>主要是两点不同，第一个是新闻列表页焦点图不再具有切换效果，图片大小也不一样；第二个就是内容区是2栏可变长的。</p>
-<h2>2. 页面结构</h2>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ad&quot;</span> <span class="na">id=</span><span class="s">&quot;picBox&quot;</span>  <span class="na">style=</span><span class="s">&quot;height:243px&quot;</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/ad.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;ad&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- ad结束 --&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;list_main&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news_type&quot;</span><span class="nt">&gt;&lt;/div&gt;</span><span class="c">&lt;!-- news_type结束 --&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;list_box&quot;</span><span class="nt">&gt;&lt;/div&gt;</span><span class="c">&lt;!-- list_box结束 --&gt;</span>
-<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- list_main结束 --&gt;</span>
-</pre></div>
-
-
-<h2>3. 内容展示区制作</h2>
-<div class="highlight"><pre><span class="cm">/*--------------------新闻列表页----------------------------*/</span>
-<span class="p">.</span><span class="n">list_main</span><span class="p">{</span>
-    <span class="nl">height:</span> <span class="mh">350</span><span class="n">px</span><span class="p">;</span>
-    <span class="n">background</span><span class="o">-</span><span class="nl">color ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-08-di-bu-ban-quan-qu-zhi-zuo.html">企业网站布局实践-08 底部版权区制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-04T21:31:00" pubdate>六 04 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 结构分析</h2>
-<p><img alt="底部版权区" src="images/qy-web-12.png" /></p>
-<h2>2. 文档结构</h2>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;copyright&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;copyright_content&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;ul&gt;</span>
-            <span class="nt">&lt;li&gt;</span>关于
-                <span class="nt">&lt;ul&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>品牌故事<span class="nt">&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>联系我们<span class="nt">&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>加入我们<span class="nt">&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>版权声明<span class="nt">&lt;/li&gt;</span>
-                <span class="nt">&lt;/ul&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li&gt;</span>课程
-                <span class="nt">&lt;ul&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>PHP开发<span class="nt">&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>前端开发<span class="nt">&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>JAVA开发<span class="nt">&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>Android开发<span class="nt">&lt;/li&gt;</span>
-                <span class="nt">&lt;/ul&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li&gt;</span>关注
-                <span class="nt">&lt;ul&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>新浪微博 ...</pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-08-di-bu-ban-quan-qu-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-07-ce-bian-lan-zhi-zuo.html">企业网站布局实践-07 侧边栏制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-04T21:01:00" pubdate>六 04 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 结构分析</h2>
-<p><img alt="侧边栏" src="images/qy-web-11.png" /></p>
-<p>从图中我们知道，除标题外，其余内容大致分成上下两部分。分别是上面的视频和下面的广告。下面我们来实现这个效果。</p>
-<h2>2. 文档结构</h2>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;sidebar&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;video&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
-           <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">&quot;title_left&quot;</span><span class="nt">&gt;</span>媒体聚焦<span class="nt">&lt;/h2&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;title_right&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;news.html&quot;</span><span class="nt">&gt;</span>More<span class="ni">&amp;gt;&amp;gt;</span><span class="nt">&lt;/a&gt;&lt;/span&gt;</span>
-        <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- title结束 --&gt;</span>
-        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;video_content&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;embed</span> <span class="na">src=</span><span class="s">&quot;http://player.youku.com/player.php/sid/XNjkzMDE5MTUy ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-07-ce-bian-lan-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-06-ke-cheng-zhong-xin-zhi-zuo.html">企业网站布局实践-06 课程中心制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-03T21:33:00" pubdate>五 03 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 结构分析</h2>
-<p><img alt="课程中心" src="images/qy-web-09.png" /></p>
-<h2>2. 网页结构</h2>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;course&quot;</span><span class="nt">&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">&quot;title_left&quot;</span><span class="nt">&gt;</span>课程中心<span class="nt">&lt;/h2&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;title_right&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;news.html&quot;</span><span class="nt">&gt;</span>More<span class="ni">&amp;gt;&amp;gt;</span><span class="nt">&lt;/a&gt;&lt;/span&gt;</span>
- <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- title结束 --&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;course_pic&quot;</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/css.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;css&quot;</span><span class="nt">&gt;&lt;h2&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;news.html&quot;</span><span class="nt">&gt;</span>CSS圆角进化论<span class="nt">&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;</span>CSS圆角的实现，经历了三大发展阶段 ...</pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-06-ke-cheng-zhong-xin-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">企业网站布局实践-05 新闻中心制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-03T14:00:00" pubdate>五 03 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1、结构分析</h2>
-<p><img alt="新闻中心" src="images/qy-web-07.png" /></p>
-<p>从上到下可以分为新闻标题、图片新闻和图片新闻。</p>
-<h2>2、创建结构</h2>
-<p>新闻中心分为标题、图片新闻和新闻列表3部分。
-其中，新闻列表还是使用无序列表。</p>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news&quot;</span><span class="nt">&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;h2&gt;</span>新闻中心<span class="nt">&lt;/h2&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;news.html&quot;</span><span class="nt">&gt;</span>More<span class="ni">&amp;gt;&amp;gt;</span><span class="nt">&lt;/a&gt;</span>
- <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- title结束 --&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pic_news&quot;</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/news.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;h2&gt;</span>520 慕女神喊你来表白！<span class="nt">&lt;/h2&gt;</span>
-     <span class="nt">&lt;p&gt;</span>
-         活动时间：5月20日—5月25日<span class="nt">&lt;br&gt;</span>获奖公布时间：5月26日<span class="nt">&lt;br ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html">企业网站布局实践-04 信息展示区制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-03T11:22:00" pubdate>五 03 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 结构分析</h2>
-<p><img alt="结构分析" src="images/qy-web-05.png" /></p>
-<p>分析如下：</p>
-<p><img alt="结构分析" src="images/qy-web-06.png" /></p>
-<p>盒子之间的间距应该是多少呢？</p>
-<p>整个盒子宽度是1000px，3个盒子宽度是340、410以及230px(总和为980px)，那么外边据是否就是10px了呢（10*2+980=1000）？不是的，因为每个小盒子左右都有1px的边框，一共6px，因此是(20-6)/2 = 7px.</p>
-<h2>2. 实现</h2>
-<p>首先定义结构：</p>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;course&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;sidebar&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- main结束 --&gt;</span>
-</pre></div>
-
-
-<p>其次是LESS</p>
-<div class="highlight"><pre><span class="c1">//定义区域整体高度</span>
-<span class="p">.</span><span class="n">main</span><span class="p">{</span>
-    <span class="nl">height:</span><span class="mh">250</span><span class="n">px</span><span class="p">;</span>
-    <span class="n">margin</span><span class="o">-</span><span class="nl">top:</span> <span class="mh">5</span><span class="n">px ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html">企业网站布局实践-03焦点图制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-02T01:19:00" pubdate>四 02 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 使用myFocus焦点图库</h2>
-<p>http://demo.jb51.net/js/myfocus/download.html</p>
-<p>选择demo演示下载解压，拷贝js文件夹与当前js文件夹合并。</p>
-<h3>1.1 引入myFocus库文件和样式文件</h3>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/myFocus-2.0.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/mf-pattern/mF_YSlider.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;js/mf-pattern/mF_YSlider.css&quot;</span><span class="nt">&gt;</span>
-</pre></div>
-
-
-<h3>1.2 构建页面中使用的图片</h3>
-<p>首先添加图片</p>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ad&quot;</span> <span class="na">id=</span><span class="s">&quot;picBox&quot;</span><span class="nt">&gt;</span>
- <span class="nt">&lt;ul&gt;</span>
-     <span class="nt">&lt;li ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html">企业网站布局实践-02导航部分制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-01T23:59:00" pubdate>三 01 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 分析</h2>
-<p>我们将导航分为左中右三部分。
-其中导航中部分为两部分，分别放置菜单栏和搜索框。
-导航栏菜单使用有序列表或无需列表，搜索框使用form表单的input标签。</p>
-<h2>2. 实现HTML</h2>
-<p>添加nav的html</p>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav&quot;</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav_left&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav_mid&quot;</span><span class="nt">&gt;</span>
-       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav_mid_left&quot;</span><span class="nt">&gt;</span>
-           <span class="nt">&lt;ul&gt;</span>
-               <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>首页<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-               <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>关于慕课<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-               <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>新闻动态<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-               <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>课程中心<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-               <span class="nt">&lt;li&gt;&lt;a ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="../category/web2.html">&larr; Older</a>
 
@@ -357,19 +409,19 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="../htmlcssbu-yi.html">HTML\CSS补遗</a>
+          <a href="../angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">AngularJS学习笔记03 双向数据绑定</a>
       </li>
       <li class="post">
-          <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html">企业网站布局实践-10 新闻详情页的制作</a>
+          <a href="../angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">AngularJS学习笔记02-路由、模块和依赖注入</a>
       </li>
       <li class="post">
-          <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html">企业网站布局实践-09 新闻列表页制作</a>
+          <a href="../angularjsxue-xi-bi-ji-01-mvc.html">AngularJS学习笔记01-MVC</a>
       </li>
       <li class="post">
-          <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-08-di-bu-ban-quan-qu-zhi-zuo.html">企业网站布局实践-08 底部版权区制作</a>
+          <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Sass和Compass必备技能之Compass篇-02 模块简介</a>
       </li>
       <li class="post">
-          <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-07-ce-bian-lan-zhi-zuo.html">企业网站布局实践-07 侧边栏制作</a>
+          <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Sass和Compass必备技能之Compass篇-01 Compass核心模块概述及Reset模块</a>
       </li>
     </ul>
   </section>
@@ -390,7 +442,7 @@
 
   <section>
   <h1>Tags</h1>
-    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/css.html">CSS</a>  </section>
+    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/java.html">Java</a>  </section>
 
 
 

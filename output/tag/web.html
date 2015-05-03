@@ -71,217 +71,321 @@
   		<article>
 <header>
       <h1 class="entry-title">
-        <a href="../java-webzhi-jsp-02-jspji-chu-yu-fa.html">Java Web之JSP-02 JSP基础语法</a>
+        <a href="../angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">AngularJS学习笔记03 双向数据绑定</a>
       </h1>
-      <p class="meta"><time datetime="2015-04-08T00:30:00" pubdate>三 08 四月 2015</time></p>
+      <p class="meta"><time datetime="2015-05-01T00:20:00" pubdate>五 01 五月 2015</time></p>
 </header>
 
-  <div class="entry-content"><h2>1. JSP简介</h2></div>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../java-webzhi-jsp-01-java-webjian-jie.html">Java Web之JSP-01 Java Web简介</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-07T21:40:00" pubdate>二 07 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. Tomcat配置</h2>
-<h3>1.1 创建环境变量</h3>
-<p>创建环境变量<code>CATALINA_HOME</code>,值为Tomcat所在根目录（比如，windows下可能为为<code>C:\Program Files (x86)\Apache Software Foundation\Tomcat 7.0</code>).</p>
-<h3>1.2 启动Tomcat</h3>
-<p>在<code>CATALINA_HOME</code>的bin目录下有startup脚本。</p>
-<h3>1.3 测试</h3>
-<p>地址：http://localhost:8080</p>
-<h2>2. Tomcat目录结构</h2>
-<p><img alt="tomcat" src="images/java-web-jsp-01.png" /></p>
-<h2>3. 手工编写第一个Java  Web应用程序</h2>
-<h3>3.1 创建Web App目录</h3>
-<p>在Tomcat的webapps目录下创建目录myhome</p>
-<h3>3.2 在myhome目录下创建内容</h3>
-<p>1、创建index.jsp:</p>
-<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../java-webzhi-jsp-01-java-webjian-jie.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html">ASP.NET MVC5 学习笔记-5 测试</a>
-      </h1>
-      <p class="meta"><time datetime="2014-12-04T22:15:00" pubdate>四 04 十二月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>[TOC]</p>
-<h1>ASP.NET MVC5 学习笔记-5 测试</h1>
-<h2>1. 测试步骤</h2>
+  <div class="entry-content"><p>内容简介：</p>
 <ul>
-<li>准备</li>
-<li>执行</li>
-<li>检查</li>
+<li>简单的例子</li>
+<li>取值表达式和ng-bind指令</li>
+<li>双向绑定的典型场景-表单</li>
+<li>动态切换标签样式</li>
+<li>ng-show, ng-hide</li>
+<li>ng-class</li>
+<li>ngAnimate</li>
 </ul>
-<h2>2. 创建单元测试</h2>
-<p><strong>注意：单元测试不要包含数据库操作，包含数据库操作的一般成为集成测试。</strong></p>
-<h3>2.1 编写测试代码</h3>
-<div class="highlight"><pre><span class="n">namespace</span> <span class="n">AspNetMVCEssential</span><span class="p">.</span><span class="n">Tests</span><span class="p">.</span><span class="n">Controllers</span>
-<span class="p">{</span>
-    <span class="p">[</span><span class="n">TestClass</span><span class="p">]</span>
-    <span class="n">public</span> <span class="n">class</span> <span class="n">HomeControllerTest</span>
-    <span class="p">{</span>
-        <span class="p">[</span><span class="n">TestMethod</span><span class="p">]</span>
-        <span class="n">public</span> <span class="kt">void</span> <span class="n">Index</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="c1">// Arrange</span>
-            <span class="n">HomeController</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">new</span> <span class="n">HomeController</span><span class="p">();</span>
-
-            <span class="c1">// Act</span>
-            <span class="n">ViewResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">Index</span><span class="p">()</span> <span class="n">as</span> <span class="n">ViewResult</span><span class="p">;</span>
-
-            <span class="c1">// Assert</span>
-            <span class="n">Assert</span><span class="p">.</span><span class="n">IsNotNull</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
-        <span class="p">}</span>
-
-        <span class="p">[</span><span class="n">TestMethod</span><span class="p">]</span>
-        <span class="n">public</span> <span class="kt">void ...</span></pre></div></div>
+<h2>双向数据绑定</h2>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">ng-app=</span><span class="s">&quot;UserInfoModule&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=edge&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;title&gt;</span>数据绑定<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;stylesheets/bootstrap.min.css&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body</span> <span class="err">ng-app</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-primary&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading&quot;</span><span class="nt">&gt;</span>双向数据绑定<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class ...</span></pre></div></div>
   <footer>
-    <a rel="full-article" href="../aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html">Read On &crarr;</a>
+    <a rel="full-article" href="../angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">Read On &crarr;</a>
   </footer>
   		</article>
   		<article>
 <header>
       <h1 class="entry-title">
-        <a href="../aspnet-mvc5-xue-xi-bi-ji-3-model.html">ASP.NET MVC5 学习笔记-3 Model</a>
+        <a href="../angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">AngularJS学习笔记02-路由、模块和依赖注入</a>
       </h1>
-      <p class="meta"><time datetime="2014-10-31T20:48:00" pubdate>五 31 十月 2014</time></p>
+      <p class="meta"><time datetime="2015-04-30T22:36:00" pubdate>四 30 四月 2015</time></p>
 </header>
 
-  <div class="entry-content"><p>[TOC]</p>
-<h1>ASP.NET MVC5 学习笔记-3 Model</h1>
-<h2>1. Model</h2>
-<h3>1.1 添加一个模型</h3>
-<p><strong>注意</strong>，添加属性时可以输入"prop"，会自动输入代码段。</p>
-<div class="highlight"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">CheckoutAccount</span>
-<span class="p">{</span>
-    <span class="n">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
-
-    <span class="n">public</span> <span class="n">string</span> <span class="n">AccountNumber</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
-
-    <span class="n">public</span> <span class="n">string</span> <span class="n">FirstName</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
-
-    <span class="n">public</span> <span class="n">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
-
-    <span class="n">public</span> <span class="n">string</span> <span class="n">Balance</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">}</span>
+  <div class="entry-content"><p>内容简介：</p>
+<ul>
+<li>AngularJS的模块化实现</li>
+<li>一个完整项目结构</li>
+<li>使用ngRoute进行视图之间的路由</li>
+<li>一切都是从模块开始的</li>
+<li>ng官方推荐的模块切分方式是什么？</li>
+<li>模块之间的依赖该怎么做？--依赖注入</li>
+</ul>
+<h2>1. 模块</h2>
+<p>模块就是功能的集合</p>
+<h2>2. 目录结构</h2>
+<div class="highlight"><pre><span class="n">BookStore</span>
+<span class="o">|-</span><span class="n">app</span>
+    <span class="o">|-</span><span class="n">css</span>
+    <span class="o">|-</span><span class="n">img</span>
+    <span class="o">|-</span><span class="n">js</span>
+        <span class="o">|-</span><span class="n">app</span><span class="p">.</span><span class="n">js</span>
+        <span class="o">|-</span><span class="n">controllers</span><span class="p">.</span><span class="n">js</span>
+        <span class="o">|-</span><span class="n">directives</span><span class="p">.</span><span class="n">js</span>
+        <span class="o">|-</span><span class="n">filters</span><span class="p">.</span><span class="n">js</span>
+        <span class="o">|-</span><span class="n">services</span><span class="p">.</span><span class="n">js</span>
+    <span class="o">|-</span><span class="n">framework</span>
+    <span class="o">|-</span><span class="n">tpls</span><span class="c1">//模板</span>
+    <span class="o">|-</span><span class="n">index</span><span class="p">.</span><span class="n">html</span>
+<span class="o">|-</span><span class="n">node_modules</span>
+<span class="o">|-</span><span class="n">package</span><span class="p">.</span><span class="n">json</span>
 </pre></div>
 
 
-<h3>1.2 添加一个“包含读写操作的MVC 5控制器”CheckingAccountController</h3>
-<p>去掉Details的参数Id ...</p></div>
+<h2>3. ngRoute进行视图之间的路由</h2>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">bookStoreApp</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;bookStoreApp&#39;</span><span class="p">,</span>
+ <span class="cp">[</span><span class="s1">&#39;ngRoute&#39;</span><span class="p">,</span> <span class="s1">&#39;ngAnimate&#39;</span><span class="p">,</span> <span class="s1">&#39;bookStoreCtrls&#39;</span><span class="p">,</span> <span class="s1">&#39;BookStoreFilters&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;bookStoreServices&#39;</span><span class="p">,</span> <span class="s1">&#39;bookStoreDirectives&#39;</span><span class="cp">]</span><span class="p">);</span>
+
+<span class="nx">bookStoreApp ...</span></pre></div></div>
   <footer>
-    <a rel="full-article" href="../aspnet-mvc5-xue-xi-bi-ji-3-model.html">Read On &crarr;</a>
+    <a rel="full-article" href="../angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">Read On &crarr;</a>
   </footer>
   		</article>
   		<article>
 <header>
       <h1 class="entry-title">
-        <a href="../aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html">ASP.NET MVC5 学习笔记-4 OWIN和Katana</a>
+        <a href="../angularjsxue-xi-bi-ji-01-mvc.html">AngularJS学习笔记01-MVC</a>
       </h1>
-      <p class="meta"><time datetime="2014-10-31T20:48:00" pubdate>五 31 十月 2014</time></p>
+      <p class="meta"><time datetime="2015-04-30T20:51:00" pubdate>四 30 四月 2015</time></p>
 </header>
 
-  <div class="entry-content"><p>[TOC]</p>
-<h1>ASP.NET MVC5 学习笔记-4 OWIN和Katana</h1>
-<h2>1. Owin</h2>
-<p>OWIN全名：Open Web Interface for .NET. 它是一个说明，而非一个框架，该声明用来实现Web服务器和框架的松耦合。它提供了模块化、轻量级和便携的设计。类似Node.js, WSGI.</p>
-<p>Katana是微软实现的OWIN组件的集合。包含基础设施组件和功能性组件。并且暴露出了OWIN管道用来添加组件。可以在IIS、OwinHost.exe或者自定义的服务器中托管。</p>
-<p>比如OWIN提供了新的登录模式，比如，打开Web.config文件，我们看到：</p>
-<div class="highlight"><pre><span class="nt">&lt;system.web&gt;</span>
-    <span class="nt">&lt;authentication</span> <span class="na">mode=</span><span class="s">&quot;None&quot;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;compilation</span> <span class="na">debug=</span><span class="s">&quot;true&quot;</span> <span class="na">targetFramework=</span><span class="s">&quot;4.5&quot;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;httpRuntime</span> <span class="na">targetFramework=</span><span class="s">&quot;4.5&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/system.web ...</span></pre></div></div>
+  <div class="entry-content"><h2>1. 为什么需要MVC?</h2>
+<p>MVC只是手段，终极目标是模块化与复用。</p>
+<h2>2. 控制器(ng-controller)</h2>
+<div class="highlight"><pre><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">&quot;helloAngularApp&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">&quot;HelloCtrl&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>{{greeting.text}},world!<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">&quot;test()&quot;</span><span class="nt">&gt;</span>test<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+    var helloAngularApp = angular.module(&#39;helloAngularApp&#39;, <span class="cp">[]</span>);
+    helloAngularApp.controller(&#39;HelloCtrl&#39;, function ($scope) {
+            $scope.greeting = {
+                text:&quot;Hello&quot;
+            };
+            $scope.test = function(){
+                alert ...</pre></div></div>
   <footer>
-    <a rel="full-article" href="../aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html">Read On &crarr;</a>
+    <a rel="full-article" href="../angularjsxue-xi-bi-ji-01-mvc.html">Read On &crarr;</a>
   </footer>
   		</article>
   		<article>
 <header>
       <h1 class="entry-title">
-        <a href="../aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html">ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器</a>
+        <a href="../java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html">Java Web开发技术应用-过滤器</a>
       </h1>
-      <p class="meta"><time datetime="2014-10-31T09:28:00" pubdate>五 31 十月 2014</time></p>
+      <p class="meta"><time datetime="2015-04-22T15:45:00" pubdate>三 22 四月 2015</time></p>
 </header>
 
-  <div class="entry-content"><p>[TOC]</p>
-<h1>ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器</h1>
-<h2>1. Action</h2>
-<h3>1.1 新建项目</h3>
-<p>新建项目-&gt;Web-&gt;Asp.net Web应用程序，选择MVC，选择添加测试。</p>
-<p>在解决方案上右键，选择"管理NuGet程序包"，在更新页更新全部程序包。</p>
-<h3>1.2 控制器</h3>
-<p>控制器在Controllers文件夹内，命名规则是"名称+Controller"</p>
-<hr />
-<h2>2. 路由</h2>
-<h3>2.1 路由规则</h3>
-<div class="highlight"><pre><span class="p">{</span><span class="n">controller</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="n">action</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span>
+  <div class="entry-content"><h2>1. Java过滤机制-声明周期</h2>
+<p><img alt="images/java-web-filter-01.png" src="images/java-web-filter-01.png" /></p>
+<h2>2. 第一个过滤器</h2>
+<p>1、创建一个过滤器类 ，继承自servlet下的Filter
+2、重写三个方法init() doFilter() destroy()方法
+（1）init()初始化：这个方法可以读取web.xml文件中的过滤器初始化参数。通过参数FilterConfig arg0可以获取更多参数
+（2）doFIlter()核心：完成实际的过滤操作。当用户请求访问与过滤器【关联的URL】时，Web容器将先调用过滤器的doFilter方法，FilterChain arg2参数可以调用chain.doFilter方法，将请求传给下一个过滤器（或目标资源），或利用转发，重定向将请求转发给其他资源。
+(3)web容器在消耗过滤器前调用该方法，用于释放过滤器占用的资源。（大多数情况用不到）</p>
+<h3>2.1 定义Filter</h3>
+<div class="highlight"><pre><span class="n">package</span> <span class="n">liulx</span><span class="p">.</span><span class="n">FilterDemo</span><span class="p">;</span>
+
+<span class="n">import</span> <span class="n">javax</span><span class="p">.</span><span class="n">servlet</span><span class="p">.</span><span class="o">*</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">io ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../java-webzhi-servlet-02-ying-yong-mvcjia-gou-shi-xian-xiang-mu.html">Java Web之Servlet-02 应用MVC架构实现项目</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-15T19:49:00" pubdate>三 15 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 获取初始化参数</h2>
+<div class="highlight"><pre><span class="nt">&lt;servlet&gt;</span>
+    <span class="nt">&lt;init-param&gt;</span>
+        <span class="nt">&lt;param-name&gt;</span>username<span class="nt">&lt;/param-name&gt;</span>
+        <span class="nt">&lt;param-value&gt;</span>admin<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/init-param&gt;</span>
+    <span class="nt">&lt;init-param&gt;</span>
+        <span class="nt">&lt;param-name&gt;</span>password<span class="nt">&lt;/param-name&gt;</span>
+        <span class="nt">&lt;param-value&gt;</span>123456<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/init-param&gt;</span>
+<span class="nt">&lt;/servlet&gt;</span>
 </pre></div>
 
 
-<p>其中{id}是可选的。</p>
-<h3>2.2 路由定义RouteConfig.cs</h3>
-<div class="highlight"><pre><span class="n">public</span> <span class="n">class ...</span></pre></div></div>
+<div class="highlight"><pre><span class="err">在</span><span class="n">servlet</span><span class="err">的</span><span class="n">init</span><span class="p">()</span><span class="err">方法中获取初始化的值：</span>
+<span class="n">this</span><span class="p">.</span><span class="n">getInitParameter</span><span class="p">(</span><span class="s">&quot;username&quot;</span><span class="p">);</span>
+<span class="n">this</span><span class="p">.</span><span class="n">getInitParameter</span><span class="p">(</span><span class="s">&quot;password&quot;</span><span class="p">);</span>
+</pre></div></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../java-webzhi-servlet-01-servletji-chu.html">Java Web之Servlet-01 Servlet基础</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-13T20:31:00" pubdate>一 13 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. Servlet概述</h2>
+<p>jsp前身就是servlet，Servelet是在服务器上运行的小程序。
+一个Servlet就是一个Java类，并且可以通过“请求－响应”编程模型来访问的这个驻留在服务器内存里的Servlet程序。</p>
+<h2>2. Tomcat容器等级</h2>
+<p>Tomcat在大多数情况下充当servlet的容器，也就是说：在写完JSP代码后进行第一次执行时，tomcat（servlet容器）先将JSP代码翻译成servlet类（java代码），然后实例化该类，再调用该类的init,service,destory等进行生命周期服务。当客户端再进行第二次访问请求时，此时就没有servlet容器的翻译这一步了，因为之前翻译的java代码会一直保存，以便于后面的访问不再进行翻译，可大大提高访问效率。所以，JSP页面在第一次被访问时，其所花费的时间是最长的。
+最主要的方法就是init,service和destroy，它们是servlet对象的生存周期，当一个页面被编译成servlet类，再进行实例化后，这个页面就开始了真正的生命周期，servlet容器会先加载init方法进行初始化，初始化后才可进行接收和相应客户端的消息，之后容器会再加载service，这部分就是真正相应客户端请求的实现逻辑，它实现客户端的请求响应，然后动态生成HTML页面显示到客户端；而destory方法则是在servlet生命周期即将结束时进行的清理工作。</p>
+<p><img alt="java-web-servlet-01" src="images/java-web-servlet-01.jpg" /></p>
+<h2>3. 手工编写第一个Servlet</h2>
+<ol>
+<li>继承HttpServlet</li>
+<li>重写doGet()或者doPost()：右键-&gt;source- ...</li></ol></div>
   <footer>
-    <a rel="full-article" href="../aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html">Read On &crarr;</a>
+    <a rel="full-article" href="../java-webzhi-servlet-01-servletji-chu.html">Read On &crarr;</a>
   </footer>
   		</article>
   		<article>
 <header>
       <h1 class="entry-title">
-        <a href="../aspnet-mvc5-xue-xi-bi-ji-2-razor.html">ASP.NET MVC5 学习笔记-2 Razor</a>
+        <a href="../java-webzhi-jsp-07-zong-he-an-li.html">Java Web之JSP-07 综合案例</a>
       </h1>
-      <p class="meta"><time datetime="2014-10-31T09:28:00" pubdate>五 31 十月 2014</time></p>
+      <p class="meta"><time datetime="2015-04-13T20:11:00" pubdate>一 13 四月 2015</time></p>
 </header>
 
-  <div class="entry-content"><p>[TOC]</p>
-<h1>ASP.NET MVC5 学习笔记-2 Razor</h1>
-<h2>1. Razor</h2>
-<div class="highlight"><pre><span class="p">@</span><span class="o">*</span><span class="nx">注释</span><span class="o">*</span><span class="p">@</span>
+  <div class="entry-content"><h2>1. JDBC DBHelper</h2>
+<div class="highlight"><pre><span class="n">package</span> <span class="n">util</span><span class="p">;</span>
 
-<span class="nx">你在用</span> <span class="p">@</span><span class="nx">Request.Browser.Browser</span><span class="p">,</span> <span class="nx">发送邮件给support</span><span class="p">@</span><span class="nx">qq.com</span><span class="p">,</span> <span class="nx">转义</span><span class="p">@@</span><span class="nx">qq</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">Connection</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">DriverManager</span><span class="p">;</span>
 
-<span class="p">@{</span>
-    <span class="kd">var</span> <span class="n">amounts</span> <span class="o">=</span> <span class="nb">new</span> <span class="nb">List</span><span class="o">&lt;</span><span class="kt">Decimal</span><span class="o">&gt;</span> <span class="p">{</span><span class="mi">100</span><span class="p">,</span> <span class="mf">25.00</span><span class="nx">m</span><span class="p">,</span> <span class="mf">30.0</span><span class="nx">m</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">};</span> 
-<span class="p">}</span>
+<span class="n">public</span> <span class="n">class</span> <span class="n">DBHelper</span> <span class="p">{</span>
 
-<span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-    <span class="p">@</span><span class="nb">foreach</span> <span class="p">(</span><span class="kt">decimal</span> <span class="n">amount</span> <span class="k">in</span> <span class="nx">amounts</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">@</span><span class="nx">formatAmount</span><span class="p">(</span><span class="nx">amount</span><span class="p">)</span><span class="o">&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">text</span><span class="o">&gt;</span><span class="nx">普通文本</span><span class="o">&lt;/</span><span class="nx">text</span><span class="o">&gt;</span>
-        <span class="p">@:</span><span class="nx">普通文本</span>
-    <span class="p">}</span>
-<span class="o">&lt;/</span><span class="nx">ul</span><span class="o">&gt;</span>
-
-<span class="p">@</span><span class="nx">helper</span> <span class="nx">formatAmount</span><span class="p">(</span><span class="kt">decimal</span> <span class="nx">amount ...</span></pre></div></div>
+    <span class="n">private</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">driver</span> <span class="o">=</span> <span class="s">&quot;com.mysql.jdbc.Driver&quot;</span><span class="p">;</span> <span class="c1">//数据库驱动</span>
+    <span class="c1">//连接数据库的URL地址</span>
+    <span class="n">private</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">url</span><span class="o">=</span><span class="s">&quot;jdbc:mysql://localhost:3306/shopping?useUnicode=true&amp;characterEncoding=UTF-8&quot;</span><span class="p">;</span> 
+    <span class="n">private</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">username</span><span class="o">=</span><span class="s">&quot;root&quot;</span><span class="p">;</span><span class="c1">//数据库的用户名</span>
+    <span class="n">private</span> <span class="k">static ...</span></pre></div></div>
   <footer>
-    <a rel="full-article" href="../aspnet-mvc5-xue-xi-bi-ji-2-razor.html">Read On &crarr;</a>
+    <a rel="full-article" href="../java-webzhi-jsp-07-zong-he-an-li.html">Read On &crarr;</a>
   </footer>
   		</article>
   		<article>
 <header>
       <h1 class="entry-title">
-        <a href="../nancy-webkuang-jia.html">Nancy Web框架</a>
+        <a href="../jdbcshi-yong-bi-ji.html">JDBC使用笔记</a>
       </h1>
-      <p class="meta"><time datetime="2014-09-12T23:39:00" pubdate>五 12 九月 2014</time></p>
+      <p class="meta"><time datetime="2015-04-13T20:11:00" pubdate>一 13 四月 2015</time></p>
 </header>
 
-  <div class="entry-content"><p>.Net Nancy框架, https://github.com/NancyFx/Nancy</p></div>
+  <div class="entry-content"><h2>1. JDBC编程步骤</h2>
+<p><strong>加载驱动程序：</strong></p>
+<div class="highlight"><pre><span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="n">driverClass</span><span class="p">)</span>
+<span class="c1">//加载MySql驱动</span>
+<span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="s">&quot;com.mysql.jdbc.Driver&quot;</span><span class="p">)</span>
+<span class="c1">//加载Oracle驱动</span>
+<span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="s">&quot;oracle.jdbc.driver.OracleDriver&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>获得数据库连接：</strong></p>
+<div class="highlight"><pre><span class="n">DriverManager</span><span class="p">.</span><span class="n">getConnection</span><span class="p">(</span><span class="s">&quot;jdbc:mysql://127.0.0.1:3306/imooc&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p><strong>创建Statement\PreparedStatement对象：</strong></p>
+<div class="highlight"><pre><span class="n">conn</span><span class="p">.</span><span class="n">createStatement</span><span class="p">();</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
+</pre></div>
+
+
+<p>例子：</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">Connection</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">DriverManager</span><span class="p">;</span>
+<span class="n">import ...</span></pre></div></div>
   <footer>
-    <a rel="full-article" href="../nancy-webkuang-jia.html">Read On &crarr;</a>
+    <a rel="full-article" href="../jdbcshi-yong-bi-ji.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../java-webzhi-jsp-06-jspzhi-ling-yu-dong-zuo-yuan-su.html">Java Web之JSP-06 JSP指令与动作元素</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-13T19:37:00" pubdate>一 13 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. include指令</h2>
+<p>常用的有page、include、taglib指令这三种指令；
+page：位于页面顶端，一个页面可以包含多个page指令
+include：将一个外部文件嵌入jsp中，同时解析这个页面中的jsp语句。
+taglib：使用标签库，自定义新的标签，在jsp中启动定制行为。</p>
+<p>语法 <code>&lt;% include file="地址"%&gt;</code>。
+案例：显示当前时间的页面。
+（1）写一个只输出时间的方法的date.jsp。
+（2）用于显示的页面,包含<code>&lt;% include file="date.jsp"%&gt;</code></p>
+<h2>2. include动作</h2>
+<ol>
+<li>是一个动作标签<code>&lt;jsp:xxx&gt;</code></li>
+<li>语法：<code>&lt;jsp:include page="URL" flush="true|false"&gt;</code></li>
+<li>page属性：要包含的页面</li>
+<li>flush属性：被包含的页面是否从缓冲区里读取</li>
+</ol>
+<h2>3. include指令和动作的区别 ...</h2></div>
+  <footer>
+    <a rel="full-article" href="../java-webzhi-jsp-06-jspzhi-ling-yu-dong-zuo-yuan-su.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../java-webzhi-jsp-05-jspzhuang-tai-guan-li.html">Java Web之JSP-05 JSP状态管理</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-10T16:30:00" pubdate>五 10 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. http协议的无状态性</h2>
+<ol>
+<li>无状态是指，当浏览器发送请求给服务器的时候，服务器会响应。但当同一个浏览器再次发送请求时，服务器不会知道是刚才那个浏览器。</li>
+<li>简单说，服务器【不会保存用户状态】，不会记得客户端是否访问过，所以这就是无状态协议。</li>
+</ol>
+<h2>2. Cookie概述</h2>
+<p>保存用户的状态的两大机制：session ，cookie</p>
+<p>cookie作用:</p>
+<ol>
+<li>对特定对象的追踪 </li>
+<li>保存用户网页浏览记录与习惯</li>
+<li>简化登录</li>
+</ol>
+<p>安全风险：容易泄露用户信息
+典型应用一：判断注册用户是否已经登录网站
+典型应用二：“购物车”的处理</p>
+<h2>3. JSP页面中创建和使用Cookie</h2>
+<ol>
+<li>创建Cookie对象：<code>Cookie cookie = new Cookie(String key , Object value);</code></li>
+<li>写入Cookie对象：<code>response.addCookie(cookie);</code></li>
+<li>读取Cookie对象：<code>Cookie[] cookies = request.getCookies();</code></li>
+</ol>
+<p>Cookie常用方法：</p>
+<ol>
+<li><code>void ...</code></li></ol></div>
+  <footer>
+    <a rel="full-article" href="../java-webzhi-jsp-05-jspzhuang-tai-guan-li.html">Read On &crarr;</a>
   </footer>
   		</article>
 <div class="pagination">
+    <a class="prev" href="../tag/web2.html">&larr; Older</a>
 
   <br />
 </div></div>
@@ -293,19 +397,19 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="../java-webzhi-jsp-02-jspji-chu-yu-fa.html">Java Web之JSP-02 JSP基础语法</a>
+          <a href="../angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">AngularJS学习笔记03 双向数据绑定</a>
       </li>
       <li class="post">
-          <a href="../java-webzhi-jsp-01-java-webjian-jie.html">Java Web之JSP-01 Java Web简介</a>
+          <a href="../angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">AngularJS学习笔记02-路由、模块和依赖注入</a>
       </li>
       <li class="post">
-          <a href="../aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html">ASP.NET MVC5 学习笔记-5 测试</a>
+          <a href="../angularjsxue-xi-bi-ji-01-mvc.html">AngularJS学习笔记01-MVC</a>
       </li>
       <li class="post">
-          <a href="../aspnet-mvc5-xue-xi-bi-ji-3-model.html">ASP.NET MVC5 学习笔记-3 Model</a>
+          <a href="../java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html">Java Web开发技术应用-过滤器</a>
       </li>
       <li class="post">
-          <a href="../aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html">ASP.NET MVC5 学习笔记-4 OWIN和Katana</a>
+          <a href="../java-webzhi-servlet-02-ying-yong-mvcjia-gou-shi-xian-xiang-mu.html">Java Web之Servlet-02 应用MVC架构实现项目</a>
       </li>
     </ul>
   </section>
@@ -326,7 +430,7 @@
 
   <section>
   <h1>Tags</h1>
-    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/css.html">CSS</a>  </section>
+    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/java.html">Java</a>  </section>
 
 
 

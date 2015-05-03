@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>理想国 - SASS</title>
+  <meta name="author" content="理想">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="../favicon.png" rel="icon">
+  <link href="../theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="../theme/js/modernizr-2.0.js"></script>
+  <script src="../theme/js/ender.js"></script>
+  <script src="../theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="../">理想国</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<form action="//google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:.." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+    <li >
+    <a href="../category/android.html">Android</a>
+    </li>
+    <li >
+    <a href="../category/dotnet.html">Dotnet</a>
+    </li>
+    <li >
+    <a href="../category/java.html">Java</a>
+    </li>
+    <li >
+    <a href="../category/python.html">Python</a>
+    </li>
+    <li >
+    <a href="../category/sheng-huo.html">生活</a>
+    </li>
+    <li >
+    <a href="../category/web.html">Web</a>
+    </li>
+    <li >
+    <a href="../category/yi-dong-kai-fa.html">移动开发</a>
+    </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div class="blog-index">
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Sass和Compass必备技能之Compass篇-02 模块简介</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-20T21:43:00" pubdate>一 20 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. Layout简介</h2>
+<p>http://compass-style.org/reference/compass/layout/</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/layout&quot;</span>
+<span class="cp">@import</span> <span class="s2">&quot;compass/layout/grid-background&quot;</span>
+<span class="cp">@import</span> <span class="s2">&quot;compass/layout/sticky-footer&quot;</span>
+<span class="cp">@import</span> <span class="s2">&quot;compass/layout/stretching&quot;</span>
+</pre></div>
+
+
+<h2>2. CSS3模块</h2>
+<p>使用率最高的模块，提高跨浏览器的CSS3效果
+http://compass-style.org/reference/compass/css3/</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/css3&quot;</span><span class="p">;</span>
+<span class="p">.</span><span class="n">webdemo</span><span class="o">-</span><span class="n">sec</span><span class="p">{</span>
+    <span class="err">@</span><span class="n">include</span> <span class="n">box</span><span class="o">-</span><span class="nf">shadow</span><span class="p">(</span><span class="mi">1</span><span class="n">px</span> <span class="mi">1</span><span class="n">px</span> <span class="mi">3</span><span class="n">px</span> <span class="mi">2</span><span class="n">px</span> <span class="cp">#cfcecf ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Sass和Compass必备技能之Compass篇-01 Compass核心模块概述及Reset模块</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-20T20:51:00" pubdate>一 20 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. Compass核心模块</h2>
+<p><img alt="images/compass-1.png" src="images/compass-1.png" /></p>
+<p>Reset(<code>@import "compass/reset";</code>)和Layout(<code>@import "compass/layout";</code>)并没有包含在compass的核心模块中，需要单独引用。</p>
+<p><code>@import "compass";</code>包含了CSS3/Helpers/Typography/Utilities模块：
+- CSS3模块</p>
+<h2>2. 使用normalize.css替换reset</h2>
+<p>《grunt beginer》</p>
+<p>http://necolas.github.io/normalize.css/</p>
+<p>可以使用compass插件：</p>
+<h3>2.1 安装</h3>
+<p><code>gem install compass-normalize</code></p>
+<h3>2.2 在config.rb中引入</h3>
+<p><code>require 'compass-normalize'</code>
+<strong>注意：config.rb中的require 'compass/import-once/activate'是防止多次引入 ...</strong></p></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html">Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-17T23:19:00" pubdate>五 17 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. @media</h2>
+<p>sass中的@media跟CSS区别：</p>
+<p>sass中的media query可以内嵌在css规则中，在生成CSS的时候，
+media query 才会被提到样式的最高级</p>
+<p>好处：避免了重复书写选择器或者打乱样式表的流程。</p>
+<div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="p">){</span>
+    <span class="err">@</span><span class="n">media</span><span class="p">(</span><span class="n">min</span><span class="o">-</span><span class="n">width</span><span class="o">:</span> <span class="mi">768</span><span class="n">px</span><span class="p">){</span>
+        <span class="nl">width:</span> <span class="err">$</span><span class="n">width</span><span class="p">;</span>
+        <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>2. @at-root</h2>
+<p>指定嵌套的内容生成CSS时，在最底层</p>
+<div class="highlight"><pre><span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="p">{</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
+    <span class="err">@</span><span class="n">at</span><span class="o">-</span><span class="n">root</span><span class="p">{</span>
+        <span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">headline</span><span class="p">{</span>
+            <span class="nl">font:</span><span class="p">{</span>
+                <span class="nl">family:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
+                <span class="nl">size:</span> <span class="mi">16</span><span class="n">px</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html">Sass和Compass必备技能之Sass篇-03 Sass语法介绍(进阶篇)</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-17T22:46:00" pubdate>五 17 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 变量操作</h2>
+<p>变量操作有两种方式，第一种是直接操作，第二种是通过函数。</p>
+<p>通过函数：
+- 跟代码块无关的函数，多是自己内置函数，称functions
+- 可重用的代码块，称mixin: @include和 @extand的方式来应用，</p>
+<p>运算符： <code>&gt;= &lt;= &gt; &lt; == != ()</code></p>
+<p>CSS3增加了HSL的颜色，SASS会自动转换HSL为RGB,完美解决兼容。</p>
+<p>sass支持@function来声明函数。</p>
+<h2>2. mixin和include</h2>
+<div class="highlight"><pre><span class="c1">//声明</span>
+<span class="p">@</span><span class="n">mixin</span> <span class="n">col</span><span class="o">-</span><span class="mh">6</span><span class="p">{</span>
+    <span class="nl">width:</span> <span class="mh">50</span><span class="o">%</span><span class="p">;</span>
+    <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//调用</span>
+<span class="p">.</span><span class="n">webdemo</span><span class="o">-</span><span class="n">sec</span> <span class="p">{</span>
+    <span class="p">@</span><span class="k">include</span> <span class="n">col</span><span class="o">-</span><span class="mh">6</span><span class="p">();</span>
+
+    <span class="o">&amp;:</span><span class="n">hover</span><span class="p">{</span>
+        <span class="n">background</span><span class="o">-</span><span class="nl">color:</span> <span class="p">#</span><span class="no">F5F5F5</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>CSS中class最好使用语义化的命名。IE6不支持多个class。</p>
+<p>带参数以及默认参数：</p>
+<div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="o">:</span><span class="mi">50</span><span class="o">%</span><span class="p">){</span>
+    <span class="nl">width:</span> <span class="err">$</span><span class="n">width</span><span class="p">;</span>
+    <span class="nl">float:</span> <span class="n">left ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-02-sassyu-fa-jie-shao-ji-chu-pian.html">Sass和Compass必备技能之Sass篇-02 Sass语法介绍(基础篇)</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-17T22:09:00" pubdate>五 17 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. sass和scss形式的相互转换</h2>
+<div class="highlight"><pre><span class="err">$</span><span class="n">sass</span><span class="o">-</span><span class="n">convert</span> <span class="n">main</span><span class="p">.</span><span class="n">sass</span> <span class="n">main</span><span class="p">.</span><span class="n">scss</span>
+<span class="err">或者</span>
+<span class="err">$</span><span class="n">sass</span><span class="o">-</span><span class="n">convert</span> <span class="n">main</span><span class="p">.</span><span class="n">scss</span> <span class="n">main</span><span class="p">.</span><span class="n">sass</span>
+</pre></div>
+
+
+<h2>2. 创建应用</h2>
+<div class="highlight"><pre><span class="err">$</span><span class="n">compass</span> <span class="n">create</span> <span class="n">learn</span><span class="o">-</span><span class="n">sass</span><span class="o">-</span><span class="n">syntax</span>
+<span class="err">$</span><span class="n">cd</span> <span class="n">learn</span><span class="o">-</span><span class="n">sass</span><span class="o">-</span><span class="n">syntax</span>
+<span class="err">$</span><span class="n">compass</span> <span class="n">watch</span>
+</pre></div>
+
+
+<h2>3. 语法</h2>
+<p>SASS CSS默认都是UTF-8，所以写不写<code>@charset "UTF-8"</code></p>
+<h3>3.1 引用@import</h3>
+<p>使用下划线命名的文件比如_variables.scss，sass称为局部文件，是用到其它文件中的。如果在其他文件中引用，请使用:</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;variables&quot;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>这个不是css中的import，css中的import指令有两大弊端，一 ...</p></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-02-sassyu-fa-jie-shao-ji-chu-pian.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-01-an-zhuang.html">Sass和Compass必备技能之Sass篇-01 安装</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-16T14:55:00" pubdate>四 16 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. ruby安装</h2>
+<p>RVM: Ruby Version Manager（Ruby多版本管理器）</p>
+<p>安装RVM</p>
+<p>mac下安装homebrew cakebrew</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">--</span><span class="n">remove</span> <span class="n">https</span><span class="o">:</span><span class="c1">//rubygems.org/</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">-</span><span class="n">a</span> <span class="n">https</span><span class="o">:</span><span class="c1">//ruby.taobao.org/</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">-</span><span class="n">l</span>
+<span class="o">***</span> <span class="n">CURRENT</span> <span class="n">SOURCES</span> <span class="o">***</span>
+<span class="nl">https:</span><span class="c1">//ruby.taobao.org</span>
+
+<span class="cp"># 请确保只有 ruby.taobao.org</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">rails</span> <span class="err">#安装</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">update</span> <span class="err">#更新</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">sass</span> <span class="o">--</span><span class="n">version</span><span class="o">=</span><span class="mf">3.3</span>
+<span class="err">$</span><span class="n">gem ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-01-an-zhuang.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+<div class="pagination">
+
+  <br />
+</div></div>
+<aside class="sidebar">
+  <section>
+	  <img src="../images/avatar.jpg" alt="刘理想" width=""/> 
+  </section>
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Sass和Compass必备技能之Compass篇-02 模块简介</a>
+      </li>
+      <li class="post">
+          <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Sass和Compass必备技能之Compass篇-01 Compass核心模块概述及Reset模块</a>
+      </li>
+      <li class="post">
+          <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html">Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)</a>
+      </li>
+      <li class="post">
+          <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html">Sass和Compass必备技能之Sass篇-03 Sass语法介绍(进阶篇)</a>
+      </li>
+      <li class="post">
+          <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-02-sassyu-fa-jie-shao-ji-chu-pian.html">Sass和Compass必备技能之Sass篇-02 Sass语法介绍(基础篇)</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="../category/android.html">Android</a></li>
+        <li><a href="../category/dotnet.html">DotNet</a></li>
+        <li><a href="../category/java.html">Java</a></li>
+        <li><a href="../category/python.html">Python</a></li>
+        <li><a href="../category/sheng-huo.html">生活</a></li>
+        <li><a href="../category/web.html">Web</a></li>
+        <li><a href="../category/yi-dong-kai-fa.html">移动开发</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/java.html">Java</a>  </section>
+
+
+
+  <section>
+    <h1>GitHub Repos</h1>
+    <ul id="gh_repos">
+      <li class="loading">Status updating...</li>
+    </ul>
+      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
+    <script type="text/javascript">
+      $.domReady(function(){
+          if (!window.jXHR){
+              var jxhr = document.createElement('script');
+              jxhr.type = 'text/javascript';
+              jxhr.src = '../theme/js/jXHR.js';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(jxhr, s);
+          }
+
+          github.showRepos({
+              user: 'liulixiang1988',
+              count: 5,
+              skip_forks: false,
+              target: '#gh_repos'
+          });
+      });
+    </script>
+    <script src="../theme/js/github.js" type="text/javascript"> </script>
+  </section>
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
+        </ul>
+    </section>
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2015  - 理想 -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+</body>
+</html>
