@@ -4,6 +4,24 @@ Category: Web
 Tags: Angular, Web
 Author: 刘理想
 
+##0. 第一个AngularJs应用
+
+```
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AngularJs Demo</title>
+    <script src="bower_components/angularjs/angular.min.js"></script>
+</head>
+<body>
+    <input type="text" ng-model="name"><br>
+    <p>hello, {{name}}</p>
+</body>
+</html>
+```
+
 ##1. 为什么需要MVC?
 
 MVC只是手段，终极目标是模块化与复用。
