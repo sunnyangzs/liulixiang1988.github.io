@@ -74,6 +74,67 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="../java-webzhi-jsp-02-jspji-chu-yu-fa.html">Java Web之JSP-02 JSP基础语法</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-08T00:30:00" pubdate>三 08 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. JSP简介</h2>
+<p>JSP页面元素构成：</p>
+<ol>
+<li>静态内容</li>
+<li>注释</li>
+<li>声明</li>
+<li>小脚本</li>
+<li>表达式</li>
+<li>指令</li>
+</ol>
+<h3>1.1 jsp指令</h3>
+<p>page指令：通常位于jsp页面的顶端，同一个页面可以有多个page指令。
+include指令：将一个外部文件嵌入到当前jsp文件中，同时解析这个页面中的jsp语句。
+taglib指令：使用标签库定义心得自定义标签。在jsp页面中启用定制行为</p>
+<p>page指令语法：</p>
+<div class="highlight"><pre><span class="cp">&lt;%</span><span class="vi">@page</span> <span class="err">属性</span><span class="mi">1</span><span class="o">=</span><span class="s2">&quot;value&quot;</span> <span class="err">属性</span><span class="mi">2</span><span class="o">=</span><span class="s2">&quot;value1, value2&quot;</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="cp">%&gt;</span><span class="x"></span>
+</pre></div>
+
+
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>language</td>
+<td>指定jsp页面使用的脚本语言</td>
+<td>java</td>
+</tr>
+<tr>
+<td>import</td>
+<td>通过该属性来引用脚本语言中使用到的类文件</td>
+<td>无</td>
+</tr>
+<tr>
+<td>contentType</td>
+<td>用来指定jsp页面所采用的编码方式</td>
+<td>text/html,ISO-8859-1</td>
+</tr>
+</tbody>
+</table>
+<h3>1.2 JSP注释</h3>
+<ol>
+<li>html注释 <code>&lt;!--html注释--&gt;</code></li>
+<li>jsp注释 ...</li></ol></div>
+  <footer>
+    <a rel="full-article" href="../java-webzhi-jsp-02-jspji-chu-yu-fa.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="../java-webzhi-jsp-01-java-webjian-jie.html">Java Web之JSP-01 Java Web简介</a>
       </h1>
       <p class="meta"><time datetime="2015-04-07T21:40:00" pubdate>二 07 四月 2015</time></p>
@@ -319,33 +380,6 @@
     <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html">企业网站布局实践-03焦点图制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-02T01:19:00" pubdate>四 02 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 使用myFocus焦点图库</h2>
-<p>http://demo.jb51.net/js/myfocus/download.html</p>
-<p>选择demo演示下载解压，拷贝js文件夹与当前js文件夹合并。</p>
-<h3>1.1 引入myFocus库文件和样式文件</h3>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/myFocus-2.0.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/mf-pattern/mF_YSlider.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;js/mf-pattern/mF_YSlider.css&quot;</span><span class="nt">&gt;</span>
-</pre></div>
-
-
-<h3>1.2 构建页面中使用的图片</h3>
-<p>首先添加图片</p>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ad&quot;</span> <span class="na">id=</span><span class="s">&quot;picBox&quot;</span><span class="nt">&gt;</span>
- <span class="nt">&lt;ul&gt;</span>
-     <span class="nt">&lt;li ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="../author/liu-li-xiang5.html">&larr; Older</a>
 
@@ -360,6 +394,9 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="../css3bi-ji-01-guo-du-transition.html">CSS3笔记01-过渡transition</a>
+      </li>
+      <li class="post">
           <a href="../ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Ionic使用教程-条码扫描</a>
       </li>
       <li class="post">
@@ -370,9 +407,6 @@
       </li>
       <li class="post">
           <a href="../exmobibi-ji-wen-jian-xiang-guan.html">Exmobi笔记-文件相关</a>
-      </li>
-      <li class="post">
-          <a href="../jsbu-yi-jquerypian.html">JS补遗-jQuery篇</a>
       </li>
     </ul>
   </section>
@@ -394,7 +428,7 @@
 
   <section>
   <h1>Tags</h1>
-    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
+    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/css3.html">css3</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/compass.html">compass</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">sass</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
 
 
 

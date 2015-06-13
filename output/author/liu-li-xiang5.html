@@ -74,6 +74,33 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html">企业网站布局实践-03焦点图制作</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-02T01:19:00" pubdate>四 02 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 使用myFocus焦点图库</h2>
+<p>http://demo.jb51.net/js/myfocus/download.html</p>
+<p>选择demo演示下载解压，拷贝js文件夹与当前js文件夹合并。</p>
+<h3>1.1 引入myFocus库文件和样式文件</h3>
+<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/myFocus-2.0.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/mf-pattern/mF_YSlider.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;js/mf-pattern/mF_YSlider.css&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<h3>1.2 构建页面中使用的图片</h3>
+<p>首先添加图片</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ad&quot;</span> <span class="na">id=</span><span class="s">&quot;picBox&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;ul&gt;</span>
+     <span class="nt">&lt;li ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html">企业网站布局实践-02导航部分制作</a>
       </h1>
       <p class="meta"><time datetime="2015-04-01T23:59:00" pubdate>三 01 四月 2015</time></p>
@@ -415,39 +442,6 @@
     <a rel="full-article" href="../aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../aspnet-mvc5-xue-xi-bi-ji-2-razor.html">ASP.NET MVC5 学习笔记-2 Razor</a>
-      </h1>
-      <p class="meta"><time datetime="2014-10-31T09:28:00" pubdate>五 31 十月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>[TOC]</p>
-<h1>ASP.NET MVC5 学习笔记-2 Razor</h1>
-<h2>1. Razor</h2>
-<div class="highlight"><pre><span class="p">@</span><span class="o">*</span><span class="err">注释</span><span class="o">*</span><span class="p">@</span>
-
-<span class="err">你在用</span> <span class="p">@</span><span class="nx">Request.Browser.Browser</span><span class="p">,</span> <span class="err">发送邮件给</span><span class="nx">support</span><span class="p">@</span><span class="nx">qq.com</span><span class="p">,</span> <span class="err">转义</span><span class="p">@@</span><span class="nx">qq</span>
-
-<span class="p">@{</span>
-    <span class="kd">var</span> <span class="n">amounts</span> <span class="o">=</span> <span class="nb">new</span> <span class="nb">List</span><span class="o">&lt;</span><span class="kt">Decimal</span><span class="o">&gt;</span> <span class="p">{</span><span class="mi">100</span><span class="p">,</span> <span class="mf">25.00</span><span class="nx">m</span><span class="p">,</span> <span class="mf">30.0</span><span class="nx">m</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">};</span> 
-<span class="p">}</span>
-
-<span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-    <span class="p">@</span><span class="nb">foreach</span> <span class="p">(</span><span class="kt">decimal</span> <span class="n">amount</span> <span class="k">in</span> <span class="nx">amounts</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">@</span><span class="nx">formatAmount</span><span class="p">(</span><span class="nx">amount</span><span class="p">)</span><span class="o">&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">text</span><span class="o">&gt;</span><span class="err">普通文本</span><span class="o">&lt;/</span><span class="nx">text</span><span class="o">&gt;</span>
-        <span class="p">@:</span><span class="err">普通文本</span>
-    <span class="p">}</span>
-<span class="o">&lt;/</span><span class="nx">ul</span><span class="o">&gt;</span>
-
-<span class="p">@</span><span class="nx">helper</span> <span class="nx">formatAmount</span><span class="p">(</span><span class="kt">decimal ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../aspnet-mvc5-xue-xi-bi-ji-2-razor.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="../author/liu-li-xiang6.html">&larr; Older</a>
 
@@ -462,6 +456,9 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="../css3bi-ji-01-guo-du-transition.html">CSS3笔记01-过渡transition</a>
+      </li>
+      <li class="post">
           <a href="../ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Ionic使用教程-条码扫描</a>
       </li>
       <li class="post">
@@ -472,9 +469,6 @@
       </li>
       <li class="post">
           <a href="../exmobibi-ji-wen-jian-xiang-guan.html">Exmobi笔记-文件相关</a>
-      </li>
-      <li class="post">
-          <a href="../jsbu-yi-jquerypian.html">JS补遗-jQuery篇</a>
       </li>
     </ul>
   </section>
@@ -496,7 +490,7 @@
 
   <section>
   <h1>Tags</h1>
-    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
+    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/css3.html">css3</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/compass.html">compass</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">sass</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
 
 
 

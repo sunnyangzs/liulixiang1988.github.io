@@ -74,6 +74,33 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-01-an-zhuang.html">Sass和Compass必备技能之Sass篇-01 安装</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-16T14:55:00" pubdate>四 16 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. ruby安装</h2>
+<p>RVM: Ruby Version Manager（Ruby多版本管理器）</p>
+<p>安装RVM</p>
+<p>mac下安装homebrew cakebrew</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">--</span><span class="n">remove</span> <span class="n">https</span><span class="o">:</span><span class="c1">//rubygems.org/</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">-</span><span class="n">a</span> <span class="n">https</span><span class="o">:</span><span class="c1">//ruby.taobao.org/</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">-</span><span class="n">l</span>
+<span class="o">***</span> <span class="n">CURRENT</span> <span class="n">SOURCES</span> <span class="o">***</span>
+<span class="nl">https:</span><span class="c1">//ruby.taobao.org</span>
+
+<span class="cp"># 请确保只有 ruby.taobao.org</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">rails</span> <span class="err">#安装</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">update</span> <span class="err">#更新</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">sass</span> <span class="o">--</span><span class="n">version</span><span class="o">=</span><span class="mf">3.3</span>
+<span class="err">$</span><span class="n">gem ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-01-an-zhuang.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="../java-webzhi-servlet-02-ying-yong-mvcjia-gou-shi-xian-xiang-mu.html">Java Web之Servlet-02 应用MVC架构实现项目</a>
       </h1>
       <p class="meta"><time datetime="2015-04-15T19:49:00" pubdate>三 15 四月 2015</time></p>
@@ -334,67 +361,6 @@ Page,pageContext,exception.config（四个不太常用对象）</p>
 <span class="n">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;2015年04月13日&quot;</span><span class="p">);</span>
 </pre></div></div>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../java-webzhi-jsp-02-jspji-chu-yu-fa.html">Java Web之JSP-02 JSP基础语法</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-08T00:30:00" pubdate>三 08 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. JSP简介</h2>
-<p>JSP页面元素构成：</p>
-<ol>
-<li>静态内容</li>
-<li>注释</li>
-<li>声明</li>
-<li>小脚本</li>
-<li>表达式</li>
-<li>指令</li>
-</ol>
-<h3>1.1 jsp指令</h3>
-<p>page指令：通常位于jsp页面的顶端，同一个页面可以有多个page指令。
-include指令：将一个外部文件嵌入到当前jsp文件中，同时解析这个页面中的jsp语句。
-taglib指令：使用标签库定义心得自定义标签。在jsp页面中启用定制行为</p>
-<p>page指令语法：</p>
-<div class="highlight"><pre><span class="cp">&lt;%</span><span class="vi">@page</span> <span class="err">属性</span><span class="mi">1</span><span class="o">=</span><span class="s2">&quot;value&quot;</span> <span class="err">属性</span><span class="mi">2</span><span class="o">=</span><span class="s2">&quot;value1, value2&quot;</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="cp">%&gt;</span><span class="x"></span>
-</pre></div>
-
-
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>language</td>
-<td>指定jsp页面使用的脚本语言</td>
-<td>java</td>
-</tr>
-<tr>
-<td>import</td>
-<td>通过该属性来引用脚本语言中使用到的类文件</td>
-<td>无</td>
-</tr>
-<tr>
-<td>contentType</td>
-<td>用来指定jsp页面所采用的编码方式</td>
-<td>text/html,ISO-8859-1</td>
-</tr>
-</tbody>
-</table>
-<h3>1.2 JSP注释</h3>
-<ol>
-<li>html注释 <code>&lt;!--html注释--&gt;</code></li>
-<li>jsp注释 ...</li></ol></div>
-  <footer>
-    <a rel="full-article" href="../java-webzhi-jsp-02-jspji-chu-yu-fa.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="../author/liu-li-xiang4.html">&larr; Older</a>
 
@@ -409,6 +375,9 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="../css3bi-ji-01-guo-du-transition.html">CSS3笔记01-过渡transition</a>
+      </li>
+      <li class="post">
           <a href="../ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Ionic使用教程-条码扫描</a>
       </li>
       <li class="post">
@@ -419,9 +388,6 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
       </li>
       <li class="post">
           <a href="../exmobibi-ji-wen-jian-xiang-guan.html">Exmobi笔记-文件相关</a>
-      </li>
-      <li class="post">
-          <a href="../jsbu-yi-jquerypian.html">JS补遗-jQuery篇</a>
       </li>
     </ul>
   </section>
@@ -443,7 +409,7 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
 
   <section>
   <h1>Tags</h1>
-    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
+    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/css3.html">css3</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/compass.html">compass</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">sass</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
 
 
 

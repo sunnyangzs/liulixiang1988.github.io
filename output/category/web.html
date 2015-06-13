@@ -74,6 +74,40 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="../css3bi-ji-01-guo-du-transition.html">CSS3笔记01-过渡transition</a>
+      </h1>
+      <p class="meta"><time datetime="2015-06-13T20:31:00" pubdate>六 13 六月 2015</time></p>
+</header>
+
+  <div class="entry-content"><p>使用compass:</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/css3/transition&quot;</span><span class="p">;</span>
+<span class="n">div</span><span class="p">.</span><span class="n">foo</span><span class="p">{</span>
+    <span class="n">width</span><span class="o">:</span> <span class="mi">50</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">padding</span><span class="o">:</span> <span class="mi">5</span><span class="n">px</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">background</span><span class="o">:</span> <span class="cp">#9f3;</span>
+    <span class="err">@</span><span class="n">include</span> <span class="n">transition</span><span class="o">-</span><span class="nf">property</span><span class="p">(</span><span class="n">background</span><span class="p">,</span> <span class="n">width</span><span class="p">);</span>
+    <span class="err">@</span><span class="n">include</span> <span class="n">transition</span><span class="o">-</span><span class="nf">duration</span><span class="p">(</span><span class="mf">0.5</span><span class="n">s</span><span class="p">);</span>
+    <span class="err">@</span><span class="n">include</span> <span class="n">transition</span><span class="o">-</span><span class="n">timing</span><span class="o">-</span><span class="kd">function</span><span class="p">(</span><span class="n">ease</span><span class="o">-</span><span class="k">in</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">div</span><span class="p">.</span><span class="n">foo</span><span class="o">:</span><span class="n">hover</span><span class="p">{</span>
+    <span class="n">background</span><span class="o">:</span> <span class="cp">#690;</span>
+    <span class="n">width</span><span class="o">:</span> <span class="mi">100</span><span class="n">px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>对应的css3:</p>
+<div class="highlight"><pre><span class="nt">div</span><span class="nc">.foo</span> <span class="p">{</span>
+  <span class="k">width</span><span class="o">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="k">padding</span><span class="o">:</span> <span class="m">5px</span> <span class="m">10px ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../css3bi-ji-01-guo-du-transition.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="../jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
       </h1>
       <p class="meta"><time datetime="2015-05-25T10:47:00" pubdate>一 25 五月 2015</time></p>
@@ -318,32 +352,6 @@ http://compass-style.org/reference/compass/css3/</p>
     <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Sass和Compass必备技能之Compass篇-01 Compass核心模块概述及Reset模块</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-20T20:51:00" pubdate>一 20 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. Compass核心模块</h2>
-<p><img alt="images/compass-1.png" src="images/compass-1.png" /></p>
-<p>Reset(<code>@import "compass/reset";</code>)和Layout(<code>@import "compass/layout";</code>)并没有包含在compass的核心模块中，需要单独引用。</p>
-<p><code>@import "compass";</code>包含了CSS3/Helpers/Typography/Utilities模块：
-- CSS3模块</p>
-<h2>2. 使用normalize.css替换reset</h2>
-<p>《grunt beginer》</p>
-<p>http://necolas.github.io/normalize.css/</p>
-<p>可以使用compass插件：</p>
-<h3>2.1 安装</h3>
-<p><code>gem install compass-normalize</code></p>
-<h3>2.2 在config.rb中引入</h3>
-<p><code>require 'compass-normalize'</code>
-<strong>注意：config.rb中的require 'compass/import-once/activate'是防止多次引入 ...</strong></p></div>
-  <footer>
-    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="../category/web2.html">&larr; Older</a>
 
@@ -357,6 +365,9 @@ http://compass-style.org/reference/compass/css3/</p>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="../css3bi-ji-01-guo-du-transition.html">CSS3笔记01-过渡transition</a>
+      </li>
+      <li class="post">
           <a href="../jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
       </li>
       <li class="post">
@@ -367,9 +378,6 @@ http://compass-style.org/reference/compass/css3/</p>
       </li>
       <li class="post">
           <a href="../angularjsxue-xi-bi-ji-05-zhi-ling.html">AngularJS学习笔记05-指令</a>
-      </li>
-      <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-04-lu-you.html">AngularJS学习笔记04 路由</a>
       </li>
     </ul>
   </section>
@@ -391,7 +399,7 @@ http://compass-style.org/reference/compass/css3/</p>
 
   <section>
   <h1>Tags</h1>
-    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
+    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/css3.html">css3</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/compass.html">compass</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">sass</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
 
 
 

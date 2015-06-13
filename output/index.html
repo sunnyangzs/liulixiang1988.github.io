@@ -74,6 +74,40 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="./css3bi-ji-01-guo-du-transition.html">CSS3笔记01-过渡transition</a>
+      </h1>
+      <p class="meta"><time datetime="2015-06-13T20:31:00" pubdate>六 13 六月 2015</time></p>
+</header>
+
+  <div class="entry-content"><p>使用compass:</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/css3/transition&quot;</span><span class="p">;</span>
+<span class="n">div</span><span class="p">.</span><span class="n">foo</span><span class="p">{</span>
+    <span class="n">width</span><span class="o">:</span> <span class="mi">50</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">padding</span><span class="o">:</span> <span class="mi">5</span><span class="n">px</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">background</span><span class="o">:</span> <span class="cp">#9f3;</span>
+    <span class="err">@</span><span class="n">include</span> <span class="n">transition</span><span class="o">-</span><span class="nf">property</span><span class="p">(</span><span class="n">background</span><span class="p">,</span> <span class="n">width</span><span class="p">);</span>
+    <span class="err">@</span><span class="n">include</span> <span class="n">transition</span><span class="o">-</span><span class="nf">duration</span><span class="p">(</span><span class="mf">0.5</span><span class="n">s</span><span class="p">);</span>
+    <span class="err">@</span><span class="n">include</span> <span class="n">transition</span><span class="o">-</span><span class="n">timing</span><span class="o">-</span><span class="kd">function</span><span class="p">(</span><span class="n">ease</span><span class="o">-</span><span class="k">in</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">div</span><span class="p">.</span><span class="n">foo</span><span class="o">:</span><span class="n">hover</span><span class="p">{</span>
+    <span class="n">background</span><span class="o">:</span> <span class="cp">#690;</span>
+    <span class="n">width</span><span class="o">:</span> <span class="mi">100</span><span class="n">px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>对应的css3:</p>
+<div class="highlight"><pre><span class="nt">div</span><span class="nc">.foo</span> <span class="p">{</span>
+  <span class="k">width</span><span class="o">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="k">padding</span><span class="o">:</span> <span class="m">5px</span> <span class="m">10px ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="./css3bi-ji-01-guo-du-transition.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="./ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Ionic使用教程-条码扫描</a>
       </h1>
       <p class="meta"><time datetime="2015-05-27T10:32:00" pubdate>三 27 五月 2015</time></p>
@@ -293,54 +327,6 @@ bookStoreApp.config(<span class="cp">[</span><span class="s1">&#39;$routeProvide
     <a rel="full-article" href="./angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">AngularJS学习笔记02-路由、模块和依赖注入</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-30T22:36:00" pubdate>四 30 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><p>内容简介：</p>
-<ul>
-<li>AngularJS的模块化实现</li>
-<li>一个完整项目结构</li>
-<li>使用ngRoute进行视图之间的路由</li>
-<li>一切都是从模块开始的</li>
-<li>ng官方推荐的模块切分方式是什么？</li>
-<li>模块之间的依赖该怎么做？--依赖注入</li>
-</ul>
-<h2>1. 模块</h2>
-<p>模块就是功能的集合</p>
-<h2>2. 目录结构</h2>
-<div class="highlight"><pre><span class="n">BookStore</span>
-<span class="o">|-</span><span class="n">app</span>
-    <span class="o">|-</span><span class="n">css</span>
-    <span class="o">|-</span><span class="n">img</span>
-    <span class="o">|-</span><span class="n">js</span>
-        <span class="o">|-</span><span class="n">app</span><span class="p">.</span><span class="n">js</span>
-        <span class="o">|-</span><span class="n">controllers</span><span class="p">.</span><span class="n">js</span>
-        <span class="o">|-</span><span class="n">directives</span><span class="p">.</span><span class="n">js</span>
-        <span class="o">|-</span><span class="n">filters</span><span class="p">.</span><span class="n">js</span>
-        <span class="o">|-</span><span class="n">services</span><span class="p">.</span><span class="n">js</span>
-    <span class="o">|-</span><span class="n">framework</span>
-    <span class="o">|-</span><span class="n">tpls</span><span class="c1">//模板</span>
-    <span class="o">|-</span><span class="n">index</span><span class="p">.</span><span class="n">html</span>
-<span class="o">|-</span><span class="n">node_modules</span>
-<span class="o">|-</span><span class="n">package</span><span class="p">.</span><span class="n">json</span>
-</pre></div>
-
-
-<h2>3. ngRoute进行视图之间的路由</h2>
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">bookStoreApp</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;bookStoreApp&#39;</span><span class="p">,</span>
- <span class="cp">[</span><span class="s1">&#39;ngRoute&#39;</span><span class="p">,</span> <span class="s1">&#39;ngAnimate&#39;</span><span class="p">,</span> <span class="s1">&#39;bookStoreCtrls&#39;</span><span class="p">,</span> <span class="s1">&#39;BookStoreFilters&#39;</span><span class="p">,</span>
- <span class="s1">&#39;bookStoreServices&#39;</span><span class="p">,</span> <span class="s1">&#39;bookStoreDirectives&#39;</span><span class="cp">]</span><span class="p">);</span>
-
-<span class="nx">bookStoreApp ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="./angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="./index2.html">&larr; Older</a>
 
@@ -354,6 +340,9 @@ bookStoreApp.config(<span class="cp">[</span><span class="s1">&#39;$routeProvide
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="./css3bi-ji-01-guo-du-transition.html">CSS3笔记01-过渡transition</a>
+      </li>
+      <li class="post">
           <a href="./ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Ionic使用教程-条码扫描</a>
       </li>
       <li class="post">
@@ -364,9 +353,6 @@ bookStoreApp.config(<span class="cp">[</span><span class="s1">&#39;$routeProvide
       </li>
       <li class="post">
           <a href="./exmobibi-ji-wen-jian-xiang-guan.html">Exmobi笔记-文件相关</a>
-      </li>
-      <li class="post">
-          <a href="./jsbu-yi-jquerypian.html">JS补遗-jQuery篇</a>
       </li>
     </ul>
   </section>
@@ -388,7 +374,7 @@ bookStoreApp.config(<span class="cp">[</span><span class="s1">&#39;$routeProvide
 
   <section>
   <h1>Tags</h1>
-    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/angular.html">Angular</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/java.html">Java</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/javascript.html">JavaScript</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="./tag/exmobi.html">Exmobi</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/servlet.html">Servlet</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/jquery.html">jQuery</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/sass.html">SASS</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/ionic.html">ionic</a>  </section>
+    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/angular.html">Angular</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/java.html">Java</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/css3.html">css3</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/javascript.html">JavaScript</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="./tag/compass.html">compass</a>,    <a href="./tag/exmobi.html">Exmobi</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/servlet.html">Servlet</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/jquery.html">jQuery</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/sass.html">sass</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/ionic.html">ionic</a>  </section>
 
 
 
