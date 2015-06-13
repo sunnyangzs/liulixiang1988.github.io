@@ -74,6 +74,41 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="./sasshe-compassbi-bei-ji-neng-zhi-sasspian-02-sassyu-fa-jie-shao-ji-chu-pian.html">Sass和Compass必备技能之Sass篇-02 Sass语法介绍(基础篇)</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-17T22:09:00" pubdate>五 17 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. sass和scss形式的相互转换</h2>
+<div class="highlight"><pre><span class="err">$</span><span class="n">sass</span><span class="o">-</span><span class="n">convert</span> <span class="n">main</span><span class="p">.</span><span class="n">sass</span> <span class="n">main</span><span class="p">.</span><span class="n">scss</span>
+<span class="err">或者</span>
+<span class="err">$</span><span class="n">sass</span><span class="o">-</span><span class="n">convert</span> <span class="n">main</span><span class="p">.</span><span class="n">scss</span> <span class="n">main</span><span class="p">.</span><span class="n">sass</span>
+</pre></div>
+
+
+<h2>2. 创建应用</h2>
+<div class="highlight"><pre><span class="err">$</span><span class="n">compass</span> <span class="n">create</span> <span class="n">learn</span><span class="o">-</span><span class="n">sass</span><span class="o">-</span><span class="n">syntax</span>
+<span class="err">$</span><span class="n">cd</span> <span class="n">learn</span><span class="o">-</span><span class="n">sass</span><span class="o">-</span><span class="n">syntax</span>
+<span class="err">$</span><span class="n">compass</span> <span class="n">watch</span>
+</pre></div>
+
+
+<h2>3. 语法</h2>
+<p>SASS CSS默认都是UTF-8，所以写不写<code>@charset "UTF-8"</code></p>
+<h3>3.1 引用@import</h3>
+<p>使用下划线命名的文件比如_variables.scss，sass称为局部文件，是用到其它文件中的。如果在其他文件中引用，请使用:</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;variables&quot;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>这个不是css中的import，css中的import指令有两大弊端，一 ...</p></div>
+  <footer>
+    <a rel="full-article" href="./sasshe-compassbi-bei-ji-neng-zhi-sasspian-02-sassyu-fa-jie-shao-ji-chu-pian.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="./sasshe-compassbi-bei-ji-neng-zhi-sasspian-01-an-zhuang.html">Sass和Compass必备技能之Sass篇-01 安装</a>
       </h1>
       <p class="meta"><time datetime="2015-04-16T14:55:00" pubdate>四 16 四月 2015</time></p>
@@ -335,32 +370,6 @@ Page,pageContext,exception.config（四个不太常用对象）</p>
     <a rel="full-article" href="./java-webzhi-jsp-04-java-beans.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./java-chang-yong-fang-fa.html">Java-常用方法</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-08T00:30:00" pubdate>三 08 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><p>之前一直用C#比较多，最近开始研究Java，两者之间的库设计差别很大，故再次做个总结。</p>
-<h2>1. 日期</h2>
-<p>1.日期格式化</p>
-<div class="highlight"><pre><span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">SimpleDateFormat</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">Date</span><span class="p">;</span>
-
-<span class="n">SimpleDateFormat</span> <span class="n">sdf</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;yyyy年MM月dd日&quot;</span><span class="p">);</span>
-<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">new</span> <span class="n">Date</span><span class="p">());</span>
-</pre></div>
-
-
-<ol>
-<li>字符串转化为日期</li>
-</ol>
-<div class="highlight"><pre><span class="n">SimpleDateFormat</span> <span class="n">sdf</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;yyyy年MM月dd日&quot;</span><span class="p">);</span>
-<span class="n">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;2015年04月13日&quot;</span><span class="p">);</span>
-</pre></div></div>
-  		</article>
 <div class="pagination">
     <a class="prev" href="./index4.html">&larr; Older</a>
 
@@ -375,6 +384,9 @@ Page,pageContext,exception.config（四个不太常用对象）</p>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="./css3bi-ji-02-xuan-ting-xiao-guo.html">CSS3笔记02-悬停效果</a>
+      </li>
+      <li class="post">
           <a href="./css3bi-ji-01-guo-du-transition.html">CSS3笔记01-过渡transition</a>
       </li>
       <li class="post">
@@ -385,9 +397,6 @@ Page,pageContext,exception.config（四个不太常用对象）</p>
       </li>
       <li class="post">
           <a href="./angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
-      </li>
-      <li class="post">
-          <a href="./exmobibi-ji-wen-jian-xiang-guan.html">Exmobi笔记-文件相关</a>
       </li>
     </ul>
   </section>

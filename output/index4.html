@@ -74,6 +74,32 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="./java-chang-yong-fang-fa.html">Java-常用方法</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-08T00:30:00" pubdate>三 08 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><p>之前一直用C#比较多，最近开始研究Java，两者之间的库设计差别很大，故再次做个总结。</p>
+<h2>1. 日期</h2>
+<p>1.日期格式化</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">SimpleDateFormat</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">Date</span><span class="p">;</span>
+
+<span class="n">SimpleDateFormat</span> <span class="n">sdf</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;yyyy年MM月dd日&quot;</span><span class="p">);</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">new</span> <span class="n">Date</span><span class="p">());</span>
+</pre></div>
+
+
+<ol>
+<li>字符串转化为日期</li>
+</ol>
+<div class="highlight"><pre><span class="n">SimpleDateFormat</span> <span class="n">sdf</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;yyyy年MM月dd日&quot;</span><span class="p">);</span>
+<span class="n">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;2015年04月13日&quot;</span><span class="p">);</span>
+</pre></div></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="./java-webzhi-jsp-02-jspji-chu-yu-fa.html">Java Web之JSP-02 JSP基础语法</a>
       </h1>
       <p class="meta"><time datetime="2015-04-08T00:30:00" pubdate>三 08 四月 2015</time></p>
@@ -347,39 +373,6 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
     <a rel="full-article" href="./qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html">企业网站布局实践-04 信息展示区制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-03T11:22:00" pubdate>五 03 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 结构分析</h2>
-<p><img alt="结构分析" src="images/qy-web-05.png" /></p>
-<p>分析如下：</p>
-<p><img alt="结构分析" src="images/qy-web-06.png" /></p>
-<p>盒子之间的间距应该是多少呢？</p>
-<p>整个盒子宽度是1000px，3个盒子宽度是340、410以及230px(总和为980px)，那么外边据是否就是10px了呢（10*2+980=1000）？不是的，因为每个小盒子左右都有1px的边框，一共6px，因此是(20-6)/2 = 7px.</p>
-<h2>2. 实现</h2>
-<p>首先定义结构：</p>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;course&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;sidebar&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- main结束 --&gt;</span>
-</pre></div>
-
-
-<p>其次是LESS</p>
-<div class="highlight"><pre><span class="c1">//定义区域整体高度</span>
-<span class="p">.</span><span class="n">main</span><span class="p">{</span>
-    <span class="nl">height:</span><span class="mh">250</span><span class="n">px</span><span class="p">;</span>
-    <span class="n">margin</span><span class="o">-</span><span class="nl">top:</span> <span class="mh">5</span><span class="n">px ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="./qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="./index5.html">&larr; Older</a>
 
@@ -394,6 +387,9 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="./css3bi-ji-02-xuan-ting-xiao-guo.html">CSS3笔记02-悬停效果</a>
+      </li>
+      <li class="post">
           <a href="./css3bi-ji-01-guo-du-transition.html">CSS3笔记01-过渡transition</a>
       </li>
       <li class="post">
@@ -404,9 +400,6 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
       </li>
       <li class="post">
           <a href="./angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
-      </li>
-      <li class="post">
-          <a href="./exmobibi-ji-wen-jian-xiang-guan.html">Exmobi笔记-文件相关</a>
       </li>
     </ul>
   </section>
