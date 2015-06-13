@@ -50,6 +50,9 @@
     <a href="../category/dotnet.html">Dotnet</a>
     </li>
     <li >
+    <a href="../category/ionic.html">Ionic</a>
+    </li>
+    <li >
     <a href="../category/java.html">Java</a>
     </li>
     <li >
@@ -68,6 +71,110 @@
   <div id="main">
     <div id="content">
 <div class="blog-index">
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-25T10:47:00" pubdate>一 25 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>String转JSON</h2>
+<div class="highlight"><pre><span class="n">var</span> <span class="n">arr_from_json</span> <span class="o">=</span> <span class="n">JSON</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span> <span class="n">json_string</span> <span class="p">);</span>
+</pre></div>
+
+
+<p>也可以使用<a href="https://github.com/douglascrockford/JSON-js/blob/master/json2.js">json2.js</a></p>
+<h2>值转JSON字符串</h2>
+<div class="highlight"><pre><span class="n">JSON</span><span class="p">.</span><span class="n">stringify</span><span class="p">()</span>
+</pre></div>
+
+
+<p>把值转化为JSON字符串
+详细说明：https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify</p></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-20T14:39:00" pubdate>三 20 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2><a href="http://stackoverflow.com/questions/12729122/prevent-error-digest-already-in-progress-when-calling-scope-apply">digest already in progress</a></h2></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../jsbu-yi-jquerypian.html">JS补遗-jQuery篇</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-13T15:08:00" pubdate>三 13 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>文件相关</h2>
+<h3><a href="http://stackoverflow.com/questions/740114/how-to-use-jquery-to-get-the-current-value-of-a-file-input-field">jQuery获取当前input file里的值</a>：</h3>
+<div class="highlight"><pre><span class="err">$</span><span class="p">(</span><span class="s">&quot;#fileinput&quot;</span><span class="p">).</span><span class="n">val</span><span class="p">();</span>
+</pre></div>
+
+
+<h3><a href="http://stackoverflow.com/questions/10703102/jquery-get-all-filenames-inside-input-file">jQuery获取input file里的多个值</a></h3>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">files</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#basicUploadFile&#39;</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s2">&quot;files&quot;</span><span class="p">);</span> <span class="c1">//files是FileList对象</span>
+
+<span class="kd">var</span> <span class="nx">names</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">files</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">val</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span> <span class="p">});</span> <span class="c1">//names是字符串数组</span>
+</pre></div>
+
+
+<h3><a href="http://stackoverflow.com/questions/5392344/sending-multipart-formdata-with-jquery-ajax">jQuery文件上传</a></h3>
+<h3><a href="http://stackoverflow.com/questions/20035101/no-access-control-allow-origin-header-is-present-on-the-requested-resource">文件跨域提交</a></h3></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../angularjsxue-xi-bi-ji-05-zhi-ling.html">AngularJS学习笔记05-指令</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-04T20:31:00" pubdate>一 04 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>AngularJS四大核心特性</h2>
+<ul>
+<li>MVC</li>
+<li>模块化和依赖注入</li>
+<li>双向数据绑定</li>
+<li>指令</li>
+</ul>
+<h2>解析最简单的指令hello</h2></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../angularjsxue-xi-bi-ji-04-lu-you.html">AngularJS学习笔记04 路由</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-03T21:13:00" pubdate>日 03 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>Ajax的不足</h2>
+<ul>
+<li>Ajax请求不会留下History记录</li>
+<li>用户无法直接通过URL进入应用中的指定页面（保存书签、链接分享给朋友）</li>
+<li>Ajax对SEO是个灾难</li>
+</ul>
+<p>以上是为什么需要前端路由的原因</p>
+<h2>路由</h2>
+<p>需要自己导入angular-route模块。</p>
+<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;framework/angular1.3.15/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;framework/angular1.3.15/angular-route.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+var bookStoreApp = angular.module(&#39;bookStoreApp&#39;,
+ <span class="cp">[</span><span class="s1">&#39;ngRoute&#39;</span><span class="p">,</span> <span class="s1">&#39;bookStoreCtrls&#39;</span><span class="cp">]</span>);
+
+bookStoreApp.config(<span class="cp">[</span><span class="s1">&#39;$routeProvider&#39;</span><span class="p">,</span> <span class="nx">function</span><span class="p">(</span><span class="nv">$routeProvider</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$routeProvider.when</span><span class="p">(</span><span class="s1">&#39;/hello&#39;</span><span class="p">,{</span>
+            <span class="nx">templateUrl</span><span class="p">:</span><span class="s1">&#39;tpls/hello.html&#39;</span><span class="p">,</span>
+            <span class="nx">controller ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../angularjsxue-xi-bi-ji-04-lu-you.html">Read On &crarr;</a>
+  </footer>
+  		</article>
   		<article>
 <header>
       <h1 class="entry-title">
@@ -159,24 +266,27 @@
       <p class="meta"><time datetime="2015-04-30T20:51:00" pubdate>四 30 四月 2015</time></p>
 </header>
 
-  <div class="entry-content"><h2>1. 为什么需要MVC?</h2>
+  <div class="entry-content"><h2>0. 第一个AngularJs应用</h2>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="err">ng-app</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=edge&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>AngularJs Demo<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;bower_components/angularjs/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;br&gt;</span>
+    <span class="nt">&lt;p&gt;</span>hello, {{name}}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<h2>1. 为什么需要MVC?</h2>
 <p>MVC只是手段，终极目标是模块化与复用。</p>
 <h2>2. 控制器(ng-controller)</h2>
-<div class="highlight"><pre><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">&quot;helloAngularApp&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">&quot;HelloCtrl&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;p&gt;</span>{{greeting.text}},world!<span class="nt">&lt;/p&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">&quot;test()&quot;</span><span class="nt">&gt;</span>test<span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-
-    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script&gt;</span>
-    var helloAngularApp = angular.module(&#39;helloAngularApp&#39;, <span class="cp">[]</span>);
-    helloAngularApp.controller(&#39;HelloCtrl&#39;, function ($scope) {
-            $scope.greeting = {
-                text:&quot;Hello&quot;
-            };
-            $scope.test = function(){
-                alert ...</pre></div></div>
+<div class="highlight"><pre><span class="nt">&lt;body ...</span></pre></div></div>
   <footer>
     <a rel="full-article" href="../angularjsxue-xi-bi-ji-01-mvc.html">Read On &crarr;</a>
   </footer>
@@ -234,168 +344,6 @@ http://compass-style.org/reference/compass/css3/</p>
     <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html">Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-17T23:19:00" pubdate>五 17 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. @media</h2>
-<p>sass中的@media跟CSS区别：</p>
-<p>sass中的media query可以内嵌在css规则中，在生成CSS的时候，
-media query 才会被提到样式的最高级</p>
-<p>好处：避免了重复书写选择器或者打乱样式表的流程。</p>
-<div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="p">){</span>
-    <span class="err">@</span><span class="n">media</span><span class="p">(</span><span class="n">min</span><span class="o">-</span><span class="n">width</span><span class="o">:</span> <span class="mi">768</span><span class="n">px</span><span class="p">){</span>
-        <span class="nl">width:</span> <span class="err">$</span><span class="n">width</span><span class="p">;</span>
-        <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<h2>2. @at-root</h2>
-<p>指定嵌套的内容生成CSS时，在最底层</p>
-<div class="highlight"><pre><span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="p">{</span>
-    <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
-    <span class="err">@</span><span class="n">at</span><span class="o">-</span><span class="n">root</span><span class="p">{</span>
-        <span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">headline</span><span class="p">{</span>
-            <span class="nl">font:</span><span class="p">{</span>
-                <span class="nl">family:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
-                <span class="nl">size:</span> <span class="mi">16</span><span class="n">px</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-
-        <span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html">Sass和Compass必备技能之Sass篇-03 Sass语法介绍(进阶篇)</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-17T22:46:00" pubdate>五 17 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 变量操作</h2>
-<p>变量操作有两种方式，第一种是直接操作，第二种是通过函数。</p>
-<p>通过函数：
-- 跟代码块无关的函数，多是自己内置函数，称functions
-- 可重用的代码块，称mixin: @include和 @extand的方式来应用，</p>
-<p>运算符： <code>&gt;= &lt;= &gt; &lt; == != ()</code></p>
-<p>CSS3增加了HSL的颜色，SASS会自动转换HSL为RGB,完美解决兼容。</p>
-<p>sass支持@function来声明函数。</p>
-<h2>2. mixin和include</h2>
-<div class="highlight"><pre><span class="c1">//声明</span>
-<span class="p">@</span><span class="n">mixin</span> <span class="n">col</span><span class="o">-</span><span class="mh">6</span><span class="p">{</span>
-    <span class="nl">width:</span> <span class="mh">50</span><span class="o">%</span><span class="p">;</span>
-    <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">//调用</span>
-<span class="p">.</span><span class="n">webdemo</span><span class="o">-</span><span class="n">sec</span> <span class="p">{</span>
-    <span class="p">@</span><span class="k">include</span> <span class="n">col</span><span class="o">-</span><span class="mh">6</span><span class="p">();</span>
-
-    <span class="o">&amp;:</span><span class="n">hover</span><span class="p">{</span>
-        <span class="n">background</span><span class="o">-</span><span class="nl">color:</span> <span class="p">#</span><span class="no">F5F5F5</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>CSS中class最好使用语义化的命名。IE6不支持多个class。</p>
-<p>带参数以及默认参数：</p>
-<div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="o">:</span><span class="mi">50</span><span class="o">%</span><span class="p">){</span>
-    <span class="nl">width:</span> <span class="err">$</span><span class="n">width</span><span class="p">;</span>
-    <span class="nl">float:</span> <span class="n">left ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-02-sassyu-fa-jie-shao-ji-chu-pian.html">Sass和Compass必备技能之Sass篇-02 Sass语法介绍(基础篇)</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-17T22:09:00" pubdate>五 17 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. sass和scss形式的相互转换</h2>
-<div class="highlight"><pre><span class="err">$</span><span class="n">sass</span><span class="o">-</span><span class="n">convert</span> <span class="n">main</span><span class="p">.</span><span class="n">sass</span> <span class="n">main</span><span class="p">.</span><span class="n">scss</span>
-<span class="err">或者</span>
-<span class="err">$</span><span class="n">sass</span><span class="o">-</span><span class="n">convert</span> <span class="n">main</span><span class="p">.</span><span class="n">scss</span> <span class="n">main</span><span class="p">.</span><span class="n">sass</span>
-</pre></div>
-
-
-<h2>2. 创建应用</h2>
-<div class="highlight"><pre><span class="err">$</span><span class="n">compass</span> <span class="n">create</span> <span class="n">learn</span><span class="o">-</span><span class="n">sass</span><span class="o">-</span><span class="n">syntax</span>
-<span class="err">$</span><span class="n">cd</span> <span class="n">learn</span><span class="o">-</span><span class="n">sass</span><span class="o">-</span><span class="n">syntax</span>
-<span class="err">$</span><span class="n">compass</span> <span class="n">watch</span>
-</pre></div>
-
-
-<h2>3. 语法</h2>
-<p>SASS CSS默认都是UTF-8，所以写不写<code>@charset "UTF-8"</code></p>
-<h3>3.1 引用@import</h3>
-<p>使用下划线命名的文件比如_variables.scss，sass称为局部文件，是用到其它文件中的。如果在其他文件中引用，请使用:</p>
-<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;variables&quot;</span><span class="p">;</span>
-</pre></div>
-
-
-<p>这个不是css中的import，css中的import指令有两大弊端，一 ...</p></div>
-  <footer>
-    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-02-sassyu-fa-jie-shao-ji-chu-pian.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-01-an-zhuang.html">Sass和Compass必备技能之Sass篇-01 安装</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-16T14:55:00" pubdate>四 16 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. ruby安装</h2>
-<p>RVM: Ruby Version Manager（Ruby多版本管理器）</p>
-<p>安装RVM</p>
-<p>mac下安装homebrew cakebrew</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">--</span><span class="n">remove</span> <span class="n">https</span><span class="o">:</span><span class="c1">//rubygems.org/</span>
-<span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">-</span><span class="n">a</span> <span class="n">https</span><span class="o">:</span><span class="c1">//ruby.taobao.org/</span>
-<span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">-</span><span class="n">l</span>
-<span class="o">***</span> <span class="n">CURRENT</span> <span class="n">SOURCES</span> <span class="o">***</span>
-<span class="nl">https:</span><span class="c1">//ruby.taobao.org</span>
-
-<span class="cp"># 请确保只有 ruby.taobao.org</span>
-<span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">rails</span> <span class="err">#安装</span>
-<span class="err">$</span> <span class="n">gem</span> <span class="n">update</span> <span class="err">#更新</span>
-<span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">sass</span> <span class="o">--</span><span class="n">version</span><span class="o">=</span><span class="mf">3.3</span>
-<span class="err">$</span><span class="n">gem ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-01-an-zhuang.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../htmlcssbu-yi.html">HTML\CSS补遗</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-06T21:36:00" pubdate>一 06 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. HTML标签</h2>
-<ol>
-<li><code>&lt;strong&gt;</code>和<code>&lt;em&gt;</code>：有了段落又有了标题，现在如果想在一段话中特别强调某几个文字，这时候就可以用到<code>&lt;em&gt;</code>或<code>&lt;strong&gt;</code>标签。但两者在强调的语气上有区别:<code>&lt;em&gt;</code> 表示强调，<code>&lt;strong&gt;</code> 表示更强烈的强调。并且在浏览器中<code>&lt;em&gt;</code> 默认用<em>斜体</em>表示，<code>&lt;strong&gt;</code>用<strong>粗体</strong>表示。两个标签相比，目前国内前端程序员更喜欢使用<code>&lt;strong&gt;</code>表示强调。</li>
-<li><code>&lt;span&gt;</code>标签是没有语义的，它的作用就是为了设置单独的样式用的。</li>
-<li><code>&lt;q&gt;</code>标签，短文本引用</li>
-<li><code>&lt;blockquote&gt;</code>的作用也是引用别人的文本。但它是对长文本的引用，如在文章中引入大段某知名作家的文字，这时需要这个标签。  等等，上一节<code>&lt;q&gt;</code>标签不是也是对文本的引用吗？不要忘记<code>&lt;q&gt;</code>标签是对简短文本的引用，比如说引用一句话就用到<code>&lt;q ...</code></li></ol></div>
-  <footer>
-    <a rel="full-article" href="../htmlcssbu-yi.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="../category/web2.html">&larr; Older</a>
 
@@ -409,19 +357,19 @@ media query 才会被提到样式的最高级</p>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">AngularJS学习笔记03 双向数据绑定</a>
+          <a href="../jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
       </li>
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">AngularJS学习笔记02-路由、模块和依赖注入</a>
+          <a href="../angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
       </li>
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-01-mvc.html">AngularJS学习笔记01-MVC</a>
+          <a href="../jsbu-yi-jquerypian.html">JS补遗-jQuery篇</a>
       </li>
       <li class="post">
-          <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Sass和Compass必备技能之Compass篇-02 模块简介</a>
+          <a href="../angularjsxue-xi-bi-ji-05-zhi-ling.html">AngularJS学习笔记05-指令</a>
       </li>
       <li class="post">
-          <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Sass和Compass必备技能之Compass篇-01 Compass核心模块概述及Reset模块</a>
+          <a href="../angularjsxue-xi-bi-ji-04-lu-you.html">AngularJS学习笔记04 路由</a>
       </li>
     </ul>
   </section>
@@ -431,6 +379,7 @@ media query 才会被提到样式的最高级</p>
     <ul id="recent_posts">
         <li><a href="../category/android.html">Android</a></li>
         <li><a href="../category/dotnet.html">DotNet</a></li>
+        <li><a href="../category/ionic.html">ionic</a></li>
         <li><a href="../category/java.html">Java</a></li>
         <li><a href="../category/python.html">Python</a></li>
         <li><a href="../category/sheng-huo.html">生活</a></li>
@@ -442,7 +391,7 @@ media query 才会被提到样式的最高级</p>
 
   <section>
   <h1>Tags</h1>
-    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/java.html">Java</a>  </section>
+    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
 
 
 

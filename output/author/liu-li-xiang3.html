@@ -50,6 +50,9 @@
     <a href="../category/dotnet.html">Dotnet</a>
     </li>
     <li >
+    <a href="../category/ionic.html">Ionic</a>
+    </li>
+    <li >
     <a href="../category/java.html">Java</a>
     </li>
     <li >
@@ -68,6 +71,243 @@
   <div id="main">
     <div id="content">
 <div class="blog-index">
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../java-webzhi-servlet-02-ying-yong-mvcjia-gou-shi-xian-xiang-mu.html">Java Web之Servlet-02 应用MVC架构实现项目</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-15T19:49:00" pubdate>三 15 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 获取初始化参数</h2>
+<div class="highlight"><pre><span class="nt">&lt;servlet&gt;</span>
+    <span class="nt">&lt;init-param&gt;</span>
+        <span class="nt">&lt;param-name&gt;</span>username<span class="nt">&lt;/param-name&gt;</span>
+        <span class="nt">&lt;param-value&gt;</span>admin<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/init-param&gt;</span>
+    <span class="nt">&lt;init-param&gt;</span>
+        <span class="nt">&lt;param-name&gt;</span>password<span class="nt">&lt;/param-name&gt;</span>
+        <span class="nt">&lt;param-value&gt;</span>123456<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/init-param&gt;</span>
+<span class="nt">&lt;/servlet&gt;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="err">在</span><span class="n">servlet</span><span class="err">的</span><span class="n">init</span><span class="p">()</span><span class="err">方法中获取初始化的值：</span>
+<span class="n">this</span><span class="p">.</span><span class="n">getInitParameter</span><span class="p">(</span><span class="s">&quot;username&quot;</span><span class="p">);</span>
+<span class="n">this</span><span class="p">.</span><span class="n">getInitParameter</span><span class="p">(</span><span class="s">&quot;password&quot;</span><span class="p">);</span>
+</pre></div></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../java-webzhi-servlet-01-servletji-chu.html">Java Web之Servlet-01 Servlet基础</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-13T20:31:00" pubdate>一 13 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. Servlet概述</h2>
+<p>jsp前身就是servlet，Servelet是在服务器上运行的小程序。
+一个Servlet就是一个Java类，并且可以通过“请求－响应”编程模型来访问的这个驻留在服务器内存里的Servlet程序。</p>
+<h2>2. Tomcat容器等级</h2>
+<p>Tomcat在大多数情况下充当servlet的容器，也就是说：在写完JSP代码后进行第一次执行时，tomcat（servlet容器）先将JSP代码翻译成servlet类（java代码），然后实例化该类，再调用该类的init,service,destory等进行生命周期服务。当客户端再进行第二次访问请求时，此时就没有servlet容器的翻译这一步了，因为之前翻译的java代码会一直保存，以便于后面的访问不再进行翻译，可大大提高访问效率。所以，JSP页面在第一次被访问时，其所花费的时间是最长的。
+最主要的方法就是init,service和destroy，它们是servlet对象的生存周期，当一个页面被编译成servlet类，再进行实例化后，这个页面就开始了真正的生命周期，servlet容器会先加载init方法进行初始化，初始化后才可进行接收和相应客户端的消息，之后容器会再加载service，这部分就是真正相应客户端请求的实现逻辑，它实现客户端的请求响应，然后动态生成HTML页面显示到客户端；而destory方法则是在servlet生命周期即将结束时进行的清理工作。</p>
+<p><img alt="java-web-servlet-01" src="images/java-web-servlet-01.jpg" /></p>
+<h2>3. 手工编写第一个Servlet</h2>
+<ol>
+<li>继承HttpServlet</li>
+<li>重写doGet()或者doPost()：右键-&gt;source- ...</li></ol></div>
+  <footer>
+    <a rel="full-article" href="../java-webzhi-servlet-01-servletji-chu.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../java-webzhi-jsp-07-zong-he-an-li.html">Java Web之JSP-07 综合案例</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-13T20:11:00" pubdate>一 13 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. JDBC DBHelper</h2>
+<div class="highlight"><pre><span class="n">package</span> <span class="n">util</span><span class="p">;</span>
+
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">Connection</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">DriverManager</span><span class="p">;</span>
+
+<span class="n">public</span> <span class="n">class</span> <span class="n">DBHelper</span> <span class="p">{</span>
+
+    <span class="n">private</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">driver</span> <span class="o">=</span> <span class="s">&quot;com.mysql.jdbc.Driver&quot;</span><span class="p">;</span> <span class="c1">//数据库驱动</span>
+    <span class="c1">//连接数据库的URL地址</span>
+    <span class="n">private</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">url</span><span class="o">=</span><span class="s">&quot;jdbc:mysql://localhost:3306/shopping?useUnicode=true&amp;characterEncoding=UTF-8&quot;</span><span class="p">;</span> 
+    <span class="n">private</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">username</span><span class="o">=</span><span class="s">&quot;root&quot;</span><span class="p">;</span><span class="c1">//数据库的用户名</span>
+    <span class="n">private</span> <span class="k">static ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../java-webzhi-jsp-07-zong-he-an-li.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../jdbcshi-yong-bi-ji.html">JDBC使用笔记</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-13T20:11:00" pubdate>一 13 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. JDBC编程步骤</h2>
+<p><strong>加载驱动程序：</strong></p>
+<div class="highlight"><pre><span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="n">driverClass</span><span class="p">)</span>
+<span class="c1">//加载MySql驱动</span>
+<span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="s">&quot;com.mysql.jdbc.Driver&quot;</span><span class="p">)</span>
+<span class="c1">//加载Oracle驱动</span>
+<span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="s">&quot;oracle.jdbc.driver.OracleDriver&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>获得数据库连接：</strong></p>
+<div class="highlight"><pre><span class="n">DriverManager</span><span class="p">.</span><span class="n">getConnection</span><span class="p">(</span><span class="s">&quot;jdbc:mysql://127.0.0.1:3306/imooc&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p><strong>创建Statement\PreparedStatement对象：</strong></p>
+<div class="highlight"><pre><span class="n">conn</span><span class="p">.</span><span class="n">createStatement</span><span class="p">();</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
+</pre></div>
+
+
+<p>例子：</p>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">Connection</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">DriverManager</span><span class="p">;</span>
+<span class="n">import ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../jdbcshi-yong-bi-ji.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../java-webzhi-jsp-06-jspzhi-ling-yu-dong-zuo-yuan-su.html">Java Web之JSP-06 JSP指令与动作元素</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-13T19:37:00" pubdate>一 13 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. include指令</h2>
+<p>常用的有page、include、taglib指令这三种指令；
+page：位于页面顶端，一个页面可以包含多个page指令
+include：将一个外部文件嵌入jsp中，同时解析这个页面中的jsp语句。
+taglib：使用标签库，自定义新的标签，在jsp中启动定制行为。</p>
+<p>语法 <code>&lt;% include file="地址"%&gt;</code>。
+案例：显示当前时间的页面。
+（1）写一个只输出时间的方法的date.jsp。
+（2）用于显示的页面,包含<code>&lt;% include file="date.jsp"%&gt;</code></p>
+<h2>2. include动作</h2>
+<ol>
+<li>是一个动作标签<code>&lt;jsp:xxx&gt;</code></li>
+<li>语法：<code>&lt;jsp:include page="URL" flush="true|false"&gt;</code></li>
+<li>page属性：要包含的页面</li>
+<li>flush属性：被包含的页面是否从缓冲区里读取</li>
+</ol>
+<h2>3. include指令和动作的区别 ...</h2></div>
+  <footer>
+    <a rel="full-article" href="../java-webzhi-jsp-06-jspzhi-ling-yu-dong-zuo-yuan-su.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../java-webzhi-jsp-05-jspzhuang-tai-guan-li.html">Java Web之JSP-05 JSP状态管理</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-10T16:30:00" pubdate>五 10 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. http协议的无状态性</h2>
+<ol>
+<li>无状态是指，当浏览器发送请求给服务器的时候，服务器会响应。但当同一个浏览器再次发送请求时，服务器不会知道是刚才那个浏览器。</li>
+<li>简单说，服务器【不会保存用户状态】，不会记得客户端是否访问过，所以这就是无状态协议。</li>
+</ol>
+<h2>2. Cookie概述</h2>
+<p>保存用户的状态的两大机制：session ，cookie</p>
+<p>cookie作用:</p>
+<ol>
+<li>对特定对象的追踪 </li>
+<li>保存用户网页浏览记录与习惯</li>
+<li>简化登录</li>
+</ol>
+<p>安全风险：容易泄露用户信息
+典型应用一：判断注册用户是否已经登录网站
+典型应用二：“购物车”的处理</p>
+<h2>3. JSP页面中创建和使用Cookie</h2>
+<ol>
+<li>创建Cookie对象：<code>Cookie cookie = new Cookie(String key , Object value);</code></li>
+<li>写入Cookie对象：<code>response.addCookie(cookie);</code></li>
+<li>读取Cookie对象：<code>Cookie[] cookies = request.getCookies();</code></li>
+</ol>
+<p>Cookie常用方法：</p>
+<ol>
+<li><code>void ...</code></li></ol></div>
+  <footer>
+    <a rel="full-article" href="../java-webzhi-jsp-05-jspzhuang-tai-guan-li.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html">Java Web之JSP-03 JSP内置对象</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-09T16:47:00" pubdate>四 09 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. jsp内置对象简介</h2>
+<p>1、JSP内置对象是Web容器创建的一组对象，【不使用new关键字】就可以使用的内置对象。
+2、九大内置对象:
+out,request,response,session,application（五大常用对象）
+Page,pageContext,exception.config（四个不太常用对象）</p>
+<h2>2. out对象</h2>
+<p>缓冲区Buffer：就是内存的一块区域涌来保存临时数据。</p>
+<p>out是JspWriter 的实例,是向客户端输出内容的常用对象.
+常用方法:</p>
+<ol>
+<li>void println() 向客户端打印字符串.</li>
+<li>void clear() 清除缓冲区,在flush之后调用会抛出异常.</li>
+<li>void clearBuffer() 清除缓冲区,在flush之后调用不会抛出异常.</li>
+<li>void flush() 将缓冲区内容输出到客户端.</li>
+<li>int getBufferSize() </li>
+<li>int getRemaining()</li>
+<li>boolean isAutoFlush() 返回缓冲区满时，是自动清空还是抛出异常</li>
+<li>void ...</li></ol></div>
+  <footer>
+    <a rel="full-article" href="../java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../java-webzhi-jsp-04-java-beans.html">Java Web之JSP-04 Java Beans</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-09T16:47:00" pubdate>四 09 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. JavaBean简介</h2>
+<p>javaBeans就是符合某种特定的规范的java类。使用JavaBeans的好处是解决代码重复编写，减少代码冗余，功能区分明确，提高了代码的可维护性。</p>
+<p>JavaBean的设计原则：</p>
+<ol>
+<li>公有类</li>
+<li>属性私有</li>
+<li>无参的公有构造方法</li>
+<li>getter和setter方法</li>
+</ol>
+<h2>2. JSP动作元素</h2>
+<h3>2.1 什么是JSP动作元素</h3>
+<p>JSP动作元素（action element），动作元素为请求处理阶段提供信息。动作元素遵循XML语法，有一个包含元素名的开始标签，可以有属性，可选的内容、与开始标签匹配的结束标签。</p>
+<h3>2.2 JSP动作元素的五大类</h3>
+<p>第一类是与存取JavaBean有关的，包括：
+<code>&lt;jsp:useBean&gt; &lt;jsp:setProperty&gt; &lt;jsp:getProperty&gt;</code></p>
+<p>第二类是JSP1.2就开始有的基本元素，包括6个动作元素：
+<code>&lt;jsp:include&gt; &lt;jsp:forward&gt; &lt;jsp:param&gt; &lt;jsp:plugin&gt; &lt;jsp:params ...</code></p></div>
+  <footer>
+    <a rel="full-article" href="../java-webzhi-jsp-04-java-beans.html">Read On &crarr;</a>
+  </footer>
+  		</article>
   		<article>
 <header>
       <h1 class="entry-title">
@@ -155,221 +395,6 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
     <a rel="full-article" href="../java-webzhi-jsp-02-jspji-chu-yu-fa.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../java-webzhi-jsp-01-java-webjian-jie.html">Java Web之JSP-01 Java Web简介</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-07T21:40:00" pubdate>二 07 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. Tomcat配置</h2>
-<h3>1.1 创建环境变量</h3>
-<p>创建环境变量<code>CATALINA_HOME</code>,值为Tomcat所在根目录（比如，windows下可能为为<code>C:\Program Files (x86)\Apache Software Foundation\Tomcat 7.0</code>).</p>
-<h3>1.2 启动Tomcat</h3>
-<p>在<code>CATALINA_HOME</code>的bin目录下有startup脚本。</p>
-<h3>1.3 测试</h3>
-<p>地址：http://localhost:8080</p>
-<h2>2. Tomcat目录结构</h2>
-<p><img alt="tomcat" src="images/java-web-jsp-01.png" /></p>
-<h2>3. 手工编写第一个Java  Web应用程序</h2>
-<h3>3.1 创建Web App目录</h3>
-<p>在Tomcat的webapps目录下创建目录myhome</p>
-<h3>3.2 在myhome目录下创建内容</h3>
-<p>1、创建index.jsp:</p>
-<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../java-webzhi-jsp-01-java-webjian-jie.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../htmlcssbu-yi.html">HTML\CSS补遗</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-06T21:36:00" pubdate>一 06 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. HTML标签</h2>
-<ol>
-<li><code>&lt;strong&gt;</code>和<code>&lt;em&gt;</code>：有了段落又有了标题，现在如果想在一段话中特别强调某几个文字，这时候就可以用到<code>&lt;em&gt;</code>或<code>&lt;strong&gt;</code>标签。但两者在强调的语气上有区别:<code>&lt;em&gt;</code> 表示强调，<code>&lt;strong&gt;</code> 表示更强烈的强调。并且在浏览器中<code>&lt;em&gt;</code> 默认用<em>斜体</em>表示，<code>&lt;strong&gt;</code>用<strong>粗体</strong>表示。两个标签相比，目前国内前端程序员更喜欢使用<code>&lt;strong&gt;</code>表示强调。</li>
-<li><code>&lt;span&gt;</code>标签是没有语义的，它的作用就是为了设置单独的样式用的。</li>
-<li><code>&lt;q&gt;</code>标签，短文本引用</li>
-<li><code>&lt;blockquote&gt;</code>的作用也是引用别人的文本。但它是对长文本的引用，如在文章中引入大段某知名作家的文字，这时需要这个标签。  等等，上一节<code>&lt;q&gt;</code>标签不是也是对文本的引用吗？不要忘记<code>&lt;q&gt;</code>标签是对简短文本的引用，比如说引用一句话就用到<code>&lt;q ...</code></li></ol></div>
-  <footer>
-    <a rel="full-article" href="../htmlcssbu-yi.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html">企业网站布局实践-10 新闻详情页的制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-05T20:14:00" pubdate>日 05 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 页面结构</h2>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;list_box&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h2&gt;</span>新闻中心<span class="nt">&lt;/h2&gt;</span>
-    <span class="nt">&lt;h1&gt;</span>【慕客访谈▪用户篇】“有为屌丝”在路上<span class="nt">&lt;/h1&gt;</span>
-    <span class="nt">&lt;p</span>  <span class="na">class=</span><span class="s">&quot;list_box_newsInfo&quot;</span><span class="nt">&gt;</span>发布人：Admin 发布时间：2015-04-06 浏览3246次<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;list_box_newsContent&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</pre></div>
-
-
-<h2>2. 样式</h2>
-<p>text-indent: 2em; 缩进2个文本尺寸</p>
-<div class="highlight"><pre><span class="c1">//新闻列表区域</span>
-<span class="p">.</span><span class="n">list_box</span><span class="p">{</span>
-    <span class="nl">width:</span> <span class="mh">770</span><span class="n">px</span><span class="p">;</span>
-    <span class="n">min</span><span class="o">-</span><span class="nl">height:</span> <span class="mh">350</span><span class="n">px</span><span class="p">;</span>
-    <span class="nl">_height:</span> <span class="mh">350</span><span class="n">px</span><span class="p">;</span>
-    <span class="nl">border:</span> <span class="mh">1</span><span class="n">px</span> <span class="n">solid</span> <span class="p">#</span><span class="no">E8E8E8 ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html">企业网站布局实践-09 新闻列表页制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-04T22:12:00" pubdate>六 04 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 新闻列表页的制作</h2>
-<p>新闻列表页和首页对比如下：</p>
-<p><img alt="对比" src="images/qy-web-13.png" /></p>
-<p>主要是两点不同，第一个是新闻列表页焦点图不再具有切换效果，图片大小也不一样；第二个就是内容区是2栏可变长的。</p>
-<h2>2. 页面结构</h2>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ad&quot;</span> <span class="na">id=</span><span class="s">&quot;picBox&quot;</span>  <span class="na">style=</span><span class="s">&quot;height:243px&quot;</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/ad.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;ad&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- ad结束 --&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;list_main&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news_type&quot;</span><span class="nt">&gt;&lt;/div&gt;</span><span class="c">&lt;!-- news_type结束 --&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;list_box&quot;</span><span class="nt">&gt;&lt;/div&gt;</span><span class="c">&lt;!-- list_box结束 --&gt;</span>
-<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- list_main结束 --&gt;</span>
-</pre></div>
-
-
-<h2>3. 内容展示区制作</h2>
-<div class="highlight"><pre><span class="cm">/*--------------------新闻列表页----------------------------*/</span>
-<span class="p">.</span><span class="n">list_main</span><span class="p">{</span>
-    <span class="nl">height:</span> <span class="mh">350</span><span class="n">px</span><span class="p">;</span>
-    <span class="n">background</span><span class="o">-</span><span class="nl">color ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-08-di-bu-ban-quan-qu-zhi-zuo.html">企业网站布局实践-08 底部版权区制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-04T21:31:00" pubdate>六 04 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 结构分析</h2>
-<p><img alt="底部版权区" src="images/qy-web-12.png" /></p>
-<h2>2. 文档结构</h2>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;copyright&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;copyright_content&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;ul&gt;</span>
-            <span class="nt">&lt;li&gt;</span>关于
-                <span class="nt">&lt;ul&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>品牌故事<span class="nt">&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>联系我们<span class="nt">&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>加入我们<span class="nt">&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>版权声明<span class="nt">&lt;/li&gt;</span>
-                <span class="nt">&lt;/ul&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li&gt;</span>课程
-                <span class="nt">&lt;ul&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>PHP开发<span class="nt">&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>前端开发<span class="nt">&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>JAVA开发<span class="nt">&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>Android开发<span class="nt">&lt;/li&gt;</span>
-                <span class="nt">&lt;/ul&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li&gt;</span>关注
-                <span class="nt">&lt;ul&gt;</span>
-                    <span class="nt">&lt;li&gt;</span>新浪微博 ...</pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-08-di-bu-ban-quan-qu-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-07-ce-bian-lan-zhi-zuo.html">企业网站布局实践-07 侧边栏制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-04T21:01:00" pubdate>六 04 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 结构分析</h2>
-<p><img alt="侧边栏" src="images/qy-web-11.png" /></p>
-<p>从图中我们知道，除标题外，其余内容大致分成上下两部分。分别是上面的视频和下面的广告。下面我们来实现这个效果。</p>
-<h2>2. 文档结构</h2>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;sidebar&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;video&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
-           <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">&quot;title_left&quot;</span><span class="nt">&gt;</span>媒体聚焦<span class="nt">&lt;/h2&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;title_right&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;news.html&quot;</span><span class="nt">&gt;</span>More<span class="ni">&amp;gt;&amp;gt;</span><span class="nt">&lt;/a&gt;&lt;/span&gt;</span>
-        <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- title结束 --&gt;</span>
-        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;video_content&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;embed</span> <span class="na">src=</span><span class="s">&quot;http://player.youku.com/player.php/sid/XNjkzMDE5MTUy ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-07-ce-bian-lan-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-06-ke-cheng-zhong-xin-zhi-zuo.html">企业网站布局实践-06 课程中心制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-03T21:33:00" pubdate>五 03 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 结构分析</h2>
-<p><img alt="课程中心" src="images/qy-web-09.png" /></p>
-<h2>2. 网页结构</h2>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;course&quot;</span><span class="nt">&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">&quot;title_left&quot;</span><span class="nt">&gt;</span>课程中心<span class="nt">&lt;/h2&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;title_right&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;news.html&quot;</span><span class="nt">&gt;</span>More<span class="ni">&amp;gt;&amp;gt;</span><span class="nt">&lt;/a&gt;&lt;/span&gt;</span>
- <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- title结束 --&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;course_pic&quot;</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/css.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;css&quot;</span><span class="nt">&gt;&lt;h2&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;news.html&quot;</span><span class="nt">&gt;</span>CSS圆角进化论<span class="nt">&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;</span>CSS圆角的实现，经历了三大发展阶段 ...</pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-06-ke-cheng-zhong-xin-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">企业网站布局实践-05 新闻中心制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-03T14:00:00" pubdate>五 03 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1、结构分析</h2>
-<p><img alt="新闻中心" src="images/qy-web-07.png" /></p>
-<p>从上到下可以分为新闻标题、图片新闻和图片新闻。</p>
-<h2>2、创建结构</h2>
-<p>新闻中心分为标题、图片新闻和新闻列表3部分。
-其中，新闻列表还是使用无序列表。</p>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news&quot;</span><span class="nt">&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;h2&gt;</span>新闻中心<span class="nt">&lt;/h2&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;news.html&quot;</span><span class="nt">&gt;</span>More<span class="ni">&amp;gt;&amp;gt;</span><span class="nt">&lt;/a&gt;</span>
- <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- title结束 --&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pic_news&quot;</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/news.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;h2&gt;</span>520 慕女神喊你来表白！<span class="nt">&lt;/h2&gt;</span>
-     <span class="nt">&lt;p&gt;</span>
-         活动时间：5月20日—5月25日<span class="nt">&lt;br&gt;</span>获奖公布时间：5月26日<span class="nt">&lt;br ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="../author/liu-li-xiang4.html">&larr; Older</a>
 
@@ -384,19 +409,19 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">AngularJS学习笔记03 双向数据绑定</a>
+          <a href="../ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Ionic使用教程-条码扫描</a>
       </li>
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">AngularJS学习笔记02-路由、模块和依赖注入</a>
+          <a href="../jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
       </li>
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-01-mvc.html">AngularJS学习笔记01-MVC</a>
+          <a href="../angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
       </li>
       <li class="post">
-          <a href="../java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html">Java Web开发技术应用-过滤器</a>
+          <a href="../exmobibi-ji-wen-jian-xiang-guan.html">Exmobi笔记-文件相关</a>
       </li>
       <li class="post">
-          <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Sass和Compass必备技能之Compass篇-02 模块简介</a>
+          <a href="../jsbu-yi-jquerypian.html">JS补遗-jQuery篇</a>
       </li>
     </ul>
   </section>
@@ -406,6 +431,7 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
     <ul id="recent_posts">
         <li><a href="../category/android.html">Android</a></li>
         <li><a href="../category/dotnet.html">DotNet</a></li>
+        <li><a href="../category/ionic.html">ionic</a></li>
         <li><a href="../category/java.html">Java</a></li>
         <li><a href="../category/python.html">Python</a></li>
         <li><a href="../category/sheng-huo.html">生活</a></li>
@@ -417,7 +443,7 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
 
   <section>
   <h1>Tags</h1>
-    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/java.html">Java</a>  </section>
+    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
 
 
 

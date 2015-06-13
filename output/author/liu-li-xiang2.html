@@ -50,6 +50,9 @@
     <a href="../category/dotnet.html">Dotnet</a>
     </li>
     <li >
+    <a href="../category/ionic.html">Ionic</a>
+    </li>
+    <li >
     <a href="../category/java.html">Java</a>
     </li>
     <li >
@@ -68,6 +71,231 @@
   <div id="main">
     <div id="content">
 <div class="blog-index">
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../angularjsxue-xi-bi-ji-01-mvc.html">AngularJS学习笔记01-MVC</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-30T20:51:00" pubdate>四 30 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>0. 第一个AngularJs应用</h2>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="err">ng-app</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=edge&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>AngularJs Demo<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;bower_components/angularjs/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;br&gt;</span>
+    <span class="nt">&lt;p&gt;</span>hello, {{name}}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<h2>1. 为什么需要MVC?</h2>
+<p>MVC只是手段，终极目标是模块化与复用。</p>
+<h2>2. 控制器(ng-controller)</h2>
+<div class="highlight"><pre><span class="nt">&lt;body ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../angularjsxue-xi-bi-ji-01-mvc.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html">Java Web开发技术应用-过滤器</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-22T15:45:00" pubdate>三 22 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. Java过滤机制-声明周期</h2>
+<p><img alt="images/java-web-filter-01.png" src="images/java-web-filter-01.png" /></p>
+<h2>2. 第一个过滤器</h2>
+<p>1、创建一个过滤器类 ，继承自servlet下的Filter
+2、重写三个方法init() doFilter() destroy()方法
+（1）init()初始化：这个方法可以读取web.xml文件中的过滤器初始化参数。通过参数FilterConfig arg0可以获取更多参数
+（2）doFIlter()核心：完成实际的过滤操作。当用户请求访问与过滤器【关联的URL】时，Web容器将先调用过滤器的doFilter方法，FilterChain arg2参数可以调用chain.doFilter方法，将请求传给下一个过滤器（或目标资源），或利用转发，重定向将请求转发给其他资源。
+(3)web容器在消耗过滤器前调用该方法，用于释放过滤器占用的资源。（大多数情况用不到）</p>
+<h3>2.1 定义Filter</h3>
+<div class="highlight"><pre><span class="n">package</span> <span class="n">liulx</span><span class="p">.</span><span class="n">FilterDemo</span><span class="p">;</span>
+
+<span class="n">import</span> <span class="n">javax</span><span class="p">.</span><span class="n">servlet</span><span class="p">.</span><span class="o">*</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">io ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Sass和Compass必备技能之Compass篇-02 模块简介</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-20T21:43:00" pubdate>一 20 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. Layout简介</h2>
+<p>http://compass-style.org/reference/compass/layout/</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/layout&quot;</span>
+<span class="cp">@import</span> <span class="s2">&quot;compass/layout/grid-background&quot;</span>
+<span class="cp">@import</span> <span class="s2">&quot;compass/layout/sticky-footer&quot;</span>
+<span class="cp">@import</span> <span class="s2">&quot;compass/layout/stretching&quot;</span>
+</pre></div>
+
+
+<h2>2. CSS3模块</h2>
+<p>使用率最高的模块，提高跨浏览器的CSS3效果
+http://compass-style.org/reference/compass/css3/</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/css3&quot;</span><span class="p">;</span>
+<span class="p">.</span><span class="n">webdemo</span><span class="o">-</span><span class="n">sec</span><span class="p">{</span>
+    <span class="err">@</span><span class="n">include</span> <span class="n">box</span><span class="o">-</span><span class="nf">shadow</span><span class="p">(</span><span class="mi">1</span><span class="n">px</span> <span class="mi">1</span><span class="n">px</span> <span class="mi">3</span><span class="n">px</span> <span class="mi">2</span><span class="n">px</span> <span class="cp">#cfcecf ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Sass和Compass必备技能之Compass篇-01 Compass核心模块概述及Reset模块</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-20T20:51:00" pubdate>一 20 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. Compass核心模块</h2>
+<p><img alt="images/compass-1.png" src="images/compass-1.png" /></p>
+<p>Reset(<code>@import "compass/reset";</code>)和Layout(<code>@import "compass/layout";</code>)并没有包含在compass的核心模块中，需要单独引用。</p>
+<p><code>@import "compass";</code>包含了CSS3/Helpers/Typography/Utilities模块：
+- CSS3模块</p>
+<h2>2. 使用normalize.css替换reset</h2>
+<p>《grunt beginer》</p>
+<p>http://necolas.github.io/normalize.css/</p>
+<p>可以使用compass插件：</p>
+<h3>2.1 安装</h3>
+<p><code>gem install compass-normalize</code></p>
+<h3>2.2 在config.rb中引入</h3>
+<p><code>require 'compass-normalize'</code>
+<strong>注意：config.rb中的require 'compass/import-once/activate'是防止多次引入 ...</strong></p></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../androidxue-xi-bi-ji-08-imageviewkong-jian.html">Android学习笔记-08 ImageView控件</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-19T22:13:00" pubdate>日 19 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../androidxue-xi-bi-ji-07-android-mu-lu-jie-gou.html">Android学习笔记-07 Android 目录结构</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-19T19:09:00" pubdate>日 19 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><p>src存放源代码
+gen存放系统自动生成的配置文件
+Android4.2下含android.jar包文件，所需的SDK
+assets存放资源文件，不会自动生成id且不会自动占用空间，没有应用时不会占空间
+bin存放被编译生成的可执行文件.apk
+libs里放一些jar包
+res存放所有资源。如图片等，res有多大，生成的APK就有多大
+drawable存放不同密度的图片资源，不同分辨率的设备，不同分辨率的图片
+layout存放布局文件。xml文件
+values存放字符串，主题，颜色，样式等资源，对应3.0版本，v11对应3.0和v14对应4.0
+menu菜单布局文件
+androidmanifest.xml清单文件，先执行的清单文件，配置一些与应用有关的重要信息，包含包名，权限，程序组件等等</p>
+<p><img alt="images/android-07-01.jpg" src="images/android-07-01.jpg" /></p></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html">Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-17T23:19:00" pubdate>五 17 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. @media</h2>
+<p>sass中的@media跟CSS区别：</p>
+<p>sass中的media query可以内嵌在css规则中，在生成CSS的时候，
+media query 才会被提到样式的最高级</p>
+<p>好处：避免了重复书写选择器或者打乱样式表的流程。</p>
+<div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="p">){</span>
+    <span class="err">@</span><span class="n">media</span><span class="p">(</span><span class="n">min</span><span class="o">-</span><span class="n">width</span><span class="o">:</span> <span class="mi">768</span><span class="n">px</span><span class="p">){</span>
+        <span class="nl">width:</span> <span class="err">$</span><span class="n">width</span><span class="p">;</span>
+        <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>2. @at-root</h2>
+<p>指定嵌套的内容生成CSS时，在最底层</p>
+<div class="highlight"><pre><span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="p">{</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
+    <span class="err">@</span><span class="n">at</span><span class="o">-</span><span class="n">root</span><span class="p">{</span>
+        <span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">headline</span><span class="p">{</span>
+            <span class="nl">font:</span><span class="p">{</span>
+                <span class="nl">family:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
+                <span class="nl">size:</span> <span class="mi">16</span><span class="n">px</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html">Sass和Compass必备技能之Sass篇-03 Sass语法介绍(进阶篇)</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-17T22:46:00" pubdate>五 17 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 变量操作</h2>
+<p>变量操作有两种方式，第一种是直接操作，第二种是通过函数。</p>
+<p>通过函数：
+- 跟代码块无关的函数，多是自己内置函数，称functions
+- 可重用的代码块，称mixin: @include和 @extand的方式来应用，</p>
+<p>运算符： <code>&gt;= &lt;= &gt; &lt; == != ()</code></p>
+<p>CSS3增加了HSL的颜色，SASS会自动转换HSL为RGB,完美解决兼容。</p>
+<p>sass支持@function来声明函数。</p>
+<h2>2. mixin和include</h2>
+<div class="highlight"><pre><span class="c1">//声明</span>
+<span class="p">@</span><span class="n">mixin</span> <span class="n">col</span><span class="o">-</span><span class="mh">6</span><span class="p">{</span>
+    <span class="nl">width:</span> <span class="mh">50</span><span class="o">%</span><span class="p">;</span>
+    <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//调用</span>
+<span class="p">.</span><span class="n">webdemo</span><span class="o">-</span><span class="n">sec</span> <span class="p">{</span>
+    <span class="p">@</span><span class="k">include</span> <span class="n">col</span><span class="o">-</span><span class="mh">6</span><span class="p">();</span>
+
+    <span class="o">&amp;:</span><span class="n">hover</span><span class="p">{</span>
+        <span class="n">background</span><span class="o">-</span><span class="nl">color:</span> <span class="p">#</span><span class="no">F5F5F5</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>CSS中class最好使用语义化的命名。IE6不支持多个class。</p>
+<p>带参数以及默认参数：</p>
+<div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="o">:</span><span class="mi">50</span><span class="o">%</span><span class="p">){</span>
+    <span class="nl">width:</span> <span class="err">$</span><span class="n">width</span><span class="p">;</span>
+    <span class="nl">float:</span> <span class="n">left ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html">Read On &crarr;</a>
+  </footer>
+  		</article>
   		<article>
 <header>
       <h1 class="entry-title">
@@ -130,243 +358,6 @@
     <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-01-an-zhuang.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../java-webzhi-servlet-02-ying-yong-mvcjia-gou-shi-xian-xiang-mu.html">Java Web之Servlet-02 应用MVC架构实现项目</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-15T19:49:00" pubdate>三 15 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 获取初始化参数</h2>
-<div class="highlight"><pre><span class="nt">&lt;servlet&gt;</span>
-    <span class="nt">&lt;init-param&gt;</span>
-        <span class="nt">&lt;param-name&gt;</span>username<span class="nt">&lt;/param-name&gt;</span>
-        <span class="nt">&lt;param-value&gt;</span>admin<span class="nt">&lt;/param-value&gt;</span>
-    <span class="nt">&lt;/init-param&gt;</span>
-    <span class="nt">&lt;init-param&gt;</span>
-        <span class="nt">&lt;param-name&gt;</span>password<span class="nt">&lt;/param-name&gt;</span>
-        <span class="nt">&lt;param-value&gt;</span>123456<span class="nt">&lt;/param-value&gt;</span>
-    <span class="nt">&lt;/init-param&gt;</span>
-<span class="nt">&lt;/servlet&gt;</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span class="err">在</span><span class="n">servlet</span><span class="err">的</span><span class="n">init</span><span class="p">()</span><span class="err">方法中获取初始化的值：</span>
-<span class="n">this</span><span class="p">.</span><span class="n">getInitParameter</span><span class="p">(</span><span class="s">&quot;username&quot;</span><span class="p">);</span>
-<span class="n">this</span><span class="p">.</span><span class="n">getInitParameter</span><span class="p">(</span><span class="s">&quot;password&quot;</span><span class="p">);</span>
-</pre></div></div>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../java-webzhi-servlet-01-servletji-chu.html">Java Web之Servlet-01 Servlet基础</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-13T20:31:00" pubdate>一 13 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. Servlet概述</h2>
-<p>jsp前身就是servlet，Servelet是在服务器上运行的小程序。
-一个Servlet就是一个Java类，并且可以通过“请求－响应”编程模型来访问的这个驻留在服务器内存里的Servlet程序。</p>
-<h2>2. Tomcat容器等级</h2>
-<p>Tomcat在大多数情况下充当servlet的容器，也就是说：在写完JSP代码后进行第一次执行时，tomcat（servlet容器）先将JSP代码翻译成servlet类（java代码），然后实例化该类，再调用该类的init,service,destory等进行生命周期服务。当客户端再进行第二次访问请求时，此时就没有servlet容器的翻译这一步了，因为之前翻译的java代码会一直保存，以便于后面的访问不再进行翻译，可大大提高访问效率。所以，JSP页面在第一次被访问时，其所花费的时间是最长的。
-最主要的方法就是init,service和destroy，它们是servlet对象的生存周期，当一个页面被编译成servlet类，再进行实例化后，这个页面就开始了真正的生命周期，servlet容器会先加载init方法进行初始化，初始化后才可进行接收和相应客户端的消息，之后容器会再加载service，这部分就是真正相应客户端请求的实现逻辑，它实现客户端的请求响应，然后动态生成HTML页面显示到客户端；而destory方法则是在servlet生命周期即将结束时进行的清理工作。</p>
-<p><img alt="java-web-servlet-01" src="images/java-web-servlet-01.jpg" /></p>
-<h2>3. 手工编写第一个Servlet</h2>
-<ol>
-<li>继承HttpServlet</li>
-<li>重写doGet()或者doPost()：右键-&gt;source- ...</li></ol></div>
-  <footer>
-    <a rel="full-article" href="../java-webzhi-servlet-01-servletji-chu.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../java-webzhi-jsp-07-zong-he-an-li.html">Java Web之JSP-07 综合案例</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-13T20:11:00" pubdate>一 13 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. JDBC DBHelper</h2>
-<div class="highlight"><pre><span class="n">package</span> <span class="n">util</span><span class="p">;</span>
-
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">Connection</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">DriverManager</span><span class="p">;</span>
-
-<span class="n">public</span> <span class="n">class</span> <span class="n">DBHelper</span> <span class="p">{</span>
-
-    <span class="n">private</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">driver</span> <span class="o">=</span> <span class="s">&quot;com.mysql.jdbc.Driver&quot;</span><span class="p">;</span> <span class="c1">//数据库驱动</span>
-    <span class="c1">//连接数据库的URL地址</span>
-    <span class="n">private</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">url</span><span class="o">=</span><span class="s">&quot;jdbc:mysql://localhost:3306/shopping?useUnicode=true&amp;characterEncoding=UTF-8&quot;</span><span class="p">;</span> 
-    <span class="n">private</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">username</span><span class="o">=</span><span class="s">&quot;root&quot;</span><span class="p">;</span><span class="c1">//数据库的用户名</span>
-    <span class="n">private</span> <span class="k">static ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../java-webzhi-jsp-07-zong-he-an-li.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../jdbcshi-yong-bi-ji.html">JDBC使用笔记</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-13T20:11:00" pubdate>一 13 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. JDBC编程步骤</h2>
-<p><strong>加载驱动程序：</strong></p>
-<div class="highlight"><pre><span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="n">driverClass</span><span class="p">)</span>
-<span class="c1">//加载MySql驱动</span>
-<span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="s">&quot;com.mysql.jdbc.Driver&quot;</span><span class="p">)</span>
-<span class="c1">//加载Oracle驱动</span>
-<span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="s">&quot;oracle.jdbc.driver.OracleDriver&quot;</span><span class="p">)</span>
-</pre></div>
-
-
-<p><strong>获得数据库连接：</strong></p>
-<div class="highlight"><pre><span class="n">DriverManager</span><span class="p">.</span><span class="n">getConnection</span><span class="p">(</span><span class="s">&quot;jdbc:mysql://127.0.0.1:3306/imooc&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">);</span>
-</pre></div>
-
-
-<p><strong>创建Statement\PreparedStatement对象：</strong></p>
-<div class="highlight"><pre><span class="n">conn</span><span class="p">.</span><span class="n">createStatement</span><span class="p">();</span>
-<span class="n">conn</span><span class="p">.</span><span class="n">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
-</pre></div>
-
-
-<p>例子：</p>
-<div class="highlight"><pre><span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">Connection</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">DriverManager</span><span class="p">;</span>
-<span class="n">import ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../jdbcshi-yong-bi-ji.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../java-webzhi-jsp-06-jspzhi-ling-yu-dong-zuo-yuan-su.html">Java Web之JSP-06 JSP指令与动作元素</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-13T19:37:00" pubdate>一 13 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. include指令</h2>
-<p>常用的有page、include、taglib指令这三种指令；
-page：位于页面顶端，一个页面可以包含多个page指令
-include：将一个外部文件嵌入jsp中，同时解析这个页面中的jsp语句。
-taglib：使用标签库，自定义新的标签，在jsp中启动定制行为。</p>
-<p>语法 <code>&lt;% include file="地址"%&gt;</code>。
-案例：显示当前时间的页面。
-（1）写一个只输出时间的方法的date.jsp。
-（2）用于显示的页面,包含<code>&lt;% include file="date.jsp"%&gt;</code></p>
-<h2>2. include动作</h2>
-<ol>
-<li>是一个动作标签<code>&lt;jsp:xxx&gt;</code></li>
-<li>语法：<code>&lt;jsp:include page="URL" flush="true|false"&gt;</code></li>
-<li>page属性：要包含的页面</li>
-<li>flush属性：被包含的页面是否从缓冲区里读取</li>
-</ol>
-<h2>3. include指令和动作的区别 ...</h2></div>
-  <footer>
-    <a rel="full-article" href="../java-webzhi-jsp-06-jspzhi-ling-yu-dong-zuo-yuan-su.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../java-webzhi-jsp-05-jspzhuang-tai-guan-li.html">Java Web之JSP-05 JSP状态管理</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-10T16:30:00" pubdate>五 10 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. http协议的无状态性</h2>
-<ol>
-<li>无状态是指，当浏览器发送请求给服务器的时候，服务器会响应。但当同一个浏览器再次发送请求时，服务器不会知道是刚才那个浏览器。</li>
-<li>简单说，服务器【不会保存用户状态】，不会记得客户端是否访问过，所以这就是无状态协议。</li>
-</ol>
-<h2>2. Cookie概述</h2>
-<p>保存用户的状态的两大机制：session ，cookie</p>
-<p>cookie作用:</p>
-<ol>
-<li>对特定对象的追踪 </li>
-<li>保存用户网页浏览记录与习惯</li>
-<li>简化登录</li>
-</ol>
-<p>安全风险：容易泄露用户信息
-典型应用一：判断注册用户是否已经登录网站
-典型应用二：“购物车”的处理</p>
-<h2>3. JSP页面中创建和使用Cookie</h2>
-<ol>
-<li>创建Cookie对象：<code>Cookie cookie = new Cookie(String key , Object value);</code></li>
-<li>写入Cookie对象：<code>response.addCookie(cookie);</code></li>
-<li>读取Cookie对象：<code>Cookie[] cookies = request.getCookies();</code></li>
-</ol>
-<p>Cookie常用方法：</p>
-<ol>
-<li><code>void ...</code></li></ol></div>
-  <footer>
-    <a rel="full-article" href="../java-webzhi-jsp-05-jspzhuang-tai-guan-li.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html">Java Web之JSP-03 JSP内置对象</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-09T16:47:00" pubdate>四 09 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. jsp内置对象简介</h2>
-<p>1、JSP内置对象是Web容器创建的一组对象，【不使用new关键字】就可以使用的内置对象。
-2、九大内置对象:
-out,request,response,session,application（五大常用对象）
-Page,pageContext,exception.config（四个不太常用对象）</p>
-<h2>2. out对象</h2>
-<p>缓冲区Buffer：就是内存的一块区域涌来保存临时数据。</p>
-<p>out是JspWriter 的实例,是向客户端输出内容的常用对象.
-常用方法:</p>
-<ol>
-<li>void println() 向客户端打印字符串.</li>
-<li>void clear() 清除缓冲区,在flush之后调用会抛出异常.</li>
-<li>void clearBuffer() 清除缓冲区,在flush之后调用不会抛出异常.</li>
-<li>void flush() 将缓冲区内容输出到客户端.</li>
-<li>int getBufferSize() </li>
-<li>int getRemaining()</li>
-<li>boolean isAutoFlush() 返回缓冲区满时，是自动清空还是抛出异常</li>
-<li>void ...</li></ol></div>
-  <footer>
-    <a rel="full-article" href="../java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../java-webzhi-jsp-04-java-beans.html">Java Web之JSP-04 Java Beans</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-09T16:47:00" pubdate>四 09 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. JavaBean简介</h2>
-<p>javaBeans就是符合某种特定的规范的java类。使用JavaBeans的好处是解决代码重复编写，减少代码冗余，功能区分明确，提高了代码的可维护性。</p>
-<p>JavaBean的设计原则：</p>
-<ol>
-<li>公有类</li>
-<li>属性私有</li>
-<li>无参的公有构造方法</li>
-<li>getter和setter方法</li>
-</ol>
-<h2>2. JSP动作元素</h2>
-<h3>2.1 什么是JSP动作元素</h3>
-<p>JSP动作元素（action element），动作元素为请求处理阶段提供信息。动作元素遵循XML语法，有一个包含元素名的开始标签，可以有属性，可选的内容、与开始标签匹配的结束标签。</p>
-<h3>2.2 JSP动作元素的五大类</h3>
-<p>第一类是与存取JavaBean有关的，包括：
-<code>&lt;jsp:useBean&gt; &lt;jsp:setProperty&gt; &lt;jsp:getProperty&gt;</code></p>
-<p>第二类是JSP1.2就开始有的基本元素，包括6个动作元素：
-<code>&lt;jsp:include&gt; &lt;jsp:forward&gt; &lt;jsp:param&gt; &lt;jsp:plugin&gt; &lt;jsp:params ...</code></p></div>
-  <footer>
-    <a rel="full-article" href="../java-webzhi-jsp-04-java-beans.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="../author/liu-li-xiang3.html">&larr; Older</a>
 
@@ -381,19 +372,19 @@ Page,pageContext,exception.config（四个不太常用对象）</p>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">AngularJS学习笔记03 双向数据绑定</a>
+          <a href="../ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Ionic使用教程-条码扫描</a>
       </li>
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">AngularJS学习笔记02-路由、模块和依赖注入</a>
+          <a href="../jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
       </li>
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-01-mvc.html">AngularJS学习笔记01-MVC</a>
+          <a href="../angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
       </li>
       <li class="post">
-          <a href="../java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html">Java Web开发技术应用-过滤器</a>
+          <a href="../exmobibi-ji-wen-jian-xiang-guan.html">Exmobi笔记-文件相关</a>
       </li>
       <li class="post">
-          <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Sass和Compass必备技能之Compass篇-02 模块简介</a>
+          <a href="../jsbu-yi-jquerypian.html">JS补遗-jQuery篇</a>
       </li>
     </ul>
   </section>
@@ -403,6 +394,7 @@ Page,pageContext,exception.config（四个不太常用对象）</p>
     <ul id="recent_posts">
         <li><a href="../category/android.html">Android</a></li>
         <li><a href="../category/dotnet.html">DotNet</a></li>
+        <li><a href="../category/ionic.html">ionic</a></li>
         <li><a href="../category/java.html">Java</a></li>
         <li><a href="../category/python.html">Python</a></li>
         <li><a href="../category/sheng-huo.html">生活</a></li>
@@ -414,7 +406,7 @@ Page,pageContext,exception.config（四个不太常用对象）</p>
 
   <section>
   <h1>Tags</h1>
-    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/java.html">Java</a>  </section>
+    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
 
 
 

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ionic使用教程</title>
+  <meta name="author" content="理想">
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="./favicon.png" rel="icon">
+  <link href="./theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <script src="./theme/js/modernizr-2.0.js"></script>
+  <script src="./theme/js/ender.js"></script>
+  <script src="./theme/js/octopress.js" type="text/javascript"></script>
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="./">理想国</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<form action="//google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:." />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+    <li >
+    <a href="./category/android.html">Android</a>
+    </li>
+    <li >
+    <a href="./category/dotnet.html">Dotnet</a>
+    </li>
+    <li class="active">
+    <a href="./category/ionic.html">Ionic</a>
+    </li>
+    <li >
+    <a href="./category/java.html">Java</a>
+    </li>
+    <li >
+    <a href="./category/python.html">Python</a>
+    </li>
+    <li >
+    <a href="./category/sheng-huo.html">生活</a>
+    </li>
+    <li >
+    <a href="./category/web.html">Web</a>
+    </li>
+    <li >
+    <a href="./category/yi-dong-kai-fa.html">移动开发</a>
+    </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">Ionic使用教程</h1>
+      <p class="meta"><time datetime="2015-05-12T19:45:00" pubdate>二 12 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><p>Ionic项目主页：http://ionicframework.com/ 它是用来构建混合应用的一款前端框架，使用Cordova和AngularJS，目前中文资料尚且较少。这篇文章主要是在学习中做的一个记录，也希望能为后面的学习者提供一些参考。</p>
+<h2>1. 要求</h2>
+<ul>
+<li>安装Node/NPM</li>
+<li>安装Ruby和SASS</li>
+<li>了解AngularJS</li>
+<li>安装Gulp(可选)</li>
+<li>安装Android SDK和XCode（可选）</li>
+</ul>
+<h2>2. ionic开发步骤</h2>
+<h3>2.1 全局安装cordova和ionic</h3>
+<div class="highlight"><pre><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">cordova</span> <span class="n">ionic</span>
+</pre></div>
+
+
+<h3>2.2 从模板中创建应用</h3>
+<div class="highlight"><pre><span class="n">ionic</span> <span class="n">start</span> <span class="n">frontendAwesome</span> <span class="n">sidemenu</span>
+<span class="n">cd</span> <span class="n">frontendAwesome</span>
+</pre></div>
+
+
+<p>其中 frontendAwesome是项目名，sidemenu是模板名</p>
+<p>有3个默认模板：sidemenu(侧边菜单), tabs(底部标签), blank(空白)</p>
+<p>第一个命令结束后，会自动输出一大堆英文：</p>
+<div class="highlight"><pre><span class="nx">Creating</span> <span class="nx">Ionic</span> <span class="n">app</span> <span class="k">in</span> <span class="nx">folder</span> <span class="nb">F</span><span class="p">:</span><span class="o">\</span><span class="nx">git</span><span class="o">\</span><span class="nx">WebDesign</span><span class="o">\</span><span class="nx">ionic</span><span class="o">\</span><span class="nx">fontendAwesome</span> <span class="nx">based</span> <span class="k">on</span> <span class="nx">side</span>
+<span class="nx">menu</span> <span class="nx">project</span>
+
+<span class="nx">Downloading</span><span class="p">:</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//github.com/driftyco/ionic-app-base/archive/master.zip</span>
+<span class="err">[</span><span class="o">=============================</span><span class="cp">]</span>  100%  0.0s
+
+Downloading: https://github.com/driftyco/ionic-starter-sidemenu/archive/master.z
+ip
+<span class="cp">[</span><span class="o">=============================</span><span class="cp">]</span>  100%  0.0s
+
+Update config.xml
+Initializing cordova project
+Updated the hooks directory to have execute permissions
+running cordova plugin add org.apache.cordova.device
+WARNING: org.apache.cordova.device has been renamed to cordova-plugin-device. Yo
+u may not be getting the latest version! We suggest you `cordova plugin rm org.a
+pache.cordova.device` and `cordova plugin add cordova-plugin-device`.
+Fetching plugin &quot;org.apache.cordova.device&quot; via cordova plugins registry
+npm http GET http://registry.cordova.io/org.apache.cordova.device
+npm http 304 http://registry.cordova.io/org.apache.cordova.device
+Saving plugin to package.json file
+Adding since there was no existingPlugin
+Updated the hooks directory to have execute permissions
+running cordova plugin add org.apache.cordova.console
+WARNING: org.apache.cordova.console has been renamed to cordova-plugin-console.
+You may not be getting the latest version! We suggest you `cordova plugin rm org
+.apache.cordova.console` and `cordova plugin add cordova-plugin-console`.
+Fetching plugin &quot;org.apache.cordova.console&quot; via cordova plugins registry
+npm http GET http://registry.cordova.io/org.apache.cordova.console
+npm http 304 http://registry.cordova.io/org.apache.cordova.console
+Saving plugin to package.json file
+Adding since there was no existingPlugin
+Updated the hooks directory to have execute permissions
+running cordova plugin add com.ionic.keyboard
+Fetching plugin &quot;com.ionic.keyboard&quot; via cordova plugins registry
+npm http GET http://registry.cordova.io/com.ionic.keyboard
+npm http 304 http://registry.cordova.io/com.ionic.keyboard
+Saving plugin to package.json file
+Adding since there was no existingPlugin
+
+Your Ionic project is ready to go! Some quick tips:
+
+ * cd into your project: $ cd fontendAwesome
+
+ * Setup this project to use Sass: ionic setup sass
+
+ * Develop in the browser with live reload: ionic serve
+
+ * Add a platform (ios or Android): ionic platform add ios <span class="cp">[</span><span class="nx">android</span><span class="cp">]</span>
+   Note: iOS development requires OS X currently
+   See the Android Platform Guide for full Android installation instructions:
+   https://cordova.apache.org/docs/en/edge/guide_platforms_android_index.md.html
+
+
+ * Build your app: ionic build <span class="nt">&lt;PLATFORM&gt;</span>
+
+ * Simulate your app: ionic emulate <span class="nt">&lt;PLATFORM&gt;</span>
+
+ * Run your app on a device: ionic run <span class="nt">&lt;PLATFORM&gt;</span>
+
+ * Package an app using Ionic package service: ionic package <span class="nt">&lt;MODE&gt;</span> <span class="nt">&lt;PLATFORM&gt;</span>
+
+For more help use ionic --help or visit the Ionic docs: http://ionicframework.co
+m/docs
+
++---------------------------------------------------------+
++ New Ionic Updates for May 2015
++
++ The View App just landed. Preview your apps on any device
++ http://view.ionic.io
++
++ Invite anyone to preview and test your app
++ ionic share EMAIL
++
++ Generate splash screens and icons with ionic resource
++ http://ionicframework.com/blog/automating-icons-and-splash-screens/
++
++---------------------------------------------------------+
+</pre></div>
+
+
+<p>上面介绍了一些基本用法和注意事项，第一次使用的时候应该读一读。</p>
+<h3>2.3 build(编译)和emulate(仿真)</h3>
+<div class="highlight"><pre><span class="n">ionic</span> <span class="n">build</span> <span class="n">ios</span>
+<span class="n">ionic</span> <span class="n">emulate</span> <span class="n">ios</span>
+<span class="n">ionic</span> <span class="n">serve</span>
+<span class="cp">#adb安装</span>
+<span class="n">adb</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">platforms</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">outputs</span><span class="o">/</span><span class="n">apk</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">debug</span><span class="p">.</span><span class="n">apk</span>
+<span class="n">adb</span> <span class="n">lolcat</span>
+</pre></div>
+
+
+<h3>2.4 自定义ionic样式</h3>
+<p>文件：scss/ionic.app.scss</p>
+<h3>2.5 自定义内容</h3>
+<p>Angular templating</p>
+<ul>
+<li>Directives</li>
+<li>{{markup}}</li>
+<li>Angular Directives(ng-repeat ng-model)</li>
+<li>Ionic Directives(ion-view, ion-content)</li>
+<li>Filter({{ data|filter }})</li>
+</ul>
+<p>www/js/app.js</p>
+<p><img alt="app.js" src="images/ionic-1.PNG" /></p>
+<p>www/js/controller.js</p>
+<p><img alt="app.js" src="images/ionic-2.PNG" /></p>
+<p>www/templates/posts.html</p>
+<p><img alt="app.js" src="images/ionic-3.PNG" /></p>
+<p>www/templates/post.html</p>
+<p><img alt="app.js" src="images/ionic-4.PNG" /></p>
+<h3>2.6 Ionic CSS组件</h3>
+<p>http://ionicframework.com/docs/components/
+http://ionicons.com/</p>
+<h3>2.7 分发</h3>
+<p><img alt="app.js" src="images/ionic-5.PNG" /></p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">刘理想</span>
+  </span>
+<time datetime="2015-05-12T19:45:00" pubdate>二 12 五月 2015</time>  <span class="categories">
+    <a class="category" href="./tag/ionic.html">ionic</a>
+    <a class="category" href="./tag/yi-dong-kai-fa.html">移动开发</a>
+  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="ionicshi-yong-jiao-cheng.html" data-title="Ionic使用教程" data-url="./ionicshi-yong-jiao-cheng.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+    </div>
+  </section>
+</div>
+<aside class="sidebar">
+  <section>
+	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
+  </section>
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="./ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Ionic使用教程-条码扫描</a>
+      </li>
+      <li class="post">
+          <a href="./jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
+      </li>
+      <li class="post">
+          <a href="./angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
+      </li>
+      <li class="post">
+          <a href="./exmobibi-ji-wen-jian-xiang-guan.html">Exmobi笔记-文件相关</a>
+      </li>
+      <li class="post">
+          <a href="./jsbu-yi-jquerypian.html">JS补遗-jQuery篇</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="./category/android.html">Android</a></li>
+        <li><a href="./category/dotnet.html">DotNet</a></li>
+        <li><a href="./category/ionic.html">ionic</a></li>
+        <li><a href="./category/java.html">Java</a></li>
+        <li><a href="./category/python.html">Python</a></li>
+        <li><a href="./category/sheng-huo.html">生活</a></li>
+        <li><a href="./category/web.html">Web</a></li>
+        <li><a href="./category/yi-dong-kai-fa.html">移动开发</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/angular.html">Angular</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/java.html">Java</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/javascript.html">JavaScript</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="./tag/exmobi.html">Exmobi</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/servlet.html">Servlet</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/jquery.html">jQuery</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/sass.html">SASS</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/ionic.html">ionic</a>  </section>
+
+
+
+  <section>
+    <h1>GitHub Repos</h1>
+    <ul id="gh_repos">
+      <li class="loading">Status updating...</li>
+    </ul>
+      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
+    <script type="text/javascript">
+      $.domReady(function(){
+          if (!window.jXHR){
+              var jxhr = document.createElement('script');
+              jxhr.type = 'text/javascript';
+              jxhr.src = './theme/js/jXHR.js';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(jxhr, s);
+          }
+
+          github.showRepos({
+              user: 'liulixiang1988',
+              count: 5,
+              skip_forks: false,
+              target: '#gh_repos'
+          });
+      });
+    </script>
+    <script src="./theme/js/github.js" type="text/javascript"> </script>
+  </section>
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
+        </ul>
+    </section>
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2014-2015  - 理想 -
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+</body>
+</html>

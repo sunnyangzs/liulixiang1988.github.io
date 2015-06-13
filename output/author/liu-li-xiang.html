@@ -50,6 +50,9 @@
     <a href="../category/dotnet.html">Dotnet</a>
     </li>
     <li >
+    <a href="../category/ionic.html">Ionic</a>
+    </li>
+    <li >
     <a href="../category/java.html">Java</a>
     </li>
     <li >
@@ -68,6 +71,193 @@
   <div id="main">
     <div id="content">
 <div class="blog-index">
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Ionic使用教程-条码扫描</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-27T10:32:00" pubdate>三 27 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><p>ionic中与硬件交互部分是使用<a href="http://ngcordova.com/">ngcordova</a>和cordova来实现。</p>
+<h2>1.下载ngcordova并且加入到文件中</h2>
+<p>到ngcordova的页面下载，然后添加到页面，注意要添加到<code>cordova.js</code>之前：</p>
+<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;lib/ngCordova/dist/ng-cordova.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;cordova.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+
+<h2>2. 安装条码插件</h2>
+<p>这个插件支持常见的二维码和条码扫描，非常的强大，下面我们来看看如何安装插件。</p>
+<p>ngcordova官方给出的安装方法：</p>
+<div class="highlight"><pre><span class="n">cordova</span> <span class="n">plugin</span> <span class="n">add</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/wildabeast/BarcodeScanner.git</span>
+</pre></div>
+
+
+<p>但是我们跳转到对应的github页面：https://github.com/wildabeast/BarcodeScanner/ 发现说官方的地址是：https://github.com ...</p></div>
+  <footer>
+    <a rel="full-article" href="../ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-25T10:47:00" pubdate>一 25 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>String转JSON</h2>
+<div class="highlight"><pre><span class="n">var</span> <span class="n">arr_from_json</span> <span class="o">=</span> <span class="n">JSON</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span> <span class="n">json_string</span> <span class="p">);</span>
+</pre></div>
+
+
+<p>也可以使用<a href="https://github.com/douglascrockford/JSON-js/blob/master/json2.js">json2.js</a></p>
+<h2>值转JSON字符串</h2>
+<div class="highlight"><pre><span class="n">JSON</span><span class="p">.</span><span class="n">stringify</span><span class="p">()</span>
+</pre></div>
+
+
+<p>把值转化为JSON字符串
+详细说明：https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify</p></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-20T14:39:00" pubdate>三 20 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2><a href="http://stackoverflow.com/questions/12729122/prevent-error-digest-already-in-progress-when-calling-scope-apply">digest already in progress</a></h2></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../exmobibi-ji-wen-jian-xiang-guan.html">Exmobi笔记-文件相关</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-13T15:39:00" pubdate>三 13 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>文件下载</h2>
+<p>文件下载与打开</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="sr">/doc$|docx$|pdf$/</span><span class="p">)){</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;matched&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">ClientUtil</span><span class="p">.</span><span class="nx">download</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">),</span><span class="s2">&quot;res:&quot;</span><span class="o">+</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">(),</span> <span class="kc">null</span><span class="p">,</span><span class="kc">null</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span>
+    <span class="nx">NativeUtil</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;res:&quot;</span><span class="o">+</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
+<span class="p">});</span>
+</pre></div></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../jsbu-yi-jquerypian.html">JS补遗-jQuery篇</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-13T15:08:00" pubdate>三 13 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>文件相关</h2>
+<h3><a href="http://stackoverflow.com/questions/740114/how-to-use-jquery-to-get-the-current-value-of-a-file-input-field">jQuery获取当前input file里的值</a>：</h3>
+<div class="highlight"><pre><span class="err">$</span><span class="p">(</span><span class="s">&quot;#fileinput&quot;</span><span class="p">).</span><span class="n">val</span><span class="p">();</span>
+</pre></div>
+
+
+<h3><a href="http://stackoverflow.com/questions/10703102/jquery-get-all-filenames-inside-input-file">jQuery获取input file里的多个值</a></h3>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">files</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#basicUploadFile&#39;</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s2">&quot;files&quot;</span><span class="p">);</span> <span class="c1">//files是FileList对象</span>
+
+<span class="kd">var</span> <span class="nx">names</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">files</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">val</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span> <span class="p">});</span> <span class="c1">//names是字符串数组</span>
+</pre></div>
+
+
+<h3><a href="http://stackoverflow.com/questions/5392344/sending-multipart-formdata-with-jquery-ajax">jQuery文件上传</a></h3>
+<h3><a href="http://stackoverflow.com/questions/20035101/no-access-control-allow-origin-header-is-present-on-the-requested-resource">文件跨域提交</a></h3></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../ionicshi-yong-jiao-cheng.html">Ionic使用教程</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-12T19:45:00" pubdate>二 12 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><p>Ionic项目主页：http://ionicframework.com/ 它是用来构建混合应用的一款前端框架，使用Cordova和AngularJS，目前中文资料尚且较少。这篇文章主要是在学习中做的一个记录，也希望能为后面的学习者提供一些参考。</p>
+<h2>1. 要求</h2>
+<ul>
+<li>安装Node/NPM</li>
+<li>安装Ruby和SASS</li>
+<li>了解AngularJS</li>
+<li>安装Gulp(可选)</li>
+<li>安装Android SDK和XCode（可选）</li>
+</ul>
+<h2>2. ionic开发步骤</h2>
+<h3>2.1 全局安装cordova和ionic</h3>
+<div class="highlight"><pre><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">cordova</span> <span class="n">ionic</span>
+</pre></div>
+
+
+<h3>2.2 从模板中创建应用</h3>
+<div class="highlight"><pre><span class="n">ionic</span> <span class="n">start</span> <span class="n">frontendAwesome</span> <span class="n">sidemenu</span>
+<span class="n">cd</span> <span class="n">frontendAwesome</span>
+</pre></div>
+
+
+<p>其中 frontendAwesome是项目名，sidemenu是模板名</p>
+<p>有3个默认模板：sidemenu(侧边菜单), tabs(底部标签), blank(空白)</p>
+<p>第一个命令结束后 ...</p></div>
+  <footer>
+    <a rel="full-article" href="../ionicshi-yong-jiao-cheng.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../angularjsxue-xi-bi-ji-05-zhi-ling.html">AngularJS学习笔记05-指令</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-04T20:31:00" pubdate>一 04 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>AngularJS四大核心特性</h2>
+<ul>
+<li>MVC</li>
+<li>模块化和依赖注入</li>
+<li>双向数据绑定</li>
+<li>指令</li>
+</ul>
+<h2>解析最简单的指令hello</h2></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../angularjsxue-xi-bi-ji-04-lu-you.html">AngularJS学习笔记04 路由</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-03T21:13:00" pubdate>日 03 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>Ajax的不足</h2>
+<ul>
+<li>Ajax请求不会留下History记录</li>
+<li>用户无法直接通过URL进入应用中的指定页面（保存书签、链接分享给朋友）</li>
+<li>Ajax对SEO是个灾难</li>
+</ul>
+<p>以上是为什么需要前端路由的原因</p>
+<h2>路由</h2>
+<p>需要自己导入angular-route模块。</p>
+<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;framework/angular1.3.15/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;framework/angular1.3.15/angular-route.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+var bookStoreApp = angular.module(&#39;bookStoreApp&#39;,
+ <span class="cp">[</span><span class="s1">&#39;ngRoute&#39;</span><span class="p">,</span> <span class="s1">&#39;bookStoreCtrls&#39;</span><span class="cp">]</span>);
+
+bookStoreApp.config(<span class="cp">[</span><span class="s1">&#39;$routeProvider&#39;</span><span class="p">,</span> <span class="nx">function</span><span class="p">(</span><span class="nv">$routeProvider</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$routeProvider.when</span><span class="p">(</span><span class="s1">&#39;/hello&#39;</span><span class="p">,{</span>
+            <span class="nx">templateUrl</span><span class="p">:</span><span class="s1">&#39;tpls/hello.html&#39;</span><span class="p">,</span>
+            <span class="nx">controller ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../angularjsxue-xi-bi-ji-04-lu-you.html">Read On &crarr;</a>
+  </footer>
+  		</article>
   		<article>
 <header>
       <h1 class="entry-title">
@@ -151,228 +341,6 @@
     <a rel="full-article" href="../angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../angularjsxue-xi-bi-ji-01-mvc.html">AngularJS学习笔记01-MVC</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-30T20:51:00" pubdate>四 30 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 为什么需要MVC?</h2>
-<p>MVC只是手段，终极目标是模块化与复用。</p>
-<h2>2. 控制器(ng-controller)</h2>
-<div class="highlight"><pre><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">&quot;helloAngularApp&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">&quot;HelloCtrl&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;p&gt;</span>{{greeting.text}},world!<span class="nt">&lt;/p&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">&quot;test()&quot;</span><span class="nt">&gt;</span>test<span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-
-    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script&gt;</span>
-    var helloAngularApp = angular.module(&#39;helloAngularApp&#39;, <span class="cp">[]</span>);
-    helloAngularApp.controller(&#39;HelloCtrl&#39;, function ($scope) {
-            $scope.greeting = {
-                text:&quot;Hello&quot;
-            };
-            $scope.test = function(){
-                alert ...</pre></div></div>
-  <footer>
-    <a rel="full-article" href="../angularjsxue-xi-bi-ji-01-mvc.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html">Java Web开发技术应用-过滤器</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-22T15:45:00" pubdate>三 22 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. Java过滤机制-声明周期</h2>
-<p><img alt="images/java-web-filter-01.png" src="images/java-web-filter-01.png" /></p>
-<h2>2. 第一个过滤器</h2>
-<p>1、创建一个过滤器类 ，继承自servlet下的Filter
-2、重写三个方法init() doFilter() destroy()方法
-（1）init()初始化：这个方法可以读取web.xml文件中的过滤器初始化参数。通过参数FilterConfig arg0可以获取更多参数
-（2）doFIlter()核心：完成实际的过滤操作。当用户请求访问与过滤器【关联的URL】时，Web容器将先调用过滤器的doFilter方法，FilterChain arg2参数可以调用chain.doFilter方法，将请求传给下一个过滤器（或目标资源），或利用转发，重定向将请求转发给其他资源。
-(3)web容器在消耗过滤器前调用该方法，用于释放过滤器占用的资源。（大多数情况用不到）</p>
-<h3>2.1 定义Filter</h3>
-<div class="highlight"><pre><span class="n">package</span> <span class="n">liulx</span><span class="p">.</span><span class="n">FilterDemo</span><span class="p">;</span>
-
-<span class="n">import</span> <span class="n">javax</span><span class="p">.</span><span class="n">servlet</span><span class="p">.</span><span class="o">*</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">io ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Sass和Compass必备技能之Compass篇-02 模块简介</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-20T21:43:00" pubdate>一 20 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. Layout简介</h2>
-<p>http://compass-style.org/reference/compass/layout/</p>
-<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/layout&quot;</span>
-<span class="cp">@import</span> <span class="s2">&quot;compass/layout/grid-background&quot;</span>
-<span class="cp">@import</span> <span class="s2">&quot;compass/layout/sticky-footer&quot;</span>
-<span class="cp">@import</span> <span class="s2">&quot;compass/layout/stretching&quot;</span>
-</pre></div>
-
-
-<h2>2. CSS3模块</h2>
-<p>使用率最高的模块，提高跨浏览器的CSS3效果
-http://compass-style.org/reference/compass/css3/</p>
-<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/css3&quot;</span><span class="p">;</span>
-<span class="p">.</span><span class="n">webdemo</span><span class="o">-</span><span class="n">sec</span><span class="p">{</span>
-    <span class="err">@</span><span class="n">include</span> <span class="n">box</span><span class="o">-</span><span class="nf">shadow</span><span class="p">(</span><span class="mi">1</span><span class="n">px</span> <span class="mi">1</span><span class="n">px</span> <span class="mi">3</span><span class="n">px</span> <span class="mi">2</span><span class="n">px</span> <span class="cp">#cfcecf ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Sass和Compass必备技能之Compass篇-01 Compass核心模块概述及Reset模块</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-20T20:51:00" pubdate>一 20 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. Compass核心模块</h2>
-<p><img alt="images/compass-1.png" src="images/compass-1.png" /></p>
-<p>Reset(<code>@import "compass/reset";</code>)和Layout(<code>@import "compass/layout";</code>)并没有包含在compass的核心模块中，需要单独引用。</p>
-<p><code>@import "compass";</code>包含了CSS3/Helpers/Typography/Utilities模块：
-- CSS3模块</p>
-<h2>2. 使用normalize.css替换reset</h2>
-<p>《grunt beginer》</p>
-<p>http://necolas.github.io/normalize.css/</p>
-<p>可以使用compass插件：</p>
-<h3>2.1 安装</h3>
-<p><code>gem install compass-normalize</code></p>
-<h3>2.2 在config.rb中引入</h3>
-<p><code>require 'compass-normalize'</code>
-<strong>注意：config.rb中的require 'compass/import-once/activate'是防止多次引入 ...</strong></p></div>
-  <footer>
-    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../androidxue-xi-bi-ji-08-imageviewkong-jian.html">Android学习笔记-08 ImageView控件</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-19T22:13:00" pubdate>日 19 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"></div>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../androidxue-xi-bi-ji-07-android-mu-lu-jie-gou.html">Android学习笔记-07 Android 目录结构</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-19T19:09:00" pubdate>日 19 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><p>src存放源代码
-gen存放系统自动生成的配置文件
-Android4.2下含android.jar包文件，所需的SDK
-assets存放资源文件，不会自动生成id且不会自动占用空间，没有应用时不会占空间
-bin存放被编译生成的可执行文件.apk
-libs里放一些jar包
-res存放所有资源。如图片等，res有多大，生成的APK就有多大
-drawable存放不同密度的图片资源，不同分辨率的设备，不同分辨率的图片
-layout存放布局文件。xml文件
-values存放字符串，主题，颜色，样式等资源，对应3.0版本，v11对应3.0和v14对应4.0
-menu菜单布局文件
-androidmanifest.xml清单文件，先执行的清单文件，配置一些与应用有关的重要信息，包含包名，权限，程序组件等等</p>
-<p><img alt="images/android-07-01.jpg" src="images/android-07-01.jpg" /></p></div>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html">Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-17T23:19:00" pubdate>五 17 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. @media</h2>
-<p>sass中的@media跟CSS区别：</p>
-<p>sass中的media query可以内嵌在css规则中，在生成CSS的时候，
-media query 才会被提到样式的最高级</p>
-<p>好处：避免了重复书写选择器或者打乱样式表的流程。</p>
-<div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="p">){</span>
-    <span class="err">@</span><span class="n">media</span><span class="p">(</span><span class="n">min</span><span class="o">-</span><span class="n">width</span><span class="o">:</span> <span class="mi">768</span><span class="n">px</span><span class="p">){</span>
-        <span class="nl">width:</span> <span class="err">$</span><span class="n">width</span><span class="p">;</span>
-        <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<h2>2. @at-root</h2>
-<p>指定嵌套的内容生成CSS时，在最底层</p>
-<div class="highlight"><pre><span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="p">{</span>
-    <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
-    <span class="err">@</span><span class="n">at</span><span class="o">-</span><span class="n">root</span><span class="p">{</span>
-        <span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">headline</span><span class="p">{</span>
-            <span class="nl">font:</span><span class="p">{</span>
-                <span class="nl">family:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
-                <span class="nl">size:</span> <span class="mi">16</span><span class="n">px</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-
-        <span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html">Sass和Compass必备技能之Sass篇-03 Sass语法介绍(进阶篇)</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-17T22:46:00" pubdate>五 17 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 变量操作</h2>
-<p>变量操作有两种方式，第一种是直接操作，第二种是通过函数。</p>
-<p>通过函数：
-- 跟代码块无关的函数，多是自己内置函数，称functions
-- 可重用的代码块，称mixin: @include和 @extand的方式来应用，</p>
-<p>运算符： <code>&gt;= &lt;= &gt; &lt; == != ()</code></p>
-<p>CSS3增加了HSL的颜色，SASS会自动转换HSL为RGB,完美解决兼容。</p>
-<p>sass支持@function来声明函数。</p>
-<h2>2. mixin和include</h2>
-<div class="highlight"><pre><span class="c1">//声明</span>
-<span class="p">@</span><span class="n">mixin</span> <span class="n">col</span><span class="o">-</span><span class="mh">6</span><span class="p">{</span>
-    <span class="nl">width:</span> <span class="mh">50</span><span class="o">%</span><span class="p">;</span>
-    <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">//调用</span>
-<span class="p">.</span><span class="n">webdemo</span><span class="o">-</span><span class="n">sec</span> <span class="p">{</span>
-    <span class="p">@</span><span class="k">include</span> <span class="n">col</span><span class="o">-</span><span class="mh">6</span><span class="p">();</span>
-
-    <span class="o">&amp;:</span><span class="n">hover</span><span class="p">{</span>
-        <span class="n">background</span><span class="o">-</span><span class="nl">color:</span> <span class="p">#</span><span class="no">F5F5F5</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>CSS中class最好使用语义化的命名。IE6不支持多个class。</p>
-<p>带参数以及默认参数：</p>
-<div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="o">:</span><span class="mi">50</span><span class="o">%</span><span class="p">){</span>
-    <span class="nl">width:</span> <span class="err">$</span><span class="n">width</span><span class="p">;</span>
-    <span class="nl">float:</span> <span class="n">left ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="../author/liu-li-xiang2.html">&larr; Older</a>
 
@@ -386,19 +354,19 @@ media query 才会被提到样式的最高级</p>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">AngularJS学习笔记03 双向数据绑定</a>
+          <a href="../ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Ionic使用教程-条码扫描</a>
       </li>
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">AngularJS学习笔记02-路由、模块和依赖注入</a>
+          <a href="../jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
       </li>
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-01-mvc.html">AngularJS学习笔记01-MVC</a>
+          <a href="../angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
       </li>
       <li class="post">
-          <a href="../java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html">Java Web开发技术应用-过滤器</a>
+          <a href="../exmobibi-ji-wen-jian-xiang-guan.html">Exmobi笔记-文件相关</a>
       </li>
       <li class="post">
-          <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Sass和Compass必备技能之Compass篇-02 模块简介</a>
+          <a href="../jsbu-yi-jquerypian.html">JS补遗-jQuery篇</a>
       </li>
     </ul>
   </section>
@@ -408,6 +376,7 @@ media query 才会被提到样式的最高级</p>
     <ul id="recent_posts">
         <li><a href="../category/android.html">Android</a></li>
         <li><a href="../category/dotnet.html">DotNet</a></li>
+        <li><a href="../category/ionic.html">ionic</a></li>
         <li><a href="../category/java.html">Java</a></li>
         <li><a href="../category/python.html">Python</a></li>
         <li><a href="../category/sheng-huo.html">生活</a></li>
@@ -419,7 +388,7 @@ media query 才会被提到样式的最高级</p>
 
   <section>
   <h1>Tags</h1>
-    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/java.html">Java</a>  </section>
+    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
 
 
 

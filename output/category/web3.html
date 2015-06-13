@@ -50,6 +50,9 @@
     <a href="../category/dotnet.html">Dotnet</a>
     </li>
     <li >
+    <a href="../category/ionic.html">Ionic</a>
+    </li>
+    <li >
     <a href="../category/java.html">Java</a>
     </li>
     <li >
@@ -68,6 +71,174 @@
   <div id="main">
     <div id="content">
 <div class="blog-index">
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">企业网站布局实践-05 新闻中心制作</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-03T14:00:00" pubdate>五 03 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1、结构分析</h2>
+<p><img alt="新闻中心" src="images/qy-web-07.png" /></p>
+<p>从上到下可以分为新闻标题、图片新闻和图片新闻。</p>
+<h2>2、创建结构</h2>
+<p>新闻中心分为标题、图片新闻和新闻列表3部分。
+其中，新闻列表还是使用无序列表。</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;h2&gt;</span>新闻中心<span class="nt">&lt;/h2&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;news.html&quot;</span><span class="nt">&gt;</span>More<span class="ni">&amp;gt;&amp;gt;</span><span class="nt">&lt;/a&gt;</span>
+ <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- title结束 --&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pic_news&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/news.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;h2&gt;</span>520 慕女神喊你来表白！<span class="nt">&lt;/h2&gt;</span>
+     <span class="nt">&lt;p&gt;</span>
+         活动时间：5月20日—5月25日<span class="nt">&lt;br&gt;</span>获奖公布时间：5月26日<span class="nt">&lt;br ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html">企业网站布局实践-04 信息展示区制作</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-03T11:22:00" pubdate>五 03 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 结构分析</h2>
+<p><img alt="结构分析" src="images/qy-web-05.png" /></p>
+<p>分析如下：</p>
+<p><img alt="结构分析" src="images/qy-web-06.png" /></p>
+<p>盒子之间的间距应该是多少呢？</p>
+<p>整个盒子宽度是1000px，3个盒子宽度是340、410以及230px(总和为980px)，那么外边据是否就是10px了呢（10*2+980=1000）？不是的，因为每个小盒子左右都有1px的边框，一共6px，因此是(20-6)/2 = 7px.</p>
+<h2>2. 实现</h2>
+<p>首先定义结构：</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;course&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;sidebar&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- main结束 --&gt;</span>
+</pre></div>
+
+
+<p>其次是LESS</p>
+<div class="highlight"><pre><span class="c1">//定义区域整体高度</span>
+<span class="p">.</span><span class="n">main</span><span class="p">{</span>
+    <span class="nl">height:</span><span class="mh">250</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">margin</span><span class="o">-</span><span class="nl">top:</span> <span class="mh">5</span><span class="n">px ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html">企业网站布局实践-03焦点图制作</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-02T01:19:00" pubdate>四 02 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 使用myFocus焦点图库</h2>
+<p>http://demo.jb51.net/js/myfocus/download.html</p>
+<p>选择demo演示下载解压，拷贝js文件夹与当前js文件夹合并。</p>
+<h3>1.1 引入myFocus库文件和样式文件</h3>
+<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/myFocus-2.0.1.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/mf-pattern/mF_YSlider.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;js/mf-pattern/mF_YSlider.css&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+
+
+<h3>1.2 构建页面中使用的图片</h3>
+<p>首先添加图片</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ad&quot;</span> <span class="na">id=</span><span class="s">&quot;picBox&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;ul&gt;</span>
+     <span class="nt">&lt;li ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html">企业网站布局实践-02导航部分制作</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-01T23:59:00" pubdate>三 01 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 分析</h2>
+<p>我们将导航分为左中右三部分。
+其中导航中部分为两部分，分别放置菜单栏和搜索框。
+导航栏菜单使用有序列表或无需列表，搜索框使用form表单的input标签。</p>
+<h2>2. 实现HTML</h2>
+<p>添加nav的html</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav_left&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav_mid&quot;</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav_mid_left&quot;</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;ul&gt;</span>
+               <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>首页<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+               <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>关于慕课<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+               <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>新闻动态<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+               <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>课程中心<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+               <span class="nt">&lt;li&gt;&lt;a ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html">企业网站布局实践-01页面头部制作</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-01T09:05:00" pubdate>三 01 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 总体分析</h2>
+<p>网站的架构采用自顶向下渐进明细的过程进行规划。</p>
+<p>网站首页设计如下：
+<img alt="" src="images/qy-web-01.png" /></p>
+<h2>2. 页面头部制作</h2>
+<p>1、居中 </p>
+<div class="highlight"><pre><span class="n">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="n">auto</span><span class="o">;</span>
+</pre></div>
+
+
+<p>2、更改li的图标</p>
+<div class="highlight"><pre><span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">-</span><span class="n">image</span><span class="o">:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">li_bg</span><span class="p">.</span><span class="n">gif</span><span class="p">);</span>
+</pre></div>
+
+
+<p>去除li的默认图标</p>
+<div class="highlight"><pre><span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">-</span><span class="n">type</span><span class="o">:</span><span class="n">none</span><span class="p">;</span>
+<span class="c1">//或者</span>
+<span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">:</span><span class="n">none</span>
+</pre></div>
+
+
+<p>3、浮动菜单右侧</p>
+<div class="highlight"><pre><span class="n">float</span><span class="o">:</span> <span class="n">right</span><span class="o">;</span>
+</pre></div>
+
+
+<p>4、菜单的宽度直接设置li的width</p>
+<p>5、文本垂直居中
+设置元素文字行高等于盒子的高度</p>
+<div class="highlight"><pre><span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span> <span class="mi">27</span><span class="n">px</span><span class="p">;</span>
+</pre></div>
+
+
+<p>6、去掉a链接的下划线</p>
+<div class="highlight"><pre><span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
+</pre></div>
+
+
+<p>设置链接正常状态：</p>
+<div class="highlight"><pre><span class="n">a</span><span class="p">{</span>
+    <span class="o">&amp;:</span><span class="n">link ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html">Read On &crarr;</a>
+  </footer>
+  		</article>
   		<article>
 <header>
       <h1 class="entry-title">
@@ -175,19 +346,19 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">AngularJS学习笔记03 双向数据绑定</a>
+          <a href="../jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
       </li>
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">AngularJS学习笔记02-路由、模块和依赖注入</a>
+          <a href="../angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
       </li>
       <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-01-mvc.html">AngularJS学习笔记01-MVC</a>
+          <a href="../jsbu-yi-jquerypian.html">JS补遗-jQuery篇</a>
       </li>
       <li class="post">
-          <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Sass和Compass必备技能之Compass篇-02 模块简介</a>
+          <a href="../angularjsxue-xi-bi-ji-05-zhi-ling.html">AngularJS学习笔记05-指令</a>
       </li>
       <li class="post">
-          <a href="../sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html">Sass和Compass必备技能之Compass篇-01 Compass核心模块概述及Reset模块</a>
+          <a href="../angularjsxue-xi-bi-ji-04-lu-you.html">AngularJS学习笔记04 路由</a>
       </li>
     </ul>
   </section>
@@ -197,6 +368,7 @@
     <ul id="recent_posts">
         <li><a href="../category/android.html">Android</a></li>
         <li><a href="../category/dotnet.html">DotNet</a></li>
+        <li><a href="../category/ionic.html">ionic</a></li>
         <li><a href="../category/java.html">Java</a></li>
         <li><a href="../category/python.html">Python</a></li>
         <li><a href="../category/sheng-huo.html">生活</a></li>
@@ -208,7 +380,7 @@
 
   <section>
   <h1>Tags</h1>
-    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/java.html">Java</a>  </section>
+    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
 
 
 

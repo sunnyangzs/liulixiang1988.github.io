@@ -50,6 +50,9 @@
     <a href="./category/dotnet.html">Dotnet</a>
     </li>
     <li >
+    <a href="./category/ionic.html">Ionic</a>
+    </li>
+    <li >
     <a href="./category/java.html">Java</a>
     </li>
     <li >
@@ -236,7 +239,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 如下面代码:</p>
 <div class="highlight"><pre><span class="nx">p</span><span class="p">{</span><span class="nx">color</span><span class="p">:</span><span class="nb">red</span><span class="p">;}</span>
 <span class="nx">p</span><span class="p">{</span><span class="nx">color</span><span class="p">:</span><span class="nx">green</span><span class="p">;}</span>
-<span class="o">&lt;</span><span class="nx">p</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="o">&gt;</span><span class="nx">三年级时</span><span class="err">，</span><span class="nx">我还是一个</span><span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">胆小如鼠</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">的小女孩</span><span class="err">。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="o">&gt;</span><span class="err">三年级时，我还是一个</span><span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="err">胆小如鼠</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span><span class="err">的小女孩。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -248,7 +251,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 如下代码：</p>
 <div class="highlight"><pre><span class="nx">p</span><span class="p">{</span><span class="nx">color</span><span class="p">:</span><span class="nb">red</span><span class="o">!</span><span class="nx">important</span><span class="p">;}</span>
 <span class="nx">p</span><span class="p">{</span><span class="nx">color</span><span class="p">:</span><span class="nx">green</span><span class="p">;}</span>
-<span class="o">&lt;</span><span class="nx">p</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="o">&gt;</span><span class="nx">三年级时</span><span class="err">，</span><span class="nx">我还是一个</span><span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">胆小如鼠</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">的小女孩</span><span class="err">。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="o">&gt;</span><span class="err">三年级时，我还是一个</span><span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="err">胆小如鼠</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span><span class="err">的小女孩。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -280,7 +283,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 <h4>3.7.5 文字排版--下划线</h4>
 <p>有些情况下想为文字设置为下划线样式，这样可以在视觉上强调文字，可以使用下面代码来实现：</p>
 <div class="highlight"><pre><span class="nx">p</span> <span class="nx">a</span><span class="p">{</span><span class="nx">text</span><span class="na">-decoration</span><span class="p">:</span><span class="nx">underline</span><span class="p">;}</span>
-<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">三年级时</span><span class="err">，</span><span class="nx">我还是一个</span><span class="o">&lt;</span><span class="nx">a</span><span class="o">&gt;</span><span class="nx">胆小如鼠</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span><span class="nx">的小女孩</span><span class="err">。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">三年级时，我还是一个</span><span class="o">&lt;</span><span class="nx">a</span><span class="o">&gt;</span><span class="err">胆小如鼠</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span><span class="err">的小女孩。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -290,7 +293,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 <h4>3.7.7 段落排版--缩进</h4>
 <p>中文文字中的段前习惯空两个文字的空白，这个特殊的样式可以用下面代码来实现：</p>
 <div class="highlight"><pre><span class="nx">p</span><span class="p">{</span><span class="nx">text</span><span class="na">-indent</span><span class="p">:</span><span class="mi">2</span><span class="nx">em</span><span class="p">;}</span>
-<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="mi">1922</span><span class="nx">年的春天</span><span class="err">，</span><span class="nx">一个想要成名名叫尼克卡拉威</span><span class="err">（</span><span class="nx">托比</span><span class="o">?</span><span class="nx">马奎尔Tobey</span> <span class="nx">Maguire</span> <span class="nx">饰</span><span class="err">）</span><span class="nx">的作家</span><span class="err">，</span><span class="nx">离开了美国中西部</span><span class="err">，</span><span class="nx">来到了纽约</span><span class="err">。</span><span class="nx">那是一个道德感渐失</span><span class="err">，</span><span class="nx">爵士乐流行</span><span class="err">，</span><span class="nx">走私为王</span><span class="err">，</span><span class="nx">股票飞涨的时代</span><span class="err">。</span><span class="nx">为了追寻他的美国梦</span><span class="err">，</span><span class="nx">他搬入纽约附近一海湾居住</span><span class="err">。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="mi">1922</span><span class="err">年的春天，一个想要成名名叫尼克卡拉威（托比</span><span class="o">?</span><span class="err">马奎尔</span><span class="nx">Tobey</span> <span class="nx">Maguire</span> <span class="err">饰）的作家，离开了美国中西部，来到了纽约。那是一个道德感渐失，爵士乐流行，走私为王，股票飞涨的时代。为了追寻他的美国梦，他搬入纽约附近一海湾居住。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -298,7 +301,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 <h4>3.7.8 段落排版--行间距（行高）</h4>
 <p>这一小节我们来学习一下另一个在段落排版中起重要作用的行间距（行高）属性（line-height），如下代码实现设置段落行间距为1.5倍。</p>
 <div class="highlight"><pre><span class="nx">p</span><span class="p">{</span><span class="nb">line</span><span class="na">-height</span><span class="p">:</span><span class="mf">1.5</span><span class="nx">em</span><span class="p">;}</span>
-<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">菲茨杰拉德</span><span class="err">，</span><span class="nx">二十世纪美国文学巨擘之一</span><span class="err">，</span><span class="nx">兼具作家和编剧双重身份</span><span class="err">。</span><span class="nx">他以诗人的敏感和戏剧家的想象为</span><span class="s2">&quot;爵士乐时代&quot;</span><span class="nx">吟唱华丽挽歌</span><span class="err">，</span><span class="nx">其诗人和梦想家的气质亦为那个奢靡年代的不二注解</span><span class="err">。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">菲茨杰拉德，二十世纪美国文学巨擘之一，兼具作家和编剧双重身份。他以诗人的敏感和戏剧家的想象为</span><span class="s2">&quot;爵士乐时代&quot;</span><span class="err">吟唱华丽挽歌，其诗人和梦想家的气质亦为那个奢靡年代的不二注解。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -309,7 +312,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
     <span class="nx">letter</span><span class="na">-spacing</span><span class="p">:</span><span class="mi">50</span><span class="nx">px</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">了不起的盖茨比</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="err">了不起的盖茨比</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -329,7 +332,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
     <span class="nx">text</span><span class="na">-align</span><span class="p">:</span><span class="nx">center</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">了不起的盖茨比</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="err">了不起的盖茨比</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -338,7 +341,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
     <span class="nx">text</span><span class="na">-align</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">了不起的盖茨比</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="err">了不起的盖茨比</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -346,7 +349,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 <div class="highlight"><pre><span class="nx">h1</span><span class="p">{</span>
     <span class="nx">text</span><span class="na">-align</span><span class="p">:</span><span class="nb">right</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">了不起的盖茨比</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="err">了不起的盖茨比</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -564,7 +567,7 @@ CSS包含3种基本的布局模型，用英文概括为：Flow、Layer 和 Float
     <span class="nb">left</span><span class="p">:</span><span class="mi">100</span><span class="nx">px</span><span class="p">;</span>
     <span class="nb">top</span><span class="p">:</span><span class="mi">50</span><span class="nx">px</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本</span><span class="err">。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 <span class="nx">....</span>
 </pre></div>
 
@@ -1005,19 +1008,19 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="./angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">AngularJS学习笔记03 双向数据绑定</a>
+          <a href="./ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Ionic使用教程-条码扫描</a>
       </li>
       <li class="post">
-          <a href="./angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">AngularJS学习笔记02-路由、模块和依赖注入</a>
+          <a href="./jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
       </li>
       <li class="post">
-          <a href="./angularjsxue-xi-bi-ji-01-mvc.html">AngularJS学习笔记01-MVC</a>
+          <a href="./angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
       </li>
       <li class="post">
-          <a href="./java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html">Java Web开发技术应用-过滤器</a>
+          <a href="./exmobibi-ji-wen-jian-xiang-guan.html">Exmobi笔记-文件相关</a>
       </li>
       <li class="post">
-          <a href="./sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html">Sass和Compass必备技能之Compass篇-02 模块简介</a>
+          <a href="./jsbu-yi-jquerypian.html">JS补遗-jQuery篇</a>
       </li>
     </ul>
   </section>
@@ -1027,6 +1030,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
     <ul id="recent_posts">
         <li><a href="./category/android.html">Android</a></li>
         <li><a href="./category/dotnet.html">DotNet</a></li>
+        <li><a href="./category/ionic.html">ionic</a></li>
         <li><a href="./category/java.html">Java</a></li>
         <li><a href="./category/python.html">Python</a></li>
         <li><a href="./category/sheng-huo.html">生活</a></li>
@@ -1038,7 +1042,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 
   <section>
   <h1>Tags</h1>
-    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/servlet.html">Servlet</a>,    <a href="./tag/sass.html">SASS</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/angular.html">Angular</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/java.html">Java</a>  </section>
+    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/angular.html">Angular</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/java.html">Java</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/javascript.html">JavaScript</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="./tag/exmobi.html">Exmobi</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/servlet.html">Servlet</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/jquery.html">jQuery</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/sass.html">SASS</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/ionic.html">ionic</a>  </section>
 
 
 

@@ -50,6 +50,9 @@
     <a href="../category/dotnet.html">Dotnet</a>
     </li>
     <li >
+    <a href="../category/ionic.html">Ionic</a>
+    </li>
+    <li >
     <a href="../category/java.html">Java</a>
     </li>
     <li >
@@ -68,6 +71,64 @@
   <div id="main">
     <div id="content">
 <div class="blog-index">
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-20T14:39:00" pubdate>三 20 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2><a href="http://stackoverflow.com/questions/12729122/prevent-error-digest-already-in-progress-when-calling-scope-apply">digest already in progress</a></h2></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../angularjsxue-xi-bi-ji-05-zhi-ling.html">AngularJS学习笔记05-指令</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-04T20:31:00" pubdate>一 04 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>AngularJS四大核心特性</h2>
+<ul>
+<li>MVC</li>
+<li>模块化和依赖注入</li>
+<li>双向数据绑定</li>
+<li>指令</li>
+</ul>
+<h2>解析最简单的指令hello</h2></div>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
+        <a href="../angularjsxue-xi-bi-ji-04-lu-you.html">AngularJS学习笔记04 路由</a>
+      </h1>
+      <p class="meta"><time datetime="2015-05-03T21:13:00" pubdate>日 03 五月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>Ajax的不足</h2>
+<ul>
+<li>Ajax请求不会留下History记录</li>
+<li>用户无法直接通过URL进入应用中的指定页面（保存书签、链接分享给朋友）</li>
+<li>Ajax对SEO是个灾难</li>
+</ul>
+<p>以上是为什么需要前端路由的原因</p>
+<h2>路由</h2>
+<p>需要自己导入angular-route模块。</p>
+<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;framework/angular1.3.15/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;framework/angular1.3.15/angular-route.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+var bookStoreApp = angular.module(&#39;bookStoreApp&#39;,
+ <span class="cp">[</span><span class="s1">&#39;ngRoute&#39;</span><span class="p">,</span> <span class="s1">&#39;bookStoreCtrls&#39;</span><span class="cp">]</span>);
+
+bookStoreApp.config(<span class="cp">[</span><span class="s1">&#39;$routeProvider&#39;</span><span class="p">,</span> <span class="nx">function</span><span class="p">(</span><span class="nv">$routeProvider</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$routeProvider.when</span><span class="p">(</span><span class="s1">&#39;/hello&#39;</span><span class="p">,{</span>
+            <span class="nx">templateUrl</span><span class="p">:</span><span class="s1">&#39;tpls/hello.html&#39;</span><span class="p">,</span>
+            <span class="nx">controller ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../angularjsxue-xi-bi-ji-04-lu-you.html">Read On &crarr;</a>
+  </footer>
+  		</article>
   		<article>
 <header>
       <h1 class="entry-title">
@@ -159,24 +220,27 @@
       <p class="meta"><time datetime="2015-04-30T20:51:00" pubdate>四 30 四月 2015</time></p>
 </header>
 
-  <div class="entry-content"><h2>1. 为什么需要MVC?</h2>
+  <div class="entry-content"><h2>0. 第一个AngularJs应用</h2>
+<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="err">ng-app</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=edge&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>AngularJs Demo<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;bower_components/angularjs/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;br&gt;</span>
+    <span class="nt">&lt;p&gt;</span>hello, {{name}}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<h2>1. 为什么需要MVC?</h2>
 <p>MVC只是手段，终极目标是模块化与复用。</p>
 <h2>2. 控制器(ng-controller)</h2>
-<div class="highlight"><pre><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">&quot;helloAngularApp&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">&quot;HelloCtrl&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;p&gt;</span>{{greeting.text}},world!<span class="nt">&lt;/p&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">ng-click=</span><span class="s">&quot;test()&quot;</span><span class="nt">&gt;</span>test<span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-
-    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script&gt;</span>
-    var helloAngularApp = angular.module(&#39;helloAngularApp&#39;, <span class="cp">[]</span>);
-    helloAngularApp.controller(&#39;HelloCtrl&#39;, function ($scope) {
-            $scope.greeting = {
-                text:&quot;Hello&quot;
-            };
-            $scope.test = function(){
-                alert ...</pre></div></div>
+<div class="highlight"><pre><span class="nt">&lt;body ...</span></pre></div></div>
   <footer>
     <a rel="full-article" href="../angularjsxue-xi-bi-ji-01-mvc.html">Read On &crarr;</a>
   </footer>
@@ -193,13 +257,19 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="../angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
+      </li>
+      <li class="post">
+          <a href="../angularjsxue-xi-bi-ji-05-zhi-ling.html">AngularJS学习笔记05-指令</a>
+      </li>
+      <li class="post">
+          <a href="../angularjsxue-xi-bi-ji-04-lu-you.html">AngularJS学习笔记04 路由</a>
+      </li>
+      <li class="post">
           <a href="../angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html">AngularJS学习笔记03 双向数据绑定</a>
       </li>
       <li class="post">
           <a href="../angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html">AngularJS学习笔记02-路由、模块和依赖注入</a>
-      </li>
-      <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-01-mvc.html">AngularJS学习笔记01-MVC</a>
       </li>
     </ul>
   </section>
@@ -209,6 +279,7 @@
     <ul id="recent_posts">
         <li><a href="../category/android.html">Android</a></li>
         <li><a href="../category/dotnet.html">DotNet</a></li>
+        <li><a href="../category/ionic.html">ionic</a></li>
         <li><a href="../category/java.html">Java</a></li>
         <li><a href="../category/python.html">Python</a></li>
         <li><a href="../category/sheng-huo.html">生活</a></li>
@@ -220,7 +291,7 @@
 
   <section>
   <h1>Tags</h1>
-    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/java.html">Java</a>  </section>
+    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">SASS</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
 
 
 

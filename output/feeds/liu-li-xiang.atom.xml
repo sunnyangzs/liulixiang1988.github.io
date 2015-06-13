@@ -1,5 +1,276 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2015-05-01T00:20:00+08:00</updated><entry><title>AngularJS学习笔记03 双向数据绑定</title><link href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html" rel="alternate"></link><updated>2015-05-01T00:20:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-01:angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html</id><summary type="html">&lt;p&gt;内容简介：&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2015-05-27T10:32:00+08:00</updated><entry><title>Ionic使用教程-条码扫描</title><link href="http://liulixiang1988.github.io/ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html" rel="alternate"></link><updated>2015-05-27T10:32:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-27:ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html</id><summary type="html">&lt;p&gt;ionic中与硬件交互部分是使用&lt;a href="http://ngcordova.com/"&gt;ngcordova&lt;/a&gt;和cordova来实现。&lt;/p&gt;
+&lt;h2&gt;1.下载ngcordova并且加入到文件中&lt;/h2&gt;
+&lt;p&gt;到ngcordova的页面下载，然后添加到页面，注意要添加到&lt;code&gt;cordova.js&lt;/code&gt;之前：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;lib/ngCordova/dist/ng-cordova.min.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;cordova.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2. 安装条码插件&lt;/h2&gt;
+&lt;p&gt;这个插件支持常见的二维码和条码扫描，非常的强大，下面我们来看看如何安装插件。&lt;/p&gt;
+&lt;p&gt;ngcordova官方给出的安装方法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cordova&lt;/span&gt; &lt;span class="n"&gt;plugin&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/wildabeast/BarcodeScanner.git&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但是我们跳转到对应的github页面：https://github.com/wildabeast/BarcodeScanner/ 发现说官方的地址是：https://github.com/phonegap/phonegap-plugin-barcodescanner 里面给出的安装方法是：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;phonegap&lt;/span&gt; &lt;span class="n"&gt;plugin&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;phonegap&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;plugin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;barcodescanner&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;因为我们用的是ionic和cordova，所以可以使用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cordova&lt;/span&gt; &lt;span class="n"&gt;plugin&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;phonegap&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;plugin&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;barcodescanner&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;3. 编写js代码&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;controller&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;BarcodeCtrl&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+    &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$cordovaBarcodeScanner&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;barcode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;scanBarcode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+            &lt;span class="nx"&gt;$cordovaBarcodeScanner&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;scan&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;then&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;imageData&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+                &lt;span class="nx"&gt;$scope&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;barcode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;imageData&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+                &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;****barcode format:&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;imageData&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;format&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;error&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+                &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;*****an error occured:&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;error&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="p"&gt;});&lt;/span&gt;
+        &lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;代码很简单，使用这个可以完成扫描成功进行赋值，扫描失败则就在控制台打印的功能。&lt;/p&gt;
+&lt;p&gt;对应的前端页面如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;ng-controller=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;BarcodeCtrl&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;item item-input-inset&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;label&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;item-input-wrapper&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;placeholder=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;条码&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;ng-model=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;barcode&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;button&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;button button-small&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;ng-click=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;scanBarcode()&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+      扫描
+    &lt;span class="nt"&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;至此，你就完成了条码扫描功能。&lt;/p&gt;</summary><category term="ionic"></category><category term="移动开发"></category></entry><entry><title>JS补遗-数据处理篇</title><link href="http://liulixiang1988.github.io/jsbu-yi-shu-ju-chu-li-pian.html" rel="alternate"></link><updated>2015-05-25T10:47:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-25:jsbu-yi-shu-ju-chu-li-pian.html</id><summary type="html">&lt;h2&gt;String转JSON&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;arr_from_json&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;JSON&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;json_string&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;也可以使用&lt;a href="https://github.com/douglascrockford/JSON-js/blob/master/json2.js"&gt;json2.js&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;值转JSON字符串&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;JSON&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stringify&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;把值转化为JSON字符串
+详细说明：https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify&lt;/p&gt;</summary><category term="JavaScript"></category></entry><entry><title>AngularJS学习笔记-踩坑笔记</title><link href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-cai-keng-bi-ji.html" rel="alternate"></link><updated>2015-05-20T14:39:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-20:angularjsxue-xi-bi-ji-cai-keng-bi-ji.html</id><summary type="html">&lt;h2&gt;&lt;a href="http://stackoverflow.com/questions/12729122/prevent-error-digest-already-in-progress-when-calling-scope-apply"&gt;digest already in progress&lt;/a&gt;&lt;/h2&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>Exmobi笔记-文件相关</title><link href="http://liulixiang1988.github.io/exmobibi-ji-wen-jian-xiang-guan.html" rel="alternate"></link><updated>2015-05-13T15:39:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-13:exmobibi-ji-wen-jian-xiang-guan.html</id><summary type="html">&lt;h2&gt;文件下载&lt;/h2&gt;
+&lt;p&gt;文件下载与打开&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;a&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;click&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;attr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;href&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;match&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/doc$|docx$|pdf$/&lt;/span&gt;&lt;span class="p"&gt;)){&lt;/span&gt;
+        &lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;matched&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="nx"&gt;ClientUtil&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;download&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;attr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;href&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;res:&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;NativeUtil&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;res:&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Exmobi"></category></entry><entry><title>JS补遗-jQuery篇</title><link href="http://liulixiang1988.github.io/jsbu-yi-jquerypian.html" rel="alternate"></link><updated>2015-05-13T15:08:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-13:jsbu-yi-jquerypian.html</id><summary type="html">&lt;h2&gt;文件相关&lt;/h2&gt;
+&lt;h3&gt;&lt;a href="http://stackoverflow.com/questions/740114/how-to-use-jquery-to-get-the-current-value-of-a-file-input-field"&gt;jQuery获取当前input file里的值&lt;/a&gt;：&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#fileinput&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;val&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;&lt;a href="http://stackoverflow.com/questions/10703102/jquery-get-all-filenames-inside-input-file"&gt;jQuery获取input file里的多个值&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;files&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#basicUploadFile&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;prop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;files&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//files是FileList对象&lt;/span&gt;
+
+&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;names&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;files&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;val&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;val&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;});&lt;/span&gt; &lt;span class="c1"&gt;//names是字符串数组&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;&lt;a href="http://stackoverflow.com/questions/5392344/sending-multipart-formdata-with-jquery-ajax"&gt;jQuery文件上传&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a href="http://stackoverflow.com/questions/20035101/no-access-control-allow-origin-header-is-present-on-the-requested-resource"&gt;文件跨域提交&lt;/a&gt;&lt;/h3&gt;</summary><category term="jQuery"></category></entry><entry><title>Ionic使用教程</title><link href="http://liulixiang1988.github.io/ionicshi-yong-jiao-cheng.html" rel="alternate"></link><updated>2015-05-12T19:45:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-12:ionicshi-yong-jiao-cheng.html</id><summary type="html">&lt;p&gt;Ionic项目主页：http://ionicframework.com/ 它是用来构建混合应用的一款前端框架，使用Cordova和AngularJS，目前中文资料尚且较少。这篇文章主要是在学习中做的一个记录，也希望能为后面的学习者提供一些参考。&lt;/p&gt;
+&lt;h2&gt;1. 要求&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;安装Node/NPM&lt;/li&gt;
+&lt;li&gt;安装Ruby和SASS&lt;/li&gt;
+&lt;li&gt;了解AngularJS&lt;/li&gt;
+&lt;li&gt;安装Gulp(可选)&lt;/li&gt;
+&lt;li&gt;安装Android SDK和XCode（可选）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;2. ionic开发步骤&lt;/h2&gt;
+&lt;h3&gt;2.1 全局安装cordova和ionic&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;npm&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="n"&gt;cordova&lt;/span&gt; &lt;span class="n"&gt;ionic&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2.2 从模板中创建应用&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ionic&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="n"&gt;frontendAwesome&lt;/span&gt; &lt;span class="n"&gt;sidemenu&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;frontendAwesome&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;其中 frontendAwesome是项目名，sidemenu是模板名&lt;/p&gt;
+&lt;p&gt;有3个默认模板：sidemenu(侧边菜单), tabs(底部标签), blank(空白)&lt;/p&gt;
+&lt;p&gt;第一个命令结束后，会自动输出一大堆英文：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;Creating&lt;/span&gt; &lt;span class="nx"&gt;Ionic&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nx"&gt;folder&lt;/span&gt; &lt;span class="nb"&gt;F&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="nx"&gt;git&lt;/span&gt;&lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="nx"&gt;WebDesign&lt;/span&gt;&lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="nx"&gt;ionic&lt;/span&gt;&lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="nx"&gt;fontendAwesome&lt;/span&gt; &lt;span class="nx"&gt;based&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="nx"&gt;side&lt;/span&gt;
+&lt;span class="nx"&gt;menu&lt;/span&gt; &lt;span class="nx"&gt;project&lt;/span&gt;
+
+&lt;span class="nx"&gt;Downloading&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/driftyco/ionic-app-base/archive/master.zip&lt;/span&gt;
+&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="o"&gt;=============================&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;  100%  0.0s
+
+Downloading: https://github.com/driftyco/ionic-starter-sidemenu/archive/master.z
+ip
+&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="o"&gt;=============================&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;  100%  0.0s
+
+Update config.xml
+Initializing cordova project
+Updated the hooks directory to have execute permissions
+running cordova plugin add org.apache.cordova.device
+WARNING: org.apache.cordova.device has been renamed to cordova-plugin-device. Yo
+u may not be getting the latest version! We suggest you `cordova plugin rm org.a
+pache.cordova.device` and `cordova plugin add cordova-plugin-device`.
+Fetching plugin &amp;quot;org.apache.cordova.device&amp;quot; via cordova plugins registry
+npm http GET http://registry.cordova.io/org.apache.cordova.device
+npm http 304 http://registry.cordova.io/org.apache.cordova.device
+Saving plugin to package.json file
+Adding since there was no existingPlugin
+Updated the hooks directory to have execute permissions
+running cordova plugin add org.apache.cordova.console
+WARNING: org.apache.cordova.console has been renamed to cordova-plugin-console.
+You may not be getting the latest version! We suggest you `cordova plugin rm org
+.apache.cordova.console` and `cordova plugin add cordova-plugin-console`.
+Fetching plugin &amp;quot;org.apache.cordova.console&amp;quot; via cordova plugins registry
+npm http GET http://registry.cordova.io/org.apache.cordova.console
+npm http 304 http://registry.cordova.io/org.apache.cordova.console
+Saving plugin to package.json file
+Adding since there was no existingPlugin
+Updated the hooks directory to have execute permissions
+running cordova plugin add com.ionic.keyboard
+Fetching plugin &amp;quot;com.ionic.keyboard&amp;quot; via cordova plugins registry
+npm http GET http://registry.cordova.io/com.ionic.keyboard
+npm http 304 http://registry.cordova.io/com.ionic.keyboard
+Saving plugin to package.json file
+Adding since there was no existingPlugin
+
+Your Ionic project is ready to go! Some quick tips:
+
+ * cd into your project: $ cd fontendAwesome
+
+ * Setup this project to use Sass: ionic setup sass
+
+ * Develop in the browser with live reload: ionic serve
+
+ * Add a platform (ios or Android): ionic platform add ios &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;android&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;
+   Note: iOS development requires OS X currently
+   See the Android Platform Guide for full Android installation instructions:
+   https://cordova.apache.org/docs/en/edge/guide_platforms_android_index.md.html
+
+
+ * Build your app: ionic build &lt;span class="nt"&gt;&amp;lt;PLATFORM&amp;gt;&lt;/span&gt;
+
+ * Simulate your app: ionic emulate &lt;span class="nt"&gt;&amp;lt;PLATFORM&amp;gt;&lt;/span&gt;
+
+ * Run your app on a device: ionic run &lt;span class="nt"&gt;&amp;lt;PLATFORM&amp;gt;&lt;/span&gt;
+
+ * Package an app using Ionic package service: ionic package &lt;span class="nt"&gt;&amp;lt;MODE&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;&amp;lt;PLATFORM&amp;gt;&lt;/span&gt;
+
+For more help use ionic --help or visit the Ionic docs: http://ionicframework.co
+m/docs
+
++---------------------------------------------------------+
++ New Ionic Updates for May 2015
++
++ The View App just landed. Preview your apps on any device
++ http://view.ionic.io
++
++ Invite anyone to preview and test your app
++ ionic share EMAIL
++
++ Generate splash screens and icons with ionic resource
++ http://ionicframework.com/blog/automating-icons-and-splash-screens/
++
++---------------------------------------------------------+
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面介绍了一些基本用法和注意事项，第一次使用的时候应该读一读。&lt;/p&gt;
+&lt;h3&gt;2.3 build(编译)和emulate(仿真)&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ionic&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="n"&gt;ios&lt;/span&gt;
+&lt;span class="n"&gt;ionic&lt;/span&gt; &lt;span class="n"&gt;emulate&lt;/span&gt; &lt;span class="n"&gt;ios&lt;/span&gt;
+&lt;span class="n"&gt;ionic&lt;/span&gt; &lt;span class="n"&gt;serve&lt;/span&gt;
+&lt;span class="cp"&gt;#adb安装&lt;/span&gt;
+&lt;span class="n"&gt;adb&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="n"&gt;platforms&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;outputs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;apk&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;android&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;apk&lt;/span&gt;
+&lt;span class="n"&gt;adb&lt;/span&gt; &lt;span class="n"&gt;lolcat&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2.4 自定义ionic样式&lt;/h3&gt;
+&lt;p&gt;文件：scss/ionic.app.scss&lt;/p&gt;
+&lt;h3&gt;2.5 自定义内容&lt;/h3&gt;
+&lt;p&gt;Angular templating&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Directives&lt;/li&gt;
+&lt;li&gt;{{markup}}&lt;/li&gt;
+&lt;li&gt;Angular Directives(ng-repeat ng-model)&lt;/li&gt;
+&lt;li&gt;Ionic Directives(ion-view, ion-content)&lt;/li&gt;
+&lt;li&gt;Filter({{ data|filter }})&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;www/js/app.js&lt;/p&gt;
+&lt;p&gt;&lt;img alt="app.js" src="images/ionic-1.PNG" /&gt;&lt;/p&gt;
+&lt;p&gt;www/js/controller.js&lt;/p&gt;
+&lt;p&gt;&lt;img alt="app.js" src="images/ionic-2.PNG" /&gt;&lt;/p&gt;
+&lt;p&gt;www/templates/posts.html&lt;/p&gt;
+&lt;p&gt;&lt;img alt="app.js" src="images/ionic-3.PNG" /&gt;&lt;/p&gt;
+&lt;p&gt;www/templates/post.html&lt;/p&gt;
+&lt;p&gt;&lt;img alt="app.js" src="images/ionic-4.PNG" /&gt;&lt;/p&gt;
+&lt;h3&gt;2.6 Ionic CSS组件&lt;/h3&gt;
+&lt;p&gt;http://ionicframework.com/docs/components/
+http://ionicons.com/&lt;/p&gt;
+&lt;h3&gt;2.7 分发&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="app.js" src="images/ionic-5.PNG" /&gt;&lt;/p&gt;</summary><category term="ionic"></category><category term="移动开发"></category></entry><entry><title>AngularJS学习笔记05-指令</title><link href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-05-zhi-ling.html" rel="alternate"></link><updated>2015-05-04T20:31:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-04:angularjsxue-xi-bi-ji-05-zhi-ling.html</id><summary type="html">&lt;h2&gt;AngularJS四大核心特性&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;MVC&lt;/li&gt;
+&lt;li&gt;模块化和依赖注入&lt;/li&gt;
+&lt;li&gt;双向数据绑定&lt;/li&gt;
+&lt;li&gt;指令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;解析最简单的指令hello&lt;/h2&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>AngularJS学习笔记04 路由</title><link href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-04-lu-you.html" rel="alternate"></link><updated>2015-05-03T21:13:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-03:angularjsxue-xi-bi-ji-04-lu-you.html</id><summary type="html">&lt;h2&gt;Ajax的不足&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ajax请求不会留下History记录&lt;/li&gt;
+&lt;li&gt;用户无法直接通过URL进入应用中的指定页面（保存书签、链接分享给朋友）&lt;/li&gt;
+&lt;li&gt;Ajax对SEO是个灾难&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上是为什么需要前端路由的原因&lt;/p&gt;
+&lt;h2&gt;路由&lt;/h2&gt;
+&lt;p&gt;需要自己导入angular-route模块。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;framework/angular1.3.15/angular.min.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;framework/angular1.3.15/angular-route.min.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+var bookStoreApp = angular.module(&amp;#39;bookStoreApp&amp;#39;,
+ &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ngRoute&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;bookStoreCtrls&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;);
+
+bookStoreApp.config(&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;$routeProvider&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$routeProvider&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nv"&gt;$routeProvider.when&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/hello&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,{&lt;/span&gt;
+            &lt;span class="nx"&gt;templateUrl&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tpls/hello.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="nx"&gt;controller&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;HelloCtrl&amp;#39;&lt;/span&gt;
+        &lt;span class="p"&gt;})&lt;/span&gt;&lt;span class="bp"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;when&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/list&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nx"&gt;templateUrl&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tpls/bookList.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="nx"&gt;controller&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;BookListCtrl&amp;#39;&lt;/span&gt;
+        &lt;span class="p"&gt;})&lt;/span&gt;&lt;span class="bp"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;otherwise&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+            &lt;span class="nb"&gt;redirectTo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/hello&amp;#39;&lt;/span&gt;
+        &lt;span class="p"&gt;});&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;);
+&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;本节重点在于ui-router的使用，与ngRoute的区别是：
+1、可实现路由分开控制多模块页面的各个模块
+2、index.html中的视图部分为&lt;code&gt;&amp;lt;div ui-view&amp;gt;&amp;lt;/div&amp;gt;&lt;/code&gt;
+3、需要依赖ui.router，函数需要引入$stateProvider及$urlRouterProvider
+4、语法类似ngRouter&lt;/p&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>AngularJS学习笔记03 双向数据绑定</title><link href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html" rel="alternate"></link><updated>2015-05-01T00:20:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-01:angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html</id><summary type="html">&lt;p&gt;内容简介：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;简单的例子&lt;/li&gt;
 &lt;li&gt;取值表达式和ng-bind指令&lt;/li&gt;
@@ -150,7 +421,24 @@ ng-hide与ng-show相反，为true时隐藏，为false时显示。&lt;/p&gt;</sum
             &lt;span class="nx"&gt;redirectTo&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/hello&amp;#39;&lt;/span&gt;
         &lt;span class="p"&gt;});&lt;/span&gt;
 &lt;span class="p"&gt;})&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>AngularJS学习笔记01-MVC</title><link href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-01-mvc.html" rel="alternate"></link><updated>2015-04-30T20:51:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-30:angularjsxue-xi-bi-ji-01-mvc.html</id><summary type="html">&lt;h2&gt;1. 为什么需要MVC?&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>AngularJS学习笔记01-MVC</title><link href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-01-mvc.html" rel="alternate"></link><updated>2015-04-30T20:51:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-30:angularjsxue-xi-bi-ji-01-mvc.html</id><summary type="html">&lt;h2&gt;0. 第一个AngularJs应用&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;html&lt;/span&gt; &lt;span class="err"&gt;ng-app&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;charset=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;utf-8&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;http-equiv=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;X-UA-Compatible&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;IE=edge&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;AngularJs Demo&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;bower_components/angularjs/angular.min.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;ng-model=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;br&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;hello, {{name}}&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;1. 为什么需要MVC?&lt;/h2&gt;
 &lt;p&gt;MVC只是手段，终极目标是模块化与复用。&lt;/p&gt;
 &lt;h2&gt;2. 控制器(ng-controller)&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;body&lt;/span&gt; &lt;span class="na"&gt;ng-app=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;helloAngularApp&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -1677,7 +1965,7 @@ taglib：使用标签库，自定义新的标签，在jsp中启动定制行为�
       &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;Cookie&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;cookies&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getName&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;equals&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getName&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;equals&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)){&lt;/span&gt;
           &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setMaxAge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-          &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addCookie&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="sr"&gt;//&lt;/span&gt;&lt;span class="err"&gt;设置好&lt;/span&gt;&lt;span class="n"&gt;cookie后还要添加进去&lt;/span&gt;
+          &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addCookie&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="sr"&gt;//&lt;/span&gt;&lt;span class="err"&gt;设置好&lt;/span&gt;&lt;span class="n"&gt;cookie&lt;/span&gt;&lt;span class="err"&gt;后还要添加进去&lt;/span&gt;
         &lt;span class="p"&gt;}&lt;/span&gt;
       &lt;span class="p"&gt;}&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
@@ -2147,7 +2435,7 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
 
 &lt;h3&gt;1.4 jsp声明&lt;/h3&gt;
 &lt;p&gt;在jsp页面中定义变量或者方法&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;java代码&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="err"&gt;代码&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
 
 &lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="nb"&gt;String&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;lixiang&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
 &lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;int&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
@@ -2430,7 +2718,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 如下面代码:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
 &lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;green&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;first&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;三年级时&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;的小女孩&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;first&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;三年级时，我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;的小女孩。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2442,7 +2730,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 如下代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;red&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;important&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
 &lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;green&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;first&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;三年级时&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;的小女孩&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;first&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;三年级时，我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;span&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;的小女孩。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2474,7 +2762,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 &lt;h4&gt;3.7.5 文字排版--下划线&lt;/h4&gt;
 &lt;p&gt;有些情况下想为文字设置为下划线样式，这样可以在视觉上强调文字，可以使用下面代码来实现：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-decoration&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;underline&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;三年级时&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;的小女孩&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;三年级时，我还是一个&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;胆小如鼠&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;的小女孩。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2484,7 +2772,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 &lt;h4&gt;3.7.7 段落排版--缩进&lt;/h4&gt;
 &lt;p&gt;中文文字中的段前习惯空两个文字的空白，这个特殊的样式可以用下面代码来实现：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-indent&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nx"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;1922&lt;/span&gt;&lt;span class="nx"&gt;年的春天&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;一个想要成名名叫尼克卡拉威&lt;/span&gt;&lt;span class="err"&gt;（&lt;/span&gt;&lt;span class="nx"&gt;托比&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="nx"&gt;马奎尔Tobey&lt;/span&gt; &lt;span class="nx"&gt;Maguire&lt;/span&gt; &lt;span class="nx"&gt;饰&lt;/span&gt;&lt;span class="err"&gt;）&lt;/span&gt;&lt;span class="nx"&gt;的作家&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;离开了美国中西部&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;来到了纽约&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="nx"&gt;那是一个道德感渐失&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;爵士乐流行&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;走私为王&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;股票飞涨的时代&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="nx"&gt;为了追寻他的美国梦&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;他搬入纽约附近一海湾居住&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;1922&lt;/span&gt;&lt;span class="err"&gt;年的春天，一个想要成名名叫尼克卡拉威（托比&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="err"&gt;马奎尔&lt;/span&gt;&lt;span class="nx"&gt;Tobey&lt;/span&gt; &lt;span class="nx"&gt;Maguire&lt;/span&gt; &lt;span class="err"&gt;饰）的作家，离开了美国中西部，来到了纽约。那是一个道德感渐失，爵士乐流行，走私为王，股票飞涨的时代。为了追寻他的美国梦，他搬入纽约附近一海湾居住。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2492,7 +2780,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 &lt;h4&gt;3.7.8 段落排版--行间距（行高）&lt;/h4&gt;
 &lt;p&gt;这一小节我们来学习一下另一个在段落排版中起重要作用的行间距（行高）属性（line-height），如下代码实现设置段落行间距为1.5倍。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nb"&gt;line&lt;/span&gt;&lt;span class="na"&gt;-height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="nx"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;菲茨杰拉德&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;二十世纪美国文学巨擘之一&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;兼具作家和编剧双重身份&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="nx"&gt;他以诗人的敏感和戏剧家的想象为&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;爵士乐时代&amp;quot;&lt;/span&gt;&lt;span class="nx"&gt;吟唱华丽挽歌&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nx"&gt;其诗人和梦想家的气质亦为那个奢靡年代的不二注解&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;菲茨杰拉德，二十世纪美国文学巨擘之一，兼具作家和编剧双重身份。他以诗人的敏感和戏剧家的想象为&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;爵士乐时代&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;吟唱华丽挽歌，其诗人和梦想家的气质亦为那个奢靡年代的不二注解。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2503,7 +2791,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
     &lt;span class="nx"&gt;letter&lt;/span&gt;&lt;span class="na"&gt;-spacing&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2523,7 +2811,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
     &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2532,7 +2820,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
     &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2540,7 +2828,7 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="na"&gt;-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;right&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;了不起的盖茨比&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2758,7 +3046,7 @@ CSS包含3种基本的布局模型，用英文概括为：Flow、Layer 和 Float
     &lt;span class="nb"&gt;left&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="nb"&gt;top&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="nx"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本&lt;/span&gt;&lt;span class="err"&gt;。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本。&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="nx"&gt;....&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -4905,7 +5193,7 @@ after_prepare, after_build, after_build, etc&lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;row&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;col-md-6 col-md-offset-3&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;账户查询&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;账户查询&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
         &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;dl&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;dl-horizontal&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
             &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;dt&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
                 &lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Html.DisplayNameFor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;model.AccountNumber&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -4989,9 +5277,9 @@ after_prepare, after_build, after_build, etc&lt;/p&gt;
 &lt;span class="sb"&gt;- `&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Html.LabelFor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;model.Account&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="sb"&gt;`产生Label&lt;/span&gt;
 &lt;span class="sb"&gt;- `&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Html.EditorFor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;model.Account&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="sb"&gt;`产生input&lt;/span&gt;
 &lt;span class="sb"&gt;- `&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Html.ValidationMessageFor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;model.AccountNumber&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="sb"&gt;`验证信息&lt;/span&gt;
-&lt;span class="sb"&gt;- `&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Html.ValidationSummary&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="nx"&gt;验证汇总&lt;/span&gt;
+&lt;span class="sb"&gt;- `&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Html.ValidationSummary&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;`验证汇总&lt;/span&gt;
 
-&lt;span class="err"&gt;##&lt;/span&gt;&lt;span class="vi"&gt;#2&lt;/span&gt;&lt;span class="mf"&gt;.4&lt;/span&gt; &lt;span class="nx"&gt;修改CheckAccount&lt;/span&gt;
+&lt;span class="err"&gt;##&lt;/span&gt;&lt;span class="vi"&gt;#2&lt;/span&gt;&lt;span class="mf"&gt;.4&lt;/span&gt; &lt;span class="err"&gt;修改&lt;/span&gt;&lt;span class="nx"&gt;CheckAccount&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -5811,9 +6099,9 @@ PM&gt; Update-Database -Verbose -Force
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="DotNet"></category><category term="Web"></category><category term="ASP.NET MVC"></category></entry><entry><title>ASP.NET MVC5 学习笔记-2 Razor</title><link href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-2-razor.html" rel="alternate"></link><updated>2014-10-31T09:28:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-31:aspnet-mvc5-xue-xi-bi-ji-2-razor.html</id><summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
 &lt;h1&gt;ASP.NET MVC5 学习笔记-2 Razor&lt;/h1&gt;
 &lt;h2&gt;1. Razor&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;注释&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="err"&gt;注释&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;
 
-&lt;span class="nx"&gt;你在用&lt;/span&gt; &lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Request.Browser.Browser&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;发送邮件给support&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;qq.com&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;转义&lt;/span&gt;&lt;span class="p"&gt;@@&lt;/span&gt;&lt;span class="nx"&gt;qq&lt;/span&gt;
+&lt;span class="err"&gt;你在用&lt;/span&gt; &lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;Request.Browser.Browser&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;发送邮件给&lt;/span&gt;&lt;span class="nx"&gt;support&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;qq.com&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;转义&lt;/span&gt;&lt;span class="p"&gt;@@&lt;/span&gt;&lt;span class="nx"&gt;qq&lt;/span&gt;
 
 &lt;span class="p"&gt;@{&lt;/span&gt;
     &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="n"&gt;amounts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;new&lt;/span&gt; &lt;span class="nb"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;Decimal&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;25.00&lt;/span&gt;&lt;span class="nx"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;30.0&lt;/span&gt;&lt;span class="nx"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt; 
@@ -5823,8 +6111,8 @@ PM&gt; Update-Database -Verbose -Force
     &lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nb"&gt;foreach&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;decimal&lt;/span&gt; &lt;span class="n"&gt;amount&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nx"&gt;amounts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;li&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="nx"&gt;formatAmount&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;amount&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;li&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;普通文本&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="p"&gt;@:&lt;/span&gt;&lt;span class="nx"&gt;普通文本&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;普通文本&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="p"&gt;@:&lt;/span&gt;&lt;span class="err"&gt;普通文本&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;ul&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 
@@ -10553,12 +10841,12 @@ virtualenv pelican_env
 
 &lt;h3&gt;2.2 创建Markdown的博文&lt;/h3&gt;
 &lt;p&gt;在content目录下创建一个test.md的文件，然后用记事本或者notepad++或者sublime text打开，编写如下内容。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
-&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;
-&lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
-&lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;
-&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;刘理想&lt;/span&gt;
-&lt;span class="n"&gt;Summary&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;Title:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
+&lt;span class="nl"&gt;Date:&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;
+&lt;span class="nl"&gt;Category:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
+&lt;span class="nl"&gt;Tags:&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;
+&lt;span class="nl"&gt;Author:&lt;/span&gt; &lt;span class="err"&gt;刘理想&lt;/span&gt;
+&lt;span class="nl"&gt;Summary:&lt;/span&gt; &lt;span class="err"&gt;你好，世界！&lt;/span&gt;
 &lt;span class="err"&gt;你好，世界，世界，你好。&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
