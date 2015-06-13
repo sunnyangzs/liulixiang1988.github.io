@@ -74,6 +74,29 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="./aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html">ASP.NET MVC5 学习笔记-4 OWIN和Katana</a>
+      </h1>
+      <p class="meta"><time datetime="2014-10-31T20:48:00" pubdate>五 31 十月 2014</time></p>
+</header>
+
+  <div class="entry-content"><p>[TOC]</p>
+<h1>ASP.NET MVC5 学习笔记-4 OWIN和Katana</h1>
+<h2>1. Owin</h2>
+<p>OWIN全名：Open Web Interface for .NET. 它是一个说明，而非一个框架，该声明用来实现Web服务器和框架的松耦合。它提供了模块化、轻量级和便携的设计。类似Node.js, WSGI.</p>
+<p>Katana是微软实现的OWIN组件的集合。包含基础设施组件和功能性组件。并且暴露出了OWIN管道用来添加组件。可以在IIS、OwinHost.exe或者自定义的服务器中托管。</p>
+<p>比如OWIN提供了新的登录模式，比如，打开Web.config文件，我们看到：</p>
+<div class="highlight"><pre><span class="nt">&lt;system.web&gt;</span>
+    <span class="nt">&lt;authentication</span> <span class="na">mode=</span><span class="s">&quot;None&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;compilation</span> <span class="na">debug=</span><span class="s">&quot;true&quot;</span> <span class="na">targetFramework=</span><span class="s">&quot;4.5&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;httpRuntime</span> <span class="na">targetFramework=</span><span class="s">&quot;4.5&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/system.web ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="./aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="./aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html">ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器</a>
       </h1>
       <p class="meta"><time datetime="2014-10-31T09:28:00" pubdate>五 31 十月 2014</time></p>
@@ -260,19 +283,6 @@
     <a rel="full-article" href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-04-zai-listzhong-zhan-xian-shu-ju.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html">Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移</a>
-      </h1>
-      <p class="meta"><time datetime="2014-09-26T18:55:00" pubdate>五 26 九月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>Django数据库中驱动与迁移</p></div>
-  <footer>
-    <a rel="full-article" href="./django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="./index7.html">&larr; Older</a>
 
@@ -287,6 +297,9 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="./css3bi-ji-03-bian-xing-transform.html">CSS3笔记03-变形transform</a>
+      </li>
+      <li class="post">
           <a href="./css3bi-ji-02-xuan-ting-xiao-guo.html">CSS3笔记02-悬停效果</a>
       </li>
       <li class="post">
@@ -297,9 +310,6 @@
       </li>
       <li class="post">
           <a href="./jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
-      </li>
-      <li class="post">
-          <a href="./angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
       </li>
     </ul>
   </section>

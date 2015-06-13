@@ -74,6 +74,35 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="../java-webzhi-jsp-04-java-beans.html">Java Web之JSP-04 Java Beans</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-09T16:47:00" pubdate>四 09 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. JavaBean简介</h2>
+<p>javaBeans就是符合某种特定的规范的java类。使用JavaBeans的好处是解决代码重复编写，减少代码冗余，功能区分明确，提高了代码的可维护性。</p>
+<p>JavaBean的设计原则：</p>
+<ol>
+<li>公有类</li>
+<li>属性私有</li>
+<li>无参的公有构造方法</li>
+<li>getter和setter方法</li>
+</ol>
+<h2>2. JSP动作元素</h2>
+<h3>2.1 什么是JSP动作元素</h3>
+<p>JSP动作元素（action element），动作元素为请求处理阶段提供信息。动作元素遵循XML语法，有一个包含元素名的开始标签，可以有属性，可选的内容、与开始标签匹配的结束标签。</p>
+<h3>2.2 JSP动作元素的五大类</h3>
+<p>第一类是与存取JavaBean有关的，包括：
+<code>&lt;jsp:useBean&gt; &lt;jsp:setProperty&gt; &lt;jsp:getProperty&gt;</code></p>
+<p>第二类是JSP1.2就开始有的基本元素，包括6个动作元素：
+<code>&lt;jsp:include&gt; &lt;jsp:forward&gt; &lt;jsp:param&gt; &lt;jsp:plugin&gt; &lt;jsp:params ...</code></p></div>
+  <footer>
+    <a rel="full-article" href="../java-webzhi-jsp-04-java-beans.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="../java-chang-yong-fang-fa.html">Java-常用方法</a>
       </h1>
       <p class="meta"><time datetime="2015-04-08T00:30:00" pubdate>三 08 四月 2015</time></p>
@@ -347,32 +376,6 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
     <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-06-ke-cheng-zhong-xin-zhi-zuo.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">企业网站布局实践-05 新闻中心制作</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-03T14:00:00" pubdate>五 03 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1、结构分析</h2>
-<p><img alt="新闻中心" src="images/qy-web-07.png" /></p>
-<p>从上到下可以分为新闻标题、图片新闻和图片新闻。</p>
-<h2>2、创建结构</h2>
-<p>新闻中心分为标题、图片新闻和新闻列表3部分。
-其中，新闻列表还是使用无序列表。</p>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news&quot;</span><span class="nt">&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;h2&gt;</span>新闻中心<span class="nt">&lt;/h2&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;news.html&quot;</span><span class="nt">&gt;</span>More<span class="ni">&amp;gt;&amp;gt;</span><span class="nt">&lt;/a&gt;</span>
- <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- title结束 --&gt;</span>
- <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pic_news&quot;</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/news.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;h2&gt;</span>520 慕女神喊你来表白！<span class="nt">&lt;/h2&gt;</span>
-     <span class="nt">&lt;p&gt;</span>
-         活动时间：5月20日—5月25日<span class="nt">&lt;br&gt;</span>获奖公布时间：5月26日<span class="nt">&lt;br ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="../qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="../author/liu-li-xiang5.html">&larr; Older</a>
 
@@ -387,6 +390,9 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="../css3bi-ji-03-bian-xing-transform.html">CSS3笔记03-变形transform</a>
+      </li>
+      <li class="post">
           <a href="../css3bi-ji-02-xuan-ting-xiao-guo.html">CSS3笔记02-悬停效果</a>
       </li>
       <li class="post">
@@ -397,9 +403,6 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
       </li>
       <li class="post">
           <a href="../jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
-      </li>
-      <li class="post">
-          <a href="../angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
       </li>
     </ul>
   </section>

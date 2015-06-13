@@ -74,6 +74,32 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">企业网站布局实践-05 新闻中心制作</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-03T14:00:00" pubdate>五 03 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1、结构分析</h2>
+<p><img alt="新闻中心" src="images/qy-web-07.png" /></p>
+<p>从上到下可以分为新闻标题、图片新闻和图片新闻。</p>
+<h2>2、创建结构</h2>
+<p>新闻中心分为标题、图片新闻和新闻列表3部分。
+其中，新闻列表还是使用无序列表。</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;h2&gt;</span>新闻中心<span class="nt">&lt;/h2&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;news.html&quot;</span><span class="nt">&gt;</span>More<span class="ni">&amp;gt;&amp;gt;</span><span class="nt">&lt;/a&gt;</span>
+ <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- title结束 --&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pic_news&quot;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/news.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;h2&gt;</span>520 慕女神喊你来表白！<span class="nt">&lt;/h2&gt;</span>
+     <span class="nt">&lt;p&gt;</span>
+         活动时间：5月20日—5月25日<span class="nt">&lt;br&gt;</span>获奖公布时间：5月26日<span class="nt">&lt;br ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="./qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html">企业网站布局实践-04 信息展示区制作</a>
       </h1>
       <p class="meta"><time datetime="2015-04-03T11:22:00" pubdate>五 03 四月 2015</time></p>
@@ -422,29 +448,6 @@
     <a rel="full-article" href="./aspnet-mvc5-xue-xi-bi-ji-3-model.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html">ASP.NET MVC5 学习笔记-4 OWIN和Katana</a>
-      </h1>
-      <p class="meta"><time datetime="2014-10-31T20:48:00" pubdate>五 31 十月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>[TOC]</p>
-<h1>ASP.NET MVC5 学习笔记-4 OWIN和Katana</h1>
-<h2>1. Owin</h2>
-<p>OWIN全名：Open Web Interface for .NET. 它是一个说明，而非一个框架，该声明用来实现Web服务器和框架的松耦合。它提供了模块化、轻量级和便携的设计。类似Node.js, WSGI.</p>
-<p>Katana是微软实现的OWIN组件的集合。包含基础设施组件和功能性组件。并且暴露出了OWIN管道用来添加组件。可以在IIS、OwinHost.exe或者自定义的服务器中托管。</p>
-<p>比如OWIN提供了新的登录模式，比如，打开Web.config文件，我们看到：</p>
-<div class="highlight"><pre><span class="nt">&lt;system.web&gt;</span>
-    <span class="nt">&lt;authentication</span> <span class="na">mode=</span><span class="s">&quot;None&quot;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;compilation</span> <span class="na">debug=</span><span class="s">&quot;true&quot;</span> <span class="na">targetFramework=</span><span class="s">&quot;4.5&quot;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;httpRuntime</span> <span class="na">targetFramework=</span><span class="s">&quot;4.5&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/system.web ...</span></pre></div></div>
-  <footer>
-    <a rel="full-article" href="./aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="./index6.html">&larr; Older</a>
 
@@ -459,6 +462,9 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="./css3bi-ji-03-bian-xing-transform.html">CSS3笔记03-变形transform</a>
+      </li>
+      <li class="post">
           <a href="./css3bi-ji-02-xuan-ting-xiao-guo.html">CSS3笔记02-悬停效果</a>
       </li>
       <li class="post">
@@ -469,9 +475,6 @@
       </li>
       <li class="post">
           <a href="./jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
-      </li>
-      <li class="post">
-          <a href="./angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
       </li>
     </ul>
   </section>

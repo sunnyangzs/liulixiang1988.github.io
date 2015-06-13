@@ -74,6 +74,49 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="./sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html">Sass和Compass必备技能之Sass篇-03 Sass语法介绍(进阶篇)</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-17T22:46:00" pubdate>五 17 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. 变量操作</h2>
+<p>变量操作有两种方式，第一种是直接操作，第二种是通过函数。</p>
+<p>通过函数：
+- 跟代码块无关的函数，多是自己内置函数，称functions
+- 可重用的代码块，称mixin: @include和 @extand的方式来应用，</p>
+<p>运算符： <code>&gt;= &lt;= &gt; &lt; == != ()</code></p>
+<p>CSS3增加了HSL的颜色，SASS会自动转换HSL为RGB,完美解决兼容。</p>
+<p>sass支持@function来声明函数。</p>
+<h2>2. mixin和include</h2>
+<div class="highlight"><pre><span class="c1">//声明</span>
+<span class="p">@</span><span class="n">mixin</span> <span class="n">col</span><span class="o">-</span><span class="mh">6</span><span class="p">{</span>
+    <span class="nl">width:</span> <span class="mh">50</span><span class="o">%</span><span class="p">;</span>
+    <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//调用</span>
+<span class="p">.</span><span class="n">webdemo</span><span class="o">-</span><span class="n">sec</span> <span class="p">{</span>
+    <span class="p">@</span><span class="k">include</span> <span class="n">col</span><span class="o">-</span><span class="mh">6</span><span class="p">();</span>
+
+    <span class="o">&amp;:</span><span class="n">hover</span><span class="p">{</span>
+        <span class="n">background</span><span class="o">-</span><span class="nl">color:</span> <span class="p">#</span><span class="no">F5F5F5</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>CSS中class最好使用语义化的命名。IE6不支持多个class。</p>
+<p>带参数以及默认参数：</p>
+<div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="o">:</span><span class="mi">50</span><span class="o">%</span><span class="p">){</span>
+    <span class="nl">width:</span> <span class="err">$</span><span class="n">width</span><span class="p">;</span>
+    <span class="nl">float:</span> <span class="n">left ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="./sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="./sasshe-compassbi-bei-ji-neng-zhi-sasspian-02-sassyu-fa-jie-shao-ji-chu-pian.html">Sass和Compass必备技能之Sass篇-02 Sass语法介绍(基础篇)</a>
       </h1>
       <p class="meta"><time datetime="2015-04-17T22:09:00" pubdate>五 17 四月 2015</time></p>
@@ -341,35 +384,6 @@ Page,pageContext,exception.config（四个不太常用对象）</p>
     <a rel="full-article" href="./java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="./java-webzhi-jsp-04-java-beans.html">Java Web之JSP-04 Java Beans</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-09T16:47:00" pubdate>四 09 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. JavaBean简介</h2>
-<p>javaBeans就是符合某种特定的规范的java类。使用JavaBeans的好处是解决代码重复编写，减少代码冗余，功能区分明确，提高了代码的可维护性。</p>
-<p>JavaBean的设计原则：</p>
-<ol>
-<li>公有类</li>
-<li>属性私有</li>
-<li>无参的公有构造方法</li>
-<li>getter和setter方法</li>
-</ol>
-<h2>2. JSP动作元素</h2>
-<h3>2.1 什么是JSP动作元素</h3>
-<p>JSP动作元素（action element），动作元素为请求处理阶段提供信息。动作元素遵循XML语法，有一个包含元素名的开始标签，可以有属性，可选的内容、与开始标签匹配的结束标签。</p>
-<h3>2.2 JSP动作元素的五大类</h3>
-<p>第一类是与存取JavaBean有关的，包括：
-<code>&lt;jsp:useBean&gt; &lt;jsp:setProperty&gt; &lt;jsp:getProperty&gt;</code></p>
-<p>第二类是JSP1.2就开始有的基本元素，包括6个动作元素：
-<code>&lt;jsp:include&gt; &lt;jsp:forward&gt; &lt;jsp:param&gt; &lt;jsp:plugin&gt; &lt;jsp:params ...</code></p></div>
-  <footer>
-    <a rel="full-article" href="./java-webzhi-jsp-04-java-beans.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="./index4.html">&larr; Older</a>
 
@@ -384,6 +398,9 @@ Page,pageContext,exception.config（四个不太常用对象）</p>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="./css3bi-ji-03-bian-xing-transform.html">CSS3笔记03-变形transform</a>
+      </li>
+      <li class="post">
           <a href="./css3bi-ji-02-xuan-ting-xiao-guo.html">CSS3笔记02-悬停效果</a>
       </li>
       <li class="post">
@@ -394,9 +411,6 @@ Page,pageContext,exception.config（四个不太常用对象）</p>
       </li>
       <li class="post">
           <a href="./jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
-      </li>
-      <li class="post">
-          <a href="./angularjsxue-xi-bi-ji-cai-keng-bi-ji.html">AngularJS学习笔记-踩坑笔记</a>
       </li>
     </ul>
   </section>

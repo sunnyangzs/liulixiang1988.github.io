@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>理想国</title><link>http://liulixiang1988.github.io/</link><description></description><atom:link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 13 Jun 2015 20:58:00 +0800</lastBuildDate><item><title>CSS3笔记02-悬停效果</title><link>http://liulixiang1988.github.io/css3bi-ji-02-xuan-ting-xiao-guo.html</link><description>&lt;h2&gt;1. 首先需要了解几个伪类：&lt;/h2&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>理想国</title><link>http://liulixiang1988.github.io/</link><description></description><atom:link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 13 Jun 2015 22:18:00 +0800</lastBuildDate><item><title>CSS3笔记03-变形transform</title><link>http://liulixiang1988.github.io/css3bi-ji-03-bian-xing-transform.html</link><description>&lt;h2&gt;1. 缩放scale&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;transform&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;scale&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.2&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;transform-origin&lt;/code&gt;:缩放开始位置&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;transform&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;origin&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;bottom&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2. box-shadow 阴影&lt;/h2&gt;
+&lt;p&gt;用法同text-shadow&lt;/p&gt;
+&lt;h2&gt;3. 旋转rotate&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;transform&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;scale&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.2&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="n"&gt;rotate&lt;/span&gt;&lt;span class="o"&gt;(-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="n"&gt;deg&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;4. 倾斜skew&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;transform&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;scale&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.2&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="n"&gt;skew&lt;/span&gt;&lt;span class="o"&gt;(-&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;deg&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="n"&gt;deg&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;skew的参数分别是x坐标角度和y坐标角度，也可以给相同的角度&lt;code&gt;skew(30deg)&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;5. 平移translate&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;transform&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;scale&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.2&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="n"&gt;translate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;默认是向右和向下，如果是负数，方向相反&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">刘理想</dc:creator><pubDate>Sat, 13 Jun 2015 22:18:00 +0800</pubDate><guid>tag:liulixiang1988.github.io,2015-06-13:css3bi-ji-03-bian-xing-transform.html</guid><category>css3</category><category>compass</category><category>sass</category></item><item><title>CSS3笔记02-悬停效果</title><link>http://liulixiang1988.github.io/css3bi-ji-02-xuan-ting-xiao-guo.html</link><description>&lt;h2&gt;1. 首先需要了解几个伪类：&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;:hover&lt;/code&gt;选择器：当鼠标悬停在所指定的元素上时所使用的样式；&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;:active&lt;/code&gt;选择器：当所指定的元素处于激活状态（鼠标在元素上按下还没有松开）时所使用的样式；&lt;/li&gt;
