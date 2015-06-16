@@ -1,5 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2015-06-13T22:18:00+08:00</updated><entry><title>CSS3笔记03-变形transform</title><link href="http://liulixiang1988.github.io/css3bi-ji-03-bian-xing-transform.html" rel="alternate"></link><updated>2015-06-13T22:18:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-06-13:css3bi-ji-03-bian-xing-transform.html</id><summary type="html">&lt;h2&gt;1. 缩放scale&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2015-06-16T10:22:00+08:00</updated><entry><title>Windows下使用Apache+mod_wsgi部署Django</title><link href="http://liulixiang1988.github.io/windowsxia-shi-yong-apachemod_wsgibu-shu-django.html" rel="alternate"></link><updated>2015-06-16T10:22:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-06-16:windowsxia-shi-yong-apachemod_wsgibu-shu-django.html</id><summary type="html">&lt;p&gt;这个总结是在&lt;a href="http://www.cnblogs.com/liulixiang/p/3543021.html"&gt;原来笔记&lt;/a&gt;里修改而来。&lt;/p&gt;
+&lt;h2&gt;1、环境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;django 1.8.2&lt;/li&gt;
+&lt;li&gt;python 3.4 32位&lt;/li&gt;
+&lt;li&gt;apache 2.4.12 32位&lt;/li&gt;
+&lt;li&gt;一个可以使用的django project( https://github.com/liulixiang1988/python_study_case/tree/master/django)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;2、安装apache 32位&lt;/h2&gt;
+&lt;p&gt;可以在这里下载（http://www.apachelounge.com/download/）
+&lt;em&gt;注意，我们必须在这个网站上下载apache才能运行后面的mod_wsgi&lt;/em&gt;
+这时，需要注意我们还必须下载对应的分发环境，如果下载的是apache 2.4 vc14 windows binaries，则必须下载VC14 vcredist_x64/86.exe &lt;/p&gt;
+&lt;p&gt;更改基本配置:
+打开apache/conf/http.conf文件
+- 首先找到&lt;code&gt;Listen 8080&lt;/code&gt;, 更改为需要的端口
+- 找到ServerName，配置域名或者IP: &lt;code&gt;ServerName 172.16.222.45:8008&lt;/code&gt;
+- 找到ServerRoot，更改为apache目录&lt;code&gt;ServerRoot "d:/Apache24"&lt;/code&gt;
+- 找到DocumentRoot，更改为apache对应目录：&lt;code&gt;DocumentRoot "d:/Apache24/htdocs"&amp;lt;Directory "d:/Apache24/htdocs"&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;3、安装mod_wsgi&lt;/h2&gt;
+&lt;p&gt;注意，因为apache是32位的，所以mod_wsgi也应该选择32位的。mod_wsgi的官网在&lt;a href="https://code.google.com/p/modwsgi/"&gt;这里&lt;/a&gt;。但是因为没有windows编译版本（自己编译几乎都是以失败告终），所幸在&lt;a href="https://github.com/GrahamDumpleton/mod_wsgi/releases"&gt;github&lt;/a&gt;上可以下载到编译版本，我们选择&lt;a href="https://github.com/GrahamDumpleton/mod_wsgi/releases/download/4.4.12/mod_wsgi-windows-4.4.12.tar.gz"&gt;mod_wsgi-windows-4.4.12.tar.gz&lt;/a&gt;进行下载。
+下载过mod_wsgi之后，解压之后的文件为“mod_wsgi.so”文件。我们拷贝它到apache安装目录下面的modules文件夹。
+光拷贝mod_wsgi.so文件是不行的，我们还需要修改apache的配置文件，让apache知道mod_wsgi的存在。apache的配置文件在apache安装目录下的conf文件夹中的httpd.conf文件。使用记事本或者任何你喜欢的文本编辑器打开它，在文件的最后添加下面的内容并保存就可以了：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;LoadModule&lt;/span&gt; &lt;span class="n"&gt;wsgi_module&lt;/span&gt; &lt;span class="n"&gt;modules&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mod_wsgi&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mod_wsgi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;4、配置django project&lt;/h2&gt;
+&lt;p&gt;第一步，你要有个django project，如果你这是想尝试一下如何部署而没有项目的话，可以在到我的github上下载一个https://github.com/liulixiang1988/python_study_case&lt;/p&gt;
+&lt;p&gt;第二步 修改wsgi.py文件
+&lt;em&gt;这是原来笔记中记录的，在这次的部署中，我发现不需
+要这一步&lt;/em&gt;
+原以为wsgi.py不需要修改的，可是发现如果不将目录所在的文件夹添加到系统路径中，apache还是会报错，因此在wsgi.py添加下面2行&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;
+&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt;&lt;span class="o"&gt;:/&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;python_dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;python_study_case&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mydjangosite&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;其中append的参数就是你的project下的目录&lt;/p&gt;
+&lt;p&gt;第三步 配置apache/conf/httpd.conf文件
+打开httpd.conf文件，在后面添加下面内容&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;#添加映射，其中&lt;/span&gt;&lt;span class="nx"&gt;WSGIScriptAlias&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;是映射到根目录，如果你需要映射到其他地址，可以改为&lt;/span&gt;&lt;span class="nx"&gt;WSGIScriptAlias&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;myproject&lt;/span&gt; &lt;span class="err"&gt;（假设&lt;/span&gt;&lt;span class="nx"&gt;myproject&lt;/span&gt;&lt;span class="err"&gt;是你想要的地址，那么你可以通过访问&lt;/span&gt;&lt;span class="nx"&gt;localhost&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;myproject&lt;/span&gt;&lt;span class="err"&gt;来访问你的网站）&lt;/span&gt;
+&lt;span class="nx"&gt;WSGIScriptAlias&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nx"&gt;E&lt;/span&gt;&lt;span class="p"&gt;:/&lt;/span&gt;&lt;span class="nx"&gt;git&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;python_dev&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;python_study_case&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;django&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;mydjangosite&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;mydjangosite&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;wsgi.py&lt;/span&gt;
+&lt;span class="err"&gt;#指明应用路径，如果你是使用&lt;/span&gt;&lt;span class="nx"&gt;virtualenv&lt;/span&gt;&lt;span class="err"&gt;，那么还需要添加&lt;/span&gt;&lt;span class="nx"&gt;virtualenv&lt;/span&gt;&lt;span class="err"&gt;的&lt;/span&gt;&lt;span class="nx"&gt;site&lt;/span&gt;&lt;span class="na"&gt;-packages&lt;/span&gt;&lt;span class="err"&gt;路径，中间用&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;:&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;分隔&lt;/span&gt;
+&lt;span class="nx"&gt;WSGIPythonPath&lt;/span&gt; &lt;span class="nx"&gt;E&lt;/span&gt;&lt;span class="p"&gt;:/&lt;/span&gt;&lt;span class="nx"&gt;git&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;python_dev&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;python_study_case&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;django&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;mydjangosite&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;E&lt;/span&gt;&lt;span class="p"&gt;:/&lt;/span&gt;&lt;span class="nx"&gt;git&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;python_dev&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;envs&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;django&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;Lib&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;site&lt;/span&gt;&lt;span class="na"&gt;-packages&lt;/span&gt;
+&lt;span class="err"&gt;#添加&lt;/span&gt;&lt;span class="nx"&gt;wsgi&lt;/span&gt;&lt;span class="err"&gt;的读取权限&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Directory&lt;/span&gt; &lt;span class="nx"&gt;E&lt;/span&gt;&lt;span class="p"&gt;:/&lt;/span&gt;&lt;span class="nx"&gt;git&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;python_dev&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;python_study_case&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;django&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;mydjangosite&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;mydjangosite&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+     &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Files&lt;/span&gt; &lt;span class="nx"&gt;wsgi.py&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class="k"&gt;Order&lt;/span&gt; &lt;span class="nx"&gt;deny&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;allow&lt;/span&gt;
+          &lt;span class="k"&gt;Require&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="nx"&gt;granted&lt;/span&gt;
+     &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;Files&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;Directory&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class="err"&gt;#这里声明静态文静的映射，这个&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;static&lt;/span&gt;&lt;span class="err"&gt;是给&lt;/span&gt;&lt;span class="nx"&gt;django&lt;/span&gt; &lt;span class="nx"&gt;admin&lt;/span&gt;&lt;span class="err"&gt;的静态文件使用的&lt;/span&gt;
+&lt;span class="nx"&gt;Alias&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;static&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;C:/Python33/Lib/site-packages/django/contrib/admin/static&amp;quot;&lt;/span&gt;
+&lt;span class="err"&gt;#这里是添加文件夹的读取权限，注意&lt;/span&gt;&lt;span class="nx"&gt;apache2.3&lt;/span&gt;&lt;span class="err"&gt;以上的读写设置与&lt;/span&gt;&lt;span class="mf"&gt;2.3&lt;/span&gt;&lt;span class="err"&gt;以下版本有所不同&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Directory&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;C:/Python33/Lib/site-packages/django/contrib/admin/static/&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; 
+    &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;IfVersion&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mf"&gt;2.3&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="k"&gt;Order&lt;/span&gt; &lt;span class="nx"&gt;allow&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;deny&lt;/span&gt;
+        &lt;span class="nx"&gt;Allow&lt;/span&gt; &lt;span class="nb"&gt;from&lt;/span&gt; &lt;span class="kc"&gt;all&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;IfVersion&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;IfVersion&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mf"&gt;2.3&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="k"&gt;Require&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="nx"&gt;granted&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;IfVersion&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;Directory&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="err"&gt;#媒体文件&lt;/span&gt;
+&lt;span class="nx"&gt;Alias&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;media&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;F:/git/python/app-host/media&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Directory&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;F:/git/python/app-host/media&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; 
+    &lt;span class="k"&gt;Require&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="nx"&gt;granted&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;Directory&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;5、启动apache&lt;/h2&gt;
+&lt;p&gt;打开cmd，定位到apache安装目录下面的bin目录，输入httpd就可以启动服务器了，此时你就可以在你的浏览器中访问localhost了&lt;/p&gt;
+&lt;h2&gt;6、需要改进的地方&lt;/h2&gt;
+&lt;p&gt;因为工作中使用的是asp.net，对apache不熟，所以对虚拟主机的配置以及mod_wsgi的运行模式的理解还不是特别透彻，也是下一步需要学习的方向。&lt;/p&gt;
+&lt;h2&gt;7、致谢与参考&lt;/h2&gt;
+&lt;p&gt;首先感谢那些为提供这些优秀开源工程的程序员们；其次在学习如何部署的过程中，下面两篇文章对我的帮助很大，在这里再次说声谢谢!
+https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/modwsgi/
+http://agong.org/2013/windows64-python3-apache-wsgi-django.html&lt;/p&gt;
+&lt;h2&gt;8、最后&lt;/h2&gt;
+&lt;p&gt;如果你觉得这篇文章对你比较有帮助，或者有什么问题，欢迎给我留言或者email:550488300@qq.com&lt;/p&gt;</summary><category term="python"></category><category term="Django"></category><category term="部署"></category></entry><entry><title>CSS3笔记03-变形transform</title><link href="http://liulixiang1988.github.io/css3bi-ji-03-bian-xing-transform.html" rel="alternate"></link><updated>2015-06-13T22:18:00+08:00</updated><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-06-13:css3bi-ji-03-bian-xing-transform.html</id><summary type="html">&lt;h2&gt;1. 缩放scale&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;transform&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;scale&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.2&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

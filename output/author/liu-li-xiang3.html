@@ -74,6 +74,45 @@
   		<article>
 <header>
       <h1 class="entry-title">
+        <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html">Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)</a>
+      </h1>
+      <p class="meta"><time datetime="2015-04-17T23:19:00" pubdate>五 17 四月 2015</time></p>
+</header>
+
+  <div class="entry-content"><h2>1. @media</h2>
+<p>sass中的@media跟CSS区别：</p>
+<p>sass中的media query可以内嵌在css规则中，在生成CSS的时候，
+media query 才会被提到样式的最高级</p>
+<p>好处：避免了重复书写选择器或者打乱样式表的流程。</p>
+<div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="p">){</span>
+    <span class="err">@</span><span class="n">media</span><span class="p">(</span><span class="n">min</span><span class="o">-</span><span class="n">width</span><span class="o">:</span> <span class="mi">768</span><span class="n">px</span><span class="p">){</span>
+        <span class="nl">width:</span> <span class="err">$</span><span class="n">width</span><span class="p">;</span>
+        <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>2. @at-root</h2>
+<p>指定嵌套的内容生成CSS时，在最底层</p>
+<div class="highlight"><pre><span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="p">{</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
+    <span class="err">@</span><span class="n">at</span><span class="o">-</span><span class="n">root</span><span class="p">{</span>
+        <span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">headline</span><span class="p">{</span>
+            <span class="nl">font:</span><span class="p">{</span>
+                <span class="nl">family:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
+                <span class="nl">size:</span> <span class="mi">16</span><span class="n">px</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec ...</span></pre></div></div>
+  <footer>
+    <a rel="full-article" href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html">Read On &crarr;</a>
+  </footer>
+  		</article>
+  		<article>
+<header>
+      <h1 class="entry-title">
         <a href="../sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html">Sass和Compass必备技能之Sass篇-03 Sass语法介绍(进阶篇)</a>
       </h1>
       <p class="meta"><time datetime="2015-04-17T22:46:00" pubdate>五 17 四月 2015</time></p>
@@ -354,36 +393,6 @@ taglib：使用标签库，自定义新的标签，在jsp中启动定制行为�
     <a rel="full-article" href="../java-webzhi-jsp-05-jspzhuang-tai-guan-li.html">Read On &crarr;</a>
   </footer>
   		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="../java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html">Java Web之JSP-03 JSP内置对象</a>
-      </h1>
-      <p class="meta"><time datetime="2015-04-09T16:47:00" pubdate>四 09 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. jsp内置对象简介</h2>
-<p>1、JSP内置对象是Web容器创建的一组对象，【不使用new关键字】就可以使用的内置对象。
-2、九大内置对象:
-out,request,response,session,application（五大常用对象）
-Page,pageContext,exception.config（四个不太常用对象）</p>
-<h2>2. out对象</h2>
-<p>缓冲区Buffer：就是内存的一块区域涌来保存临时数据。</p>
-<p>out是JspWriter 的实例,是向客户端输出内容的常用对象.
-常用方法:</p>
-<ol>
-<li>void println() 向客户端打印字符串.</li>
-<li>void clear() 清除缓冲区,在flush之后调用会抛出异常.</li>
-<li>void clearBuffer() 清除缓冲区,在flush之后调用不会抛出异常.</li>
-<li>void flush() 将缓冲区内容输出到客户端.</li>
-<li>int getBufferSize() </li>
-<li>int getRemaining()</li>
-<li>boolean isAutoFlush() 返回缓冲区满时，是自动清空还是抛出异常</li>
-<li>void ...</li></ol></div>
-  <footer>
-    <a rel="full-article" href="../java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html">Read On &crarr;</a>
-  </footer>
-  		</article>
 <div class="pagination">
     <a class="prev" href="../author/liu-li-xiang4.html">&larr; Older</a>
 
@@ -398,6 +407,9 @@ Page,pageContext,exception.config（四个不太常用对象）</p>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
+          <a href="../windowsxia-shi-yong-apachemod_wsgibu-shu-django.html">Windows下使用Apache+mod_wsgi部署Django</a>
+      </li>
+      <li class="post">
           <a href="../css3bi-ji-03-bian-xing-transform.html">CSS3笔记03-变形transform</a>
       </li>
       <li class="post">
@@ -408,9 +420,6 @@ Page,pageContext,exception.config（四个不太常用对象）</p>
       </li>
       <li class="post">
           <a href="../ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Ionic使用教程-条码扫描</a>
-      </li>
-      <li class="post">
-          <a href="../jsbu-yi-shu-ju-chu-li-pian.html">JS补遗-数据处理篇</a>
       </li>
     </ul>
   </section>
@@ -432,7 +441,7 @@ Page,pageContext,exception.config（四个不太常用对象）</p>
 
   <section>
   <h1>Tags</h1>
-    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/css3.html">css3</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/compass.html">compass</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">sass</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>  </section>
+    <a href="../tag/pelican.html">pelican</a>,    <a href="../tag/less.html">LESS</a>,    <a href="../tag/angular.html">Angular</a>,    <a href="../tag/web.html">Web</a>,    <a href="../tag/java.html">Java</a>,    <a href="../tag/flaskbi-ji.html">Flask笔记</a>,    <a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="../tag/flask.html">Flask</a>,    <a href="../tag/python.html">Python</a>,    <a href="../tag/html.html">HTML</a>,    <a href="../tag/android.html">Android</a>,    <a href="../tag/css.html">CSS</a>,    <a href="../tag/css3.html">css3</a>,    <a href="../tag/life.html">life</a>,    <a href="../tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="../tag/javascript.html">JavaScript</a>,    <a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="../tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="../tag/compass.html">compass</a>,    <a href="../tag/exmobi.html">Exmobi</a>,    <a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="../tag/servlet.html">Servlet</a>,    <a href="../tag/net.html">.NET</a>,    <a href="../tag/jquery.html">jQuery</a>,    <a href="../tag/c.html">C#</a>,    <a href="../tag/sass.html">sass</a>,    <a href="../tag/django.html">Django</a>,    <a href="../tag/phonegap.html">PhoneGap</a>,    <a href="../tag/nancy.html">Nancy</a>,    <a href="../tag/dotnet.html">DotNet</a>,    <a href="../tag/jsp.html">JSP</a>,    <a href="../tag/ionic.html">ionic</a>,    <a href="../tag/bu-shu.html">部署</a>  </section>
 
 
 
