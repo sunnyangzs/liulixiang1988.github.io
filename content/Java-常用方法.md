@@ -24,3 +24,12 @@ String s = sdf.format(new Date());
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
 Date d = sdf.parse("2015年04月13日");
 ```
+
+##2. 泛型
+
+1.新建泛型
+
+可以再`new`后面直接使用`<>`来初始化，不需要指定类型，如下所示：
+```
+ArrayList<Crime> crimes = new ArrayList<>();
+```
