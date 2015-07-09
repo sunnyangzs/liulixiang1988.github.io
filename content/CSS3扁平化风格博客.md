@@ -277,6 +277,167 @@ gulp serve
 
 ###3.3 页头结构分析及布局
 
+```
+<header id="header" class="">
+    <nav>
+        <div class="logo"><a href="#" >理想</a></div>
+        <ul>
+            <li class="active"><a href="#">首页</a></li>
+            <li><a href="#">链接2</a></li>
+            <li><a href="#">链接3</a></li>
+            <li><a href="#">链接4</a></li>
+        </ul>
+    </nav>
+    <div id="banner">
+        <div class="inner">
+            <h1>刘理想</h1>
+            <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui cupiditate quia modi dignissimos .</p>
+            <button>了解我</button>
+            <div class="more">更多</div>
+        </div>
+    </div>
+</header>
+```
+
+定义`_header.scss`
+```
+nav {
+    background: $navbar-bgColor;
+    height: $navbar-height;
+}
+
+nav{
+    ul{
+        list-style: none;
+        margin:0;
+        float: $navbar-menu-float;
+        
+        li{
+            display: inline;
+            line-height: $navbar-height;
+            margin-right: $navbar-menu-mright;
+
+            a{
+                line-height: $navbar-height;
+                display: inline-block;
+                height: inherit;
+                text-decoration: none;
+                color: $navbar-menu-color;
+            }
+        }
+    }
+}
+```
+
+定义`_logo.scss`:
+```
+.logo{
+    font-size: $logo-fontSize;
+    font-weight: $logo-fontWeight;
+    letter-spacing: $logo-letterSpacing;
+    display: inline-block;
+    line-height: $logo-lineHeight;
+    float: $logo-float;
+    padding: $logo-padding;
+
+    a{
+        color: $logo-color;
+        text-decoration: none;
+    }
+}
+```
+
+定义`_banner.scss`:
+```
+#banner{
+    background: $banner-bgColor;
+    height: $banner-height;
+
+    .inner {
+        max-width: $banner-inner-mxwidth;
+        text-align: center;
+        margin: 0 auto;
+        position: relative;
+        top: $banner-inner-top;
+        h1{
+            margin: 0;
+        }
+
+        .sub-heading{
+            line-height: $banner-inner-subheading-lineHeight;
+            margin: $banner-inner-subheading-margin;
+        }
+
+        button{
+            padding: $banner-button-padding;
+        }
+
+        .more {
+            margin-top: $banner-inner-more-mgTop;
+        }
+    }
+}
+```
+定义`_buttons.scss`
+```
+button{
+    border: $button-border;
+    background-color: $button-bgColor;
+    color: $button-color;
+    padding: $button-padding;
+}
+```
+
+其中变量定义再`_variables.scss`:
+```
+$navbar-height : 50px;
+$navbar-bgColor: #ccc;
+$navbar-menu-float: right;
+$navbar-logo-float: left;
+//菜单项右侧外边距
+$navbar-menu-mright: 20px;
+//菜单项的颜色
+$navbar-menu-color : #fff;
+
+/*banner*/
+$banner-height : 700px;
+$banner-bgColor: #777;
+//inner最大宽度
+$banner-inner-mxwidth: 300px;
+$banner-inner-top: 160px;
+
+$banner-inner-more-mgTop: 220px;
+$banner-inner-subheading-lineHeight: 30px;
+$banner-inner-subheading-margin: 30px;
+$banner-button-padding: 14px 60px;
+/*components*/
+//button
+$button-border: none;
+$button-bgColor: #333;
+$button-color: #eee;
+$button-padding: 20px;
+//logo
+$logo-fontSize: 20px;
+$logo-fontWeight: 700;
+$logo-letterSpacing: 1px;
+$logo-float: left;
+$logo-color: #fff;
+$logo-lineHeight: $navbar-height;
+$logo-padding: 0 0 0 10px;
+```
+
+###3.3 正文部分结构分析及布局
+
+使用normalize之后，h1~6可能会造成margin collapse，解释在：
+http://stackoverflow.com/questions/7374657/normalize-css-top-header-gap
+
+>When an element with a margin is inside an element without border or padding, the margin collapses with the margin of the parent element.
+It's the margin of the h1 element that you see at the top. As none of the parents have border or padding, the margin collapses all the way out to the outermost container.
+`h1, h2, h3, h4, h5, h6{margin:0;padding:0}` solve the problem, for the moment.
+Adding `overflow:auto` on the parent also keeps the margins from collapsing. 
+
+```
+```
 
 
 
