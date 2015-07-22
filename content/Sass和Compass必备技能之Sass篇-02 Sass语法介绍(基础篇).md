@@ -24,6 +24,8 @@ $compass watch
 
 SASS CSS默认都是UTF-8，所以写不写`@charset "UTF-8"`
 
+编码问题，如果出现中文编译失败，打开`rubygems\gems\sass\lib\sass\engine.rb`文件，在require后面添加`Encoding.default_external=Encoding.find('utf-8')`。
+
 ###3.1 引用@import
 
 使用下划线命名的文件比如_variables.scss，sass称为**局部文件**，是用到其它文件中的。如果在其他文件中引用，请使用:
