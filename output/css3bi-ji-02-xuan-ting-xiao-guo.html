@@ -58,20 +58,20 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1. 首先需要了解几个伪类：</h2>
+            <h2 id="1">1. 首先需要了解几个伪类：</h2>
 <ul>
 <li><code>:hover</code>选择器：当鼠标悬停在所指定的元素上时所使用的样式；</li>
 <li><code>:active</code>选择器：当所指定的元素处于激活状态（鼠标在元素上按下还没有松开）时所使用的样式；</li>
 <li><code>:focus</code>选择器：当元素获得光标焦点时使用的样式，主要用在文本框输入文字时使用.</li>
 </ul>
-<h2>2. rgba</h2>
+<h2 id="2-rgba">2. rgba</h2>
 <div class="highlight"><pre><span class="nl">color:</span> <span class="err">#</span><span class="n">eee</span><span class="p">;</span>
 <span class="nl">color:</span> <span class="n">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">);</span>
 </pre></div>
 
 
 <p>rgba增加了透明度，在上面例子中多添加一个<code>color:#eee;</code>是为了使不支持rgba的浏览器仍然有color可用。</p>
-<h2>3. 文本阴影(text-shadow)</h2>
+<h2 id="3-text-shadow">3. 文本阴影(text-shadow)</h2>
 <div class="highlight"><pre><span class="n">a</span><span class="p">{</span>
     <span class="n">text</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="n">px</span> <span class="mi">1</span><span class="n">px</span> <span class="n">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);</span>
 <span class="p">}</span>
@@ -95,7 +95,7 @@
 </pre></div>
 
 
-<h2>4. 悬停与聚焦的样式：</h2>
+<h2 id="4">4. 悬停与聚焦的样式：</h2>
 <p>scss：</p>
 <div class="highlight"><pre><span class="nt">a</span><span class="p">{</span>
     <span class="k">padding</span><span class="o">:</span> <span class="m">5px</span> <span class="m">15px</span><span class="p">;</span>
@@ -128,7 +128,7 @@
 </pre></div>
 
 
-<h2>5. 使用border-radius圆角化悬停</h2>
+<h2 id="5-border-radius">5. 使用border-radius圆角化悬停</h2>
 <p>scss:</p>
 <div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/css3/border-radius&quot;</span><span class="p">;</span>
 
@@ -143,7 +143,7 @@
 </pre></div>
 
 
-<h2>6. 添加过渡</h2>
+<h2 id="6">6. 添加过渡</h2>
 <p>scss:</p>
 <div class="highlight"><pre><span class="err">@</span><span class="n">include</span> <span class="n">single</span><span class="o">-</span><span class="n">transition</span><span class="p">(</span><span class="n">all</span><span class="p">,</span> <span class="mf">0.3</span><span class="n">s</span><span class="p">,</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">);</span>
 </pre></div>
@@ -157,7 +157,7 @@
 </pre></div>
 
 
-<h2>7. 透明度opacity</h2>
+<h2 id="7-opacity">7. 透明度opacity</h2>
 <div class="highlight"><pre><span class="n">opacity</span><span class="o">:</span> <span class="mf">0.25</span><span class="o">;</span>
 <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">fiter</span><span class="o">:</span> <span class="s2">&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=25)&quot;</span><span class="o">;</span> <span class="cm">/*IE8 hack*/</span>
 <span class="n">filter</span><span class="o">:</span> <span class="n">alpha</span><span class="o">(</span><span class="n">opacity</span><span class="o">=</span><span class="mi">25</span><span class="o">);</span> <span class="cm">/*IE5-7 hack*/</span>

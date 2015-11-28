@@ -58,18 +58,18 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1. Compass核心模块</h2>
+            <h2 id="1-compass">1. Compass核心模块</h2>
 <p><img alt="images/compass-1.png" src="images/compass-1.png" /></p>
 <p>Reset(<code>@import "compass/reset";</code>)和Layout(<code>@import "compass/layout";</code>)并没有包含在compass的核心模块中，需要单独引用。</p>
 <p><code>@import "compass";</code>包含了CSS3/Helpers/Typography/Utilities模块：
 - CSS3模块</p>
-<h2>2. 使用normalize.css替换reset</h2>
+<h2 id="2-normalizecssreset">2. 使用normalize.css替换reset</h2>
 <p>《grunt beginer》</p>
 <p>http://necolas.github.io/normalize.css/</p>
 <p>可以使用compass插件：</p>
-<h3>2.1 安装</h3>
+<h3 id="21">2.1 安装</h3>
 <p><code>gem install compass-normalize</code></p>
-<h3>2.2 在config.rb中引入</h3>
+<h3 id="22-configrb">2.2 在config.rb中引入</h3>
 <p><code>require 'compass-normalize'</code>
 <strong>注意：config.rb中的require 'compass/import-once/activate'是防止多次引入，如果需要多次引入，使用@import 'compass/reset!',即后面加上叹号</strong>
 如果输出格式是压缩的，在注释的最前面加一个感叹号<code>/*!注释*/</code>.</p>
@@ -86,7 +86,7 @@
 </pre></div>
 
 
-<h3>2.3 在sass页面中使用</h3>
+<h3 id="23-sass">2.3 在sass页面中使用</h3>
 <p>reset的mixin和normalize里相对应</p>
 <p><img alt="images/compass-3.png" src="images/compass-3.png" /></p>
 <p>使用方法：</p>

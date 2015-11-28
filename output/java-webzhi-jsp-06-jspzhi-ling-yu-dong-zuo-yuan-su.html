@@ -58,7 +58,7 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1. include指令</h2>
+            <h2 id="1-include">1. include指令</h2>
 <p>常用的有page、include、taglib指令这三种指令；
 page：位于页面顶端，一个页面可以包含多个page指令
 include：将一个外部文件嵌入jsp中，同时解析这个页面中的jsp语句。
@@ -67,14 +67,14 @@ taglib：使用标签库，自定义新的标签，在jsp中启动定制行为�
 案例：显示当前时间的页面。
 （1）写一个只输出时间的方法的date.jsp。
 （2）用于显示的页面,包含<code>&lt;% include file="date.jsp"%&gt;</code></p>
-<h2>2. include动作</h2>
+<h2 id="2-include">2. include动作</h2>
 <ol>
 <li>是一个动作标签<code>&lt;jsp:xxx&gt;</code></li>
 <li>语法：<code>&lt;jsp:include page="URL" flush="true|false"&gt;</code></li>
 <li>page属性：要包含的页面</li>
 <li>flush属性：被包含的页面是否从缓冲区里读取</li>
 </ol>
-<h2>3. include指令和动作的区别</h2>
+<h2 id="3-include">3. include指令和动作的区别</h2>
 <ol>
 <li>包含内容： 指令包含的是【源代码】，动作包含的是页面输出的【结果】</li>
 <li>生成的servlet：指令会生成一个整体的Servlet；而动作会分别生成两个，即在一个Servlet中调用另一个Servlet</li>
@@ -82,7 +82,7 @@ taglib：使用标签库，自定义新的标签，在jsp中启动定制行为�
 <li>使用场合】：页面内容不经常变化使用include指令，页面内容经常变化使用<code>&lt;jsp:include&gt;</code>动作</li>
 </ol>
 <p><img alt="images/java-web-jsp-04.jpg" src="images/java-web-jsp-04.jpg" /></p>
-<h2>4. forward指令</h2>
+<h2 id="4-forward">4. forward指令</h2>
 <p>forward动作
 1、语法：<code>&lt;jsp:forward page="URL"/&gt;</code>
 2、等于服务器内部转发指令 <code>request.getRequestDispacher("URL").forward(req,res);</code>
@@ -92,7 +92,7 @@ taglib：使用标签库，自定义新的标签，在jsp中启动定制行为�
 <code>&lt;jsp:forward page="login_fail.jsp"/&gt;</code> //服务器将请求转发到另一页面,浏览器不知情.
 <code>&lt;% pageContext.forward("login_fail.jsp");%&gt;</code> //服务器将请求转发到另一页面,浏览器不知情.
 <code>&lt;% request.getRequestDispatcher("login_fail.jsp").forward(request,response);%&gt;</code> //服务器将请求转发到另一页面,浏览器不知情.</p>
-<h2>5. param动作</h2>
+<h2 id="5-param">5. param动作</h2>
 <ol>
 <li>语法：<code>&lt;jsp:param name="参数名" value="参数值"&gt;</code></li>
 <li>【常常与<code>&lt;jsp:forward&gt;&lt;/jsp:forward&gt;</code>一起使用】，并作为其【子标签】。</li>

@@ -58,7 +58,7 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>一、 Django Rest Framework介绍</h2>
+            <h2 id="django-rest-framework">一、 Django Rest Framework介绍</h2>
 <p>项目地址：http://www.django-rest-framework.org/</p>
 <p>Django REST framewrok（简称DRF），强大而且灵活的工具箱，它使创建Web API变得简单。</p>
 <p>你需要使用REST框架的一些原因：</p>
@@ -71,7 +71,7 @@
 <li>大公司比如Mozilla和Eventbrite都用它，靠谱~</li>
 </ul>
 <p><img alt="Browsable API" src="http://www.django-rest-framework.org/img/quickstart.png" /></p>
-<h2>二、安装需求</h2>
+<h2 id="_1">二、安装需求</h2>
 <p>REST框架具有以下要求：</p>
 <ul>
 <li>Python(2.6.5+, 2.7, 3.2, 3.3)</li>
@@ -88,7 +88,7 @@
 <li><a href="https://github.com/lukaszb/django-guardian">django-guardian</a> (1.1.1+) - 支持对象级别的权限控制</li>
 </ul>
 <p><strong>注意</strong>: <code>oauth2</code>包很容易让人误解为OAuth2，其实只支持OAuth 1.0a，并且注意在Python3中OAuth 1.0a和Oauth2.0不能同时存在。</p>
-<h2>三、安装</h2>
+<h2 id="_2">三、安装</h2>
 <p>1、使用<code>pip</code>进行安装，包含那些你想要的可选包：</p>
 <div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">djangorestframework</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">markdown</span>       <span class="err">#</span> <span class="n">Markdown</span> <span class="n">support</span> <span class="k">for</span> <span class="n">the</span> <span class="n">browsable</span> <span class="n">API</span><span class="p">.</span>
@@ -118,7 +118,7 @@
 
 
 <p><strong>注意</strong>，URL路径可以是任意的。但是必须使用<code>'rest_framework'</code>命名空间来包含<code>'rest_framework.urls'</code></p>
-<h2>四、例子</h2>
+<h2 id="_3">四、例子</h2>
 <p>来看一个用REST框架建立基于model的简单API例子。</p>
 <p>我们将创建一个获取获取工程用户信息的读写API。</p>
 <p>所有REST框架的全局设置都被保存到一个叫做<code>REST_FRAMEWORK</code>的配置字典中。我们在<code>settings.py</code>模块中添加下面的内容：</p>
@@ -163,9 +163,9 @@
 
 
 <p>现在可以在浏览器中输入http://127.0.0.1:8000/来打开API了。并且查看你刚创建的'users' API。如果你在右上角点登录，那么现在就应该可以添加、创建和删除用户了。</p>
-<h2>五、快速开始</h2>
+<h2 id="_4">五、快速开始</h2>
 <p>迫不及待的想要开始了？<a href="http://www.django-rest-framework.org/tutorial/quickstart">快速开始</a>是最快的方法让你能够创建并运行REST API的方法。</p>
-<h2>六、教程</h2>
+<h2 id="_5">六、教程</h2>
 <p>教程将让你通过REST框架创建每一部分。学习它需要一些时间，但是它会让你对每一部分如何相互匹配在一起邮个全方位的了解，强烈建议读一下。</p>
 <ul>
 <li><a href="http://www.django-rest-framework.org/tutorial/1-serialization">1-序列化</a></li>

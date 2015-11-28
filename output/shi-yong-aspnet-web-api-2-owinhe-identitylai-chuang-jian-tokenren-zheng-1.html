@@ -58,23 +58,23 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h1>使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</h1>
-<h2>0. 简介</h2>
-<h3>0.1 Token认证</h3>
-<h3>0.2 Web API</h3>
+            <h1 id="aspnet-web-api-2owinidentitytoken1">使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</h1>
+<h2 id="0">0. 简介</h2>
+<h3 id="01-token">0.1 Token认证</h3>
+<h3 id="02-web-api">0.2 Web API</h3>
 <hr />
-<h2>1. 创建后端API</h2>
-<h3>1.1 第一步 创建Web API项目</h3>
+<h2 id="1-api">1. 创建后端API</h2>
+<h3 id="11-web-api">1.1 第一步 创建Web API项目</h3>
 <p>使用VS2013，创建"ASP.NET Web应用程序"，解决方案名为AngularJSAuthentication，项目名为AngularJSAuthentication.API:</p>
 <p><img alt="Alt text" src="images/dot-net-owin-1.png" /></p>
-<h3>1.2 第二步 安装必要的NuGet包</h3>
+<h3 id="12-nuget">1.2 第二步 安装必要的NuGet包</h3>
 <div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AspNet</span><span class="p">.</span><span class="n">WebApi</span><span class="p">.</span><span class="n">Owin</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">5.1.2</span>
 <span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Owin</span><span class="p">.</span><span class="n">Host</span><span class="p">.</span><span class="n">SystemWeb</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">2.1.0</span>
 </pre></div>
 
 
 <p>其中，<code>Microsoft.Owin.Host.SystemWeb</code>包是用来Owin服务器的API能够在IIS上运行</p>
-<h3>1.3 第三步 添加Owin"启动(Startup)"类</h3>
+<h3 id="13-owinstartup">1.3 第三步 添加Owin"启动(Startup)"类</h3>
 <p>右键，添加新类<code>Startup</code>，我们会修改好几次这个类，现在它应该是这个样子：</p>
 <div class="highlight"><pre><span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">Http</span><span class="p">;</span>
 <span class="n">using</span> <span class="n">AngularJSAuthentication</span><span class="p">.</span><span class="n">API</span><span class="p">;</span>
@@ -123,9 +123,9 @@
 </pre></div>
 
 
-<h3>1.4 第四步 删除Global.asax类</h3>
+<h3 id="14-globalasax">1.4 第四步 删除Global.asax类</h3>
 <p>不再需要这个类，也不需要<code>Application_Start</code>事件，因为我们已经配置了<code>Startup</code>类，所以放心删除它吧。</p>
-<h3>1.5 第五步 添加Windows Identity System(Windows身份认证系统)</h3>
+<h3 id="15-windows-identity-systemwindows">1.5 第五步 添加Windows Identity System(Windows身份认证系统)</h3>
 <p>配置过Web API后，现在可以添加支持注册和验证用户的包了，安装如下包</p>
 <div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AspNet</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">Owin</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">2.0.1</span>
 <span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AspNet</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">EntityFramework</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">2.0.1</span>
@@ -178,7 +178,7 @@
 </pre></div>
 
 
-<h3>1.6 第六步 添加仓库类来支持ASP.NET Identity System</h3>
+<h3 id="16-aspnet-identity-system">1.6 第六步 添加仓库类来支持ASP.NET Identity System</h3>
 <p>现在，我们要实现两个方法<code>RegisterUser</code>和<code>FindUser</code>，因此，我们添加一个名为<code>AuthRepository</code>的类：</p>
 <div class="highlight"><pre><span class="k">public</span> <span class="nf">class</span> <span class="nx">AuthRepository</span> <span class="p">:</span> <span class="nx">IDisposable</span>
 <span class="p">{</span>
@@ -220,7 +220,7 @@
 
 
 <p>我们依赖<code>UserManager</code>来提供用户信息的逻辑操作。<code>UserManager</code>指导什么时候hash密码，怎么以及何时验证用户，以及如何管理请求。读<a href="http://odetocode.com/blogs/scott/archive/2014/01/20/implementing-asp-net-identity.aspx">ASP.NET Identity System</a>来了解更多。</p>
-<h3>1.7 第七步 添加我们的“账户”控制器("Account" Controller)</h3>
+<h3 id="17-account-controller">1.7 第七步 添加我们的“账户”控制器("Account" Controller)</h3>
 <p>现在是时候添加我们的第一个Web API控制器了，这个控制器用来注册新用户。在<code>Controllers</code>文件夹下添加一个空Web API 2的控制器<code>AccountController</code>：</p>
 <div class="highlight"><pre><span class="k">[RoutePrefix(&quot;api/account&quot;)]</span>
 <span class="err">public</span> <span class="err">class</span> <span class="err">AccountController</span> <span class="err">:</span> <span class="err">ApiController</span>
@@ -302,7 +302,7 @@
 <p>现在可以使用HTTP POST请求网址：“http://localhost:port/api/account/register”，如果一切正常就会收到HTTP状态码200，而且数据库会自动在表<code>dbo.AspNetUsers</code>中创建一个用户。</p>
 <p><strong>注意：</strong>通过HTTPS发送POST请求非常重要，因为敏感信息会被加密。</p>
 <p><code>GetErrorResult</code>方法是一个帮助方法用来验证<code>UserModel</code>，并且返回相应的HTTP状态码。</p>
-<h3>1.8 第八步 添加具有安全保护的“订单”控制器(Order Controller)</h3>
+<h3 id="18-order-controller">1.8 第八步 添加具有安全保护的“订单”控制器(Order Controller)</h3>
 <p>现在我们想要添加控制器来处理我们的订单，我们设定这个控制器为认证用户返回订单，为了保持简单我们返回静态数据。因此在<code>Controllers</code>下添加一个<code>OrdersController</code>：</p>
 <div class="highlight"><pre><span class="k">[RoutePrefix(&quot;api/Orders&quot;)]</span>
 <span class="err">public</span> <span class="err">class</span> <span class="err">OrdersController</span> <span class="err">:</span> <span class="err">ApiController</span>
@@ -345,7 +345,7 @@
 
 
 <p>注意我们在<code>Get</code>上加了一个<code>Authorize</code>属性，此时，如果访问 “http://localhost:port/api/orders”就会收到401未授权状态码。因为我们的请求当中并没有包含授权头信息。</p>
-<h3>1.9 第九步 添加支持OAuth Token生成功能</h3>
+<h3 id="19-oauth-token">1.9 第九步 添加支持OAuth Token生成功能</h3>
 <p>现在我们该让API增加OAuth功能</p>
 <div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Owin</span><span class="p">.</span><span class="n">Security</span><span class="p">.</span><span class="n">OAuth</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">2.1.0</span>
 </pre></div>
@@ -385,7 +385,7 @@
 <li>我们指明如何验证用户的凭据，来返回令牌，就是使用后面我们要定义的一个类<code>SimpleAuthorizationServerProvider</code></li>
 </ul>
 <p>然后将选项实例传递给扩展方法<code>UseOAuthAuthorizationServer</code>，这样我们就将认证中间件添加到了管道当中去了。</p>
-<h3>1.10 第十步 实现"SimpleAuthorizationServerProvider"类</h3>
+<h3 id="110-simpleauthorizationserverprovider">1.10 第十步 实现"SimpleAuthorizationServerProvider"类</h3>
 <p>创建一个<code>Providers</code>文件夹，然后添加一个<code>SimpleAuthorizationServerProvider</code>类：</p>
 <div class="highlight"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">SimpleAuthorizationServerProvider</span><span class="o">:</span> <span class="n">OAuthAuthorizationServerProvider</span>
 <span class="p">{</span>
@@ -425,7 +425,7 @@
 <p>如果认证成功，我们创建一个<code>ClaimsIdentity</code>类，并且传递认证类型给它。然后添加两个请求(<code>sub</code>和<code>role</code>)，他们会被包含在签名令牌中。也可以添加别的,但是会增加令牌的大小。</p>
 <p>最后使用<code>context.Validate(identity)</code>生成令牌。</p>
 <p>为了让令牌中间件提供者允许CORS，我们需要添加头"Access-Control-Allow-Origin"到Owin的上下文中。如果忘记这么做，从浏览器中调用生成令牌就会失败。</p>
-<h3>1.11 第十一步 允许ASP.NET Web API支持CORS</h3>
+<h3 id="111-aspnet-web-apicors">1.11 第十一步 允许ASP.NET Web API支持CORS</h3>
 <p>首先，需要安装对应的NuGet包：</p>
 <div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Owin</span><span class="p">.</span><span class="n">Cors</span>
 </pre></div>
@@ -445,7 +445,7 @@
 </pre></div>
 
 
-<h3>1.12 第十二步 测试后端API</h3>
+<h3 id="112-api">1.12 第十二步 测试后端API</h3>
 <p><img alt="Alt text" src="images/dot-net-owin-2.png" /></p>
 <p>注意，content-type和payload type都是"x-www-form-urlencoded"类型，因此payload body将是form(grant_type=password&amp;username="liulx"&amp;password="123456")。如果一切正常我们会在响应中收到一个签名令牌。</p>
 <p>"grant_type"指明授权类型，此处是密码。</p>

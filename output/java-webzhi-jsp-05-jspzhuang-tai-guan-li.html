@@ -58,12 +58,12 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1. http协议的无状态性</h2>
+            <h2 id="1-http">1. http协议的无状态性</h2>
 <ol>
 <li>无状态是指，当浏览器发送请求给服务器的时候，服务器会响应。但当同一个浏览器再次发送请求时，服务器不会知道是刚才那个浏览器。</li>
 <li>简单说，服务器【不会保存用户状态】，不会记得客户端是否访问过，所以这就是无状态协议。</li>
 </ol>
-<h2>2. Cookie概述</h2>
+<h2 id="2-cookie">2. Cookie概述</h2>
 <p>保存用户的状态的两大机制：session ，cookie</p>
 <p>cookie作用:</p>
 <ol>
@@ -74,7 +74,7 @@
 <p>安全风险：容易泄露用户信息
 典型应用一：判断注册用户是否已经登录网站
 典型应用二：“购物车”的处理</p>
-<h2>3. JSP页面中创建和使用Cookie</h2>
+<h2 id="3-jspcookie">3. JSP页面中创建和使用Cookie</h2>
 <ol>
 <li>创建Cookie对象：<code>Cookie cookie = new Cookie(String key , Object value);</code></li>
 <li>写入Cookie对象：<code>response.addCookie(cookie);</code></li>
@@ -87,7 +87,7 @@
 <li><code>String getValue()</code> 获取cookie的值</li>
 <li><code>int getMaxAge()</code> 获取cookie的有效时间，以秒为单位</li>
 </ol>
-<h2>4. 案例：Cookie在登录中的应用</h2>
+<h2 id="4-cookie">4. 案例：Cookie在登录中的应用</h2>
 <p>java.net包中的URLEncoder和URLDecoder可以用来编码和解码，避免出现中文乱码问题
 <code>String username = URLEncoder.encode(request.getParameter("username"),"utf-8");//编码，防止中文乱码</code></p>
 <p>login.jsp</p>

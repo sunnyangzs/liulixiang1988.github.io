@@ -59,14 +59,14 @@
         <div class="span8 offset2 article-content">
 
             <p>ionic中与硬件交互部分是使用<a href="http://ngcordova.com/">ngcordova</a>和cordova来实现。</p>
-<h2>1.下载ngcordova并且加入到文件中</h2>
+<h2 id="1ngcordova">1.下载ngcordova并且加入到文件中</h2>
 <p>到ngcordova的页面下载，然后添加到页面，注意要添加到<code>cordova.js</code>之前：</p>
 <div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;lib/ngCordova/dist/ng-cordova.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;cordova.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 </pre></div>
 
 
-<h2>2. 安装条码插件</h2>
+<h2 id="2">2. 安装条码插件</h2>
 <p>这个插件支持常见的二维码和条码扫描，非常的强大，下面我们来看看如何安装插件。</p>
 <p>ngcordova官方给出的安装方法：</p>
 <div class="highlight"><pre><span class="n">cordova</span> <span class="n">plugin</span> <span class="n">add</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/wildabeast/BarcodeScanner.git</span>
@@ -83,7 +83,7 @@
 </pre></div>
 
 
-<h2>3. 编写js代码</h2>
+<h2 id="3-js">3. 编写js代码</h2>
 <div class="highlight"><pre><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;BarcodeCtrl&#39;</span><span class="p">,</span> 
     <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$cordovaBarcodeScanner</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">$scope</span><span class="p">.</span><span class="nx">barcode</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>

@@ -58,7 +58,7 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1. 变量操作</h2>
+            <h2 id="1">1. 变量操作</h2>
 <p>变量操作有两种方式，第一种是直接操作，第二种是通过函数。</p>
 <p>通过函数：
 - 跟代码块无关的函数，多是自己内置函数，称functions
@@ -66,7 +66,7 @@
 <p>运算符： <code>&gt;= &lt;= &gt; &lt; == != ()</code></p>
 <p>CSS3增加了HSL的颜色，SASS会自动转换HSL为RGB,完美解决兼容。</p>
 <p>sass支持@function来声明函数。</p>
-<h2>2. 混合器mixin和include</h2>
+<h2 id="2-mixininclude">2. 混合器mixin和include</h2>
 <p><code>@mixin</code>来定义混合器
 <code>@include</code>来使用混合器</p>
 <div class="highlight"><pre><span class="c1">//声明</span>
@@ -86,11 +86,11 @@
 </pre></div>
 
 
-<h3>2.1 何时使用混合器</h3>
+<h3 id="21">2.1 何时使用混合器</h3>
 <p>如果你能找到一个很好的短名字来描述属性样式，比如<code>rounded-corners</code>， <code>fancy-font</code>或者<code>no-bullets</code>，那么往往能够构造一个合适的混合器。
 混合器和类名的区别是，类名往往是语义化的，而混合器是展示性的描述。</p>
 <p>CSS中class最好使用语义化的命名。IE6不支持多个class。</p>
-<h3>2.2 给混合器传参</h3>
+<h3 id="22">2.2 给混合器传参</h3>
 <p>带参数以及默认参数：</p>
 <div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="o">:</span><span class="mi">50</span><span class="o">%</span><span class="p">){</span>
     <span class="nl">width:</span> <span class="err">$</span><span class="n">width</span><span class="p">;</span>
@@ -117,7 +117,7 @@
 
 
 <p>调用可以这样：<code>@include link-color(red)</code>， <code>$hover</code>和<code>$visited</code>也会被自动赋值为<code>red</code></p>
-<h2>3. 使用选择器继承来精简CSS</h2>
+<h2 id="3-css">3. 使用选择器继承来精简CSS</h2>
 <p>选择器继承是说一个选择器可以继承了另一个选择器定义的所有样式，通过<code>@extend</code>来实现。</p>
 <div class="highlight"><pre><span class="p">.</span><span class="n">error</span><span class="p">{</span>
     <span class="nl">color:</span> <span class="err">#</span><span class="n">f00</span><span class="p">;</span>
@@ -142,7 +142,7 @@
 </pre></div>
 
 
-<h3>3.1 何时使用继承</h3>
+<h3 id="31">3.1 何时使用继承</h3>
 <p>当一个元素拥有的类似另一个类的细化，这时候使用继承比较合适。 
 extend两个知识点：
 1. extend不可以继承选择器序列

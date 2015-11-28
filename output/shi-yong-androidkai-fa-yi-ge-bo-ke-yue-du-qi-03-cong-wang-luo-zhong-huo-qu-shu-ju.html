@@ -58,7 +58,7 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1 获取URL</h2>
+            <h2 id="1-url">1 获取URL</h2>
 <p>在MainListActivity.java中添加两个常量：</p>
 <div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">NUMBER_OF_POSTS</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span> <span class="c1">//博客数目</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TAG</span> <span class="o">=</span> <span class="n">MainListActivity</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">();</span> <span class="c1">//用来做日志输出时调用</span>
@@ -83,7 +83,7 @@
 
 
 <hr />
-<h2>2 从网上获取数据的错误方法</h2>
+<h2 id="2">2 从网上获取数据的错误方法</h2>
 <p>要让应用能够上网，首先，需要在AndroidManifest.xml中添加权限</p>
 <div class="highlight"><pre><span class="nt">&lt;uses-sdk</span>
     <span class="na">android:minSdkVersion=</span><span class="s">&quot;9&quot;</span>
@@ -113,9 +113,9 @@
 
 <p>上面的方法错在哪呢？错在将网络访问放在主线程内进行。</p>
 <hr />
-<h2>3. 异步请求</h2>
+<h2 id="3">3. 异步请求</h2>
 <p><code>android.os.AsyncTask</code>用来执行异步请求。要实现自己的异步请求，需要做下面的工作。</p>
-<h3>3.1 继承<code>android.os.AsyncTask</code>，实现<code>doInBackground</code>方法</h3>
+<h3 id="31-androidosasynctaskdoinbackground">3.1 继承<code>android.os.AsyncTask</code>，实现<code>doInBackground</code>方法</h3>
 <div class="highlight"><pre><span class="kd">private</span> <span class="kd">class</span> <span class="nc">GetBlogPostTasks</span> <span class="kd">extends</span> <span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;{</span>
 
     <span class="nd">@Override</span>
@@ -164,7 +164,7 @@
 </pre></div>
 
 
-<h3>3.2 调用异步类</h3>
+<h3 id="32">3.2 调用异步类</h3>
 <p>调用异步类的方法比较容易，在<code>MainListActivity</code>的<code>onCreate</code>方法中添加：</p>
 <div class="highlight"><pre><span class="n">GetBlogPostTasks</span> <span class="n">getBlogPostTask</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GetBlogPostTasks</span><span class="o">();</span>
 <span class="n">getBlogPostTask</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
@@ -172,7 +172,7 @@
 
 
 <hr />
-<h2>4 处理无法联网的情况</h2>
+<h2 id="4">4 处理无法联网的情况</h2>
 <p>在从网上获取数据时，我们还有一件事情要做，就是处理网络不可用的时候的情况。</p>
 <p>要检查网络状况，也需要对应的权限，在AndroidManifest文件中添加对应的权限：</p>
 <div class="highlight"><pre><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.ACCESS_NETWORK_STATE&quot;</span><span class="nt">/&gt;</span>
@@ -210,7 +210,7 @@
 
 
 <hr />
-<h2>5 从HTTP请求中获得JSON数据</h2>
+<h2 id="5-httpjson">5 从HTTP请求中获得JSON数据</h2>
 <p>获取JSON数据的网址是http://blog.teamtreehouse.com/api/get_recent_summary/?count=20 可以先在浏览器中打开看看数据的格式。</p>
 <p>在前一节中，我们检查了网络情况，并打印了返回值。在本节中，我们将从结果中打印出返回的结果。</p>
 <div class="highlight"><pre><span class="k">try</span><span class="o">{</span>
@@ -249,18 +249,18 @@
 <li><code>char[]</code>转换为<code>String</code>，并调用<code>Log.v</code>输出，这里的<code>v</code>是指verbose</li>
 </ul>
 <hr />
-<h2>6 从JSON格式中解析数据</h2>
+<h2 id="6-json">6 从JSON格式中解析数据</h2>
 <p>Android提供了内建对象用来做JSON解析：</p>
 <ul>
 <li><code>JSONObject</code></li>
 <li><code>JSONArray</code>：<code>JSONObject</code>数组</li>
 </ul>
-<h3>6.1 声明JSONObject</h3>
+<h3 id="61-jsonobject">6.1 声明JSONObject</h3>
 <div class="highlight"><pre><span class="n">JSONObject</span> <span class="n">jsonResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONObject</span><span class="o">(</span><span class="n">responseData</span><span class="o">);</span>
 </pre></div>
 
 
-<h3>6.2 获取JSONObject中的数据</h3>
+<h3 id="62-jsonobject">6.2 获取JSONObject中的数据</h3>
 <p><code>JSONObject</code>提供了很多获取数据的方法，比如<code>getString</code>, <code>getInt</code>, <code>getJSONArray</code>等。</p>
 <p><strong>注意</strong>，<code>getJSONArray</code>返回<code>JSONArray</code>对象。</p>
 <div class="highlight"><pre><span class="n">String</span> <span class="n">status</span> <span class="o">=</span> <span class="n">jsonResponse</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;status&quot;</span><span class="o">);</span>
@@ -268,7 +268,7 @@
 </pre></div>
 
 
-<h3>6.3 使用JSONArray</h3>
+<h3 id="63-jsonarray">6.3 使用JSONArray</h3>
 <div class="highlight"><pre><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">jsonPosts</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++){</span>
     <span class="n">JSONObject</span> <span class="n">jsonPost</span> <span class="o">=</span> <span class="n">jsonPosts</span><span class="o">.</span><span class="na">getJSONObject</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
     <span class="n">String</span> <span class="n">title</span> <span class="o">=</span> <span class="n">jsonPost</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;title&quot;</span><span class="o">);</span>

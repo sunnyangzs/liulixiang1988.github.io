@@ -58,7 +58,7 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>0. 第一个AngularJs应用</h2>
+            <h2 id="0-angularjs">0. 第一个AngularJs应用</h2>
 <div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="err">ng-app</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
@@ -75,9 +75,9 @@
 </pre></div>
 
 
-<h2>1. 为什么需要MVC?</h2>
+<h2 id="1-mvc">1. 为什么需要MVC?</h2>
 <p>MVC只是手段，终极目标是模块化与复用。</p>
-<h2>2. 控制器(ng-controller)</h2>
+<h2 id="2-ng-controller">2. 控制器(ng-controller)</h2>
 <div class="highlight"><pre><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">&quot;helloAngularApp&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">&quot;HelloCtrl&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>{{greeting.text}},world!<span class="nt">&lt;/p&gt;</span>
@@ -100,7 +100,7 @@
 </pre></div>
 
 
-<h3>2.1 注意点</h3>
+<h3 id="21">2.1 注意点</h3>
 <ol>
 <li>不要视图去复用Controller，一个控制器只负责一小块视图；</li>
 <li>不要在Controller中操作DOM，这不是控制器的职责</li>
@@ -108,7 +108,7 @@
 <li>不要在Controller里做数据过滤，ng有$filter服务</li>
 <li>一般来说，Controlle是不会相互调用的，控制器之间的交互会通过事件进行。</li>
 </ol>
-<h2>3. 模型Model(ng-model)</h2>
+<h2 id="3-modelng-model">3. 模型Model(ng-model)</h2>
 <div class="highlight"><pre><span class="nt">&lt;body</span> <span class="err">ng-app</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div&gt;</span>
         <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;greeting.text&quot;</span><span class="nt">&gt;</span>
@@ -119,7 +119,7 @@
 </pre></div>
 
 
-<h2>4. 视图View</h2>
+<h2 id="4-view">4. 视图View</h2>
 <p>通过指令实现</p>
 <div class="highlight"><pre><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">&quot;helloAngularApp&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div&gt;</span>
@@ -141,7 +141,7 @@
 </pre></div>
 
 
-<h2>5. $scope</h2>
+<h2 id="5-scope">5. $scope</h2>
 <p><strong>注意：AngularJS的MVC是借助于$scope实现的!!!</strong></p>
 <div class="highlight"><pre><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">&quot;helloAngularApp&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">&quot;GreetCtrl&quot;</span><span class="nt">&gt;</span>
@@ -169,7 +169,7 @@
 </pre></div>
 
 
-<h3>5.1 事件在scope上的传播</h3>
+<h3 id="51-scope">5.1 事件在scope上的传播</h3>
 <div class="highlight"><pre><span class="nt">&lt;body</span> <span class="na">ng-app=</span><span class="s">&quot;helloAngularApp&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">&quot;HelloCtrl&quot;</span><span class="nt">&gt;</span>
         Root Scope
@@ -217,7 +217,7 @@
 <li>$scope不仅是MVC的基础，也是后面实现双向数据绑定的基础</li>
 <li>可以使用angular.element($0).scope()进行调试</li>
 </ul>
-<h2>6. $scope生命周期</h2>
+<h2 id="6-scope">6. $scope生命周期</h2>
 <ul>
 <li>创建</li>
 <li>注册监控</li>

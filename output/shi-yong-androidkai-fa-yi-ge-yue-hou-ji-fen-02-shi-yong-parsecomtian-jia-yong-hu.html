@@ -58,11 +58,11 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1. 创建Parse.com账户和应用</h2>
-<h3>1.1 创建Parse.com的账户</h3>
-<h3>1.2 添加Parse.com的SDK</h3>
+            <h2 id="1-parsecom">1. 创建Parse.com账户和应用</h2>
+<h3 id="11-parsecom">1.1 创建Parse.com的账户</h3>
+<h3 id="12-parsecomsdk">1.2 添加Parse.com的SDK</h3>
 <p>直接将Paser.com的SDK添加到app/libs文件夹内即可。</p>
-<h3>1.3 创建一个继承自Application的对象</h3>
+<h3 id="13-application">1.3 创建一个继承自Application的对象</h3>
 <div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RabbitApplication</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
@@ -76,13 +76,13 @@
 <p>Application通常在app启动的时候就会自动创建。Application在app中是一个单例模式，而且Application也是整个app生命周期最长的对象。所有的Activity和Service都是共用着一个Application，所以Application通常用来共享数据，数据传递和数据缓存。</p>
 <p>其中的<code>Parse.initialize()</code>时根据每个账户不同而不同，具体参见https://parse.com/apps/quickstart#parse_data/mobile/android/native/existing </p>
 <p>仅仅自定义一个Application类时不行的，还需要在AndroidManifest.xml中的<code>&lt;Application&gt;</code>节点添加<code>android:name=".RabbitApplication"</code>属性.</p>
-<h3>1.4 添加Parse.com所需要的权限</h3>
+<h3 id="14-parsecom">1.4 添加Parse.com所需要的权限</h3>
 <div class="highlight"><pre><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.INTERNET&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.ACCESS_NETWORK_STATE&quot;</span> <span class="nt">/&gt;</span>
 </pre></div>
 
 
-<h3>1.5 测试Parse</h3>
+<h3 id="15-parse">1.5 测试Parse</h3>
 <p>在RabbitApplication中的<code>onCreate</code>方法中添加</p>
 <div class="highlight"><pre><span class="n">ParseObject</span> <span class="n">testObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParseObject</span><span class="o">(</span><span class="s">&quot;TestObject&quot;</span><span class="o">);</span>
 <span class="n">testObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span><span class="o">);</span>
@@ -92,7 +92,7 @@
 
 <p>此时，点击运行程序。然后在Parse.com中的core里查看，我们可以看到一个表格。</p>
 <p><img alt="Parse.com后台测试数据" src="images/Snip20141005_1.png" /></p>
-<h2>2. 使用对话框处理错误</h2>
+<h2 id="2">2. 使用对话框处理错误</h2>
 <p>在SignUpActivity中的<code>onCreate</code>添加：</p>
 <div class="highlight"><pre><span class="n">mUserName</span> <span class="o">=</span> <span class="o">(</span><span class="n">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">usernameField</span><span class="o">);</span>
 <span class="n">mPassword</span> <span class="o">=</span> <span class="o">(</span><span class="n">EditText</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">passwordField</span><span class="o">);</span>
@@ -122,7 +122,7 @@
 </pre></div>
 
 
-<h2>3. 使用Parse创建用户</h2>
+<h2 id="3-parse">3. 使用Parse创建用户</h2>
 <p>创建用户很简单，文档在https://parse.com/docs/android_guide#users-signup</p>
 <div class="highlight"><pre><span class="n">mSendBtn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
     <span class="nd">@Override</span>
@@ -163,8 +163,8 @@
 
 <p>运行程序并注册，然后到https://www.parse.com/apps/rabbit--45/collections#class/_User 可以看到已经注册了一个用户</p>
 <p><img alt="用户注册" src="images/Snip20141005_2.png" /></p>
-<h2>4. 用户登录</h2>
-<h3>4.1 用户登录代码</h3>
+<h2 id="4">4. 用户登录</h2>
+<h3 id="41">4.1 用户登录代码</h3>
 <p>使用Parse.com登录的文档在：https://parse.com/docs/android_guide#users-login</p>
 <p>打开LoginActivity，添加如下代码</p>
 <div class="highlight"><pre><span class="kd">protected</span> <span class="n">EditText</span> <span class="n">mUserName</span><span class="o">;</span>
@@ -226,7 +226,7 @@
 </pre></div>
 
 
-<h3>4.2 修改MainActivity</h3>
+<h3 id="42-mainactivity">4.2 修改MainActivity</h3>
 <p>Parse获取当前用户的方法：https://parse.com/docs/android_guide#users-current</p>
 <p>打开MainActivity.java，修改<code>onCreate</code>方法：</p>
 <div class="highlight"><pre><span class="n">ParseUser</span> <span class="n">currentUser</span> <span class="o">=</span> <span class="n">ParseUser</span><span class="o">.</span><span class="na">getCurrentUser</span><span class="o">();</span>
@@ -245,10 +245,10 @@
 </pre></div>
 
 
-<h2>5. 用户登出</h2>
+<h2 id="5">5. 用户登出</h2>
 <p>Parse登出用户的方法也在：https://parse.com/docs/android_guide#users-current</p>
 <p>同时，我们还需要考虑一个问题，在哪里添加登出按钮比较合适呢？一般我们可以在菜单栏中添加退出按钮。</p>
-<h3>5.1 添加菜单</h3>
+<h3 id="51">5.1 添加菜单</h3>
 <p>Android的菜单是在<code>onCreateOptionsMenu</code>方法中定义，打开MainActivity.java，我们看到它的菜单定义是：</p>
 <div class="highlight"><pre><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onCreateOptionsMenu</span><span class="o">(</span><span class="n">Menu</span> <span class="n">menu</span><span class="o">)</span> <span class="o">{</span>
@@ -274,7 +274,7 @@
 <p>说明：
 - orderInCategory:定义了一个顺序，值越小越在上面，值越大越在下面
 - showAsAction:定义了是否在菜单栏中显示该动作，<code>always</code>表示一直显示，<code>ifRoom</code>表示有足够空间时显示， <code>never</code>表示不显示.</p>
-<h3>5.2 菜单事件处理方法</h3>
+<h3 id="52">5.2 菜单事件处理方法</h3>
 <p>Android的菜单事件处理方法是在<code>onOptionsItemSelected</code>中处理的。比如我们要处理登出事件，在<code>onOptionsItemSelected</code>中添加：</p>
 <div class="highlight"><pre><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onOptionsItemSelected</span><span class="o">(</span><span class="n">MenuItem</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
@@ -307,7 +307,7 @@
 </pre></div>
 
 
-<h2>6. 添加指示器表示登录状态</h2>
+<h2 id="6">6. 添加指示器表示登录状态</h2>
 <p>之前在使用Android创建博客阅读器的过程中，我们使用在layout中添加指示器的方法来添加指示器。除了这种方法之外，我们还可以使用另外一种方法在菜单中添加指示器。</p>
 <p>打开SignUpActivity.java，在<code>onCreate</code>中添加：</p>
 <div class="highlight"><pre><span class="n">requestWindowFeature</span><span class="o">(</span><span class="n">Window</span><span class="o">.</span><span class="na">FEATURE_INDETERMINATE_PROGRESS</span><span class="o">);</span>
@@ -328,7 +328,7 @@
 </pre></div>
 
 
-<h2>7. 总结</h2>
+<h2 id="7">7. 总结</h2>
 <p>本节，我们学习了如何使用Parse，如何将Parse SDK添加到现有项目中，如何创建用户、用户登录、用户登出、使用对话框处理错误和使用指示器来显示注册、登录状态等等。</p>
 
  

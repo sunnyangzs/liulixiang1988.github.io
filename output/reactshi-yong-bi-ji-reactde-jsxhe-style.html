@@ -56,73 +56,82 @@
 </div>
 
 <div class="row-fluid">
-        <div class="span8 offset2 article-content">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#1">1. 文件基本结构</a></li>
+<li><a href="#2">2. 添加样式</a><ul>
+<li><a href="#21-css">2.1 使用外部CSS样式</a></li>
+<li><a href="#22-css">2.2 使用内联CSS样式</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
 
-            <p>[TOC]</p>
-<h2>1. 文件基本结构</h2>
+            
+<h2 id="1">1. 文件基本结构</h2>
 <div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=edge&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;title&gt;&lt;/title&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>
     <span class="c">&lt;!--react.js--&gt;</span>
-    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/react.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"js/react.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
     <span class="c">&lt;!--解析JSX--&gt;</span>
-    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/JSXTransformer.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"js/JSXTransformer.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"container"</span><span class="nt">&gt;&lt;/div&gt;</span>
 
-    <span class="c">&lt;!--JSX的声明需要是type=&quot;text/jsx&quot;--&gt;</span>
-    <span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/jsx&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--JSX的声明需要是type="text/jsx"--&gt;</span>
+    <span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
     var Hello = React.createClass({
         render: function(){
             return <span class="nt">&lt;div&gt;</span>Hello, {this.props.name}<span class="nt">&lt;/div&gt;</span>;
         }
     });
-    React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><span class="s">&quot;world&quot;</span><span class="nt">/&gt;</span>, 
-        document.getElementById(&#39;container&#39;));
+    React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><span class="s">"world"</span><span class="nt">/&gt;</span>, 
+        document.getElementById('container'));
     <span class="nt">&lt;/script&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </pre></div>
-
-
 <p>注意：JSX的type是<code>text/jsx</code>.</p>
-<h2>2. 添加样式</h2>
-<h3>2.1 使用外部CSS样式</h3>
+<h2 id="2">2. 添加样式</h2>
+<h3 id="21-css">2.1 使用外部CSS样式</h3>
 <p>注意，在JSX中不能直接给components添加<code>class</code>，因为<code>class</code>在ES6中是关键字，并且在ES6之前也是保留字，使用<code>className</code>来代替。</p>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/jsx&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
 var Hello = React.createClass({
     render: function(){
-        return <span class="nt">&lt;div</span> <span class="na">className=</span><span class="s">&quot;alert-text&quot;</span><span class="nt">&gt;</span>Hello, {this.props.name}<span class="nt">&lt;/div&gt;</span>;
+        return <span class="nt">&lt;div</span> <span class="na">className=</span><span class="s">"alert-text"</span><span class="nt">&gt;</span>Hello, {this.props.name}<span class="nt">&lt;/div&gt;</span>;
     }
 });
-React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><span class="s">&quot;world&quot;</span><span class="nt">/&gt;</span>, 
-    document.getElementById(&#39;container&#39;));
+React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><span class="s">"world"</span><span class="nt">/&gt;</span>, 
+    document.getElementById('container'));
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
-
-
-<h3>2.2 使用内联CSS样式</h3>
+<h3 id="22-css">2.2 使用内联CSS样式</h3>
 <p>JSX中内联样式需要使用字典来表示，并且使用驼峰命名法代替原有的<code>font-size</code>等格式的样式，比如<code>fontSize</code>来代替<code>font-size</code>等。
 <strong>注意</strong>，如果样式出现错误，可以通过控制台来查看错误。</p>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/jsx&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
 var Hello = React.createClass({
     render: function(){
-        return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">{{color:&#39;red&#39;}}</span><span class="nt">&gt;</span>Hello, {this.props.name}<span class="nt">&lt;/div&gt;</span>;
+        return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">{{color:'red'}}</span><span class="nt">&gt;</span>Hello, {this.props.name}<span class="nt">&lt;/div&gt;</span>;
     }
 });
-React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><span class="s">&quot;world&quot;</span><span class="nt">/&gt;</span>, 
-    document.getElementById(&#39;container&#39;));
+React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><span class="s">"world"</span><span class="nt">/&gt;</span>, 
+    document.getElementById('container'));
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
-
-
 <p><code>style={{color:'red'}}</code>中有两个括号，可能会让人看着发晕，其实它与下面是等价的</p>
-<div class="highlight"><pre><span class="n">var</span> <span class="n">styleObj</span> <span class="o">=</span> <span class="p">{</span><span class="n">color</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">red</span><span class="err">&#39;</span><span class="p">};</span>
+<div class="highlight"><pre><span class="n">var</span> <span class="n">styleObj</span> <span class="o">=</span> <span class="p">{</span><span class="n">color</span><span class="o">:</span> <span class="err">'</span><span class="n">red</span><span class="err">'</span><span class="p">};</span>
 <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="n">styleObj</span><span class="p">}</span>
 </pre></div>
 

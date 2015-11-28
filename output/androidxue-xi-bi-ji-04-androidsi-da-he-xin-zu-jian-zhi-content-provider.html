@@ -58,13 +58,13 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h1>Android学习笔记 - 04 Android四大核心组件之Content Provider</h1>
-<h2>一、概述</h2>
+            <h1 id="android-04-androidcontent-provider">Android学习笔记 - 04 Android四大核心组件之Content Provider</h1>
+<h2 id="_1">一、概述</h2>
 <p>Content Provider用于应用之间共享数据，比如读取联系人数据，或者自己应用的数据共享给其它的应用</p>
 <p>如果要共享数据，必须指定一个URI</p>
 <p>本节主要读取其它应用的数据，这里以联系人数据为例。</p>
-<h2>二、用法</h2>
-<h3>1、读取联系人，使用查询，返回游标，然后遍历游标</h3>
+<h2 id="_2">二、用法</h2>
+<h3 id="1">1、读取联系人，使用查询，返回游标，然后遍历游标</h3>
 <div class="highlight"><pre><span class="n">Cursor</span> <span class="n">c</span> <span class="o">=</span> <span class="n">getContentResolver</span><span class="o">().</span><span class="na">query</span><span class="o">(</span><span class="n">ContactsContract</span><span class="o">.</span><span class="na">Contacts</span><span class="o">.</span><span class="na">CONTENT_URI</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
 
 <span class="k">while</span><span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">moveToNext</span><span class="o">()){</span>
@@ -74,7 +74,7 @@
 </pre></div>
 
 
-<h3>2、在AndroidManifest.xml的<mainifest>节点下添加读取权限：</h3>
+<h3 id="2androidmanifestxml">2、在AndroidManifest.xml的<mainifest>节点下添加读取权限：</h3>
 <div class="highlight"><pre><span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.READ_CONTACTS&quot;</span> <span class="o">/&gt;</span>
 </pre></div>
 

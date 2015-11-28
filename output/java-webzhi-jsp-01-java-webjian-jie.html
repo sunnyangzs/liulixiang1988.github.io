@@ -58,19 +58,19 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1. Tomcat配置</h2>
-<h3>1.1 创建环境变量</h3>
+            <h2 id="1-tomcat">1. Tomcat配置</h2>
+<h3 id="11">1.1 创建环境变量</h3>
 <p>创建环境变量<code>CATALINA_HOME</code>,值为Tomcat所在根目录（比如，windows下可能为为<code>C:\Program Files (x86)\Apache Software Foundation\Tomcat 7.0</code>).</p>
-<h3>1.2 启动Tomcat</h3>
+<h3 id="12-tomcat">1.2 启动Tomcat</h3>
 <p>在<code>CATALINA_HOME</code>的bin目录下有startup脚本。</p>
-<h3>1.3 测试</h3>
+<h3 id="13">1.3 测试</h3>
 <p>地址：http://localhost:8080</p>
-<h2>2. Tomcat目录结构</h2>
+<h2 id="2-tomcat">2. Tomcat目录结构</h2>
 <p><img alt="tomcat" src="images/java-web-jsp-01.png" /></p>
-<h2>3. 手工编写第一个Java  Web应用程序</h2>
-<h3>3.1 创建Web App目录</h3>
+<h2 id="3-java-web">3. 手工编写第一个Java  Web应用程序</h2>
+<h3 id="31-web-app">3.1 创建Web App目录</h3>
 <p>在Tomcat的webapps目录下创建目录myhome</p>
-<h3>3.2 在myhome目录下创建内容</h3>
+<h3 id="32-myhome">3.2 在myhome目录下创建内容</h3>
 <p>1、创建index.jsp:</p>
 <div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
@@ -99,7 +99,7 @@
 
 
 <p>创建classes和lib子文件夹</p>
-<h2>4. WEB-INF目录详解</h2>
+<h2 id="4-web-inf">4. WEB-INF目录详解</h2>
 <ol>
 <li>WEB-INF目录是一个安全目录，只有通过服务器才能访问。</li>
 <li>web.xml,项目部署文件，比如配置项目的欢迎页面。</li>
@@ -114,17 +114,17 @@
 <li>classes文件夹，用以放置*.class文件。</li>
 <li>lib文件夹，用于存放需要的jar包。</li>
 </ol>
-<h2>5. 使用eclipse开发web</h2>
-<h3>5.1 MyEclipse配置JRE</h3>
+<h2 id="5-eclipseweb">5. 使用eclipse开发web</h2>
+<h3 id="51-myeclipsejre">5.1 MyEclipse配置JRE</h3>
 <p>windows-&gt;preference-&gt;java-&gt;Installed JREs</p>
-<h3>5.2 MyEclipse集成Tomcat服务器</h3>
+<h3 id="52-myeclipsetomcat">5.2 MyEclipse集成Tomcat服务器</h3>
 <p>windows-&gt;preference-&gt;Myeclipse-&gt;server-&gt;Runtime Environments</p>
 <p>启动Tomcat</p>
-<h3>5.3 使用MyEclipse创建Java web应用</h3>
+<h3 id="53-myeclipsejava-web">5.3 使用MyEclipse创建Java web应用</h3>
 <p>新建web project，命名为MyFirstWebApp，其余默认</p>
-<h3>5.4 修改字体</h3>
+<h3 id="54">5.4 修改字体</h3>
 <p>windows-&gt;preference-&gt;General-&gt;Appearance-&gt;Colors and Fonts，然后修改Text Font。</p>
-<h2>6. 修改Tomcat服务器默认端口</h2>
+<h2 id="6-tomcat">6. 修改Tomcat服务器默认端口</h2>
 <p>修改conf/server.xml文件</p>
 <div class="highlight"><pre><span class="o">&lt;</span><span class="n">Connector</span> <span class="n">executor</span><span class="o">=</span><span class="s">&quot;tomcatThreadPool&quot;</span>
            <span class="n">port</span><span class="o">=</span><span class="s">&quot;8080&quot;</span> <span class="n">protocol</span><span class="o">=</span><span class="s">&quot;HTTP/1.1&quot;</span>

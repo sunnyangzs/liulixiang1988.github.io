@@ -58,18 +58,18 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1 Relative Layout</h2>
+            <h2 id="1-relative-layout">1 Relative Layout</h2>
 <p>根据子元素来调整位置</p>
-<h2>2 Framely Layout</h2>
+<h2 id="2-framely-layout">2 Framely Layout</h2>
 <p>一直在左上角，速度快</p>
-<h2>3 Linear Layout</h2>
+<h2 id="3-linear-layout">3 Linear Layout</h2>
 <p>一个挨着一个排列，可以水平排列，也可以垂直排列。</p>
 <p>有一个weight属性，表示子对象分割父级对象分割的比例。</p>
-<h2>4 Table Layout</h2>
+<h2 id="4-table-layout">4 Table Layout</h2>
 <p>最外层是Table Layout，垂直布局
 里层是Table Row，水平布局</p>
-<h2>5 通过应用程序动态的添加子对象</h2>
-<h3>5.1 创建一个Layout文件</h3>
+<h2 id="5">5 通过应用程序动态的添加子对象</h2>
+<h3 id="51-layout">5.1 创建一个Layout文件</h3>
 <div class="highlight"><pre><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
               <span class="na">android:orientation=</span><span class="s">&quot;vertical&quot;</span>
               <span class="na">android:layout_width=</span><span class="s">&quot;fill_parent&quot;</span>
@@ -80,7 +80,7 @@
 </pre></div>
 
 
-<h3>5.2 在Activity中添加</h3>
+<h3 id="52-activity">5.2 在Activity中添加</h3>
 <div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="n">Button</span> <span class="n">btn</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">LinearLayout</span> <span class="n">linearLayout</span><span class="o">;</span>

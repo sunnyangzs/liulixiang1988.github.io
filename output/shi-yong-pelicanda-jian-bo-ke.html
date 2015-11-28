@@ -58,8 +58,8 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1 环境配置</h2>
-<h3>1.1 安装Pelican</h3>
+            <h2 id="1">1 环境配置</h2>
+<h3 id="11-pelican">1.1 安装Pelican</h3>
 <p><strong>注</strong>:以下是在windows环境下安装pelican，Python版本使用的是3.41版本，该版本自带pip工具</p>
 <div class="highlight"><pre>pip install virtualenv
 virtualenv pelican_env
@@ -73,7 +73,7 @@ virtualenv pelican_env
 </pre></div>
 
 
-<h3>1.2 创建Github Page</h3>
+<h3 id="12-github-page">1.2 创建Github Page</h3>
 <p>在Github上创建一个仓库，仓库名是<code>用户名.github.io</code>，注意这里的用户名是自己的用户名。如下图所示.</p>
 <p><img alt="Github Page" src="images/github.png" /></p>
 <p>创建好后，克隆到本地</p>
@@ -82,8 +82,8 @@ virtualenv pelican_env
 </pre></div>
 
 
-<h2>2 使用Pelican写博客</h2>
-<h3>2.1 创建Pelican博客</h3>
+<h2 id="2-pelican">2 使用Pelican写博客</h2>
+<h3 id="21-pelican">2.1 创建Pelican博客</h3>
 <p>创建分支</p>
 <div class="highlight"><pre>git checkout -b <span class="nb">source</span> 
 </pre></div>
@@ -112,7 +112,7 @@ virtualenv pelican_env
 </pre></div>
 
 
-<h3>2.2 创建Markdown的博文</h3>
+<h3 id="22-markdown">2.2 创建Markdown的博文</h3>
 <p>在content目录下创建一个test.md的文件，然后用记事本或者notepad++或者sublime text打开，编写如下内容。</p>
 <div class="highlight"><pre><span class="nl">Title:</span> <span class="err">你好，世界！</span>
 <span class="nl">Date:</span> <span class="mi">2014</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">22</span> <span class="mi">16</span><span class="o">:</span><span class="mi">08</span>
@@ -124,20 +124,20 @@ virtualenv pelican_env
 </pre></div>
 
 
-<h3>2.3 本地测试</h3>
+<h3 id="23">2.3 本地测试</h3>
 <p>编写好了之后，就可以在本地进行测试了。</p>
 <div class="highlight"><pre>make html
 make serve
 </pre></div>
 
 
-<h3>2.4 提交更改</h3>
+<h3 id="24">2.4 提交更改</h3>
 <div class="highlight"><pre>git add .
 git commit -m <span class="s2">&quot;initial commit&quot;</span>
 </pre></div>
 
 
-<h3>2.5 发布</h3>
+<h3 id="25">2.5 发布</h3>
 <div class="highlight"><pre>git branch gh-pages
 ghp-import output
 git checkout master
@@ -146,7 +146,7 @@ git push --all
 </pre></div>
 
 
-<h2>参考</h2>
+<h2 id="_1">参考</h2>
 <ul>
 <li>http://ntanjerome.org/blog/how-to-setup-github-user-page-with-pelican</li>
 </ul>

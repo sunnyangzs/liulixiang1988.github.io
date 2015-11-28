@@ -59,7 +59,7 @@
         <div class="span8 offset2 article-content">
 
             <p>Anaconda和Python(x,y)都自带了下面的这些库。</p>
-<h2>1. NumPy</h2>
+<h2 id="1-numpy">1. NumPy</h2>
 <p>强大的ndarray和ufunc函数。</p>
 <div class="highlight"><pre><span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
 <span class="n">xArray</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -71,7 +71,7 @@
 </pre></div>
 
 
-<h2>2. SciPy</h2>
+<h2 id="2-scipy">2. SciPy</h2>
 <p>科学计算（插值、积分、优化和图像处理）</p>
 <div class="highlight"><pre><span class="n">from</span> <span class="n">scipy</span> <span class="n">import</span> <span class="n">linalg</span>
 <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
@@ -80,10 +80,10 @@
 </pre></div>
 
 
-<h2>3. Matplotlib</h2>
+<h2 id="3-matplotlib">3. Matplotlib</h2>
 <p>基于NumPy，二维绘图库，简单快速地生成曲线图、直方图和散点图等形式的图。
 常用的pyplot是一个简单提供类似Matlab接口的模块。</p>
-<h2>4. Pandas</h2>
+<h2 id="4-pandas">4. Pandas</h2>
 <p>基于SciPy和NumPy，拥有高效的Series和DataFrame数据结构，数据操作和分析能力非常强，拥有能够高效处理大数据集的切片等功能，提供优化库功能读写多种文件格式，如CSV, HDF5等</p>
 <div class="highlight"><pre><span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="err">#头</span><span class="mi">3</span><span class="err">行</span>
 <span class="n">df</span><span class="p">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="err">#最后</span><span class="mi">4</span><span class="err">行</span>

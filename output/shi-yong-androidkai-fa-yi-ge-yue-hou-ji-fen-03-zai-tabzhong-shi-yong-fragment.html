@@ -58,9 +58,9 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1. 为什么使用fragment?</h2>
+            <h2 id="1-fragment">1. 为什么使用fragment?</h2>
 <p>简而言之，fragment可以让我们复用设计和代码。</p>
-<h2>2. fragment如何作为tab使用</h2>
+<h2 id="2-fragmenttab">2. fragment如何作为tab使用</h2>
 <ul>
 <li>在Activity里创建一个fragment container</li>
 <li>创建fragment对应的class和layout</li>
@@ -69,7 +69,7 @@
 <li>添加<code>TabListener</code>来加载新的fragment</li>
 </ul>
 <p>可以在layout中使用fragment元素来显示的包含fragment。</p>
-<h2>3. 从模板中修改tab</h2>
+<h2 id="3-tab">3. 从模板中修改tab</h2>
 <p>tab中的fragment到底是在哪里定义的呢？我们打开MainActivity，看到文件最后，定义了静态类：</p>
 <div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">PlaceholderFragment</span> <span class="kd">extends</span> <span class="n">Fragment</span> <span class="o">{</span>
     <span class="cm">/**</span>
@@ -150,9 +150,9 @@
 
 
 <p>另外，更改数量为2，两个的标题分别为“收件箱”和“好友”。</p>
-<h2>4. 从模板中修改fragment</h2>
+<h2 id="4-fragment">4. 从模板中修改fragment</h2>
 <p>现在我们已经有了所有的一切，除了fragement，目前用来的还是默认的fragment。我们要做的就是把它给替换掉。</p>
-<h3>4.1 添加<code>InboxFragment</code></h3>
+<h3 id="41-inboxfragment">4.1 添加<code>InboxFragment</code></h3>
 <p>新建一个类，类名是<code>InboxFragment</code>, 这个类继承自，继承自<code>android.app.ListFragment</code>(也可以继承自<code>android.support.v4.app.ListFragment</code>，这样Android4.0之前的版本也能够使用）。
 这里需要说明的是因为我们创建的是List类型的视图，所以创建了ListFragment，如同ListActivity对应Activity一样，ListFragment也对应继承自Fragment。</p>
 <p>打开MainActivity，复制其中的PlaceHolderFragment的<code>onCreateView</code>方法到<code>InboxFragment</code>之中。Fragment像Activity一样也有<code>onCreate</code>方法，但是这里我们关注的是<code>onCreateView</code>方法，该方法在对应的Layout画面渲染时调用。修改后的类如下所示，同时，删除MainActivity中对应的PlaceHolderFragment。</p>
@@ -169,7 +169,7 @@
 
 
 <p>上面的例子中<code>inflater.inflate(R.layout.fragment_main, container, false)</code>可以当作Activity中的<code>setContentView</code>方法，其中第一个参数就是layout，第二个参数是MainActivity中的<code>ViewPage</code>，第三个参数始终是<code>false</code>。</p>
-<h3>4.2 修改InboxFragment对应的layout</h3>
+<h3 id="42-inboxfragmentlayout">4.2 修改InboxFragment对应的layout</h3>
 <p>首先，重构<code>fragment_main.xml</code>为<code>fragment_inbox.xml</code>.</p>
 <p>然后，修改<code>fragment_inbox</code>的内容：</p>
 <div class="highlight"><pre><span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
@@ -197,9 +197,9 @@
 
 
 <p>我们在这里做了一个列表，并且列表为空时显示“没有新消息”（在empty_inbox_label中定义）。</p>
-<h3>4.3 添加好友列表</h3>
+<h3 id="43">4.3 添加好友列表</h3>
 <p>类似的，添加<code>FriendsFragment</code>,<code>fragment_friends.xml</code>等，然后修改SectionPagerAdapter`。</p>
-<h3>4.4 修改<code>SectionsPagerAdapter</code></h3>
+<h3 id="44-sectionspageradapter">4.4 修改<code>SectionsPagerAdapter</code></h3>
 <div class="highlight"><pre><span class="n">public</span> <span class="n">Fragment</span> <span class="nf">getItem</span><span class="p">(</span><span class="kt">int</span> <span class="n">position</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">switch</span> <span class="p">(</span><span class="n">position</span><span class="p">){</span>
         <span class="k">case</span> <span class="mi">0</span> :
@@ -214,7 +214,7 @@
 
 <p>最后，运行如下：</p>
 <p><img alt="images" src="images/Snip20141104_1.png" /></p>
-<h2>5 理解基于Fragment的代码的其他部分</h2>
+<h2 id="5-fragment">5 理解基于Fragment的代码的其他部分</h2>
 <p>我们知道，创建一个Fragment程序分为以下几步：</p>
 <ol>
 <li>在Activity中创建一个Fragment的容器（创建<code>SectionsPagerAdapter</code>，并且在<code>MainActivity</code>中添加了<code>SectionsPagerAdapter</code>实例）</li>

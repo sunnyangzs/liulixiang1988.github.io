@@ -67,9 +67,9 @@
 <li>ng官方推荐的模块切分方式是什么？</li>
 <li>模块之间的依赖该怎么做？--依赖注入</li>
 </ul>
-<h2>1. 模块</h2>
+<h2 id="1">1. 模块</h2>
 <p>模块就是功能的集合</p>
-<h2>2. 目录结构</h2>
+<h2 id="2">2. 目录结构</h2>
 <div class="highlight"><pre><span class="n">BookStore</span>
 <span class="o">|-</span><span class="n">app</span>
     <span class="o">|-</span><span class="n">css</span>
@@ -88,7 +88,7 @@
 </pre></div>
 
 
-<h2>3. ngRoute进行视图之间的路由</h2>
+<h2 id="3-ngroute">3. ngRoute进行视图之间的路由</h2>
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">bookStoreApp</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;bookStoreApp&#39;</span><span class="p">,</span>
  <span class="cp">[</span><span class="s1">&#39;ngRoute&#39;</span><span class="p">,</span> <span class="s1">&#39;ngAnimate&#39;</span><span class="p">,</span> <span class="s1">&#39;bookStoreCtrls&#39;</span><span class="p">,</span> <span class="s1">&#39;BookStoreFilters&#39;</span><span class="p">,</span>
  <span class="s1">&#39;bookStoreServices&#39;</span><span class="p">,</span> <span class="s1">&#39;bookStoreDirectives&#39;</span><span class="cp">]</span><span class="p">);</span>

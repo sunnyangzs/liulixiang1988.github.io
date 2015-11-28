@@ -58,7 +58,7 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1. JavaBean简介</h2>
+            <h2 id="1-javabean">1. JavaBean简介</h2>
 <p>javaBeans就是符合某种特定的规范的java类。使用JavaBeans的好处是解决代码重复编写，减少代码冗余，功能区分明确，提高了代码的可维护性。</p>
 <p>JavaBean的设计原则：</p>
 <ol>
@@ -67,10 +67,10 @@
 <li>无参的公有构造方法</li>
 <li>getter和setter方法</li>
 </ol>
-<h2>2. JSP动作元素</h2>
-<h3>2.1 什么是JSP动作元素</h3>
+<h2 id="2-jsp">2. JSP动作元素</h2>
+<h3 id="21-jsp">2.1 什么是JSP动作元素</h3>
 <p>JSP动作元素（action element），动作元素为请求处理阶段提供信息。动作元素遵循XML语法，有一个包含元素名的开始标签，可以有属性，可选的内容、与开始标签匹配的结束标签。</p>
-<h3>2.2 JSP动作元素的五大类</h3>
+<h3 id="22-jsp">2.2 JSP动作元素的五大类</h3>
 <p>第一类是与存取JavaBean有关的，包括：
 <code>&lt;jsp:useBean&gt; &lt;jsp:setProperty&gt; &lt;jsp:getProperty&gt;</code></p>
 <p>第二类是JSP1.2就开始有的基本元素，包括6个动作元素：
@@ -81,18 +81,18 @@
 <code>&lt;jsp:attribute&gt; &lt;jsp:body&gt;  &lt;jsp:element&gt;</code></p>
 <p>第五类是JSP2.0新增的动作元素，主要是用在Tag File中，有2个元素：
 <code>&lt;jsp:invoke&gt; &lt;jsp:dobody&gt;</code></p>
-<h2>3. 如何在JSP中使用Java  Beans</h2>
-<h3>3.1 像使用普通java类一样</h3>
+<h2 id="3-jspjava-beans">3. 如何在JSP中使用Java  Beans</h2>
+<h3 id="31-java">3.1 像使用普通java类一样</h3>
 <ol>
 <li>创建在src文件下，（可以创建包）创建一个类，满足设计原则即可</li>
 <li>使用前通过import导入，通过使用new创建Javabean实例.在顶端添加<code>&lt;%@ page import="com.po.Users" %&gt;</code>，导入javabean包</li>
 </ol>
-<h3>3.2 useBean元素</h3>
+<h3 id="32-usebean">3.2 useBean元素</h3>
 <p>在JSP页面中通常使用JSP动作标签使用javabean(useBeans动作、setProperty动作、getProperty动作)
 <code>&lt;jsp:useBeans&gt;</code>
 作用：在jsp页面中实例化或者在指定范围内使用javabean:
 <code>&lt;jsp:useBean id="标识符" class="Java类名" scope="作用范围"/&gt;</code></p>
-<h3>3.3 使用setProperty</h3>
+<h3 id="33-setproperty">3.3 使用setProperty</h3>
 <p><code>&lt;jsp:setProperty&gt;</code>动作：给【已经实例化的Javabean对象的属性赋值】，一共有四种形式。</p>
 <ol>
 <li>根据表单自动匹配所有的属性
@@ -139,14 +139,14 @@
 </pre></div>
 
 
-<h3>3.4 getProperty标签</h3>
+<h3 id="34-getproperty">3.4 getProperty标签</h3>
 <p><code>&lt;jsp:getProperty&gt;</code>动作：获取指定Javabean对象的属性值</p>
 <p><code>&lt;jsp:getProperty name="JavaBean实例名" property="属性名" /&gt;</code>可以直接得到值</p>
 <div class="highlight"><pre><span class="err">用户名：</span><span class="o">&lt;</span><span class="n">jsp</span><span class="o">:</span><span class="n">getProperty</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;myUsers&quot;</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;username&quot;</span> <span class="o">/&gt;</span>
 </pre></div>
 
 
-<h2>4. JavaBean四个作用域范围</h2>
+<h2 id="4-javabean">4. JavaBean四个作用域范围</h2>
 <p>使用useBeans的scope属性来置顶javabean的作用范围，由小到大排列是：
 page-&gt;request-&gt;session-&gt;application</p>
 <ul>
@@ -156,21 +156,21 @@ page-&gt;request-&gt;session-&gt;application</p>
 <li>application//可以通过application.getAttribute()方法取得JavaBean对象。全局，在服务器一次运行期间都有效</li>
 </ul>
 <p>request在源页面用request.getRequestDispatcher("/somePage.jsp").forward(request, response); 内部转发的方式将数据传递到下一个页面可获取对象。</p>
-<h2>5. Model1简介</h2>
+<h2 id="5-model1">5. Model1简介</h2>
 <p>Model 1模型出现前，整个Web应用的情况：几乎全部由JSP页面组成，JSP页面接收处理客户端请求，对请求处理后直接做出响应。这样做的弊端：在页面层充斥着大量的业务逻辑代码和数据访问层代码，Web程序的可扩展性和可维护性非常差。</p>
-<h3>5.1 javaWeb应用开发，模式分为Model1和Model2</h3>
+<h3 id="51-javawebmodel1model2">5.1 javaWeb应用开发，模式分为Model1和Model2</h3>
 <ol>
 <li>Model1早于Model2</li>
 <li>在Model1之前，整个Web应用的情况：几乎全部由jsp页组成，jsp处理和响应客户端请求。
 · 弊端：【界面层】充斥了大量业务逻辑代码和数据访问层代码，扩展性和维护性非常差</li>
 </ol>
-<h3>5.2 Model1</h3>
+<h3 id="52-model1">5.2 Model1</h3>
 <ol>
 <li>Javabean的出现，可以使jsp页面使用Javabean封装的数据和业务逻辑代码，大大提高程序可维护性。</li>
 <li>Model1 = JSP + JavaBean。如图：JSP访问页面层 -&gt; Javab业务逻辑层 -&gt; 数据库数据访问层</li>
 </ol>
 <p><img alt="images/java-web-jsp-03.png" src="images/java-web-jsp-03.png" /></p>
-<h2>6. 阶段项目</h2>
+<h2 id="6">6. 阶段项目</h2>
 
  
 <section> 

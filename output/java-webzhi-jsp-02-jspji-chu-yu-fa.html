@@ -58,7 +58,7 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1. JSP简介</h2>
+            <h2 id="1-jsp">1. JSP简介</h2>
 <p>JSP页面元素构成：</p>
 <ol>
 <li>静态内容</li>
@@ -68,7 +68,7 @@
 <li>表达式</li>
 <li>指令</li>
 </ol>
-<h3>1.1 jsp指令</h3>
+<h3 id="11-jsp">1.1 jsp指令</h3>
 <p>page指令：通常位于jsp页面的顶端，同一个页面可以有多个page指令。
 include指令：将一个外部文件嵌入到当前jsp文件中，同时解析这个页面中的jsp语句。
 taglib指令：使用标签库定义心得自定义标签。在jsp页面中启用定制行为</p>
@@ -103,13 +103,13 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
 </tr>
 </tbody>
 </table>
-<h3>1.2 JSP注释</h3>
+<h3 id="12-jsp">1.2 JSP注释</h3>
 <ol>
 <li>html注释 <code>&lt;!--html注释--&gt;</code></li>
 <li>jsp注释<code>&lt;%--注释--%&gt;</code></li>
 <li>jsp脚本注释 <code>// /**/</code></li>
 </ol>
-<h3>1.3 jsp脚本</h3>
+<h3 id="13-jsp">1.3 jsp脚本</h3>
 <p>语法：</p>
 <div class="highlight"><pre><span class="cp">&lt;%</span>
 <span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;大家好，欢迎大家学习javaee开发&quot;</span><span class="p">);</span>
@@ -117,7 +117,7 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
 </pre></div>
 
 
-<h3>1.4 jsp声明</h3>
+<h3 id="14-jsp">1.4 jsp声明</h3>
 <p>在jsp页面中定义变量或者方法</p>
 <div class="highlight"><pre><span class="cp">&lt;%</span><span class="o">!</span><span class="n">java</span><span class="err">代码</span> <span class="cp">%&gt;</span><span class="x"></span>
 
@@ -128,7 +128,7 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
 </pre></div>
 
 
-<h3>1.5 jsp表达式</h3>
+<h3 id="15-jsp">1.5 jsp表达式</h3>
 <div class="highlight"><pre><span class="cp">&lt;%=</span><span class="err">表达式</span><span class="cp">%&gt;</span><span class="x"> //注意：表达式不以分号结束</span>
 
 <span class="cp">&lt;%=</span><span class="n">s</span><span class="cp">%&gt;</span><span class="x"></span>
@@ -136,10 +136,10 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
 </pre></div>
 
 
-<h3>1.6 jsp页面生命周期</h3>
+<h3 id="16-jsp">1.6 jsp页面生命周期</h3>
 <p><img alt="img" src="images/java-web-jsp-02.png" /></p>
 <p><code>jspService()</code>方法被调用来处理客户端的请求。对每一个请求，JSP引擎创建一个新的线程来处理该请求。如果有多个客户端同时请求该JSP文件，则JSP引擎会创建多个线程。每个客户端请求对应一个线程。以多线程方式执行可以大大降低对系统的资源需求，提高系统的并发量及响应时间。但也要注意多线程的编程带来的同步问题，由于该Servlet始终驻于内存，所以响应时间是非常快的。</p>
-<h3>1.7 jsp练习：打印乘法表</h3>
+<h3 id="17-jsp">1.7 jsp练习：打印乘法表</h3>
 <div class="highlight"><pre><span class="cp">&lt;%</span><span class="o">!</span>
   <span class="nb">String</span> <span class="n">printMultiTable</span><span class="p">(){</span>
     <span class="nb">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>

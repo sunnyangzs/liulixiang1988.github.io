@@ -58,11 +58,11 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1.阅后即焚应用介绍</h2>
+            <h2 id="1">1.阅后即焚应用介绍</h2>
 <p>阅后即焚是一款应用，用户可以适用它分享文字、照片给他的朋友，朋友们看过发来的消息之后该消息会自动销毁。</p>
 <p>阅后即焚包含用户登录、用户注册、收件箱、好友列表、好友编辑、拍照等功能。</p>
 <hr />
-<h2>2.开始项目</h2>
+<h2 id="2">2.开始项目</h2>
 <p>本次项目适用Android Stuidio进行开发。</p>
 <p>打开Android Studio，选择"New Project"，然后输入信息如下：</p>
 <p><img alt="新建项目" src="images/Snip20141004_1.png" /></p>
@@ -74,7 +74,7 @@
 <p><img alt="设置Activity" src="images/Snip20141004_4.png" /></p>
 <p>现在，我们设置好了项目，但是还有一件事情要做，我们只希望应用是垂直的，而不希望手机放平时，应用也跟着水平。我们需要编辑AndroidManifest.xml文件。双击AndroidManifest.xml，文件打开，我们在<code>activity</code>中添加属性<code>android:screenOrientation="portrait"</code>。与eclipse不同，Android Studio目前还没有图形化编辑AndroidManifest.xml的界面。</p>
 <hr />
-<h2>3. 添加用户登录Activity</h2>
+<h2 id="3-activity">3. 添加用户登录Activity</h2>
 <p>我们可以到http://www.mobile-patterns.com/ 查看一些优秀的设计，看看别人时怎么做登录设计的。</p>
 <p>要添加登录页面，在菜单中选择"File"-&gt;"New..."-&gt;"Activity"-&gt;"Blank Activity"(注意，还有一个"Login Activity"，但在这里我们不选用它，而是从头创建)。弹出对话框中输入：</p>
 <p><img alt="添加Login Activity" src="images/Snip20141004_5.png" /></p>
@@ -148,7 +148,7 @@
 
 
 <hr />
-<h2>4. 添加用户注册Activity</h2>
+<h2 id="4-activity">4. 添加用户注册Activity</h2>
 <p>新建Activity，添加的Activity名称为<code>SignupActivity</code>。</p>
 <p>设置界面垂直。</p>
 <p>设置Layout如下：</p>
@@ -228,7 +228,7 @@
 
 
 <hr />
-<h2>5. Back和Up导航</h2>
+<h2 id="5-backup">5. Back和Up导航</h2>
 <p>Up导航是在app内导航到上一级别，<strong>始终是在同一个app内</strong>, 而Back导航则是根据用户的历史记录进行导航，比如导航到桌面或者其他应用中。</p>
 <p>现在我们想要设置Signup(注册)的Up导航是Login(登录)，该怎么办呢？</p>
 <p>打开AndroidManifest.xml，在Signup中添加<code>android:parentActivityName</code>，如下：</p>

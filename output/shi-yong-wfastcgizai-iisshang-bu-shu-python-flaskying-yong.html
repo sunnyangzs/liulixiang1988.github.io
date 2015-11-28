@@ -75,24 +75,24 @@
 </pre></div>
 
 
-<h2>1. WFastCGI</h2>
+<h2 id="1-wfastcgi">1. WFastCGI</h2>
 <p>wfastcgi.py使用WSGI和FastCGI提供了IIS和Python之间的桥接，类似于Apache HTTP服务器上的mod_python.</p>
 <p>它能够用于任何支持WSGI的Python web应用或者框架，而且提供了IIS处理请求和进程池的高效方法。</p>
-<h2>2. 安装</h2>
-<h3>2.1 下载安装包</h3>
+<h2 id="2">2. 安装</h2>
+<h3 id="21">2.1 下载安装包</h3>
 <p>通过PyPI安装：</p>
 <div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">wfastcgi</span>
 </pre></div>
 
 
-<h3>2.2 IIS安装FastCGI和URL重写</h3>
+<h3 id="22-iisfastcgiurl">2.2 IIS安装FastCGI和URL重写</h3>
 <p>IIS需要安装FastCGI和URL重写，这个可以通过<a href="https://www.microsoft.com/web/downloads/platform.aspx">Microsoft Web Platform Installer</a>来安装。下载过<a href="https://www.microsoft.com/web/downloads/platform.aspx">Microsoft Web Platform Installer</a>点击运行，会出现如下的界面。
 <img alt="Alt text" src="images/1448583956986.png" /></p>
 <p>在搜索栏分别输入cgi和url重写，点击添加按钮：
 <img alt="Alt text" src="images/1448584071863.png" /></p>
 <p><img alt="Alt text" src="images/1448584044495.png" /></p>
 <p><strong>注</strong>：windows10上的IIS 10现在不支持url重写。</p>
-<h2>3. 启用wfastcgi</h2>
+<h2 id="3-wfastcgi">3. 启用wfastcgi</h2>
 <p>一旦<code>wfastcgi</code>和IIS安装完毕，用管理员的身份运行<code>wfastcgi-enable</code>来在IIS上启用<code>wfastcgi</code>配置。这个能配置一个<a href="#routehandlers">路由处理器</a>的CGI应用。</p>
 <div class="highlight"><pre><span class="n">wfastcgi</span><span class="o">-</span><span class="n">enable</span>
 </pre></div>
@@ -118,7 +118,7 @@
 </pre></div>
 
 
-<h2>4. 使用PTVS创建Python Web项目</h2>
+<h2 id="4-ptvspython-web">4. 使用PTVS创建Python Web项目</h2>
 <p><a href="https://github.com/Microsoft/ptvs/wiki/PTVS-Installation">PTVS</a>是Visual Studio的一个插件，能够让VS支持Python开发，下载并安装后，就可以使用它来开发Python项目了。
 使用PTVS创建一个Flask项目（Django项目类似）：
 <img alt="Alt text" src="images/1448584435904.png" /></p>

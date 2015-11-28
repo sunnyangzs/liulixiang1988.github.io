@@ -48,7 +48,7 @@ My Name is Liu Lixiang. I'm a software engineer in Tongling Nonferrous Metals Gr
 
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['sitemap', 'extract_toc', 'tipue_search']
-MD_EXTENSIONS = ['toc', 'codehilite(css_class=highlight)', 'extra', 'headerid']
+MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
 DIRECT_TEMPLATES = (('index', 'tags', 'categories','archives', 'search', '404'))
 STATIC_PATHS = ['theme/images', 'images']
 TAG_SAVE_AS = ''

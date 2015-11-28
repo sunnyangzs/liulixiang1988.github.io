@@ -58,7 +58,7 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1. JDBC DBHelper</h2>
+            <h2 id="1-jdbc-dbhelper">1. JDBC DBHelper</h2>
 <div class="highlight"><pre><span class="n">package</span> <span class="n">util</span><span class="p">;</span>
 
 <span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">Connection</span><span class="p">;</span>
@@ -122,7 +122,7 @@
 </pre></div>
 
 
-<h2>2. 实体类</h2>
+<h2 id="2">2. 实体类</h2>
 <div class="highlight"><pre><span class="n">package</span> <span class="n">entity</span><span class="p">;</span>
 
 <span class="c1">//商品类</span>
@@ -187,7 +187,7 @@
 </pre></div>
 
 
-<h2>3. DAO</h2>
+<h2 id="3-dao">3. DAO</h2>
 <div class="highlight"><pre><span class="nx">package</span> <span class="nx">dao</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="nx">java.sql.Connection</span><span class="p">;</span>
@@ -337,7 +337,7 @@
 </pre></div>
 
 
-<h2>4. index.jsp</h2>
+<h2 id="4-indexjsp">4. index.jsp</h2>
 <div class="highlight"><pre><span class="cp">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;java&quot;</span> <span class="n">import</span><span class="o">=</span><span class="s2">&quot;java.util.*&quot;</span> <span class="n">contentType</span><span class="o">=</span><span class="s2">&quot;text/html; charset=utf-8&quot;</span><span class="cp">%&gt;</span>
 <span class="cp">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">import</span><span class="o">=</span><span class="s2">&quot;entity.Items&quot;</span><span class="cp">%&gt;</span>
 <span class="cp">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">import</span><span class="o">=</span><span class="s2">&quot;dao.ItemsDAO&quot;</span><span class="cp">%&gt;</span>
@@ -423,7 +423,7 @@
 </pre></div>
 
 
-<h2>5. detail.jsp</h2>
+<h2 id="5-detailjsp">5. detail.jsp</h2>
 <div class="highlight"><pre><span class="cp">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;java&quot;</span> <span class="n">import</span><span class="o">=</span><span class="s2">&quot;java.util.*&quot;</span> <span class="n">contentType</span><span class="o">=</span><span class="s2">&quot;text/html; charset=utf-8&quot;</span> <span class="cp">%&gt;</span>
 <span class="cp">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">import</span><span class="o">=</span><span class="s2">&quot;entity.Items&quot;</span><span class="cp">%&gt;</span>
 <span class="cp">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">import</span><span class="o">=</span><span class="s2">&quot;dao.ItemsDAO&quot;</span><span class="cp">%&gt;</span>

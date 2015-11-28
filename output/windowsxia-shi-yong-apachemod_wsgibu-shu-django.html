@@ -59,14 +59,14 @@
         <div class="span8 offset2 article-content">
 
             <p>这个总结是在<a href="http://www.cnblogs.com/liulixiang/p/3543021.html">原来笔记</a>里修改而来。</p>
-<h2>1、环境</h2>
+<h2 id="1">1、环境</h2>
 <ul>
 <li>django 1.8.2</li>
 <li>python 3.4 32位</li>
 <li>apache 2.4.12 32位</li>
 <li>一个可以使用的django project( https://github.com/liulixiang1988/python_study_case/tree/master/django)</li>
 </ul>
-<h2>2、安装apache 32位</h2>
+<h2 id="2apache-32">2、安装apache 32位</h2>
 <p>可以在这里下载（http://www.apachelounge.com/download/）
 <em>注意，我们必须在这个网站上下载apache才能运行后面的mod_wsgi</em>
 这时，需要注意我们还必须下载对应的分发环境，如果下载的是apache 2.4 vc14 windows binaries，则必须下载VC14 vcredist_x64/86.exe </p>
@@ -76,7 +76,7 @@
 - 找到ServerName，配置域名或者IP: <code>ServerName 172.16.222.45:8008</code>
 - 找到ServerRoot，更改为apache目录<code>ServerRoot "d:/Apache24"</code>
 - 找到DocumentRoot，更改为apache对应目录：<code>DocumentRoot "d:/Apache24/htdocs"&lt;Directory "d:/Apache24/htdocs"&gt;</code></p>
-<h2>3、安装mod_wsgi</h2>
+<h2 id="3mod_wsgi">3、安装mod_wsgi</h2>
 <p>注意，因为apache是32位的，所以mod_wsgi也应该选择32位的。mod_wsgi的官网在<a href="https://code.google.com/p/modwsgi/">这里</a>。但是因为没有windows编译版本（自己编译几乎都是以失败告终），所幸在<a href="https://github.com/GrahamDumpleton/mod_wsgi/releases">github</a>上可以下载到编译版本，我们选择<a href="https://github.com/GrahamDumpleton/mod_wsgi/releases/download/4.4.12/mod_wsgi-windows-4.4.12.tar.gz">mod_wsgi-windows-4.4.12.tar.gz</a>进行下载。
 下载过mod_wsgi之后，解压之后的文件为“mod_wsgi.so”文件。我们拷贝它到apache安装目录下面的modules文件夹。
 光拷贝mod_wsgi.so文件是不行的，我们还需要修改apache的配置文件，让apache知道mod_wsgi的存在。apache的配置文件在apache安装目录下的conf文件夹中的httpd.conf文件。使用记事本或者任何你喜欢的文本编辑器打开它，在文件的最后添加下面的内容并保存就可以了：</p>
@@ -84,7 +84,7 @@
 </pre></div>
 
 
-<h2>4、配置django project</h2>
+<h2 id="4django-project">4、配置django project</h2>
 <p>第一步，你要有个django project，如果你这是想尝试一下如何部署而没有项目的话，可以在到我的github上下载一个https://github.com/liulixiang1988/python_study_case</p>
 <p>第二步 修改wsgi.py文件
 <em>这是原来笔记中记录的，在这次的部署中，我发现不需
@@ -130,15 +130,15 @@
 </pre></div>
 
 
-<h2>5、启动apache</h2>
+<h2 id="5apache">5、启动apache</h2>
 <p>打开cmd，定位到apache安装目录下面的bin目录，输入httpd就可以启动服务器了，此时你就可以在你的浏览器中访问localhost了</p>
-<h2>6、需要改进的地方</h2>
+<h2 id="6">6、需要改进的地方</h2>
 <p>因为工作中使用的是asp.net，对apache不熟，所以对虚拟主机的配置以及mod_wsgi的运行模式的理解还不是特别透彻，也是下一步需要学习的方向。</p>
-<h2>7、致谢与参考</h2>
+<h2 id="7">7、致谢与参考</h2>
 <p>首先感谢那些为提供这些优秀开源工程的程序员们；其次在学习如何部署的过程中，下面两篇文章对我的帮助很大，在这里再次说声谢谢!
 https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/modwsgi/
 http://agong.org/2013/windows64-python3-apache-wsgi-django.html</p>
-<h2>8、最后</h2>
+<h2 id="8">8、最后</h2>
 <p>如果你觉得这篇文章对你比较有帮助，或者有什么问题，欢迎给我留言或者email:550488300@qq.com</p>
 
  

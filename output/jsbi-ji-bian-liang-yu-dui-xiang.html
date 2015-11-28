@@ -58,7 +58,7 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1. 变量声明</h2>
+            <h2 id="1">1. 变量声明</h2>
 <div class="highlight"><pre><span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">||</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//如果a有值（严格来说是某个可以被转换为true的值），就直接使用，否则把7赋值给a</span>
 </pre></div>
 
@@ -68,7 +68,7 @@
 </pre></div>
 
 
-<h2>2. 对象是否存在检验</h2>
+<h2 id="2">2. 对象是否存在检验</h2>
 <div class="highlight"><pre><span class="c1">//第一种方法</span>
 <span class="k">var</span> <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">||</span> <span class="mh">7</span><span class="p">;</span>
 
@@ -98,7 +98,7 @@
 
 
 <p>第四种方法利用了<strong>JavaScript(ECMAScript)中没有块级作用域的特性</strong></p>
-<h2>3. 属性是否存在检验</h2>
+<h2 id="3">3. 属性是否存在检验</h2>
 <div class="highlight"><pre><span class="c1">//第一种方法，避免出现TypeError异常</span>
 <span class="n">obj</span><span class="p">.</span><span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">obj</span><span class="p">.</span><span class="n">x</span><span class="p">.</span><span class="n">y</span>
 

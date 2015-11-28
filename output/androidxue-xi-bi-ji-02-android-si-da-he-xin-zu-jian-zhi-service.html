@@ -58,8 +58,8 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h1>Android学习笔记-02 Android 四大核心组件之Service</h1>
-<h2>一、Service声明</h2>
+            <h1 id="android-02-android-service">Android学习笔记-02 Android 四大核心组件之Service</h1>
+<h2 id="service">一、Service声明</h2>
 <ol>
 <li>新建基于Service的类</li>
 <li>在Mainifest中添加Service</li>
@@ -88,7 +88,7 @@ serviceIntent = new Intent(this, EchoService.class)</li>
 eclipse cmd+d:删除行</p>
 </li>
 </ol>
-<h2>二、绑定服务</h2>
+<h2 id="_1">二、绑定服务</h2>
 <ol>
 <li>创建btn1,2</li>
 <li>在click中bindService(serviceIntent, this, Content)，unBind</li>
@@ -108,7 +108,7 @@ eclipse cmd+d:删除行</p>
 <li>通过start service的服务在aty销毁时不会销毁</li>
 <li>bind service的夫妇在aty销毁时会跟着销毁</li>
 </ul>
-<h2>三、service与aty通信</h2>
+<h2 id="serviceaty">三、service与aty通信</h2>
 <ol>
 <li>在service中添加timer和tasktimer</li>
 </ol>

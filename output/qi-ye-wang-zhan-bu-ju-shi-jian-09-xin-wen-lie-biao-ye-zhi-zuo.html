@@ -58,11 +58,11 @@
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <h2>1. 新闻列表页的制作</h2>
+            <h2 id="1">1. 新闻列表页的制作</h2>
 <p>新闻列表页和首页对比如下：</p>
 <p><img alt="对比" src="images/qy-web-13.png" /></p>
 <p>主要是两点不同，第一个是新闻列表页焦点图不再具有切换效果，图片大小也不一样；第二个就是内容区是2栏可变长的。</p>
-<h2>2. 页面结构</h2>
+<h2 id="2">2. 页面结构</h2>
 <div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;ad&quot;</span> <span class="na">id=</span><span class="s">&quot;picBox&quot;</span>  <span class="na">style=</span><span class="s">&quot;height:243px&quot;</span><span class="nt">&gt;</span>
    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;images/ad.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;ad&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- ad结束 --&gt;</span>
@@ -73,7 +73,7 @@
 </pre></div>
 
 
-<h2>3. 内容展示区制作</h2>
+<h2 id="3">3. 内容展示区制作</h2>
 <div class="highlight"><pre><span class="cm">/*--------------------新闻列表页----------------------------*/</span>
 <span class="p">.</span><span class="n">list_main</span><span class="p">{</span>
     <span class="nl">height:</span> <span class="mh">350</span><span class="n">px</span><span class="p">;</span>
@@ -101,7 +101,7 @@
 </pre></div>
 
 
-<h2>4. 左侧列表制作</h2>
+<h2 id="4">4. 左侧列表制作</h2>
 <div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news_type&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h2&gt;</span>新闻中心<span class="nt">&lt;/h2&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news_type_content&quot;</span><span class="nt">&gt;</span>
@@ -167,7 +167,7 @@
 </pre></div>
 
 
-<h2>5. 新闻列表制作</h2>
+<h2 id="5">5. 新闻列表制作</h2>
 <div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;list_box&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h2&gt;</span>新闻中心<span class="nt">&lt;/h2&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;news_list&quot;</span><span class="nt">&gt;</span>
@@ -215,7 +215,7 @@
 </pre></div>
 
 
-<h2>6. 页码制作</h2>
+<h2 id="6">6. 页码制作</h2>
 <p>a标签是内联元素，为了使内联元素具有块级元素的一些属性同时使所有的a标签显示在同一行上，我们需要把a标签设置为行内块元素inline-block。</p>
 <div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;page&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>首页<span class="nt">&lt;/a&gt;</span>

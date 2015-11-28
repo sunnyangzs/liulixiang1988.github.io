@@ -56,15 +56,40 @@
 </div>
 
 <div class="row-fluid">
-        <div class="span8 offset2 article-content">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#1">1. 页面整体分析</a></li>
+<li><a href="#2">2 准备工作</a><ul>
+<li><a href="#21-gulp">2.1 安装Gulp</a></li>
+<li><a href="#22-sasscompass">2.2 安装SASS与Compass</a></li>
+<li><a href="#23-compasssass">2.3 使用Compass配置SASS</a></li>
+<li><a href="#24-bower">2.4 配置bower</a></li>
+<li><a href="#24-gulp">2.4 创建gulp任务</a></li>
+</ul>
+</li>
+<li><a href="#3">3. 模块分析与细节实现</a><ul>
+<li><a href="#31">3.1 重置样式与文件结构</a></li>
+<li><a href="#32-banner">3.2 页头、Banner、正文、页脚的宏观布局</a></li>
+<li><a href="#33">3.3 页头结构分析及布局</a></li>
+<li><a href="#33_1">3.3 正文部分结构分析及布局</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
 
-            <p>[TOC]</p>
-<h2>1. 页面整体分析</h2>
+            
+<h2 id="1">1. 页面整体分析</h2>
 <p>做一个网页或者网站，第一步就是先定义网页与网站的结构，这是所有任务的前提。</p>
-<hr />
-<h2>2 准备工作</h2>
+<hr/>
+<h2 id="2">2 准备工作</h2>
 <p>在这个案例中，我们将使用Gulp, SASS和Compass来创建。</p>
-<h3>2.1 安装Gulp</h3>
+<h3 id="21-gulp">2.1 安装Gulp</h3>
 <p>Gulp是为了后期进行自动化工作而做的。</p>
 <ul>
 <li>如果电脑没有安装node，那么第一步就是下载node，并且安装。</li>
@@ -83,9 +108,7 @@
 <span class="n">npm</span> <span class="n">install</span> <span class="n">gulp</span><span class="o">-</span><span class="n">sourcemaps</span>
 <span class="n">npm</span> <span class="n">install</span> <span class="n">del</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
-
-
-<h3>2.2 安装SASS与Compass</h3>
+<h3 id="22-sasscompass">2.2 安装SASS与Compass</h3>
 <ul>
 <li>如果没有安装ruby，请先安装ruby</li>
 <li>配置ruby gem的source:</li>
@@ -102,8 +125,6 @@
 <span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">sass</span> <span class="o">--</span><span class="n">version</span><span class="o">=</span><span class="mf">3.3</span>
 <span class="err">$</span><span class="n">gem</span> <span class="n">uninstall</span> <span class="n">sass</span>
 </pre></div>
-
-
 <ul>
 <li>安装SASS</li>
 </ul>
@@ -111,118 +132,108 @@
 <span class="err">$</span><span class="n">gem</span> <span class="n">install</span> <span class="n">sass</span> <span class="o">--</span><span class="n">version</span><span class="o">=</span><span class="mf">3.3</span>
 <span class="err">$</span><span class="n">sass</span> <span class="o">-</span><span class="n">v</span>
 </pre></div>
-
-
 <ul>
 <li>安装Compass</li>
 </ul>
 <div class="highlight"><pre><span class="n">gem</span> <span class="n">isntall</span> <span class="n">compass</span>
 </pre></div>
-
-
 <p>接下来我们来配置项目</p>
-<h3>2.3 使用Compass配置SASS</h3>
+<h3 id="23-compasssass">2.3 使用Compass配置SASS</h3>
 <div class="highlight"><pre><span class="n">compass</span> <span class="n">create</span>
 </pre></div>
-
-
 <p>一般来说，我们使用<code>compass create [项目名]</code>来创建项目，但是我们在之前已经使用<code>node init</code>初始化过了，所以此处我们略去项目名。</p>
-<h3>2.4 配置bower</h3>
+<h3 id="24-bower">2.4 配置bower</h3>
 <p>创建<code>.bowerrc</code>文件，然后添加：</p>
 <div class="highlight"><pre><span class="p">{</span>
-  <span class="s">&quot;directory&quot;</span><span class="o">:</span> <span class="s">&quot;lib&quot;</span>
+  <span class="s">"directory"</span><span class="o">:</span> <span class="s">"lib"</span>
 <span class="p">}</span>
 </pre></div>
-
-
 <p>这里是指定bower安装的第三方库都在lib目录下。</p>
-<h3>2.4 创建gulp任务</h3>
+<h3 id="24-gulp">2.4 创建gulp任务</h3>
 <p>在根目录下创建gulpfile.js</p>
-<div class="highlight"><pre><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span class="s1">'use strict'</span><span class="p">;</span>
 
-<span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp&#39;</span><span class="p">),</span>
-    <span class="nx">concat</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-concat&#39;</span><span class="p">),</span>
-    <span class="nx">uglify</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-uglify&#39;</span><span class="p">),</span>
-    <span class="nx">rename</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-rename&#39;</span><span class="p">),</span>
-    <span class="nx">compass</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-compass&#39;</span><span class="p">),</span>
-    <span class="nx">minifyCss</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-minify-css&#39;</span><span class="p">),</span>
-    <span class="nx">maps</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-sourcemaps&#39;</span><span class="p">),</span>
-    <span class="nx">del</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;del&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp'</span><span class="p">),</span>
+    <span class="nx">concat</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-concat'</span><span class="p">),</span>
+    <span class="nx">uglify</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-uglify'</span><span class="p">),</span>
+    <span class="nx">rename</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-rename'</span><span class="p">),</span>
+    <span class="nx">compass</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-compass'</span><span class="p">),</span>
+    <span class="nx">minifyCss</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-minify-css'</span><span class="p">),</span>
+    <span class="nx">maps</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-sourcemaps'</span><span class="p">),</span>
+    <span class="nx">del</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'del'</span><span class="p">);</span>
 
 <span class="c1">//编译JavaScript</span>
-<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;concatScripts&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'concatScripts'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="cp">[</span>
-            <span class="s1">&#39;js/jquery.js&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;js/main.js&#39;</span>
+            <span class="s1">'js/jquery.js'</span><span class="p">,</span>
+            <span class="s1">'js/main.js'</span>
         <span class="cp">]</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">maps</span><span class="p">.</span><span class="nx">init</span><span class="p">())</span>
-        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="s2">&quot;app.js&quot;</span><span class="p">))</span>
-        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">maps</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">))</span>
-        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;js&#39;</span><span class="p">));</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="s2">"app.js"</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">maps</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">'./'</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">'js'</span><span class="p">));</span>
 <span class="p">});</span>
 
 <span class="c1">//压缩JavaScript</span>
-<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;minifyScripts&#39;</span><span class="p">,</span> <span class="cp">[</span><span class="s1">&#39;concatScripts&#39;</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s2">&quot;js/app.js&quot;</span><span class="p">)</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'minifyScripts'</span><span class="p">,</span> <span class="cp">[</span><span class="s1">'concatScripts'</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s2">"js/app.js"</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">uglify</span><span class="p">())</span>
-        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">(</span><span class="s1">&#39;app.min.js&#39;</span><span class="p">))</span>
-        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;js&#39;</span><span class="p">));</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">(</span><span class="s1">'app.min.js'</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">'js'</span><span class="p">));</span>
 <span class="p">});</span>
 
 <span class="c1">//编译SASS</span>
-<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;compileSass&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">&#39;./scss/*.scss&#39;</span><span class="p">)</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'compileSass'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">'./scss/*.scss'</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">compass</span><span class="p">({</span>
-            <span class="nx">config_file</span><span class="o">:</span> <span class="s1">&#39;./config.rb&#39;</span><span class="p">,</span>
-            <span class="nx">css</span><span class="o">:</span> <span class="s1">&#39;css&#39;</span><span class="p">,</span>
-            <span class="nx">sass</span><span class="o">:</span> <span class="s1">&#39;scss&#39;</span><span class="p">,</span>
+            <span class="nx">config_file</span><span class="o">:</span> <span class="s1">'./config.rb'</span><span class="p">,</span>
+            <span class="nx">css</span><span class="o">:</span> <span class="s1">'css'</span><span class="p">,</span>
+            <span class="nx">sass</span><span class="o">:</span> <span class="s1">'scss'</span><span class="p">,</span>
             <span class="nx">sourcemap</span><span class="o">:</span> <span class="kc">true</span>
         <span class="p">}))</span>
-        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;css&#39;</span><span class="p">));</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">'css'</span><span class="p">));</span>
 <span class="p">});</span>
 
 <span class="c1">//压缩CSS</span>
-<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;minifyCss&#39;</span><span class="p">,</span> <span class="cp">[</span><span class="s1">&#39;compileSass&#39;</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
-    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s2">&quot;css/application.css&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">minifyCss</span><span class="p">({</span><span class="nx">compatibility</span><span class="o">:</span> <span class="s1">&#39;ie8&#39;</span><span class="p">}))</span>
-        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">(</span><span class="s1">&#39;application.min.css&#39;</span><span class="p">))</span>
-        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;css&#39;</span><span class="p">));</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'minifyCss'</span><span class="p">,</span> <span class="cp">[</span><span class="s1">'compileSass'</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s2">"css/application.css"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">minifyCss</span><span class="p">({</span><span class="nx">compatibility</span><span class="o">:</span> <span class="s1">'ie8'</span><span class="p">}))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">(</span><span class="s1">'application.min.css'</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">'css'</span><span class="p">));</span>
 <span class="p">});</span>
 
 <span class="c1">//监视</span>
-<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;watchFiles&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="cp">[</span><span class="s1">&#39;scss/**/*.scss&#39;</span><span class="p">,</span> <span class="s1">&#39;scss/*.scss&#39;</span><span class="cp">]</span><span class="p">,</span> <span class="cp">[</span><span class="s1">&#39;compileSass&#39;</span><span class="cp">]</span><span class="p">);</span>
-    <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="s1">&#39;js/main.js&#39;</span><span class="p">,</span> <span class="cp">[</span><span class="s1">&#39;concatScripts&#39;</span><span class="cp">]</span><span class="p">);</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'watchFiles'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="cp">[</span><span class="s1">'scss/**/*.scss'</span><span class="p">,</span> <span class="s1">'scss/*.scss'</span><span class="cp">]</span><span class="p">,</span> <span class="cp">[</span><span class="s1">'compileSass'</span><span class="cp">]</span><span class="p">);</span>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="s1">'js/main.js'</span><span class="p">,</span> <span class="cp">[</span><span class="s1">'concatScripts'</span><span class="cp">]</span><span class="p">);</span>
 <span class="p">});</span>
 
 <span class="c1">//清理</span>
-<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;clean&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">del</span><span class="p">(</span><span class="cp">[</span><span class="s1">&#39;dist&#39;</span><span class="p">,</span> <span class="s1">&#39;css/application*.css*&#39;</span><span class="p">,</span> <span class="s1">&#39;js/app*.js*&#39;</span><span class="cp">]</span><span class="p">);</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'clean'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">del</span><span class="p">(</span><span class="cp">[</span><span class="s1">'dist'</span><span class="p">,</span> <span class="s1">'css/application*.css*'</span><span class="p">,</span> <span class="s1">'js/app*.js*'</span><span class="cp">]</span><span class="p">);</span>
 <span class="p">});</span>
 
 <span class="c1">//构建</span>
-<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;build&#39;</span><span class="p">,</span> <span class="cp">[</span><span class="s2">&quot;minifyScripts&quot;</span><span class="p">,</span> <span class="s2">&quot;minifyCss&quot;</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="cp">[</span><span class="s2">&quot;css/application.min.css&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;js/app.min.js&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;index.html&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;img/**&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;fonts/**&quot;</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build'</span><span class="p">,</span> <span class="cp">[</span><span class="s2">"minifyScripts"</span><span class="p">,</span> <span class="s2">"minifyCss"</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="cp">[</span><span class="s2">"css/application.min.css"</span><span class="p">,</span>
+            <span class="s2">"js/app.min.js"</span><span class="p">,</span>
+            <span class="s2">"index.html"</span><span class="p">,</span>
+            <span class="s2">"img/**"</span><span class="p">,</span>
+            <span class="s2">"fonts/**"</span>
         <span class="cp">]</span><span class="p">,</span> <span class="p">{</span>
-            <span class="nx">base</span><span class="o">:</span> <span class="s1">&#39;./&#39;</span>
+            <span class="nx">base</span><span class="o">:</span> <span class="s1">'./'</span>
         <span class="p">})</span>
-        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;dist&#39;</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">'dist'</span><span class="p">))</span>
 <span class="p">});</span>
 
 <span class="c1">//服务</span>
-<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;serve&#39;</span><span class="p">,</span> <span class="cp">[</span><span class="s1">&#39;watchFiles&#39;</span><span class="cp">]</span><span class="p">);</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'serve'</span><span class="p">,</span> <span class="cp">[</span><span class="s1">'watchFiles'</span><span class="cp">]</span><span class="p">);</span>
 
 <span class="c1">//默认任务</span>
-<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="cp">[</span><span class="s1">&#39;clean&#39;</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">gulp</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="s1">&#39;build&#39;</span><span class="p">);</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'default'</span><span class="p">,</span> <span class="cp">[</span><span class="s1">'clean'</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="s1">'build'</span><span class="p">);</span>
 <span class="p">});</span>
 </pre></div>
-
-
 <p>目前为止我们的目录如下：</p>
 <div class="highlight"><pre><span class="err">├──</span> <span class="n">config</span><span class="p">.</span><span class="n">rb</span>
 <span class="err">├──</span> <span class="n">css</span>
@@ -253,32 +264,26 @@
     <span class="err">└──</span> <span class="n">base</span>
         <span class="err">└──</span> <span class="n">_normalize</span><span class="p">.</span><span class="n">scss</span>
 </pre></div>
-
-
 <p>经过一番配置，后面我们只需要运行:</p>
 <div class="highlight"><pre><span class="n">gulp</span> <span class="n">serve</span>
 </pre></div>
-
-
 <p>就可以监视文件的变化，并且自动进行编译了。</p>
-<hr />
-<h2>3. 模块分析与细节实现</h2>
-<h3>3.1 重置样式与文件结构</h3>
+<hr/>
+<h2 id="3">3. 模块分析与细节实现</h2>
+<h3 id="31">3.1 重置样式与文件结构</h3>
 <p>我们使用normalize来对样式进行重置，normailze的SCSS版本在这里：https://github.com/JohnAlbin/normalize-scss 下载到<code>scss/base/_normalize.scss</code>。</p>
 <p>然后打开<code>application.scss</code>，引入:</p>
-<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;base/normalize&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">"base/normalize"</span><span class="p">;</span>
 </pre></div>
-
-
 <p>就完成对页面的重置了。
 如果此时定义一个页面如下：</p>
 <div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
     <span class="nt">&lt;head&gt;</span>
-      <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;css/application.css&quot;</span> <span class="na">media=</span><span class="s">&quot;screen, projection&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"css/application.css"</span> <span class="na">media=</span><span class="s">"screen, projection"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/head&gt;</span>
     <span class="nt">&lt;body&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;div1&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"div1"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;h1&gt;</span>标题1<span class="nt">&lt;/h1&gt;</span>
             <span class="nt">&lt;h2&gt;</span>标题2<span class="nt">&lt;/h2&gt;</span>
             <span class="nt">&lt;ul&gt;</span>
@@ -292,28 +297,26 @@
     <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </pre></div>
-
-
 <p>此时运行<code>http-server</code>可以再浏览器的<code>localhost:8080</code>中进行查看。</p>
-<h3>3.2 页头、Banner、正文、页脚的宏观布局</h3>
+<h3 id="32-banner">3.2 页头、Banner、正文、页脚的宏观布局</h3>
 <p>布局一直都是从大到小，因此刚开始不必对细节过分关注。</p>
 <div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;title&gt;</span>理想的博客<span class="nt">&lt;/title&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;css/application.css&quot;</span> <span class="na">media=</span><span class="s">&quot;screen, projection&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"css/application.css"</span> <span class="na">media=</span><span class="s">"screen, projection"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
     <span class="c">&lt;!-- 页头 --&gt;</span>
-    <span class="nt">&lt;header</span> <span class="na">id=</span><span class="s">&quot;header&quot;</span> <span class="na">class=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;header</span> <span class="na">id=</span><span class="s">"header"</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>
         <span class="nt">&lt;nav&gt;</span>
         <span class="nt">&lt;/nav&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;banner&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"banner"</span><span class="nt">&gt;&lt;/div&gt;</span>
     <span class="nt">&lt;/header&gt;</span>
     <span class="c">&lt;!-- /页头 --&gt;</span>
     <span class="c">&lt;!-- /内容 --&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="c">&lt;!-- /内容 --&gt;</span>
     <span class="c">&lt;!-- 页脚 --&gt;</span>
@@ -323,31 +326,27 @@
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </pre></div>
-
-
-<h3>3.3 页头结构分析及布局</h3>
-<div class="highlight"><pre><span class="nt">&lt;header</span> <span class="na">id=</span><span class="s">&quot;header&quot;</span> <span class="na">class=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+<h3 id="33">3.3 页头结构分析及布局</h3>
+<div class="highlight"><pre><span class="nt">&lt;header</span> <span class="na">id=</span><span class="s">"header"</span> <span class="na">class=</span><span class="s">""</span><span class="nt">&gt;</span>
     <span class="nt">&lt;nav&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;logo&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="nt">&gt;</span>理想<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"logo"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="nt">&gt;</span>理想<span class="nt">&lt;/a&gt;&lt;/div&gt;</span>
         <span class="nt">&lt;ul&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>首页<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>链接2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>链接3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>链接4<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>首页<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>链接2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>链接3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>链接4<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
         <span class="nt">&lt;/ul&gt;</span>
     <span class="nt">&lt;/nav&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;banner&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;inner&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"banner"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"inner"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;h1&gt;</span>刘理想<span class="nt">&lt;/h1&gt;</span>
-            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;sub-heading&quot;</span><span class="nt">&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui cupiditate quia modi dignissimos .<span class="nt">&lt;/p&gt;</span>
+            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"sub-heading"</span><span class="nt">&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui cupiditate quia modi dignissimos .<span class="nt">&lt;/p&gt;</span>
             <span class="nt">&lt;button&gt;</span>了解我<span class="nt">&lt;/button&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;more&quot;</span><span class="nt">&gt;</span>更多<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"more"</span><span class="nt">&gt;</span>更多<span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/header&gt;</span>
 </pre></div>
-
-
 <p>定义<code>_header.scss</code></p>
 <div class="highlight"><pre><span class="n">nav</span> <span class="p">{</span>
     <span class="nl">background:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="n">bgColor</span><span class="p">;</span>
@@ -376,8 +375,6 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
-
-
 <p>定义<code>_logo.scss</code>:</p>
 <div class="highlight"><pre><span class="nc">.logo</span><span class="p">{</span>
     <span class="k">font-size</span><span class="o">:</span> <span class="err">$</span><span class="n">logo</span><span class="o">-</span><span class="n">fontSize</span><span class="p">;</span>
@@ -394,8 +391,6 @@
     <span class="p">}</span>
 <span class="err">}</span>
 </pre></div>
-
-
 <p>定义<code>_banner.scss</code>:</p>
 <div class="highlight"><pre><span class="nf">#banner</span><span class="p">{</span>
     <span class="k">background</span><span class="o">:</span> <span class="err">$</span><span class="n">banner</span><span class="o">-</span><span class="n">bgColor</span><span class="p">;</span>
@@ -426,8 +421,6 @@
     <span class="err">}</span>
 <span class="err">}</span>
 </pre></div>
-
-
 <p>定义<code>_buttons.scss</code></p>
 <div class="highlight"><pre><span class="nt">button</span><span class="p">{</span>
     <span class="k">border</span><span class="o">:</span> <span class="err">$</span><span class="n">button</span><span class="o">-</span><span class="k">border</span><span class="p">;</span>
@@ -436,8 +429,6 @@
     <span class="k">padding</span><span class="o">:</span> <span class="err">$</span><span class="n">button</span><span class="o">-</span><span class="k">padding</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-
-
 <p>其中变量定义再<code>_variables.scss</code>:</p>
 <div class="highlight"><pre><span class="err">$</span><span class="nt">navbar-height</span> <span class="o">:</span> <span class="nt">50px</span><span class="o">;</span>
 <span class="err">$</span><span class="nt">navbar-bgColor</span><span class="o">:</span> <span class="nf">#ccc</span><span class="o">;</span>
@@ -474,9 +465,7 @@
 <span class="err">$</span><span class="nt">logo-lineHeight</span><span class="o">:</span> <span class="err">$</span><span class="nt">navbar-height</span><span class="o">;</span>
 <span class="err">$</span><span class="nt">logo-padding</span><span class="o">:</span> <span class="nt">0</span> <span class="nt">0</span> <span class="nt">0</span> <span class="nt">10px</span><span class="o">;</span>
 </pre></div>
-
-
-<h3>3.3 正文部分结构分析及布局</h3>
+<h3 id="33_1">3.3 正文部分结构分析及布局</h3>
 <p>使用normalize之后，h1~6可能会造成margin collapse，解释在：
 http://stackoverflow.com/questions/7374657/normalize-css-top-header-gap</p>
 <blockquote>
