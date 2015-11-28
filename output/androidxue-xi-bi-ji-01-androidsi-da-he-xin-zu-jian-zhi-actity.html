@@ -1,83 +1,64 @@
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Android学习笔记-01 Android四大核心组件之Actity</title>
-  <meta name="author" content="理想">
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
 
+<meta name="keywords" content="Android学习笔记, Android, Android, " />
+        <title>Android学习笔记-01 Android四大核心组件之Actity  · liulixiang1988的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href=".">Home</a></li>
+                            <li ><a href="./categories.html">Categories</a></li>
+                            <li ><a href="./tags.html">Tags</a></li>
+                            <li ><a href="./archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="./androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html"> Android学习笔记-01 Android四大核心组件之Actity  </a></h1>
+    </header>
+</div>
 
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
-        rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
-
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-</head>
-
-<body>
-  <header role="banner"><hgroup>
-  <h1><a href="./">理想国</a></h1>
-</hgroup></header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-</ul>
-
-
-<form action="//google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-
-<ul class="main-navigation">
-    <li class="active">
-    <a href="./category/android.html">Android</a>
-    </li>
-    <li >
-    <a href="./category/dotnet.html">Dotnet</a>
-    </li>
-    <li >
-    <a href="./category/ionic.html">Ionic</a>
-    </li>
-    <li >
-    <a href="./category/java.html">Java</a>
-    </li>
-    <li >
-    <a href="./category/python.html">Python</a>
-    </li>
-    <li >
-    <a href="./category/sheng-huo.html">生活</a>
-    </li>
-    <li >
-    <a href="./category/web.html">Web</a>
-    </li>
-    <li >
-    <a href="./category/yi-dong-kai-fa.html">移动开发</a>
-    </li>
-</ul></nav>
-  <div id="main">
-    <div id="content">
-<div>
-  <article class="hentry" role="article">
-<header>
-      <h1 class="entry-title">Android学习笔记-01 Android四大核心组件之Actity</h1>
-      <p class="meta"><time datetime="2014-08-27T09:48:00" pubdate>三 27 八月 2014</time></p>
-</header>
-
-  <div class="entry-content"><h1>Android学习笔记-01 Android四大核心组件之Actity</h1>
+            <h1>Android学习笔记-01 Android四大核心组件之Actity</h1>
 <h2>一、Actity生命周期</h2>
 <h3>1、生命周期的七个方法</h3>
 <p><strong>eclipse快捷键alt+/自动提示</strong></p>
@@ -135,23 +116,12 @@
 <span class="n">i</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">&quot;result&quot;</span><span class="o">,</span> <span class="s">&quot;hello&quot;</span><span class="o">)</span>
 <span class="n">setResult</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
 <span class="n">finish</span><span class="o">();</span>
-</pre></div></div>
-    <footer>
-<p class="meta">
-  <span class="byline author vcard">
-    Posted by <span class="fn">刘理想</span>
-  </span>
-<time datetime="2014-08-27T09:48:00" pubdate>三 27 八月 2014</time>  <span class="categories">
-    <a class="category" href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>
-    <a class="category" href="./tag/android.html">Android</a>
-  </span>
-</p><div class="sharing">
-</div>    </footer>
-  </article>
+</pre></div>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="DuoShuoComment" aria-live="polite">
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html" data-title="Android学习笔记-01 Android四大核心组件之Actity" data-url="./androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html"></div>
 <!-- 多说评论框 end -->
@@ -168,100 +138,60 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 	})();
 	</script>
 <!-- 多说公共JS代码 end -->
-    </div>
-  </section>
 </div>
-<aside class="sidebar">
-  <section>
-	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
-  </section>
-  <section>
-    <h1>Recent Posts</h1>
-    <ul id="recent_posts">
-      <li class="post">
-          <a href="./windowsxia-shi-yong-apachemod_wsgibu-shu-django.html">Windows下使用Apache+mod_wsgi部署Django</a>
-      </li>
-      <li class="post">
-          <a href="./css3bi-ji-03-bian-xing-transform.html">CSS3笔记03-变形transform</a>
-      </li>
-      <li class="post">
-          <a href="./css3bi-ji-02-xuan-ting-xiao-guo.html">CSS3笔记02-悬停效果</a>
-      </li>
-      <li class="post">
-          <a href="./css3bi-ji-01-guo-du-transition.html">CSS3笔记01-过渡transition</a>
-      </li>
-      <li class="post">
-          <a href="./ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Ionic使用教程-条码扫描</a>
-      </li>
-    </ul>
-  </section>
-  <section>
-      
-    <h1>Categories</h1>
-    <ul id="recent_posts">
-        <li><a href="./category/android.html">Android</a></li>
-        <li><a href="./category/dotnet.html">DotNet</a></li>
-        <li><a href="./category/ionic.html">ionic</a></li>
-        <li><a href="./category/java.html">Java</a></li>
-        <li><a href="./category/python.html">Python</a></li>
-        <li><a href="./category/sheng-huo.html">生活</a></li>
-        <li><a href="./category/web.html">Web</a></li>
-        <li><a href="./category/yi-dong-kai-fa.html">移动开发</a></li>
-    </ul>
-  </section>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
  
+                <li class="previous_article">« <a href="./shi-yong-pelicanda-jian-bo-ke.html" title="Previous: 使用Pelican搭建博客">使用Pelican搭建博客</a></li>
+ 
+                <li class="next_article"><a href="./androidxue-xi-bi-ji-02-android-si-da-he-xin-zu-jian-zhi-service.html" title="Next: Android学习笔记-02 Android 四大核心组件之Service">Android学习笔记-02 Android 四大核心组件之Service</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2014-08-27T09:48:00+08:00"> 8 27, 2014</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Android-ref">Android</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Android-ref">Android
+                    <span>17</span>
+</a></li>
+                <li><a href="/tags.html#Android学习笔记-ref">Android学习笔记
+                    <span>14</span>
+</a></li>
+            </ul>
 
-  <section>
-  <h1>Tags</h1>
-    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/angular.html">Angular</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/java.html">Java</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/css3.html">css3</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/javascript.html">JavaScript</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="./tag/compass.html">compass</a>,    <a href="./tag/exmobi.html">Exmobi</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/servlet.html">Servlet</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/jquery.html">jQuery</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/sass.html">sass</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/ionic.html">ionic</a>,    <a href="./tag/bu-shu.html">部署</a>  </section>
-
-
-
-  <section>
-    <h1>GitHub Repos</h1>
-    <ul id="gh_repos">
-      <li class="loading">Status updating...</li>
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
-      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
-    <script type="text/javascript">
-      $.domReady(function(){
-          if (!window.jXHR){
-              var jxhr = document.createElement('script');
-              jxhr.type = 'text/javascript';
-              jxhr.src = './theme/js/jXHR.js';
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(jxhr, s);
-          }
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
 
-          github.showRepos({
-              user: 'liulixiang1988',
-              count: 5,
-              skip_forks: false,
-              target: '#gh_repos'
-          });
-      });
-    </script>
-    <script src="./theme/js/github.js" type="text/javascript"> </script>
-  </section>
-
-    <section>
-        <h1>Social</h1>
-        <ul>
-            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
-        </ul>
-    </section>
-    <section>
-        <h1>Blogroll</h1>
-        <ul>
-            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
-        </ul>
-    </section>
-
-</aside>    </div>
-  </div>
-  <footer role="contentinfo"><p>
-    Copyright &copy;  2014-2015  - 理想 -
-  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
-</p></footer>
-</body>
+    </body>
 </html>

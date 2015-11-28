@@ -1,129 +1,110 @@
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>ASP.NET MVC5 学习笔记-2 Razor</title>
-  <meta name="author" content="理想">
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
 
+<meta name="keywords" content="DotNet, Web, ASP.NET MVC, DotNet, " />
+        <title>ASP.NET MVC5 学习笔记-2 Razor  · liulixiang1988的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href=".">Home</a></li>
+                            <li ><a href="./categories.html">Categories</a></li>
+                            <li ><a href="./tags.html">Tags</a></li>
+                            <li ><a href="./archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="./aspnet-mvc5-xue-xi-bi-ji-2-razor.html"> ASP.NET MVC5 学习笔记-2 Razor  </a></h1>
+    </header>
+</div>
 
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
-        rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
-
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-</head>
-
-<body>
-  <header role="banner"><hgroup>
-  <h1><a href="./">理想国</a></h1>
-</hgroup></header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-</ul>
-
-
-<form action="//google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-
-<ul class="main-navigation">
-    <li >
-    <a href="./category/android.html">Android</a>
-    </li>
-    <li class="active">
-    <a href="./category/dotnet.html">Dotnet</a>
-    </li>
-    <li >
-    <a href="./category/ionic.html">Ionic</a>
-    </li>
-    <li >
-    <a href="./category/java.html">Java</a>
-    </li>
-    <li >
-    <a href="./category/python.html">Python</a>
-    </li>
-    <li >
-    <a href="./category/sheng-huo.html">生活</a>
-    </li>
-    <li >
-    <a href="./category/web.html">Web</a>
-    </li>
-    <li >
-    <a href="./category/yi-dong-kai-fa.html">移动开发</a>
-    </li>
-</ul></nav>
-  <div id="main">
-    <div id="content">
-<div>
-  <article class="hentry" role="article">
-<header>
-      <h1 class="entry-title">ASP.NET MVC5 学习笔记-2 Razor</h1>
-      <p class="meta"><time datetime="2014-10-31T09:28:00" pubdate>五 31 十月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>[TOC]</p>
+            <p>[TOC]</p>
 <h1>ASP.NET MVC5 学习笔记-2 Razor</h1>
 <h2>1. Razor</h2>
-<div class="highlight"><pre><span class="p">@</span><span class="o">*</span><span class="err">注释</span><span class="o">*</span><span class="p">@</span>
+<div class="highlight"><pre>@*注释*@
 
-<span class="err">你在用</span> <span class="p">@</span><span class="nx">Request.Browser.Browser</span><span class="p">,</span> <span class="err">发送邮件给</span><span class="nx">support</span><span class="p">@</span><span class="nx">qq.com</span><span class="p">,</span> <span class="err">转义</span><span class="p">@@</span><span class="nx">qq</span>
+你在用 @Request.Browser.Browser, 发送邮件给support@qq.com, 转义@@qq
 
-<span class="p">@{</span>
-    <span class="kd">var</span> <span class="n">amounts</span> <span class="o">=</span> <span class="nb">new</span> <span class="nb">List</span><span class="o">&lt;</span><span class="kt">Decimal</span><span class="o">&gt;</span> <span class="p">{</span><span class="mi">100</span><span class="p">,</span> <span class="mf">25.00</span><span class="nx">m</span><span class="p">,</span> <span class="mf">30.0</span><span class="nx">m</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">};</span> 
-<span class="p">}</span>
+@{
+    var amounts = new List<span class="nt">&lt;Decimal&gt;</span> {100, 25.00m, 30.0m, -40}; 
+}
 
-<span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
-    <span class="p">@</span><span class="nb">foreach</span> <span class="p">(</span><span class="kt">decimal</span> <span class="n">amount</span> <span class="k">in</span> <span class="nx">amounts</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">@</span><span class="nx">formatAmount</span><span class="p">(</span><span class="nx">amount</span><span class="p">)</span><span class="o">&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">text</span><span class="o">&gt;</span><span class="err">普通文本</span><span class="o">&lt;/</span><span class="nx">text</span><span class="o">&gt;</span>
-        <span class="p">@:</span><span class="err">普通文本</span>
-    <span class="p">}</span>
-<span class="o">&lt;/</span><span class="nx">ul</span><span class="o">&gt;</span>
+<span class="nt">&lt;ul&gt;</span>
+    @foreach (decimal amount in amounts)
+    {
+        <span class="nt">&lt;li&gt;</span>@formatAmount(amount)<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;text&gt;</span>普通文本<span class="nt">&lt;/text&gt;</span>
+        @:普通文本
+    }
+<span class="nt">&lt;/ul&gt;</span>
 
-<span class="p">@</span><span class="nx">helper</span> <span class="nx">formatAmount</span><span class="p">(</span><span class="kt">decimal</span> <span class="nx">amount</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kd">var</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;green&quot;</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">amount</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="o">&lt;</span><span class="nx">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;color:@color&quot;</span><span class="o">&gt;</span><span class="p">@</span><span class="kt">String</span><span class="bp">.</span><span class="nb">Format</span><span class="p">(</span><span class="s2">&quot;{0:c}&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">)</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
-<span class="p">}</span>
+@helper formatAmount(decimal amount)
+{
+    var color = &quot;green&quot;;
+    if (amount <span class="nt">&lt; 0</span><span class="err">)</span>
+    <span class="err">{</span>
+        <span class="na">color =</span> <span class="s">&quot;red&quot;</span><span class="err">;</span>
+    <span class="err">}</span>
+    <span class="err">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color:@color&quot;</span><span class="nt">&gt;</span>@String.Format(&quot;{0:c}&quot;, amount)<span class="nt">&lt;/span&gt;</span>
+}
 </pre></div>
 
 
 <h2>2. Layout</h2>
 <h3>2.1 模板继承</h3>
 <p><code>Views</code>文件夹下<code>_ViewStart.cshtml</code>定义了全局的Layout：</p>
-<div class="highlight"><pre><span class="err">@</span><span class="p">{</span>
-    <span class="n">Layout</span> <span class="o">=</span> <span class="s">&quot;~/Views/Shared/_Layout.cshtml&quot;</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre>@{
+    Layout = &quot;~/Views/Shared/_Layout.cshtml&quot;;
+}
 </pre></div>
 
 
 <p>如果给某个控制器指定特定的layout，就是在这个控制器对应的文件夹下再建一个<code>_ViewStart.cshmtl</code>，里面内容与上面相同。</p>
 <p>如果想给某个特定Action指定layout，可以这样：</p>
-<div class="highlight"><pre><span class="err">@</span><span class="p">{</span>
-    <span class="n">ViewBag</span><span class="p">.</span><span class="n">Title</span> <span class="o">=</span> <span class="s">&quot;Home Page&quot;</span><span class="p">;</span>
-    <span class="n">Layout</span> <span class="o">=</span> <span class="s">&quot;MyLayout.cshtml&quot;</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre>@{
+    ViewBag.Title = &quot;Home Page&quot;;
+    Layout = &quot;MyLayout.cshtml&quot;;
+}
 </pre></div>
 
 
@@ -143,26 +124,26 @@
 
 
 <p>RenderBody()就是默认全部。RenderSection()在子模板中可以省略，但定义如下：</p>
-<p _="=" _wzxhzdk:17_="<script>" testing="testing" true_wzxhzdk:18_="true;</script>
-" var="var">```@section scripts</p>
-<div class="highlight"><pre><span class="c">##3. Html Helpers</span>
+<p _="
+" _wzxhzdk:17_="<script>" testing="testing" var="var">```@section scripts</p>
+<div class="highlight"><pre>##3. Html Helpers
 
-<span class="c">###3.1 Html.ActionLink</span>
+###3.1 Html.ActionLink
 </pre></div>
 
 
 <p class="&quot;css类，其他类不用加@&quot;">@Html.ActionLink("连接名", "Action", "Controller", new {paramter=""}, new )
 @Html.ActionLink("连接名", "Action", "Controller")</p>
-<div class="highlight"><pre><span class="cp">###3.2 Html.Partial</span>
+<div class="highlight"><pre>###3.2 Html.Partial
 
-<span class="err">包含部分模板</span>
+包含部分模板
 </pre></div>
 
 
 <p>@Html.Partial("_LoginPartial")</p>
-<div class="highlight"><pre><span class="cp">###3.3 Html.BeginForm</span>
+<div class="highlight"><pre>###3.3 Html.BeginForm
 
-<span class="err">`</span><span class="n">Html</span><span class="p">.</span><span class="n">BeginForm</span><span class="p">(</span><span class="s">&quot;action&quot;</span><span class="p">,</span> <span class="s">&quot;form&quot;</span><span class="p">,</span> <span class="n">Method</span><span class="p">,</span> <span class="n">css</span><span class="p">)</span><span class="err">`</span>
+`Html.BeginForm(&quot;action&quot;, &quot;form&quot;, Method, css)`
 </pre></div>
 
 
@@ -178,7 +159,7 @@
 </ul>
 
 <p>}</p>
-<div class="highlight"><pre><span class="err">如果使用了```@</span><span class="n">Html</span><span class="p">.</span><span class="n">AntiForgeryToken</span><span class="p">()</span><span class="err">```，则对应的</span><span class="n">Action</span><span class="err">应该添加`</span><span class="n">ValidateAntiForgeryToken</span><span class="err">`</span>
+<div class="highlight"><pre>如果使用了```@Html.AntiForgeryToken()```，则对应的Action应该添加`ValidateAntiForgeryToken`
 </pre></div>
 
 
@@ -188,9 +169,9 @@
 " return="return">[HttpPost]
 [ValidateAntiForgeryToken]
 public ActionResult LogOff()</p>
-<div class="highlight"><pre><span class="cp">###3.4 Html.Action</span>
+<div class="highlight"><pre>###3.4 Html.Action
 
-<span class="err">输出</span><span class="n">Action</span><span class="err">的结果作为页面的一部分</span>
+输出Action的结果作为页面的一部分
 </pre></div>
 
 
@@ -198,26 +179,26 @@ public ActionResult LogOff()</p>
     <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 应用程序 @Html.Action("Serial", "Home", new{lettercase="lower"})</p>
 </footer>
 
-<div class="highlight"><pre><span class="cp">###3.5 下拉框</span>
-<span class="err">代码</span>
+<div class="highlight"><pre>###3.5 下拉框
+代码
 </pre></div>
 
 
 <p>public ActionResult Index(string movieGenre, string searchString)
 {
     var GenreLst = new List<string>();</p>
-<div class="highlight"><pre><span class="n">var</span> <span class="n">GenreQry</span> <span class="o">=</span> <span class="n">from</span> <span class="n">d</span> <span class="n">in</span> <span class="n">db</span><span class="p">.</span><span class="n">Movies</span>
-               <span class="n">orderby</span> <span class="n">d</span><span class="p">.</span><span class="n">Genre</span>
-               <span class="n">select</span> <span class="n">d</span><span class="p">.</span><span class="n">Genre</span><span class="p">;</span>
+<div class="highlight"><pre>var GenreQry = from d in db.Movies
+               orderby d.Genre
+               select d.Genre;
 
-<span class="n">GenreLst</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="n">GenreQry</span><span class="p">.</span><span class="n">Distinct</span><span class="p">());</span>
-<span class="n">ViewBag</span><span class="p">.</span><span class="n">movieGenre</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SelectList</span><span class="p">(</span><span class="n">GenreLst</span><span class="p">);</span>
-<span class="p">...</span>
+GenreLst.AddRange(GenreQry.Distinct());
+ViewBag.movieGenre = new SelectList(GenreLst);
+...
 </pre></div>
 
 
 <p>}</p>
-<div class="highlight"><pre><span class="err">对应的视图</span>
+<div class="highlight"><pre>对应的视图
 </pre></div>
 
 
@@ -228,10 +209,10 @@ public ActionResult LogOff()</p>
 " _wzxhzdk:21_wzxhzdk:22_="<input type="submit" value="Filter" />
 </p>
 ">@using (Html.BeginForm("Index", "Movies", FormMethod.Get))</p>
-<div class="highlight"><pre><span class="err">使用`</span><span class="n">Html</span><span class="p">.</span><span class="n">DropDownList</span><span class="err">`和`</span><span class="n">Html</span><span class="p">.</span><span class="n">TextBox</span><span class="err">`等中绑定的名称和</span><span class="n">ViewBag</span><span class="err">中的值相同时可以自动绑定。</span>
+<div class="highlight"><pre>使用`Html.DropDownList`和`Html.TextBox`等中绑定的名称和ViewBag中的值相同时可以自动绑定。
 
 
-<span class="cp">##4. Bundling和Minification</span>
+##4. Bundling和Minification
 </pre></div>
 
 
@@ -250,48 +231,36 @@ public ActionResult LogOff()</p>
     {
         bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                     "~/Scripts/jquery-{version}.js"));</p>
-<div class="highlight"><pre>    <span class="n">bundles</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">new</span> <span class="n">ScriptBundle</span><span class="p">(</span><span class="s">&quot;~/bundles/jqueryval&quot;</span><span class="p">).</span><span class="n">Include</span><span class="p">(</span>
-                <span class="s">&quot;~/Scripts/jquery.validate*&quot;</span><span class="p">));</span>
+<div class="highlight"><pre>    bundles.Add(new ScriptBundle(&quot;~/bundles/jqueryval&quot;).Include(
+                &quot;~/Scripts/jquery.validate*&quot;));
 
-    <span class="c1">// 使用要用于开发和学习的 Modernizr 的开发版本。然后，当你做好</span>
-    <span class="c1">// 生产准备时，请使用 http://modernizr.com 上的生成工具来仅选择所需的测试。</span>
-    <span class="n">bundles</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">new</span> <span class="n">ScriptBundle</span><span class="p">(</span><span class="s">&quot;~/bundles/modernizr&quot;</span><span class="p">).</span><span class="n">Include</span><span class="p">(</span>
-                <span class="s">&quot;~/Scripts/modernizr-*&quot;</span><span class="p">));</span>
+    // 使用要用于开发和学习的 Modernizr 的开发版本。然后，当你做好
+    // 生产准备时，请使用 http://modernizr.com 上的生成工具来仅选择所需的测试。
+    bundles.Add(new ScriptBundle(&quot;~/bundles/modernizr&quot;).Include(
+                &quot;~/Scripts/modernizr-*&quot;));
 
-    <span class="n">bundles</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">new</span> <span class="n">ScriptBundle</span><span class="p">(</span><span class="s">&quot;~/bundles/bootstrap&quot;</span><span class="p">).</span><span class="n">Include</span><span class="p">(</span>
-              <span class="s">&quot;~/Scripts/bootstrap.js&quot;</span><span class="p">,</span>
-              <span class="s">&quot;~/Scripts/respond.js&quot;</span><span class="p">));</span>
+    bundles.Add(new ScriptBundle(&quot;~/bundles/bootstrap&quot;).Include(
+              &quot;~/Scripts/bootstrap.js&quot;,
+              &quot;~/Scripts/respond.js&quot;));
 
-    <span class="n">bundles</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">new</span> <span class="n">StyleBundle</span><span class="p">(</span><span class="s">&quot;~/Content/css&quot;</span><span class="p">).</span><span class="n">Include</span><span class="p">(</span>
-              <span class="s">&quot;~/Content/bootstrap.css&quot;</span><span class="p">,</span>
-              <span class="s">&quot;~/Content/site.css&quot;</span><span class="p">));</span>
-    <span class="c1">//压缩</span>
-    <span class="n">BundleTable</span><span class="p">.</span><span class="n">EnableOptimizations</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-<span class="p">}</span>
+    bundles.Add(new StyleBundle(&quot;~/Content/css&quot;).Include(
+              &quot;~/Content/bootstrap.css&quot;,
+              &quot;~/Content/site.css&quot;));
+    //压缩
+    BundleTable.EnableOptimizations = true;
+}
 </pre></div>
 
 
 <p>}
 ```</p>
 <h2>5. Bootstrap</h2>
-<p>ASP.NET MVC 5默认支持BootStrap</p></div>
-    <footer>
-<p class="meta">
-  <span class="byline author vcard">
-    Posted by <span class="fn">刘理想</span>
-  </span>
-<time datetime="2014-10-31T09:28:00" pubdate>五 31 十月 2014</time>  <span class="categories">
-    <a class="category" href="./tag/dotnet.html">DotNet</a>
-    <a class="category" href="./tag/web.html">Web</a>
-    <a class="category" href="./tag/aspnet-mvc.html">ASP.NET MVC</a>
-  </span>
-</p><div class="sharing">
-</div>    </footer>
-  </article>
+<p>ASP.NET MVC 5默认支持BootStrap</p>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="DuoShuoComment" aria-live="polite">
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="aspnet-mvc5-xue-xi-bi-ji-2-razor.html" data-title="ASP.NET MVC5 学习笔记-2 Razor" data-url="./aspnet-mvc5-xue-xi-bi-ji-2-razor.html"></div>
 <!-- 多说评论框 end -->
@@ -308,100 +277,63 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 	})();
 	</script>
 <!-- 多说公共JS代码 end -->
-    </div>
-  </section>
 </div>
-<aside class="sidebar">
-  <section>
-	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
-  </section>
-  <section>
-    <h1>Recent Posts</h1>
-    <ul id="recent_posts">
-      <li class="post">
-          <a href="./windowsxia-shi-yong-apachemod_wsgibu-shu-django.html">Windows下使用Apache+mod_wsgi部署Django</a>
-      </li>
-      <li class="post">
-          <a href="./css3bi-ji-03-bian-xing-transform.html">CSS3笔记03-变形transform</a>
-      </li>
-      <li class="post">
-          <a href="./css3bi-ji-02-xuan-ting-xiao-guo.html">CSS3笔记02-悬停效果</a>
-      </li>
-      <li class="post">
-          <a href="./css3bi-ji-01-guo-du-transition.html">CSS3笔记01-过渡transition</a>
-      </li>
-      <li class="post">
-          <a href="./ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html">Ionic使用教程-条码扫描</a>
-      </li>
-    </ul>
-  </section>
-  <section>
-      
-    <h1>Categories</h1>
-    <ul id="recent_posts">
-        <li><a href="./category/android.html">Android</a></li>
-        <li><a href="./category/dotnet.html">DotNet</a></li>
-        <li><a href="./category/ionic.html">ionic</a></li>
-        <li><a href="./category/java.html">Java</a></li>
-        <li><a href="./category/python.html">Python</a></li>
-        <li><a href="./category/sheng-huo.html">生活</a></li>
-        <li><a href="./category/web.html">Web</a></li>
-        <li><a href="./category/yi-dong-kai-fa.html">移动开发</a></li>
-    </ul>
-  </section>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
  
+                <li class="previous_article">« <a href="./shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html" title="Previous: 使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)">使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</a></li>
+ 
+                <li class="next_article"><a href="./aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html" title="Next: ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器">ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2014-10-31T09:28:00+08:00">10 31, 2014</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#DotNet-ref">DotNet</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#ASP.NET-MVC-ref">ASP.NET MVC
+                    <span>5</span>
+</a></li>
+                <li><a href="/tags.html#DotNet-ref">DotNet
+                    <span>5</span>
+</a></li>
+                <li><a href="/tags.html#Web-ref">Web
+                    <span>24</span>
+</a></li>
+            </ul>
 
-  <section>
-  <h1>Tags</h1>
-    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/angular.html">Angular</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/java.html">Java</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/css3.html">css3</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/javascript.html">JavaScript</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/yi-dong-kai-fa.html">移动开发</a>,    <a href="./tag/compass.html">compass</a>,    <a href="./tag/exmobi.html">Exmobi</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/servlet.html">Servlet</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/jquery.html">jQuery</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/sass.html">sass</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/ionic.html">ionic</a>,    <a href="./tag/bu-shu.html">部署</a>  </section>
-
-
-
-  <section>
-    <h1>GitHub Repos</h1>
-    <ul id="gh_repos">
-      <li class="loading">Status updating...</li>
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
-      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
-    <script type="text/javascript">
-      $.domReady(function(){
-          if (!window.jXHR){
-              var jxhr = document.createElement('script');
-              jxhr.type = 'text/javascript';
-              jxhr.src = './theme/js/jXHR.js';
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(jxhr, s);
-          }
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
 
-          github.showRepos({
-              user: 'liulixiang1988',
-              count: 5,
-              skip_forks: false,
-              target: '#gh_repos'
-          });
-      });
-    </script>
-    <script src="./theme/js/github.js" type="text/javascript"> </script>
-  </section>
-
-    <section>
-        <h1>Social</h1>
-        <ul>
-            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
-        </ul>
-    </section>
-    <section>
-        <h1>Blogroll</h1>
-        <ul>
-            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
-        </ul>
-    </section>
-
-</aside>    </div>
-  </div>
-  <footer role="contentinfo"><p>
-    Copyright &copy;  2014-2015  - 理想 -
-  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
-</p></footer>
-</body>
+    </body>
 </html>

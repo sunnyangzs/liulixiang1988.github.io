@@ -1,5 +1,5 @@
 Title: Python读取网络图片
-Date: 2015-11-0 09:39
+Date: 2015-11-07 09:39
 Category: Python
 Tags: Python
 Author: 刘理想
@@ -32,3 +32,4 @@ img = Image.open(StringIO(response.content))
 ```
 
 关于`StringIO`和`cStringIO`，这些只是在python2中存在，在python3中导入`io`，使用`io.StringIO`或者`io.BytesIO`来使用文本或者数据
+

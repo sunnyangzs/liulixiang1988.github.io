@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Gulp, Web, " />
+        <title>Gulp笔记  · liulixiang1988的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href=".">Home</a></li>
+                            <li ><a href="./categories.html">Categories</a></li>
+                            <li ><a href="./tags.html">Tags</a></li>
+                            <li ><a href="./archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="./gulpbi-ji.html"> Gulp笔记  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <p>[TOC]</p>
+<h2>1. 准备工作</h2>
+<ul>
+<li>安装nodejs</li>
+<li>安装http-server: <code>npm install -g http-server</code></li>
+<li>初始化项目：<code>npm init</code></li>
+<li>安装gulp: <code>npm install gulp --save-dev</code> 安装到依赖中</li>
+</ul>
+<h2>2. 第一个Gulp Task</h2>
+<p>创建一个gulpfile.js，gulp会自动发现这个文件。</p>
+<div class="highlight"><pre><span class="s1">&#39;use strict&#39;</span><span class="p">;</span> <span class="c1">//使用严格的编译方法</span>
+
+<span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp&#39;</span><span class="p">);</span>
+
+<span class="c1">//定义task，第一个参数是任务名</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">);</span>
+<span class="p">})</span>
+</pre></div>
+
+
+<p>运行任务：</p>
+<div class="highlight"><pre><span class="nv">$ </span>gulp hello
+<span class="o">[</span>09:40:32<span class="o">]</span> Using gulpfile G:<span class="se">\g</span>it<span class="se">\W</span>ebDesign<span class="se">\g</span>ulp_learn<span class="se">\g</span>ulp_basics<span class="se">\g</span>ulpfile.js
+<span class="o">[</span>09:40:32<span class="o">]</span> Starting <span class="s1">&#39;hello&#39;</span>...
+Hello
+<span class="o">[</span>09:40:32<span class="o">]</span> Finished <span class="s1">&#39;hello&#39;</span> after <span class="m">354</span> μs
+</pre></div>
+
+
+<p>定义默认的task：</p>
+<div class="highlight"><pre><span class="c1">//默认task，第二个参数是依赖任务，依赖任务会在当前任务之前执行</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="cp">[</span><span class="s2">&quot;hello&quot;</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;This is the default task!&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>运行任务，运行默认的任务不需要任务名：</p>
+<div class="highlight"><pre><span class="nv">$ </span>gulp
+<span class="o">[</span>09:43:23<span class="o">]</span> Using gulpfile G:<span class="se">\g</span>it<span class="se">\W</span>ebDesign<span class="se">\g</span>ulp_learn<span class="se">\g</span>ulp_basics<span class="se">\g</span>ulpfile.js
+<span class="o">[</span>09:43:23<span class="o">]</span> Starting <span class="s1">&#39;hello&#39;</span>...
+Hello
+<span class="o">[</span>09:43:23<span class="o">]</span> Finished <span class="s1">&#39;hello&#39;</span> after <span class="m">299</span> μs
+<span class="o">[</span>09:43:23<span class="o">]</span> Starting <span class="s1">&#39;default&#39;</span>...
+This is the default task!
+<span class="o">[</span>09:43:23<span class="o">]</span> Finished <span class="s1">&#39;default&#39;</span> after <span class="m">554</span> μs
+</pre></div>
+
+
+<h2>3. 使用Gulp管理Javascript 工作流</h2>
+<h3>3.1 使用Gulp第三方库</h3>
+<p>gulp社区提供了很多gulp的第三方库，来完成各种工作(比如编译sass, 压缩文件等)。</p>
+<p>这里我们使用gulp-concat库，来分别压缩css和js文件到一个文件中。</p>
+<p><strong>安装gulp-concat</strong></p>
+<div class="highlight"><pre>npm install gulp-concat --save-dev
+</pre></div>
+
+
+<p>假设我们页面里有很多js文件，当项目变得越来越大时，管理多个文件就很困难，所以我们可以使用gulp来将这些文件合并成一个文件。</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp&#39;</span><span class="p">),</span> 
+  <span class="nx">concat</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-concat&#39;</span><span class="p">);</span>
+
+<span class="c1">//定义task，第一个参数是任务名</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;concatScripts&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="c1">//gulp.src可以接受数组和单独的字符串，注意js文件的顺序</span>
+  <span class="c1">//pipe类似unix中管道的概念，前面的输出作为后面的输入，这里gulp.src的输出作为concat()的输入</span>
+  <span class="c1">//concat()接受的字符串参数是合并后的文件名</span>
+  <span class="c1">//gulp.dest()指定文件夹</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="cp">[</span>
+    <span class="s1">&#39;js/jquery.js&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;js/sticky/jquery.sticky.js&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;js/main.js&#39;</span><span class="cp">]</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="s2">&quot;app.js&quot;</span><span class="p">))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;js&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<h3>3.2 压缩JavaScript文件</h3>
+<p>安装gulp-uglify</p>
+<div class="highlight"><pre>npm install gulp-uglify --save-dev
+</pre></div>
+
+
+<p>利用前面concatScripts已经创建好的app.js，进行压缩：</p>
+<div class="highlight"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;minifyScripts&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s2">&quot;js/app.js&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">uglify</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;js&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>上面有一个问题，就是原有的app.js被压缩了，看不到原有未压缩前的js了。那我们可以使用gulp-rename来将压缩后的文件重命名。</p>
+<p>安装gulp-rename:</p>
+<div class="highlight"><pre>npm install gulp-rename --save-dev
+</pre></div>
+
+
+<div class="highlight"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;minifyScripts&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s2">&quot;js/app.js&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">uglify</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">(</span><span class="s1">&#39;app.min.js&#39;</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;js&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<h2>4. 使用Gulp编译Sass</h2>
+<h3>4.1 Gulp自动编译Sass</h3>
+<p>要让Gulp能够编译Sass，第一步就是安装gulp-sass</p>
+<div class="highlight"><pre>npm install gulp-sass --save-dev
+</pre></div>
+
+
+<p>然后创建任务：</p>
+<div class="highlight"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;compileSass&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">&#39;scss/application.scss&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">sass</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;css&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<h3>4.2 给Sass添加Source Map</h3>
+<p>Source Map用来显示Sass和CSS之间的映射，当Sass文件较多时特别有用。</p>
+<p>安装gulp-sourcemaps</p>
+<div class="highlight"><pre>npm install gulp-sourcemaps
+</pre></div>
+
+
+<p>定义source map有点不同：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">maps</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-sourcemaps&#39;</span><span class="p">);</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;compileSass&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">&#39;scss/application.scss&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">maps</span><span class="p">.</span><span class="nx">init</span><span class="p">())</span> <span class="c1">//初始化maps</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">sass</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">maps</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">))</span> <span class="c1">//输出source maps文件路径是相对于输出的css文件路径的，这里让source maps也在css文件夹内</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;css&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>这个时候在谷歌浏览器的开发工具里查看class，就会显示对应的sass文件了。</p>
+<h3>4.3 JavaScript的Source Map</h3>
+<p>gulp-sourcemaps不仅能映射sass和css，还能给js做映射，方法同Sass映射：</p>
+<div class="highlight"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;concatScripts&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="c1">//gulp.src可以接受数组和单独的字符串，注意js文件的顺序</span>
+  <span class="c1">//pipe类似unix中管道的概念，前面的输出作为后面的输入，这里gulp.src的输出作为concat()的输入</span>
+  <span class="c1">//concat()接受的字符串参数是合并后的文件名</span>
+  <span class="c1">//gulp.dest()指定文件夹</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="cp">[</span>
+    <span class="s1">&#39;js/jquery.js&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;js/sticky/jquery.sticky.js&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;js/main.js&#39;</span><span class="cp">]</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">maps</span><span class="p">.</span><span class="nx">init</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="s2">&quot;app.js&quot;</span><span class="p">))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">maps</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;js&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<h2>5. 进一步提高Gulp任务管道</h2>
+<h3>5.1 多个任务放在一起</h3>
+<div class="highlight"><pre>gulp.task(&quot;build&quot;, [&quot;concatScripts&quot;, &quot;minifyScripts&quot;, &quot;compileSass&quot;]);
+</pre></div>
+
+
+<p>但这样做会有一个问题，3个任务是一起执行的，而minifyScripts需要在concatScripts之前执行。要解决这个问题，我们对gulpfile.js进行改造：</p>
+<div class="highlight"><pre><span class="s1">&#39;use strict&#39;</span><span class="p">;</span> 
+<span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp&#39;</span><span class="p">),</span> 
+  <span class="nx">concat</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-concat&#39;</span><span class="p">),</span>
+  <span class="nx">uglify</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-uglify&#39;</span><span class="p">),</span>
+  <span class="nx">rename</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-rename&#39;</span><span class="p">),</span>
+    <span class="nx">sass</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-sass&#39;</span><span class="p">),</span>
+    <span class="nx">maps</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-sourcemaps&#39;</span><span class="p">);</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;concatScripts&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="cp">[</span>
+    <span class="s1">&#39;js/jquery.js&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;js/sticky/jquery.sticky.js&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;js/main.js&#39;</span><span class="cp">]</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">maps</span><span class="p">.</span><span class="nx">init</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="s2">&quot;app.js&quot;</span><span class="p">))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">maps</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;js&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;minifyScripts&quot;</span><span class="p">,</span> <span class="cp">[</span><span class="s2">&quot;concatScripts&quot;</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s2">&quot;js/app.js&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">uglify</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">(</span><span class="s1">&#39;app.min.js&#39;</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;js&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;compileSass&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">&#39;scss/application.scss&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">maps</span><span class="p">.</span><span class="nx">init</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">sass</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">maps</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;css&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="cp">[</span><span class="s2">&quot;minifyScripts&quot;</span><span class="p">,</span> <span class="s2">&quot;compileSass&quot;</span><span class="cp">]</span><span class="p">);</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="cp">[</span><span class="s2">&quot;build&quot;</span><span class="cp">]</span><span class="p">);</span>
+</pre></div>
+
+
+<p>首先所有的任务都用<code>return</code>进行返回，这样gulp能够在运行需要依赖的任务时，知道依赖任务什么时候结束。</p>
+<p>然后将concatScripts作为minifyScripts的依赖，并从build任务中删除concatScripts，从而实现concatScripts在minifyScripts前运行。</p>
+<h3>5.2 使用watch方法自动运行任务</h3>
+<p>gulp的watch方法能够自动检测到文件的改变，并且自动执行任务。</p>
+<div class="highlight"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;watchSass&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="cp">[</span><span class="s1">&#39;scss/**/*.scss&#39;</span><span class="cp">]</span><span class="p">,</span> <span class="cp">[</span><span class="s1">&#39;compileSass&#39;</span><span class="cp">]</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>运行：</p>
+<div class="highlight"><pre>gulp watchSass
+</pre></div>
+
+
+<h3>5.3 构建和开发的pipeline</h3>
+<p>如果需要部署，则将文件拷贝到dist，但是要提供<code>{base: './'}</code>，否则只拷贝文件不拷贝目录。</p>
+<div class="highlight"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="cp">[</span><span class="s2">&quot;minifyScripts&quot;</span><span class="p">,</span> <span class="s2">&quot;compileSass&quot;</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="cp">[</span><span class="s2">&quot;css/application.css&quot;</span><span class="p">,</span> <span class="s2">&quot;js/app.min.js&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;index.html&quot;</span><span class="p">,</span> <span class="s2">&quot;img/**&quot;</span><span class="p">,</span> <span class="s2">&quot;fonts/**&quot;</span><span class="cp">]</span><span class="p">,</span> <span class="p">{</span><span class="nx">base</span><span class="o">:</span> <span class="s1">&#39;./&#39;</span><span class="p">})</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;dist&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>安装del，删除多余的文件</p>
+<div class="highlight"><pre>npm install del --save-dev
+</pre></div>
+
+
+<p>创建清除</p>
+<div class="highlight"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;clean&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">del</span><span class="p">(</span><span class="cp">[</span><span class="s1">&#39;dist&#39;</span><span class="p">,</span> <span class="s1">&#39;css/application.css*&#39;</span><span class="p">,</span> <span class="s1">&#39;js/app*.js*&#39;</span><span class="cp">]</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>最后，整个流程是清除原先生成的文件，然后再运行build任务。
+gulpfile.js中启动任务是<code>gulp.start('任务名')</code></p>
+<div class="highlight"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;clean&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">del</span><span class="p">(</span><span class="cp">[</span><span class="s1">&#39;dist&#39;</span><span class="p">,</span> <span class="s1">&#39;css/application.css*&#39;</span><span class="p">,</span> <span class="s1">&#39;js/app*.js*&#39;</span><span class="cp">]</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="cp">[</span><span class="s2">&quot;minifyScripts&quot;</span><span class="p">,</span> <span class="s2">&quot;compileSass&quot;</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="cp">[</span><span class="s2">&quot;css/application.css&quot;</span><span class="p">,</span> <span class="s2">&quot;js/app.min.js&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;index.html&quot;</span><span class="p">,</span> <span class="s2">&quot;img/**&quot;</span><span class="p">,</span> <span class="s2">&quot;fonts/**&quot;</span><span class="cp">]</span><span class="p">,</span> <span class="p">{</span><span class="nx">base</span><span class="o">:</span> <span class="s1">&#39;./&#39;</span><span class="p">})</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;dist&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="cp">[</span><span class="s2">&quot;clean&quot;</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="s1">&#39;build&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<h3>5.4 深入development pipeline</h3>
+<p>如果要监视Sass和JS的变化，利用前面创建的watchSass，改为:</p>
+<div class="highlight"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;watchFiles&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="cp">[</span><span class="s1">&#39;scss/**/*.scss&#39;</span><span class="cp">]</span><span class="p">,</span> <span class="cp">[</span><span class="s1">&#39;compileSass&#39;</span><span class="cp">]</span><span class="p">);</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="s1">&#39;js/main.js&#39;</span><span class="p">,</span> <span class="cp">[</span><span class="s1">&#39;concatScripts&#39;</span><span class="cp">]</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>也可以把两个watch合并为一个：</p>
+<div class="highlight"><pre>gulp.watch([&#39;scss/**/*.scss&#39;, &#39;js/main.js&#39;], [&#39;compileSass&#39;, &#39;concatScripts&#39;]);
+</pre></div>
+
+
+<p>这样，无论是sass还是js文件发生改变，都会引起compileSass和concatScripts任务重新执行，这并不是一个特别好的方法，因为js并不需要compileSass，同样，sass也并不需要concatScripts.</p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="gulpbi-ji.html" data-title="Gulp笔记" data-url="./gulpbi-ji.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="./android-chang-jian-wen-ti-hui-zong.html" title="Previous: Android-常见问题汇总">Android-常见问题汇总</a></li>
+ 
+                <li class="next_article"><a href="./css3bian-ping-hua-feng-ge-bo-ke.html" title="Next: CSS3扁平化风格博客">CSS3扁平化风格博客</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-07-01T08:42:00+08:00"> 7 1, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Web-ref">Web</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Gulp-ref">Gulp
+                    <span>1</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

@@ -26,7 +26,7 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-THEME = 'octopress-themes'
+THEME = 'pelican-elegant-1.3'
 
 DUOSHUO_SITENAME = "liulixiang1988"
 
@@ -37,3 +37,10 @@ SIDEBAR_IMAGE = "images/avatar.jpg"
 SIDEBAR_IMAGE_ALT = "刘理想"
 
 SEARCH_BOX = True
+
+LANDING_PAGE_ABOUT = {
+    "title": "Liu Lixiang",
+    "details": """
+My Name is Liu Lixiang. I'm a software engineer in Tongling Nonferrous Metals Group.
+    """
+}

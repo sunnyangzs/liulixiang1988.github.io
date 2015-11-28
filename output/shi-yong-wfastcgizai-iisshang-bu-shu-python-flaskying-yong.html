@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Flask, Python, " />
+        <title>使用wfastcgi在IIS上部署Python Flask应用  · liulixiang1988的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href=".">Home</a></li>
+                            <li ><a href="./categories.html">Categories</a></li>
+                            <li ><a href="./tags.html">Tags</a></li>
+                            <li ><a href="./archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="./shi-yong-wfastcgizai-iisshang-bu-shu-python-flaskying-yong.html"> 使用wfastcgi在IIS上部署Python Flask应用  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <p>本文介绍了如何在Windows上部署Python Flask应用，相关环境如下：
+- 操作系统：windows 7
+- Python：3.4
+- WFastCGI: 2.2
+应用所用到的包版本如下：</p>
+<div class="highlight"><pre>Flask==0.10.1
+Flask-SQLAlchemy==2.1
+itsdangerous==0.24
+Jinja2==2.8
+MarkupSafe==0.23
+pyodbc==3.0.10
+SQLAlchemy==1.0.9
+Werkzeug==0.11.2
+wheel==0.24.0
+</pre></div>
+
+
+<h2>1. WFastCGI</h2>
+<p>wfastcgi.py使用WSGI和FastCGI提供了IIS和Python之间的桥接，类似于Apache HTTP服务器上的mod_python.</p>
+<p>它能够用于任何支持WSGI的Python web应用或者框架，而且提供了IIS处理请求和进程池的高效方法。</p>
+<h2>2. 安装</h2>
+<h3>2.1 下载安装包</h3>
+<p>通过PyPI安装：</p>
+<div class="highlight"><pre>pip install wfastcgi
+</pre></div>
+
+
+<h3>2.2 IIS安装FastCGI和URL重写</h3>
+<p>IIS需要安装FastCGI和URL重写，这个可以通过<a href="https://www.microsoft.com/web/downloads/platform.aspx">Microsoft Web Platform Installer</a>来安装。下载过<a href="https://www.microsoft.com/web/downloads/platform.aspx">Microsoft Web Platform Installer</a>点击运行，会出现如下的界面。
+<img alt="Alt text" src="images/1448583956986.png" /></p>
+<p>在搜索栏分别输入cgi和url重写，点击添加按钮：
+<img alt="Alt text" src="images/1448584071863.png" /></p>
+<p><img alt="Alt text" src="images/1448584044495.png" /></p>
+<p><strong>注</strong>：windows10上的IIS 10现在不支持url重写。</p>
+<h2>3. 启用wfastcgi</h2>
+<p>一旦<code>wfastcgi</code>和IIS安装完毕，用管理员的身份运行<code>wfastcgi-enable</code>来在IIS上启用<code>wfastcgi</code>配置。这个能配置一个<a href="#routehandlers">路由处理器</a>的CGI应用。</p>
+<div class="highlight"><pre>wfastcgi-enable
+</pre></div>
+
+
+<p>要在卸载之前禁用<code>wfastcgi</code>，运行<code>wfastcgi-disable</code>：</p>
+<div class="highlight"><pre>wfastcgi-disable
+pip uninstall wfastcgi
+</pre></div>
+
+
+<p><strong>注意</strong>: 卸载<code>wfastcgi</code>不会自动的取消注册CGI应用。</p>
+<p>如果传递给<code>wfastcgi-enable</code>或者<code>wfastcgi-disable</code>的第一个参数是一个有效的文件，整个命令行就用来注册或取消注册这个CGI处理器。</p>
+<p>例如，下面的命令就是在IIS Express上启用wfastcgi，而且指定主机配置。</p>
+<div class="highlight"><pre>wfastcgi-enable &quot;C:\Program Files (x86)\IIS Express\appcmd.exe&quot;
+    /apphostconfig:C:\Path\To\applicationhost.config
+</pre></div>
+
+
+<p>你也可以使用<code>wfastcgi-disable</code>来禁用相同配置的wfastcgi:</p>
+<div class="highlight"><pre>wfastcgi-disable &quot;C:\Program Files (x86)\IIS Express\appcmd.exe&quot;
+    /apphostconfig:C:\Path\To\applicationhost.config
+</pre></div>
+
+
+<h2>4. 使用PTVS创建Python Web项目</h2>
+<p><a href="https://github.com/Microsoft/ptvs/wiki/PTVS-Installation">PTVS</a>是Visual Studio的一个插件，能够让VS支持Python开发，下载并安装后，就可以使用它来开发Python项目了。
+使用PTVS创建一个Flask项目（Django项目类似）：
+<img alt="Alt text" src="images/1448584435904.png" /></p>
+<p>PTVS会自动根据模板创建一个项目，点击运行，就会在项目根目录下创建一个web.config文件。我在下面对文件进行了一些修改说明。</p>
+<div class="highlight"><pre>?xml version=&quot;1.0&quot;?&gt;
+<span class="nt">&lt;configuration&gt;</span>
+  <span class="nt">&lt;system.diagnostics&gt;</span>
+    <span class="c">&lt;!--如果不用此节点可以移除--&gt;</span>
+  <span class="nt">&lt;/system.diagnostics&gt;</span>
+  <span class="nt">&lt;appSettings&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">&quot;WSGI_ALT_VIRTUALENV_HANDLER&quot;</span> <span class="na">value=</span><span class="s">&quot;TgwlDataCenter.app&quot;</span> <span class="nt">/&gt;</span><span class="c">&lt;!--value指定Flask实例，PTVS会自动生成，也可以自己定义--&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">&quot;WSGI_ALT_VIRTUALENV_ACTIVATE_THIS&quot;</span> <span class="na">value=</span><span class="s">&quot;%ROOTDIR%\env\Scripts\activate_this.py&quot;</span> <span class="nt">/&gt;</span><span class="c">&lt;!--value指定激活虚拟路环境用到的内容--&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">&quot;WSGI_HANDLER&quot;</span> <span class="na">value=</span><span class="s">&quot;ptvs_virtualenv_proxy.get_virtualenv_handler()&quot;</span> <span class="nt">/&gt;</span><span class="c">&lt;!--也是虚拟路径的WSGI_HANDLER，不用修改--&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">&quot;PYTHONPATH&quot;</span> <span class="na">value=</span><span class="s">&quot;%ROOTDIR%&quot;</span> <span class="nt">/&gt;</span><span class="c">&lt;!--项目根目录--&gt;</span>
+  <span class="nt">&lt;/appSettings&gt;</span>
+  <span class="nt">&lt;system.web&gt;</span>
+    <span class="nt">&lt;compilation</span> <span class="na">debug=</span><span class="s">&quot;true&quot;</span> <span class="na">targetFramework=</span><span class="s">&quot;4.0&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/system.web&gt;</span>
+  <span class="nt">&lt;system.webServer&gt;</span>
+    <span class="nt">&lt;modules</span> <span class="na">runAllManagedModulesForAllRequests=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;handlers&gt;</span>
+      <span class="nt">&lt;add</span> <span class="na">name=</span><span class="s">&quot;Python FastCGI&quot;</span> <span class="na">path=</span><span class="s">&quot;handler.fcgi&quot;</span> <span class="na">verb=</span><span class="s">&quot;*&quot;</span> <span class="na">modules=</span><span class="s">&quot;FastCgiModule&quot;</span> <span class="na">scriptProcessor=</span><span class="s">&quot;%INTERPRETERPATH%|%WFASTCGIPATH%&quot;</span> <span class="na">resourceType=</span><span class="s">&quot;Unspecified&quot;</span> <span class="na">requireAccess=</span><span class="s">&quot;Script&quot;</span> <span class="nt">/&gt;</span><span class="c">&lt;!--scriptProcessor的值就是你在运行wfastcgi-enbale时输出的值--&gt;</span>
+    <span class="nt">&lt;/handlers&gt;</span>
+    <span class="nt">&lt;rewrite&gt;</span>
+      <span class="nt">&lt;rules&gt;</span>
+        <span class="nt">&lt;rule</span> <span class="na">name=</span><span class="s">&quot;Static Files&quot;</span> <span class="na">stopProcessing=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;match</span> <span class="na">url=</span><span class="s">&quot;^/static/.*&quot;</span> <span class="na">ignoreCase=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span><span class="c">&lt;!--静态文件不用CGI处理，直接使用IIS返回静态文件--&gt;</span>
+          <span class="nt">&lt;action</span> <span class="na">type=</span><span class="s">&quot;Rewrite&quot;</span> <span class="na">url=</span><span class="s">&quot;^/TgwlDataCenter/static/.*&quot;</span> <span class="na">appendQueryString=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/rule&gt;</span>
+        <span class="nt">&lt;rule</span> <span class="na">name=</span><span class="s">&quot;Configure Python&quot;</span> <span class="na">stopProcessing=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;match</span> <span class="na">url=</span><span class="s">&quot;(.*)&quot;</span> <span class="na">ignoreCase=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+          <span class="nt">&lt;conditions&gt;</span>
+          <span class="nt">&lt;/conditions&gt;</span>
+          <span class="nt">&lt;action</span> <span class="na">type=</span><span class="s">&quot;Rewrite&quot;</span> <span class="na">url=</span><span class="s">&quot;handler.fcgi/{R:1}&quot;</span> <span class="na">appendQueryString=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/rule&gt;</span>
+      <span class="nt">&lt;/rules&gt;</span>
+    <span class="nt">&lt;/rewrite&gt;</span>
+  <span class="nt">&lt;/system.webServer&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+
+
+<p><code>scriptProcessor</code>的值是<code>wfastcgi-enable</code>命令执行时输出的，不同机器值也不一样。<code>path</code>和<code>verb</code>的值也可以进一步自定义来限制request的类型。</p>
+<p><code>name</code>值可以在子文件夹的<code>web.config</code>文件中使用，来屏蔽handler的作用。比如，在<code>/static</code>子文件夹中添加一个<code>web.config</code>文件，包含<code>&lt;remove name="Python FastCGI"/&gt;</code>来阻止IIS通过Python应用来解析静态文件。</p>
+<p>app setting被转换为环境变量，并且能够在Python应用中通过<code>os.getenv</code>来获取。下面这些变量由<code>wfastcgi</code>使用。</p>
+<p><strong>注意</strong>：部署时需要将<code>%ROOTDIR%</code>全部替换为项目根目录，<code>%INTERPRETERPATH%|%WFASTCGIPATH%</code>替换为<code>wfastcgi-enable</code>命令执行时输出，我的是<code>C:\Python34\python.exe|C:\Python34\lib\site-packages\wfastcgi.py</code></p>
+<p>此时，将项目部署到IIS上就可以了，创建方法同普通的ASP.NET网站创建方法相同。</p>
+<p>作者：liulixiang1988#gmail.com (#换成@)</p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="shi-yong-wfastcgizai-iisshang-bu-shu-python-flaskying-yong.html" data-title="使用wfastcgi在IIS上部署Python Flask应用" data-url="./shi-yong-wfastcgizai-iisshang-bu-shu-python-flaskying-yong.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="./pythonkuo-zhan-ku.html" title="Previous: Python扩展库">Python扩展库</a></li>
+ 
+                <li class="next_article"><a href="./reactshi-yong-bi-ji-reactde-jsxhe-style.html" title="Next: React使用笔记-React的JSX和Style">React使用笔记-React的JSX和Style</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-11-27T09:17:00+08:00">11 27, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Python-ref">Python</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Flask-ref">Flask
+                    <span>2</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

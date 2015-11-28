@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="JavaScript, Web, " />
+        <title>React使用笔记(2)-React Components的生命周期  · liulixiang1988的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href=".">Home</a></li>
+                            <li ><a href="./categories.html">Categories</a></li>
+                            <li ><a href="./tags.html">Tags</a></li>
+                            <li ><a href="./archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="./reactshi-yong-bi-ji-2-react-componentsde-sheng-ming-zhou-qi.html"> React使用笔记(2)-React Components的生命周期  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <p>[toc]</p>
+<h2>1. React Components的生命周期</h2>
+<p>React Components的3种状态：</p>
+<p><img alt="" src="images/QQ20151127-0.png" /></p>
+<ul>
+<li>Mounted:React Component被render解析，生成对应的DOM节点，并被插入浏览器的DOM结构的过程。这个过程结束了就是这个组件被<code>Mounted</code>了。</li>
+<li>Update:一个被mounted的React Component被重新render的过程。</li>
+<li>Unmounted:一个被mounted的React Component对应的DOM节点被从DOM结构中移除的这样一个过程。</li>
+</ul>
+<p>每一个状态React都封装了对应的hook函数。</p>
+<hr />
+<h2>2. React Components生命周期中的hook函数</h2>
+<p><img alt="" src="images/QQ20151127-1.png" /></p>
+<h3>2.1 实验，来添加mount的hook函数</h3>
+<p>我们使用<code>getInitialState</code>, <code>componentWillMount</code>, <code>componentDidMount</code>来添加React Component在Mount阶段的hook函数，其中<code>getIntialState</code>返回一个键值对对象。</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/jsx&quot;</span><span class="nt">&gt;</span>
+    var Hello = React.createClass({
+        getInitialState: function(){
+            alert(&quot;getInitialState&quot;);
+            return {
+                opacity: 1.0,
+                fontSize: &#39;20px&#39;
+            }
+        },
+        render: function(){
+            return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="cp">{{</span><span class="nv">color</span><span class="s1">:&#39;red&#39;</span><span class="cp">}}</span><span class="err">&gt;</span><span class="s">Hello,</span> <span class="err">{this.props.name}&lt;/div</span><span class="nt">&gt;</span>;
+        },
+        componentWillMount: function(){
+            alert(&quot;component will mount&quot;);
+        },
+        componentDidMount: function(){
+            alert(&quot;component did&quot;);
+        }
+    });
+
+    React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><span class="s">&quot;world&quot;</span><span class="nt">/&gt;</span>,
+        document.getElementById(&quot;container&quot;));
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+
+
+<p><code>getIntialState</code>返回的对象如何使用呢，使用<code>{this.state}</code>就可以了:</p>
+<div class="highlight"><pre>render: function(){
+    return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">{this.state}</span><span class="nt">&gt;</span>Hello, {this.props.name}<span class="nt">&lt;/div&gt;</span>;
+}
+</pre></div>
+
+
+<p>这里<code>state</code>中都是合法有效的键值，如果不是的话需要这样用：</p>
+<div class="highlight"><pre>render: function(){
+    return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="cp">{{</span><span class="nv">opacity</span><span class="o">:</span><span class="nv">this.state.opacity</span><span class="o">,</span> <span class="nv">fontSize</span><span class="o">:</span> <span class="nv">this.state.fontSize</span><span class="cp">}}</span><span class="err">&gt;</span><span class="s">Hello,</span> <span class="err">{this.props.name}&lt;/div</span><span class="nt">&gt;</span>;
+}
+</pre></div>
+
+
+<p><code>props</code>和<code>state</code>的区别是什么呢？<code>props</code>是属于调用者的，而<code>state</code>是属于当前组件的。</p>
+<hr />
+<h3>2.2 如何修改state呢？</h3>
+<p>我们调用<code>setState</code>，比如我们在组件mount后一秒更改<code>state</code>，我们这样：</p>
+<div class="highlight"><pre><span class="n">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="o">(){</span>
+    <span class="n">var</span> <span class="n">_self</span> <span class="o">=</span> <span class="k">this</span><span class="o">;</span>
+    <span class="n">window</span><span class="o">.</span><span class="na">setTimeout</span><span class="o">(</span><span class="kd">function</span><span class="o">(){</span>
+        <span class="n">_self</span><span class="o">.</span><span class="na">setState</span><span class="o">({</span>
+            <span class="n">opacity</span><span class="o">:</span> <span class="mf">0.5</span><span class="o">,</span>
+            <span class="n">fontSize</span><span class="o">:</span> <span class="s1">&#39;44px&#39;</span>
+        <span class="o">});</span>
+    <span class="o">},</span> <span class="mi">1000</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>这里对<code>var _self = this</code>进行说明：</p>
+<p><code>this</code>指的是调用函数的那个对象，也就是函数的所有者，而<code>setTimeout</code>中的<code>function</code>并不属于任何对象，它只是一个纯粹的函数调用，所以属于全局对象，这种情况下，<code>this</code>是<code>global</code>，因此我们为了调用组件对象，需要使用<code>var _self = this</code>的这种方法。</p>
+<p>既然说到了<code>this</code>，我们不妨多讲一些<code>this</code>的使用情况，比如：</p>
+<p>我们把函数当做构造函数来使用，这种情况下，<code>this</code>就是指构造函数生成的对象：</p>
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">test</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">test</span><span class="p">();</span>
+</pre></div>
+
+
+<p>还有一种则是调用函数的<code>apply</code>, <code>call</code>, <code>bind</code>等方法，其作用是改变函数的调用对象，它们的第一个参数就是改变后的调用这个函数的对象，因此这种情况下，<code>this</code>指的就是第一个参数所代表的对象。因此，刚才的例子可以这样写，让<code>function</code>里面的<code>this</code>指向<code>function</code>外面的<code>this</code>。</p>
+<div class="highlight"><pre><span class="n">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="o">(){</span>
+    <span class="n">window</span><span class="o">.</span><span class="na">setTimeout</span><span class="o">(</span><span class="kd">function</span><span class="o">(){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">setState</span><span class="o">({</span>
+            <span class="n">opacity</span><span class="o">:</span> <span class="mf">0.5</span><span class="o">,</span>
+            <span class="n">fontSize</span><span class="o">:</span> <span class="s1">&#39;44px&#39;</span>
+        <span class="o">});</span>
+    <span class="o">}.</span><span class="n">bind</span><span class="o">(</span><span class="k">this</span><span class="o">),</span> <span class="mi">1000</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>注意，<code>bind</code>是从ES5才开始有的，早期的IE不支持。</p>
+<p>通过现象看本质，我们发现，每次组件的<code>state</code>发生变化都会导致组件进入<code>update</code>阶段，从而重新render。注意，我们并没有显式的修改组件的样式，而是<code>state</code>的值变了之后，样式就跟着改变了。</p>
+<hr />
+<h3>2.3 Update阶段</h3>
+<p>我们看开始的图，可以看到：</p>
+<ul>
+<li><code>componentWillReceiveProps</code>:当一个<code>mounted</code>的组件将要接收新的<code>property</code>时，此函数会被调用，其函数参数就是新的<code>props</code>对象。我们可以在函数体内比较这个<code>props</code>参数和<code>this.props</code>，从而执行一些例如修改<code>state</code>这样的操作。</li>
+<li><code>shouldComponentUpdate</code>: 在一个<code>mounted</code>的组件已经接收到新的<code>state</code>和<code>props</code>对象之后，判断是否有必要去更新DOM结构。这个函数的参数有2个，一个就是新的<code>props</code>对象，第二个参数是新的<code>state</code>对象。我们可以分别对比其跟<code>this.props</code>和<code>this.state</code>来决定是否需要更新DOM结构。返回<code>true</code>表示更新，返回<code>false</code>表示不更新。</li>
+<li><code>componentWillUpdate</code>: 组件更新前调用。</li>
+<li><code>compoentDidUpdate</code>: 组件更新后调用。</li>
+</ul>
+<p>一般我们很少会更新上面的4个函数</p>
+<hr />
+<h3>2.4 Unmounting阶段</h3>
+<p>当我们要把一个组件销毁掉的时候，则是<code>unmounting</code>阶段了，它只有一个调用函数：</p>
+<p><code>componentWillUnmount</code>:我们在这个函数内执行一些clean up的操作，比如释放内存、图片等。得益于浏览器的垃圾回收机制，我们基本不需要使用这个函数。</p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="reactshi-yong-bi-ji-2-react-componentsde-sheng-ming-zhou-qi.html" data-title="React使用笔记(2)-React Components的生命周期" data-url="./reactshi-yong-bi-ji-2-react-componentsde-sheng-ming-zhou-qi.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="./reactshi-yong-bi-ji-reactde-jsxhe-style.html" title="Previous: React使用笔记-React的JSX和Style">React使用笔记-React的JSX和Style</a></li>
+ 
+                <li class="next_article"><a href="./reactshi-yong-bi-ji-3-react-event-listener.html" title="Next: React使用笔记(3)-React Event Listener">React使用笔记(3)-React Event Listener</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-11-27T21:23:00+08:00">11 27, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Web-ref">Web</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#JavaScript-ref">JavaScript
+                    <span>7</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>
