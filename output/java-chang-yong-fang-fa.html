@@ -7,19 +7,19 @@
         <meta name="copyright" content="刘理想" />
 
 <meta name="keywords" content="Java, Web, JSP, Java, " />
-        <title>Java-常用方法  · liulixiang1988的博客
+        <title>Java-常用方法  · Liu Lixiang的博客
 </title>
         <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
-        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
-        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
     </head>
     <body>
         <div id="content-sans-footer">
@@ -31,14 +31,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href=".">Home</a></li>
-                            <li ><a href="./categories.html">Categories</a></li>
-                            <li ><a href="./tags.html">Tags</a></li>
-                            <li ><a href="./archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
 <article>
 <div class="row-fluid">
     <header class="page_header span10 offset2">
-    <h1><a href="./java-chang-yong-fang-fa.html"> Java-常用方法  </a></h1>
+    <h1><a href="http://liulixiang1988.github.io/java-chang-yong-fang-fa.html"> Java-常用方法  </a></h1>
     </header>
 </div>
 
@@ -61,26 +61,26 @@
             <p>之前一直用C#比较多，最近开始研究Java，两者之间的库设计差别很大，故再次做个总结。</p>
 <h2 id="1">1. 日期</h2>
 <p>1.日期格式化</p>
-<div class="highlight"><pre><span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">SimpleDateFormat</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">util</span><span class="p">.</span><span class="n">Date</span><span class="p">;</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">java.text.SimpleDateFormat</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="p">;</span>
 
 <span class="n">SimpleDateFormat</span> <span class="n">sdf</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;yyyy年MM月dd日&quot;</span><span class="p">);</span>
-<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">new</span> <span class="n">Date</span><span class="p">());</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new</span> <span class="n">Date</span><span class="p">());</span>
 </pre></div>
 
 
 <ol>
 <li>字符串转化为日期</li>
 </ol>
-<div class="highlight"><pre><span class="n">SimpleDateFormat</span> <span class="n">sdf</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;yyyy年MM月dd日&quot;</span><span class="p">);</span>
-<span class="n">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="n">sdf</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;2015年04月13日&quot;</span><span class="p">);</span>
+<div class="highlight"><pre>SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy年MM月dd日&quot;);
+Date d = sdf.parse(&quot;2015年04月13日&quot;);
 </pre></div>
 
 
 <h2 id="2">2. 泛型</h2>
 <p>1.新建泛型</p>
 <p>可以再<code>new</code>后面直接使用<code>&lt;&gt;</code>来初始化，不需要指定类型，如下所示：</p>
-<div class="highlight"><pre><span class="nx">ArrayList</span><span class="o">&lt;</span><span class="nx">Crime</span><span class="o">&gt;</span> <span class="n">crimes</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<div class="highlight"><pre>ArrayList&lt;Crime&gt; crimes = new ArrayList&lt;&gt;();
 </pre></div>
 
  
@@ -88,7 +88,7 @@
 <h1>评论</h1>
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="java-chang-yong-fang-fa.html" data-title="Java-常用方法" data-url="./java-chang-yong-fang-fa.html"></div>
+	<div class="ds-thread" data-thread-key="java-chang-yong-fang-fa.html" data-title="Java-常用方法" data-url="http://liulixiang1988.github.io/java-chang-yong-fang-fa.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -110,9 +110,9 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
             <nav>
             <ul class="articles_timeline">
  
-                <li class="previous_article">« <a href="./java-webzhi-jsp-02-jspji-chu-yu-fa.html" title="Previous: Java Web之JSP-02 JSP基础语法">Java Web之JSP-02 JSP基础语法</a></li>
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/java-webzhi-jsp-02-jspji-chu-yu-fa.html" title="Previous: Java Web之JSP-02 JSP基础语法">Java Web之JSP-02 JSP基础语法</a></li>
  
-                <li class="next_article"><a href="./java-webzhi-jsp-04-java-beans.html" title="Next: Java Web之JSP-04 Java Beans">Java Web之JSP-04 Java Beans</a> »</li>
+                <li class="next_article"><a href="http://liulixiang1988.github.io/java-webzhi-jsp-04-java-beans.html" title="Next: Java Web之JSP-04 Java Beans">Java Web之JSP-04 Java Beans</a> »</li>
             </ul>
             </nav>
             </aside>
@@ -121,7 +121,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-08T00:30:00"> 4 8, 2015</time>
+            <time pubdate="pubdate" datetime="2015-04-08T00:30:00+08:00"> 4 8, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Java-ref">Java</a> 
             <h4>Tags</h4>
@@ -149,7 +149,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
-        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

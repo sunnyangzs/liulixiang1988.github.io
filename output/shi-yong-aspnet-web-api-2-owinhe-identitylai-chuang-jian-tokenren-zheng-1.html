@@ -7,19 +7,19 @@
         <meta name="copyright" content="刘理想" />
 
 <meta name="keywords" content=", DotNet, " />
-        <title>使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)  · liulixiang1988的博客
+        <title>使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)  · Liu Lixiang的博客
 </title>
         <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
-        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
-        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
     </head>
     <body>
         <div id="content-sans-footer">
@@ -31,14 +31,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href=".">Home</a></li>
-                            <li ><a href="./categories.html">Categories</a></li>
-                            <li ><a href="./tags.html">Tags</a></li>
-                            <li ><a href="./archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
 <article>
 <div class="row-fluid">
     <header class="page_header span10 offset2">
-    <h1><a href="./shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html"> 使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)  </a></h1>
+    <h1><a href="http://liulixiang1988.github.io/shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html"> 使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)  </a></h1>
     </header>
 </div>
 
@@ -68,33 +68,33 @@
 <p>使用VS2013，创建"ASP.NET Web应用程序"，解决方案名为AngularJSAuthentication，项目名为AngularJSAuthentication.API:</p>
 <p><img alt="Alt text" src="images/dot-net-owin-1.png" /></p>
 <h3 id="12-nuget">1.2 第二步 安装必要的NuGet包</h3>
-<div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AspNet</span><span class="p">.</span><span class="n">WebApi</span><span class="p">.</span><span class="n">Owin</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">5.1.2</span>
-<span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Owin</span><span class="p">.</span><span class="n">Host</span><span class="p">.</span><span class="n">SystemWeb</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">2.1.0</span>
+<div class="highlight"><pre>Install-Package Microsoft.AspNet.WebApi.Owin -Version 5.1.2
+Install-Package Microsoft.Owin.Host.SystemWeb -Version 2.1.0
 </pre></div>
 
 
 <p>其中，<code>Microsoft.Owin.Host.SystemWeb</code>包是用来Owin服务器的API能够在IIS上运行</p>
 <h3 id="13-owinstartup">1.3 第三步 添加Owin"启动(Startup)"类</h3>
 <p>右键，添加新类<code>Startup</code>，我们会修改好几次这个类，现在它应该是这个样子：</p>
-<div class="highlight"><pre><span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">Http</span><span class="p">;</span>
-<span class="n">using</span> <span class="n">AngularJSAuthentication</span><span class="p">.</span><span class="n">API</span><span class="p">;</span>
-<span class="n">using</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Owin</span><span class="p">;</span>
-<span class="n">using</span> <span class="n">Owin</span><span class="p">;</span>
+<div class="highlight"><pre>using System.Web.Http;
+using AngularJSAuthentication.API;
+using Microsoft.Owin;
+using Owin;
 
-<span class="p">[</span><span class="n">assembly</span><span class="o">:</span> <span class="n">OwinStartup</span><span class="p">(</span><span class="n">typeof</span> <span class="p">(</span><span class="n">Startup</span><span class="p">))]</span>
+[assembly: OwinStartup(typeof (Startup))]
 
-<span class="n">namespace</span> <span class="n">AngularJSAuthentication</span><span class="p">.</span><span class="n">API</span>
-<span class="p">{</span>
-    <span class="n">public</span> <span class="n">class</span> <span class="n">Startup</span>
-    <span class="p">{</span>
-        <span class="n">public</span> <span class="kt">void</span> <span class="n">Configuration</span><span class="p">(</span><span class="n">IAppBuilder</span> <span class="n">app</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">var</span> <span class="n">config</span> <span class="o">=</span> <span class="n">new</span> <span class="n">HttpConfiguration</span><span class="p">();</span>
-            <span class="n">WebApiConfig</span><span class="p">.</span><span class="n">Register</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
-            <span class="n">app</span><span class="p">.</span><span class="n">UseWebApi</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+namespace AngularJSAuthentication.API
+{
+    public class Startup
+    {
+        public void Configuration(IAppBuilder app)
+        {
+            var config = new HttpConfiguration();
+            WebApiConfig.Register(config);
+            app.UseWebApi(config);
+        }
+    }
+}
 </pre></div>
 
 
@@ -102,24 +102,24 @@
 <p><code>HttpConfiguration</code>对象用来配置路由，因此，我们把它传递给<code>WebApiConfig</code>类的<code>Register</code>方法。</p>
 <p>最后，我们把<code>config</code>对象传递给<code>UserWebApi</code>扩展方法，实现ASP.NET Web API和Owin Server的管道。</p>
 <p>通常，<code>WebApiConfig</code>由模板自动生成。如果没有，就在<code>App_Start</code>文件夹下创建：</p>
-<div class="highlight"><pre><span class="k">public</span> <span class="nf">static</span> <span class="nb">class</span> <span class="nx">WebApiConfig</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="nf">static</span> <span class="bp">void</span> <span class="nb">Register</span><span class="p">(</span><span class="nx">HttpConfiguration</span> <span class="nx">config</span><span class="p">)</span>
-    <span class="p">{</span>
+<div class="highlight"><pre>public static class WebApiConfig
+{
+    public static void Register(HttpConfiguration config)
+    {
 
-        <span class="c1">// Web API routes</span>
-        <span class="nx">config.MapHttpAttributeRoutes</span><span class="p">();</span>
+        // Web API routes
+        config.MapHttpAttributeRoutes();
 
-        <span class="nx">config.Routes.MapHttpRoute</span><span class="p">(</span>
-            <span class="nb">name</span><span class="p">:</span> <span class="s2">&quot;DefaultApi&quot;</span><span class="p">,</span>
-            <span class="nx">routeTemplate</span><span class="p">:</span> <span class="s2">&quot;api/{controller}/{id}&quot;</span><span class="p">,</span>
-            <span class="nx">defaults</span><span class="p">:</span> <span class="nb">new</span> <span class="p">{</span> <span class="n">id</span> <span class="o">=</span> <span class="nx">RouteParameter.Optional</span> <span class="p">}</span>
-        <span class="p">);</span>
+        config.Routes.MapHttpRoute(
+            name: &quot;DefaultApi&quot;,
+            routeTemplate: &quot;api/{controller}/{id}&quot;,
+            defaults: new { id = RouteParameter.Optional }
+        );
 
-        <span class="kd">var</span> <span class="n">jsonFormatter</span> <span class="o">=</span> <span class="nx">config.Formatters.OfType</span><span class="o">&lt;</span><span class="nx">JsonMediaTypeFormatter</span><span class="o">&gt;</span><span class="p">()</span><span class="bp">.</span><span class="nb">First</span><span class="p">();</span>
-        <span class="n">jsonFormatter.SerializerSettings.ContractResolver</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">CamelCasePropertyNamesContractResolver</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        var jsonFormatter = config.Formatters.OfType&lt;JsonMediaTypeFormatter&gt;().First();
+        jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+    }
+}
 </pre></div>
 
 
@@ -127,47 +127,47 @@
 <p>不再需要这个类，也不需要<code>Application_Start</code>事件，因为我们已经配置了<code>Startup</code>类，所以放心删除它吧。</p>
 <h3 id="15-windows-identity-systemwindows">1.5 第五步 添加Windows Identity System(Windows身份认证系统)</h3>
 <p>配置过Web API后，现在可以添加支持注册和验证用户的包了，安装如下包</p>
-<div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AspNet</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">Owin</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">2.0.1</span>
-<span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AspNet</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">EntityFramework</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">2.0.1</span>
+<div class="highlight"><pre>Install-Package Microsoft.AspNet.Identity.Owin -Version 2.0.1
+Install-Package Microsoft.AspNet.Identity.EntityFramework -Version 2.0.1
 </pre></div>
 
 
 <p>第一个包用来支持ASP.NET Identity Owin，第二个包可以让ASP.NET Identity使用Entity Framework,这样我们就能保存用户到SQL Server数据库了。</p>
 <p>现在我们需要添加一个Database context类，用来负责与数据库交互。因此，添加<code>AuthContext</code>类：</p>
-<div class="highlight"><pre><span class="k">public</span> <span class="nf">class</span> <span class="nx">AuthContext</span><span class="p">:</span> <span class="nx">IdentityDbContext</span><span class="o">&lt;</span><span class="nx">IdentityUser</span><span class="o">&gt;</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="nf">AuthContext</span><span class="p">():</span> <span class="nx">base</span><span class="p">(</span><span class="s2">&quot;AuthContext&quot;</span><span class="p">)</span>
-    <span class="p">{</span>
+<div class="highlight"><pre>public class AuthContext: IdentityDbContext&lt;IdentityUser&gt;
+{
+    public AuthContext(): base(&quot;AuthContext&quot;)
+    {
 
-    <span class="p">}</span>
-<span class="p">}</span>
+    }
+}
 </pre></div>
 
 
 <p>能看到这个类继承自<code>IdentityDbContext</code>类。可以把这个特殊类型的<code>DbContext</code>类。它支持所有Entity Framework的code-first映射，以及DbSet属性用来管理数据库的身份表。可以读<a href="http://odetocode.com/blogs/scott/archive/2014/01/03/asp-net-identity-with-the-entity-framework.aspx">Scott Allen的博客</a>了解更多。</p>
 <p>现在，我们在<code>Models</code>文件夹下添加一个<code>UserModel</code>类，它包含一些用来验证注册请求。</p>
-<div class="highlight"><pre><span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">ComponentModel</span><span class="p">.</span><span class="n">DataAnnotations</span><span class="p">;</span>
+<div class="highlight"><pre>using System.ComponentModel.DataAnnotations;
 
-<span class="n">namespace</span> <span class="n">AngularJSAuthentication</span><span class="p">.</span><span class="n">API</span><span class="p">.</span><span class="n">Models</span>
-<span class="p">{</span>
-    <span class="n">public</span> <span class="n">class</span> <span class="n">UserModel</span>
-    <span class="p">{</span>
-        <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
-        <span class="p">[</span><span class="n">Display</span><span class="p">(</span><span class="n">Name</span> <span class="o">=</span> <span class="s">&quot;用户名&quot;</span><span class="p">)]</span>
-        <span class="n">public</span> <span class="n">string</span> <span class="n">UserName</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+namespace AngularJSAuthentication.API.Models
+{
+    public class UserModel
+    {
+        [Required]
+        [Display(Name = &quot;用户名&quot;)]
+        public string UserName { get; set; }
 
-        <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
-        <span class="p">[</span><span class="n">StringLength</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">ErrorMessage</span> <span class="o">=</span> <span class="s">&quot;{0}至少要有{2}个字符&quot;</span><span class="p">,</span> <span class="n">MinimumLength</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)]</span>
-        <span class="p">[</span><span class="n">DataType</span><span class="p">(</span><span class="n">DataType</span><span class="p">.</span><span class="n">Password</span><span class="p">)]</span>
-        <span class="p">[</span><span class="n">Display</span><span class="p">(</span><span class="n">Name</span> <span class="o">=</span> <span class="s">&quot;密码&quot;</span><span class="p">)]</span>
-        <span class="n">public</span> <span class="n">string</span> <span class="n">Password</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+        [Required]
+        [StringLength(100, ErrorMessage = &quot;{0}至少要有{2}个字符&quot;, MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = &quot;密码&quot;)]
+        public string Password { get; set; }
 
-        <span class="p">[</span><span class="n">DataType</span><span class="p">(</span><span class="n">DataType</span><span class="p">.</span><span class="n">Password</span><span class="p">)]</span>
-        <span class="p">[</span><span class="n">Display</span><span class="p">(</span><span class="n">Name</span> <span class="o">=</span> <span class="s">&quot;确认密码&quot;</span><span class="p">)]</span>
-        <span class="p">[</span><span class="n">Compare</span><span class="p">(</span><span class="s">&quot;Password&quot;</span><span class="p">,</span> <span class="n">ErrorMessage</span> <span class="o">=</span> <span class="s">&quot;两次密码输入不一致&quot;</span><span class="p">)]</span>
-        <span class="n">public</span> <span class="n">string</span> <span class="n">ConfirmedPassword</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        [DataType(DataType.Password)]
+        [Display(Name = &quot;确认密码&quot;)]
+        [Compare(&quot;Password&quot;, ErrorMessage = &quot;两次密码输入不一致&quot;)]
+        public string ConfirmedPassword { get; set; }
+    }
+}
 </pre></div>
 
 
@@ -180,42 +180,42 @@
 
 <h3 id="16-aspnet-identity-system">1.6 第六步 添加仓库类来支持ASP.NET Identity System</h3>
 <p>现在，我们要实现两个方法<code>RegisterUser</code>和<code>FindUser</code>，因此，我们添加一个名为<code>AuthRepository</code>的类：</p>
-<div class="highlight"><pre><span class="k">public</span> <span class="nf">class</span> <span class="nx">AuthRepository</span> <span class="p">:</span> <span class="nx">IDisposable</span>
-<span class="p">{</span>
-    <span class="k">private</span> <span class="nf">readonly</span> <span class="nx">AuthContext</span> <span class="nx">_ctx</span><span class="p">;</span>
+<div class="highlight"><pre>public class AuthRepository : IDisposable
+{
+    private readonly AuthContext _ctx;
 
-    <span class="k">private</span> <span class="nf">readonly</span> <span class="nx">UserManager</span><span class="o">&lt;</span><span class="nx">IdentityUser</span><span class="o">&gt;</span> <span class="nx">_userManager</span><span class="p">;</span>
+    private readonly UserManager&lt;IdentityUser&gt; _userManager;
 
-    <span class="k">public</span> <span class="nf">AuthRepository</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="n">_ctx</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">AuthContext</span><span class="p">();</span>
-        <span class="n">_userManager</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">UserManager</span><span class="o">&lt;</span><span class="nx">IdentityUser</span><span class="o">&gt;</span><span class="p">(</span><span class="na">new</span> <span class="nx">UserStore</span><span class="o">&lt;</span><span class="nx">IdentityUser</span><span class="o">&gt;</span><span class="p">(</span><span class="na">_ctx</span><span class="p">));</span>
-    <span class="p">}</span>
+    public AuthRepository()
+    {
+        _ctx = new AuthContext();
+        _userManager = new UserManager&lt;IdentityUser&gt;(new UserStore&lt;IdentityUser&gt;(_ctx));
+    }
 
-    <span class="k">public</span> <span class="nf">void</span> <span class="nx">Dispose</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nx">_ctx.Dispose</span><span class="p">();</span>
-        <span class="nx">_userManager.Dispose</span><span class="p">();</span>
-    <span class="p">}</span>
+    public void Dispose()
+    {
+        _ctx.Dispose();
+        _userManager.Dispose();
+    }
 
-    <span class="k">public</span> <span class="nf">async</span> <span class="nx">Task</span><span class="o">&lt;</span><span class="nx">IdentityResult</span><span class="o">&gt;</span> <span class="nx">RegisterUser</span><span class="p">(</span><span class="nx">UserModel</span> <span class="nx">userModel</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="kd">var</span> <span class="n">user</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">IdentityUser</span>
-        <span class="p">{</span>
-            <span class="n">UserName</span> <span class="o">=</span> <span class="nx">userModel.UserName</span>
-        <span class="p">};</span>
+    public async Task&lt;IdentityResult&gt; RegisterUser(UserModel userModel)
+    {
+        var user = new IdentityUser
+        {
+            UserName = userModel.UserName
+        };
 
-        <span class="nx">IdentityResult</span> <span class="n">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">_userManager.CreateAsync</span><span class="p">(</span><span class="nb">user</span><span class="p">,</span> <span class="nx">userModel.Password</span><span class="p">);</span>
+        IdentityResult result = await _userManager.CreateAsync(user, userModel.Password);
 
-        <span class="k">return</span> <span class="nb">result</span><span class="p">;</span>
-    <span class="p">}</span>
+        return result;
+    }
 
-    <span class="k">public</span> <span class="nf">async</span> <span class="nx">Task</span><span class="o">&lt;</span><span class="nx">IdentityUser</span><span class="o">&gt;</span> <span class="nx">FindUser</span><span class="p">(</span><span class="kt">string</span> <span class="nx">username</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">password</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nx">IdentityUser</span> <span class="n">user</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">_userManager.FindAsync</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nb">user</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    public async Task&lt;IdentityUser&gt; FindUser(string username, string password)
+    {
+        IdentityUser user = await _userManager.FindAsync(username, password);
+        return user;
+    }
+}
 </pre></div>
 
 
@@ -291,11 +291,11 @@
 
 
 <p>任何人想要注册，必须使用HTTP POST请求'/api/account/register'，而且请求必须包含如下的JSON对象：</p>
-<div class="highlight"><pre><span class="p">{</span>
-    <span class="s">&quot;userName&quot;</span><span class="o">:</span> <span class="s">&quot;liu&quot;</span><span class="p">,</span>
-    <span class="s">&quot;password&quot;</span><span class="o">:</span> <span class="s">&quot;123456&quot;</span><span class="p">,</span>
-    <span class="s">&quot;confirmPassword&quot;</span><span class="o">:</span> <span class="s">&quot;123456&quot;</span>
-<span class="p">}</span>
+<div class="highlight"><pre>{
+    &quot;userName&quot;: &quot;liu&quot;,
+    &quot;password&quot;: &quot;123456&quot;,
+    &quot;confirmPassword&quot;: &quot;123456&quot;
+}
 </pre></div>
 
 
@@ -347,34 +347,34 @@
 <p>注意我们在<code>Get</code>上加了一个<code>Authorize</code>属性，此时，如果访问 “http://localhost:port/api/orders”就会收到401未授权状态码。因为我们的请求当中并没有包含授权头信息。</p>
 <h3 id="19-oauth-token">1.9 第九步 添加支持OAuth Token生成功能</h3>
 <p>现在我们该让API增加OAuth功能</p>
-<div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Owin</span><span class="p">.</span><span class="n">Security</span><span class="p">.</span><span class="n">OAuth</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">2.1.0</span>
+<div class="highlight"><pre>Install-Package Microsoft.Owin.Security.OAuth -Version 2.1.0
 </pre></div>
 
 
 <p>打开<code>Startup</code>类，添加<code>ConfigureOAuth</code>方法，并在<code>Configuration</code>方法的第一行调用它：</p>
-<div class="highlight"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">Startup</span>
-    <span class="p">{</span>
-        <span class="n">public</span> <span class="kt">void</span> <span class="n">Configuration</span><span class="p">(</span><span class="n">IAppBuilder</span> <span class="n">app</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">var</span> <span class="n">config</span> <span class="o">=</span> <span class="n">new</span> <span class="n">HttpConfiguration</span><span class="p">();</span>
-            <span class="n">WebApiConfig</span><span class="p">.</span><span class="n">Register</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
-            <span class="n">app</span><span class="p">.</span><span class="n">UseWebApi</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
-        <span class="p">}</span>
+<div class="highlight"><pre>public class Startup
+    {
+        public void Configuration(IAppBuilder app)
+        {
+            var config = new HttpConfiguration();
+            WebApiConfig.Register(config);
+            app.UseWebApi(config);
+        }
 
-        <span class="n">public</span> <span class="kt">void</span> <span class="n">ConfigreOAuth</span><span class="p">(</span><span class="n">IAppBuilder</span> <span class="n">app</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">var</span> <span class="n">oauthServerOptions</span> <span class="o">=</span> <span class="n">new</span> <span class="n">OAuthAuthorizationServerOptions</span>
-            <span class="p">{</span>
-                <span class="n">AllowInsecureHttp</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
-                <span class="n">TokenEndpointPath</span> <span class="o">=</span> <span class="n">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">&quot;/token&quot;</span><span class="p">),</span>
-                <span class="n">AccessTokenExpireTimeSpan</span> <span class="o">=</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromDays</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-                <span class="n">Provider</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SimpleAuthorizationServerProvider</span><span class="p">()</span>
-            <span class="p">};</span>
+        public void ConfigreOAuth(IAppBuilder app)
+        {
+            var oauthServerOptions = new OAuthAuthorizationServerOptions
+            {
+                AllowInsecureHttp = true,
+                TokenEndpointPath = new PathString(&quot;/token&quot;),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+                Provider = new SimpleAuthorizationServerProvider()
+            };
 
-            <span class="n">app</span><span class="p">.</span><span class="n">UseOAuthAuthorizationServer</span><span class="p">(</span><span class="n">oauthServerOptions</span><span class="p">);</span>
-            <span class="n">app</span><span class="p">.</span><span class="n">UseOAuthBearerAuthentication</span><span class="p">(</span><span class="n">new</span> <span class="n">OAuthBearerAuthenticationOptions</span><span class="p">());</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+            app.UseOAuthAuthorizationServer(oauthServerOptions);
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+        }
+    }
 </pre></div>
 
 
@@ -387,36 +387,36 @@
 <p>然后将选项实例传递给扩展方法<code>UseOAuthAuthorizationServer</code>，这样我们就将认证中间件添加到了管道当中去了。</p>
 <h3 id="110-simpleauthorizationserverprovider">1.10 第十步 实现"SimpleAuthorizationServerProvider"类</h3>
 <p>创建一个<code>Providers</code>文件夹，然后添加一个<code>SimpleAuthorizationServerProvider</code>类：</p>
-<div class="highlight"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">SimpleAuthorizationServerProvider</span><span class="o">:</span> <span class="n">OAuthAuthorizationServerProvider</span>
-<span class="p">{</span>
+<div class="highlight"><pre>public class SimpleAuthorizationServerProvider: OAuthAuthorizationServerProvider
+{
 
-    <span class="n">public</span> <span class="n">override</span> <span class="n">async</span> <span class="n">Task</span> <span class="n">ValidateClientAuthentication</span><span class="p">(</span><span class="n">OAuthValidateClientAuthenticationContext</span> <span class="n">context</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">context</span><span class="p">.</span><span class="n">Validated</span><span class="p">();</span>
-    <span class="p">}</span>
+    public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
+    {
+        context.Validated();
+    }
 
-    <span class="n">public</span> <span class="n">override</span> <span class="n">async</span> <span class="n">Task</span> <span class="n">GrantResourceOwnerCredentials</span><span class="p">(</span><span class="n">OAuthGrantResourceOwnerCredentialsContext</span> <span class="n">context</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">context</span><span class="p">.</span><span class="n">OwinContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Access-Control-Allow-Origin&quot;</span><span class="p">,</span> <span class="n">new</span> <span class="p">[]{</span><span class="s">&quot;*&quot;</span><span class="p">});</span>
+    public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
+    {
+        context.OwinContext.Response.Headers.Add(&quot;Access-Control-Allow-Origin&quot;, new []{&quot;*&quot;});
 
-        <span class="n">using</span> <span class="p">(</span><span class="n">var</span> <span class="n">_repo</span> <span class="o">=</span> <span class="n">new</span> <span class="n">AuthRepository</span><span class="p">())</span>
-        <span class="p">{</span>
-            <span class="n">IdentityUser</span> <span class="n">user</span> <span class="o">=</span> <span class="n">await</span> <span class="n">_repo</span><span class="p">.</span><span class="n">FindUser</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">UserName</span><span class="p">,</span> <span class="n">context</span><span class="p">.</span><span class="n">Password</span><span class="p">);</span>
+        using (var _repo = new AuthRepository())
+        {
+            IdentityUser user = await _repo.FindUser(context.UserName, context.Password);
 
-            <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="o">==</span> <span class="n">null</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">context</span><span class="p">.</span><span class="n">SetError</span><span class="p">(</span><span class="s">&quot;invalid_grant&quot;</span><span class="p">,</span> <span class="s">&quot;用户名或者密码不正确&quot;</span><span class="p">);</span>
-                <span class="k">return</span><span class="p">;</span>
-            <span class="p">}</span>
+            if (user == null)
+            {
+                context.SetError(&quot;invalid_grant&quot;, &quot;用户名或者密码不正确&quot;);
+                return;
+            }
 
-            <span class="n">var</span> <span class="n">identity</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ClaimsIdentity</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthenticationType</span><span class="p">);</span>
-            <span class="n">identity</span><span class="p">.</span><span class="n">AddClaim</span><span class="p">(</span><span class="n">new</span> <span class="n">Claim</span><span class="p">(</span><span class="s">&quot;sub&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">.</span><span class="n">UserName</span><span class="p">));</span>
-            <span class="n">identity</span><span class="p">.</span><span class="n">AddClaim</span><span class="p">(</span><span class="n">new</span> <span class="n">Claim</span><span class="p">(</span><span class="s">&quot;role&quot;</span><span class="p">,</span> <span class="s">&quot;user&quot;</span><span class="p">));</span>
+            var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+            identity.AddClaim(new Claim(&quot;sub&quot;, context.UserName));
+            identity.AddClaim(new Claim(&quot;role&quot;, &quot;user&quot;));
 
-            <span class="n">context</span><span class="p">.</span><span class="n">Validated</span><span class="p">(</span><span class="n">identity</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+            context.Validated(identity);
+        }
+    }
+}
 </pre></div>
 
 
@@ -427,21 +427,21 @@
 <p>为了让令牌中间件提供者允许CORS，我们需要添加头"Access-Control-Allow-Origin"到Owin的上下文中。如果忘记这么做，从浏览器中调用生成令牌就会失败。</p>
 <h3 id="111-aspnet-web-apicors">1.11 第十一步 允许ASP.NET Web API支持CORS</h3>
 <p>首先，需要安装对应的NuGet包：</p>
-<div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Owin</span><span class="p">.</span><span class="n">Cors</span>
+<div class="highlight"><pre>Install-Package Microsoft.Owin.Cors
 </pre></div>
 
 
 <p>然后再次打开类<code>Startup</code>，并添加</p>
-<div class="highlight"><pre><span class="n">public</span> <span class="kt">void</span> <span class="nf">Configuration</span><span class="p">(</span><span class="n">IAppBuilder</span> <span class="n">app</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">var</span> <span class="n">config</span> <span class="o">=</span> <span class="n">new</span> <span class="n">HttpConfiguration</span><span class="p">();</span>
-    <span class="n">ConfigreOAuth</span><span class="p">(</span><span class="n">app</span><span class="p">);</span>
+<div class="highlight"><pre>public void Configuration(IAppBuilder app)
+{
+    var config = new HttpConfiguration();
+    ConfigreOAuth(app);
 
-    <span class="n">WebApiConfig</span><span class="p">.</span><span class="n">Register</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
-    <span class="c1">//添加这行</span>
-    <span class="n">app</span><span class="p">.</span><span class="n">UseCors</span><span class="p">(</span><span class="n">CorsOptions</span><span class="p">.</span><span class="n">AllowAll</span><span class="p">);</span>
-    <span class="n">app</span><span class="p">.</span><span class="n">UseWebApi</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
-<span class="p">}</span>
+    WebApiConfig.Register(config);
+    //添加这行
+    app.UseCors(CorsOptions.AllowAll);
+    app.UseWebApi(config);
+}
 </pre></div>
 
 
@@ -457,7 +457,7 @@
 <h1>评论</h1>
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html" data-title="使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)" data-url="./shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html"></div>
+	<div class="ds-thread" data-thread-key="shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html" data-title="使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)" data-url="http://liulixiang1988.github.io/shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -479,9 +479,9 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
             <nav>
             <ul class="articles_timeline">
  
-                <li class="previous_article">« <a href="./flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html" title="Previous: Flask笔记－01 基本应用框架">Flask笔记－01 基本应用框架</a></li>
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html" title="Previous: Flask笔记－01 基本应用框架">Flask笔记－01 基本应用框架</a></li>
  
-                <li class="next_article"><a href="./aspnet-mvc5-xue-xi-bi-ji-2-razor.html" title="Next: ASP.NET MVC5 学习笔记-2 Razor">ASP.NET MVC5 学习笔记-2 Razor</a> »</li>
+                <li class="next_article"><a href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-2-razor.html" title="Next: ASP.NET MVC5 学习笔记-2 Razor">ASP.NET MVC5 学习笔记-2 Razor</a> »</li>
             </ul>
             </nav>
             </aside>
@@ -490,7 +490,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-10-30T00:00:00">10 30, 2014</time>
+            <time pubdate="pubdate" datetime="2014-10-30T00:00:00+08:00">10 30, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#DotNet-ref">DotNet</a> 
 
@@ -506,7 +506,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
-        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

@@ -7,19 +7,19 @@
         <meta name="copyright" content="刘理想" />
 
 <meta name="keywords" content="JavaScript, Web, " />
-        <title>RequireJS使用笔记  · liulixiang1988的博客
+        <title>RequireJS使用笔记  · Liu Lixiang的博客
 </title>
         <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
-        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
-        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
     </head>
     <body>
         <div id="content-sans-footer">
@@ -31,14 +31,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href=".">Home</a></li>
-                            <li ><a href="./categories.html">Categories</a></li>
-                            <li ><a href="./tags.html">Tags</a></li>
-                            <li ><a href="./archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
 <article>
 <div class="row-fluid">
     <header class="page_header span10 offset2">
-    <h1><a href="./requirejsshi-yong-bi-ji.html"> RequireJS使用笔记  </a></h1>
+    <h1><a href="http://liulixiang1988.github.io/requirejsshi-yong-bi-ji.html"> RequireJS使用笔记  </a></h1>
     </header>
 </div>
 
@@ -71,14 +71,14 @@
 <p>requirejs加载完之后，立即引入的文件由<code>data-main</code>来定义。这里文件为<code>js/main.js</code></p>
 <p>我们创建的main.js如下：</p>
 <div class="highlight"><pre><span class="c1">//定义别名</span>
-<span class="n">requirejs</span><span class="p">.</span><span class="k">config</span><span class="p">({</span>
-    <span class="nl">paths:</span><span class="p">{</span>
-        <span class="nl">jquery:</span> <span class="p">&#39;</span><span class="n">jquery</span><span class="o">-</span><span class="mf">1.11.3</span><span class="p">.</span><span class="n">min</span><span class="p">&#39;</span>
+<span class="nx">requirejs</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+    <span class="nx">paths</span><span class="o">:</span><span class="p">{</span>
+        <span class="nx">jquery</span><span class="o">:</span> <span class="s1">&#39;jquery-1.11.3.min&#39;</span>
     <span class="p">}</span>
 <span class="p">})</span>
 <span class="c1">//引用模块</span>
-<span class="n">requirejs</span><span class="p">([&#39;</span><span class="n">jquery</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">validate</span><span class="p">&#39;],</span> <span class="k">function</span><span class="p">(</span><span class="err">$</span><span class="p">,</span> <span class="n">validate</span><span class="p">){</span>
-    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">validate</span><span class="p">.</span><span class="n">isEqual</span><span class="p">(</span><span class="mh">1</span><span class="p">,</span> <span class="mh">2</span><span class="p">));</span>
+<span class="nx">requirejs</span><span class="p">(</span><span class="cp">[</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span> <span class="s1">&#39;validate&#39;</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">validate</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">validate</span><span class="p">.</span><span class="nx">isEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
 <span class="p">});</span>
 </pre></div>
 
@@ -101,7 +101,7 @@
 <h1>评论</h1>
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="requirejsshi-yong-bi-ji.html" data-title="RequireJS使用笔记" data-url="./requirejsshi-yong-bi-ji.html"></div>
+	<div class="ds-thread" data-thread-key="requirejsshi-yong-bi-ji.html" data-title="RequireJS使用笔记" data-url="http://liulixiang1988.github.io/requirejsshi-yong-bi-ji.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -123,9 +123,9 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
             <nav>
             <ul class="articles_timeline">
  
-                <li class="previous_article">« <a href="./css3bian-ping-hua-feng-ge-bo-ke.html" title="Previous: CSS3扁平化风格博客">CSS3扁平化风格博客</a></li>
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/css3bian-ping-hua-feng-ge-bo-ke.html" title="Previous: CSS3扁平化风格博客">CSS3扁平化风格博客</a></li>
  
-                <li class="next_article"><a href="./ce-bian-lan-gong-ju-tiao-kai-fa.html" title="Next: 侧边栏工具条开发">侧边栏工具条开发</a> »</li>
+                <li class="next_article"><a href="http://liulixiang1988.github.io/ce-bian-lan-gong-ju-tiao-kai-fa.html" title="Next: 侧边栏工具条开发">侧边栏工具条开发</a> »</li>
             </ul>
             </nav>
             </aside>
@@ -134,7 +134,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-07-22T15:30:00"> 7 22, 2015</time>
+            <time pubdate="pubdate" datetime="2015-07-22T15:30:00+08:00"> 7 22, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>
@@ -156,7 +156,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
-        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

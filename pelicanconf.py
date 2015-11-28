@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = '理想'
-SITENAME = 'liulixiang1988的博客'
+SITENAME = 'Liu Lixiang的博客'
 SITEURL = 'http://liulixiang1988.github.io'
 SITESUBTITLE = '机器学习/Python/Android/Web'
 
@@ -25,7 +25,7 @@ SOCIAL = (('微博', 'http://weibo.com/liulixiang1988'),)
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
+RELATIVE_URLS = False
 
 THEME = 'pelican-elegant-1.3'
 

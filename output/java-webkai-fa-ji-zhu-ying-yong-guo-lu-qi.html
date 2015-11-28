@@ -7,19 +7,19 @@
         <meta name="copyright" content="刘理想" />
 
 <meta name="keywords" content="Java, Web, Java, " />
-        <title>Java Web开发技术应用-过滤器  · liulixiang1988的博客
+        <title>Java Web开发技术应用-过滤器  · Liu Lixiang的博客
 </title>
         <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
-        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
-        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
     </head>
     <body>
         <div id="content-sans-footer">
@@ -31,14 +31,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href=".">Home</a></li>
-                            <li ><a href="./categories.html">Categories</a></li>
-                            <li ><a href="./tags.html">Tags</a></li>
-                            <li ><a href="./archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
 <article>
 <div class="row-fluid">
     <header class="page_header span10 offset2">
-    <h1><a href="./java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html"> Java Web开发技术应用-过滤器  </a></h1>
+    <h1><a href="http://liulixiang1988.github.io/java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html"> Java Web开发技术应用-过滤器  </a></h1>
     </header>
 </div>
 
@@ -67,24 +67,24 @@
 （2）doFIlter()核心：完成实际的过滤操作。当用户请求访问与过滤器【关联的URL】时，Web容器将先调用过滤器的doFilter方法，FilterChain arg2参数可以调用chain.doFilter方法，将请求传给下一个过滤器（或目标资源），或利用转发，重定向将请求转发给其他资源。
 (3)web容器在消耗过滤器前调用该方法，用于释放过滤器占用的资源。（大多数情况用不到）</p>
 <h3 id="21-filter">2.1 定义Filter</h3>
-<div class="highlight"><pre><span class="n">package</span> <span class="n">liulx</span><span class="p">.</span><span class="n">FilterDemo</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">package</span> <span class="n">liulx</span><span class="o">.</span><span class="n">FilterDemo</span><span class="p">;</span>
 
-<span class="n">import</span> <span class="n">javax</span><span class="p">.</span><span class="n">servlet</span><span class="p">.</span><span class="o">*</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">IOException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.</span><span class="o">*</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
 
-<span class="n">public</span> <span class="n">class</span> <span class="n">FirstFilter</span> <span class="n">implements</span> <span class="n">Filter</span> <span class="p">{</span>
-    <span class="n">public</span> <span class="kt">void</span> <span class="n">destroy</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Filter Destroy&quot;</span><span class="p">);</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">FirstFilter</span> <span class="n">implements</span> <span class="n">Filter</span> <span class="p">{</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">destroy</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Filter Destroy&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="n">public</span> <span class="kt">void</span> <span class="n">doFilter</span><span class="p">(</span><span class="n">ServletRequest</span> <span class="n">req</span><span class="p">,</span> <span class="n">ServletResponse</span> <span class="n">resp</span><span class="p">,</span> <span class="n">FilterChain</span> <span class="n">chain</span><span class="p">)</span> <span class="n">throws</span> <span class="n">ServletException</span><span class="p">,</span> <span class="n">IOException</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Do filter before request&quot;</span><span class="p">);</span>
-        <span class="n">chain</span><span class="p">.</span><span class="n">doFilter</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Do filter after request&quot;</span><span class="p">);</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">doFilter</span><span class="p">(</span><span class="n">ServletRequest</span> <span class="n">req</span><span class="p">,</span> <span class="n">ServletResponse</span> <span class="n">resp</span><span class="p">,</span> <span class="n">FilterChain</span> <span class="n">chain</span><span class="p">)</span> <span class="n">throws</span> <span class="n">ServletException</span><span class="p">,</span> <span class="n">IOException</span> <span class="p">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Do filter before request&quot;</span><span class="p">);</span>
+        <span class="n">chain</span><span class="o">.</span><span class="n">doFilter</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Do filter after request&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="n">public</span> <span class="kt">void</span> <span class="n">init</span><span class="p">(</span><span class="n">FilterConfig</span> <span class="n">config</span><span class="p">)</span> <span class="n">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Init First Filter&quot;</span><span class="p">);</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">init</span><span class="p">(</span><span class="n">FilterConfig</span> <span class="n">config</span><span class="p">)</span> <span class="n">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Init First Filter&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -149,10 +149,10 @@
 <p>Servlet 3.0 ASYNC标记：异步处理</p>
 <h2 id="5-servlet-30">5 Servlet 3.0</h2>
 <p>@WebFilter注解</p>
-<div class="highlight"><pre><span class="err">@</span><span class="n">WebFilter</span><span class="p">(</span><span class="n">servletNames</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;SimpleServlet&quot;</span><span class="p">},</span> <span class="n">filterName</span><span class="o">=</span><span class="s">&quot;SimpleFilter&quot;</span><span class="p">)</span>
-<span class="n">public</span> <span class="n">class</span> <span class="n">LessThanSixFilter</span> <span class="n">implements</span> <span class="n">Filter</span><span class="p">{</span>
-<span class="p">...</span>
-<span class="p">}</span>
+<div class="highlight"><pre>@WebFilter(servletNames={&quot;SimpleServlet&quot;}, filterName=&quot;SimpleFilter&quot;)
+public class LessThanSixFilter implements Filter{
+...
+}
 </pre></div>
 
 
@@ -164,7 +164,7 @@
 <h1>评论</h1>
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html" data-title="Java Web开发技术应用-过滤器" data-url="./java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html"></div>
+	<div class="ds-thread" data-thread-key="java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html" data-title="Java Web开发技术应用-过滤器" data-url="http://liulixiang1988.github.io/java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -186,9 +186,9 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
             <nav>
             <ul class="articles_timeline">
  
-                <li class="previous_article">« <a href="./sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html" title="Previous: Sass和Compass必备技能之Compass篇-02 模块简介">Sass和Compass必备技能之Compass篇-02 模块简介</a></li>
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html" title="Previous: Sass和Compass必备技能之Compass篇-02 模块简介">Sass和Compass必备技能之Compass篇-02 模块简介</a></li>
  
-                <li class="next_article"><a href="./angularjsxue-xi-bi-ji-01-mvc.html" title="Next: AngularJS学习笔记01-MVC">AngularJS学习笔记01-MVC</a> »</li>
+                <li class="next_article"><a href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-01-mvc.html" title="Next: AngularJS学习笔记01-MVC">AngularJS学习笔记01-MVC</a> »</li>
             </ul>
             </nav>
             </aside>
@@ -197,7 +197,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-22T15:45:00"> 4 22, 2015</time>
+            <time pubdate="pubdate" datetime="2015-04-22T15:45:00+08:00"> 4 22, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Java-ref">Java</a> 
             <h4>Tags</h4>
@@ -222,7 +222,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
-        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

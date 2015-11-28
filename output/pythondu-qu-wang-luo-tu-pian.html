@@ -7,19 +7,19 @@
         <meta name="copyright" content="刘理想" />
 
 <meta name="keywords" content="Python, Python, " />
-        <title>Python读取网络图片  · liulixiang1988的博客
+        <title>Python读取网络图片  · Liu Lixiang的博客
 </title>
         <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
-        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
-        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
     </head>
     <body>
         <div id="content-sans-footer">
@@ -31,14 +31,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href=".">Home</a></li>
-                            <li ><a href="./categories.html">Categories</a></li>
-                            <li ><a href="./tags.html">Tags</a></li>
-                            <li ><a href="./archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
 <article>
 <div class="row-fluid">
     <header class="page_header span10 offset2">
-    <h1><a href="./pythondu-qu-wang-luo-tu-pian.html"> Python读取网络图片  </a></h1>
+    <h1><a href="http://liulixiang1988.github.io/pythondu-qu-wang-luo-tu-pian.html"> Python读取网络图片  </a></h1>
     </header>
 </div>
 
@@ -59,26 +59,26 @@
         <div class="span8 offset2 article-content">
 
             <h2 id="1-urllib">1. 使用urllib读取</h2>
-<div class="highlight"><pre><span class="k">try</span><span class="o">:</span>
-    <span class="n">from</span> <span class="n">cStringIO</span> <span class="k">import</span> <span class="nn">StringIO</span> <span class="err">#</span><span class="n">python</span> <span class="mi">2</span>
-<span class="n">except</span> <span class="n">ImportError</span><span class="o">:</span>
-    <span class="n">from</span> <span class="n">io</span> <span class="k">import</span> <span class="nn">StringIO</span> <span class="err">#</span><span class="n">python</span> <span class="mi">3</span>
-<span class="k">import</span> <span class="nn">urllib</span>
-<span class="n">file</span> <span class="o">=</span> <span class="n">StringIO</span><span class="o">(</span><span class="n">urllib</span><span class="o">.</span><span class="na">urlopen</span><span class="o">(</span><span class="n">URL</span><span class="o">).</span><span class="n">read</span><span class="o">())</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="na">open</span><span class="o">(</span><span class="n">file</span><span class="o">)</span>
+<div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">cStringIO</span> <span class="kn">import</span> <span class="n">StringIO</span> <span class="c">#python 2</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span> <span class="c">#python 3</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="nb">file</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
 </pre></div>
 
 
 <h2 id="2-requests">2. 使用requests读取</h2>
-<div class="highlight"><pre><span class="n">from</span> <span class="n">PIL</span> <span class="n">import</span> <span class="n">Image</span>
-<span class="n">import</span> <span class="n">requests</span>
-<span class="nl">try:</span>
-    <span class="n">from</span> <span class="n">StringIO</span> <span class="n">import</span> <span class="n">StringIO</span> <span class="err">#</span><span class="n">python</span> <span class="mi">2</span>
-<span class="n">except</span> <span class="n">ImportError</span><span class="o">:</span>
-    <span class="n">from</span> <span class="n">io</span> <span class="n">import</span> <span class="n">StringIO</span> <span class="err">#</span><span class="n">python</span> <span class="mi">3</span>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">StringIO</span> <span class="kn">import</span> <span class="n">StringIO</span> <span class="c">#python 2</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span> <span class="c">#python 3</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">))</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
 </pre></div>
 
 
@@ -89,7 +89,7 @@
 <h1>评论</h1>
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="pythondu-qu-wang-luo-tu-pian.html" data-title="Python读取网络图片" data-url="./pythondu-qu-wang-luo-tu-pian.html"></div>
+	<div class="ds-thread" data-thread-key="pythondu-qu-wang-luo-tu-pian.html" data-title="Python读取网络图片" data-url="http://liulixiang1988.github.io/pythondu-qu-wang-luo-tu-pian.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -111,9 +111,9 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
             <nav>
             <ul class="articles_timeline">
  
-                <li class="previous_article">« <a href="./ce-bian-lan-gong-ju-tiao-kai-fa.html" title="Previous: 侧边栏工具条开发">侧边栏工具条开发</a></li>
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/ce-bian-lan-gong-ju-tiao-kai-fa.html" title="Previous: 侧边栏工具条开发">侧边栏工具条开发</a></li>
  
-                <li class="next_article"><a href="./pythonkuo-zhan-ku.html" title="Next: Python扩展库">Python扩展库</a> »</li>
+                <li class="next_article"><a href="http://liulixiang1988.github.io/pythonkuo-zhan-ku.html" title="Next: Python扩展库">Python扩展库</a> »</li>
             </ul>
             </nav>
             </aside>
@@ -122,7 +122,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-11-07T09:39:00">11 7, 2015</time>
+            <time pubdate="pubdate" datetime="2015-11-07T09:39:00+08:00">11 7, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Python-ref">Python</a> 
             <h4>Tags</h4>
@@ -144,7 +144,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
-        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

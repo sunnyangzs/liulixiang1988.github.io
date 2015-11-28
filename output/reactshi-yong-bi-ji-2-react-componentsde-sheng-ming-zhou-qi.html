@@ -7,19 +7,19 @@
         <meta name="copyright" content="刘理想" />
 
 <meta name="keywords" content="JavaScript, Web, " />
-        <title>React使用笔记(2)-React Components的生命周期  · liulixiang1988的博客
+        <title>React使用笔记(2)-React Components的生命周期  · Liu Lixiang的博客
 </title>
         <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
-        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
-        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
     </head>
     <body>
         <div id="content-sans-footer">
@@ -31,14 +31,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href=".">Home</a></li>
-                            <li ><a href="./categories.html">Categories</a></li>
-                            <li ><a href="./tags.html">Tags</a></li>
-                            <li ><a href="./archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
 <article>
 <div class="row-fluid">
     <header class="page_header span10 offset2">
-    <h1><a href="./reactshi-yong-bi-ji-2-react-componentsde-sheng-ming-zhou-qi.html"> React使用笔记(2)-React Components的生命周期  </a></h1>
+    <h1><a href="http://liulixiang1988.github.io/reactshi-yong-bi-ji-2-react-componentsde-sheng-ming-zhou-qi.html"> React使用笔记(2)-React Components的生命周期  </a></h1>
     </header>
 </div>
 
@@ -101,7 +101,7 @@
             }
         },
         render: function(){
-            return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">{{color:'red'}}</span><span class="nt">&gt;</span>Hello, {this.props.name}<span class="nt">&lt;/div&gt;</span>;
+            return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="cp">{{</span><span class="nv">color</span><span class="s1">:'red'</span><span class="cp">}}</span><span class="err">&gt;</span><span class="s">Hello,</span> <span class="err">{this.props.name}&lt;/div</span><span class="nt">&gt;</span>;
         },
         componentWillMount: function(){
             alert("component will mount");
@@ -116,14 +116,14 @@
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 <p><code>getIntialState</code>返回的对象如何使用呢，使用<code>{this.state}</code>就可以了:</p>
-<div class="highlight"><pre><span class="nb">render</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
-    <span class="k">return</span> <span class="o">&lt;</span><span class="nb">div</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="nx">this.state</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="p">{</span><span class="nx">this.props.name</span><span class="p">}</span><span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre>render: function(){
+    return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">{this.state}</span><span class="nt">&gt;</span>Hello, {this.props.name}<span class="nt">&lt;/div&gt;</span>;
+}
 </pre></div>
 <p>这里<code>state</code>中都是合法有效的键值，如果不是的话需要这样用：</p>
-<div class="highlight"><pre><span class="nb">render</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
-    <span class="k">return</span> <span class="o">&lt;</span><span class="nb">div</span> <span class="n">style</span><span class="o">=</span><span class="p">{{</span><span class="nx">opacity</span><span class="p">:</span><span class="nx">this.state.opacity</span><span class="p">,</span> <span class="nx">fontSize</span><span class="p">:</span> <span class="nx">this.state.fontSize</span><span class="p">}}</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="p">{</span><span class="nx">this.props.name</span><span class="p">}</span><span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre>render: function(){
+    return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="cp">{{</span><span class="nv">opacity</span><span class="o">:</span><span class="nv">this.state.opacity</span><span class="o">,</span> <span class="nv">fontSize</span><span class="o">:</span> <span class="nv">this.state.fontSize</span><span class="cp">}}</span><span class="err">&gt;</span><span class="s">Hello,</span> <span class="err">{this.props.name}&lt;/div</span><span class="nt">&gt;</span>;
+}
 </pre></div>
 <p><code>props</code>和<code>state</code>的区别是什么呢？<code>props</code>是属于调用者的，而<code>state</code>是属于当前组件的。</p>
 <hr/>
@@ -181,7 +181,7 @@
 <h1>评论</h1>
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="reactshi-yong-bi-ji-2-react-componentsde-sheng-ming-zhou-qi.html" data-title="React使用笔记(2)-React Components的生命周期" data-url="./reactshi-yong-bi-ji-2-react-componentsde-sheng-ming-zhou-qi.html"></div>
+	<div class="ds-thread" data-thread-key="reactshi-yong-bi-ji-2-react-componentsde-sheng-ming-zhou-qi.html" data-title="React使用笔记(2)-React Components的生命周期" data-url="http://liulixiang1988.github.io/reactshi-yong-bi-ji-2-react-componentsde-sheng-ming-zhou-qi.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -203,9 +203,9 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
             <nav>
             <ul class="articles_timeline">
  
-                <li class="previous_article">« <a href="./reactshi-yong-bi-ji-reactde-jsxhe-style.html" title="Previous: React使用笔记-React的JSX和Style">React使用笔记-React的JSX和Style</a></li>
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/reactshi-yong-bi-ji-reactde-jsxhe-style.html" title="Previous: React使用笔记-React的JSX和Style">React使用笔记-React的JSX和Style</a></li>
  
-                <li class="next_article"><a href="./reactshi-yong-bi-ji-3-react-event-listener.html" title="Next: React使用笔记(3)-React Event Listener">React使用笔记(3)-React Event Listener</a> »</li>
+                <li class="next_article"><a href="http://liulixiang1988.github.io/reactshi-yong-bi-ji-3-react-event-listener.html" title="Next: React使用笔记(3)-React Event Listener">React使用笔记(3)-React Event Listener</a> »</li>
             </ul>
             </nav>
             </aside>
@@ -214,7 +214,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-11-27T21:23:00">11 27, 2015</time>
+            <time pubdate="pubdate" datetime="2015-11-27T21:23:00+08:00">11 27, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>
@@ -236,7 +236,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
-        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

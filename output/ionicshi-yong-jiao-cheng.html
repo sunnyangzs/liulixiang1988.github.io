@@ -7,19 +7,19 @@
         <meta name="copyright" content="刘理想" />
 
 <meta name="keywords" content="ionic, 移动开发, ionic, " />
-        <title>Ionic使用教程  · liulixiang1988的博客
+        <title>Ionic使用教程  · Liu Lixiang的博客
 </title>
         <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
-        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
-        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
     </head>
     <body>
         <div id="content-sans-footer">
@@ -31,14 +31,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href=".">Home</a></li>
-                            <li ><a href="./categories.html">Categories</a></li>
-                            <li ><a href="./tags.html">Tags</a></li>
-                            <li ><a href="./archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
 <article>
 <div class="row-fluid">
     <header class="page_header span10 offset2">
-    <h1><a href="./ionicshi-yong-jiao-cheng.html"> Ionic使用教程  </a></h1>
+    <h1><a href="http://liulixiang1988.github.io/ionicshi-yong-jiao-cheng.html"> Ionic使用教程  </a></h1>
     </header>
 </div>
 
@@ -69,95 +69,95 @@
 </ul>
 <h2 id="2-ionic">2. ionic开发步骤</h2>
 <h3 id="21-cordovaionic">2.1 全局安装cordova和ionic</h3>
-<div class="highlight"><pre><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">cordova</span> <span class="n">ionic</span>
+<div class="highlight"><pre>npm install -g cordova ionic
 </pre></div>
 
 
 <h3 id="22">2.2 从模板中创建应用</h3>
-<div class="highlight"><pre><span class="n">ionic</span> <span class="n">start</span> <span class="n">frontendAwesome</span> <span class="n">sidemenu</span>
-<span class="n">cd</span> <span class="n">frontendAwesome</span>
+<div class="highlight"><pre>ionic start frontendAwesome sidemenu
+cd frontendAwesome
 </pre></div>
 
 
 <p>其中 frontendAwesome是项目名，sidemenu是模板名</p>
 <p>有3个默认模板：sidemenu(侧边菜单), tabs(底部标签), blank(空白)</p>
 <p>第一个命令结束后，会自动输出一大堆英文：</p>
-<div class="highlight"><pre><span class="nx">Creating</span> <span class="nx">Ionic</span> <span class="n">app</span> <span class="k">in</span> <span class="nx">folder</span> <span class="nb">F</span><span class="p">:</span><span class="o">\</span><span class="nx">git</span><span class="o">\</span><span class="nx">WebDesign</span><span class="o">\</span><span class="nx">ionic</span><span class="o">\</span><span class="nx">fontendAwesome</span> <span class="nx">based</span> <span class="k">on</span> <span class="nx">side</span>
-<span class="nx">menu</span> <span class="nx">project</span>
+<div class="highlight"><pre><span class="n">Creating</span> <span class="n">Ionic</span> <span class="n">app</span> <span class="n">in</span> <span class="n">folder</span> <span class="n">F:</span>\<span class="n">git</span>\<span class="n">WebDesign</span>\<span class="n">ionic</span>\<span class="n">fontendAwesome</span> <span class="n">based</span> <span class="n">on</span> <span class="n">side</span>
+<span class="n">menu</span> <span class="n">project</span>
 
-<span class="nx">Downloading</span><span class="p">:</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//github.com/driftyco/ionic-app-base/archive/master.zip</span>
-<span class="err">[</span><span class="o">=============================</span><span class="cp">]</span>  100%  0.0s
+<span class="n">Downloading:</span> <span class="n">https:</span>//<span class="n">github</span>.<span class="n">com</span><span class="o">/</span><span class="n">driftyco</span><span class="o">/</span><span class="n">ionic-app-base</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">master</span>.<span class="nb">zip</span>
+[=============================]  <span class="mi">100</span>%  <span class="mf">0.0</span><span class="n">s</span>
 
-Downloading: https://github.com/driftyco/ionic-starter-sidemenu/archive/master.z
-ip
-<span class="cp">[</span><span class="o">=============================</span><span class="cp">]</span>  100%  0.0s
+<span class="n">Downloading:</span> <span class="n">https:</span>//<span class="n">github</span>.<span class="n">com</span><span class="o">/</span><span class="n">driftyco</span><span class="o">/</span><span class="n">ionic-starter-sidemenu</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">master</span>.<span class="n">z</span>
+<span class="n">ip</span>
+[=============================]  <span class="mi">100</span>%  <span class="mf">0.0</span><span class="n">s</span>
 
-Update config.xml
-Initializing cordova project
-Updated the hooks directory to have execute permissions
-running cordova plugin add org.apache.cordova.device
-WARNING: org.apache.cordova.device has been renamed to cordova-plugin-device. Yo
-u may not be getting the latest version! We suggest you `cordova plugin rm org.a
-pache.cordova.device` and `cordova plugin add cordova-plugin-device`.
-Fetching plugin &quot;org.apache.cordova.device&quot; via cordova plugins registry
-npm http GET http://registry.cordova.io/org.apache.cordova.device
-npm http 304 http://registry.cordova.io/org.apache.cordova.device
-Saving plugin to package.json file
-Adding since there was no existingPlugin
-Updated the hooks directory to have execute permissions
-running cordova plugin add org.apache.cordova.console
-WARNING: org.apache.cordova.console has been renamed to cordova-plugin-console.
-You may not be getting the latest version! We suggest you `cordova plugin rm org
-.apache.cordova.console` and `cordova plugin add cordova-plugin-console`.
-Fetching plugin &quot;org.apache.cordova.console&quot; via cordova plugins registry
-npm http GET http://registry.cordova.io/org.apache.cordova.console
-npm http 304 http://registry.cordova.io/org.apache.cordova.console
-Saving plugin to package.json file
-Adding since there was no existingPlugin
-Updated the hooks directory to have execute permissions
-running cordova plugin add com.ionic.keyboard
-Fetching plugin &quot;com.ionic.keyboard&quot; via cordova plugins registry
-npm http GET http://registry.cordova.io/com.ionic.keyboard
-npm http 304 http://registry.cordova.io/com.ionic.keyboard
-Saving plugin to package.json file
-Adding since there was no existingPlugin
+<span class="n">Update</span> <span class="n">config</span>.<span class="n">xml</span>
+<span class="n">Initializing</span> <span class="n">cordova</span> <span class="n">project</span>
+<span class="n">Updated</span> <span class="n">the</span> <span class="n">hooks</span> <span class="n">directory</span> <span class="nb">to</span> <span class="n">have</span> <span class="n">execute</span> <span class="n">permissions</span>
+<span class="n">running</span> <span class="n">cordova</span> <span class="n">plugin</span> <span class="n">add</span> <span class="n">org</span>.<span class="n">apache</span>.<span class="n">cordova</span>.<span class="n">device</span>
+<span class="n">WARNING:</span> <span class="n">org</span>.<span class="n">apache</span>.<span class="n">cordova</span>.<span class="n">device</span> <span class="k">has</span> <span class="n">been</span> <span class="n">renamed</span> <span class="nb">to</span> <span class="n">cordova-plugin-device</span>. <span class="n">Yo</span>
+<span class="n">u</span> <span class="n">may</span> <span class="nb">not</span> <span class="n">be</span> <span class="n">getting</span> <span class="n">the</span> <span class="n">latest</span> <span class="n">version</span>! <span class="n">We</span> <span class="n">suggest</span> <span class="n">you</span> `<span class="n">cordova</span> <span class="n">plugin</span> <span class="n">rm</span> <span class="n">org</span>.<span class="n">a</span>
+<span class="n">pache</span>.<span class="n">cordova</span>.<span class="n">device</span>` <span class="o">and</span> `<span class="n">cordova</span> <span class="n">plugin</span> <span class="n">add</span> <span class="n">cordova-plugin-device</span>`.
+<span class="n">Fetching</span> <span class="n">plugin</span> <span class="s">&quot;org.apache.cordova.device&quot;</span> <span class="n">via</span> <span class="n">cordova</span> <span class="n">plugins</span> <span class="n">registry</span>
+<span class="n">npm</span> <span class="n">http</span> <span class="n">GET</span> <span class="n">http:</span>//<span class="n">registry</span>.<span class="n">cordova</span>.<span class="n">io</span><span class="o">/</span><span class="n">org</span>.<span class="n">apache</span>.<span class="n">cordova</span>.<span class="n">device</span>
+<span class="n">npm</span> <span class="n">http</span> <span class="mi">304</span> <span class="n">http:</span>//<span class="n">registry</span>.<span class="n">cordova</span>.<span class="n">io</span><span class="o">/</span><span class="n">org</span>.<span class="n">apache</span>.<span class="n">cordova</span>.<span class="n">device</span>
+<span class="n">Saving</span> <span class="n">plugin</span> <span class="nb">to</span> <span class="k">package</span>.<span class="n">json</span> <span class="n">file</span>
+<span class="n">Adding</span> <span class="n">since</span> <span class="n">there</span> <span class="n">was</span> <span class="n">no</span> <span class="n">existingPlugin</span>
+<span class="n">Updated</span> <span class="n">the</span> <span class="n">hooks</span> <span class="n">directory</span> <span class="nb">to</span> <span class="n">have</span> <span class="n">execute</span> <span class="n">permissions</span>
+<span class="n">running</span> <span class="n">cordova</span> <span class="n">plugin</span> <span class="n">add</span> <span class="n">org</span>.<span class="n">apache</span>.<span class="n">cordova</span>.<span class="n">console</span>
+<span class="n">WARNING:</span> <span class="n">org</span>.<span class="n">apache</span>.<span class="n">cordova</span>.<span class="n">console</span> <span class="k">has</span> <span class="n">been</span> <span class="n">renamed</span> <span class="nb">to</span> <span class="n">cordova-plugin-console</span>.
+<span class="n">You</span> <span class="n">may</span> <span class="nb">not</span> <span class="n">be</span> <span class="n">getting</span> <span class="n">the</span> <span class="n">latest</span> <span class="n">version</span>! <span class="n">We</span> <span class="n">suggest</span> <span class="n">you</span> `<span class="n">cordova</span> <span class="n">plugin</span> <span class="n">rm</span> <span class="n">org</span>
+.<span class="n">apache</span>.<span class="n">cordova</span>.<span class="n">console</span>` <span class="o">and</span> `<span class="n">cordova</span> <span class="n">plugin</span> <span class="n">add</span> <span class="n">cordova-plugin-console</span>`.
+<span class="n">Fetching</span> <span class="n">plugin</span> <span class="s">&quot;org.apache.cordova.console&quot;</span> <span class="n">via</span> <span class="n">cordova</span> <span class="n">plugins</span> <span class="n">registry</span>
+<span class="n">npm</span> <span class="n">http</span> <span class="n">GET</span> <span class="n">http:</span>//<span class="n">registry</span>.<span class="n">cordova</span>.<span class="n">io</span><span class="o">/</span><span class="n">org</span>.<span class="n">apache</span>.<span class="n">cordova</span>.<span class="n">console</span>
+<span class="n">npm</span> <span class="n">http</span> <span class="mi">304</span> <span class="n">http:</span>//<span class="n">registry</span>.<span class="n">cordova</span>.<span class="n">io</span><span class="o">/</span><span class="n">org</span>.<span class="n">apache</span>.<span class="n">cordova</span>.<span class="n">console</span>
+<span class="n">Saving</span> <span class="n">plugin</span> <span class="nb">to</span> <span class="k">package</span>.<span class="n">json</span> <span class="n">file</span>
+<span class="n">Adding</span> <span class="n">since</span> <span class="n">there</span> <span class="n">was</span> <span class="n">no</span> <span class="n">existingPlugin</span>
+<span class="n">Updated</span> <span class="n">the</span> <span class="n">hooks</span> <span class="n">directory</span> <span class="nb">to</span> <span class="n">have</span> <span class="n">execute</span> <span class="n">permissions</span>
+<span class="n">running</span> <span class="n">cordova</span> <span class="n">plugin</span> <span class="n">add</span> <span class="n">com</span>.<span class="n">ionic</span>.<span class="n">keyboard</span>
+<span class="n">Fetching</span> <span class="n">plugin</span> <span class="s">&quot;com.ionic.keyboard&quot;</span> <span class="n">via</span> <span class="n">cordova</span> <span class="n">plugins</span> <span class="n">registry</span>
+<span class="n">npm</span> <span class="n">http</span> <span class="n">GET</span> <span class="n">http:</span>//<span class="n">registry</span>.<span class="n">cordova</span>.<span class="n">io</span><span class="o">/</span><span class="n">com</span>.<span class="n">ionic</span>.<span class="n">keyboard</span>
+<span class="n">npm</span> <span class="n">http</span> <span class="mi">304</span> <span class="n">http:</span>//<span class="n">registry</span>.<span class="n">cordova</span>.<span class="n">io</span><span class="o">/</span><span class="n">com</span>.<span class="n">ionic</span>.<span class="n">keyboard</span>
+<span class="n">Saving</span> <span class="n">plugin</span> <span class="nb">to</span> <span class="k">package</span>.<span class="n">json</span> <span class="n">file</span>
+<span class="n">Adding</span> <span class="n">since</span> <span class="n">there</span> <span class="n">was</span> <span class="n">no</span> <span class="n">existingPlugin</span>
 
-Your Ionic project is ready to go! Some quick tips:
+<span class="n">Your</span> <span class="n">Ionic</span> <span class="n">project</span> <span class="k">is</span> <span class="n">ready</span> <span class="nb">to</span> <span class="n">go</span>! <span class="n">Some</span> <span class="n">quick</span> <span class="n">tips:</span>
 
- * cd into your project: $ cd fontendAwesome
+ * <span class="n">cd</span> <span class="n">into</span> <span class="n">your</span> <span class="n">project:</span> $ <span class="n">cd</span> <span class="n">fontendAwesome</span>
 
- * Setup this project to use Sass: ionic setup sass
+ * <span class="n">Setup</span> <span class="n">this</span> <span class="n">project</span> <span class="nb">to</span> <span class="k">use</span> <span class="n">Sass:</span> <span class="n">ionic</span> <span class="n">setup</span> <span class="n">sass</span>
 
- * Develop in the browser with live reload: ionic serve
+ * <span class="n">Develop</span> <span class="n">in</span> <span class="n">the</span> <span class="n">browser</span> <span class="n">with</span> <span class="n">live</span> <span class="n">reload:</span> <span class="n">ionic</span> <span class="n">serve</span>
 
- * Add a platform (ios or Android): ionic platform add ios <span class="cp">[</span><span class="nx">android</span><span class="cp">]</span>
-   Note: iOS development requires OS X currently
-   See the Android Platform Guide for full Android installation instructions:
-   https://cordova.apache.org/docs/en/edge/guide_platforms_android_index.md.html
+ * <span class="n">Add</span> <span class="n">a</span> <span class="n">platform</span> (<span class="n">ios</span> <span class="o">or</span> <span class="n">Android</span>): <span class="n">ionic</span> <span class="n">platform</span> <span class="n">add</span> <span class="n">ios</span> [<span class="n">android</span>]
+   <span class="n">Note:</span> <span class="n">iOS</span> <span class="n">development</span> <span class="n">requires</span> <span class="n">OS</span> <span class="o">X</span> <span class="n">currently</span>
+   <span class="n">See</span> <span class="n">the</span> <span class="n">Android</span> <span class="n">Platform</span> <span class="n">Guide</span> <span class="k">for</span> <span class="n">full</span> <span class="n">Android</span> <span class="n">installation</span> <span class="n">instructions:</span>
+   <span class="n">https:</span>//<span class="n">cordova</span>.<span class="n">apache</span>.<span class="n">org</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">edge</span><span class="o">/</span><span class="n">guide_platforms_android_index</span>.<span class="n">md</span>.<span class="n">html</span>
 
 
- * Build your app: ionic build <span class="nt">&lt;PLATFORM&gt;</span>
+ * <span class="n">Build</span> <span class="n">your</span> <span class="n">app:</span> <span class="n">ionic</span> <span class="n">build</span> <span class="s">&lt;PLATFORM&gt;</span>
 
- * Simulate your app: ionic emulate <span class="nt">&lt;PLATFORM&gt;</span>
+ * <span class="n">Simulate</span> <span class="n">your</span> <span class="n">app:</span> <span class="n">ionic</span> <span class="n">emulate</span> <span class="s">&lt;PLATFORM&gt;</span>
 
- * Run your app on a device: ionic run <span class="nt">&lt;PLATFORM&gt;</span>
+ * <span class="n">Run</span> <span class="n">your</span> <span class="n">app</span> <span class="n">on</span> <span class="n">a</span> <span class="n">device:</span> <span class="n">ionic</span> <span class="nb">run</span> <span class="s">&lt;PLATFORM&gt;</span>
 
- * Package an app using Ionic package service: ionic package <span class="nt">&lt;MODE&gt;</span> <span class="nt">&lt;PLATFORM&gt;</span>
+ * <span class="nb">Package</span> <span class="n">an</span> <span class="n">app</span> <span class="n">using</span> <span class="n">Ionic</span> <span class="k">package</span> <span class="n">service:</span> <span class="n">ionic</span> <span class="k">package</span> <span class="s">&lt;MODE&gt;</span> <span class="s">&lt;PLATFORM&gt;</span>
 
-For more help use ionic --help or visit the Ionic docs: http://ionicframework.co
-m/docs
+<span class="n">For</span> <span class="n">more</span> <span class="n">help</span> <span class="k">use</span> <span class="n">ionic</span> --<span class="n">help</span> <span class="o">or</span> <span class="n">visit</span> <span class="n">the</span> <span class="n">Ionic</span> <span class="n">docs:</span> <span class="n">http:</span>//<span class="n">ionicframework</span>.<span class="n">co</span>
+<span class="sr">m/docs</span>
 
-+---------------------------------------------------------+
-+ New Ionic Updates for May 2015
+<span class="sr">+---------------------------------------------------------+</span>
+<span class="sr">+ New Ionic Updates for May 2015</span>
+<span class="sr">+</span>
+<span class="sr">+ The View App just landed. Preview your apps on any device</span>
+<span class="sr">+ http:/</span>/<span class="n">view</span>.<span class="n">ionic</span>.<span class="n">io</span>
 +
-+ The View App just landed. Preview your apps on any device
-+ http://view.ionic.io
++ <span class="n">Invite</span> <span class="n">anyone</span> <span class="nb">to</span> <span class="n">preview</span> <span class="o">and</span> <span class="n">test</span> <span class="n">your</span> <span class="n">app</span>
++ <span class="n">ionic</span> <span class="n">share</span> <span class="n">EMAIL</span>
 +
-+ Invite anyone to preview and test your app
-+ ionic share EMAIL
-+
-+ Generate splash screens and icons with ionic resource
-+ http://ionicframework.com/blog/automating-icons-and-splash-screens/
++ <span class="n">Generate</span> <span class="n">splash</span> <span class="n">screens</span> <span class="o">and</span> <span class="n">icons</span> <span class="n">with</span> <span class="n">ionic</span> <span class="n">resource</span>
++ <span class="n">http:</span>//<span class="n">ionicframework</span>.<span class="n">com</span><span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="n">automating-icons-and-splash-screens</span>/
 +
 +---------------------------------------------------------+
 </pre></div>
@@ -165,12 +165,12 @@ m/docs
 
 <p>上面介绍了一些基本用法和注意事项，第一次使用的时候应该读一读。</p>
 <h3 id="23-buildemulate">2.3 build(编译)和emulate(仿真)</h3>
-<div class="highlight"><pre><span class="n">ionic</span> <span class="n">build</span> <span class="n">ios</span>
-<span class="n">ionic</span> <span class="n">emulate</span> <span class="n">ios</span>
-<span class="n">ionic</span> <span class="n">serve</span>
-<span class="cp">#adb安装</span>
-<span class="n">adb</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">platforms</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">outputs</span><span class="o">/</span><span class="n">apk</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">debug</span><span class="p">.</span><span class="n">apk</span>
-<span class="n">adb</span> <span class="n">lolcat</span>
+<div class="highlight"><pre>ionic build ios
+ionic emulate ios
+ionic serve
+#adb安装
+adb install -r platforms/android/build/outputs/apk/android-debug.apk
+adb lolcat
 </pre></div>
 
 
@@ -204,7 +204,7 @@ http://ionicons.com/</p>
 <h1>评论</h1>
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="ionicshi-yong-jiao-cheng.html" data-title="Ionic使用教程" data-url="./ionicshi-yong-jiao-cheng.html"></div>
+	<div class="ds-thread" data-thread-key="ionicshi-yong-jiao-cheng.html" data-title="Ionic使用教程" data-url="http://liulixiang1988.github.io/ionicshi-yong-jiao-cheng.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -226,9 +226,9 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
             <nav>
             <ul class="articles_timeline">
  
-                <li class="previous_article">« <a href="./angularjsxue-xi-bi-ji-05-zhi-ling.html" title="Previous: AngularJS学习笔记05-指令">AngularJS学习笔记05-指令</a></li>
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-05-zhi-ling.html" title="Previous: AngularJS学习笔记05-指令">AngularJS学习笔记05-指令</a></li>
  
-                <li class="next_article"><a href="./jsbu-yi-jquerypian.html" title="Next: JS补遗-jQuery篇">JS补遗-jQuery篇</a> »</li>
+                <li class="next_article"><a href="http://liulixiang1988.github.io/jsbu-yi-jquerypian.html" title="Next: JS补遗-jQuery篇">JS补遗-jQuery篇</a> »</li>
             </ul>
             </nav>
             </aside>
@@ -237,7 +237,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-05-12T19:45:00"> 5 12, 2015</time>
+            <time pubdate="pubdate" datetime="2015-05-12T19:45:00+08:00"> 5 12, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#ionic-ref">ionic</a> 
             <h4>Tags</h4>
@@ -262,7 +262,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
-        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

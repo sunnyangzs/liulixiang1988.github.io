@@ -7,19 +7,19 @@
         <meta name="copyright" content="刘理想" />
 
 <meta name="keywords" content="CSS, SASS, Web, " />
-        <title>Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)  · liulixiang1988的博客
+        <title>Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)  · Liu Lixiang的博客
 </title>
         <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
-        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
-        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
     </head>
     <body>
         <div id="content-sans-footer">
@@ -31,14 +31,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href=".">Home</a></li>
-                            <li ><a href="./categories.html">Categories</a></li>
-                            <li ><a href="./tags.html">Tags</a></li>
-                            <li ><a href="./archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
 <article>
 <div class="row-fluid">
     <header class="page_header span10 offset2">
-    <h1><a href="./sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html"> Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)  </a></h1>
+    <h1><a href="http://liulixiang1988.github.io/sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html"> Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)  </a></h1>
     </header>
 </div>
 
@@ -63,10 +63,10 @@
 <p>sass中的media query可以内嵌在css规则中，在生成CSS的时候，
 media query 才会被提到样式的最高级</p>
 <p>好处：避免了重复书写选择器或者打乱样式表的流程。</p>
-<div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="p">){</span>
-    <span class="err">@</span><span class="n">media</span><span class="p">(</span><span class="n">min</span><span class="o">-</span><span class="n">width</span><span class="o">:</span> <span class="mi">768</span><span class="n">px</span><span class="p">){</span>
-        <span class="nl">width:</span> <span class="err">$</span><span class="n">width</span><span class="p">;</span>
-        <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
+<div class="highlight"><pre><span class="k">@mixin</span> <span class="nt">col</span><span class="o">($</span><span class="nt">width</span><span class="o">)</span><span class="p">{</span>
+    <span class="k">@media</span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">768px</span><span class="o">)</span><span class="p">{</span>
+        <span class="nt">width</span><span class="o">:</span> <span class="o">$</span><span class="nt">width</span><span class="o">;</span>
+        <span class="nt">float</span><span class="o">:</span> <span class="nt">left</span><span class="o">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -74,38 +74,38 @@ media query 才会被提到样式的最高级</p>
 
 <h2 id="2-at-root">2. @at-root</h2>
 <p>指定嵌套的内容生成CSS时，在最底层</p>
-<div class="highlight"><pre><span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="p">{</span>
-    <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
-    <span class="err">@</span><span class="n">at</span><span class="o">-</span><span class="n">root</span><span class="p">{</span>
-        <span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">headline</span><span class="p">{</span>
-            <span class="nl">font:</span><span class="p">{</span>
-                <span class="nl">family:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
-                <span class="nl">size:</span> <span class="mi">16</span><span class="n">px</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
+<div class="highlight"><pre><span class="na">.main-sec</span><span class="err">{</span>
+    <span class="nl">font-family:</span> <span class="nf">$main-sec-ff</span><span class="err">;</span>
+    <span class="err">@</span><span class="nf">at-root</span><span class="err">{</span>
+        <span class="na">.main-sec-headline</span><span class="err">{</span>
+            <span class="nl">font:</span><span class="err">{</span>
+                <span class="nl">family:</span> <span class="nf">$main-sec-ff</span><span class="err">;</span>
+                <span class="nl">size:</span> <span class="err">16</span><span class="nf">px</span><span class="err">;</span>
+            <span class="err">}</span>
+        <span class="err">}</span>
 
-        <span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">detail</span><span class="p">{</span>
-            <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span> <span class="mi">12</span><span class="n">px</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="na">.main-sec-detail</span><span class="err">{</span>
+            <span class="nl">font-size:</span> <span class="err">12</span><span class="nf">px</span><span class="err">;</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <h2 id="3">3. 逻辑</h2>
-<div class="highlight"><pre><span class="err">@</span><span class="n">mixin</span> <span class="n">col</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="p">){</span>
-    <span class="err">@</span><span class="k">if</span> <span class="n">type</span><span class="o">-</span><span class="n">of</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="p">)</span> <span class="o">!=</span> <span class="n">number</span> <span class="p">{</span>
-        <span class="err">@</span><span class="n">error</span> <span class="s">&quot;$width必须是数值类型，你输入的width是#{$width}&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span class="k">@mixin</span> <span class="nt">col</span><span class="o">($</span><span class="nt">width</span><span class="o">)</span><span class="p">{</span>
+    <span class="k">@if</span> <span class="nt">type-of</span><span class="o">($</span><span class="nt">width</span><span class="o">)</span> <span class="o">!=</span> <span class="nt">number</span> <span class="p">{</span>
+        <span class="k">@error</span> <span class="s2">&quot;$width必须是数值类型，你输入的width是#{$width}&quot;</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="err">@</span><span class="k">if</span> <span class="n">not</span> <span class="n">unitless</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="p">){</span>
-        <span class="err">@</span><span class="k">if</span> <span class="n">unit</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="p">)</span> <span class="o">!=</span> <span class="s">&quot;%&quot;</span><span class="p">{</span>
-            <span class="err">@</span><span class="n">error</span>  <span class="s">&quot;$width应该是一个百分值，你输入的是#{$width}&quot;</span><span class="p">;</span>
+    <span class="k">@if</span> <span class="nt">not</span> <span class="nt">unitless</span><span class="o">($</span><span class="nt">width</span><span class="o">)</span><span class="p">{</span>
+        <span class="k">@if</span> <span class="nt">unit</span><span class="o">($</span><span class="nt">width</span><span class="o">)</span> <span class="o">!=</span> <span class="s2">&quot;%&quot;</span><span class="p">{</span>
+            <span class="k">@error</span>  <span class="s2">&quot;$width应该是一个百分值，你输入的是#{$width}&quot;</span><span class="p">;</span>
         <span class="p">}</span>
 
-    <span class="p">}</span> <span class="err">@</span><span class="k">else</span><span class="p">{</span>
-        <span class="err">@</span><span class="n">warn</span> <span class="s">&quot;$width应该是一个百分之，你输入的是#{$width}&quot;</span><span class="p">;</span>
-        <span class="err">$</span><span class="n">width</span><span class="o">:</span> <span class="n">percentage</span><span class="p">(</span><span class="err">$</span><span class="n">width</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">@else</span><span class="p">{</span>
+        <span class="k">@warn</span> <span class="s2">&quot;$width应该是一个百分之，你输入的是#{$width}&quot;</span><span class="p">;</span>
+        <span class="o">$</span><span class="nt">width</span><span class="o">:</span> <span class="nt">percentage</span><span class="o">($</span><span class="nt">width</span><span class="o">)/</span><span class="nt">100</span><span class="o">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -114,7 +114,7 @@ media query 才会被提到样式的最高级</p>
 <p>@each @for @while</p>
 <h2 id="4">4. 输出格式</h2>
 <p>打开config.rb</p>
-<div class="highlight"><pre><span class="n">output_style</span> <span class="o">=</span> <span class="o">:</span><span class="n">expanded</span> <span class="n">or</span> <span class="o">:</span><span class="n">nested</span> <span class="n">or</span> <span class="o">:</span><span class="n">compact</span> <span class="n">or</span> <span class="o">:</span><span class="n">compressed</span>
+<div class="highlight"><pre>output_style = :expanded or :nested or :compact or :compressed
 </pre></div>
 
  
@@ -122,7 +122,7 @@ media query 才会被提到样式的最高级</p>
 <h1>评论</h1>
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html" data-title="Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)" data-url="./sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html"></div>
+	<div class="ds-thread" data-thread-key="sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html" data-title="Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)" data-url="http://liulixiang1988.github.io/sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -144,9 +144,9 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
             <nav>
             <ul class="articles_timeline">
  
-                <li class="previous_article">« <a href="./sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html" title="Previous: Sass和Compass必备技能之Sass篇-03 Sass语法介绍(进阶篇)">Sass和Compass必备技能之Sass篇-03 Sass语法介绍(进阶篇)</a></li>
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html" title="Previous: Sass和Compass必备技能之Sass篇-03 Sass语法介绍(进阶篇)">Sass和Compass必备技能之Sass篇-03 Sass语法介绍(进阶篇)</a></li>
  
-                <li class="next_article"><a href="./androidxue-xi-bi-ji-07-android-mu-lu-jie-gou.html" title="Next: Android学习笔记-07 Android 目录结构">Android学习笔记-07 Android 目录结构</a> »</li>
+                <li class="next_article"><a href="http://liulixiang1988.github.io/androidxue-xi-bi-ji-07-android-mu-lu-jie-gou.html" title="Next: Android学习笔记-07 Android 目录结构">Android学习笔记-07 Android 目录结构</a> »</li>
             </ul>
             </nav>
             </aside>
@@ -155,7 +155,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-17T23:19:00"> 4 17, 2015</time>
+            <time pubdate="pubdate" datetime="2015-04-17T23:19:00+08:00"> 4 17, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>
@@ -180,7 +180,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
-        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

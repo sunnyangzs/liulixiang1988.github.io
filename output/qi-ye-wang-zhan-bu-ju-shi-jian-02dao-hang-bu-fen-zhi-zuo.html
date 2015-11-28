@@ -7,19 +7,19 @@
         <meta name="copyright" content="刘理想" />
 
 <meta name="keywords" content="CSS, HTML, LESS, Web, " />
-        <title>企业网站布局实践-02导航部分制作  · liulixiang1988的博客
+        <title>企业网站布局实践-02导航部分制作  · Liu Lixiang的博客
 </title>
         <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
-        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
-        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
     </head>
     <body>
         <div id="content-sans-footer">
@@ -31,14 +31,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href=".">Home</a></li>
-                            <li ><a href="./categories.html">Categories</a></li>
-                            <li ><a href="./tags.html">Tags</a></li>
-                            <li ><a href="./archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
 <article>
 <div class="row-fluid">
     <header class="page_header span10 offset2">
-    <h1><a href="./qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html"> 企业网站布局实践-02导航部分制作  </a></h1>
+    <h1><a href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html"> 企业网站布局实践-02导航部分制作  </a></h1>
     </header>
 </div>
 
@@ -88,86 +88,86 @@
 
 <h2 id="3-less">3. 实现LESS</h2>
 <h3 id="31">3.1 实现框架</h3>
-<div class="highlight"><pre><span class="p">.</span><span class="n">nav</span><span class="p">{</span>
-    <span class="err">@</span><span class="n">nav_h</span><span class="o">:</span><span class="mi">40</span><span class="n">px</span><span class="p">;</span>
-    <span class="err">@</span><span class="n">nav_w</span><span class="o">:</span><span class="mi">10</span><span class="n">px</span><span class="p">;</span>
-    <span class="nl">height:</span><span class="err">@</span><span class="n">nav_h</span><span class="p">;</span>
-    <span class="nl">clear:</span> <span class="n">both</span><span class="p">;</span>
+<div class="highlight"><pre><span class="na">.nav</span><span class="err">{</span>
+    <span class="err">@</span><span class="nl">nav_h:</span><span class="err">40</span><span class="nf">px</span><span class="err">;</span>
+    <span class="err">@</span><span class="nl">nav_w:</span><span class="err">10</span><span class="nf">px</span><span class="err">;</span>
+    <span class="nl">height:</span><span class="err">@</span><span class="nf">nav_h</span><span class="err">;</span>
+    <span class="nl">clear:</span> <span class="nf">both</span><span class="err">;</span>
 
-    <span class="o">&amp;</span><span class="n">_left</span><span class="p">{</span>
-        <span class="nl">width:</span><span class="err">@</span><span class="n">nav_w</span><span class="p">;</span>
-        <span class="nl">height:</span> <span class="err">@</span><span class="n">nav_h</span><span class="p">;</span>
-        <span class="nl">background:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">nav_left</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span> <span class="n">no</span><span class="o">-</span><span class="n">repeat</span><span class="p">;</span>
-        <span class="c1">// background-image: url(../images/nav_left.jpg);</span>
-        <span class="c1">// background-repeat: no-repeat;</span>
-        <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
-    <span class="p">}</span>
+    <span class="err">&amp;</span><span class="nf">_left</span><span class="err">{</span>
+        <span class="nl">width:</span><span class="err">@</span><span class="nf">nav_w</span><span class="err">;</span>
+        <span class="nl">height:</span> <span class="err">@</span><span class="nf">nav_h</span><span class="err">;</span>
+        <span class="nl">background:</span> <span class="nf">url</span><span class="p">(..</span><span class="err">/</span><span class="no">images</span><span class="err">/</span><span class="no">nav_left.jpg</span><span class="p">)</span> <span class="no">no-repeat</span><span class="err">;</span>
+        <span class="err">//</span> <span class="nl">background-image:</span> <span class="nf">url</span><span class="p">(..</span><span class="err">/</span><span class="no">images</span><span class="err">/</span><span class="no">nav_left.jpg</span><span class="p">)</span><span class="err">;</span>
+        <span class="err">//</span> <span class="nl">background-repeat:</span> <span class="nf">no-repeat</span><span class="err">;</span>
+        <span class="nl">float:</span> <span class="nf">left</span><span class="err">;</span>
+    <span class="err">}</span>
 
-    <span class="o">&amp;</span><span class="n">_mid</span><span class="p">{</span>
-        <span class="nl">width:</span> <span class="mi">980</span><span class="n">px</span><span class="p">;</span>
-        <span class="nl">background:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">nav_bg</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span> <span class="n">repeat</span><span class="o">-</span><span class="n">x</span><span class="p">;</span>
-        <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
-    <span class="p">}</span>
+    <span class="err">&amp;</span><span class="nf">_mid</span><span class="err">{</span>
+        <span class="nl">width:</span> <span class="err">980</span><span class="nf">px</span><span class="err">;</span>
+        <span class="nl">background:</span> <span class="nf">url</span><span class="p">(..</span><span class="err">/</span><span class="no">images</span><span class="err">/</span><span class="no">nav_bg.jpg</span><span class="p">)</span> <span class="no">repeat-x</span><span class="err">;</span>
+        <span class="nl">float:</span> <span class="nf">left</span><span class="err">;</span>
+    <span class="err">}</span>
 
-    <span class="o">&amp;</span><span class="n">_right</span><span class="p">{</span>
-        <span class="nl">width:</span> <span class="err">@</span><span class="n">nav_w</span><span class="p">;</span>
-        <span class="nl">height:</span> <span class="err">@</span><span class="n">nav_h</span><span class="p">;</span>
-        <span class="nl">background:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">nav_right</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span> <span class="n">no</span><span class="o">-</span><span class="n">repeat</span><span class="p">;</span>
-        <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    <span class="err">&amp;</span><span class="nf">_right</span><span class="err">{</span>
+        <span class="nl">width:</span> <span class="err">@</span><span class="nf">nav_w</span><span class="err">;</span>
+        <span class="nl">height:</span> <span class="err">@</span><span class="nf">nav_h</span><span class="err">;</span>
+        <span class="nl">background:</span> <span class="nf">url</span><span class="p">(..</span><span class="err">/</span><span class="no">images</span><span class="err">/</span><span class="no">nav_right.jpg</span><span class="p">)</span> <span class="no">no-repeat</span><span class="err">;</span>
+        <span class="nl">float:</span> <span class="nf">left</span><span class="err">;</span>
+    <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <h3 id="32">3.2 实现菜单文本</h3>
-<div class="highlight"><pre><span class="o">&amp;</span><span class="n">_mid</span><span class="p">{</span>
-    <span class="nl">width:</span> <span class="mi">980</span><span class="n">px</span><span class="p">;</span>
-    <span class="nl">background:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">nav_bg</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span> <span class="n">repeat</span><span class="o">-</span><span class="n">x</span><span class="p">;</span>
+<div class="highlight"><pre><span class="o">&amp;</span><span class="nt">_mid</span><span class="p">{</span>
+    <span class="k">width</span><span class="o">:</span> <span class="m">980px</span><span class="p">;</span>
+    <span class="k">background</span><span class="o">:</span> <span class="sx">url(../images/nav_bg.jpg)</span> <span class="k">repeat-x</span><span class="p">;</span>
 
-    <span class="o">&amp;</span><span class="n">_left</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">_right</span><span class="p">{</span>
-        <span class="nl">float:</span><span class="n">left</span><span class="p">;</span>
+    <span class="o">&amp;</span><span class="n">_left</span><span class="o">,</span> <span class="o">&amp;</span><span class="n">_right</span><span class="err">{</span>
+        <span class="k">float</span><span class="o">:</span><span class="k">left</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="o">&amp;</span><span class="n">_left</span><span class="p">{</span>
-        <span class="nl">width:</span><span class="mi">680</span><span class="n">px</span><span class="p">;</span>
+    <span class="o">&amp;</span><span class="nt">_left</span><span class="p">{</span>
+        <span class="k">width</span><span class="o">:</span><span class="m">680px</span><span class="p">;</span>
 
-        <span class="n">li</span><span class="p">{</span>
-            <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
-            <span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span> <span class="c1">//去掉默认list-style</span>
-            <span class="nl">width:</span><span class="mi">100</span><span class="n">px</span><span class="p">;</span>
-            <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="o">:</span> <span class="n">center</span><span class="p">;</span> <span class="c1">//文本中间对齐</span>
-            <span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span> <span class="mi">40</span><span class="n">px</span><span class="p">;</span> <span class="c1">//文本垂直居中，与对应的盒子高度对齐</span>
+        <span class="n">li</span><span class="err">{</span>
+            <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+            <span class="k">list-style</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="o">//</span><span class="err">去掉默认</span><span class="k">list-style</span>
+            <span class="k">width</span><span class="o">:</span><span class="m">100px</span><span class="p">;</span>
+            <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span> <span class="o">//</span><span class="err">文本中间对齐</span>
+            <span class="k">line-height</span><span class="o">:</span> <span class="m">40px</span><span class="p">;</span> <span class="o">//</span><span class="err">文本垂直居中，与对应的盒子高度对齐</span>
         <span class="p">}</span>
 
-        <span class="n">a</span><span class="p">{</span>
-            <span class="o">&amp;:</span><span class="n">link</span><span class="p">,</span> <span class="o">&amp;:</span><span class="n">visited</span><span class="p">{</span>
-                <span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
-                <span class="nl">color:</span><span class="err">#</span><span class="n">FFF</span><span class="p">;</span>
-                <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span> <span class="mi">16</span><span class="n">px</span><span class="p">;</span>
-                <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="s">&quot;微软雅黑&quot;</span><span class="p">;</span>
+        <span class="nt">a</span><span class="p">{</span>
+            <span class="o">&amp;:</span><span class="n">link</span><span class="o">,</span> <span class="o">&amp;:</span><span class="n">visited</span><span class="err">{</span>
+                <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+                <span class="k">color</span><span class="o">:</span><span class="m">#FFF</span><span class="p">;</span>
+                <span class="k">font-size</span><span class="o">:</span> <span class="m">16px</span><span class="p">;</span>
+                <span class="k">font-family</span><span class="o">:</span> <span class="s2">&quot;微软雅黑&quot;</span><span class="p">;</span>
             <span class="p">}</span>
 
-            <span class="o">&amp;:</span><span class="n">hover</span><span class="p">,</span> <span class="o">&amp;:</span><span class="n">active</span><span class="p">{</span>
-                <span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
-                <span class="nl">color:</span><span class="err">#</span><span class="n">FF0</span><span class="p">;</span>
-                <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span> <span class="mi">16</span><span class="n">px</span><span class="p">;</span>
-                <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="s">&quot;微软雅黑&quot;</span><span class="p">;</span>
+            <span class="o">&amp;</span><span class="nd">:hover</span><span class="o">,</span> <span class="o">&amp;</span><span class="nd">:active</span><span class="p">{</span>
+                <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+                <span class="k">color</span><span class="o">:</span><span class="m">#FF0</span><span class="p">;</span>
+                <span class="k">font-size</span><span class="o">:</span> <span class="m">16px</span><span class="p">;</span>
+                <span class="k">font-family</span><span class="o">:</span> <span class="s2">&quot;微软雅黑&quot;</span><span class="p">;</span>
             <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
 </pre></div>
 
 
 <h3 id="_1">实现搜索框</h3>
-<div class="highlight"><pre><span class="p">.</span><span class="n">search_text</span><span class="p">{</span>
-    <span class="nl">width:</span><span class="mi">190</span><span class="n">px</span><span class="p">;</span>
-    <span class="nl">height:</span><span class="mi">25</span><span class="n">px</span><span class="p">;</span>
-    <span class="n">padding</span><span class="o">-</span><span class="n">right</span><span class="o">:</span> <span class="mi">25</span><span class="n">px</span><span class="p">;</span> <span class="c1">//为背景图腾出空间</span>
-    <span class="nl">background:</span><span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">search</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span> <span class="n">no</span><span class="o">-</span><span class="n">repeat</span> <span class="n">right</span> <span class="n">center</span><span class="p">;</span> <span class="c1">//背景图右侧垂直居中</span>
-    <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="o">:</span> <span class="err">#</span><span class="n">FFF</span><span class="p">;</span><span class="c1">//设置背景色</span>
-    <span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="o">:</span> <span class="mi">7</span><span class="n">px</span><span class="p">;</span> <span class="c1">//处于导航中间</span>
-    <span class="nl">boader:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="err">#</span><span class="n">FFF</span><span class="p">;</span> <span class="c1">//边框白色为1</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span class="na">.search_text</span><span class="err">{</span>
+    <span class="nl">width:</span><span class="err">190</span><span class="nf">px</span><span class="err">;</span>
+    <span class="nl">height:</span><span class="err">25</span><span class="nf">px</span><span class="err">;</span>
+    <span class="nl">padding-right:</span> <span class="err">25</span><span class="nf">px</span><span class="err">;</span> <span class="err">//为背景图腾出空间</span>
+    <span class="nl">background:</span><span class="nf">url</span><span class="p">(..</span><span class="err">/</span><span class="no">images</span><span class="err">/</span><span class="no">search.jpg</span><span class="p">)</span> <span class="no">no-repeat</span> <span class="no">right</span> <span class="no">center</span><span class="err">;</span> <span class="err">//背景图右侧垂直居中</span>
+    <span class="nl">background-color:</span> <span class="c">#FFF;//设置背景色</span>
+    <span class="nl">margin-top:</span> <span class="err">7</span><span class="nf">px</span><span class="err">;</span> <span class="err">//处于导航中间</span>
+    <span class="nl">boader:</span> <span class="err">1</span><span class="nf">px</span> <span class="no">solid</span> <span class="c">#FFF; //边框白色为1</span>
+<span class="err">}</span>
 </pre></div>
 
 
@@ -187,33 +187,33 @@
 </pre></div>
 
 
-<div class="highlight"><pre><span class="cm">/*1. 每个列表项的宽度为50px，高度为30px */</span>
-<span class="n">ul</span><span class="p">{</span>
-    <span class="nl">height:</span><span class="mh">30</span><span class="n">px</span><span class="p">;</span>
+<div class="highlight"><pre><span class="c">/*1. 每个列表项的宽度为50px，高度为30px */</span>
+<span class="nt">ul</span><span class="p">{</span>
+    <span class="k">height</span><span class="o">:</span><span class="m">30px</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="cm">/*2. 列表中的文字在水平和垂直方向上均居中显示*/</span>
-<span class="n">li</span><span class="p">{</span>
-    <span class="n">list</span><span class="o">-</span><span class="nl">style:</span><span class="n">none</span><span class="p">;</span>
-    <span class="nl">float:</span><span class="n">left</span><span class="p">;</span>
-    <span class="nl">width:</span><span class="mh">50</span><span class="n">px</span><span class="p">;</span>
-    <span class="n">text</span><span class="o">-</span><span class="nl">align:</span><span class="n">center</span><span class="p">;</span>
-    <span class="n">line</span><span class="o">-</span><span class="nl">height:</span><span class="mh">30</span><span class="n">px</span><span class="p">;</span>
+<span class="c">/*2. 列表中的文字在水平和垂直方向上均居中显示*/</span>
+<span class="nt">li</span><span class="p">{</span>
+    <span class="k">list-style</span><span class="o">:</span><span class="k">none</span><span class="p">;</span>
+    <span class="k">float</span><span class="o">:</span><span class="k">left</span><span class="p">;</span>
+    <span class="k">width</span><span class="o">:</span><span class="m">50px</span><span class="p">;</span>
+    <span class="k">text-align</span><span class="o">:</span><span class="k">center</span><span class="p">;</span>
+    <span class="k">line-height</span><span class="o">:</span><span class="m">30px</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="cm">/*3. 超链接初始状态和访问后的状态均为黑色无下划线，鼠标经过和点击时文字均为白色，无下划线，背景颜色为#BE3948。*/</span>
-<span class="n">li</span> <span class="n">a</span> <span class="p">{</span>
-    <span class="nl">display:</span><span class="n">block</span><span class="p">;</span>
+<span class="c">/*3. 超链接初始状态和访问后的状态均为黑色无下划线，鼠标经过和点击时文字均为白色，无下划线，背景颜色为#BE3948。*/</span>
+<span class="nt">li</span> <span class="nt">a</span> <span class="p">{</span>
+    <span class="k">display</span><span class="o">:</span><span class="k">block</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="n">li</span> <span class="nl">a:</span><span class="n">link</span><span class="p">,</span> <span class="n">li</span> <span class="nl">a:</span><span class="n">visited</span><span class="p">{</span>
-    <span class="nl">color:</span><span class="p">#</span><span class="mh">000</span><span class="p">;</span>
-    <span class="n">text</span><span class="o">-</span><span class="nl">decoration:</span><span class="n">none</span><span class="p">;</span>
+<span class="nt">li</span> <span class="nt">a</span><span class="nd">:link</span><span class="o">,</span> <span class="nt">li</span> <span class="nt">a</span><span class="nd">:visited</span><span class="p">{</span>
+    <span class="k">color</span><span class="o">:</span><span class="m">#000</span><span class="p">;</span>
+    <span class="k">text-decoration</span><span class="o">:</span><span class="k">none</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">li</span> <span class="nl">a:</span><span class="n">hover</span><span class="p">,</span> <span class="n">li</span> <span class="nl">a:</span><span class="n">active</span><span class="p">{</span>
-    <span class="nl">color:</span><span class="p">#</span><span class="no">FFF</span><span class="p">;</span>
-    <span class="n">text</span><span class="o">-</span><span class="nl">decoration:</span><span class="n">none</span><span class="p">;</span>
-    <span class="n">background</span><span class="o">-</span><span class="nl">color:</span><span class="p">#</span><span class="no">BE3948</span><span class="p">;</span>
+<span class="nt">li</span> <span class="nt">a</span><span class="nd">:hover</span><span class="o">,</span> <span class="nt">li</span> <span class="nt">a</span><span class="nd">:active</span><span class="p">{</span>
+    <span class="k">color</span><span class="o">:</span><span class="m">#FFF</span><span class="p">;</span>
+    <span class="k">text-decoration</span><span class="o">:</span><span class="k">none</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="o">:</span><span class="m">#BE3948</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -226,7 +226,7 @@
 <h1>评论</h1>
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html" data-title="企业网站布局实践-02导航部分制作" data-url="./qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html"></div>
+	<div class="ds-thread" data-thread-key="qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html" data-title="企业网站布局实践-02导航部分制作" data-url="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -248,9 +248,9 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
             <nav>
             <ul class="articles_timeline">
  
-                <li class="previous_article">« <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html" title="Previous: 企业网站布局实践-01页面头部制作">企业网站布局实践-01页面头部制作</a></li>
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html" title="Previous: 企业网站布局实践-01页面头部制作">企业网站布局实践-01页面头部制作</a></li>
  
-                <li class="next_article"><a href="./qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html" title="Next: 企业网站布局实践-03焦点图制作">企业网站布局实践-03焦点图制作</a> »</li>
+                <li class="next_article"><a href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html" title="Next: 企业网站布局实践-03焦点图制作">企业网站布局实践-03焦点图制作</a> »</li>
             </ul>
             </nav>
             </aside>
@@ -259,7 +259,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-01T23:59:00"> 4 1, 2015</time>
+            <time pubdate="pubdate" datetime="2015-04-01T23:59:00+08:00"> 4 1, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>
@@ -287,7 +287,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
-        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

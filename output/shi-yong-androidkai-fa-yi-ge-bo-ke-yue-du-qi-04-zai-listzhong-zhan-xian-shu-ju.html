@@ -7,19 +7,19 @@
         <meta name="copyright" content="刘理想" />
 
 <meta name="keywords" content="Android学习笔记, Android, Androi博客阅读, Android, " />
-        <title>使用Android开发一个博客阅读器-04 在List中展现数据  · liulixiang1988的博客
+        <title>使用Android开发一个博客阅读器-04 在List中展现数据  · Liu Lixiang的博客
 </title>
         <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./theme/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="./theme/css/solarizedlight.css" media="screen">
-        <link rel="shortcut icon" href="./theme/images/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/apple-touch-icon-144x144.png" />
-        <link rel="icon" href="./theme/images/apple-touch-icon-144x144.png" />
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
     </head>
     <body>
         <div id="content-sans-footer">
@@ -31,14 +31,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="./"><span class=site-name>liulixiang1988的博客</span></a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href=".">Home</a></li>
-                            <li ><a href="./categories.html">Categories</a></li>
-                            <li ><a href="./tags.html">Tags</a></li>
-                            <li ><a href="./archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
 <article>
 <div class="row-fluid">
     <header class="page_header span10 offset2">
-    <h1><a href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-04-zai-listzhong-zhan-xian-shu-ju.html"> 使用Android开发一个博客阅读器-04 在List中展现数据  </a></h1>
+    <h1><a href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-04-zai-listzhong-zhan-xian-shu-ju.html"> 使用Android开发一个博客阅读器-04 在List中展现数据  </a></h1>
     </header>
 </div>
 
@@ -233,7 +233,7 @@
 
 
 <p>在<code>updateList</code>中将<code>progressBar</code>设置为不可见：</p>
-<div class="highlight"><pre><span class="n">progressBar</span><span class="p">.</span><span class="n">setVisibility</span><span class="p">(</span><span class="n">View</span><span class="p">.</span><span class="n">INVISIBLE</span><span class="p">);</span>
+<div class="highlight"><pre>progressBar.setVisibility(View.INVISIBLE);
 </pre></div>
 
 
@@ -284,7 +284,7 @@
 
             <span class="c1">//使用SimpleAdapter代替ArrayAdapter，可以添加映射</span>
             <span class="n">SimpleAdapter</span> <span class="n">adapter</span> <span class="o">=</span> 
-                    <span class="k">new</span> <span class="nf">SimpleAdapter</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">blogPosts</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_list_item_2</span><span class="o">,</span> <span class="n">keys</span><span class="o">,</span> <span class="n">ids</span><span class="o">);</span>
+                    <span class="k">new</span> <span class="n">SimpleAdapter</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">blogPosts</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_list_item_2</span><span class="o">,</span> <span class="n">keys</span><span class="o">,</span> <span class="n">ids</span><span class="o">);</span>
             <span class="n">setListAdapter</span><span class="o">(</span><span class="n">adapter</span><span class="o">);</span>
         <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">JSONException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Exception caught&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
@@ -302,7 +302,7 @@
 <h1>评论</h1>
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-04-zai-listzhong-zhan-xian-shu-ju.html" data-title="使用Android开发一个博客阅读器-04 在List中展现数据" data-url="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-04-zai-listzhong-zhan-xian-shu-ju.html"></div>
+	<div class="ds-thread" data-thread-key="shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-04-zai-listzhong-zhan-xian-shu-ju.html" data-title="使用Android开发一个博客阅读器-04 在List中展现数据" data-url="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-04-zai-listzhong-zhan-xian-shu-ju.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -324,9 +324,9 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
             <nav>
             <ul class="articles_timeline">
  
-                <li class="previous_article">« <a href="./django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html" title="Previous: Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移">Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移</a></li>
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html" title="Previous: Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移">Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移</a></li>
  
-                <li class="next_article"><a href="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html" title="Next: 使用Android开发一个博客阅读器-05 使用Intent显示和共享博客">使用Android开发一个博客阅读器-05 使用Intent显示和共享博客</a> »</li>
+                <li class="next_article"><a href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html" title="Next: 使用Android开发一个博客阅读器-05 使用Intent显示和共享博客">使用Android开发一个博客阅读器-05 使用Intent显示和共享博客</a> »</li>
             </ul>
             </nav>
             </aside>
@@ -335,7 +335,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-09-27T11:30:00"> 9 27, 2014</time>
+            <time pubdate="pubdate" datetime="2014-09-27T11:30:00+08:00"> 9 27, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Android-ref">Android</a> 
             <h4>Tags</h4>
@@ -363,7 +363,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
-        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>
