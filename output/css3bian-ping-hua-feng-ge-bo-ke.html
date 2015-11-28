@@ -73,15 +73,15 @@
 <li>初始化项目：<code>npm init</code></li>
 <li>安装gulp及常用库</li>
 </ul>
-<div class="highlight"><pre>npm install gulp --save-dev
-npm install gulp-concat --save-dev
-npm install gulp-uglify --save-dev
-npm install gulp-rename --save-dev
-npm install gulp-minify-css --save-dev
-npm install gulp-sass --save-dev
-npm install gulp-compass --save-dev
-npm install gulp-sourcemaps
-npm install del --save-dev
+<div class="highlight"><pre><span class="n">npm</span> <span class="n">install</span> <span class="n">gulp</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">npm</span> <span class="n">install</span> <span class="n">gulp</span><span class="o">-</span><span class="n">concat</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">npm</span> <span class="n">install</span> <span class="n">gulp</span><span class="o">-</span><span class="n">uglify</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">npm</span> <span class="n">install</span> <span class="n">gulp</span><span class="o">-</span><span class="n">rename</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">npm</span> <span class="n">install</span> <span class="n">gulp</span><span class="o">-</span><span class="n">minify</span><span class="o">-</span><span class="n">css</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">npm</span> <span class="n">install</span> <span class="n">gulp</span><span class="o">-</span><span class="n">sass</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">npm</span> <span class="n">install</span> <span class="n">gulp</span><span class="o">-</span><span class="n">compass</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">npm</span> <span class="n">install</span> <span class="n">gulp</span><span class="o">-</span><span class="n">sourcemaps</span>
+<span class="n">npm</span> <span class="n">install</span> <span class="n">del</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 
 
@@ -90,48 +90,48 @@ npm install del --save-dev
 <li>如果没有安装ruby，请先安装ruby</li>
 <li>配置ruby gem的source:</li>
 </ul>
-<div class="highlight"><pre><span class="nv">$ </span>gem sources --remove https://rubygems.org/
-<span class="nv">$ </span>gem sources -a https://ruby.taobao.org/
-<span class="nv">$ </span>gem sources -l
-*** CURRENT SOURCES ***
-https://ruby.taobao.org
+<div class="highlight"><pre><span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">--</span><span class="n">remove</span> <span class="n">https</span><span class="o">:</span><span class="c1">//rubygems.org/</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">-</span><span class="n">a</span> <span class="n">https</span><span class="o">:</span><span class="c1">//ruby.taobao.org/</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">-</span><span class="n">l</span>
+<span class="o">***</span> <span class="n">CURRENT</span> <span class="n">SOURCES</span> <span class="o">***</span>
+<span class="nl">https:</span><span class="c1">//ruby.taobao.org</span>
 
-<span class="c"># 请确保只有 ruby.taobao.org</span>
-<span class="nv">$ </span>gem install rails <span class="c">#安装</span>
-<span class="nv">$ </span>gem update <span class="c">#更新</span>
-<span class="nv">$ </span>gem install sass --version<span class="o">=</span>3.3
-<span class="nv">$gem</span> uninstall sass
+<span class="cp"># 请确保只有 ruby.taobao.org</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">rails</span> <span class="err">#安装</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">update</span> <span class="err">#更新</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">sass</span> <span class="o">--</span><span class="n">version</span><span class="o">=</span><span class="mf">3.3</span>
+<span class="err">$</span><span class="n">gem</span> <span class="n">uninstall</span> <span class="n">sass</span>
 </pre></div>
 
 
 <ul>
 <li>安装SASS</li>
 </ul>
-<div class="highlight"><pre><span class="p">$</span><span class="nv">gem</span><span class="x"> install sass</span>
-<span class="p">$</span><span class="nv">gem</span><span class="x"> install sass --version=3.3</span>
-<span class="p">$</span><span class="nv">sass</span><span class="x"> -v</span>
+<div class="highlight"><pre><span class="err">$</span><span class="n">gem</span> <span class="n">install</span> <span class="n">sass</span>
+<span class="err">$</span><span class="n">gem</span> <span class="n">install</span> <span class="n">sass</span> <span class="o">--</span><span class="n">version</span><span class="o">=</span><span class="mf">3.3</span>
+<span class="err">$</span><span class="n">sass</span> <span class="o">-</span><span class="n">v</span>
 </pre></div>
 
 
 <ul>
 <li>安装Compass</li>
 </ul>
-<div class="highlight"><pre>gem isntall compass
+<div class="highlight"><pre><span class="n">gem</span> <span class="n">isntall</span> <span class="n">compass</span>
 </pre></div>
 
 
 <p>接下来我们来配置项目</p>
 <h3>2.3 使用Compass配置SASS</h3>
-<div class="highlight"><pre>compass create
+<div class="highlight"><pre><span class="n">compass</span> <span class="n">create</span>
 </pre></div>
 
 
 <p>一般来说，我们使用<code>compass create [项目名]</code>来创建项目，但是我们在之前已经使用<code>node init</code>初始化过了，所以此处我们略去项目名。</p>
 <h3>2.4 配置bower</h3>
 <p>创建<code>.bowerrc</code>文件，然后添加：</p>
-<div class="highlight"><pre>{
-  &quot;directory&quot;: &quot;lib&quot;
-}
+<div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;directory&quot;</span><span class="o">:</span> <span class="s">&quot;lib&quot;</span>
+<span class="p">}</span>
 </pre></div>
 
 
@@ -224,39 +224,39 @@ https://ruby.taobao.org
 
 
 <p>目前为止我们的目录如下：</p>
-<div class="highlight"><pre>├── config.rb
-├── css
-├── fonts
-├── gulpfile.js
-├── img
-│   ├── banner.jpg
-│   ├── pic01.jpg
-│   ├── pic02.jpg
-│   └── pic03.jpg
-├── index.html
-├── js
-│   ├── jquery.js
-│   └── main.js
-├── lib
-├── node_modules
-│   ├── del
-│   ├── gulp
-│   ├── gulp-compass
-│   ├── gulp-concat
-│   ├── gulp-rename
-│   ├── gulp-sass
-│   ├── gulp-sourcemaps
-│   └── gulp-uglify
-├── package.json
-└── scss
-    ├── application.scss
-    └── base
-        └── _normalize.scss
+<div class="highlight"><pre><span class="err">├──</span> <span class="n">config</span><span class="p">.</span><span class="n">rb</span>
+<span class="err">├──</span> <span class="n">css</span>
+<span class="err">├──</span> <span class="n">fonts</span>
+<span class="err">├──</span> <span class="n">gulpfile</span><span class="p">.</span><span class="n">js</span>
+<span class="err">├──</span> <span class="n">img</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">banner</span><span class="p">.</span><span class="n">jpg</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">pic01</span><span class="p">.</span><span class="n">jpg</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">pic02</span><span class="p">.</span><span class="n">jpg</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">pic03</span><span class="p">.</span><span class="n">jpg</span>
+<span class="err">├──</span> <span class="n">index</span><span class="p">.</span><span class="n">html</span>
+<span class="err">├──</span> <span class="n">js</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">jquery</span><span class="p">.</span><span class="n">js</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">main</span><span class="p">.</span><span class="n">js</span>
+<span class="err">├──</span> <span class="n">lib</span>
+<span class="err">├──</span> <span class="n">node_modules</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">del</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">gulp</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">gulp</span><span class="o">-</span><span class="n">compass</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">gulp</span><span class="o">-</span><span class="n">concat</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">gulp</span><span class="o">-</span><span class="n">rename</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">gulp</span><span class="o">-</span><span class="n">sass</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">gulp</span><span class="o">-</span><span class="n">sourcemaps</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">gulp</span><span class="o">-</span><span class="n">uglify</span>
+<span class="err">├──</span> <span class="n">package</span><span class="p">.</span><span class="n">json</span>
+<span class="err">└──</span> <span class="n">scss</span>
+    <span class="err">├──</span> <span class="n">application</span><span class="p">.</span><span class="n">scss</span>
+    <span class="err">└──</span> <span class="n">base</span>
+        <span class="err">└──</span> <span class="n">_normalize</span><span class="p">.</span><span class="n">scss</span>
 </pre></div>
 
 
 <p>经过一番配置，后面我们只需要运行:</p>
-<div class="highlight"><pre>gulp serve
+<div class="highlight"><pre><span class="n">gulp</span> <span class="n">serve</span>
 </pre></div>
 
 
@@ -349,32 +349,32 @@ https://ruby.taobao.org
 
 
 <p>定义<code>_header.scss</code></p>
-<div class="highlight"><pre><span class="nt">nav</span> <span class="p">{</span>
-    <span class="k">background</span><span class="o">:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="n">bgColor</span><span class="p">;</span>
-    <span class="k">height</span><span class="o">:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="k">height</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">nav</span> <span class="p">{</span>
+    <span class="nl">background:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="n">bgColor</span><span class="p">;</span>
+    <span class="nl">height:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="n">height</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="nt">nav</span><span class="p">{</span>
-    <span class="n">ul</span><span class="err">{</span>
-        <span class="k">list-style</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
-        <span class="k">margin</span><span class="o">:</span><span class="m">0</span><span class="p">;</span>
-        <span class="k">float</span><span class="o">:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="n">menu</span><span class="o">-</span><span class="k">float</span><span class="p">;</span>
+<span class="n">nav</span><span class="p">{</span>
+    <span class="n">ul</span><span class="p">{</span>
+        <span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
+        <span class="nl">margin:</span><span class="mi">0</span><span class="p">;</span>
+        <span class="nl">float:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="n">menu</span><span class="o">-</span><span class="kt">float</span><span class="p">;</span>
 
-        <span class="n">li</span><span class="err">{</span>
-            <span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="p">;</span>
-            <span class="k">line-height</span><span class="o">:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="k">height</span><span class="p">;</span>
-            <span class="k">margin-right</span><span class="o">:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="n">menu</span><span class="o">-</span><span class="n">mright</span><span class="p">;</span>
+        <span class="n">li</span><span class="p">{</span>
+            <span class="nl">display:</span> <span class="kr">inline</span><span class="p">;</span>
+            <span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="n">height</span><span class="p">;</span>
+            <span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="n">menu</span><span class="o">-</span><span class="n">mright</span><span class="p">;</span>
 
-            <span class="n">a</span><span class="err">{</span>
-                <span class="k">line-height</span><span class="o">:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="k">height</span><span class="p">;</span>
-                <span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="o">-</span><span class="k">block</span><span class="p">;</span>
-                <span class="k">height</span><span class="o">:</span> <span class="k">inherit</span><span class="p">;</span>
-                <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
-                <span class="k">color</span><span class="o">:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="n">menu</span><span class="o">-</span><span class="k">color</span><span class="p">;</span>
+            <span class="n">a</span><span class="p">{</span>
+                <span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="n">height</span><span class="p">;</span>
+                <span class="nl">display:</span> <span class="kr">inline</span><span class="o">-</span><span class="n">block</span><span class="p">;</span>
+                <span class="nl">height:</span> <span class="n">inherit</span><span class="p">;</span>
+                <span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
+                <span class="nl">color:</span> <span class="err">$</span><span class="n">navbar</span><span class="o">-</span><span class="n">menu</span><span class="o">-</span><span class="n">color</span><span class="p">;</span>
             <span class="p">}</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
-<span class="err">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
 
@@ -397,34 +397,34 @@ https://ruby.taobao.org
 
 
 <p>定义<code>_banner.scss</code>:</p>
-<div class="highlight"><pre><span class="sx">#banner{</span>
-    <span class="nl">background</span><span class="p">:</span> <span class="nv">$banner-bgColor;</span>
-    <span class="nl">height</span><span class="p">:</span> <span class="nv">$banner-height;</span>
+<div class="highlight"><pre><span class="nf">#banner</span><span class="p">{</span>
+    <span class="k">background</span><span class="o">:</span> <span class="err">$</span><span class="n">banner</span><span class="o">-</span><span class="n">bgColor</span><span class="p">;</span>
+    <span class="k">height</span><span class="o">:</span> <span class="err">$</span><span class="n">banner</span><span class="o">-</span><span class="k">height</span><span class="p">;</span>
 
-    <span class="kr">.inner</span> <span class="nc">{</span>
-        <span class="nl">max-width</span><span class="p">:</span> <span class="nv">$banner-inner-mxwidth;</span>
-        <span class="nl">text-align</span><span class="p">:</span> <span class="sx">center;</span>
-        <span class="nl">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="sx">auto;</span>
-        <span class="nl">position</span><span class="p">:</span> <span class="sx">relative;</span>
-        <span class="nl">top</span><span class="p">:</span> <span class="nv">$banner-inner-top;</span>
-        <span class="sx">h1{</span>
-            <span class="nl">margin</span><span class="p">:</span> <span class="sx">0;</span>
-        <span class="sx">}</span>
+    <span class="o">.</span><span class="n">inner</span> <span class="err">{</span>
+        <span class="k">max-width</span><span class="o">:</span> <span class="err">$</span><span class="n">banner</span><span class="o">-</span><span class="n">inner</span><span class="o">-</span><span class="n">mxwidth</span><span class="p">;</span>
+        <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
+        <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="k">auto</span><span class="p">;</span>
+        <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
+        <span class="k">top</span><span class="o">:</span> <span class="err">$</span><span class="n">banner</span><span class="o">-</span><span class="n">inner</span><span class="o">-</span><span class="k">top</span><span class="p">;</span>
+        <span class="n">h1</span><span class="err">{</span>
+            <span class="k">margin</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        <span class="sx">.sub-heading{</span>
-            <span class="nl">line-height</span><span class="p">:</span> <span class="nv">$banner-inner-subheading-lineHeight;</span>
-            <span class="nl">margin</span><span class="p">:</span> <span class="nv">$banner-inner-subheading-margin;</span>
-        <span class="sx">}</span>
+        <span class="nc">.sub-heading</span><span class="p">{</span>
+            <span class="k">line-height</span><span class="o">:</span> <span class="err">$</span><span class="n">banner</span><span class="o">-</span><span class="n">inner</span><span class="o">-</span><span class="n">subheading</span><span class="o">-</span><span class="n">lineHeight</span><span class="p">;</span>
+            <span class="k">margin</span><span class="o">:</span> <span class="err">$</span><span class="n">banner</span><span class="o">-</span><span class="n">inner</span><span class="o">-</span><span class="n">subheading</span><span class="o">-</span><span class="k">margin</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        <span class="sx">button{</span>
-            <span class="nl">padding</span><span class="p">:</span> <span class="nv">$banner-button-padding;</span>
-        <span class="sx">}</span>
+        <span class="nt">button</span><span class="p">{</span>
+            <span class="k">padding</span><span class="o">:</span> <span class="err">$</span><span class="n">banner</span><span class="o">-</span><span class="n">button</span><span class="o">-</span><span class="k">padding</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        <span class="sx">.more</span> <span class="sx">{</span>
-            <span class="nl">margin-top</span><span class="p">:</span> <span class="nv">$banner-inner-more-mgTop;</span>
-        <span class="sx">}</span>
-    <span class="sx">}</span>
-<span class="sx">}</span>
+        <span class="nc">.more</span> <span class="p">{</span>
+            <span class="k">margin-top</span><span class="o">:</span> <span class="err">$</span><span class="n">banner</span><span class="o">-</span><span class="n">inner</span><span class="o">-</span><span class="n">more</span><span class="o">-</span><span class="n">mgTop</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
@@ -439,40 +439,40 @@ https://ruby.taobao.org
 
 
 <p>其中变量定义再<code>_variables.scss</code>:</p>
-<div class="highlight"><pre><span class="o">$</span><span class="nt">navbar-height</span> <span class="o">:</span> <span class="nt">50px</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">navbar-bgColor</span><span class="o">:</span> <span class="nf">#ccc</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">navbar-menu-float</span><span class="o">:</span> <span class="nt">right</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">navbar-logo-float</span><span class="o">:</span> <span class="nt">left</span><span class="o">;</span>
-<span class="o">//</span><span class="nt">菜单项右侧外边距</span>
-<span class="o">$</span><span class="nt">navbar-menu-mright</span><span class="o">:</span> <span class="nt">20px</span><span class="o">;</span>
-<span class="o">//</span><span class="nt">菜单项的颜色</span>
-<span class="o">$</span><span class="nt">navbar-menu-color</span> <span class="o">:</span> <span class="nf">#fff</span><span class="o">;</span>
+<div class="highlight"><pre><span class="err">$</span><span class="nt">navbar-height</span> <span class="o">:</span> <span class="nt">50px</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">navbar-bgColor</span><span class="o">:</span> <span class="nf">#ccc</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">navbar-menu-float</span><span class="o">:</span> <span class="nt">right</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">navbar-logo-float</span><span class="o">:</span> <span class="nt">left</span><span class="o">;</span>
+<span class="o">//</span><span class="err">菜单项右侧外边距</span>
+<span class="err">$</span><span class="nt">navbar-menu-mright</span><span class="o">:</span> <span class="nt">20px</span><span class="o">;</span>
+<span class="o">//</span><span class="err">菜单项的颜色</span>
+<span class="err">$</span><span class="nt">navbar-menu-color</span> <span class="o">:</span> <span class="nf">#fff</span><span class="o">;</span>
 
 <span class="c">/*banner*/</span>
-<span class="o">$</span><span class="nt">banner-height</span> <span class="o">:</span> <span class="nt">700px</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">banner-bgColor</span><span class="o">:</span> <span class="nf">#777</span><span class="o">;</span>
-<span class="o">//</span><span class="nt">inner最大宽度</span>
-<span class="o">$</span><span class="nt">banner-inner-mxwidth</span><span class="o">:</span> <span class="nt">300px</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">banner-inner-top</span><span class="o">:</span> <span class="nt">160px</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">banner-height</span> <span class="o">:</span> <span class="nt">700px</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">banner-bgColor</span><span class="o">:</span> <span class="nf">#777</span><span class="o">;</span>
+<span class="o">//</span><span class="nt">inner</span><span class="err">最大宽度</span>
+<span class="err">$</span><span class="nt">banner-inner-mxwidth</span><span class="o">:</span> <span class="nt">300px</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">banner-inner-top</span><span class="o">:</span> <span class="nt">160px</span><span class="o">;</span>
 
-<span class="o">$</span><span class="nt">banner-inner-more-mgTop</span><span class="o">:</span> <span class="nt">220px</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">banner-inner-subheading-lineHeight</span><span class="o">:</span> <span class="nt">30px</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">banner-inner-subheading-margin</span><span class="o">:</span> <span class="nt">30px</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">banner-button-padding</span><span class="o">:</span> <span class="nt">14px</span> <span class="nt">60px</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">banner-inner-more-mgTop</span><span class="o">:</span> <span class="nt">220px</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">banner-inner-subheading-lineHeight</span><span class="o">:</span> <span class="nt">30px</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">banner-inner-subheading-margin</span><span class="o">:</span> <span class="nt">30px</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">banner-button-padding</span><span class="o">:</span> <span class="nt">14px</span> <span class="nt">60px</span><span class="o">;</span>
 <span class="c">/*components*/</span>
 <span class="o">//</span><span class="nt">button</span>
-<span class="o">$</span><span class="nt">button-border</span><span class="o">:</span> <span class="nt">none</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">button-bgColor</span><span class="o">:</span> <span class="nf">#333</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">button-color</span><span class="o">:</span> <span class="nf">#eee</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">button-padding</span><span class="o">:</span> <span class="nt">20px</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">button-border</span><span class="o">:</span> <span class="nt">none</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">button-bgColor</span><span class="o">:</span> <span class="nf">#333</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">button-color</span><span class="o">:</span> <span class="nf">#eee</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">button-padding</span><span class="o">:</span> <span class="nt">20px</span><span class="o">;</span>
 <span class="o">//</span><span class="nt">logo</span>
-<span class="o">$</span><span class="nt">logo-fontSize</span><span class="o">:</span> <span class="nt">20px</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">logo-fontWeight</span><span class="o">:</span> <span class="nt">700</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">logo-letterSpacing</span><span class="o">:</span> <span class="nt">1px</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">logo-float</span><span class="o">:</span> <span class="nt">left</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">logo-color</span><span class="o">:</span> <span class="nf">#fff</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">logo-lineHeight</span><span class="o">:</span> <span class="o">$</span><span class="nt">navbar-height</span><span class="o">;</span>
-<span class="o">$</span><span class="nt">logo-padding</span><span class="o">:</span> <span class="nt">0</span> <span class="nt">0</span> <span class="nt">0</span> <span class="nt">10px</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">logo-fontSize</span><span class="o">:</span> <span class="nt">20px</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">logo-fontWeight</span><span class="o">:</span> <span class="nt">700</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">logo-letterSpacing</span><span class="o">:</span> <span class="nt">1px</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">logo-float</span><span class="o">:</span> <span class="nt">left</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">logo-color</span><span class="o">:</span> <span class="nf">#fff</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">logo-lineHeight</span><span class="o">:</span> <span class="err">$</span><span class="nt">navbar-height</span><span class="o">;</span>
+<span class="err">$</span><span class="nt">logo-padding</span><span class="o">:</span> <span class="nt">0</span> <span class="nt">0</span> <span class="nt">0</span> <span class="nt">10px</span><span class="o">;</span>
 </pre></div>
 
 
@@ -526,7 +526,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-07-08T19:39:00+08:00"> 7 8, 2015</time>
+            <time pubdate="pubdate" datetime="2015-07-08T19:39:00"> 7 8, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>
@@ -548,6 +548,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

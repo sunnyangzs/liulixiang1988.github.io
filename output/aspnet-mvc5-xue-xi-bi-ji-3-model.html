@@ -63,27 +63,27 @@
 <h2>1. Model</h2>
 <h3>1.1 添加一个模型</h3>
 <p><strong>注意</strong>，添加属性时可以输入"prop"，会自动输入代码段。</p>
-<div class="highlight"><pre>public class CheckoutAccount
-{
-    public int Id { get; set; }
+<div class="highlight"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">CheckoutAccount</span>
+<span class="p">{</span>
+    <span class="n">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
 
-    public string AccountNumber { get; set; }
+    <span class="n">public</span> <span class="n">string</span> <span class="n">AccountNumber</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
 
-    public string FirstName { get; set; }
+    <span class="n">public</span> <span class="n">string</span> <span class="n">FirstName</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
 
-    public string LastName { get; set; }
+    <span class="n">public</span> <span class="n">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
 
-    public string Balance { get; set; }
-}
+    <span class="n">public</span> <span class="n">string</span> <span class="n">Balance</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
 
 <h3>1.2 添加一个“包含读写操作的MVC 5控制器”CheckingAccountController</h3>
 <p>去掉Details的参数Id，因为现在我没还没有数据库。</p>
-<div class="highlight"><pre>public ActionResult Details()
-{
-    return View();
-}
+<div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">Details</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">View</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 
 
@@ -98,56 +98,56 @@
 <li>引用脚本库：不勾选</li>
 <li>使用布局页：默认布局</li>
 </ul>
-<div class="highlight"><pre>@model AspNetMVCEssential.Models.CheckoutAccount
+<div class="highlight"><pre><span class="p">@</span><span class="nx">model</span> <span class="nx">AspNetMVCEssential.Models.CheckoutAccount</span>
 
-@{
-    ViewBag.Title = &quot;Details&quot;;
-}
+<span class="p">@{</span>
+    <span class="n">ViewBag.Title</span> <span class="o">=</span> <span class="s2">&quot;Details&quot;</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="nt">&lt;h2&gt;</span>Details<span class="nt">&lt;/h2&gt;</span>
+<span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Details</span><span class="o">&lt;/</span><span class="nx">h2</span><span class="o">&gt;</span>
 
-<span class="nt">&lt;div&gt;</span>
-    <span class="nt">&lt;h4&gt;</span>CheckoutAccount<span class="nt">&lt;/h4&gt;</span>
-    <span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;dl</span> <span class="na">class=</span><span class="s">&quot;dl-horizontal&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;dt&gt;</span>
-            @Html.DisplayNameFor(model =&gt; model.AccountNumber)
-        <span class="nt">&lt;/dt&gt;</span>
+<span class="o">&lt;</span><span class="nb">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">CheckoutAccount</span><span class="o">&lt;/</span><span class="nx">h4</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">hr</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">dl</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;dl-horizontal&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.AccountNumber</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
 
-        <span class="nt">&lt;dd&gt;</span>
-            @Html.DisplayFor(model =&gt; model.AccountNumber)
-        <span class="nt">&lt;/dd&gt;</span>
+        <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.AccountNumber</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
 
-        <span class="nt">&lt;dt&gt;</span>
-            @Html.DisplayNameFor(model =&gt; model.FirstName)
-        <span class="nt">&lt;/dt&gt;</span>
+        <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.FirstName</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
 
-        <span class="nt">&lt;dd&gt;</span>
-            @Html.DisplayFor(model =&gt; model.FirstName)
-        <span class="nt">&lt;/dd&gt;</span>
+        <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.FirstName</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
 
-        <span class="nt">&lt;dt&gt;</span>
-            @Html.DisplayNameFor(model =&gt; model.LastName)
-        <span class="nt">&lt;/dt&gt;</span>
+        <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.LastName</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
 
-        <span class="nt">&lt;dd&gt;</span>
-            @Html.DisplayFor(model =&gt; model.LastName)
-        <span class="nt">&lt;/dd&gt;</span>
+        <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.LastName</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
 
-        <span class="nt">&lt;dt&gt;</span>
-            @Html.DisplayNameFor(model =&gt; model.Balance)
-        <span class="nt">&lt;/dt&gt;</span>
+        <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.Balance</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
 
-        <span class="nt">&lt;dd&gt;</span>
-            @Html.DisplayFor(model =&gt; model.Balance)
-        <span class="nt">&lt;/dd&gt;</span>
+        <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.Balance</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
 
-    <span class="nt">&lt;/dl&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;p&gt;</span>
-    @Html.ActionLink(&quot;Edit&quot;, &quot;Edit&quot;, new { id = Model.Id }) |
-    @Html.ActionLink(&quot;Back to List&quot;, &quot;Index&quot;)
-<span class="nt">&lt;/p&gt;</span>
+    <span class="o">&lt;/</span><span class="nx">dl</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+    <span class="p">@</span><span class="nx">Html.ActionLink</span><span class="p">(</span><span class="s2">&quot;Edit&quot;</span><span class="p">,</span> <span class="s2">&quot;Edit&quot;</span><span class="p">,</span> <span class="nb">new</span> <span class="p">{</span> <span class="n">id</span> <span class="o">=</span> <span class="nx">Model.Id</span> <span class="p">})</span> <span class="o">|</span>
+    <span class="p">@</span><span class="nx">Html.ActionLink</span><span class="p">(</span><span class="s2">&quot;Back to List&quot;</span><span class="p">,</span> <span class="s2">&quot;Index&quot;</span><span class="p">)</span>
+<span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -168,100 +168,100 @@
 <hr />
 <h2>2. 显示和验证模型属性</h2>
 <h3>2.1 清理Details视图</h3>
-<div class="highlight"><pre>@model AspNetMVCEssential.Models.CheckoutAccount
+<div class="highlight"><pre><span class="p">@</span><span class="nx">model</span> <span class="nx">AspNetMVCEssential.Models.CheckoutAccount</span>
 
-@{
-    ViewBag.Title = &quot;Details&quot;;
-}
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-6 col-md-offset-3&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;h2&gt;</span>账户查询<span class="nt">&lt;/h2&gt;</span>
-        <span class="nt">&lt;dl</span> <span class="na">class=</span><span class="s">&quot;dl-horizontal&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;dt&gt;</span>
-                @Html.DisplayNameFor(model =&gt; model.AccountNumber)
-            <span class="nt">&lt;/dt&gt;</span>
+<span class="p">@{</span>
+    <span class="n">ViewBag.Title</span> <span class="o">=</span> <span class="s2">&quot;Details&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;col-md-6 col-md-offset-3&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="err">账户查询</span><span class="o">&lt;/</span><span class="nx">h2</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">dl</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;dl-horizontal&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.AccountNumber</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
 
-            <span class="nt">&lt;dd&gt;</span>
-                @Html.DisplayFor(model =&gt; model.AccountNumber)
-            <span class="nt">&lt;/dd&gt;</span>
+            <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.AccountNumber</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
 
-            <span class="nt">&lt;dt&gt;</span>
-                @Html.DisplayNameFor(model =&gt; model.FirstName)
-            <span class="nt">&lt;/dt&gt;</span>
+            <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.FirstName</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
 
-            <span class="nt">&lt;dd&gt;</span>
-                @Html.DisplayFor(model =&gt; model.FirstName)
-            <span class="nt">&lt;/dd&gt;</span>
+            <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.FirstName</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
 
-            <span class="nt">&lt;dt&gt;</span>
-                @Html.DisplayNameFor(model =&gt; model.LastName)
-            <span class="nt">&lt;/dt&gt;</span>
+            <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.LastName</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
 
-            <span class="nt">&lt;dd&gt;</span>
-                @Html.DisplayFor(model =&gt; model.LastName)
-            <span class="nt">&lt;/dd&gt;</span>
+            <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.LastName</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
 
-            <span class="nt">&lt;dt&gt;</span>
-                @Html.DisplayNameFor(model =&gt; model.Balance)
-            <span class="nt">&lt;/dt&gt;</span>
+            <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.Balance</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
 
-            <span class="nt">&lt;dd&gt;</span>
-                @Html.DisplayFor(model =&gt; model.Balance)
-            <span class="nt">&lt;/dd&gt;</span>
-        <span class="nt">&lt;/dl&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
+            <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.Balance</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nx">dl</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <h3>2.2 修改Model</h3>
 <p><code>[Display(Name="Account")]</code></p>
-<div class="highlight"><pre>public class CheckoutAccount
-{
-    public int Id { get; set; }
+<div class="highlight"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">CheckoutAccount</span>
+<span class="p">{</span>
+    <span class="n">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
 
-    [Display(Name = &quot;账户&quot;)]
-    public string AccountNumber { get; set; }
+    <span class="p">[</span><span class="n">Display</span><span class="p">(</span><span class="n">Name</span> <span class="o">=</span> <span class="s">&quot;账户&quot;</span><span class="p">)]</span>
+    <span class="n">public</span> <span class="n">string</span> <span class="n">AccountNumber</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
 
-    public string FirstName { get; set; }
+    <span class="n">public</span> <span class="n">string</span> <span class="n">FirstName</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
 
-    public string LastName { get; set; }
-    [Display(Name = &quot;姓名&quot;)]
-    public string Name { get { return FirstName + &quot; &quot; + LastName; } }
-    [DataType(DataType.Currency)]
-    public int Balance { get; set; }
-}
+    <span class="n">public</span> <span class="n">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">[</span><span class="n">Display</span><span class="p">(</span><span class="n">Name</span> <span class="o">=</span> <span class="s">&quot;姓名&quot;</span><span class="p">)]</span>
+    <span class="n">public</span> <span class="n">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="n">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">FirstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">LastName</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+    <span class="p">[</span><span class="n">DataType</span><span class="p">(</span><span class="n">DataType</span><span class="p">.</span><span class="n">Currency</span><span class="p">)]</span>
+    <span class="n">public</span> <span class="kt">int</span> <span class="n">Balance</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
 
 <h3>2.3 创建Create对应的视图</h3>
 <p>此时要选择引用脚本库。</p>
-<div class="highlight"><pre>@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
+<div class="highlight"><pre><span class="p">@</span><span class="nx">using</span> <span class="p">(</span><span class="nx">Html.BeginForm</span><span class="p">())</span> 
+<span class="p">{</span>
+    <span class="p">@</span><span class="nx">Html.AntiForgeryToken</span><span class="p">()</span>
 
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;h4&gt;</span>CheckoutAccount<span class="nt">&lt;/h4&gt;</span>
-        <span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
-        @Html.ValidationSummary(true)
+    <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;form-horizontal&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">CheckoutAccount</span><span class="o">&lt;/</span><span class="nx">h4</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">hr</span> <span class="o">/&gt;</span>
+        <span class="p">@</span><span class="nx">Html.ValidationSummary</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
 
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-            @Html.LabelFor(model =&gt; model.AccountNumber, new { @class = &quot;control-label col-md-2&quot; })
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-10&quot;</span><span class="nt">&gt;</span>
-                @Html.EditorFor(model =&gt; model.AccountNumber)
-                @Html.ValidationMessageFor(model =&gt; model.AccountNumber)
-            <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-     ...
- }
- ```
+        <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;form-group&quot;</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.LabelFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.AccountNumber</span><span class="p">,</span> <span class="nb">new</span> <span class="p">{</span> <span class="p">@</span><span class="n">class</span> <span class="o">=</span> <span class="s2">&quot;control-label col-md-2&quot;</span> <span class="p">})</span>
+            <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;col-md-10&quot;</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.EditorFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.AccountNumber</span><span class="p">)</span>
+                <span class="p">@</span><span class="nx">Html.ValidationMessageFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.AccountNumber</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+     <span class="nx">...</span>
+ <span class="p">}</span>
+ <span class="sb">```</span>
 
-- `@Html.LabelFor(model=&gt;model.Account)`产生Label
-- `@Html.EditorFor(model=&gt;model.Account)`产生input
-- `@Html.ValidationMessageFor(model=&gt;model.AccountNumber)`验证信息
-- `@Html.ValidationSummary(true)`验证汇总
+<span class="sb">- `</span><span class="p">@</span><span class="nx">Html.LabelFor</span><span class="p">(</span><span class="n">model</span><span class="o">=&gt;</span><span class="nx">model.Account</span><span class="p">)</span><span class="sb">`产生Label</span>
+<span class="sb">- `</span><span class="p">@</span><span class="nx">Html.EditorFor</span><span class="p">(</span><span class="n">model</span><span class="o">=&gt;</span><span class="nx">model.Account</span><span class="p">)</span><span class="sb">`产生input</span>
+<span class="sb">- `</span><span class="p">@</span><span class="nx">Html.ValidationMessageFor</span><span class="p">(</span><span class="n">model</span><span class="o">=&gt;</span><span class="nx">model.AccountNumber</span><span class="p">)</span><span class="sb">`验证信息</span>
+<span class="sb">- `</span><span class="p">@</span><span class="nx">Html.ValidationSummary</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="err">`验证汇总</span>
 
-###2.4 修改CheckAccount
+<span class="err">##</span><span class="vi">#2</span><span class="mf">.4</span> <span class="err">修改</span><span class="nx">CheckAccount</span>
 </pre></div>
 
 
@@ -279,23 +279,23 @@ public string Name { get { return FirstName + " " + LastName; } }</p>
 <p>[Required]
 [DataType(DataType.Currency)]
 public int Balance { get; set; }</p>
-<div class="highlight"><pre>都是一些验证字段，注意每个都可以有`ErrorMessage`参数。
+<div class="highlight"><pre><span class="err">都是一些验证字段，注意每个都可以有`</span><span class="n">ErrorMessage</span><span class="err">`参数。</span>
 
---
+<span class="o">--</span>
 
-##3. ViewModel
+<span class="cp">##3. ViewModel</span>
 
-ViewModel不在数据库中存储，专门用于处理Form，类似Django中的Form类。
+<span class="n">ViewModel</span><span class="err">不在数据库中存储，专门用于处理</span><span class="n">Form</span><span class="err">，类似</span><span class="n">Django</span><span class="err">中的</span><span class="n">Form</span><span class="err">类。</span>
 
-###3.1 ViewModel定义
+<span class="cp">###3.1 ViewModel定义</span>
 
-打开Models文件夹下的AccountViewModel，我们看到ViewModel定义与普通Model并没有明显区别，只是命名约定都是以&quot;ViewModel&quot;结尾。
+<span class="err">打开</span><span class="n">Models</span><span class="err">文件夹下的</span><span class="n">AccountViewModel</span><span class="err">，我们看到</span><span class="n">ViewModel</span><span class="err">定义与普通</span><span class="n">Model</span><span class="err">并没有明显区别，只是命名约定都是以</span><span class="s">&quot;ViewModel&quot;</span><span class="err">结尾。</span>
 </pre></div>
 
 
-<p _="
-" _Display_Name="[Display(Name" _Required_="[Required]
-">public class LoginViewModel</p>
+<p UserName="UserName" _="{" _Display_Name="[Display(Name" _Required_="[Required]
+" _用户名_="&quot;用户名&quot;)]
+" get_="get;" public="public" set_="set;" string="string">public class LoginViewModel</p>
 <div class="highlight"><pre><span class="k">[Required]</span>
 <span class="k">[DataType(DataType.Password)]</span>
 <span class="k">[Display(Name = &quot;密码&quot;)]</span>
@@ -307,7 +307,7 @@ ViewModel不在数据库中存储，专门用于处理Form，类似Django中的F
 
 
 <p>}</p>
-<div class="highlight"><pre>###3.2 ViewModel在Action中的应用
+<div class="highlight"><pre><span class="c">###3.2 ViewModel在Action中的应用</span>
 </pre></div>
 
 
@@ -329,15 +329,15 @@ public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
             ModelState.AddModelError("", "Invalid username or password.");
         }
     }</p>
-<div class="highlight"><pre>// 如果我们进行到这一步时某个地方出错，则重新显示表单
-return View(model);
+<div class="highlight"><pre><span class="c1">// 如果我们进行到这一步时某个地方出错，则重新显示表单</span>
+<span class="k">return</span> <span class="n">View</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
 </pre></div>
 
 
 <p>}</p>
-<div class="highlight"><pre>可以看到ViewModel只是接收用户的输入并封装，然后再使用封装的字段查找数据库中对应的Model。
+<div class="highlight"><pre><span class="err">可以看到</span><span class="n">ViewModel</span><span class="err">只是接收用户的输入并封装，然后再使用封装的字段查找数据库中对应的</span><span class="n">Model</span><span class="err">。</span>
 
-###3.3 ViewModel在视图中的应用
+<span class="cp">###3.3 ViewModel在视图中的应用</span>
 </pre></div>
 
 
@@ -582,7 +582,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-10-31T20:48:00+08:00">10 31, 2014</time>
+            <time pubdate="pubdate" datetime="2014-10-31T20:48:00">10 31, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#DotNet-ref">DotNet</a> 
             <h4>Tags</h4>
@@ -610,6 +610,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

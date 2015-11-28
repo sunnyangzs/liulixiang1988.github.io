@@ -77,7 +77,7 @@
         <span class="nt">&lt;title&gt;</span>数据绑定<span class="nt">&lt;/title&gt;</span>
         <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;stylesheets/bootstrap.min.css&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;/head&gt;</span>
-    <span class="nt">&lt;body</span> <span class="na">ng-app</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;body</span> <span class="err">ng-app</span><span class="nt">&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-primary&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading&quot;</span><span class="nt">&gt;</span>双向数据绑定<span class="nt">&lt;/div&gt;</span>
             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-body&quot;</span><span class="nt">&gt;</span>
@@ -120,31 +120,31 @@
 
             <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
         <span class="nt">&lt;script&gt;</span>
-        <span class="kd">var</span> <span class="nx">userInfoModule</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;UserInfoModule&#39;</span><span class="p">,</span> <span class="p">[]);</span>
-        <span class="nx">userInfoModule</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;UserInfoCtrl&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">$scope</span><span class="p">.</span><span class="nx">userInfo</span><span class="o">=</span><span class="p">{</span>
-                <span class="nx">email</span><span class="o">:</span> <span class="s2">&quot;550488300@qq.com&quot;</span><span class="p">,</span>
-                <span class="nx">password</span><span class="o">:</span> <span class="s2">&quot;550488300&quot;</span><span class="p">,</span>
-                <span class="nx">autoLogin</span><span class="o">:</span> <span class="kc">true</span>
+        var userInfoModule = angular.module(&#39;UserInfoModule&#39;, <span class="cp">[]</span>);
+        userInfoModule.controller(&#39;UserInfoCtrl&#39;, <span class="cp">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="nx">function</span> <span class="p">(</span><span class="nv">$scope</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$scope.userInfo</span><span class="o">=</span><span class="p">{</span>
+                <span class="nx">email</span><span class="p">:</span> <span class="s2">&quot;550488300@qq.com&quot;</span><span class="p">,</span>
+                <span class="nx">password</span><span class="p">:</span> <span class="s2">&quot;550488300&quot;</span><span class="p">,</span>
+                <span class="nx">autoLogin</span><span class="p">:</span> <span class="kc">true</span>
             <span class="p">};</span>
-            <span class="nx">$scope</span><span class="p">.</span><span class="nx">getFormData</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;email:&quot;</span><span class="o">+</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">userInfo</span><span class="p">.</span><span class="nx">email</span><span class="o">+</span><span class="s2">&quot;;&quot;</span><span class="o">+</span><span class="s2">&quot;password:&quot;</span><span class="o">+</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">userInfo</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
+            <span class="nv">$scope.getFormData</span> <span class="o">=</span> <span class="nx">function</span><span class="p">(){</span>
+                <span class="nx">console.log</span><span class="p">(</span><span class="s2">&quot;email:&quot;</span><span class="o">+</span><span class="nv">$scope.userInfo.email</span><span class="o">+</span><span class="s2">&quot;;&quot;</span><span class="o">+</span><span class="s2">&quot;password:&quot;</span><span class="o">+</span><span class="nv">$scope.userInfo.password</span><span class="p">);</span>
             <span class="p">};</span>
-            <span class="nx">$scope</span><span class="p">.</span><span class="nx">setFormData</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-                <span class="nx">$scope</span><span class="p">.</span><span class="nx">userInfo</span><span class="p">.</span><span class="nx">email</span> <span class="o">=</span> <span class="s2">&quot;liulixiang1988@gmail.com&quot;</span><span class="p">;</span>
-                <span class="nx">$scope</span><span class="p">.</span><span class="nx">userInfo</span><span class="p">.</span><span class="nx">password</span> <span class="o">=</span> <span class="s2">&quot;liulixiang1988&quot;</span><span class="p">;</span>
-                <span class="nx">$scope</span><span class="p">.</span><span class="nx">userInfo</span><span class="p">.</span><span class="nx">autoLogin</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;email:&quot;</span><span class="o">+</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">userInfo</span><span class="p">.</span><span class="nx">email</span><span class="o">+</span><span class="s2">&quot;;&quot;</span><span class="o">+</span><span class="s2">&quot;password:&quot;</span><span class="o">+</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">userInfo</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
+            <span class="nv">$scope.setFormData</span> <span class="o">=</span> <span class="nx">function</span><span class="p">(){</span>
+                <span class="nv">$scope.userInfo.email</span> <span class="o">=</span> <span class="s2">&quot;liulixiang1988@gmail.com&quot;</span><span class="p">;</span>
+                <span class="nv">$scope.userInfo.password</span> <span class="o">=</span> <span class="s2">&quot;liulixiang1988&quot;</span><span class="p">;</span>
+                <span class="nv">$scope.userInfo.autoLogin</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="nx">console.log</span><span class="p">(</span><span class="s2">&quot;email:&quot;</span><span class="o">+</span><span class="nv">$scope.userInfo.email</span><span class="o">+</span><span class="s2">&quot;;&quot;</span><span class="o">+</span><span class="s2">&quot;password:&quot;</span><span class="o">+</span><span class="nv">$scope.userInfo.password</span><span class="p">);</span>
             <span class="p">};</span>
-            <span class="nx">$scope</span><span class="p">.</span><span class="nx">resetFormData</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-                <span class="nx">$scope</span><span class="p">.</span><span class="nx">userInfo</span><span class="p">.</span><span class="nx">email</span><span class="o">=</span><span class="s2">&quot;550488300@qq.com&quot;</span><span class="p">;</span>
-                <span class="nx">$scope</span><span class="p">.</span><span class="nx">userInfo</span><span class="p">.</span><span class="nx">password</span><span class="o">=</span><span class="s2">&quot;550488300&quot;</span><span class="p">;</span>
-                <span class="nx">$scope</span><span class="p">.</span><span class="nx">userInfo</span><span class="p">.</span><span class="nx">autoLogin</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;email:&quot;</span><span class="o">+</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">userInfo</span><span class="p">.</span><span class="nx">email</span><span class="o">+</span><span class="s2">&quot;;&quot;</span><span class="o">+</span><span class="s2">&quot;password:&quot;</span><span class="o">+</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">userInfo</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
+            <span class="nv">$scope.resetFormData</span> <span class="o">=</span> <span class="nx">function</span><span class="p">(){</span>
+                <span class="nv">$scope.userInfo.email</span><span class="o">=</span><span class="s2">&quot;550488300@qq.com&quot;</span><span class="p">;</span>
+                <span class="nv">$scope.userInfo.password</span><span class="o">=</span><span class="s2">&quot;550488300&quot;</span><span class="p">;</span>
+                <span class="nv">$scope.userInfo.autoLogin</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+                <span class="nx">console.log</span><span class="p">(</span><span class="s2">&quot;email:&quot;</span><span class="o">+</span><span class="nv">$scope.userInfo.email</span><span class="o">+</span><span class="s2">&quot;;&quot;</span><span class="o">+</span><span class="s2">&quot;password:&quot;</span><span class="o">+</span><span class="nv">$scope.userInfo.password</span><span class="p">);</span>
             <span class="p">};</span>
-        <span class="p">}])</span>
+        <span class="p">}</span><span class="cp">]</span>)
         <span class="nt">&lt;/script&gt;</span>
     <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
@@ -152,13 +152,13 @@
 
 
 <h2>ng-class</h2>
-<div class="highlight"><pre>div ng-class=&#39;{error: isError, warning:isWarning}&#39;&gt;
+<div class="highlight"><pre><span class="n">div</span> <span class="n">ng</span><span class="o">-</span><span class="n">class</span><span class="o">=</span><span class="err">&#39;</span><span class="p">{</span><span class="n">error</span><span class="o">:</span> <span class="n">isError</span><span class="p">,</span> <span class="n">warning</span><span class="o">:</span><span class="n">isWarning</span><span class="p">}</span><span class="err">&#39;</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <p>当isError为ture时，使用.error, 当isWaring为ture时，使用.waring</p>
 <h2>ng-show， ng-hide</h2>
-<div class="highlight"><pre>&lt;div ng-show=&#39;menuState.show&#39;&gt;
+<div class="highlight"><pre><span class="o">&lt;</span><span class="n">div</span> <span class="n">ng</span><span class="o">-</span><span class="n">show</span><span class="o">=</span><span class="err">&#39;</span><span class="n">menuState</span><span class="p">.</span><span class="n">show</span><span class="err">&#39;</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -203,7 +203,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-05-01T00:20:00+08:00"> 5 1, 2015</time>
+            <time pubdate="pubdate" datetime="2015-05-01T00:20:00"> 5 1, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>
@@ -228,6 +228,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

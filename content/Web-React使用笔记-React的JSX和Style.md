@@ -4,6 +4,8 @@ Category: Web
 Tags: JavaScript
 Author: 刘理想
 
+[TOC]
+
 ##1. 文件基本结构
 
 ```

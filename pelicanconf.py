@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = '理想'
 SITENAME = 'liulixiang1988的博客'
 SITEURL = 'http://liulixiang1988.github.io'
+SITESUBTITLE = '机器学习/Python/Android/Web'
 
 TIMEZONE = 'Asia/Shanghai'
 
@@ -44,3 +45,12 @@ LANDING_PAGE_ABOUT = {
 My Name is Liu Lixiang. I'm a software engineer in Tongling Nonferrous Metals Group.
     """
 }
+
+PLUGIN_PATHS = ['plugins']
+PLUGINS = ['sitemap', 'extract_toc', 'tipue_search']
+MD_EXTENSIONS = ['toc', 'codehilite(css_class=highlight)', 'extra', 'headerid']
+DIRECT_TEMPLATES = (('index', 'tags', 'categories','archives', 'search', '404'))
+STATIC_PATHS = ['theme/images', 'images']
+TAG_SAVE_AS = ''
+CATEGORY_SAVE_AS = ''
+AUTHOR_SAVE_AS = ''

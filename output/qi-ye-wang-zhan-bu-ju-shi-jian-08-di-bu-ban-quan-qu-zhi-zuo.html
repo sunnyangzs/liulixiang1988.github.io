@@ -108,36 +108,36 @@
 
 
 <h2>3. LESS实现</h2>
-<div class="highlight"><pre><span class="na">.copyright</span><span class="err">{</span>
-    <span class="nl">clear:</span> <span class="nf">both</span><span class="err">;</span>
-    <span class="nl">width:</span><span class="err">100%;</span>
-    <span class="nl">height:</span> <span class="err">200</span><span class="nf">px</span><span class="err">;</span>
-    <span class="nl">background-color:</span><span class="c">#E8E8E8;</span>
-    <span class="nl">margin-top:</span> <span class="err">10</span><span class="nf">px</span><span class="err">;</span>
-<span class="err">}</span>
+<div class="highlight"><pre><span class="p">.</span><span class="n">copyright</span><span class="p">{</span>
+    <span class="nl">clear:</span> <span class="n">both</span><span class="p">;</span>
+    <span class="nl">width:</span><span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+    <span class="nl">height:</span> <span class="mi">200</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">E8E8E8</span><span class="p">;</span>
+    <span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="o">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="na">.copyright_content</span><span class="err">{</span>
-    <span class="nl">width:</span> <span class="err">1000</span><span class="nf">px</span><span class="err">;</span>
-    <span class="nl">margin:</span> <span class="err">0</span> <span class="nf">auto</span><span class="err">;</span>
-    <span class="nl">padding-top:</span> <span class="err">20</span><span class="nf">px</span><span class="err">;</span>
-    <span class="nl">height:</span> <span class="err">180</span><span class="nf">px</span><span class="err">;</span>
+<span class="p">.</span><span class="n">copyright_content</span><span class="p">{</span>
+    <span class="nl">width:</span> <span class="mi">1000</span><span class="n">px</span><span class="p">;</span>
+    <span class="nl">margin:</span> <span class="mi">0</span> <span class="k">auto</span><span class="p">;</span>
+    <span class="n">padding</span><span class="o">-</span><span class="n">top</span><span class="o">:</span> <span class="mi">20</span><span class="n">px</span><span class="p">;</span>
+    <span class="nl">height:</span> <span class="mi">180</span><span class="n">px</span><span class="p">;</span>
 
-    <span class="nf">li</span><span class="err">{</span>
-        <span class="nl">list-style-type:</span> <span class="nf">none</span><span class="err">;</span>
-        <span class="nl">float:</span> <span class="nf">left</span><span class="err">;</span>
-        <span class="nl">width:</span> <span class="err">200</span><span class="nf">px</span><span class="err">;</span>
-        <span class="nl">text-align:</span> <span class="nf">center</span><span class="err">;</span>
-        <span class="nl">background:</span> <span class="nf">url</span><span class="p">(..</span><span class="err">/</span><span class="no">images</span><span class="err">/</span><span class="no">line.png</span><span class="p">)</span> <span class="no">no-repeat</span> <span class="no">right</span> <span class="no">center</span><span class="err">;</span>
-        <span class="nl">font-size:</span> <span class="err">18</span><span class="nf">px</span><span class="err">;</span>
-        <span class="nl">font-family:</span> <span class="err">&quot;微软雅黑&quot;;</span>
-        <span class="nl">color:</span> <span class="c">#999;</span>
-        <span class="nl">line-height:</span> <span class="err">30</span><span class="nf">px</span><span class="err">;</span>
+    <span class="n">li</span><span class="p">{</span>
+        <span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">-</span><span class="n">type</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
+        <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
+        <span class="nl">width:</span> <span class="mi">200</span><span class="n">px</span><span class="p">;</span>
+        <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="o">:</span> <span class="n">center</span><span class="p">;</span>
+        <span class="nl">background:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">line</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="n">no</span><span class="o">-</span><span class="n">repeat</span> <span class="n">right</span> <span class="n">center</span><span class="p">;</span>
+        <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span> <span class="mi">18</span><span class="n">px</span><span class="p">;</span>
+        <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="s">&quot;微软雅黑&quot;</span><span class="p">;</span>
+        <span class="nl">color:</span> <span class="err">#</span><span class="mi">999</span><span class="p">;</span>
+        <span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span> <span class="mi">30</span><span class="n">px</span><span class="p">;</span>
 
-        <span class="nf">ul</span> <span class="no">li</span><span class="err">{</span>
-            <span class="nl">font-size:</span> <span class="err">14</span><span class="nf">px</span><span class="err">;</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
-<span class="err">}</span>
+        <span class="n">ul</span> <span class="n">li</span><span class="p">{</span>
+            <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span> <span class="mi">14</span><span class="n">px</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
  
@@ -178,7 +178,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-04T21:31:00+08:00"> 4 4, 2015</time>
+            <time pubdate="pubdate" datetime="2015-04-04T21:31:00"> 4 4, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>
@@ -206,6 +206,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

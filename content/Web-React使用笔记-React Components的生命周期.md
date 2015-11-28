@@ -4,7 +4,7 @@ Category: Web
 Tags: JavaScript
 Author: 刘理想
 
-[toc]
+[TOC]
 
 ##1. React Components的生命周期
 

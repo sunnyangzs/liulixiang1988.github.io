@@ -80,7 +80,7 @@
 <p>注意，因为apache是32位的，所以mod_wsgi也应该选择32位的。mod_wsgi的官网在<a href="https://code.google.com/p/modwsgi/">这里</a>。但是因为没有windows编译版本（自己编译几乎都是以失败告终），所幸在<a href="https://github.com/GrahamDumpleton/mod_wsgi/releases">github</a>上可以下载到编译版本，我们选择<a href="https://github.com/GrahamDumpleton/mod_wsgi/releases/download/4.4.12/mod_wsgi-windows-4.4.12.tar.gz">mod_wsgi-windows-4.4.12.tar.gz</a>进行下载。
 下载过mod_wsgi之后，解压之后的文件为“mod_wsgi.so”文件。我们拷贝它到apache安装目录下面的modules文件夹。
 光拷贝mod_wsgi.so文件是不行的，我们还需要修改apache的配置文件，让apache知道mod_wsgi的存在。apache的配置文件在apache安装目录下的conf文件夹中的httpd.conf文件。使用记事本或者任何你喜欢的文本编辑器打开它，在文件的最后添加下面的内容并保存就可以了：</p>
-<div class="highlight"><pre>LoadModule wsgi_module modules/mod_wsgi/mod_wsgi.so
+<div class="highlight"><pre><span class="n">LoadModule</span> <span class="n">wsgi_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_wsgi</span><span class="o">/</span><span class="n">mod_wsgi</span><span class="p">.</span><span class="n">so</span>
 </pre></div>
 
 
@@ -90,43 +90,43 @@
 <em>这是原来笔记中记录的，在这次的部署中，我发现不需
 要这一步</em>
 原以为wsgi.py不需要修改的，可是发现如果不将目录所在的文件夹添加到系统路径中，apache还是会报错，因此在wsgi.py添加下面2行</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;E:/git/python_dev/python_study_case/django/mydjangosite&#39;</span><span class="p">)</span> 
+<div class="highlight"><pre><span class="n">import</span> <span class="n">sys</span>
+<span class="n">sys</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="err">&#39;</span><span class="n">E</span><span class="o">:/</span><span class="n">git</span><span class="o">/</span><span class="n">python_dev</span><span class="o">/</span><span class="n">python_study_case</span><span class="o">/</span><span class="n">django</span><span class="o">/</span><span class="n">mydjangosite</span><span class="err">&#39;</span><span class="p">)</span> 
 </pre></div>
 
 
 <p>其中append的参数就是你的project下的目录</p>
 <p>第三步 配置apache/conf/httpd.conf文件
 打开httpd.conf文件，在后面添加下面内容</p>
-<div class="highlight"><pre>#添加映射，其中WSGIScriptAlias /是映射到根目录，如果你需要映射到其他地址，可以改为WSGIScriptAlias /myproject （假设myproject是你想要的地址，那么你可以通过访问localhost/myproject来访问你的网站）
-WSGIScriptAlias / E:/git/python_dev/python_study_case/django/mydjangosite/mydjangosite/wsgi.py
-#指明应用路径，如果你是使用virtualenv，那么还需要添加virtualenv的site-packages路径，中间用&quot;:&quot;分隔
-WSGIPythonPath E:/git/python_dev/python_study_case/django/mydjangosite:E:/git/python_dev/envs/django/Lib/site-packages
-#添加wsgi的读取权限
-<span class="nt">&lt;Directory</span> <span class="err">E:/git/python_dev/python_study_case/django/mydjangosite/mydjangosite</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;Files</span> <span class="err">wsgi.py</span><span class="nt">&gt;</span>
-          Order deny,allow
-          Require all granted
-     <span class="nt">&lt;/Files&gt;</span>
-<span class="nt">&lt;/Directory&gt;</span>
+<div class="highlight"><pre><span class="err">#添加映射，其中</span><span class="nx">WSGIScriptAlias</span> <span class="o">/</span><span class="err">是映射到根目录，如果你需要映射到其他地址，可以改为</span><span class="nx">WSGIScriptAlias</span> <span class="p">/</span><span class="nx">myproject</span> <span class="err">（假设</span><span class="nx">myproject</span><span class="err">是你想要的地址，那么你可以通过访问</span><span class="nx">localhost</span><span class="p">/</span><span class="nx">myproject</span><span class="err">来访问你的网站）</span>
+<span class="nx">WSGIScriptAlias</span> <span class="o">/</span> <span class="nx">E</span><span class="p">:/</span><span class="nx">git</span><span class="p">/</span><span class="nx">python_dev</span><span class="p">/</span><span class="nx">python_study_case</span><span class="p">/</span><span class="nx">django</span><span class="p">/</span><span class="nx">mydjangosite</span><span class="p">/</span><span class="nx">mydjangosite</span><span class="p">/</span><span class="nx">wsgi.py</span>
+<span class="err">#指明应用路径，如果你是使用</span><span class="nx">virtualenv</span><span class="err">，那么还需要添加</span><span class="nx">virtualenv</span><span class="err">的</span><span class="nx">site</span><span class="na">-packages</span><span class="err">路径，中间用</span><span class="s2">&quot;:&quot;</span><span class="err">分隔</span>
+<span class="nx">WSGIPythonPath</span> <span class="nx">E</span><span class="p">:/</span><span class="nx">git</span><span class="p">/</span><span class="nx">python_dev</span><span class="p">/</span><span class="nx">python_study_case</span><span class="p">/</span><span class="nx">django</span><span class="p">/</span><span class="nx">mydjangosite</span><span class="p">:</span><span class="nx">E</span><span class="p">:/</span><span class="nx">git</span><span class="p">/</span><span class="nx">python_dev</span><span class="p">/</span><span class="nx">envs</span><span class="p">/</span><span class="nx">django</span><span class="p">/</span><span class="nx">Lib</span><span class="p">/</span><span class="nx">site</span><span class="na">-packages</span>
+<span class="err">#添加</span><span class="nx">wsgi</span><span class="err">的读取权限</span>
+<span class="o">&lt;</span><span class="nx">Directory</span> <span class="nx">E</span><span class="p">:/</span><span class="nx">git</span><span class="p">/</span><span class="nx">python_dev</span><span class="p">/</span><span class="nx">python_study_case</span><span class="p">/</span><span class="nx">django</span><span class="p">/</span><span class="nx">mydjangosite</span><span class="p">/</span><span class="nx">mydjangosite</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="nx">Files</span> <span class="nx">wsgi.py</span><span class="o">&gt;</span>
+          <span class="k">Order</span> <span class="nx">deny</span><span class="p">,</span><span class="nx">allow</span>
+          <span class="k">Require</span> <span class="n">all</span> <span class="nx">granted</span>
+     <span class="o">&lt;/</span><span class="nx">Files</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nx">Directory</span><span class="o">&gt;</span>
 
-#这里声明静态文静的映射，这个/static是给django admin的静态文件使用的
-Alias /static &quot;C:/Python33/Lib/site-packages/django/contrib/admin/static&quot;
-#这里是添加文件夹的读取权限，注意apache2.3以上的读写设置与2.3以下版本有所不同
-<span class="nt">&lt;Directory</span> <span class="err">&quot;C:/Python33/Lib/site-packages/django/contrib/admin/static/&quot;</span><span class="nt">&gt;</span> 
-    <span class="nt">&lt;IfVersion</span> <span class="err">&lt;</span> <span class="err">2.3</span> <span class="nt">&gt;</span>
-        Order allow,deny
-        Allow from all
-    <span class="nt">&lt;/IfVersion&gt;</span>
-    <span class="nt">&lt;IfVersion</span> <span class="nt">&gt;</span>= 2.3&gt;
-        Require all granted
-    <span class="nt">&lt;/IfVersion&gt;</span> 
-<span class="nt">&lt;/Directory&gt;</span>
-#媒体文件
-Alias /media &quot;F:/git/python/app-host/media&quot;
-<span class="nt">&lt;Directory</span> <span class="err">&quot;F:/git/python/app-host/media&quot;</span><span class="nt">&gt;</span> 
-    Require all granted
-<span class="nt">&lt;/Directory&gt;</span>
+<span class="err">#这里声明静态文静的映射，这个</span><span class="p">/</span><span class="nx">static</span><span class="err">是给</span><span class="nx">django</span> <span class="nx">admin</span><span class="err">的静态文件使用的</span>
+<span class="nx">Alias</span> <span class="p">/</span><span class="nx">static</span> <span class="s2">&quot;C:/Python33/Lib/site-packages/django/contrib/admin/static&quot;</span>
+<span class="err">#这里是添加文件夹的读取权限，注意</span><span class="nx">apache2.3</span><span class="err">以上的读写设置与</span><span class="mf">2.3</span><span class="err">以下版本有所不同</span>
+<span class="o">&lt;</span><span class="nx">Directory</span> <span class="s2">&quot;C:/Python33/Lib/site-packages/django/contrib/admin/static/&quot;</span><span class="o">&gt;</span> 
+    <span class="o">&lt;</span><span class="nx">IfVersion</span> <span class="o">&lt;</span> <span class="mf">2.3</span> <span class="o">&gt;</span>
+        <span class="k">Order</span> <span class="nx">allow</span><span class="p">,</span><span class="nx">deny</span>
+        <span class="nx">Allow</span> <span class="nb">from</span> <span class="kc">all</span>
+    <span class="o">&lt;/</span><span class="nx">IfVersion</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">IfVersion</span> <span class="o">&gt;=</span> <span class="mf">2.3</span><span class="o">&gt;</span>
+        <span class="k">Require</span> <span class="n">all</span> <span class="nx">granted</span>
+    <span class="o">&lt;/</span><span class="nx">IfVersion</span><span class="o">&gt;</span> 
+<span class="o">&lt;/</span><span class="nx">Directory</span><span class="o">&gt;</span>
+<span class="err">#媒体文件</span>
+<span class="nx">Alias</span> <span class="p">/</span><span class="nb">media</span> <span class="s2">&quot;F:/git/python/app-host/media&quot;</span>
+<span class="o">&lt;</span><span class="nx">Directory</span> <span class="s2">&quot;F:/git/python/app-host/media&quot;</span><span class="o">&gt;</span> 
+    <span class="k">Require</span> <span class="n">all</span> <span class="nx">granted</span>
+<span class="o">&lt;/</span><span class="nx">Directory</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -179,7 +179,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-06-16T10:22:00+08:00"> 6 16, 2015</time>
+            <time pubdate="pubdate" datetime="2015-06-16T10:22:00"> 6 16, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Python-ref">Python</a> 
             <h4>Tags</h4>
@@ -207,6 +207,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

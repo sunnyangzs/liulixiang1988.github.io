@@ -104,9 +104,9 @@
 
 
 <p>启动应用：</p>
-<div class="highlight"><pre><span class="p">$</span><span class="nv">python</span><span class="x"> hello.py</span>
-<span class="x"> * Running on http://127.0.0.1:5000/</span>
-<span class="x"> * Restarting with reloader</span>
+<div class="highlight"><pre><span class="err">$</span><span class="n">python</span> <span class="n">hello</span><span class="p">.</span><span class="n">py</span>
+ <span class="o">*</span> <span class="n">Running</span> <span class="n">on</span> <span class="n">http</span><span class="o">:</span><span class="c1">//127.0.0.1:5000/</span>
+ <span class="o">*</span> <span class="n">Restarting</span> <span class="n">with</span> <span class="n">reloader</span>
 </pre></div>
 
 
@@ -157,17 +157,17 @@
 </table>
 <p>Flask在分发请求之前激活（或者叫<em>推送</em>）应用和请求上下文，并在处理请求后移除它们。当推送应用上下文时，<code>current_app</code>和<code>g</code>可用，否则会抛出异常。<code>request</code>和<code>session</code>也是如此。</p>
 <p>下面展示了应用上下文如何工作的。</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">hello</span> <span class="kn">import</span> <span class="n">app</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">current_app</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">current_app</span><span class="o">.</span><span class="n">name</span>
-<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
-<span class="o">...</span>
-<span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">working</span> <span class="n">outside</span> <span class="n">of</span> <span class="n">application</span> <span class="n">context</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">app_ctx</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">app_ctx</span><span class="o">.</span><span class="n">push</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">current_app</span><span class="o">.</span><span class="n">name</span>
-<span class="s">&#39;hello&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">app_ctx</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">from</span> <span class="n">hello</span> <span class="n">import</span> <span class="n">app</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">from</span> <span class="n">flask</span> <span class="n">import</span> <span class="n">current_app</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">current_app</span><span class="p">.</span><span class="n">name</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span><span class="o">:</span>
+<span class="p">...</span>
+<span class="nl">RuntimeError:</span> <span class="n">working</span> <span class="n">outside</span> <span class="n">of</span> <span class="n">application</span> <span class="n">context</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">app_ctx</span> <span class="o">=</span> <span class="n">app</span><span class="p">.</span><span class="n">app_context</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">app_ctx</span><span class="p">.</span><span class="n">push</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">current_app</span><span class="p">.</span><span class="n">name</span>
+<span class="err">&#39;</span><span class="n">hello</span><span class="err">&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">app_ctx</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
 </pre></div>
 
 
@@ -237,7 +237,7 @@
 <p>下面将使用<code>Flask-Script</code>来使flask应用可以接受命令行参数。</p>
 <h3>6.1 使用Flask-Script来实现命令行参数。</h3>
 <p>Flask本身实现了一些可配置项，但要在<code>app.run()</code>中指定，这不方便。Flask-Script就是添加命令行解析用的。</p>
-<div class="highlight"><pre>pip install flask-script
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">flask</span><span class="o">-</span><span class="n">script</span>
 </pre></div>
 
 
@@ -252,16 +252,16 @@
 
 <p>Flask的扩展都在<code>flask.ext</code>包下。flask-script中的<code>Manager</code>接受Flask的实例对象，这也是Flask扩展的常用方法。</p>
 <p>此时，再运行程序，就会有这样的结果：</p>
-<div class="highlight"><pre><span class="nv">$ </span>python flask_web_dev.py
-usage: flask_web_dev.py <span class="o">[</span>-?<span class="o">]</span> <span class="o">{</span>runserver,shell<span class="o">}</span> ...
+<div class="highlight"><pre><span class="err">$</span> <span class="n">python</span> <span class="n">flask_web_dev</span><span class="p">.</span><span class="n">py</span>
+<span class="nl">usage:</span> <span class="n">flask_web_dev</span><span class="p">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-?</span><span class="p">]</span> <span class="p">{</span><span class="n">runserver</span><span class="p">,</span><span class="n">shell</span><span class="p">}</span> <span class="p">...</span>
 
-positional arguments:
-  <span class="o">{</span>runserver,shell<span class="o">}</span>
-    runserver        Runs the Flask development server i.e. app.run<span class="o">()</span>
-    shell            Runs a Python shell inside Flask application context.
+<span class="n">positional</span> <span class="n">arguments</span><span class="o">:</span>
+  <span class="p">{</span><span class="n">runserver</span><span class="p">,</span><span class="n">shell</span><span class="p">}</span>
+    <span class="n">runserver</span>        <span class="n">Runs</span> <span class="n">the</span> <span class="n">Flask</span> <span class="n">development</span> <span class="n">server</span> <span class="n">i</span><span class="p">.</span><span class="n">e</span><span class="p">.</span> <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">shell</span>            <span class="n">Runs</span> <span class="n">a</span> <span class="n">Python</span> <span class="n">shell</span> <span class="n">inside</span> <span class="n">Flask</span> <span class="n">application</span> <span class="n">context</span><span class="p">.</span>
 
-optional arguments:
-  -?, --help         show this <span class="nb">help </span>message and <span class="nb">exit</span>
+<span class="n">optional</span> <span class="n">arguments</span><span class="o">:</span>
+  <span class="o">-?</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>         <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="n">and</span> <span class="n">exit</span>
 </pre></div>
 
 
@@ -269,39 +269,39 @@ optional arguments:
 <li><code>shell</code>参数用来再当前应用上下文下启动python，可以用来做测试时使用。</li>
 <li><code>runserver</code>可以使用debug模式启动服务器，但还有更多用法<code>python flask_web_dev.py runserver -?</code></li>
 </ul>
-<div class="highlight"><pre><span class="nv">$ </span>python flask_web_dev.py runserver -?
-usage: flask_web_dev.py runserver <span class="o">[</span>-?<span class="o">]</span> <span class="o">[</span>-h HOST<span class="o">]</span> <span class="o">[</span>-p PORT<span class="o">]</span> <span class="o">[</span>--threaded<span class="o">]</span>
-                                  <span class="o">[</span>--processes PROCESSES<span class="o">]</span>
-                                  <span class="o">[</span>--passthrough-errors<span class="o">]</span> <span class="o">[</span>-d<span class="o">]</span> <span class="o">[</span>-D<span class="o">]</span> <span class="o">[</span>-r<span class="o">]</span> <span class="o">[</span>-R<span class="o">]</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">python</span> <span class="n">flask_web_dev</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span> <span class="o">-?</span>
+<span class="nl">usage:</span> <span class="n">flask_web_dev</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span> <span class="p">[</span><span class="o">-?</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span> <span class="n">HOST</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">PORT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">threaded</span><span class="p">]</span>
+                                  <span class="p">[</span><span class="o">--</span><span class="n">processes</span> <span class="n">PROCESSES</span><span class="p">]</span>
+                                  <span class="p">[</span><span class="o">--</span><span class="n">passthrough</span><span class="o">-</span><span class="n">errors</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">d</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">D</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">r</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">R</span><span class="p">]</span>
 
-Runs the Flask development server i.e. app.run<span class="o">()</span>
+<span class="n">Runs</span> <span class="n">the</span> <span class="n">Flask</span> <span class="n">development</span> <span class="n">server</span> <span class="n">i</span><span class="p">.</span><span class="n">e</span><span class="p">.</span> <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
 
-optional arguments:
-  -?, --help            show this <span class="nb">help </span>message and <span class="nb">exit</span>
-  -h HOST, --host HOST
-  -p PORT, --port PORT
-  --threaded
-  --processes PROCESSES
-  --passthrough-errors
-  -d, --debug           <span class="nb">enable </span>the Werkzeug debugger <span class="o">(</span>DO NOT use in production
-                        code<span class="o">)</span>
-  -D, --no-debug        disable the Werkzeug debugger
-  -r, --reload          monitor Python files <span class="k">for</span> changes <span class="o">(</span>not 100<span class="o">{</span><span class="s1">&#39;type&#39;</span>:
-                        None, <span class="s1">&#39;prog&#39;</span>: <span class="s1">&#39;flask_web_dev.py runserver&#39;</span>,
-                        <span class="s1">&#39;required&#39;</span>: False, <span class="s1">&#39;const&#39;</span>: True, <span class="s1">&#39;default&#39;</span>: None,
-                        <span class="s1">&#39;container&#39;</span>: &lt;argparse._ArgumentGroup object at
-                        0x102aaef28&gt;, <span class="s1">&#39;help&#39;</span>: <span class="s1">&#39;monitor Python files for</span>
-<span class="s1">                        changes (not 100% safe for production use)&#39;</span>, <span class="s1">&#39;dest&#39;</span>:
-                        <span class="s1">&#39;use_reloader&#39;</span>, <span class="s1">&#39;choices&#39;</span>: None, <span class="s1">&#39;option_strings&#39;</span>:
-                        <span class="o">[</span><span class="s1">&#39;-r&#39;</span>, <span class="s1">&#39;--reload&#39;</span><span class="o">]</span>, <span class="s1">&#39;metavar&#39;</span>: None, <span class="s1">&#39;nargs&#39;</span>: 0<span class="o">}</span>afe
-                        <span class="k">for</span> production use<span class="o">)</span>
-  -R, --no-reload       <span class="k">do</span> not monitor Python files <span class="k">for</span> changes
+<span class="n">optional</span> <span class="n">arguments</span><span class="o">:</span>
+  <span class="o">-?</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="n">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">h</span> <span class="n">HOST</span><span class="p">,</span> <span class="o">--</span><span class="n">host</span> <span class="n">HOST</span>
+  <span class="o">-</span><span class="n">p</span> <span class="n">PORT</span><span class="p">,</span> <span class="o">--</span><span class="n">port</span> <span class="n">PORT</span>
+  <span class="o">--</span><span class="n">threaded</span>
+  <span class="o">--</span><span class="n">processes</span> <span class="n">PROCESSES</span>
+  <span class="o">--</span><span class="n">passthrough</span><span class="o">-</span><span class="n">errors</span>
+  <span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="o">--</span><span class="n">debug</span>           <span class="n">enable</span> <span class="n">the</span> <span class="n">Werkzeug</span> <span class="n">debugger</span> <span class="p">(</span><span class="n">DO</span> <span class="n">NOT</span> <span class="n">use</span> <span class="n">in</span> <span class="n">production</span>
+                        <span class="n">code</span><span class="p">)</span>
+  <span class="o">-</span><span class="n">D</span><span class="p">,</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">debug</span>        <span class="n">disable</span> <span class="n">the</span> <span class="n">Werkzeug</span> <span class="n">debugger</span>
+  <span class="o">-</span><span class="n">r</span><span class="p">,</span> <span class="o">--</span><span class="n">reload</span>          <span class="n">monitor</span> <span class="n">Python</span> <span class="n">files</span> <span class="k">for</span> <span class="n">changes</span> <span class="p">(</span><span class="n">not</span> <span class="mi">100</span><span class="p">{</span><span class="err">&#39;</span><span class="n">type</span><span class="err">&#39;</span><span class="o">:</span>
+                        <span class="n">None</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">prog</span><span class="err">&#39;</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">flask_web_dev</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span><span class="err">&#39;</span><span class="p">,</span>
+                        <span class="err">&#39;</span><span class="n">required</span><span class="err">&#39;</span><span class="o">:</span> <span class="n">False</span><span class="p">,</span> <span class="err">&#39;</span><span class="k">const</span><span class="err">&#39;</span><span class="o">:</span> <span class="n">True</span><span class="p">,</span> <span class="err">&#39;</span><span class="k">default</span><span class="err">&#39;</span><span class="o">:</span> <span class="n">None</span><span class="p">,</span>
+                        <span class="err">&#39;</span><span class="n">container</span><span class="err">&#39;</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">argparse</span><span class="p">.</span><span class="n">_ArgumentGroup</span> <span class="n">object</span> <span class="n">at</span>
+                        <span class="mh">0x102aaef28</span><span class="o">&gt;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">help</span><span class="err">&#39;</span><span class="o">:</span> <span class="err">&#39;</span><span class="n">monitor</span> <span class="n">Python</span> <span class="n">files</span> <span class="k">for</span>
+                        <span class="n">changes</span> <span class="p">(</span><span class="n">not</span> <span class="mi">100</span><span class="o">%</span> <span class="n">safe</span> <span class="k">for</span> <span class="n">production</span> <span class="n">use</span><span class="p">)</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">dest</span><span class="err">&#39;</span><span class="o">:</span>
+                        <span class="err">&#39;</span><span class="n">use_reloader</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">choices</span><span class="err">&#39;</span><span class="o">:</span> <span class="n">None</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">option_strings</span><span class="err">&#39;</span><span class="o">:</span>
+                        <span class="p">[</span><span class="err">&#39;</span><span class="o">-</span><span class="n">r</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="o">--</span><span class="n">reload</span><span class="err">&#39;</span><span class="p">],</span> <span class="err">&#39;</span><span class="n">metavar</span><span class="err">&#39;</span><span class="o">:</span> <span class="n">None</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">nargs</span><span class="err">&#39;</span><span class="o">:</span> <span class="mi">0</span><span class="p">}</span><span class="n">afe</span>
+                        <span class="k">for</span> <span class="n">production</span> <span class="n">use</span><span class="p">)</span>
+  <span class="o">-</span><span class="n">R</span><span class="p">,</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">reload</span>       <span class="k">do</span> <span class="n">not</span> <span class="n">monitor</span> <span class="n">Python</span> <span class="n">files</span> <span class="k">for</span> <span class="n">changes</span>
 </pre></div>
 
 
 <p><code>--host</code>很有用，它可以用来指定地址。默认情况下Flask使用<code>localhost</code>，但是可以这样指定：</p>
-<div class="highlight"><pre><span class="p">$</span><span class="nv">python</span><span class="x"> flask_web_dev.py runserver --host 0.0.0.0</span>
-<span class="x">* Running on http://0.0.0.0:5000/</span>
+<div class="highlight"><pre><span class="err">$</span><span class="n">python</span> <span class="n">flask_web_dev</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span> <span class="o">--</span><span class="n">host</span> <span class="mf">0.0.0.0</span>
+<span class="o">*</span> <span class="n">Running</span> <span class="n">on</span> <span class="n">http</span><span class="o">:</span><span class="c1">//0.0.0.0:5000/</span>
 </pre></div>
 
 
@@ -345,7 +345,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-10-18T23:11:00+08:00">10 18, 2014</time>
+            <time pubdate="pubdate" datetime="2014-10-18T23:11:00">10 18, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Python-ref">Python</a> 
             <h4>Tags</h4>
@@ -370,6 +370,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

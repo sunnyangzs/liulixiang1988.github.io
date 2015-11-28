@@ -200,15 +200,15 @@
 <h3>4.3 添加好友列表</h3>
 <p>类似的，添加<code>FriendsFragment</code>,<code>fragment_friends.xml</code>等，然后修改SectionPagerAdapter`。</p>
 <h3>4.4 修改<code>SectionsPagerAdapter</code></h3>
-<div class="highlight"><pre>public Fragment getItem(int position) {
-    switch (position){
-        case 0 :
-            return new InboxFragment();
-        case 1:
-            return new FriendsFragment();
-    }
-    return null;
-}
+<div class="highlight"><pre><span class="n">public</span> <span class="n">Fragment</span> <span class="nf">getItem</span><span class="p">(</span><span class="kt">int</span> <span class="n">position</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">position</span><span class="p">){</span>
+        <span class="k">case</span> <span class="mi">0</span> :
+            <span class="k">return</span> <span class="n">new</span> <span class="n">InboxFragment</span><span class="p">();</span>
+        <span class="k">case</span> <span class="mi">1</span>:
+            <span class="k">return</span> <span class="n">new</span> <span class="n">FriendsFragment</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">null</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 
 
@@ -224,40 +224,40 @@
 <li>添加TabListener来加载新的Fragment</li>
 </ol>
 <p>我们已经做了步骤1、2、3，现在我们打开<code>MainActivity</code>来看看它的<code>onCreate</code>方法：</p>
-<div class="highlight"><pre>protected void onCreate(Bundle savedInstanceState) {
-    //...
+<div class="highlight"><pre><span class="n">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//...</span>
 
-    // 设置Action Bar
-    final ActionBar actionBar = getActionBar();
-    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+    <span class="c1">// 设置Action Bar</span>
+    <span class="n">final</span> <span class="n">ActionBar</span> <span class="n">actionBar</span> <span class="o">=</span> <span class="n">getActionBar</span><span class="p">();</span>
+    <span class="n">actionBar</span><span class="p">.</span><span class="n">setNavigationMode</span><span class="p">(</span><span class="n">ActionBar</span><span class="p">.</span><span class="n">NAVIGATION_MODE_TABS</span><span class="p">);</span>
 
-    // 设置返回fragment的adapter
-    mSectionsPagerAdapter = new SectionsPagerAdapter(this, getFragmentManager());
+    <span class="c1">// 设置返回fragment的adapter</span>
+    <span class="n">mSectionsPagerAdapter</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SectionsPagerAdapter</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">getFragmentManager</span><span class="p">());</span>
 
-    // 设置ViewPager
-    mViewPager = (ViewPager) findViewById(R.id.pager);
-    mViewPager.setAdapter(mSectionsPagerAdapter);
+    <span class="c1">// 设置ViewPager</span>
+    <span class="n">mViewPager</span> <span class="o">=</span> <span class="p">(</span><span class="n">ViewPager</span><span class="p">)</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">pager</span><span class="p">);</span>
+    <span class="n">mViewPager</span><span class="p">.</span><span class="n">setAdapter</span><span class="p">(</span><span class="n">mSectionsPagerAdapter</span><span class="p">);</span>
 
-    //在不同的区域滑动时，选择对应的tab，并且使用对应的ActionBar.Tab#select()来完成这些
-    mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-        @Override
-        public void onPageSelected(int position) {
-            actionBar.setSelectedNavigationItem(position);
-        }
-    });
+    <span class="c1">//在不同的区域滑动时，选择对应的tab，并且使用对应的ActionBar.Tab#select()来完成这些</span>
+    <span class="n">mViewPager</span><span class="p">.</span><span class="n">setOnPageChangeListener</span><span class="p">(</span><span class="n">new</span> <span class="n">ViewPager</span><span class="p">.</span><span class="n">SimpleOnPageChangeListener</span><span class="p">()</span> <span class="p">{</span>
+        <span class="err">@</span><span class="n">Override</span>
+        <span class="n">public</span> <span class="kt">void</span> <span class="n">onPageSelected</span><span class="p">(</span><span class="kt">int</span> <span class="n">position</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">actionBar</span><span class="p">.</span><span class="n">setSelectedNavigationItem</span><span class="p">(</span><span class="n">position</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
 
-    // 对每一节，添加tab到action bar
-    for (int i = 0; i &lt; mSectionsPagerAdapter.getCount(); i++) {
-        // Create a tab with text corresponding to the page title defined by
-        // the adapter. Also specify this Activity object, which implements
-        // the TabListener interface, as the callback (listener) for when
-        // this tab is selected.
-        actionBar.addTab(
-                actionBar.newTab()
-                        .setText(mSectionsPagerAdapter.getPageTitle(i))
-                        .setTabListener(this));
-    }
-}
+    <span class="c1">// 对每一节，添加tab到action bar</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">mSectionsPagerAdapter</span><span class="p">.</span><span class="n">getCount</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Create a tab with text corresponding to the page title defined by</span>
+        <span class="c1">// the adapter. Also specify this Activity object, which implements</span>
+        <span class="c1">// the TabListener interface, as the callback (listener) for when</span>
+        <span class="c1">// this tab is selected.</span>
+        <span class="n">actionBar</span><span class="p">.</span><span class="n">addTab</span><span class="p">(</span>
+                <span class="n">actionBar</span><span class="p">.</span><span class="n">newTab</span><span class="p">()</span>
+                        <span class="p">.</span><span class="n">setText</span><span class="p">(</span><span class="n">mSectionsPagerAdapter</span><span class="p">.</span><span class="n">getPageTitle</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+                        <span class="p">.</span><span class="n">setTabListener</span><span class="p">(</span><span class="n">this</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
  
@@ -298,7 +298,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-10-15T23:06:00+08:00">10 15, 2014</time>
+            <time pubdate="pubdate" datetime="2014-10-15T23:06:00">10 15, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Android-ref">Android</a> 
             <h4>Tags</h4>
@@ -320,6 +320,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>

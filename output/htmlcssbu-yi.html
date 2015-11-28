@@ -181,8 +181,8 @@ label标签不会向用户呈现任何特殊效果，它的作用是为鼠标用
 <p>当你想为html中多个标签元素设置同一个样式时，可以使用分组选择符（，），如下代码为右侧代码编辑器中的h1、span标签同时设置字体颜色为红色：
 <code>h1,span{color:red;}</code>
 它相当于下面两行代码：</p>
-<div class="highlight"><pre><span class="nt">h1</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">red</span><span class="p">;}</span>
-<span class="nt">span</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">red</span><span class="p">;}</span>
+<div class="highlight"><pre><span class="n">h1</span><span class="p">{</span><span class="n">color</span><span class="o">:</span><span class="n">red</span><span class="p">;}</span>
+<span class="n">span</span><span class="p">{</span><span class="n">color</span><span class="o">:</span><span class="n">red</span><span class="p">;}</span>
 </pre></div>
 
 
@@ -197,8 +197,8 @@ label标签不会向用户呈现任何特殊效果，它的作用是为鼠标用
 在上面例子中它代码的作用只是给p标签设置了边框为1像素、红色、实心边框线，而对于子元素span是没用起到作用的。</p>
 <h4>3.6.2 特殊性</h4>
 <p>有的时候我们为同一个元素设置了不同的CSS样式代码，那么元素会启用哪一个CSS样式呢?我们来看一下面的代码：</p>
-<div class="highlight"><pre><span class="nt">p</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">red</span><span class="p">;}</span>
-<span class="nc">.first</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">green</span><span class="p">;}</span>
+<div class="highlight"><pre><span class="n">p</span><span class="p">{</span><span class="n">color</span><span class="o">:</span><span class="n">red</span><span class="p">;}</span>
+<span class="p">.</span><span class="n">first</span><span class="p">{</span><span class="n">color</span><span class="o">:</span><span class="n">green</span><span class="p">;}</span>
 </pre></div>
 
 
@@ -206,11 +206,11 @@ label标签不会向用户呈现任何特殊效果，它的作用是为鼠标用
 p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？green是正确的颜色，那么为什么呢？是因为浏览器是根据权值来判断使用哪种css样式的，权值高的就使用哪种css样式。
 下面是权值的规则：
 标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100。例如下面的代码：</p>
-<div class="highlight"><pre><span class="nt">p</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">red</span><span class="p">;}</span> <span class="c">/*权值为1*/</span>
-<span class="nt">p</span> <span class="nt">span</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">green</span><span class="p">;}</span> <span class="c">/*权值为1+1=2*/</span>
-<span class="nc">.warning</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">white</span><span class="p">;}</span> <span class="c">/*权值为10*/</span>
-<span class="nt">p</span> <span class="nt">span</span><span class="nc">.warning</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">purple</span><span class="p">;}</span> <span class="c">/*权值为1+1+10=12*/</span>
-<span class="nf">#footer</span> <span class="nc">.note</span> <span class="nt">p</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">yellow</span><span class="p">;}</span> <span class="c">/*权值为100+10+1=111*/</span>
+<div class="highlight"><pre><span class="n">p</span><span class="p">{</span><span class="n">color</span><span class="o">:</span><span class="n">red</span><span class="p">;}</span> <span class="cm">/*权值为1*/</span>
+<span class="n">p</span> <span class="n">span</span><span class="p">{</span><span class="n">color</span><span class="o">:</span><span class="n">green</span><span class="p">;}</span> <span class="cm">/*权值为1+1=2*/</span>
+<span class="p">.</span><span class="n">warning</span><span class="p">{</span><span class="n">color</span><span class="o">:</span><span class="n">white</span><span class="p">;}</span> <span class="cm">/*权值为10*/</span>
+<span class="n">p</span> <span class="n">span</span><span class="p">.</span><span class="n">warning</span><span class="p">{</span><span class="n">color</span><span class="o">:</span><span class="n">purple</span><span class="p">;}</span> <span class="cm">/*权值为1+1+10=12*/</span>
+<span class="cp">#footer .note p{color:yellow;} </span><span class="cm">/*权值为100+10+1=111*/</span><span class="cp"></span>
 </pre></div>
 
 
@@ -219,9 +219,9 @@ p和.first都匹配到了p这个标签上，那么会显示哪种颜色呢？gre
 <p>我们来思考一个问题：如果在html文件中对于同一个元素可以有多个css样式存在并且这多个css样式具有相同权重值怎么办？好，这一小节中的层叠帮你解决这个问题。
 层叠就是在html文件中对于同一个元素可以有多个css样式存在，当有相同权重的样式存在时，会根据这些css样式的前后顺序来决定，处于最后面的css样式会被应用。
 如下面代码:</p>
-<div class="highlight"><pre>p{color:red;}
-p{color:green;}
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;first&quot;</span><span class="nt">&gt;</span>三年级时，我还是一个<span class="nt">&lt;span&gt;</span>胆小如鼠<span class="nt">&lt;/span&gt;</span>的小女孩。<span class="nt">&lt;/p&gt;</span>
+<div class="highlight"><pre><span class="nx">p</span><span class="p">{</span><span class="nx">color</span><span class="p">:</span><span class="nb">red</span><span class="p">;}</span>
+<span class="nx">p</span><span class="p">{</span><span class="nx">color</span><span class="p">:</span><span class="nx">green</span><span class="p">;}</span>
+<span class="o">&lt;</span><span class="nx">p</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="o">&gt;</span><span class="err">三年级时，我还是一个</span><span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="err">胆小如鼠</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span><span class="err">的小女孩。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -231,9 +231,9 @@ p{color:green;}
 <h4>3.6.4 重要性</h4>
 <p>我们在做网页代码的时，有些特殊的情况需要为某些样式设置具有最高权值，怎么办？这时候我们可以使用<code>!important</code>来解决。
 如下代码：</p>
-<div class="highlight"><pre>p{color:red!important;}
-p{color:green;}
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;first&quot;</span><span class="nt">&gt;</span>三年级时，我还是一个<span class="nt">&lt;span&gt;</span>胆小如鼠<span class="nt">&lt;/span&gt;</span>的小女孩。<span class="nt">&lt;/p&gt;</span>
+<div class="highlight"><pre><span class="nx">p</span><span class="p">{</span><span class="nx">color</span><span class="p">:</span><span class="nb">red</span><span class="o">!</span><span class="nx">important</span><span class="p">;}</span>
+<span class="nx">p</span><span class="p">{</span><span class="nx">color</span><span class="p">:</span><span class="nx">green</span><span class="p">;}</span>
+<span class="o">&lt;</span><span class="nx">p</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="o">&gt;</span><span class="err">三年级时，我还是一个</span><span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="err">胆小如鼠</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span><span class="err">的小女孩。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -264,8 +264,8 @@ p{color:green;}
 <p><code>&lt;p&gt;三年级时，我还是一个&lt;a&gt;胆小如鼠&lt;/a&gt;的小女孩。&lt;/p&gt;</code></p>
 <h4>3.7.5 文字排版--下划线</h4>
 <p>有些情况下想为文字设置为下划线样式，这样可以在视觉上强调文字，可以使用下面代码来实现：</p>
-<div class="highlight"><pre>p a{text-decoration:underline;}
-<span class="nt">&lt;p&gt;</span>三年级时，我还是一个<span class="nt">&lt;a&gt;</span>胆小如鼠<span class="nt">&lt;/a&gt;</span>的小女孩。<span class="nt">&lt;/p&gt;</span>
+<div class="highlight"><pre><span class="nx">p</span> <span class="nx">a</span><span class="p">{</span><span class="nx">text</span><span class="na">-decoration</span><span class="p">:</span><span class="nx">underline</span><span class="p">;}</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">三年级时，我还是一个</span><span class="o">&lt;</span><span class="nx">a</span><span class="o">&gt;</span><span class="err">胆小如鼠</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span><span class="err">的小女孩。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -274,64 +274,64 @@ p{color:green;}
 <code>.oldPrice{text-decoration:line-through;}</code></p>
 <h4>3.7.7 段落排版--缩进</h4>
 <p>中文文字中的段前习惯空两个文字的空白，这个特殊的样式可以用下面代码来实现：</p>
-<div class="highlight"><pre>p{text-indent:2em;}
-<span class="nt">&lt;p&gt;</span>1922年的春天，一个想要成名名叫尼克卡拉威（托比?马奎尔Tobey Maguire 饰）的作家，离开了美国中西部，来到了纽约。那是一个道德感渐失，爵士乐流行，走私为王，股票飞涨的时代。为了追寻他的美国梦，他搬入纽约附近一海湾居住。<span class="nt">&lt;/p&gt;</span>
+<div class="highlight"><pre><span class="nx">p</span><span class="p">{</span><span class="nx">text</span><span class="na">-indent</span><span class="p">:</span><span class="mi">2</span><span class="nx">em</span><span class="p">;}</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="mi">1922</span><span class="err">年的春天，一个想要成名名叫尼克卡拉威（托比</span><span class="o">?</span><span class="err">马奎尔</span><span class="nx">Tobey</span> <span class="nx">Maguire</span> <span class="err">饰）的作家，离开了美国中西部，来到了纽约。那是一个道德感渐失，爵士乐流行，走私为王，股票飞涨的时代。为了追寻他的美国梦，他搬入纽约附近一海湾居住。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <p>注意：2em的意思就是文字的2倍大小。</p>
 <h4>3.7.8 段落排版--行间距（行高）</h4>
 <p>这一小节我们来学习一下另一个在段落排版中起重要作用的行间距（行高）属性（line-height），如下代码实现设置段落行间距为1.5倍。</p>
-<div class="highlight"><pre>p{line-height:1.5em;}
-<span class="nt">&lt;p&gt;</span>菲茨杰拉德，二十世纪美国文学巨擘之一，兼具作家和编剧双重身份。他以诗人的敏感和戏剧家的想象为&quot;爵士乐时代&quot;吟唱华丽挽歌，其诗人和梦想家的气质亦为那个奢靡年代的不二注解。<span class="nt">&lt;/p&gt;</span>
+<div class="highlight"><pre><span class="nx">p</span><span class="p">{</span><span class="nb">line</span><span class="na">-height</span><span class="p">:</span><span class="mf">1.5</span><span class="nx">em</span><span class="p">;}</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">菲茨杰拉德，二十世纪美国文学巨擘之一，兼具作家和编剧双重身份。他以诗人的敏感和戏剧家的想象为</span><span class="s2">&quot;爵士乐时代&quot;</span><span class="err">吟唱华丽挽歌，其诗人和梦想家的气质亦为那个奢靡年代的不二注解。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <h4>3.7.9 段落排版--字间距、字母间距</h4>
 <p>文字间隔、字母间隔设置：
 如果想在网页排版中设置文字间隔或者字母间隔就可以使用    letter-spacing来实现，如下面代码：</p>
-<div class="highlight"><pre>h1{
-    letter-spacing:50px;
-}
+<div class="highlight"><pre><span class="nx">h1</span><span class="p">{</span>
+    <span class="nx">letter</span><span class="na">-spacing</span><span class="p">:</span><span class="mi">50</span><span class="nx">px</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="nt">&lt;h1&gt;</span>了不起的盖茨比<span class="nt">&lt;/h1&gt;</span>
+<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="err">了不起的盖茨比</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <p>注意：这个样式使用在英文单词时，是设置字母与字母之间的间距。
 单词间距设置：
 如果我想设置英文单词之间的间距呢？可以使用word-spacing来实现。如下代码：</p>
-<div class="highlight"><pre>h1{
-    word-spacing:50px;
-}
-<span class="nt">&lt;h1&gt;</span>welcome to imooc!<span class="nt">&lt;/h1&gt;</span>
+<div class="highlight"><pre><span class="nx">h1</span><span class="p">{</span>
+    <span class="nx">word</span><span class="na">-spacing</span><span class="p">:</span><span class="mi">50</span><span class="nx">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">welcome</span> <span class="k">to</span> <span class="nx">imooc</span><span class="o">!&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <h4>3.7.10 段落排版--对齐</h4>
 <p>想为块状元素中的文本、图片设置居中样式吗？可以使用text-align样式代码，如下代码可实现文本居中显示。(那么什么是块状元素呢？在后面的11-1、11-2小节中会讲到。)</p>
-<div class="highlight"><pre>h1{
-    text-align:center;
-}
+<div class="highlight"><pre><span class="nx">h1</span><span class="p">{</span>
+    <span class="nx">text</span><span class="na">-align</span><span class="p">:</span><span class="nx">center</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="nt">&lt;h1&gt;</span>了不起的盖茨比<span class="nt">&lt;/h1&gt;</span>
+<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="err">了不起的盖茨比</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <p>同样可以设置居左：</p>
-<div class="highlight"><pre>h1{
-    text-align:left;
-}
+<div class="highlight"><pre><span class="nx">h1</span><span class="p">{</span>
+    <span class="nx">text</span><span class="na">-align</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="nt">&lt;h1&gt;</span>了不起的盖茨比<span class="nt">&lt;/h1&gt;</span>
+<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="err">了不起的盖茨比</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <p>还可以设置居右：</p>
-<div class="highlight"><pre>h1{
-    text-align:right;
-}
-<span class="nt">&lt;h1&gt;</span>了不起的盖茨比<span class="nt">&lt;/h1&gt;</span>
+<div class="highlight"><pre><span class="nx">h1</span><span class="p">{</span>
+    <span class="nx">text</span><span class="na">-align</span><span class="p">:</span><span class="nb">right</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="err">了不起的盖茨比</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -339,17 +339,17 @@ p{color:green;}
 <h4>3.8.1 元素分类</h4>
 <p>在讲解CSS布局之前，我们需要提前知道一些知识，在CSS中，html中的标签元素大体被分为三种不同的类型：块状元素、内联元素(又叫行内元素)和内联块状元素。
 常用的块状元素有：</p>
-<div class="highlight"><pre>&lt;div&gt;、&lt;p&gt;、&lt;h1&gt;...&lt;h6&gt;、&lt;ol&gt;、&lt;ul&gt;、&lt;dl&gt;、&lt;table&gt;、&lt;address&gt;、&lt;blockquote&gt; 、&lt;form&gt;
+<div class="highlight"><pre><span class="nt">&lt;div&gt;</span>、<span class="nt">&lt;p&gt;</span>、<span class="nt">&lt;h1&gt;</span>...<span class="nt">&lt;h6&gt;</span>、<span class="nt">&lt;ol&gt;</span>、<span class="nt">&lt;ul&gt;</span>、<span class="nt">&lt;dl&gt;</span>、<span class="nt">&lt;table&gt;</span>、<span class="nt">&lt;address&gt;</span>、<span class="nt">&lt;blockquote&gt;</span> 、<span class="nt">&lt;form&gt;</span>
 </pre></div>
 
 
 <p>常用的内联元素有：</p>
-<div class="highlight"><pre>&lt;a&gt;、&lt;span&gt;、&lt;br&gt;、&lt;i&gt;、&lt;em&gt;、&lt;strong&gt;、&lt;label&gt;、&lt;q&gt;、&lt;var&gt;、&lt;cite&gt;、&lt;code&gt;
+<div class="highlight"><pre><span class="nt">&lt;a&gt;</span>、<span class="nt">&lt;span&gt;</span>、<span class="nt">&lt;br&gt;</span>、<span class="nt">&lt;i&gt;</span>、<span class="nt">&lt;em&gt;</span>、<span class="nt">&lt;strong&gt;</span>、<span class="nt">&lt;label&gt;</span>、<span class="nt">&lt;q&gt;</span>、<span class="nt">&lt;var&gt;</span>、<span class="nt">&lt;cite&gt;</span>、<span class="nt">&lt;code&gt;</span>
 </pre></div>
 
 
 <p>常用的内联块状元素有：</p>
-<div class="highlight"><pre>&lt;img&gt;、&lt;input&gt;
+<div class="highlight"><pre><span class="nt">&lt;img&gt;</span>、<span class="nt">&lt;input&gt;</span>
 </pre></div>
 
 
@@ -376,17 +376,17 @@ p{color:green;}
 <h4>3.8.5 盒模型--边框</h4>
 <p>盒子模型的边框就是围绕着内容及补白的线，这条线你可以设置它的粗细、样式和颜色(边框三个属性)。
 如下面代码为 div 来设置边框粗细为 2px、样式为实心的、颜色为红色的边框：</p>
-<div class="highlight"><pre><span class="nt">div</span><span class="p">{</span>
-    <span class="k">border</span><span class="o">:</span><span class="m">2px</span>  <span class="k">solid</span>  <span class="nb">red</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">div</span><span class="p">{</span>
+    <span class="nl">border:</span><span class="mi">2</span><span class="n">px</span>  <span class="n">solid</span>  <span class="n">red</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p>上面是 border 代码的缩写形式，可以分开写：</p>
-<div class="highlight"><pre><span class="nt">div</span><span class="p">{</span>
-    <span class="k">border-width</span><span class="o">:</span><span class="m">2px</span><span class="p">;</span>
-    <span class="k">border-style</span><span class="o">:</span><span class="k">solid</span><span class="p">;</span>
-    <span class="k">border-color</span><span class="o">:</span><span class="nb">red</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">div</span><span class="p">{</span>
+    <span class="n">border</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">border</span><span class="o">-</span><span class="n">style</span><span class="o">:</span><span class="n">solid</span><span class="p">;</span>
+    <span class="n">border</span><span class="o">-</span><span class="n">color</span><span class="o">:</span><span class="n">red</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -401,9 +401,9 @@ p{color:green;}
 <p>现在有一个问题，如果有想为 p 标签单独设置下边框，而其它三边都不设置边框样式怎么办呢？css 样式中允许只为一个方向的边框设置样式：
 <code>div{border-bottom:1px solid red;}</code>
 同样可以使用下面代码实现其它三边(上、右、左)边框的设置：</p>
-<div class="highlight"><pre><span class="nt">border-top</span><span class="nd">:1px</span> <span class="nt">solid</span> <span class="nt">red</span><span class="o">;</span>
-<span class="nt">border-right</span><span class="nd">:1px</span> <span class="nt">solid</span> <span class="nt">red</span><span class="o">;</span> 
-<span class="nt">border-left</span><span class="nd">:1px</span> <span class="nt">solid</span> <span class="nt">red</span><span class="o">;</span>
+<div class="highlight"><pre><span class="n">border</span><span class="o">-</span><span class="n">top</span><span class="o">:</span><span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="n">red</span><span class="p">;</span>
+<span class="n">border</span><span class="o">-</span><span class="n">right</span><span class="o">:</span><span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="n">red</span><span class="p">;</span> 
+<span class="n">border</span><span class="o">-</span><span class="n">left</span><span class="o">:</span><span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="n">red</span><span class="p">;</span>
 </pre></div>
 
 
@@ -423,11 +423,11 @@ p{color:green;}
 <p>元素内容与边框之间是可以设置距离的，称之为“填充”。填充也可分为上、右、下、左(顺时针)。如下代码：
 <code>div{padding:20px 10px 15px 30px;}</code>
 顺序一定不要搞混。可以分开写上面代码：</p>
-<div class="highlight"><pre><span class="nt">div</span><span class="p">{</span>
-   <span class="k">padding-top</span><span class="o">:</span><span class="m">20px</span><span class="p">;</span>
-   <span class="k">padding-right</span><span class="o">:</span><span class="m">10px</span><span class="p">;</span>
-   <span class="k">padding-bottom</span><span class="o">:</span><span class="m">15px</span><span class="p">;</span>
-   <span class="k">padding-left</span><span class="o">:</span><span class="m">30px</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">div</span><span class="p">{</span>
+   <span class="n">padding</span><span class="o">-</span><span class="n">top</span><span class="o">:</span><span class="mi">20</span><span class="n">px</span><span class="p">;</span>
+   <span class="n">padding</span><span class="o">-</span><span class="n">right</span><span class="o">:</span><span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+   <span class="n">padding</span><span class="o">-</span><span class="n">bottom</span><span class="o">:</span><span class="mi">15</span><span class="n">px</span><span class="p">;</span>
+   <span class="n">padding</span><span class="o">-</span><span class="n">left</span><span class="o">:</span><span class="mi">30</span><span class="n">px</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -446,11 +446,11 @@ p{color:green;}
 <p>元素与其它元素之间的距离可以使用边界（margin）来设置。边界也是可分为上、右、下、左。如下代码：
 <code>div{margin:20px 10px 15px 30px;}</code>
 也可以分开写：</p>
-<div class="highlight"><pre><span class="nt">div</span><span class="p">{</span>
-   <span class="k">margin-top</span><span class="o">:</span><span class="m">20px</span><span class="p">;</span>
-   <span class="k">margin-right</span><span class="o">:</span><span class="m">10px</span><span class="p">;</span>
-   <span class="k">margin-bottom</span><span class="o">:</span><span class="m">15px</span><span class="p">;</span>
-   <span class="k">margin-left</span><span class="o">:</span><span class="m">30px</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">div</span><span class="p">{</span>
+   <span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="o">:</span><span class="mi">20</span><span class="n">px</span><span class="p">;</span>
+   <span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span><span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+   <span class="n">margin</span><span class="o">-</span><span class="n">bottom</span><span class="o">:</span><span class="mi">15</span><span class="n">px</span><span class="p">;</span>
+   <span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="o">:</span><span class="mi">30</span><span class="n">px</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -479,14 +479,14 @@ CSS包含3种基本的布局模型，用英文概括为：Flow、Layer 和 Float
 <h4>3.9.3 浮动模型</h4>
 <p>块状元素这么霸道都是独占一行，如果现在我们想让两个块状元素并排显示，怎么办呢？不要着急，设置元素浮动就可以实现这一愿望。
 任何元素在默认情况下是不能浮动的，但可以用 CSS 定义为浮动，如 div、p、table、img 等元素都可以被定义为浮动。如下代码可以实现两个 div 元素一行显示。</p>
-<div class="highlight"><pre>div{
-    width:200px;
-    height:200px;
-    border:2px red solid;
-    float:left;
-}
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;div1&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;div2&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<div class="highlight"><pre><span class="nb">div</span><span class="p">{</span>
+    <span class="nb">width</span><span class="p">:</span><span class="mi">200</span><span class="nx">px</span><span class="p">;</span>
+    <span class="nb">height</span><span class="p">:</span><span class="mi">200</span><span class="nx">px</span><span class="p">;</span>
+    <span class="nx">border</span><span class="p">:</span><span class="mi">2</span><span class="nx">px</span> <span class="nb">red</span> <span class="nx">solid</span><span class="p">;</span>
+    <span class="nx">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&lt;</span><span class="nb">div</span> <span class="n">id</span><span class="o">=</span><span class="s2">&quot;div1&quot;</span><span class="o">&gt;&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nb">div</span> <span class="n">id</span><span class="o">=</span><span class="s2">&quot;div2&quot;</span><span class="o">&gt;&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -500,31 +500,31 @@ CSS包含3种基本的布局模型，用英文概括为：Flow、Layer 和 Float
 <h4>3.9.5 层模型--绝对定位</h4>
 <p>如果想为元素设置层模型中的绝对定位，需要设置position:absolute(表示绝对定位)，这条语句的作用将元素从文档流中拖出来，然后使用left、right、top、bottom属性相对于其最接近的一个具有定位属性的父包含块进行绝对定位。如果不存在这样的包含块，则相对于body元素，即相对于浏览器窗口。
 如下面代码可以实现div元素相对于浏览器窗口向右移动100px，向下移动50px。</p>
-<div class="highlight"><pre>div{
-    width:200px;
-    height:200px;
-    border:2px red solid;
-    position:absolute;
-    left:100px;
-    top:50px;
-}
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;div1&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<div class="highlight"><pre><span class="nb">div</span><span class="p">{</span>
+    <span class="nb">width</span><span class="p">:</span><span class="mi">200</span><span class="nx">px</span><span class="p">;</span>
+    <span class="nb">height</span><span class="p">:</span><span class="mi">200</span><span class="nx">px</span><span class="p">;</span>
+    <span class="nx">border</span><span class="p">:</span><span class="mi">2</span><span class="nx">px</span> <span class="nb">red</span> <span class="nx">solid</span><span class="p">;</span>
+    <span class="nb">position</span><span class="p">:</span><span class="nx">absolute</span><span class="p">;</span>
+    <span class="nb">left</span><span class="p">:</span><span class="mi">100</span><span class="nx">px</span><span class="p">;</span>
+    <span class="nb">top</span><span class="p">:</span><span class="mi">50</span><span class="nx">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&lt;</span><span class="nb">div</span> <span class="n">id</span><span class="o">=</span><span class="s2">&quot;div1&quot;</span><span class="o">&gt;&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <h4>3.9.6 层模型--相对定位</h4>
 <p>如果想为元素设置层模型中的相对定位，需要设置position:relative（表示相对定位），它通过left、right、top、bottom属性确定元素在正常文档流中的偏移位置。相对定位完成的过程是首先按static(float)方式生成一个元素(并且元素像层一样浮动了起来)，然后相对于以前的位置移动，移动的方向和幅度由left、right、top、bottom属性确定，偏移前的位置保留不动。
 如下代码实现相对于以前位置向下移动50px，向右移动100px;</p>
-<div class="highlight"><pre>#div1{
-    width:200px;
-    height:200px;
-    border:2px red solid;
-    position:relative;
-    left:100px;
-    top:50px;
-}
+<div class="highlight"><pre><span class="vi">#div1</span><span class="p">{</span>
+    <span class="nb">width</span><span class="p">:</span><span class="mi">200</span><span class="nx">px</span><span class="p">;</span>
+    <span class="nb">height</span><span class="p">:</span><span class="mi">200</span><span class="nx">px</span><span class="p">;</span>
+    <span class="nx">border</span><span class="p">:</span><span class="mi">2</span><span class="nx">px</span> <span class="nb">red</span> <span class="nx">solid</span><span class="p">;</span>
+    <span class="nb">position</span><span class="p">:</span><span class="nx">relative</span><span class="p">;</span>
+    <span class="nb">left</span><span class="p">:</span><span class="mi">100</span><span class="nx">px</span><span class="p">;</span>
+    <span class="nb">top</span><span class="p">:</span><span class="mi">50</span><span class="nx">px</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;div1&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="o">&lt;</span><span class="nb">div</span> <span class="n">id</span><span class="o">=</span><span class="s2">&quot;div1&quot;</span><span class="o">&gt;&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -541,16 +541,16 @@ CSS包含3种基本的布局模型，用英文概括为：Flow、Layer 和 Float
 从效果图中可以明显的看出，虽然div元素相对于以前的位置产生了偏移，但是div元素以前的位置还是保留着，所以后面的span元素是显示在了div元素以前位置的后面。</p>
 <h4>3.9.7 层模型--固定定位</h4>
 <p>fixed：表示固定定位，与absolute定位类型类似，但它的相对移动的坐标是视图（屏幕内的网页窗口）本身。由于视图本身是固定的，它不会随浏览器窗口的滚动条滚动而变化，除非你在屏幕中移动浏览器窗口的屏幕位置，或改变浏览器窗口的显示大小，因此固定定位的元素会始终位于浏览器窗口内视图的某个位置，不会受文档流动影响，这与background-attachment:fixed;属性功能相同。以下代码可以实现相对于浏览器视图向右移动100px，向下移动50px。并且拖动滚动条时位置固定不变。</p>
-<div class="highlight"><pre>#div1{
-    width:200px;
-    height:200px;
-    border:2px red solid;
-    position:fixed;
-    left:100px;
-    top:50px;
-}
-<span class="nt">&lt;p&gt;</span>文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本。<span class="nt">&lt;/p&gt;</span>
-....
+<div class="highlight"><pre><span class="vi">#div1</span><span class="p">{</span>
+    <span class="nb">width</span><span class="p">:</span><span class="mi">200</span><span class="nx">px</span><span class="p">;</span>
+    <span class="nb">height</span><span class="p">:</span><span class="mi">200</span><span class="nx">px</span><span class="p">;</span>
+    <span class="nx">border</span><span class="p">:</span><span class="mi">2</span><span class="nx">px</span> <span class="nb">red</span> <span class="nx">solid</span><span class="p">;</span>
+    <span class="nb">position</span><span class="p">:</span><span class="nx">fixed</span><span class="p">;</span>
+    <span class="nb">left</span><span class="p">:</span><span class="mi">100</span><span class="nx">px</span><span class="p">;</span>
+    <span class="nb">top</span><span class="p">:</span><span class="mi">50</span><span class="nx">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="err">文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本。</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="nx">....</span>
 </pre></div>
 
 
@@ -565,19 +565,19 @@ CSS包含3种基本的布局模型，用英文概括为：Flow、Layer 和 Float
 
 <p>从上面代码可以看出box1是box2的父元素（父元素当然也是前辈元素了）。
 2、参照定位的元素必须加入position:relative;</p>
-<div class="highlight"><pre><span class="nf">#box1</span><span class="p">{</span>
-    <span class="k">width</span><span class="o">:</span><span class="m">200px</span><span class="p">;</span>
-    <span class="k">height</span><span class="o">:</span><span class="m">200px</span><span class="p">;</span>
-    <span class="k">position</span><span class="o">:</span><span class="k">relative</span><span class="p">;</span>        
+<div class="highlight"><pre><span class="cp">#box1{</span>
+    <span class="nl">width:</span><span class="mi">200</span><span class="n">px</span><span class="p">;</span>
+    <span class="nl">height:</span><span class="mi">200</span><span class="n">px</span><span class="p">;</span>
+    <span class="nl">position:</span><span class="n">relative</span><span class="p">;</span>        
 <span class="p">}</span>
 </pre></div>
 
 
 <p>3、定位元素加入position:absolute，便可以使用top、bottom、left、right来进行偏移定位了。</p>
-<div class="highlight"><pre><span class="nf">#box2</span><span class="p">{</span>
-    <span class="k">position</span><span class="o">:</span><span class="k">absolute</span><span class="p">;</span>
-    <span class="k">top</span><span class="o">:</span><span class="m">20px</span><span class="p">;</span>
-    <span class="k">left</span><span class="o">:</span><span class="m">30px</span><span class="p">;</span>         
+<div class="highlight"><pre><span class="cp">#box2{</span>
+    <span class="nl">position:</span><span class="n">absolute</span><span class="p">;</span>
+    <span class="nl">top:</span><span class="mi">20</span><span class="n">px</span><span class="p">;</span>
+    <span class="nl">left:</span><span class="mi">30</span><span class="n">px</span><span class="p">;</span>         
 <span class="p">}</span>
 </pre></div>
 
@@ -613,20 +613,20 @@ CSS包含3种基本的布局模型，用英文概括为：Flow、Layer 和 Float
 <code>p{color: #369;}</code></p>
 <h4>3.10.3 字体缩写</h4>
 <p>网页中的字体css样式代码也有他自己的缩写方式，下面是给网页设置字体的代码：</p>
-<div class="highlight"><pre><span class="nt">body</span><span class="p">{</span>
-    <span class="k">font-style</span><span class="o">:</span><span class="k">italic</span><span class="p">;</span>
-    <span class="k">font-variant</span><span class="o">:</span><span class="k">small-caps</span><span class="p">;</span> 
-    <span class="k">font-weight</span><span class="o">:</span><span class="k">bold</span><span class="p">;</span> 
-    <span class="k">font-size</span><span class="o">:</span><span class="m">12px</span><span class="p">;</span> 
-    <span class="k">line-height</span><span class="o">:</span><span class="m">1.5em</span><span class="p">;</span> 
-    <span class="k">font-family</span><span class="o">:</span><span class="s2">&quot;宋体&quot;</span><span class="o">,</span><span class="k">sans-serif</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">body</span><span class="p">{</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">style</span><span class="o">:</span><span class="n">italic</span><span class="p">;</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">variant</span><span class="o">:</span><span class="n">small</span><span class="o">-</span><span class="n">caps</span><span class="p">;</span> 
+    <span class="n">font</span><span class="o">-</span><span class="n">weight</span><span class="o">:</span><span class="n">bold</span><span class="p">;</span> 
+    <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span><span class="mi">12</span><span class="n">px</span><span class="p">;</span> 
+    <span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span><span class="mf">1.5</span><span class="n">em</span><span class="p">;</span> 
+    <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span><span class="s">&quot;宋体&quot;</span><span class="p">,</span><span class="n">sans</span><span class="o">-</span><span class="n">serif</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p>这么多行的代码其实可以缩写为一句：</p>
-<div class="highlight"><pre><span class="nt">body</span><span class="p">{</span>
-    <span class="k">font</span><span class="o">:</span><span class="k">italic</span>  <span class="k">small-caps</span>  <span class="k">bold</span>  <span class="m">12px</span><span class="o">/</span><span class="m">1.5em</span>  <span class="s2">&quot;宋体&quot;</span><span class="o">,</span><span class="k">sans-serif</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">body</span><span class="p">{</span>
+    <span class="nl">font:</span><span class="n">italic</span>  <span class="n">small</span><span class="o">-</span><span class="n">caps</span>  <span class="n">bold</span>  <span class="mi">12</span><span class="n">px</span><span class="o">/</span><span class="mf">1.5</span><span class="n">em</span>  <span class="s">&quot;宋体&quot;</span><span class="p">,</span><span class="n">sans</span><span class="o">-</span><span class="n">serif</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -635,8 +635,8 @@ CSS包含3种基本的布局模型，用英文概括为：Flow、Layer 和 Float
 1、使用这一简写方式你至少要指定 font-size 和 font-family 属性，其他的属性(如 font-weight、font-style、font-varient、line-height)如未指定将自动使用默认值。
 2、在缩写时 font-size 与 line-height 中间要加入“/”斜扛。
 一般情况下因为对于中文网站，英文还是比较少的，所以下面缩写代码比较常用：</p>
-<div class="highlight"><pre><span class="nt">body</span><span class="p">{</span>
-    <span class="k">font</span><span class="o">:</span><span class="m">12px</span><span class="o">/</span><span class="m">1.5em</span>  <span class="s2">&quot;宋体&quot;</span><span class="o">,</span><span class="k">sans-serif</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">body</span><span class="p">{</span>
+    <span class="nl">font:</span><span class="mi">12</span><span class="n">px</span><span class="o">/</span><span class="mf">1.5</span><span class="n">em</span>  <span class="s">&quot;宋体&quot;</span><span class="p">,</span><span class="n">sans</span><span class="o">-</span><span class="n">serif</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -671,8 +671,8 @@ CSS包含3种基本的布局模型，用英文概括为：Flow、Layer 和 Float
 html:
 <code>&lt;p&gt;以这个&lt;span&gt;例子&lt;/span&gt;为例。&lt;/p&gt;</code>
 css:</p>
-<div class="highlight"><pre><span class="nt">p</span><span class="p">{</span><span class="k">font-size</span><span class="o">:</span><span class="m">14px</span><span class="p">}</span>
-<span class="nt">span</span><span class="p">{</span><span class="k">font-size</span><span class="o">:</span><span class="m">0.8em</span><span class="p">;}</span>
+<div class="highlight"><pre><span class="n">p</span><span class="p">{</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span><span class="mi">14</span><span class="n">px</span><span class="p">}</span>
+<span class="n">span</span><span class="p">{</span><span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span><span class="mf">0.8</span><span class="n">em</span><span class="p">;}</span>
 </pre></div>
 
 
@@ -720,8 +720,8 @@ div{
 
 
 <p>也可以写成：</p>
-<div class="highlight"><pre><span class="nt">margin-left</span><span class="nd">:auto</span><span class="o">;</span>
-<span class="nt">margin-right</span><span class="nd">:auto</span><span class="o">;</span>
+<div class="highlight"><pre><span class="n">margin</span><span class="o">-</span><span class="n">left</span><span class="o">:</span><span class="k">auto</span><span class="p">;</span>
+<span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span><span class="k">auto</span><span class="p">;</span>
 </pre></div>
 
 
@@ -779,7 +779,7 @@ html代码：
     </ul>
 </div>
 </body></p>
-<div class="highlight"><pre>css代码：
+<div class="highlight"><pre><span class="n">css</span><span class="err">代码：</span>
 </pre></div>
 
 
@@ -801,8 +801,8 @@ html代码：
 
 <div class="highlight"><pre><span class="s-Atom">这种方法相比第一种方法的优势是不用增加无语义标签，简化了标签的嵌套深度，但也存在着一些问题：它将块状元素的</span> <span class="s-Atom">display</span> <span class="s-Atom">类型改为</span> <span class="s-Atom">inline，变成了行内元素，所以少了一些功能，比如设定长度值。</span>
 
-<span class="c1">####3.12.5 水平居中总结-不定宽块状元素方法（三）</span>
-<span class="s-Atom">方法三：通过给父元素设置</span> <span class="s-Atom">float，然后给父元素设置</span> <span class="nn">position</span><span class="p">:</span><span class="s-Atom">relative</span> <span class="s-Atom">和</span> <span class="nn">left</span><span class="p">:</span><span class="mi">50</span><span class="c1">%，子元素设置 position:relative 和 left:-50% 来实现水平居中。</span>
+<span class="s-Atom">####</span><span class="m">3</span><span class="p">.</span><span class="m">12</span><span class="p">.</span><span class="m">5</span> <span class="s-Atom">水平居中总结-不定宽块状元素方法（三）</span>
+<span class="s-Atom">方法三：通过给父元素设置</span> <span class="s-Atom">float，然后给父元素设置</span> <span class="nn">position</span><span class="p">:</span><span class="s-Atom">relative</span> <span class="s-Atom">和</span> <span class="nn">left</span><span class="p">:</span><span class="m">50</span><span class="c1">%，子元素设置 position:relative 和 left:-50% 来实现水平居中。</span>
 <span class="s-Atom">代码如下：</span>
 </pre></div>
 
@@ -816,7 +816,7 @@ html代码：
     </ul>
 </div>
 </body></p>
-<div class="highlight"><pre>css代码：
+<div class="highlight"><pre><span class="n">css</span><span class="err">代码：</span>
 </pre></div>
 
 
@@ -838,11 +838,11 @@ html代码：
 .container li{float:left;display:inline;margin-right:8px;}
 </style>
 
-<div class="highlight"><pre>这种方法可以保留块状元素仍以 display:block 的形式显示，优点不添加无语议表标签，不增加嵌套深度，但它的缺点是设置了 position:relative，带来了一定的副作用。
-这三种方法使用得都非常广泛，各有优缺点，具体选用哪种方法，可以视具体情况而定。
+<div class="highlight"><pre><span class="err">这种方法可以保留块状元素仍以</span> <span class="n">display</span><span class="o">:</span><span class="n">block</span> <span class="err">的形式显示，优点不添加无语议表标签，不增加嵌套深度，但它的缺点是设置了</span> <span class="n">position</span><span class="o">:</span><span class="n">relative</span><span class="err">，带来了一定的副作用。</span>
+<span class="err">这三种方法使用得都非常广泛，各有优缺点，具体选用哪种方法，可以视具体情况而定。</span>
 
-####3.12.6 垂直居中-父元素高度确定的单行文本
-父元素高度确定的单行文本的竖直居中的方法是通过设置父元素的 height 和 line-height 高度一致来实现的。如下代码：
+<span class="cp">####3.12.6 垂直居中-父元素高度确定的单行文本</span>
+<span class="err">父元素高度确定的单行文本的竖直居中的方法是通过设置父元素的</span> <span class="n">height</span> <span class="err">和</span> <span class="n">line</span><span class="o">-</span><span class="n">height</span> <span class="err">高度一致来实现的。如下代码：</span>
 </pre></div>
 
 
@@ -850,7 +850,7 @@ html代码：
     hi,imooc!
 </div>
 
-<div class="highlight"><pre>css代码：
+<div class="highlight"><pre><span class="n">css</span><span class="err">代码：</span>
 </pre></div>
 
 
@@ -862,11 +862,11 @@ html代码：
 }
 </style>
 
-<div class="highlight"><pre>####3.12.7 垂直居中-父元素高度确定的多行文本（方法一）
-父元素高度确定的多行文本、图片、块状元素的竖直居中的方法有两种：
-方法一：使用插入 table (包括tbody、tr、td)标签，同时设置 vertical-align：middle。
-说到竖直居中，css 中有一个用于竖直居中的属性 vertical-align，但这个样式只有在父元素为 td 或 th 时，才会生效。所以又要插入 table 标签了。下面看一下例子：
-html代码：
+<div class="highlight"><pre><span class="cp">####3.12.7 垂直居中-父元素高度确定的多行文本（方法一）</span>
+<span class="err">父元素高度确定的多行文本、图片、块状元素的竖直居中的方法有两种：</span>
+<span class="err">方法一：使用插入</span> <span class="n">table</span> <span class="p">(</span><span class="err">包括</span><span class="n">tbody</span><span class="err">、</span><span class="n">tr</span><span class="err">、</span><span class="n">td</span><span class="p">)</span><span class="err">标签，同时设置</span> <span class="n">vertical</span><span class="o">-</span><span class="n">align</span><span class="err">：</span><span class="n">middle</span><span class="err">。</span>
+<span class="err">说到竖直居中，</span><span class="n">css</span> <span class="err">中有一个用于竖直居中的属性</span> <span class="n">vertical</span><span class="o">-</span><span class="n">align</span><span class="err">，但这个样式只有在父元素为</span> <span class="n">td</span> <span class="err">或</span> <span class="n">th</span> <span class="err">时，才会生效。所以又要插入</span> <span class="n">table</span> <span class="err">标签了。下面看一下例子：</span>
+<span class="n">html</span><span class="err">代码：</span>
 </pre></div>
 
 
@@ -881,16 +881,16 @@ html代码：
 </div>
 </td></tr></tbody></table>
 </body></p>
-<div class="highlight"><pre>css代码：
+<div class="highlight"><pre><span class="n">css</span><span class="err">代码：</span>
 </pre></div>
 
 
 <p>table td{height:500px;background:#ccc}</p>
-<div class="highlight"><pre>因为 td 标签默认情况下就默认设置了 vertical-align 为 middle，所以我们不需要显式地设置了。
+<div class="highlight"><pre><span class="err">因为</span> <span class="n">td</span> <span class="err">标签默认情况下就默认设置了</span> <span class="n">vertical</span><span class="o">-</span><span class="n">align</span> <span class="err">为</span> <span class="n">middle</span><span class="err">，所以我们不需要显式地设置了。</span>
 
-####3.12.8 垂直居中-父元素高度确定的多行文本（方法二）
-在 chrome、firefox 及 IE8 以上的浏览器下可以设置块级元素的 display 为 table-cell，激活 vertical-align 属性，但注意 IE6、7 并不支持这个样式。
-html代码：
+<span class="cp">####3.12.8 垂直居中-父元素高度确定的多行文本（方法二）</span>
+<span class="err">在</span> <span class="n">chrome</span><span class="err">、</span><span class="n">firefox</span> <span class="err">及</span> <span class="n">IE8</span> <span class="err">以上的浏览器下可以设置块级元素的</span> <span class="n">display</span> <span class="err">为</span> <span class="n">table</span><span class="o">-</span><span class="n">cell</span><span class="err">，激活</span> <span class="n">vertical</span><span class="o">-</span><span class="n">align</span> <span class="err">属性，但注意</span> <span class="n">IE6</span><span class="err">、</span><span class="mi">7</span> <span class="err">并不支持这个样式。</span>
+<span class="n">html</span><span class="err">代码：</span>
 </pre></div>
 
 
@@ -904,7 +904,7 @@ html代码：
     </div>
 </div>
 
-<div class="highlight"><pre>css代码：
+<div class="highlight"><pre><span class="n">css</span><span class="err">代码：</span>
 </pre></div>
 
 
@@ -917,14 +917,14 @@ html代码：
 }
 </style>
 
-<div class="highlight"><pre>这种方法的好处是不用添加多余的无意义的标签，但缺点也很明显，它的兼容性不是很好，不兼容 IE6、7。
+<div class="highlight"><pre><span class="err">这种方法的好处是不用添加多余的无意义的标签，但缺点也很明显，它的兼容性不是很好，不兼容</span> <span class="n">IE6</span><span class="err">、</span><span class="mi">7</span><span class="err">。</span>
 
-####3.12.9 隐性改变display类型
-有一个有趣的现象就是当为元素（不论之前是什么类型元素，display:none 除外）设置以下 2 个句之一：
-position : absolute
-float : left 或 float:right
-元素会自动变为以 display:inline-block 的方式显示，当然就可以设置元素的 width 和 height 了且默认宽度不占满父元素。
-如下面的代码，小伙伴们都知道 a 标签是行内元素，所以设置它的 width 是 没有效果的，但是设置为 position:absolute 以后，就可以了。
+<span class="cp">####3.12.9 隐性改变display类型</span>
+<span class="err">有一个有趣的现象就是当为元素（不论之前是什么类型元素，</span><span class="n">display</span><span class="o">:</span><span class="n">none</span> <span class="err">除外）设置以下</span> <span class="mi">2</span> <span class="err">个句之一：</span>
+<span class="n">position</span> <span class="o">:</span> <span class="n">absolute</span>
+<span class="kt">float</span> <span class="o">:</span> <span class="n">left</span> <span class="err">或</span> <span class="kt">float</span><span class="o">:</span><span class="n">right</span>
+<span class="err">元素会自动变为以</span> <span class="n">display</span><span class="o">:</span><span class="kr">inline</span><span class="o">-</span><span class="n">block</span> <span class="err">的方式显示，当然就可以设置元素的</span> <span class="n">width</span> <span class="err">和</span> <span class="n">height</span> <span class="err">了且默认宽度不占满父元素。</span>
+<span class="err">如下面的代码，小伙伴们都知道</span> <span class="n">a</span> <span class="err">标签是行内元素，所以设置它的</span> <span class="n">width</span> <span class="err">是</span> <span class="err">没有效果的，但是设置为</span> <span class="n">position</span><span class="o">:</span><span class="n">absolute</span> <span class="err">以后，就可以了。</span>
 </pre></div>
 
 
@@ -932,7 +932,7 @@ float : left 或 float:right
     <a href="#" title="">进入课程请单击这里</a>
 </div>
 
-<div class="highlight"><pre>css代码
+<div class="highlight"><pre><span class="n">css</span><span class="err">代码</span>
 </pre></div>
 
 
@@ -985,7 +985,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-06T21:36:00+08:00"> 4 6, 2015</time>
+            <time pubdate="pubdate" datetime="2015-04-06T21:36:00"> 4 6, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>
@@ -1013,6 +1013,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 <footer>
 <div id="footer">
     <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
         <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
     </ul>
 </div>
