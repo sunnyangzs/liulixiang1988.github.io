@@ -143,3 +143,4 @@ Out[21]: array([ 2,  6, 48])
 ```
 
 作者：liulixiang1988#gmail.com (#换成@)
+参考链接：https://www.coursera.org/learn/hipython/home/welcome
