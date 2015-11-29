@@ -1,5 +1,341 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Liu Lixiang的博客</title><link>http://liulixiang1988.github.io/</link><description>机器学习/Python/Android/Web</description><atom:link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 28 Nov 2015 12:18:00 +0800</lastBuildDate><item><title>React使用笔记(3)-React Event Listener</title><link>http://liulixiang1988.github.io/reactshi-yong-bi-ji-3-react-event-listener.html</link><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Liu Lixiang的博客</title><link>http://liulixiang1988.github.io/</link><description>机器学习/Python/Android/Web</description><atom:link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 29 Nov 2015 15:54:00 +0800</lastBuildDate><item><title>Python数据分析(3)-DataFrame</title><link>http://liulixiang1988.github.io/pythonshu-ju-fen-xi-3-dataframe.html</link><description>
+&lt;h2 id="1-dataframe"&gt;1. &lt;code&gt;DataFrame&lt;/code&gt;简介&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Series&lt;/code&gt;是一维序列，而&lt;code&gt;DataFrame&lt;/code&gt;是一种二维表结构，它包含一组类似于&lt;code&gt;index&lt;/code&gt;的有序列，每列可以是不同的值。因此可以把&lt;code&gt;DataFrame&lt;/code&gt;看作是共享同一个&lt;code&gt;index&lt;/code&gt;的&lt;code&gt;Series&lt;/code&gt;集合。&lt;/p&gt;
+&lt;h2 id="2-dataframe"&gt;2. &lt;code&gt;DataFrame&lt;/code&gt;的创建&lt;/h2&gt;
+&lt;p&gt;创建&lt;code&gt;DataFrame&lt;/code&gt;的方法与&lt;code&gt;Series&lt;/code&gt;类似。并且自带index,也可以指定index。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;'name'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'Wangdachui'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'Linling'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'Niuyun'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s"&gt;'pay'&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="mi"&gt;4000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6000&lt;/span&gt;&lt;span class="p"&gt;]}&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+         &lt;span class="n"&gt;name&lt;/span&gt;   &lt;span class="n"&gt;pay&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt;  &lt;span class="n"&gt;Wangdachui&lt;/span&gt;  &lt;span class="mi"&gt;4000&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt;     &lt;span class="n"&gt;Linling&lt;/span&gt;  &lt;span class="mi"&gt;5000&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;      &lt;span class="n"&gt;Niuyun&lt;/span&gt;  &lt;span class="mi"&gt;6000&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="3-dataframe"&gt;3. &lt;code&gt;DataFrame&lt;/code&gt;的基本操作&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'name'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c"&gt;#列明&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt;    &lt;span class="n"&gt;Wangdachui&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt;       &lt;span class="n"&gt;Linling&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;        &lt;span class="n"&gt;Niuyun&lt;/span&gt;
+&lt;span class="n"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pay&lt;/span&gt; &lt;span class="c"&gt;#列名&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt;    &lt;span class="mi"&gt;4000&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt;    &lt;span class="mi"&gt;5000&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;    &lt;span class="mi"&gt;6000&lt;/span&gt;
+&lt;span class="n"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;pay&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;int64&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ix&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c"&gt;#获取某一行，从0开始&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt;    &lt;span class="n"&gt;Niuyun&lt;/span&gt;
+&lt;span class="n"&gt;pay&lt;/span&gt;       &lt;span class="mi"&gt;6000&lt;/span&gt;
+&lt;span class="n"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;取&lt;code&gt;DataFrame&lt;/code&gt;对象的列和行可获得&lt;code&gt;Series&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;DataFrame&lt;/code&gt;对象的修改和删除&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'name'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'admin'&lt;/span&gt; &lt;span class="c"&gt;#修改列名&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt;   &lt;span class="n"&gt;pay&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt;  &lt;span class="n"&gt;admin&lt;/span&gt;  &lt;span class="mi"&gt;4000&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt;  &lt;span class="n"&gt;admin&lt;/span&gt;  &lt;span class="mi"&gt;5000&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;  &lt;span class="n"&gt;admin&lt;/span&gt;  &lt;span class="mi"&gt;6000&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'pay'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c"&gt;#删除列&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt;  &lt;span class="n"&gt;admin&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt;  &lt;span class="n"&gt;admin&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;  &lt;span class="n"&gt;admin&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="4-dataframename"&gt;4. &lt;code&gt;DataFrame&lt;/code&gt;的&lt;code&gt;name&lt;/code&gt;属性&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;'name'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'Wangdachui'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'Linling'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'Niuyun'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s"&gt;'pay'&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="mi"&gt;4000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6000&lt;/span&gt;&lt;span class="p"&gt;]}&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+         &lt;span class="n"&gt;name&lt;/span&gt;   &lt;span class="n"&gt;pay&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt;  &lt;span class="n"&gt;Wangdachui&lt;/span&gt;  &lt;span class="mi"&gt;4000&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt;     &lt;span class="n"&gt;Linling&lt;/span&gt;  &lt;span class="mi"&gt;5000&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;      &lt;span class="n"&gt;Niuyun&lt;/span&gt;  &lt;span class="mi"&gt;6000&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'No'&lt;/span&gt; &lt;span class="c"&gt;#设置index的name属性&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+          &lt;span class="n"&gt;name&lt;/span&gt;   &lt;span class="n"&gt;pay&lt;/span&gt;
+&lt;span class="n"&gt;No&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt;   &lt;span class="n"&gt;Wangdachui&lt;/span&gt;  &lt;span class="mi"&gt;4000&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt;      &lt;span class="n"&gt;Linling&lt;/span&gt;  &lt;span class="mi"&gt;5000&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;       &lt;span class="n"&gt;Niuyun&lt;/span&gt;  &lt;span class="mi"&gt;6000&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;作者：liulixiang1988#gmail.com (#换成@)
+参考链接：https://www.coursera.org/learn/hipython/home/welcome&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">刘理想</dc:creator><pubDate>Sun, 29 Nov 2015 15:54:00 +0800</pubDate><guid>tag:liulixiang1988.github.io,2015-11-29:pythonshu-ju-fen-xi-3-dataframe.html</guid><category>数据分析</category></item><item><title>Python数据分析(2)-变长字典Series</title><link>http://liulixiang1988.github.io/pythonshu-ju-fen-xi-2-bian-chang-zi-dian-series.html</link><description>
+&lt;p&gt;我们知道字典是一种无序的数据结构，而pandas中的&lt;code&gt;Series&lt;/code&gt;的数据结构不一样，它相当于定长有序的字典，并且它的index和value之间是独立的。&lt;/p&gt;
+&lt;h2 id="1-series"&gt;1. &lt;code&gt;Series&lt;/code&gt;的创建&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Series&lt;/code&gt;的基本特征&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;类似一维数组的对象&lt;/li&gt;
+&lt;li&gt;由数据和索引组成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;Series&lt;/code&gt;的创建：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;aSer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Series&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;2.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'a'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;aSer&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt;    &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt;    &lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;    &lt;span class="n"&gt;a&lt;/span&gt;
+&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;我们可以看到&lt;code&gt;Series&lt;/code&gt;自带索引，当然我们还可以指定索引：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;bSer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Series&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s"&gt;'apple'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'peach'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'lemon'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;bSer&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt;    &lt;span class="n"&gt;apple&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;    &lt;span class="n"&gt;peach&lt;/span&gt;
+&lt;span class="mi"&gt;3&lt;/span&gt;    &lt;span class="n"&gt;lemon&lt;/span&gt;
+&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;bSer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="c"&gt;#查看index&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;Int64Index&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;'int64'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;bSer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt; &lt;span class="c"&gt;#查看values&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s"&gt;'apple'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'peach'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'lemon'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="2-series"&gt;2. &lt;code&gt;Series&lt;/code&gt;的基本运算&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Series&lt;/code&gt;与字典类似，可以通过&lt;code&gt;index&lt;/code&gt;来访问数据。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;aSer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Series&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'a'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'b'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'c'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;aSer&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'b'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;aSer&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="c"&gt;#对基本元素进行运算&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="n"&gt;a&lt;/span&gt;     &lt;span class="mi"&gt;6&lt;/span&gt;
+&lt;span class="n"&gt;b&lt;/span&gt;    &lt;span class="mi"&gt;10&lt;/span&gt;
+&lt;span class="n"&gt;c&lt;/span&gt;    &lt;span class="mi"&gt;14&lt;/span&gt;
+&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;int64&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;aSer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#计算自然对数的n次方&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="n"&gt;a&lt;/span&gt;      &lt;span class="mf"&gt;20.085537&lt;/span&gt;
+&lt;span class="n"&gt;b&lt;/span&gt;     &lt;span class="mf"&gt;148.413159&lt;/span&gt;
+&lt;span class="n"&gt;c&lt;/span&gt;    &lt;span class="mf"&gt;1096.633158&lt;/span&gt;
+&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;float64&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="3-series"&gt;3. &lt;code&gt;Series&lt;/code&gt;的数据对齐&lt;/h2&gt;
+&lt;p&gt;数据对齐是很多数据处理软件里面里都有的一个功能，比如Excel。就是有一个表，前面是索引，后面是数据，可能索引没有对应的数据，也就是那一行为空的，只有一个索引值&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;'AXP'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;'86.40'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'CSCO'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;'122.64'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'BA'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;'99.44'&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;sindex&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'AXP'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'CSCO'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'BA'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'AAPL'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;17&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;aSer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Series&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sindex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#注意这里是用字典来定义的，跟前面的list定义不一样&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;aSer&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="n"&gt;AXP&lt;/span&gt;      &lt;span class="mf"&gt;86.40&lt;/span&gt;
+&lt;span class="n"&gt;CSCO&lt;/span&gt;    &lt;span class="mf"&gt;122.64&lt;/span&gt;
+&lt;span class="n"&gt;BA&lt;/span&gt;       &lt;span class="mf"&gt;99.44&lt;/span&gt;
+&lt;span class="n"&gt;AAPL&lt;/span&gt;       &lt;span class="n"&gt;NaN&lt;/span&gt;
+&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isnull&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;aSer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#检测哪些值是空的&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="n"&gt;AXP&lt;/span&gt;     &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;CSCO&lt;/span&gt;    &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;BA&lt;/span&gt;      &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;AAPL&lt;/span&gt;     &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;bool&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在算术运算中，可以自动对齐不同索引的数据，注意，只要其中一个&lt;code&gt;Series&lt;/code&gt;不存在对应的&lt;code&gt;index&lt;/code&gt;，对应的结果就会为&lt;code&gt;NaN&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;aSer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Series&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sindex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;aSer&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="n"&gt;AXP&lt;/span&gt;      &lt;span class="mf"&gt;86.40&lt;/span&gt;
+&lt;span class="n"&gt;CSCO&lt;/span&gt;    &lt;span class="mf"&gt;122.64&lt;/span&gt;
+&lt;span class="n"&gt;BA&lt;/span&gt;       &lt;span class="mf"&gt;99.44&lt;/span&gt;
+&lt;span class="n"&gt;AAPL&lt;/span&gt;       &lt;span class="n"&gt;NaN&lt;/span&gt;
+&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt;
+
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;22&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;bSer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;'AXP'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;'86.40'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'CSCO'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;'122.64'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'CVX'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;'23.78'&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;cSer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Series&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bSer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;aSer&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;cSer&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="n"&gt;AAPL&lt;/span&gt;             &lt;span class="n"&gt;NaN&lt;/span&gt;
+&lt;span class="n"&gt;AXP&lt;/span&gt;       &lt;span class="mf"&gt;86.4086&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;
+&lt;span class="n"&gt;BA&lt;/span&gt;               &lt;span class="n"&gt;NaN&lt;/span&gt;
+&lt;span class="n"&gt;CSCO&lt;/span&gt;    &lt;span class="mf"&gt;122.64122&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;
+&lt;span class="n"&gt;CVX&lt;/span&gt;              &lt;span class="n"&gt;NaN&lt;/span&gt;
+&lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="4-seriesname"&gt;4. &lt;code&gt;Series&lt;/code&gt;的&lt;code&gt;name&lt;/code&gt;属性&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Series&lt;/code&gt;对象本身及其索引均有一个&lt;code&gt;name&lt;/code&gt;属性，并且&lt;code&gt;Series&lt;/code&gt;的&lt;code&gt;name&lt;/code&gt;属性与其他重要功能有密切关系。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;aSer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Series&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sindex&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;aSer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'cnames'&lt;/span&gt; &lt;span class="c"&gt;#指定对象的name属性&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;aSer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'valume'&lt;/span&gt; &lt;span class="c"&gt;#指定索引本身的name属性&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="n"&gt;aSer&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+&lt;span class="n"&gt;valume&lt;/span&gt;
+&lt;span class="n"&gt;AXP&lt;/span&gt;      &lt;span class="mf"&gt;86.40&lt;/span&gt;
+&lt;span class="n"&gt;CSCO&lt;/span&gt;    &lt;span class="mf"&gt;122.64&lt;/span&gt;
+&lt;span class="n"&gt;BA&lt;/span&gt;       &lt;span class="mf"&gt;99.44&lt;/span&gt;
+&lt;span class="n"&gt;AAPL&lt;/span&gt;       &lt;span class="n"&gt;NaN&lt;/span&gt;
+&lt;span class="n"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;cnames&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;object&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;name&lt;/code&gt;属性有些像Excel中的字段名称有些像，在后期有很重要的作用。&lt;/p&gt;
+&lt;p&gt;作者：liulixiang1988#gmail.com (#换成@)
+参考链接：https://www.coursera.org/learn/hipython/home/welcome&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">刘理想</dc:creator><pubDate>Sun, 29 Nov 2015 15:11:00 +0800</pubDate><guid>tag:liulixiang1988.github.io,2015-11-29:pythonshu-ju-fen-xi-2-bian-chang-zi-dian-series.html</guid><category>数据分析</category></item><item><title>Python数据分析(1)-NumPy中的ndarray</title><link>http://liulixiang1988.github.io/pythonshu-ju-fen-xi-1-numpyzhong-de-ndarray.html</link><description>
+&lt;p&gt;&lt;code&gt;ndarray&lt;/code&gt;是NumPy中的基本数据机构，别名&lt;code&gt;array&lt;/code&gt;，利于节省内存和提高CPU计算时间，提供了丰富的函数。&lt;/p&gt;
+&lt;h2 id="1-ndarray"&gt;1. &lt;code&gt;ndarray&lt;/code&gt;创建函数&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;函数&lt;/th&gt;
+&lt;th&gt;函数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;arange&lt;/td&gt;
+&lt;td&gt;array&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;empty_like&lt;/td&gt;
+&lt;td&gt;empty&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;fromfile&lt;/td&gt;
+&lt;td&gt;fromfunction&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;identity&lt;/td&gt;
+&lt;td&gt;linespace&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;logspace&lt;/td&gt;
+&lt;td&gt;mgrid&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ogrid&lt;/td&gt;
+&lt;td&gt;ones&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ones_like&lt;/td&gt;
+&lt;td&gt;r&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;zeros&lt;/td&gt;
+&lt;td&gt;zeros_like&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+
+&lt;span class="n"&gt;aArray&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;array&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="c"&gt;#一维数组&lt;/span&gt;
+&lt;span class="n"&gt;aArray&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="kp"&gt;array&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="n"&gt;bArray&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;array&lt;/span&gt;&lt;span class="p"&gt;([(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt; &lt;span class="c"&gt;#二维数组&lt;/span&gt;
+&lt;span class="n"&gt;bArray&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; 
+&lt;span class="kp"&gt;array&lt;/span&gt;&lt;span class="p"&gt;([[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+       &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;]])&lt;/span&gt;
+&lt;span class="kp"&gt;zeros&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c"&gt;#全0&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; 
+&lt;span class="kp"&gt;array&lt;/span&gt;&lt;span class="p"&gt;([[&lt;/span&gt; &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+       &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mf"&gt;0.&lt;/span&gt;&lt;span class="p"&gt;]])&lt;/span&gt;
+&lt;span class="kp"&gt;arange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#间隔0.5的数组&lt;/span&gt;
+&lt;span class="n"&gt;Out&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt; &lt;span class="kp"&gt;array&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt; &lt;span class="mf"&gt;1.&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mf"&gt;2.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mf"&gt;3.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mf"&gt;4.&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mf"&gt;4.5&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="2-ndarray"&gt;2. &lt;code&gt;ndarray&lt;/code&gt;的基本运算符&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;aArray&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;array&lt;/span&gt;&lt;span class="p"&gt;([(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;bArray&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;array&lt;/span&gt;&lt;span class="p"&gt;([(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;cArray&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;aArray&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;bArray&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;cArray&lt;/span&gt;
+&lt;span class="kp"&gt;array&lt;/span&gt;&lt;span class="p"&gt;([[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+       &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;]])&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;aArray&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;bArray&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;aArray&lt;/span&gt;
+&lt;span class="kp"&gt;array&lt;/span&gt;&lt;span class="p"&gt;([[&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+       &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;]])&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;aArray&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="c"&gt;#每个元素是否大于5&lt;/span&gt;
+&lt;span class="kp"&gt;array&lt;/span&gt;&lt;span class="p"&gt;([[&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+       &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt; &lt;span class="kp"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;bool&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="3-ndarray"&gt;3. &lt;code&gt;ndarray&lt;/code&gt;内建函数和标准函数&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt;&amp;gt;&amp;gt; aArray = array([(1, 2, 3), (4, 5, 6)])
+&amp;gt;&amp;gt;&amp;gt; sin(aArray) #求array中的每个sin值
+array([[ 0.84147098,  0.90929743,  0.14112001],
+       [-0.7568025 , -0.95892427, -0.2794155 ]])
+&amp;gt;&amp;gt;&amp;gt; aArray.shape #形状
+(2, 3)
+&amp;gt;&amp;gt;&amp;gt; bArray = aArray.reshape(3, 2) #更改形状
+&amp;gt;&amp;gt;&amp;gt; bArray
+array([[1, 2],
+       [3, 4],
+       [5, 6]])
+&amp;gt;&amp;gt;&amp;gt; aArray.sum() #求全部的和
+21
+&amp;gt;&amp;gt;&amp;gt; aArray.sum(axis=0) #纵向求和
+array([5, 7, 9])
+&amp;gt;&amp;gt;&amp;gt; aArray.sum(axis=1) #横向求和
+array([ 6, 15])
+&amp;gt;&amp;gt;&amp;gt; cArray = array([1, 3, 5])
+&amp;gt;&amp;gt;&amp;gt; cArray[:1] #切片
+array([1])
+&amp;gt;&amp;gt;&amp;gt; dArray = array([2, 4, 6])
+&amp;gt;&amp;gt;&amp;gt; eArray = array([7, 8, 9])
+&amp;gt;&amp;gt;&amp;gt; where(cArray &amp;gt; 2, dArray, eArray) #对每个元素运行相当于if else运算
+array([7, 4, 6])
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="31-fromfunction"&gt;3.1 &lt;code&gt;fromfunction&lt;/code&gt;函数&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;fromfunction&lt;/code&gt;第一个参数是函数名，第二个参数是数字大小，序列是从0开始。下面打印一个九九乘法表：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;In&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;def&lt;/span&gt; &lt;span class="nx"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+   &lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+
+&lt;span class="nx"&gt;In&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;arr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;fromfunction&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="nx"&gt;In&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;arr&lt;/span&gt;
+&lt;span class="nx"&gt;Out&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="nx"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="cp"&gt;[&lt;/span&gt;  &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="cp"&gt;[&lt;/span&gt;  &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="cp"&gt;[&lt;/span&gt;  &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;36&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="cp"&gt;[&lt;/span&gt;  &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;45&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="cp"&gt;[&lt;/span&gt;  &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;36&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;48&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;54&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="cp"&gt;[&lt;/span&gt;  &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;49&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;56&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;63&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="cp"&gt;[&lt;/span&gt;  &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;48&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;56&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;72&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="cp"&gt;[&lt;/span&gt;  &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;36&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;45&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;54&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;63&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;72&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="mi"&gt;81&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="32-ufunc"&gt;3.2 &lt;code&gt;ufunc&lt;/code&gt;函数&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;ufunc&lt;/code&gt;(universal function)是一种能对数组的每个元素进行操作的函数。NumPy内置的许多ufunc函数都是在C语言级别实现的，计算速度非常快。&lt;/p&gt;
+&lt;p&gt;可以通过&lt;code&gt;help(ufunc)&lt;/code&gt;，&lt;code&gt;help(numpy)&lt;/code&gt;来查看有哪些&lt;code&gt;ufunc&lt;/code&gt;函数。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;In [14]: a = np.arange(1, 5)
+
+In [15]: a
+Out[15]: array([1, 2, 3, 4])
+
+In [16]: help(ufunc)
+
+
+In [17]: b = np.arange(2, 6)
+
+In [18]: b
+Out[18]: array([2, 3, 4, 5])
+
+In [19]: np.add(a, b)
+Out[19]: array([3, 5, 7, 9])
+
+In [20]: np.add.accumulate([2, 3, 8])
+Out[20]: array([ 2,  5, 13])
+
+In [21]: np.multiply.accumulate([2, 3, 8])
+Out[21]: array([ 2,  6, 48])
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;作者：liulixiang1988#gmail.com (#换成@)
+参考链接：https://www.coursera.org/learn/hipython/home/welcome&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">刘理想</dc:creator><pubDate>Sun, 29 Nov 2015 14:42:00 +0800</pubDate><guid>tag:liulixiang1988.github.io,2015-11-29:pythonshu-ju-fen-xi-1-numpyzhong-de-ndarray.html</guid><category>数据分析</category></item><item><title>React使用笔记(3)-React Event Listener</title><link>http://liulixiang1988.github.io/reactshi-yong-bi-ji-3-react-event-listener.html</link><description>
 &lt;h2 id="1"&gt;1. 构造基本结构&lt;/h2&gt;
 &lt;p&gt;首先，我们先创建一个按钮，一个输入框。我们准备点击按钮时，后面有一个&lt;code&gt;&amp;lt;span&amp;gt;&lt;/code&gt;显示和隐藏。代码如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"container"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
