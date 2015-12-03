@@ -1,7 +1,7 @@
 Title: React使用笔记(4)-React状态和属性详解
 Date: 2015-12-03 20:58
 Category: Web
-Tags: JavaScript
+Tags: JavaScript,React
 Author: 刘理想
 
 [TOC]

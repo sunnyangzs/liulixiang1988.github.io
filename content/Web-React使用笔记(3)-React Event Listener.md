@@ -1,7 +1,7 @@
 Title: React使用笔记(3)-React Event Listener
 Date: 2015-11-28 12:18
 Category: Web
-Tags: JavaScript
+Tags: JavaScript,React
 Author: 刘理想
 
 [TOC]

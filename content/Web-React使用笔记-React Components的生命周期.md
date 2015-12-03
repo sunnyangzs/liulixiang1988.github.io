@@ -1,7 +1,7 @@
 Title: React使用笔记(2)-React Components的生命周期
 Date: 2015-11-27 21:23
 Category: Web
-Tags: JavaScript
+Tags: JavaScript,React
 Author: 刘理想
 
 [TOC]

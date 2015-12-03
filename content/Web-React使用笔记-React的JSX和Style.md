@@ -1,7 +1,7 @@
 Title: React使用笔记-React的JSX和Style
 Date: 2015-11-27 20:56
 Category: Web
-Tags: JavaScript
+Tags: JavaScript,React
 Author: 刘理想
 
 [TOC]
