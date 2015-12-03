@@ -125,5 +125,12 @@ render: function(){
 }
 ```
 
+##4. 非DOM属性
+
+非DOM属性 
+- `dangerouslySetInnerHTML`: 在JSX中直接插入HTML代码；
+- `ref`:前面已经提过，父组件引用子组件；
+- `key`:提高渲染性能。
+
 作者：liulixiang1988#gmail.com (#换成@)
 参考链接：http://www.imooc.com/learn/504

@@ -81,4 +81,104 @@ var styleObj = {color: 'red'};
 style={styleObj}
 ```
 
+##3. 条件判断的4种写法
+
+现在假设我们要写一个页面，如果属性中有`name`，就输出`Hello, name`，如果`name`为空，就输出`Hello, world`。
+
+###3.1 三元表达式
+
+类似C语言的三元表达式。
+
+```
+<script type="text/jsx">
+var Hello = React.createClass({
+    render: function(){
+        return <div>Hello, {this.props.name ? this.props.name: "world"}</div>;
+    }
+});
+React.render(<Hello name="liulx"/>, 
+    document.getElementById('container'));
+</script>
+```
+
+###3.2 使用变量
+
+```
+<script type="text/jsx">
+var Hello = React.createClass({
+    getName: function(){
+        if (this.props.name) {
+            return this.props.name;
+        } else{
+            return "world"
+        };
+    },
+    render: function(){
+        var name = this.getName();
+        return <div>Hello, {name}</div>;
+    }
+});
+React.render(<Hello name="liulx"/>, 
+    document.getElementById('container'));
+</script>
+```
+
+###3.3 直接调用函数
+
+这个跟第二种方法类似，就是把大括号去掉。
+
+```
+<script type="text/jsx">
+var Hello = React.createClass({
+    getName: function(){
+        if (this.props.name) {
+            return this.props.name;
+        } else{
+            return "world"
+        };
+    },
+    render: function(){
+        return <div>Hello, {this.getName()}</div>;
+    }
+});
+React.render(<Hello name="liulx"/>, 
+    document.getElementById('container'));
+</script>
+```
+
+###3.4 使用比较运算符
+
+```
+<script type="text/jsx">
+var Hello = React.createClass({
+    render: function(){
+        return <div>Hello, {this.props.name || "World"}</div>;
+    }
+});
+React.render(<Hello name="liulx"/>, 
+    document.getElementById('container'));
+</script>
+```
+
+##4. 函数表达式
+
+```
+<script type="text/jsx">
+var Hello = React.createClass({
+    render: function(){
+        return <div>Hello, {
+            (function(obj){
+                if (obj.props.name) {
+                    return obj.props.name;
+                } else {
+                    return "world";
+                }
+            })(this)
+        }</div>;
+    }
+});
+React.render(<Hello name="liulx"/>, 
+    document.getElementById('container'));
+</script>
+```
 
