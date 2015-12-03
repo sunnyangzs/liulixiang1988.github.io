@@ -26,6 +26,12 @@ React Components的3种状态：
 
 ###2.1 实验，来添加mount的hook函数
 
+- `getDefaultProps`:只调用一次，只有在组件的第一个实例被初始化时才被调用，用于实例之间**共享引用**，它返回的是引用，而不是值。在`var Hello = React.createClass({...})`执行时，`getDefaultProps`就会被调用。
+- `getInitialState`:初始华每个实例特有的**状态**。
+- `componentWillMount`:它是渲染之前最后一次修改状态的机会。
+- `render`:只能访问`this.state`和`this.props`，只有一个顶层组件，**不允许**修改状态和DOM输出。
+- `componentDidMount`：成功render并渲染完成真实DOM之后触发，**可以修改**DOM。
+
 我们使用`getInitialState`, `componentWillMount`, `componentDidMount`来添加React Component在Mount阶段的hook函数，其中`getIntialState`返回一个键值对对象。
 
 ```jsx
@@ -132,10 +138,52 @@ componentDidMount: function(){
 
 - `componentWillReceiveProps`:当一个`mounted`的组件将要接收新的`property`时，此函数会被调用，其函数参数就是新的`props`对象。我们可以在函数体内比较这个`props`参数和`this.props`，从而执行一些例如修改`state`这样的操作。
 - `shouldComponentUpdate`: 在一个`mounted`的组件已经接收到新的`state`和`props`对象之后，判断是否有必要去更新DOM结构。这个函数的参数有2个，一个就是新的`props`对象，第二个参数是新的`state`对象。我们可以分别对比其跟`this.props`和`this.state`来决定是否需要更新DOM结构。返回`true`表示更新，返回`false`表示不更新。
-- `componentWillUpdate`: 组件更新前调用。
-- `compoentDidUpdate`: 组件更新后调用。
+- `componentWillUpdate`: 组件更新前调用，**不能**修改属性状态。
+- `compoentDidUpdate`: 组件更新后调用，可以修改DOM。
 
-一般我们很少会更新上面的4个函数
+一般我们很少会更新上面的4个函数。
+
+```jsx
+<script type="text/jsx">
+var HelloWorld = React.createClass({
+    componentWillReceiveProps: function(){
+        console.log("1");
+    },
+    shouldComponentUpdate: function(){
+        console.log("2");
+        return true
+    },
+    componentWillUpdate: function(){
+        console.log("3");
+    },
+    render: function(){
+        console.log("4");
+        return <div>Hello, {this.props.name || "world"}</div>;
+    },
+    componentDidUpdate: function(){
+        console.log("5");
+    }
+});
+
+var HelloUniverse = React.createClass({
+    getInitialState: function(){
+        return {name: ''};
+    },
+    handleChange: function(event){
+        this.setState({name: event.target.value});
+    },
+    render: function(){
+        return <div>
+            <HelloWorld name={this.state.name}></HelloWorld>
+            <br/>
+            <input type="text" onChange={this.handleChange} />
+        </div>;
+    }
+});
+React.render(<HelloUniverse ></HelloUniverse>, 
+    document.getElementById('container'));
+</script>
+```
 
 ---
 
@@ -144,4 +192,79 @@ componentDidMount: function(){
 当我们要把一个组件销毁掉的时候，则是`unmounting`阶段了，它只有一个调用函数：
 
 `componentWillUnmount`:我们在这个函数内执行一些clean up的操作，比如释放内存、图片等。得益于浏览器的垃圾回收机制，我们基本不需要使用这个函数。
+
+第一种Unmount的方法，是直接通过`render`的返回值来删除。
+
+```jsx
+<script type="text/jsx">
+var HelloWorld = React.createClass({
+    render: function(){
+        console.log("4");
+        return <div>Hello, {this.props.name || "world"}</div>;
+    },
+    componentWillUnmount: function(){
+        console.log("component will unmount!");
+    }
+});
+
+var HelloUniverse = React.createClass({
+    getInitialState: function(){
+        return {name: ''};
+    },
+    handleChange: function(event){
+        this.setState({name: event.target.value});
+    },
+    render: function(){
+        if (this.state.name === '123') {
+            return <div>{this.state.name}</div>;
+        };
+        return <div>
+            <HelloWorld name={this.state.name}></HelloWorld>
+            <br/>
+            <input type="text" onChange={this.handleChange} />
+        </div>;
+    }
+});
+React.render(<HelloUniverse ></HelloUniverse>, 
+    document.getElementById('container'));
+</script>
+```
+
+第二种方法是使用React提供的`React.unmountComponentAtNode`方法来删除：
+
+```jsx
+<script type="text/jsx">
+var HelloWorld = React.createClass({
+    render: function(){
+        console.log("4");
+        return <div>Hello, {this.props.name || "world"}</div>;
+    },
+    componentWillUnmount: function(){
+        console.log("component will unmount!");
+    }
+});
+
+var HelloUniverse = React.createClass({
+    getInitialState: function(){
+        return {name: ''};
+    },
+    handleChange: function(event){
+        if (event.target.value == '123') {
+            React.unmountComponentAtNode(document.getElementsByTagName("body")[0]);
+            return;
+        }
+        this.setState({name: event.target.value});
+    },
+    render: function(){
+        return <div>
+            <HelloWorld name={this.state.name}></HelloWorld>
+            <br/>
+            <input type="text" onChange={this.handleChange} />
+        </div>;
+    }
+});
+React.render(<HelloUniverse ></HelloUniverse>, 
+    document.getElementById('container'));
+</script>
+```
 
