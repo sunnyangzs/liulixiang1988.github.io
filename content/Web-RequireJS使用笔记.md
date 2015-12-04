@@ -1,7 +1,7 @@
 Title: RequireJS使用笔记
 Date: 2015-07-22 15:30
 Category: Web
-Tags: JavaScript
+Tags: JavaScript, RequireJS, 模块化
 Author: 刘理想
 
 RequireJS的项目地址在：http://requirejs.org/
