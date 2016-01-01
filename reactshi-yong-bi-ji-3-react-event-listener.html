@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="JavaScript, React, Web, " />
+        <title>React使用笔记(3)-React Event Listener  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/reactshi-yong-bi-ji-3-react-event-listener.html"> React使用笔记(3)-React Event Listener  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#1">1. 构造基本结构</a></li>
+<li><a href="#2-button">2. 给&lt;button&gt;添加事件绑定</a></li>
+<li><a href="#3-input">3. 给&lt;input&gt;添加事件绑定</a></li>
+<li><a href="#4-dom">4. 非DOM属性</a></li>
+<li><a href="#5">5. 事件列表</a><ul>
+<li><a href="#51">5.1 触摸事件</a></li>
+<li><a href="#52">5.2 键盘类事件</a></li>
+<li><a href="#53">5.3 剪切类事件</a></li>
+<li><a href="#54">5.4 表单类事件</a></li>
+<li><a href="#55">5.5 焦点事件</a></li>
+<li><a href="#56-ui">5.6 UI元素事件</a></li>
+<li><a href="#57">5.7 滚动事件</a></li>
+<li><a href="#58">5.8 鼠标事件</a></li>
+</ul>
+</li>
+<li><a href="#6">6. 事件对象介绍</a><ul>
+<li><a href="#61">6.1 通用属性</a></li>
+<li><a href="#62">6.2 特有属性</a></li>
+</ul>
+</li>
+<li><a href="#7">7. 实例演练</a><ul>
+<li><a href="#71">7.1 使用滚动事件对象</a></li>
+<li><a href="#72">7.2 键盘事件</a></li>
+</ul>
+</li>
+<li><a href="#8">8. 事件和状态关联</a></li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
+
+            
+<h2 id="1">1. 构造基本结构</h2>
+<p>首先，我们先创建一个按钮，一个输入框。我们准备点击按钮时，后面有一个<code>&lt;span&gt;</code>显示和隐藏。代码如下：</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"container"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+    var TestClickComponent = React.createClass({
+        render: function(){
+            return (
+                <span class="nt">&lt;div&gt;</span>
+                    <span class="nt">&lt;button&gt;</span>显示|隐藏<span class="nt">&lt;/button&gt;</span>
+                    <span class="nt">&lt;span&gt;</span>测试点击<span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                );
+        }
+    });
+
+    var TestInputComponent = React.createClass({
+        getInitialState: function(){
+            return {
+                inputContent: ''
+            }
+        },
+        render: function(){
+            return (
+                <span class="nt">&lt;div&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="nt">/&gt;&lt;span&gt;</span>{this.state.inputContent}<span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                );
+        }
+    });
+
+    React.render(
+        <span class="nt">&lt;div&gt;</span>
+            <span class="nt">&lt;TestClickComponent</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;TestInputComponent</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>,
+        document.getElementById('container'));
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+<p>这里有几点需要注意，在<code>render</code>里返回的时候，需要用个<code>&lt;div&gt;</code>包裹起来，因为每个里面有好几html标签。</p>
+<h2 id="2-button">2. 给<code>&lt;button&gt;</code>添加事件绑定</h2>
+<p>用驼峰式命名的方式来绑定事件，比如<code>onClick</code>。注意这里的<code>onClick</code>事件和原生HTML属性中的<code>onclick</code>不是一回事儿。这里，它并不是一个真事的DOM节点，它只是一个React Element，而且写法也不一样，HTML标签的属性对于大小写是不敏感的，而React Element对于大小写是敏感的。</p>
+<p><code>onClick</code>的处理函数一般通过对象属性封装在React组件的对象实例上。</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="n">TestClickComponent</span> <span class="o">=</span> <span class="nx">React.createClass</span><span class="p">({</span>
+    <span class="nx">handleClick</span><span class="p">:</span> <span class="nx">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+
+    <span class="p">},</span>
+
+    <span class="nb">render</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nb">div</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">button</span> <span class="n">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">this.handleClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">显示</span><span class="o">|</span><span class="nx">隐藏</span><span class="o">&lt;/</span><span class="nx">button</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">测试点击</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
+            <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+            <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+<p><code>handleClick</code>函数的参数是React封装的<code>event</code>对象。这个<code>event</code>对象是在原生的js的<code>event</code>对象的基础上封装的，因此，我们可以调用一些在原生js的<code>event</code>对象上的方法：</p>
+<div class="highlight"><pre><span class="nx">handleClick</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+<p>我们如何在<code>event</code>事件处理函数内处理<code>&lt;span&gt;</code>呢，我们通过给<code>&lt;span&gt;</code>添加一个<code>ref</code>属性，然后就能在<code>this.refs</code>中获取这个对象了。</p>
+<div class="highlight"><pre><span class="nt">&lt;span</span> <span class="na">ref=</span><span class="s">"tip"</span><span class="nt">&gt;</span>测试点击<span class="nt">&lt;/span&gt;</span>
+</pre></div>
+<p>注意，我们使用<code>this.refs.tip</code>引用的并不是真实的DOM节点，而是React组件。我们要操作DOM节点该怎么办呢？使用React给我们封装的方法<code>React.findDOMNode</code>，参数就是我们的React组件。</p>
+<div class="highlight"><pre><span class="n">handleClick</span><span class="o">:</span> <span class="kd">function</span><span class="o">(</span><span class="n">event</span><span class="o">){</span>
+    <span class="n">var</span> <span class="n">tipE</span> <span class="o">=</span> <span class="n">React</span><span class="o">.</span><span class="na">findDOMNode</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">refs</span><span class="o">.</span><span class="na">tip</span><span class="o">)</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">tipE</span><span class="o">.</span><span class="na">style</span><span class="o">.</span><span class="na">display</span> <span class="o">===</span> <span class="s1">'none'</span><span class="o">){</span>
+        <span class="n">tipE</span><span class="o">.</span><span class="na">style</span><span class="o">.</span><span class="na">display</span> <span class="o">=</span> <span class="s1">'inline'</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="n">tipE</span><span class="o">.</span><span class="na">style</span><span class="o">.</span><span class="na">display</span> <span class="o">=</span> <span class="s1">'none'</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">event</span><span class="o">.</span><span class="na">stopPropagation</span><span class="o">();</span>
+    <span class="n">event</span><span class="o">.</span><span class="na">preventDefault</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></div>
+<h2 id="3-input">3. 给<code>&lt;input&gt;</code>添加事件绑定</h2>
+<p>我们给<code>&lt;input&gt;</code>添加<code>onChange</code>事件，这里我们使用<code>event.target.value</code>来获取<code>&lt;input&gt;</code>的值，然后设置<code>state</code>，对应的<code>&lt;span&gt;</code>的内容就会跟着改变。</p>
+<div class="highlight"><pre><span class="nx">changeHandler</span><span class="p">:</span> <span class="nx">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+    <span class="nx">this.setState</span><span class="p">({</span>
+        <span class="nx">inputContent</span><span class="p">:</span> <span class="nx">event.target.value</span>
+    <span class="p">});</span>
+    <span class="nx">event.preventDefault</span><span class="p">();</span>
+    <span class="nx">event.stopPropagation</span><span class="p">();</span>
+<span class="p">},</span>
+<span class="nb">render</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nb">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nb">input</span> <span class="k">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="n">onChange</span><span class="o">=</span><span class="p">{</span><span class="nx">this.changeHandler</span><span class="p">}</span><span class="o">/&gt;&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">this.state.inputContent</span><span class="p">}</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+        <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="4-dom">4. 非DOM属性</h2>
+<p>非DOM属性 
+- <code>dangerouslySetInnerHTML</code>: 在JSX中直接插入HTML代码；
+- <code>ref</code>:前面已经提过，父组件引用子组件；
+- <code>key</code>:提高渲染性能。</p>
+<h2 id="5">5. 事件列表</h2>
+<h3 id="51">5.1 触摸事件</h3>
+<p>只在移动端可用</p>
+<ul>
+<li><code>onTouchCancel</code></li>
+<li><code>onTouchEnd</code></li>
+<li><code>onTOuchMove</code></li>
+<li><code>onTouchStart</code></li>
+</ul>
+<h3 id="52">5.2 键盘类事件</h3>
+<ul>
+<li><code>onKeyDown</code></li>
+<li><code>onKeyPress</code>:<code>onKeyDown</code>和<code>onKeyUp</code>的组合</li>
+<li><code>onKeyUp</code></li>
+</ul>
+<h3 id="53">5.3 剪切类事件</h3>
+<p>目前支持的不是特别好，使用的不多。</p>
+<ul>
+<li><code>onCopy</code></li>
+<li><code>onCut</code></li>
+<li><code>onPaste</code></li>
+</ul>
+<h3 id="54">5.4 表单类事件</h3>
+<ul>
+<li><code>onChange</code>:输入框、单选框、下拉列表</li>
+<li><code>onInput</code>:文字输入</li>
+<li><code>onSubmit</code>:表单提交，通过这个事件可以禁用默认跳转</li>
+</ul>
+<h3 id="55">5.5 焦点事件</h3>
+<ul>
+<li><code>onFocus</code></li>
+<li><code>onBlur</code></li>
+</ul>
+<h3 id="56-ui">5.6 UI元素事件</h3>
+<ul>
+<li><code>onScroll</code>:UI元素的滚动事件</li>
+</ul>
+<h3 id="57">5.7 滚动事件</h3>
+<ul>
+<li><code>onWheel</code>: 鼠标滚动事件，可以监听鼠标的滚动幅度，滚动方位</li>
+</ul>
+<h3 id="58">5.8 鼠标事件</h3>
+<ul>
+<li><code>onClick</code></li>
+<li><code>onContextMenu</code>:右键，上下文菜单</li>
+<li><code>onDoubleClick</code></li>
+<li><code>onMouseDown</code></li>
+<li><code>onMouseEnter</code></li>
+<li><code>onMouseLeave</code></li>
+<li><code>onMouseMove</code></li>
+<li><code>onMouseOut</code></li>
+<li><code>onMouseOver</code></li>
+<li><code>onMouseUp</code></li>
+</ul>
+<p>另外拖拽事件</p>
+<ul>
+<li><code>onDrop</code></li>
+<li><code>onDrag</code></li>
+<li><code>onDragEnd</code></li>
+<li><code>onDragEnter</code></li>
+<li><code>onDragExit</code></li>
+<li><code>onDragLeave</code></li>
+<li><code>onDragOver</code></li>
+<li><code>onDragStart</code></li>
+</ul>
+<h2 id="6">6. 事件对象介绍</h2>
+<p>前面我们介绍过，事件对象是对原生事件对象的封装，下面我们来看看事件对象的一些属性。</p>
+<h3 id="61">6.1 通用属性</h3>
+<ul>
+<li><code>boolean bubbles</code>:是否可以冒泡</li>
+<li><code>boolean cancelable</code>:是否可以取消事件</li>
+<li><code>DOMEventTarget currentTarget</code></li>
+<li><code>boolean defaultPrevented</code>:事件是否禁止了默认行为</li>
+<li><code>number eventPhase</code>: 事件所处的阶段</li>
+<li><code>boolean isTrusted</code>: 事件是否可信，用户的事件可信，JS代码触发的事件不可信</li>
+<li><code>DOMEvent nativeEvent</code>: 原生浏览器事件，没经过</li>
+<li><code>void preventDefault()</code>: 禁止默认行为</li>
+<li><code>void stopPropagation()</code>: 禁止冒泡</li>
+<li><code>DOMEventTarget target</code>:</li>
+<li><code>number timeStamp</code>: 事件的时间</li>
+<li><code>string type</code>: 事件类型</li>
+</ul>
+<h3 id="62">6.2 特有属性</h3>
+<p>剪切事件：</p>
+<ul>
+<li><code>DOMDataTransfer clipboardData</code>: 剪切的一些数据</li>
+</ul>
+<p>键盘事件：</p>
+<ul>
+<li><code>boolean altKey</code>:</li>
+<li><code>Number charCode</code>:字符编码（ABCD)</li>
+<li><code>boolean ctrlKey</code></li>
+<li><code>function getModifierState(key)</code>:辅助案件(ctrl shift等)</li>
+<li><code>String key</code></li>
+<li><code>Number keyCode</code>:按键编码</li>
+<li><code>String locale</code></li>
+<li><code>Number location</code>:位置</li>
+<li><code>boolean metaKey</code>:win和cmd</li>
+<li><code>boolean repeat</code>:是否重复</li>
+<li><code>boolean shiftKey</code></li>
+<li><code>Number which</code>:<code>charCode</code>和<code>keyCode</code>的统一</li>
+</ul>
+<p>焦点事件：</p>
+<ul>
+<li><code>DOMEventTarget relatedTarget</code>: AB控件切换时，他们互为<code>relatedTarget</code></li>
+</ul>
+<p>鼠标事件：</p>
+<ul>
+<li><code>boolean altKey</code></li>
+<li><code>Number button</code></li>
+<li><code>Number buttons</code></li>
+<li><code>Number clientX</code>:浏览器窗框的左上角是(0,0)</li>
+<li><code>Number clientY</code></li>
+<li><code>boolean ctrlKey</code></li>
+<li><code>function getModifierState(key)</code></li>
+<li><code>boolean metaKey</code></li>
+<li><code>Number pageX</code>:HTML页面的左上角(0,0)</li>
+<li><code>Number pageY</code></li>
+<li><code>DOMEventTarget relatedTarget</code></li>
+<li><code>Number screenX</code>:显示器的左上角</li>
+<li><code>Number screenY</code></li>
+<li><code>boolean shiftKey</code></li>
+</ul>
+<p>触摸事件：</p>
+<ul>
+<li><code>boolean altKey</code></li>
+<li><code>boolean ctrlKey</code></li>
+<li><code>function getModifierState(key)</code></li>
+<li><code>boolean metaKey</code></li>
+<li><code>boolean shiftKey</code></li>
+<li><code>DOMTouchList changedTouches</code>:<code>DOMTouchList</code>触摸事件特有类型</li>
+<li><code>DOMTouchList targetTouches</code>:</li>
+<li><code>DOMTouchList touches</code>:</li>
+</ul>
+<p>UI元素：</p>
+<ul>
+<li><code>Number detail</code>:滚动的距离</li>
+<li><code>DOMAbstractView view</code></li>
+</ul>
+<p>鼠标滚动：</p>
+<ul>
+<li><code>Number deltaMode</code>：单位</li>
+<li><code>Number deltaX</code>：x,y,z轴移动距离</li>
+<li><code>Number deltaY</code></li>
+<li><code>Number deltaZ</code></li>
+</ul>
+<h2 id="7">7. 实例演练</h2>
+<h3 id="71">7.1 使用滚动事件对象</h3>
+<p>鼠标滚轮的数值可以当做RGB值使用</p>
+<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+var Hello = React.createClass({
+    getInitialState: function () {
+        return {
+            background: '#FFFFFF'
+        };
+    },
+    handleWheel: function (event) {
+        //this.state.background.substr(1)：忽略掉第一个"#"
+        //deltaY:是+3或者-3
+        var newColor = (parseInt(this.state.background.substr(1), 16) + 
+            event.deltaY * 977).toString(16);
+        newColor = '#' + newColor.substr(newColor.length-6).toUpperCase();
+        this.setState({background: newColor});
+    },
+    render: function(){
+        console.log(this.state);
+        return <span class="nt">&lt;div</span> <span class="na">onWheel=</span><span class="s">{this.handleWheel}</span> <span class="na">style=</span><span class="s">{this.state}</span><span class="nt">&gt;&lt;p&gt;</span>Hello world<span class="nt">&lt;/p&gt;&lt;/div&gt;</span>;
+    }
+});
+React.render(<span class="nt">&lt;Hello/&gt;</span>, 
+    document.getElementById('container'));
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+<h3 id="72">7.2 键盘事件</h3>
+<div class="highlight"><pre><span class="kd">var</span> <span class="n">Hello</span> <span class="o">=</span> <span class="nx">React.createClass</span><span class="p">({</span>
+    <span class="nx">getInitialState</span><span class="p">:</span> <span class="nx">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">password</span><span class="p">:</span> <span class="s1">''</span>
+        <span class="p">};</span>
+    <span class="p">},</span>
+    <span class="nx">handleKeyPress</span><span class="p">:</span> <span class="nx">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">this.setState</span><span class="p">({</span><span class="nx">password</span><span class="p">:</span> <span class="nx">this.state.password</span><span class="o">+</span><span class="nx">event.which</span><span class="p">});</span>
+        <span class="nx">console.log</span><span class="p">(</span><span class="nx">this.state</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="nx">handleChange</span><span class="p">:</span> <span class="nx">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+        <span class="n">event.target.value</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nb">render</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
+        <span class="nx">console.log</span><span class="p">(</span><span class="nx">this.state</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">&lt;</span><span class="nb">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nb">input</span> <span class="k">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="n">onKeyPress</span><span class="o">=</span><span class="p">{</span><span class="nx">this.handleKeyPress</span><span class="p">}</span> <span class="n">onChange</span><span class="o">=</span><span class="p">{</span><span class="nx">this.handleChange</span><span class="p">}</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nx">p</span> <span class="n">style</span><span class="o">=</span><span class="p">{{</span><span class="s1">'display'</span><span class="p">:</span> <span class="nx">this.state.password.indexOf</span><span class="p">(</span><span class="s1">'495051'</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="s1">'0'</span> <span class="o">?</span> <span class="s1">'inline'</span><span class="p">:</span> <span class="s1">'none'</span><span class="p">}}</span><span class="o">&gt;</span><span class="nx">you</span> <span class="nx">got</span> <span class="nx">it</span><span class="o">!&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+<h2 id="8">8. 事件和状态关联</h2>
+<div class="highlight"><pre><span class="n">handleChange</span><span class="o">:</span> <span class="kd">function</span><span class="o">(</span><span class="n">event</span><span class="o">){</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">setState</span><span class="o">({</span><span class="n">inputText</span><span class="o">:</span> <span class="n">event</span><span class="o">.</span><span class="na">target</span><span class="o">.</span><span class="na">value</span><span class="o">});</span>
+<span class="o">}</span>
+</pre></div>
+<p>作者：liulixiang1988#gmail.com (#换成@)
+参考链接：http://www.imooc.com/learn/504</p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="reactshi-yong-bi-ji-3-react-event-listener.html" data-title="React使用笔记(3)-React Event Listener" data-url="http://liulixiang1988.github.io/reactshi-yong-bi-ji-3-react-event-listener.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/reactshi-yong-bi-ji-2-react-componentsde-sheng-ming-zhou-qi.html" title="Previous: React使用笔记(2)-React Components的生命周期">React使用笔记(2)-React Components的生命周期</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/pythonshu-ju-fen-xi-1-numpyzhong-de-ndarray.html" title="Next: Python数据分析(1)-NumPy中的ndarray">Python数据分析(1)-NumPy中的ndarray</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-11-28T12:18:00">11 28, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Web-ref">Web</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#JavaScript-ref">JavaScript
+                    <span>12</span>
+</a></li>
+                <li><a href="/tags.html#React-ref">React
+                    <span>7</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

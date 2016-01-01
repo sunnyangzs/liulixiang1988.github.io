@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="CSS, HTML, LESS, Web, " />
+        <title>企业网站布局实践-02导航部分制作  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html"> 企业网站布局实践-02导航部分制作  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <h2 id="1">1. 分析</h2>
+<p>我们将导航分为左中右三部分。
+其中导航中部分为两部分，分别放置菜单栏和搜索框。
+导航栏菜单使用有序列表或无需列表，搜索框使用form表单的input标签。</p>
+<h2 id="2-html">2. 实现HTML</h2>
+<p>添加nav的html</p>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav_left&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav_mid&quot;</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav_mid_left&quot;</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;ul&gt;</span>
+               <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>首页<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+               <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>关于慕课<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+               <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>新闻动态<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+               <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>课程中心<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+               <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>在线课程<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+               <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>人才招聘<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+           <span class="nt">&lt;/ul&gt;</span>
+       <span class="nt">&lt;/div&gt;</span>
+       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav_mid_right&quot;</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span><span class="nt">&gt;&lt;/form&gt;</span>
+       <span class="nt">&lt;/div&gt;</span>
+   <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- nav_mid结束 --&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav_right&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- nav结束 --&gt;</span>
+</pre></div>
+
+
+<h2 id="3-less">3. 实现LESS</h2>
+<h3 id="31">3.1 实现框架</h3>
+<div class="highlight"><pre><span class="p">.</span><span class="n">nav</span><span class="p">{</span>
+    <span class="err">@</span><span class="n">nav_h</span><span class="o">:</span><span class="mi">40</span><span class="n">px</span><span class="p">;</span>
+    <span class="err">@</span><span class="n">nav_w</span><span class="o">:</span><span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+    <span class="nl">height:</span><span class="err">@</span><span class="n">nav_h</span><span class="p">;</span>
+    <span class="nl">clear:</span> <span class="n">both</span><span class="p">;</span>
+
+    <span class="o">&amp;</span><span class="n">_left</span><span class="p">{</span>
+        <span class="nl">width:</span><span class="err">@</span><span class="n">nav_w</span><span class="p">;</span>
+        <span class="nl">height:</span> <span class="err">@</span><span class="n">nav_h</span><span class="p">;</span>
+        <span class="nl">background:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">nav_left</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span> <span class="n">no</span><span class="o">-</span><span class="n">repeat</span><span class="p">;</span>
+        <span class="c1">// background-image: url(../images/nav_left.jpg);</span>
+        <span class="c1">// background-repeat: no-repeat;</span>
+        <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="o">&amp;</span><span class="n">_mid</span><span class="p">{</span>
+        <span class="nl">width:</span> <span class="mi">980</span><span class="n">px</span><span class="p">;</span>
+        <span class="nl">background:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">nav_bg</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span> <span class="n">repeat</span><span class="o">-</span><span class="n">x</span><span class="p">;</span>
+        <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="o">&amp;</span><span class="n">_right</span><span class="p">{</span>
+        <span class="nl">width:</span> <span class="err">@</span><span class="n">nav_w</span><span class="p">;</span>
+        <span class="nl">height:</span> <span class="err">@</span><span class="n">nav_h</span><span class="p">;</span>
+        <span class="nl">background:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">nav_right</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span> <span class="n">no</span><span class="o">-</span><span class="n">repeat</span><span class="p">;</span>
+        <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="32">3.2 实现菜单文本</h3>
+<div class="highlight"><pre><span class="o">&amp;</span><span class="n">_mid</span><span class="p">{</span>
+    <span class="nl">width:</span> <span class="mi">980</span><span class="n">px</span><span class="p">;</span>
+    <span class="nl">background:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">nav_bg</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span> <span class="n">repeat</span><span class="o">-</span><span class="n">x</span><span class="p">;</span>
+
+    <span class="o">&amp;</span><span class="n">_left</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">_right</span><span class="p">{</span>
+        <span class="nl">float:</span><span class="n">left</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="o">&amp;</span><span class="n">_left</span><span class="p">{</span>
+        <span class="nl">width:</span><span class="mi">680</span><span class="n">px</span><span class="p">;</span>
+
+        <span class="n">li</span><span class="p">{</span>
+            <span class="nl">float:</span> <span class="n">left</span><span class="p">;</span>
+            <span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span> <span class="c1">//去掉默认list-style</span>
+            <span class="nl">width:</span><span class="mi">100</span><span class="n">px</span><span class="p">;</span>
+            <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="o">:</span> <span class="n">center</span><span class="p">;</span> <span class="c1">//文本中间对齐</span>
+            <span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span> <span class="mi">40</span><span class="n">px</span><span class="p">;</span> <span class="c1">//文本垂直居中，与对应的盒子高度对齐</span>
+        <span class="p">}</span>
+
+        <span class="n">a</span><span class="p">{</span>
+            <span class="o">&amp;:</span><span class="n">link</span><span class="p">,</span> <span class="o">&amp;:</span><span class="n">visited</span><span class="p">{</span>
+                <span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
+                <span class="nl">color:</span><span class="err">#</span><span class="n">FFF</span><span class="p">;</span>
+                <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span> <span class="mi">16</span><span class="n">px</span><span class="p">;</span>
+                <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="s">&quot;微软雅黑&quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="o">&amp;:</span><span class="n">hover</span><span class="p">,</span> <span class="o">&amp;:</span><span class="n">active</span><span class="p">{</span>
+                <span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
+                <span class="nl">color:</span><span class="err">#</span><span class="n">FF0</span><span class="p">;</span>
+                <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span> <span class="mi">16</span><span class="n">px</span><span class="p">;</span>
+                <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="s">&quot;微软雅黑&quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<h3 id="_1">实现搜索框</h3>
+<div class="highlight"><pre><span class="p">.</span><span class="n">search_text</span><span class="p">{</span>
+    <span class="nl">width:</span><span class="mi">190</span><span class="n">px</span><span class="p">;</span>
+    <span class="nl">height:</span><span class="mi">25</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">padding</span><span class="o">-</span><span class="n">right</span><span class="o">:</span> <span class="mi">25</span><span class="n">px</span><span class="p">;</span> <span class="c1">//为背景图腾出空间</span>
+    <span class="nl">background:</span><span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">search</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span> <span class="n">no</span><span class="o">-</span><span class="n">repeat</span> <span class="n">right</span> <span class="n">center</span><span class="p">;</span> <span class="c1">//背景图右侧垂直居中</span>
+    <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="o">:</span> <span class="err">#</span><span class="n">FFF</span><span class="p">;</span><span class="c1">//设置背景色</span>
+    <span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="o">:</span> <span class="mi">7</span><span class="n">px</span><span class="p">;</span> <span class="c1">//处于导航中间</span>
+    <span class="nl">boader:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="err">#</span><span class="n">FFF</span><span class="p">;</span> <span class="c1">//边框白色为1</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="_2">更改菜单背景颜色</h3>
+<p>由于a标签属于内联元素，无高度和宽度属性，因此控制鼠标经过状态改变背景颜色时，仅在有文字的地方显示背景颜色。解决的办法是把a标签变为块级元素.</p>
+<div class="highlight"><pre><span class="n">display</span><span class="o">:</span><span class="n">block</span>
+</pre></div>
+
+
+<p>综上，实现一个菜单基本如下：</p>
+<div class="highlight"><pre><span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>全部<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>初级<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>中级<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>高级<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="cm">/*1. 每个列表项的宽度为50px，高度为30px */</span>
+<span class="n">ul</span><span class="p">{</span>
+    <span class="nl">height:</span><span class="mh">30</span><span class="n">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*2. 列表中的文字在水平和垂直方向上均居中显示*/</span>
+<span class="n">li</span><span class="p">{</span>
+    <span class="n">list</span><span class="o">-</span><span class="nl">style:</span><span class="n">none</span><span class="p">;</span>
+    <span class="nl">float:</span><span class="n">left</span><span class="p">;</span>
+    <span class="nl">width:</span><span class="mh">50</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">text</span><span class="o">-</span><span class="nl">align:</span><span class="n">center</span><span class="p">;</span>
+    <span class="n">line</span><span class="o">-</span><span class="nl">height:</span><span class="mh">30</span><span class="n">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*3. 超链接初始状态和访问后的状态均为黑色无下划线，鼠标经过和点击时文字均为白色，无下划线，背景颜色为#BE3948。*/</span>
+<span class="n">li</span> <span class="n">a</span> <span class="p">{</span>
+    <span class="nl">display:</span><span class="n">block</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">li</span> <span class="nl">a:</span><span class="n">link</span><span class="p">,</span> <span class="n">li</span> <span class="nl">a:</span><span class="n">visited</span><span class="p">{</span>
+    <span class="nl">color:</span><span class="p">#</span><span class="mh">000</span><span class="p">;</span>
+    <span class="n">text</span><span class="o">-</span><span class="nl">decoration:</span><span class="n">none</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">li</span> <span class="nl">a:</span><span class="n">hover</span><span class="p">,</span> <span class="n">li</span> <span class="nl">a:</span><span class="n">active</span><span class="p">{</span>
+    <span class="nl">color:</span><span class="p">#</span><span class="no">FFF</span><span class="p">;</span>
+    <span class="n">text</span><span class="o">-</span><span class="nl">decoration:</span><span class="n">none</span><span class="p">;</span>
+    <span class="n">background</span><span class="o">-</span><span class="nl">color:</span><span class="p">#</span><span class="no">BE3948</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>效果图：</p>
+<p><img alt="菜单效果图" src="images/qy-web-03.jpg" /></p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html" data-title="企业网站布局实践-02导航部分制作" data-url="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html" title="Previous: 企业网站布局实践-01页面头部制作">企业网站布局实践-01页面头部制作</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html" title="Next: 企业网站布局实践-03焦点图制作">企业网站布局实践-03焦点图制作</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-04-01T23:59:00"> 4 1, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Web-ref">Web</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#CSS-ref">CSS
+                    <span>19</span>
+</a></li>
+                <li><a href="/tags.html#HTML-ref">HTML
+                    <span>12</span>
+</a></li>
+                <li><a href="/tags.html#LESS-ref">LESS
+                    <span>12</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Android学习笔记, Android, Androi阅后即焚, Android, " />
+        <title>使用Android开发阅后即焚应用-01 开始  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html"> 使用Android开发阅后即焚应用-01 开始  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <h2 id="1">1.阅后即焚应用介绍</h2>
+<p>阅后即焚是一款应用，用户可以适用它分享文字、照片给他的朋友，朋友们看过发来的消息之后该消息会自动销毁。</p>
+<p>阅后即焚包含用户登录、用户注册、收件箱、好友列表、好友编辑、拍照等功能。</p>
+<hr />
+<h2 id="2">2.开始项目</h2>
+<p>本次项目适用Android Stuidio进行开发。</p>
+<p>打开Android Studio，选择"New Project"，然后输入信息如下：</p>
+<p><img alt="新建项目" src="images/Snip20141004_1.png" /></p>
+<p>选择最小SDK，我们选定4.0版本为最小SDK：</p>
+<p><img alt="选择SDK" src="images/Snip20141004_2.png" /></p>
+<p>选择"Tabbed Activity"标签页作为基础Activity：</p>
+<p><img alt="选择Tabbed Activity" src="images/Snip20141004_3.png" /></p>
+<p>最后，设置项目的MainActivity、Title和Navigation Style。注意，Navigation Style选择"Action Bar Tabs(with ViewPager)"：</p>
+<p><img alt="设置Activity" src="images/Snip20141004_4.png" /></p>
+<p>现在，我们设置好了项目，但是还有一件事情要做，我们只希望应用是垂直的，而不希望手机放平时，应用也跟着水平。我们需要编辑AndroidManifest.xml文件。双击AndroidManifest.xml，文件打开，我们在<code>activity</code>中添加属性<code>android:screenOrientation="portrait"</code>。与eclipse不同，Android Studio目前还没有图形化编辑AndroidManifest.xml的界面。</p>
+<hr />
+<h2 id="3-activity">3. 添加用户登录Activity</h2>
+<p>我们可以到http://www.mobile-patterns.com/ 查看一些优秀的设计，看看别人时怎么做登录设计的。</p>
+<p>要添加登录页面，在菜单中选择"File"-&gt;"New..."-&gt;"Activity"-&gt;"Blank Activity"(注意，还有一个"Login Activity"，但在这里我们不选用它，而是从头创建)。弹出对话框中输入：</p>
+<p><img alt="添加Login Activity" src="images/Snip20141004_5.png" /></p>
+<p>设置用户界面为垂直的，方法同设置MainActivity相同，添加<code>android:screenOrientation="portrait"</code></p>
+<p>构建用户登录界面如下：</p>
+<p><img alt="用户" src="images/Snip20141004_6.png" /></p>
+<p>对应的xml如下</p>
+<div class="highlight"><pre><span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="na">xmlns:tools=</span><span class="s">&quot;http://schemas.android.com/tools&quot;</span>
+    <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+    <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
+    <span class="na">android:paddingLeft=</span><span class="s">&quot;@dimen/activity_horizontal_margin&quot;</span>
+    <span class="na">android:paddingRight=</span><span class="s">&quot;@dimen/activity_horizontal_margin&quot;</span>
+    <span class="na">android:paddingTop=</span><span class="s">&quot;@dimen/activity_vertical_margin&quot;</span>
+    <span class="na">android:paddingBottom=</span><span class="s">&quot;@dimen/activity_vertical_margin&quot;</span>
+    <span class="na">tools:context=</span><span class="s">&quot;io.github.liulixiang1988.rabbit.LoginActivity&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+        <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+        <span class="na">android:id=</span><span class="s">&quot;@+id/username&quot;</span>
+        <span class="na">android:layout_alignParentTop=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">android:layout_alignParentLeft=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">android:layout_alignParentStart=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">android:hint=</span><span class="s">&quot;@string/username&quot;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+        <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+        <span class="na">android:inputType=</span><span class="s">&quot;textPassword&quot;</span>
+        <span class="na">android:ems=</span><span class="s">&quot;10&quot;</span>
+        <span class="na">android:id=</span><span class="s">&quot;@+id/password&quot;</span>
+        <span class="na">android:layout_below=</span><span class="s">&quot;@+id/username&quot;</span>
+        <span class="na">android:layout_alignParentLeft=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">android:layout_alignParentStart=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">android:hint=</span><span class="s">&quot;@string/password&quot;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+        <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+        <span class="na">android:text=</span><span class="s">&quot;@string/login_btn_label&quot;</span>
+        <span class="na">android:id=</span><span class="s">&quot;@+id/btnLogin&quot;</span>
+        <span class="na">android:layout_below=</span><span class="s">&quot;@+id/password&quot;</span>
+        <span class="na">android:layout_centerHorizontal=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
+        <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+        <span class="na">android:textAppearance=</span><span class="s">&quot;?android:attr/textAppearanceSmall&quot;</span>
+        <span class="na">android:text=</span><span class="s">&quot;@string/signup_text_label&quot;</span>
+        <span class="na">android:id=</span><span class="s">&quot;@+id/txtSignUp&quot;</span>
+        <span class="na">android:layout_marginTop=</span><span class="s">&quot;78dp&quot;</span>
+        <span class="na">android:layout_below=</span><span class="s">&quot;@+id/btnLogin&quot;</span>
+        <span class="na">android:layout_centerHorizontal=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/RelativeLayout&gt;</span>
+</pre></div>
+
+
+<p>现在，我们想运行一下看看效果，但是启动界面时<code>MainActivity</code>，因此，我们在<code>MainActivity</code>的<code>onCreate</code>方法中添加：</p>
+<div class="highlight"><pre><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+    <span class="c1">//用户登录界面</span>
+    <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">LoginActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<hr />
+<h2 id="4-activity">4. 添加用户注册Activity</h2>
+<p>新建Activity，添加的Activity名称为<code>SignupActivity</code>。</p>
+<p>设置界面垂直。</p>
+<p>设置Layout如下：</p>
+<p><img alt="设置Layout" src="images/Snip20141004_7.png" /></p>
+<p>对应的xml如下：</p>
+<div class="highlight"><pre><span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="na">xmlns:tools=</span><span class="s">&quot;http://schemas.android.com/tools&quot;</span>
+    <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+    <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
+    <span class="na">android:paddingLeft=</span><span class="s">&quot;@dimen/activity_horizontal_margin&quot;</span>
+    <span class="na">android:paddingRight=</span><span class="s">&quot;@dimen/activity_horizontal_margin&quot;</span>
+    <span class="na">android:paddingTop=</span><span class="s">&quot;@dimen/activity_vertical_margin&quot;</span>
+    <span class="na">android:paddingBottom=</span><span class="s">&quot;@dimen/activity_vertical_margin&quot;</span>
+    <span class="na">tools:context=</span><span class="s">&quot;io.github.liulixiang1988.rabbit.SignupActivity&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+        <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+        <span class="na">android:id=</span><span class="s">&quot;@+id/usernameField&quot;</span>
+        <span class="na">android:layout_alignParentTop=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">android:layout_alignParentLeft=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">android:layout_alignParentStart=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">android:hint=</span><span class="s">&quot;@string/username&quot;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+        <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+        <span class="na">android:inputType=</span><span class="s">&quot;textPassword&quot;</span>
+        <span class="na">android:ems=</span><span class="s">&quot;10&quot;</span>
+        <span class="na">android:id=</span><span class="s">&quot;@+id/passwordField&quot;</span>
+        <span class="na">android:layout_below=</span><span class="s">&quot;@+id/usernameField&quot;</span>
+        <span class="na">android:layout_alignParentLeft=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">android:layout_alignParentStart=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">android:hint=</span><span class="s">&quot;@string/password&quot;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;EditText</span>
+        <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+        <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+        <span class="na">android:inputType=</span><span class="s">&quot;textEmailAddress&quot;</span>
+        <span class="na">android:ems=</span><span class="s">&quot;10&quot;</span>
+        <span class="na">android:id=</span><span class="s">&quot;@+id/emailField&quot;</span>
+        <span class="na">android:layout_below=</span><span class="s">&quot;@+id/passwordField&quot;</span>
+        <span class="na">android:layout_alignParentLeft=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">android:layout_alignParentStart=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">android:hint=</span><span class="s">&quot;@string/email_text_label&quot;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;Button</span>
+        <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+        <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
+        <span class="na">android:text=</span><span class="s">&quot;@string/signup_btn_label&quot;</span>
+        <span class="na">android:id=</span><span class="s">&quot;@+id/btnSignup&quot;</span>
+        <span class="na">android:layout_below=</span><span class="s">&quot;@+id/emailField&quot;</span>
+        <span class="na">android:layout_alignParentLeft=</span><span class="s">&quot;true&quot;</span>
+        <span class="na">android:layout_alignParentStart=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/RelativeLayout&gt;</span>
+</pre></div>
+
+
+<p>添加从登录LoginActivity到注册SignupActivity的跳转。打开LoginActivity，添加如下：</p>
+<div class="highlight"><pre><span class="kd">protected</span> <span class="n">TextView</span> <span class="n">txtSignup</span><span class="o">;</span>
+
+<span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_login</span><span class="o">);</span>
+
+    <span class="n">txtSignup</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">txtSignUp</span><span class="o">);</span>
+    <span class="n">txtSignup</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">LoginActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">SignupActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+            <span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">});</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<hr />
+<h2 id="5-backup">5. Back和Up导航</h2>
+<p>Up导航是在app内导航到上一级别，<strong>始终是在同一个app内</strong>, 而Back导航则是根据用户的历史记录进行导航，比如导航到桌面或者其他应用中。</p>
+<p>现在我们想要设置Signup(注册)的Up导航是Login(登录)，该怎么办呢？</p>
+<p>打开AndroidManifest.xml，在Signup中添加<code>android:parentActivityName</code>，如下：</p>
+<div class="highlight"><pre><span class="nt">&lt;activity</span>
+    <span class="na">android:name=</span><span class="s">&quot;.SignupActivity&quot;</span>
+    <span class="na">android:label=</span><span class="s">&quot;@string/title_activity_signup&quot;</span>
+    <span class="na">android:parentActivityName=</span><span class="s">&quot;.LoginActivity&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/activity&gt;</span>
+</pre></div>
+
+
+<p><strong>注意</strong>，<code>android:parentActivityName</code>的值设置为Activity类名，也可以设置全名，比如<code>io.github.liulixiang1988.rabbit.LoginActivity</code></p>
+<p>现在，我们再次运行程序，点击"注册"后，界面切换到注册，如下：</p>
+<p><img alt="up导航注册界面" src="images/Snip20141004_8.png" /></p>
+<p>请注意图中用红色线框住的那一部分，有一个返回图标，点击它就会返回到登录界面。</p>
+<p>另一个问题，如果我们在登录界面按鼠标上的返回按钮，那会发生什么呢？我们点击一下看看，竟然是收件箱画面：</p>
+<p><img alt="收件箱" src="images/Snip20141004_9.png" /></p>
+<p>这肯定不对，因为用户没有登录，不应该看到这个画面。</p>
+<p>这种是由于什么原因导致的呢？Android在Activity跳转的过程中，会自己维护一个堆栈用来存放Activity的顺序，该堆栈适用后进先出的方式，在按返回按钮时会逐层返回Activity。有时我们想开辟一个新的堆栈，这个时候就需要添加一些flag来告诉Android我们的想法。对于Rabbit应用，我们希望用户在登录界面点击返回按钮时不要回到收件箱。这个时候，我们需要在MainActivity中设置flag。</p>
+<div class="highlight"><pre><span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">LoginActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="c1">//第1种方法</span>
+<span class="c1">//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);</span>
+<span class="c1">//第2种方法</span>
+<span class="n">intent</span><span class="o">.</span><span class="na">addFlags</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_NEW_TASK</span><span class="o">);</span>
+<span class="n">intent</span><span class="o">.</span><span class="na">addFlags</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_CLEAR_TASK</span><span class="o">);</span>
+<span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
+</pre></div>
+
+
+<p>这样，当在登录界面时按返回按钮就不会有到收件箱这种现象了。</p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html" data-title="使用Android开发阅后即焚应用-01 开始" data-url="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html" title="Previous: 使用Android开发一个博客阅读器-05 使用Intent显示和共享博客">使用Android开发一个博客阅读器-05 使用Intent显示和共享博客</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html" title="Next: 使用Android开发一个阅后即焚-02 使用Parse.com添加用户">使用Android开发一个阅后即焚-02 使用Parse.com添加用户</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2014-10-04T09:48:00">10 4, 2014</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Android-ref">Android</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Android-ref">Android
+                    <span>17</span>
+</a></li>
+                <li><a href="/tags.html#Android学习笔记-ref">Android学习笔记
+                    <span>14</span>
+</a></li>
+                <li><a href="/tags.html#Androi阅后即焚-ref">Androi阅后即焚
+                    <span>1</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

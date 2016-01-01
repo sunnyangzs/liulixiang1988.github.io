@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Android学习笔记, Android, Androi博客阅读, Android, " />
+        <title>使用Android开发一个博客阅读器-03 从网络中获取数据  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-03-cong-wang-luo-zhong-huo-qu-shu-ju.html"> 使用Android开发一个博客阅读器-03 从网络中获取数据  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <h2 id="1-url">1 获取URL</h2>
+<p>在MainListActivity.java中添加两个常量：</p>
+<div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">NUMBER_OF_POSTS</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span> <span class="c1">//博客数目</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TAG</span> <span class="o">=</span> <span class="n">MainListActivity</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">();</span> <span class="c1">//用来做日志输出时调用</span>
+</pre></div>
+
+
+<p>然后修改<code>onCreate</code>方法：</p>
+<div class="highlight"><pre><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main_list</span><span class="o">);</span>
+    <span class="k">try</span><span class="o">{</span>
+        <span class="n">URL</span> <span class="n">blogFeedUrl</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">&quot;http://blog.teamtreehouse.com/api/get_recent_summary/?count=&quot;</span><span class="o">+</span><span class="n">NUMBER_OF_POSTS</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">catch</span><span class="o">(</span><span class="n">MalformedURLException</span> <span class="n">e</span><span class="o">){</span>
+        <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Eception Caught:&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="n">ArrayAdapter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayAdapter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="k">this</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_list_item_1</span><span class="o">,</span> <span class="n">names</span><span class="o">);</span>
+    <span class="n">setListAdapter</span><span class="o">(</span><span class="n">adapter</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<hr />
+<h2 id="2">2 从网上获取数据的错误方法</h2>
+<p>要让应用能够上网，首先，需要在AndroidManifest.xml中添加权限</p>
+<div class="highlight"><pre><span class="nt">&lt;uses-sdk</span>
+    <span class="na">android:minSdkVersion=</span><span class="s">&quot;9&quot;</span>
+    <span class="na">android:targetSdkVersion=</span><span class="s">&quot;21&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.INTERNET&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>然后在<code>onCreate</code>方法中添加如下方法：</p>
+<div class="highlight"><pre><span class="k">try</span><span class="o">{</span>
+    <span class="n">URL</span> <span class="n">blogFeedUrl</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">&quot;http://blog.teamtreehouse.com/api/get_recent_summary/?count=&quot;</span><span class="o">+</span><span class="n">NUMBER_OF_POSTS</span><span class="o">);</span>
+    <span class="n">HttpURLConnection</span> <span class="n">connection</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpsURLConnection</span><span class="o">)</span> <span class="n">blogFeedUrl</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+
+    <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+    <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Response Code:&quot;</span><span class="o">+</span><span class="n">responseCode</span><span class="o">);</span>
+
+<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">MalformedURLException</span> <span class="n">e</span><span class="o">){</span>
+    <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Eception Caught:&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Eception Caught:&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+    <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Eception Caught:&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>上面的方法错在哪呢？错在将网络访问放在主线程内进行。</p>
+<hr />
+<h2 id="3">3. 异步请求</h2>
+<p><code>android.os.AsyncTask</code>用来执行异步请求。要实现自己的异步请求，需要做下面的工作。</p>
+<h3 id="31-androidosasynctaskdoinbackground">3.1 继承<code>android.os.AsyncTask</code>，实现<code>doInBackground</code>方法</h3>
+<div class="highlight"><pre><span class="kd">private</span> <span class="kd">class</span> <span class="nc">GetBlogPostTasks</span> <span class="kd">extends</span> <span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="n">Object</span> <span class="nf">doInBackground</span><span class="o">(</span><span class="n">Object</span><span class="o">...</span> <span class="n">params</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">null</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+
+
+<p><code>AsyncTask&lt;Object, Object, Object&gt;</code>的三个参数分别是：</p>
+<ol>
+<li>传递给<code>doInBackground</code>的参数类型</li>
+<li>后台执行的进度单位的类型</li>
+<li>返回值得类型</li>
+</ol>
+<p>由此，我们进行改造，因为我们不用传递给<code>doInBackground</code>参数，所以不用对第一个参数进行修改。并且，我们也不用关心进度情况，可以将第二个参数类型修改为<code>Void</code>，最后，我们希望返回状态码，因此第三个类型，修改为<code>String</code>。</p>
+<p>注意，<code>doInBackground</code>的返回值也要修改。</p>
+<p>一般来说，异步的类直接放到要使用它的类里面，因此，我们在<code>MainListActivity</code>中添加的代码如下：</p>
+<div class="highlight"><pre><span class="kd">private</span> <span class="kd">class</span> <span class="nc">GetBlogPostTasks</span> <span class="kd">extends</span> <span class="n">AsyncTask</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Void</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="n">String</span> <span class="nf">doInBackground</span><span class="o">(</span><span class="n">Object</span><span class="o">...</span> <span class="n">params</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="n">URL</span> <span class="n">blogFeedUrl</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">&quot;http://blog.teamtreehouse.com/api/get_recent_summary/?count=&quot;</span><span class="o">+</span><span class="n">NUMBER_OF_POSTS</span><span class="o">);</span>
+            <span class="n">HttpURLConnection</span> <span class="n">connection</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">blogFeedUrl</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+            <span class="n">connection</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+
+            <span class="n">responseCode</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Response Code:&quot;</span><span class="o">+</span><span class="n">responseCode</span><span class="o">);</span>
+
+        <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">MalformedURLException</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Eception Caught:&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Eception Caught:&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Eception Caught:&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="s">&quot;Response Status&quot;</span><span class="o">+</span><span class="n">responseCode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+
+
+<h3 id="32">3.2 调用异步类</h3>
+<p>调用异步类的方法比较容易，在<code>MainListActivity</code>的<code>onCreate</code>方法中添加：</p>
+<div class="highlight"><pre><span class="n">GetBlogPostTasks</span> <span class="n">getBlogPostTask</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GetBlogPostTasks</span><span class="o">();</span>
+<span class="n">getBlogPostTask</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
+</pre></div>
+
+
+<hr />
+<h2 id="4">4 处理无法联网的情况</h2>
+<p>在从网上获取数据时，我们还有一件事情要做，就是处理网络不可用的时候的情况。</p>
+<p>要检查网络状况，也需要对应的权限，在AndroidManifest文件中添加对应的权限：</p>
+<div class="highlight"><pre><span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.ACCESS_NETWORK_STATE&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>然后在<code>MainListActivity</code>中添加方法用来检查网络情况：</p>
+<div class="highlight"><pre><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isNetworkAvailable</span><span class="o">(){</span>
+    <span class="n">ConnectivityManager</span> <span class="n">manager</span> <span class="o">=</span> <span class="o">(</span><span class="n">ConnectivityManager</span><span class="o">)</span> <span class="n">getSystemService</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">CONNECTIVITY_SERVICE</span><span class="o">);</span>
+    <span class="n">NetworkInfo</span> <span class="n">networkinfo</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="na">getActiveNetworkInfo</span><span class="o">();</span>
+
+    <span class="kt">boolean</span> <span class="n">isAvailable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">networkinfo</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">networkinfo</span><span class="o">.</span><span class="na">isConnected</span><span class="o">()){</span>
+        <span class="n">isAvailable</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">isAvailable</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<ul>
+<li><code>getSystemService</code>获取的是<code>Object</code>类型，需要转换一下</li>
+<li><code>Context</code>定义了一些系统自带Service的常量</li>
+<li><code>ConnectivityManager</code>类的<code>getActiviteNetworkInfo</code>方法返回<code>NetworkInfo</code>类</li>
+<li><code>NetworkInfo</code>的<code>isConnected</code>方法用来检查是否已经联网</li>
+</ul>
+<p>最后，更改<code>onCreate</code>方法，在网络访问前先检查网络状况，如果网络状况不好提醒用户：</p>
+<div class="highlight"><pre><span class="k">if</span> <span class="o">(</span><span class="n">isNetworkAvailable</span><span class="o">())</span> <span class="o">{</span>
+    <span class="n">GetBlogPostTasks</span> <span class="n">getBlogPostTask</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GetBlogPostTasks</span><span class="o">();</span>
+    <span class="n">getBlogPostTask</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
+<span class="o">}</span><span class="k">else</span><span class="o">{</span>
+    <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">&quot;网络连接不可用&quot;</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<hr />
+<h2 id="5-httpjson">5 从HTTP请求中获得JSON数据</h2>
+<p>获取JSON数据的网址是http://blog.teamtreehouse.com/api/get_recent_summary/?count=20 可以先在浏览器中打开看看数据的格式。</p>
+<p>在前一节中，我们检查了网络情况，并打印了返回值。在本节中，我们将从结果中打印出返回的结果。</p>
+<div class="highlight"><pre><span class="k">try</span><span class="o">{</span>
+    <span class="n">URL</span> <span class="n">blogFeedUrl</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">&quot;http://blog.teamtreehouse.com/api/get_recent_summary/?count=&quot;</span><span class="o">+</span><span class="n">NUMBER_OF_POSTS</span><span class="o">);</span>
+    <span class="n">HttpURLConnection</span> <span class="n">connection</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">blogFeedUrl</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+    <span class="n">connection</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+
+    <span class="n">responseCode</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">responseCode</span> <span class="o">==</span> <span class="n">HttpURLConnection</span><span class="o">.</span><span class="na">HTTP_OK</span><span class="o">){</span>
+        <span class="n">InputStream</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">();</span>
+        <span class="n">Reader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">InputStreamReader</span><span class="o">(</span><span class="n">inputStream</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">contentLength</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">getContentLength</span><span class="o">();</span>
+        <span class="kt">char</span><span class="o">[]</span> <span class="n">charArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="o">[</span><span class="n">contentLength</span><span class="o">];</span>
+        <span class="n">reader</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">charArray</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">resonseData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">charArray</span><span class="o">);</span>
+        <span class="n">Log</span><span class="o">.</span><span class="na">v</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="n">resonseData</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Unsuccessful HTTP Response Code: &quot;</span><span class="o">+</span><span class="n">responseCode</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">MalformedURLException</span> <span class="n">e</span><span class="o">){</span>
+    <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Eception Caught:&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Eception Caught:&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+    <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Eception Caught:&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>我们主要看中间<code>if</code>判断这一部分。</p>
+<ul>
+<li><code>responseCode == HttpURLConnection.HTTP_OK</code>用来判断数据是否成功获取</li>
+<li>请求返回结果从<code>InputStream inputStream = connection.getInputStream();</code>中获取，然后使用<code>Reader reader = new InputStreamReader(inputStream);</code>来读取。</li>
+<li><code>Reader</code>读取的是<code>char[]</code>类型，因此需要声明一个<code>char[]</code>数组，数组长度是返回内容的长度，通过<code>connection.getContentLength()</code>获取</li>
+<li><code>char[]</code>转换为<code>String</code>，并调用<code>Log.v</code>输出，这里的<code>v</code>是指verbose</li>
+</ul>
+<hr />
+<h2 id="6-json">6 从JSON格式中解析数据</h2>
+<p>Android提供了内建对象用来做JSON解析：</p>
+<ul>
+<li><code>JSONObject</code></li>
+<li><code>JSONArray</code>：<code>JSONObject</code>数组</li>
+</ul>
+<h3 id="61-jsonobject">6.1 声明JSONObject</h3>
+<div class="highlight"><pre><span class="n">JSONObject</span> <span class="n">jsonResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONObject</span><span class="o">(</span><span class="n">responseData</span><span class="o">);</span>
+</pre></div>
+
+
+<h3 id="62-jsonobject">6.2 获取JSONObject中的数据</h3>
+<p><code>JSONObject</code>提供了很多获取数据的方法，比如<code>getString</code>, <code>getInt</code>, <code>getJSONArray</code>等。</p>
+<p><strong>注意</strong>，<code>getJSONArray</code>返回<code>JSONArray</code>对象。</p>
+<div class="highlight"><pre><span class="n">String</span> <span class="n">status</span> <span class="o">=</span> <span class="n">jsonResponse</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;status&quot;</span><span class="o">);</span>
+<span class="n">JSONArray</span> <span class="n">jsonPosts</span> <span class="o">=</span> <span class="n">jsonResponse</span><span class="o">.</span><span class="na">getJSONArray</span><span class="o">(</span><span class="s">&quot;posts&quot;</span><span class="o">);</span>
+</pre></div>
+
+
+<h3 id="63-jsonarray">6.3 使用JSONArray</h3>
+<div class="highlight"><pre><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">jsonPosts</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++){</span>
+    <span class="n">JSONObject</span> <span class="n">jsonPost</span> <span class="o">=</span> <span class="n">jsonPosts</span><span class="o">.</span><span class="na">getJSONObject</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">title</span> <span class="o">=</span> <span class="n">jsonPost</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;title&quot;</span><span class="o">);</span>
+    <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Post &quot;</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">&quot;: &quot;</span> <span class="o">+</span> <span class="n">title</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>整个方法如下：</p>
+<div class="highlight"><pre><span class="kd">protected</span> <span class="n">String</span> <span class="nf">doInBackground</span><span class="o">(</span><span class="n">Object</span><span class="o">...</span> <span class="n">params</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">responseCode</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="k">try</span><span class="o">{</span>
+        <span class="n">URL</span> <span class="n">blogFeedUrl</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">&quot;http://blog.teamtreehouse.com/api/get_recent_summary/?count=&quot;</span><span class="o">+</span><span class="n">NUMBER_OF_POSTS</span><span class="o">);</span>
+        <span class="n">HttpURLConnection</span> <span class="n">connection</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span> <span class="n">blogFeedUrl</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
+        <span class="n">connection</span><span class="o">.</span><span class="na">connect</span><span class="o">();</span>
+
+        <span class="n">responseCode</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">();</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">responseCode</span> <span class="o">==</span> <span class="n">HttpURLConnection</span><span class="o">.</span><span class="na">HTTP_OK</span><span class="o">){</span>
+            <span class="n">InputStream</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">();</span>
+            <span class="n">Reader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">InputStreamReader</span><span class="o">(</span><span class="n">inputStream</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">contentLength</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">getContentLength</span><span class="o">();</span>
+            <span class="kt">char</span><span class="o">[]</span> <span class="n">charArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="o">[</span><span class="n">contentLength</span><span class="o">];</span>
+            <span class="n">reader</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">charArray</span><span class="o">);</span>
+            <span class="n">String</span> <span class="n">responseData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">charArray</span><span class="o">);</span>
+
+            <span class="n">JSONObject</span> <span class="n">jsonResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONObject</span><span class="o">(</span><span class="n">responseData</span><span class="o">);</span>
+            <span class="n">String</span> <span class="n">status</span> <span class="o">=</span> <span class="n">jsonResponse</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;status&quot;</span><span class="o">);</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">v</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="n">status</span><span class="o">);</span>
+
+            <span class="n">JSONArray</span> <span class="n">jsonPosts</span> <span class="o">=</span> <span class="n">jsonResponse</span><span class="o">.</span><span class="na">getJSONArray</span><span class="o">(</span><span class="s">&quot;posts&quot;</span><span class="o">);</span>
+
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">jsonPosts</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++){</span>
+                <span class="n">JSONObject</span> <span class="n">jsonPost</span> <span class="o">=</span> <span class="n">jsonPosts</span><span class="o">.</span><span class="na">getJSONObject</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                <span class="n">String</span> <span class="n">title</span> <span class="o">=</span> <span class="n">jsonPost</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;title&quot;</span><span class="o">);</span>
+                <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Post &quot;</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">&quot;: &quot;</span> <span class="o">+</span> <span class="n">title</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Unsuccessful HTTP Response Code: &quot;</span><span class="o">+</span><span class="n">responseCode</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="n">MalformedURLException</span> <span class="n">e</span><span class="o">){</span>
+        <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Eception Caught:&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Eception Caught:&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+        <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Eception Caught:&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="k">return</span> <span class="s">&quot;Response Status&quot;</span><span class="o">+</span><span class="n">responseCode</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-03-cong-wang-luo-zhong-huo-qu-shu-ju.html" data-title="使用Android开发一个博客阅读器-03 从网络中获取数据" data-url="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-03-cong-wang-luo-zhong-huo-qu-shu-ju.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html" title="Previous: 使用Android开发一个博客阅读器-02 从头开始创建">使用Android开发一个博客阅读器-02 从头开始创建</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html" title="Next: Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移">Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2014-09-26T15:37:00"> 9 26, 2014</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Android-ref">Android</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Androi博客阅读-ref">Androi博客阅读
+                    <span>5</span>
+</a></li>
+                <li><a href="/tags.html#Android-ref">Android
+                    <span>17</span>
+</a></li>
+                <li><a href="/tags.html#Android学习笔记-ref">Android学习笔记
+                    <span>14</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Android学习笔记, Android, Androi博客阅读, Android, " />
+        <title>使用Android开发一个博客阅读器-01 使用Master-Detail模板  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html"> 使用Android开发一个博客阅读器-01 使用Master-Detail模板  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <p>项目地址：https://github.com/liulixiang1988/android_demo/tree/master/MasterDetailExample</p>
+<p>我们使用Master-Detail模板来做本应用的模板。</p>
+<h2 id="master-detail">建立Master-Detail模板</h2>
+<p>新建Android项目，命名为MasterDetailExample，模板类型选择为Master-Detail。</p>
+<hr />
+<h2 id="master-details">理解Master-Details模板</h2>
+<p>ListFraments和DetailFragments</p>
+<p>DummyContent用来作为MVC中的Model，保存List数据。</p>
+<hr />
+<h2 id="fragments">Fragments中几种方法的调用顺序</h2>
+<h3 id="1onattachactivity-activity">1.<code>onAttach(Activity activity)</code>第一个被调用</h3>
+<p>包含Fragment的Activity必须实现<code>Callbacks</code>接口。</p>
+<div class="highlight"><pre><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAttach</span><span class="o">(</span><span class="n">Activity</span> <span class="n">activity</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onAttach</span><span class="o">(</span><span class="n">activity</span><span class="o">);</span>
+
+    <span class="c1">// Activities containing this fragment must implement its callbacks.</span>
+    <span class="k">if</span> <span class="o">(!(</span><span class="n">activity</span> <span class="k">instanceof</span> <span class="n">Callbacks</span><span class="o">))</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalStateException</span><span class="o">(</span><span class="s">&quot;Activity must implement fragment&#39;s callbacks.&quot;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="n">mCallbacks</span> <span class="o">=</span> <span class="o">(</span><span class="n">Callbacks</span><span class="o">)</span> <span class="n">activity</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h3 id="2-oncreatebundle-savedinstancestate">2. <code>onCreate(Bundle savedInstanceState)</code>第二个被调用</h3>
+<p>这里设置一些数据项。</p>
+<div class="highlight"><pre><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+
+    <span class="c1">// TODO: replace with a real list adapter.</span>
+    <span class="n">setListAdapter</span><span class="o">(</span><span class="k">new</span> <span class="n">ArrayAdapter</span><span class="o">&lt;</span><span class="n">DummyContent</span><span class="o">.</span><span class="na">DummyItem</span><span class="o">&gt;(</span>
+            <span class="n">getActivity</span><span class="o">(),</span>
+            <span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_list_item_activated_1</span><span class="o">,</span>
+            <span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">text1</span><span class="o">,</span>
+            <span class="n">DummyContent</span><span class="o">.</span><span class="na">ITEMS</span><span class="o">));</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h3 id="3onviewcreatedview-view-bundle-savedinstancestate">3.<code>onViewCreated(View view, Bundle savedInstanceState)</code>第三个被调用</h3>
+<div class="highlight"><pre><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onViewCreated</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">,</span> <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onViewCreated</span><span class="o">(</span><span class="n">view</span><span class="o">,</span> <span class="n">savedInstanceState</span><span class="o">);</span>
+
+    <span class="c1">// Restore the previously serialized activated item position.</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">savedInstanceState</span> <span class="o">!=</span> <span class="kc">null</span>
+            <span class="o">&amp;&amp;</span> <span class="n">savedInstanceState</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">STATE_ACTIVATED_POSITION</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">setActivatedPosition</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="n">STATE_ACTIVATED_POSITION</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h3 id="4-listfragmentonlistitemclicklistview-listview-view-view-int-position-long-id">4. 对于ListFragment，当点击时，<code>onListItemClick(ListView listView, View view, int position, long id)</code>被调用</h3>
+<div class="highlight"><pre><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onListItemClick</span><span class="o">(</span><span class="n">ListView</span> <span class="n">listView</span><span class="o">,</span> <span class="n">View</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="kt">long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onListItemClick</span><span class="o">(</span><span class="n">listView</span><span class="o">,</span> <span class="n">view</span><span class="o">,</span> <span class="n">position</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+
+    <span class="c1">// Notify the active callbacks interface (the activity, if the</span>
+    <span class="c1">// fragment is attached to one) that an item has been selected.</span>
+    <span class="n">mCallbacks</span><span class="o">.</span><span class="na">onItemSelected</span><span class="o">(</span><span class="n">DummyContent</span><span class="o">.</span><span class="na">ITEMS</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">position</span><span class="o">).</span><span class="na">id</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<hr />
+<h2 id="detailactivity">理解DetailActivity源码</h2>
+<p>DetailActivity中包含的Fragment是手工添加的，而非通过Layout文件添加。添加的代码在<code>onCreate</code>方法中。
+我们使用<code>fragment.setArguments(arguments)</code>来设置参数，其中参数<code>arguments</code>是<code>Bundle</code>类型。</p>
+<div class="highlight"><pre><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+    <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_blogpost_detail</span><span class="o">);</span>
+
+    <span class="c1">// 添加返回按钮</span>
+    <span class="n">getActionBar</span><span class="o">().</span><span class="na">setDisplayHomeAsUpEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+    <span class="c1">// savedInstanceState is non-null when there is fragment state</span>
+    <span class="c1">// saved from previous configurations of this activity</span>
+    <span class="c1">// (e.g. when rotating the screen from portrait to landscape).</span>
+    <span class="c1">// In this case, the fragment will automatically be re-added</span>
+    <span class="c1">// to its container so we don&#39;t need to manually add it.</span>
+    <span class="c1">// For more information, see the Fragments API guide at:</span>
+    <span class="c1">//</span>
+    <span class="c1">// http://developer.android.com/guide/components/fragments.html</span>
+    <span class="c1">//</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">savedInstanceState</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Create the detail fragment and add it to the activity</span>
+        <span class="c1">// using a fragment transaction.</span>
+        <span class="n">Bundle</span> <span class="n">arguments</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundle</span><span class="o">();</span>
+        <span class="c1">//传递列表行到Fragment中</span>
+        <span class="n">arguments</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="n">BlogPostDetailFragment</span><span class="o">.</span><span class="na">ARG_ITEM_ID</span><span class="o">,</span>
+                <span class="n">getIntent</span><span class="o">().</span><span class="na">getStringExtra</span><span class="o">(</span><span class="n">BlogPostDetailFragment</span><span class="o">.</span><span class="na">ARG_ITEM_ID</span><span class="o">));</span>
+        <span class="c1">//创建Fragment</span>
+        <span class="n">BlogPostDetailFragment</span> <span class="n">fragment</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BlogPostDetailFragment</span><span class="o">();</span>
+        <span class="n">fragment</span><span class="o">.</span><span class="na">setArguments</span><span class="o">(</span><span class="n">arguments</span><span class="o">);</span>
+        <span class="n">getFragmentManager</span><span class="o">().</span><span class="na">beginTransaction</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">blogpost_detail_container</span><span class="o">,</span> <span class="n">fragment</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h2 id="detailfragment">理解DetailFragment源码</h2>
+<p>DetailFragment中包含一个<code>mItem</code>，它是<code>DummyContent.DummyItem</code>类型。
+在<code>onCreate</code>方法中，我们使用<code>getArguments</code>来获取传递的<code>Bundle</code>类型的参数，然后再调用<code>Bundle.getString()</code>方法就能获取<code>Bundle</code>中的数据。</p>
+<div class="highlight"><pre>    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">getArguments</span><span class="o">().</span><span class="na">containsKey</span><span class="o">(</span><span class="n">ARG_ITEM_ID</span><span class="o">))</span> <span class="o">{</span>
+            <span class="c1">// Load the dummy content specified by the fragment</span>
+            <span class="c1">// arguments. In a real-world scenario, use a Loader</span>
+            <span class="c1">// to load content from a content provider.</span>
+            <span class="n">mItem</span> <span class="o">=</span> <span class="n">DummyContent</span><span class="o">.</span><span class="na">ITEM_MAP</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">getArguments</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="n">ARG_ITEM_ID</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</pre></div>
+
+
+<p>再来看看<code>onCreateView</code>方法，用<code>mItem.content</code>来填充数据，我们也可以换成其他的数据类型。</p>
+<div class="highlight"><pre>    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">View</span> <span class="nf">onCreateView</span><span class="o">(</span><span class="n">LayoutInflater</span> <span class="n">inflater</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">container</span><span class="o">,</span>
+            <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">View</span> <span class="n">rootView</span> <span class="o">=</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">fragment_blogpost_detail</span><span class="o">,</span> <span class="n">container</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+
+        <span class="c1">// Show the dummy content as text in a TextView.</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">mItem</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="o">((</span><span class="n">TextView</span><span class="o">)</span> <span class="n">rootView</span><span class="o">.</span><span class="na">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">blogpost_detail</span><span class="o">)).</span><span class="na">setText</span><span class="o">(</span><span class="n">mItem</span><span class="o">.</span><span class="na">content</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">rootView</span><span class="o">;</span>
+    <span class="o">}</span>
+</pre></div>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html" data-title="使用Android开发一个博客阅读器-01 使用Master-Detail模板" data-url="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/nancy-webkuang-jia.html" title="Previous: Nancy Web框架">Nancy Web框架</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html" title="Next: 使用Android开发一个博客阅读器-02 从头开始创建">使用Android开发一个博客阅读器-02 从头开始创建</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2014-09-19T21:36:00"> 9 19, 2014</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Android-ref">Android</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Androi博客阅读-ref">Androi博客阅读
+                    <span>5</span>
+</a></li>
+                <li><a href="/tags.html#Android-ref">Android
+                    <span>17</span>
+</a></li>
+                <li><a href="/tags.html#Android学习笔记-ref">Android学习笔记
+                    <span>14</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

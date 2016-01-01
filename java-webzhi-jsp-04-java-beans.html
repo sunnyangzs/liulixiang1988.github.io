@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Java, Web, JSP, Java, " />
+        <title>Java Web之JSP-04 Java Beans  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/java-webzhi-jsp-04-java-beans.html"> Java Web之JSP-04 Java Beans  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <h2 id="1-javabean">1. JavaBean简介</h2>
+<p>javaBeans就是符合某种特定的规范的java类。使用JavaBeans的好处是解决代码重复编写，减少代码冗余，功能区分明确，提高了代码的可维护性。</p>
+<p>JavaBean的设计原则：</p>
+<ol>
+<li>公有类</li>
+<li>属性私有</li>
+<li>无参的公有构造方法</li>
+<li>getter和setter方法</li>
+</ol>
+<h2 id="2-jsp">2. JSP动作元素</h2>
+<h3 id="21-jsp">2.1 什么是JSP动作元素</h3>
+<p>JSP动作元素（action element），动作元素为请求处理阶段提供信息。动作元素遵循XML语法，有一个包含元素名的开始标签，可以有属性，可选的内容、与开始标签匹配的结束标签。</p>
+<h3 id="22-jsp">2.2 JSP动作元素的五大类</h3>
+<p>第一类是与存取JavaBean有关的，包括：
+<code>&lt;jsp:useBean&gt; &lt;jsp:setProperty&gt; &lt;jsp:getProperty&gt;</code></p>
+<p>第二类是JSP1.2就开始有的基本元素，包括6个动作元素：
+<code>&lt;jsp:include&gt; &lt;jsp:forward&gt; &lt;jsp:param&gt; &lt;jsp:plugin&gt; &lt;jsp:params&gt; &lt;jsp:fallback&gt;</code></p>
+<p>第三类是JSP2.0新增的元素，主要与JSP Document有关，包括6个元素：
+<code>&lt;jsp:root&gt; &lt;jsp:declaration&gt; &lt;jsp:scriptlet&gt; &lt;jsp:expression&gt; &lt;jsp:text&gt; &lt;jsp:output&gt;</code></p>
+<p>第四类是JSP2.0新增的动作元素，主要是用来动态生成XML元素标签的值，包括三个动作：
+<code>&lt;jsp:attribute&gt; &lt;jsp:body&gt;  &lt;jsp:element&gt;</code></p>
+<p>第五类是JSP2.0新增的动作元素，主要是用在Tag File中，有2个元素：
+<code>&lt;jsp:invoke&gt; &lt;jsp:dobody&gt;</code></p>
+<h2 id="3-jspjava-beans">3. 如何在JSP中使用Java  Beans</h2>
+<h3 id="31-java">3.1 像使用普通java类一样</h3>
+<ol>
+<li>创建在src文件下，（可以创建包）创建一个类，满足设计原则即可</li>
+<li>使用前通过import导入，通过使用new创建Javabean实例.在顶端添加<code>&lt;%@ page import="com.po.Users" %&gt;</code>，导入javabean包</li>
+</ol>
+<h3 id="32-usebean">3.2 useBean元素</h3>
+<p>在JSP页面中通常使用JSP动作标签使用javabean(useBeans动作、setProperty动作、getProperty动作)
+<code>&lt;jsp:useBeans&gt;</code>
+作用：在jsp页面中实例化或者在指定范围内使用javabean:
+<code>&lt;jsp:useBean id="标识符" class="Java类名" scope="作用范围"/&gt;</code></p>
+<h3 id="33-setproperty">3.3 使用setProperty</h3>
+<p><code>&lt;jsp:setProperty&gt;</code>动作：给【已经实例化的Javabean对象的属性赋值】，一共有四种形式。</p>
+<ol>
+<li>根据表单自动匹配所有的属性
+<code>&lt;jsp:setProperty name="myUsers" property="*"/&gt;</code></li>
+<li>根据表单自动匹配相应的属性（部分匹配）
+<code>&lt;jsp:setProperty name="myUsers" property="username"/&gt;</code></li>
+<li>与表单无关，通过手工赋值给属性
+<code>&lt;jsp:setProperty name="myUsers" property="username" value=“Lisa”/&gt;</code></li>
+<li>通过url传参数给属性赋值</li>
+</ol>
+<div class="highlight"><pre><span class="o">&lt;</span><span class="n">jsp</span><span class="o">:</span><span class="n">setProperty</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;myUsers&quot;</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;username&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">jsp</span><span class="o">:</span><span class="n">setProperty</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;myUsers&quot;</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;password&quot;</span> <span class="n">param</span><span class="o">=</span><span class="err">“</span><span class="n">mypass</span><span class="err">”</span><span class="o">/&gt;</span>
+</pre></div>
+
+
+<p>案例：
+表单部分：</p>
+<div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;dologin.jsp&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;table&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>用户名<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span><span class="nt">/&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>密码<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">name=</span><span class="s">&quot;password&quot;</span><span class="nt">/&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;提交&quot;</span><span class="nt">/&gt;&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre></div>
+
+
+<p>dologin.jsp中匹配：</p>
+<div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>根据表单自动匹配所有属性<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;hr/&gt;</span>
+<span class="nt">&lt;jsp:useBean</span> <span class="na">id=</span><span class="s">&quot;myUsers&quot;</span> <span class="na">class=</span><span class="s">&quot;liulx.javabean.User&quot;</span> <span class="na">scope=</span><span class="s">&quot;page&quot;</span> <span class="nt">/&gt;</span>
+<span class="cp">&lt;%</span><span class="n">request</span><span class="o">.</span><span class="n">setCharacterEncoding</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">);</span><span class="cp">%&gt;</span>
+<span class="nt">&lt;jsp:setProperty</span> <span class="na">name=</span><span class="s">&quot;myUsers&quot;</span> <span class="na">property=</span><span class="s">&quot;*&quot;</span> <span class="nt">/&gt;</span>
+用户名：<span class="cp">&lt;%=</span><span class="n">myUsers</span><span class="o">.</span><span class="n">getUsername</span><span class="p">()</span><span class="cp">%&gt;</span>
+密码：<span class="cp">&lt;%=</span><span class="n">myUsers</span><span class="o">.</span><span class="n">getPassword</span><span class="p">()</span><span class="cp">%&gt;</span>
+</pre></div>
+
+
+<h3 id="34-getproperty">3.4 getProperty标签</h3>
+<p><code>&lt;jsp:getProperty&gt;</code>动作：获取指定Javabean对象的属性值</p>
+<p><code>&lt;jsp:getProperty name="JavaBean实例名" property="属性名" /&gt;</code>可以直接得到值</p>
+<div class="highlight"><pre><span class="err">用户名：</span><span class="o">&lt;</span><span class="n">jsp</span><span class="o">:</span><span class="n">getProperty</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;myUsers&quot;</span> <span class="n">property</span><span class="o">=</span><span class="s">&quot;username&quot;</span> <span class="o">/&gt;</span>
+</pre></div>
+
+
+<h2 id="4-javabean">4. JavaBean四个作用域范围</h2>
+<p>使用useBeans的scope属性来置顶javabean的作用范围，由小到大排列是：
+page-&gt;request-&gt;session-&gt;application</p>
+<ul>
+<li>page对象仅在当前页面有效</li>
+<li>request //可以通过HttpRequest.getAttribute()方法取得JavaBean对象.需要配合请求转发来使用，若使用请求重定向则无法访问到Javabean</li>
+<li>session //可以通过HttpSession.getAttribute()方法取得JavaBean对象则是在一次对话中都会有效</li>
+<li>application//可以通过application.getAttribute()方法取得JavaBean对象。全局，在服务器一次运行期间都有效</li>
+</ul>
+<p>request在源页面用request.getRequestDispatcher("/somePage.jsp").forward(request, response); 内部转发的方式将数据传递到下一个页面可获取对象。</p>
+<h2 id="5-model1">5. Model1简介</h2>
+<p>Model 1模型出现前，整个Web应用的情况：几乎全部由JSP页面组成，JSP页面接收处理客户端请求，对请求处理后直接做出响应。这样做的弊端：在页面层充斥着大量的业务逻辑代码和数据访问层代码，Web程序的可扩展性和可维护性非常差。</p>
+<h3 id="51-javawebmodel1model2">5.1 javaWeb应用开发，模式分为Model1和Model2</h3>
+<ol>
+<li>Model1早于Model2</li>
+<li>在Model1之前，整个Web应用的情况：几乎全部由jsp页组成，jsp处理和响应客户端请求。
+· 弊端：【界面层】充斥了大量业务逻辑代码和数据访问层代码，扩展性和维护性非常差</li>
+</ol>
+<h3 id="52-model1">5.2 Model1</h3>
+<ol>
+<li>Javabean的出现，可以使jsp页面使用Javabean封装的数据和业务逻辑代码，大大提高程序可维护性。</li>
+<li>Model1 = JSP + JavaBean。如图：JSP访问页面层 -&gt; Javab业务逻辑层 -&gt; 数据库数据访问层</li>
+</ol>
+<p><img alt="images/java-web-jsp-03.png" src="images/java-web-jsp-03.png" /></p>
+<h2 id="6">6. 阶段项目</h2>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="java-webzhi-jsp-04-java-beans.html" data-title="Java Web之JSP-04 Java Beans" data-url="http://liulixiang1988.github.io/java-webzhi-jsp-04-java-beans.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/java-chang-yong-fang-fa.html" title="Previous: Java-常用方法">Java-常用方法</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html" title="Next: Java Web之JSP-03 JSP内置对象">Java Web之JSP-03 JSP内置对象</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-04-09T16:47:00"> 4 9, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Java-ref">Java</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Java-ref">Java
+                    <span>12</span>
+</a></li>
+                <li><a href="/tags.html#JSP-ref">JSP
+                    <span>9</span>
+</a></li>
+                <li><a href="/tags.html#Web-ref">Web
+                    <span>24</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Java, Web, Java, " />
+        <title>Java Web开发技术应用-过滤器  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html"> Java Web开发技术应用-过滤器  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <h2 id="1-java-">1. Java过滤机制-声明周期</h2>
+<p><img alt="images/java-web-filter-01.png" src="images/java-web-filter-01.png" /></p>
+<h2 id="2">2. 第一个过滤器</h2>
+<p>1、创建一个过滤器类 ，继承自servlet下的Filter
+2、重写三个方法init() doFilter() destroy()方法
+（1）init()初始化：这个方法可以读取web.xml文件中的过滤器初始化参数。通过参数FilterConfig arg0可以获取更多参数
+（2）doFIlter()核心：完成实际的过滤操作。当用户请求访问与过滤器【关联的URL】时，Web容器将先调用过滤器的doFilter方法，FilterChain arg2参数可以调用chain.doFilter方法，将请求传给下一个过滤器（或目标资源），或利用转发，重定向将请求转发给其他资源。
+(3)web容器在消耗过滤器前调用该方法，用于释放过滤器占用的资源。（大多数情况用不到）</p>
+<h3 id="21-filter">2.1 定义Filter</h3>
+<div class="highlight"><pre><span class="n">package</span> <span class="n">liulx</span><span class="p">.</span><span class="n">FilterDemo</span><span class="p">;</span>
+
+<span class="n">import</span> <span class="n">javax</span><span class="p">.</span><span class="n">servlet</span><span class="p">.</span><span class="o">*</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">IOException</span><span class="p">;</span>
+
+<span class="n">public</span> <span class="n">class</span> <span class="n">FirstFilter</span> <span class="n">implements</span> <span class="n">Filter</span> <span class="p">{</span>
+    <span class="n">public</span> <span class="kt">void</span> <span class="n">destroy</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Filter Destroy&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">public</span> <span class="kt">void</span> <span class="n">doFilter</span><span class="p">(</span><span class="n">ServletRequest</span> <span class="n">req</span><span class="p">,</span> <span class="n">ServletResponse</span> <span class="n">resp</span><span class="p">,</span> <span class="n">FilterChain</span> <span class="n">chain</span><span class="p">)</span> <span class="n">throws</span> <span class="n">ServletException</span><span class="p">,</span> <span class="n">IOException</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Do filter before request&quot;</span><span class="p">);</span>
+        <span class="n">chain</span><span class="p">.</span><span class="n">doFilter</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Do filter after request&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">public</span> <span class="kt">void</span> <span class="n">init</span><span class="p">(</span><span class="n">FilterConfig</span> <span class="n">config</span><span class="p">)</span> <span class="n">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Init First Filter&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="22-webxml">2.2 Web.xml配置</h3>
+<p><img alt="images/java-web-filter-02.png" src="images/java-web-filter-02.png" /></p>
+<p>过滤器能够改变用户请求的Web资源，也就是能够改变用户请求的路径。
+过滤器不能直接返回数据，不能直接处理用户请求。</p>
+<div class="highlight"><pre><span class="nt">&lt;filter&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>FirstFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;filter-class&gt;</span>liulx.FilterDemo.FirstFilter<span class="nt">&lt;/filter-class&gt;</span>
+<span class="nt">&lt;/filter&gt;</span>
+<span class="nt">&lt;filter-mapping&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>FirstFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>/index.jsp<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/filter-mapping&gt;</span>
+</pre></div>
+
+
+<h2 id="3">3. 过滤器链</h2>
+<h3 id="31">3.1 多个过滤器</h3>
+<p>多个过滤器url-pattern一样时，服务器会按照web.xml中过滤器定义的先后顺序组装成一条链。</p>
+<p><img alt="images/java-web-filter-03.png" src="images/java-web-filter-03.png" /></p>
+<h2 id="4">4. 过滤器的分类</h2>
+<p>Servlet2.5中包含4种过滤器</p>
+<ul>
+<li>REQUEST 用户直接访问时,调用过滤器</li>
+<li>INCLUDE 目标资源通过RequestDispatcher的include访问时，调用过滤器</li>
+<li>FORWARD 目标资源通过RequestDispatcher的forward访问时，调用过滤器</li>
+<li>ERROR 目标资源是通过声明式异常处理机制调用时，调用过滤器</li>
+</ul>
+<div class="highlight"><pre>    <span class="nt">&lt;filter&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>FirstFilter<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;filter-class&gt;</span>liulx.FilterDemo.FirstFilter<span class="nt">&lt;/filter-class&gt;</span>
+    <span class="nt">&lt;/filter&gt;</span>
+    <span class="nt">&lt;filter&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>SecondFilter<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;filter-class&gt;</span>liulx.FilterDemo.SecondFilter<span class="nt">&lt;/filter-class&gt;</span>
+    <span class="nt">&lt;/filter&gt;</span>
+    <span class="nt">&lt;filter-mapping&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>FirstFilter<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/index.jsp<span class="nt">&lt;/url-pattern&gt;</span>
+        <span class="nt">&lt;dispatcher&gt;</span>REQUEST<span class="nt">&lt;/dispatcher&gt;</span>
+    <span class="nt">&lt;/filter-mapping&gt;</span>
+    <span class="nt">&lt;filter-mapping&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>SecondFilter<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/index.jsp<span class="nt">&lt;/url-pattern&gt;</span>
+    <span class="nt">&lt;/filter-mapping&gt;</span>
+    <span class="nt">&lt;error-page&gt;</span>
+        <span class="nt">&lt;error-code&gt;</span>404<span class="nt">&lt;/error-code&gt;</span>
+        <span class="nt">&lt;location&gt;</span>/404.jsp<span class="nt">&lt;/location&gt;</span>
+    <span class="nt">&lt;/error-page&gt;</span>
+    <span class="nt">&lt;filter-mapping&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>ErrorFilter<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/error.jsp<span class="nt">&lt;/url-pattern&gt;</span>
+        <span class="nt">&lt;dispatcher&gt;</span>ERROR<span class="nt">&lt;/dispatcher&gt;</span>
+    <span class="nt">&lt;/filter-mapping&gt;</span>
+</pre></div>
+
+
+<p>Servlet 3.0 ASYNC标记：异步处理</p>
+<h2 id="5-servlet-30">5 Servlet 3.0</h2>
+<p>@WebFilter注解</p>
+<div class="highlight"><pre><span class="err">@</span><span class="n">WebFilter</span><span class="p">(</span><span class="n">servletNames</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;SimpleServlet&quot;</span><span class="p">},</span> <span class="n">filterName</span><span class="o">=</span><span class="s">&quot;SimpleFilter&quot;</span><span class="p">)</span>
+<span class="n">public</span> <span class="n">class</span> <span class="n">LessThanSixFilter</span> <span class="n">implements</span> <span class="n">Filter</span><span class="p">{</span>
+<span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><img alt="images/java-web-filter-04.png" src="images/java-web-filter-04.png" /></p>
+<p><img alt="images/java-web-filter-05.png" src="images/java-web-filter-05.png" /></p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html" data-title="Java Web开发技术应用-过滤器" data-url="http://liulixiang1988.github.io/java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html" title="Previous: Sass和Compass必备技能之Compass篇-02 模块简介">Sass和Compass必备技能之Compass篇-02 模块简介</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-01-mvc.html" title="Next: AngularJS学习笔记01-MVC">AngularJS学习笔记01-MVC</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-04-22T15:45:00"> 4 22, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Java-ref">Java</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Java-ref">Java
+                    <span>12</span>
+</a></li>
+                <li><a href="/tags.html#Web-ref">Web
+                    <span>24</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

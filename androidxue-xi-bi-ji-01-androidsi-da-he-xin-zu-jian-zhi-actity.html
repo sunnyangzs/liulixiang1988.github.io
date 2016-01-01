@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Android学习笔记, Android, Android, " />
+        <title>Android学习笔记-01 Android四大核心组件之Actity  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html"> Android学习笔记-01 Android四大核心组件之Actity  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <h1 id="android-01-androidactity">Android学习笔记-01 Android四大核心组件之Actity</h1>
+<h2 id="actity">一、Actity生命周期</h2>
+<h3 id="1">1、生命周期的七个方法</h3>
+<p><strong>eclipse快捷键alt+/自动提示</strong></p>
+<h2 id="activity">二、新建Activity</h2>
+<h3 id="1activity">1、添加Activity类</h3>
+<h3 id="2manifest">2、在manifest中添加</h3>
+<h3 id="3layout">3、添加layout</h3>
+<h3 id="4actiyoncreatesetcontentviewlayout">4、重写actiy的<code>onCreate</code>方法，使用<code>setContentView</code>设置layout</h3>
+<h2 id="_1">三、通信</h2>
+<ol>
+<li>在main的acity中添加button 按钮</li>
+<li>在<code>onCreate</code>中添加<code>findViewById(R.id.btnId)</code>,使用<code>cmd+1</code>自动转换</li>
+<li>添加点击事件</li>
+</ol>
+<div class="highlight"><pre><span class="c1">//点击</span>
+<span class="n">btn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListern</span><span class="o">(){</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">){</span>
+        <span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">MainAcitity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">Acty1</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">})</span>
+</pre></div>
+
+
+<h2 id="aty">四、关闭Aty</h2>
+<h3 id="1_1">1、添加按钮</h3>
+<p>在click中添加<code>finish()</code></p>
+<h2 id="aty_1">五、在aty间传递数据</h2>
+<p>两种传递进去，一种传递出来</p>
+<h3 id="1intent-iputextra">1、Intent <code>i.putExtra("数据名称", "文本内容")</code></h3>
+<p>在第二个Aty中：
+<code>getIntent().getStringExtra("数据名称")</code></p>
+<h3 id="2intentputextrastring-bundle">2、Intent.putExtra(string, bundle)</h3>
+<div class="highlight"><pre><span class="c1">//存</span>
+<span class="n">Bundle</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundle</span><span class="o">();</span>
+<span class="n">data</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">&quot;txt&quot;</span><span class="o">,</span> <span class="s">&quot;hello&quot;</span><span class="o">)</span>
+<span class="n">i</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+
+<span class="c1">//取</span>
+<span class="n">Bundle</span> <span class="n">data</span> <span class="o">=</span> <span class="n">getIntent</span><span class="o">().</span><span class="na">getExtras</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">txt</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;txt&quot;</span><span class="o">);</span>
+</pre></div>
+
+
+<h3 id="3aty">3、取得第二个Aty传回的数据</h3>
+<div class="highlight"><pre><span class="n">startActivityForResult</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
+
+<span class="kd">protected</span> <span class="nf">onActivityResult</span><span class="o">(</span><span class="kt">int</span> <span class="n">requestCode</span><span class="o">,</span> <span class="kt">int</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">data</span><span class="o">){</span>
+    <span class="n">string</span> <span class="n">result</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">&quot;result&quot;</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="c1">//存</span>
+<span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">();</span>
+<span class="n">i</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">&quot;result&quot;</span><span class="o">,</span> <span class="s">&quot;hello&quot;</span><span class="o">)</span>
+<span class="n">setResult</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+<span class="n">finish</span><span class="o">();</span>
+</pre></div>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html" data-title="Android学习笔记-01 Android四大核心组件之Actity" data-url="http://liulixiang1988.github.io/androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/shi-yong-pelicanda-jian-bo-ke.html" title="Previous: 使用Pelican搭建博客">使用Pelican搭建博客</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/androidxue-xi-bi-ji-02-android-si-da-he-xin-zu-jian-zhi-service.html" title="Next: Android学习笔记-02 Android 四大核心组件之Service">Android学习笔记-02 Android 四大核心组件之Service</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2014-08-27T09:48:00"> 8 27, 2014</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Android-ref">Android</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Android-ref">Android
+                    <span>17</span>
+</a></li>
+                <li><a href="/tags.html#Android学习笔记-ref">Android学习笔记
+                    <span>14</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

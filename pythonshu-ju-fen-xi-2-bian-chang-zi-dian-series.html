@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="数据分析, Python, " />
+        <title>Python数据分析(2)-变长字典Series  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/pythonshu-ju-fen-xi-2-bian-chang-zi-dian-series.html"> Python数据分析(2)-变长字典Series  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#1-series">1. Series的创建</a></li>
+<li><a href="#2-series">2. Series的基本运算</a></li>
+<li><a href="#3-series">3. Series的数据对齐</a></li>
+<li><a href="#4-seriesname">4. Series的name属性</a></li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
+
+            
+<p>我们知道字典是一种无序的数据结构，而pandas中的<code>Series</code>的数据结构不一样，它相当于定长有序的字典，并且它的index和value之间是独立的。</p>
+<h2 id="1-series">1. <code>Series</code>的创建</h2>
+<p><code>Series</code>的基本特征</p>
+<ul>
+<li>类似一维数组的对象</li>
+<li>由数据和索引组成</li>
+</ul>
+<p><code>Series</code>的创建：</p>
+<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">aSer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s">'a'</span><span class="p">])</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">aSer</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>
+<span class="mi">0</span>    <span class="mi">1</span>
+<span class="mi">1</span>    <span class="mi">2</span>
+<span class="mi">2</span>    <span class="n">a</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</pre></div>
+<p>我们可以看到<code>Series</code>自带索引，当然我们还可以指定索引：</p>
+<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">bSer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s">'apple'</span><span class="p">,</span> <span class="s">'peach'</span><span class="p">,</span> <span class="s">'lemon'</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">bSer</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span>
+<span class="mi">1</span>    <span class="n">apple</span>
+<span class="mi">2</span>    <span class="n">peach</span>
+<span class="mi">3</span>    <span class="n">lemon</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">bSer</span><span class="o">.</span><span class="n">index</span> <span class="c">#查看index</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">Int64Index</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s">'int64'</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">bSer</span><span class="o">.</span><span class="n">values</span> <span class="c">#查看values</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">array</span><span class="p">([</span><span class="s">'apple'</span><span class="p">,</span> <span class="s">'peach'</span><span class="p">,</span> <span class="s">'lemon'</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+</pre></div>
+<h2 id="2-series">2. <code>Series</code>的基本运算</h2>
+<p><code>Series</code>与字典类似，可以通过<code>index</code>来访问数据。</p>
+<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">aSer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">])</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">aSer</span><span class="p">[</span><span class="s">'b'</span><span class="p">]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="mi">5</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="n">aSer</span><span class="o">*</span><span class="mi">2</span> <span class="c">#对基本元素进行运算</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">12</span><span class="p">]:</span>
+<span class="n">a</span>     <span class="mi">6</span>
+<span class="n">b</span>    <span class="mi">10</span>
+<span class="n">c</span>    <span class="mi">14</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">aSer</span><span class="p">)</span> <span class="c">#计算自然对数的n次方</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span>
+<span class="n">a</span>      <span class="mf">20.085537</span>
+<span class="n">b</span>     <span class="mf">148.413159</span>
+<span class="n">c</span>    <span class="mf">1096.633158</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</pre></div>
+<h2 id="3-series">3. <code>Series</code>的数据对齐</h2>
+<p>数据对齐是很多数据处理软件里面里都有的一个功能，比如Excel。就是有一个表，前面是索引，后面是数据，可能索引没有对应的数据，也就是那一行为空的，只有一个索引值</p>
+<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'AXP'</span><span class="p">:</span><span class="s">'86.40'</span><span class="p">,</span> <span class="s">'CSCO'</span><span class="p">:</span><span class="s">'122.64'</span><span class="p">,</span> <span class="s">'BA'</span><span class="p">:</span><span class="s">'99.44'</span><span class="p">}</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">sindex</span><span class="o">=</span><span class="p">[</span><span class="s">'AXP'</span><span class="p">,</span> <span class="s">'CSCO'</span><span class="p">,</span> <span class="s">'BA'</span><span class="p">,</span> <span class="s">'AAPL'</span><span class="p">]</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="n">aSer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">sindex</span><span class="p">)</span> <span class="c">#注意这里是用字典来定义的，跟前面的list定义不一样</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">aSer</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">18</span><span class="p">]:</span>
+<span class="n">AXP</span>      <span class="mf">86.40</span>
+<span class="n">CSCO</span>    <span class="mf">122.64</span>
+<span class="n">BA</span>       <span class="mf">99.44</span>
+<span class="n">AAPL</span>       <span class="n">NaN</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">aSer</span><span class="p">)</span> <span class="c">#检测哪些值是空的</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">19</span><span class="p">]:</span>
+<span class="n">AXP</span>     <span class="bp">False</span>
+<span class="n">CSCO</span>    <span class="bp">False</span>
+<span class="n">BA</span>      <span class="bp">False</span>
+<span class="n">AAPL</span>     <span class="bp">True</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">bool</span>
+</pre></div>
+<p>在算术运算中，可以自动对齐不同索引的数据，注意，只要其中一个<code>Series</code>不存在对应的<code>index</code>，对应的结果就会为<code>NaN</code>：</p>
+<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="n">aSer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">sindex</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">aSer</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">21</span><span class="p">]:</span>
+<span class="n">AXP</span>      <span class="mf">86.40</span>
+<span class="n">CSCO</span>    <span class="mf">122.64</span>
+<span class="n">BA</span>       <span class="mf">99.44</span>
+<span class="n">AAPL</span>       <span class="n">NaN</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">bSer</span> <span class="o">=</span> <span class="p">{</span><span class="s">'AXP'</span><span class="p">:</span> <span class="s">'86.40'</span><span class="p">,</span> <span class="s">'CSCO'</span><span class="p">:</span><span class="s">'122.64'</span><span class="p">,</span> <span class="s">'CVX'</span><span class="p">:</span><span class="s">'23.78'</span><span class="p">}</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">cSer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">bSer</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">aSer</span> <span class="o">+</span> <span class="n">cSer</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">24</span><span class="p">]:</span>
+<span class="n">AAPL</span>             <span class="n">NaN</span>
+<span class="n">AXP</span>       <span class="mf">86.4086</span><span class="o">.</span><span class="mi">40</span>
+<span class="n">BA</span>               <span class="n">NaN</span>
+<span class="n">CSCO</span>    <span class="mf">122.64122</span><span class="o">.</span><span class="mi">64</span>
+<span class="n">CVX</span>              <span class="n">NaN</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</pre></div>
+<h2 id="4-seriesname">4. <code>Series</code>的<code>name</code>属性</h2>
+<p><code>Series</code>对象本身及其索引均有一个<code>name</code>属性，并且<code>Series</code>的<code>name</code>属性与其他重要功能有密切关系。</p>
+<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="n">aSer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">sindex</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">28</span><span class="p">]:</span> <span class="n">aSer</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">'cnames'</span> <span class="c">#指定对象的name属性</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">29</span><span class="p">]:</span> <span class="n">aSer</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">'valume'</span> <span class="c">#指定索引本身的name属性</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">30</span><span class="p">]:</span> <span class="n">aSer</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">30</span><span class="p">]:</span>
+<span class="n">valume</span>
+<span class="n">AXP</span>      <span class="mf">86.40</span>
+<span class="n">CSCO</span>    <span class="mf">122.64</span>
+<span class="n">BA</span>       <span class="mf">99.44</span>
+<span class="n">AAPL</span>       <span class="n">NaN</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">cnames</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</pre></div>
+<p><code>name</code>属性有些像Excel中的字段名称有些像，在后期有很重要的作用。</p>
+<p>作者：liulixiang1988#gmail.com (#换成@)
+参考链接：https://www.coursera.org/learn/hipython/home/welcome</p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="pythonshu-ju-fen-xi-2-bian-chang-zi-dian-series.html" data-title="Python数据分析(2)-变长字典Series" data-url="http://liulixiang1988.github.io/pythonshu-ju-fen-xi-2-bian-chang-zi-dian-series.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/pythonshu-ju-fen-xi-1-numpyzhong-de-ndarray.html" title="Previous: Python数据分析(1)-NumPy中的ndarray">Python数据分析(1)-NumPy中的ndarray</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/pythonshu-ju-fen-xi-3-dataframe.html" title="Next: Python数据分析(3)-DataFrame">Python数据分析(3)-DataFrame</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-11-29T15:11:00">11 29, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Python-ref">Python</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#数据分析-ref">数据分析
+                    <span>4</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

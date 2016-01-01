@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="DotNet, Web, ASP.NET MVC, DotNet, " />
+        <title>ASP.NET MVC5 学习笔记-3 Model  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-3-model.html"> ASP.NET MVC5 学习笔记-3 Model  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#aspnet-mvc5-3-model">ASP.NET MVC5 学习笔记-3 Model</a><ul>
+<li><a href="#1-model">1. Model</a><ul>
+<li><a href="#11">1.1 添加一个模型</a></li>
+<li><a href="#12-mvc-5checkingaccountcontroller">1.2 添加一个“包含读写操作的MVC 5控制器”CheckingAccountController</a></li>
+<li><a href="#13-details">1.3 在Details上添加视图</a></li>
+<li><a href="#14-details">1.4 添加首页到Details页面的链接</a></li>
+</ul>
+</li>
+<li><a href="#2">2. 显示和验证模型属性</a><ul>
+<li><a href="#21-details">2.1 清理Details视图</a></li>
+<li><a href="#22-model">2.2 修改Model</a></li>
+<li><a href="#23-create">2.3 创建Create对应的视图</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
+
+            
+<h1 id="aspnet-mvc5-3-model">ASP.NET MVC5 学习笔记-3 Model</h1>
+<h2 id="1-model">1. Model</h2>
+<h3 id="11">1.1 添加一个模型</h3>
+<p><strong>注意</strong>，添加属性时可以输入"prop"，会自动输入代码段。</p>
+<div class="highlight"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">CheckoutAccount</span>
+<span class="p">{</span>
+    <span class="n">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">string</span> <span class="n">AccountNumber</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">string</span> <span class="n">FirstName</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">string</span> <span class="n">Balance</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<h3 id="12-mvc-5checkingaccountcontroller">1.2 添加一个“包含读写操作的MVC 5控制器”CheckingAccountController</h3>
+<p>去掉Details的参数Id，因为现在我没还没有数据库。</p>
+<div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">Details</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">View</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+<h3 id="13-details">1.3 在Details上添加视图</h3>
+<p>在Details动作上右键，添加视图：</p>
+<ul>
+<li>视图名称<code>Details</code></li>
+<li>模板<code>Details</code></li>
+<li>模型<code>CheckoutAccount</code></li>
+<li>数据上下文类：空</li>
+<li>创建为分布视图：不勾选</li>
+<li>引用脚本库：不勾选</li>
+<li>使用布局页：默认布局</li>
+</ul>
+<div class="highlight"><pre><span class="p">@</span><span class="nx">model</span> <span class="nx">AspNetMVCEssential.Models.CheckoutAccount</span>
+
+<span class="p">@{</span>
+    <span class="n">ViewBag.Title</span> <span class="o">=</span> <span class="s2">"Details"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Details</span><span class="o">&lt;/</span><span class="nx">h2</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="nb">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">CheckoutAccount</span><span class="o">&lt;/</span><span class="nx">h4</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">hr</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">dl</span> <span class="n">class</span><span class="o">=</span><span class="s2">"dl-horizontal"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.AccountNumber</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.AccountNumber</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.FirstName</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.FirstName</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.LastName</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.LastName</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.Balance</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
+
+        <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.Balance</span><span class="p">)</span>
+        <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
+
+    <span class="o">&lt;/</span><span class="nx">dl</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+    <span class="p">@</span><span class="nx">Html.ActionLink</span><span class="p">(</span><span class="s2">"Edit"</span><span class="p">,</span> <span class="s2">"Edit"</span><span class="p">,</span> <span class="nb">new</span> <span class="p">{</span> <span class="n">id</span> <span class="o">=</span> <span class="nx">Model.Id</span> <span class="p">})</span> <span class="o">|</span>
+    <span class="p">@</span><span class="nx">Html.ActionLink</span><span class="p">(</span><span class="s2">"Back to List"</span><span class="p">,</span> <span class="s2">"Index"</span><span class="p">)</span>
+<span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+</pre></div>
+<p>说明：</p>
+<ul>
+<li>第一行代码指明模板Model类型，任何@Model都是<code>CheckoutAccount</code>类型。</li>
+<li><code>Html.DisplayNameFor(model =&gt; model.AccountNumber)</code>模型属性的名称</li>
+<li><code>Html.DisplayFor(model =&gt; model.AccountNumber)</code>模型属性的值</li>
+</ul>
+<h3 id="14-details">1.4 添加首页到Details页面的链接</h3>
+<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6 margin-top-20"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"@Url.Action("</span><span class="err">Details",</span> <span class="err">"CheckingAccount")"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg btn-block"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-question-sign"</span><span class="nt">&gt;&lt;/span&gt;</span>余额查询<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+<p><code>@Url.Action("action", "controller")</code>返回URL，而不是<code>&lt;a&gt;</code></p>
+<hr/>
+<h2 id="2">2. 显示和验证模型属性</h2>
+<h3 id="21-details">2.1 清理Details视图</h3>
+<div class="highlight"><pre><span class="p">@</span><span class="nx">model</span> <span class="nx">AspNetMVCEssential.Models.CheckoutAccount</span>
+
+<span class="p">@{</span>
+    <span class="n">ViewBag.Title</span> <span class="o">=</span> <span class="s2">"Details"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"row"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"col-md-6 col-md-offset-3"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">账户查询</span><span class="o">&lt;/</span><span class="nx">h2</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">dl</span> <span class="n">class</span><span class="o">=</span><span class="s2">"dl-horizontal"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.AccountNumber</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
+
+            <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.AccountNumber</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
+
+            <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.FirstName</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
+
+            <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.FirstName</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
+
+            <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.LastName</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
+
+            <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.LastName</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
+
+            <span class="o">&lt;</span><span class="nx">dt</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayNameFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.Balance</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dt</span><span class="o">&gt;</span>
+
+            <span class="o">&lt;</span><span class="nx">dd</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.DisplayFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.Balance</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nx">dd</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nx">dl</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+</pre></div>
+<h3 id="22-model">2.2 修改Model</h3>
+<p><code>[Display(Name="Account")]</code></p>
+<div class="highlight"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">CheckoutAccount</span>
+<span class="p">{</span>
+    <span class="n">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">Display</span><span class="p">(</span><span class="n">Name</span> <span class="o">=</span> <span class="s">"账户"</span><span class="p">)]</span>
+    <span class="n">public</span> <span class="n">string</span> <span class="n">AccountNumber</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">string</span> <span class="n">FirstName</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">[</span><span class="n">Display</span><span class="p">(</span><span class="n">Name</span> <span class="o">=</span> <span class="s">"姓名"</span><span class="p">)]</span>
+    <span class="n">public</span> <span class="n">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="n">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">FirstName</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">LastName</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+    <span class="p">[</span><span class="n">DataType</span><span class="p">(</span><span class="n">DataType</span><span class="p">.</span><span class="n">Currency</span><span class="p">)]</span>
+    <span class="n">public</span> <span class="kt">int</span> <span class="n">Balance</span> <span class="p">{</span> <span class="n">get</span><span class="p">;</span> <span class="n">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<h3 id="23-create">2.3 创建Create对应的视图</h3>
+<p>此时要选择引用脚本库。</p>
+<div class="highlight"><pre><span class="p">@</span><span class="nx">using</span> <span class="p">(</span><span class="nx">Html.BeginForm</span><span class="p">())</span> 
+<span class="p">{</span>
+    <span class="p">@</span><span class="nx">Html.AntiForgeryToken</span><span class="p">()</span>
+
+    <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"form-horizontal"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">CheckoutAccount</span><span class="o">&lt;/</span><span class="nx">h4</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">hr</span> <span class="o">/&gt;</span>
+        <span class="p">@</span><span class="nx">Html.ValidationSummary</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+
+        <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"form-group"</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.LabelFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.AccountNumber</span><span class="p">,</span> <span class="nb">new</span> <span class="p">{</span> <span class="p">@</span><span class="n">class</span> <span class="o">=</span> <span class="s2">"control-label col-md-2"</span> <span class="p">})</span>
+            <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"col-md-10"</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.EditorFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.AccountNumber</span><span class="p">)</span>
+                <span class="p">@</span><span class="nx">Html.ValidationMessageFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.AccountNumber</span><span class="p">)</span>
+            <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+     <span class="nx">...</span>
+ <span class="p">}</span>
+ <span class="sb">```</span>
+
+<span class="sb">- `</span><span class="p">@</span><span class="nx">Html.LabelFor</span><span class="p">(</span><span class="n">model</span><span class="o">=&gt;</span><span class="nx">model.Account</span><span class="p">)</span><span class="sb">`产生Label</span>
+<span class="sb">- `</span><span class="p">@</span><span class="nx">Html.EditorFor</span><span class="p">(</span><span class="n">model</span><span class="o">=&gt;</span><span class="nx">model.Account</span><span class="p">)</span><span class="sb">`产生input</span>
+<span class="sb">- `</span><span class="p">@</span><span class="nx">Html.ValidationMessageFor</span><span class="p">(</span><span class="n">model</span><span class="o">=&gt;</span><span class="nx">model.AccountNumber</span><span class="p">)</span><span class="sb">`验证信息</span>
+<span class="sb">- `</span><span class="p">@</span><span class="nx">Html.ValidationSummary</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="err">`</span><span class="nx">验证汇总</span>
+
+<span class="err">##</span><span class="vi">#2</span><span class="mf">.4</span> <span class="nx">修改CheckAccount</span>
+</pre></div>
+<p>[Required]
+//[StringLength(10, MinimumLength = 6)]
+[RegularExpression(@"\d{6,10}", ErrorMessage = "账户必须是6-10个字符")]
+[Display(Name = "账户")]
+public string AccountNumber { get; set; }</p>
+<p>[Required]
+public string FirstName { get; set; }</p>
+<p>[Required]
+public string LastName { get; set; }
+[Display(Name = "姓名")]
+public string Name { get { return FirstName + " " + LastName; } }</p>
+<p>[Required]
+[DataType(DataType.Currency)]
+public int Balance { get; set; }</p>
+<div class="highlight"><pre><span class="err">都是一些验证字段，注意每个都可以有`</span><span class="n">ErrorMessage</span><span class="err">`参数。</span>
+
+<span class="o">--</span>
+
+<span class="cp">##3. ViewModel</span>
+
+<span class="n">ViewModel</span><span class="err">不在数据库中存储，专门用于处理</span><span class="n">Form</span><span class="err">，类似</span><span class="n">Django</span><span class="err">中的</span><span class="n">Form</span><span class="err">类。</span>
+
+<span class="cp">###3.1 ViewModel定义</span>
+
+<span class="err">打开</span><span class="n">Models</span><span class="err">文件夹下的</span><span class="n">AccountViewModel</span><span class="err">，我们看到</span><span class="n">ViewModel</span><span class="err">定义与普通</span><span class="n">Model</span><span class="err">并没有明显区别，只是命名约定都是以</span><span class="s">"ViewModel"</span><span class="err">结尾。</span>
+</pre></div>
+<p _="{" _display_name="[Display(Name" _required_="[Required]
+" _用户名_='"用户名")]
+' get_="get;" public="public" set_="set;" string="string" username="UserName">public class LoginViewModel</p>
+<div class="highlight"><pre><span class="k">[Required]</span>
+<span class="k">[DataType(DataType.Password)]</span>
+<span class="k">[Display(Name = "密码")]</span>
+<span class="err">public</span> <span class="err">string</span> <span class="err">Password</span> <span class="err">{</span> <span class="err">get</span><span class="c1">; set; }</span>
+
+<span class="k">[Display(Name = "记住我?")]</span>
+<span class="err">public</span> <span class="err">bool</span> <span class="err">RememberMe</span> <span class="err">{</span> <span class="err">get</span><span class="c1">; set; }</span>
+</pre></div>
+<p>}</p>
+<div class="highlight"><pre><span class="c">###3.2 ViewModel在Action中的应用</span>
+</pre></div>
+<p>[HttpPost]
+[AllowAnonymous]
+[ValidateAntiForgeryToken]
+public async Task<actionresult> Login(LoginViewModel model, string returnUrl)
+{
+    if (ModelState.IsValid)
+    {
+        var user = await UserManager.FindAsync(model.UserName, model.Password);
+        if (user != null)
+        {
+            await SignInAsync(user, model.RememberMe);
+            return RedirectToLocal(returnUrl);
+        }
+        else
+        {
+            ModelState.AddModelError("", "Invalid username or password.");
+        }
+    }</actionresult></p>
+<div class="highlight"><pre><span class="c1">// 如果我们进行到这一步时某个地方出错，则重新显示表单</span>
+<span class="k">return</span> <span class="n">View</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+</pre></div>
+<p>}</p>
+<div class="highlight"><pre><span class="err">可以看到</span><span class="n">ViewModel</span><span class="err">只是接收用户的输入并封装，然后再使用封装的字段查找数据库中对应的</span><span class="n">Model</span><span class="err">。</span>
+
+<span class="cp">###3.3 ViewModel在视图中的应用</span>
+</pre></div>
+<p>@model AspNetMVCEssential.Models.LoginViewModel</p>
+<p>@{
+    ViewBag.Title = "登录";
+}</p>
+<h2>@ViewBag.Title。</h2>
+<div class="row">
+<div class="col-md-8">
+<section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>使用本地帐户登录。</h4>
+<hr/>
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(m =&gt; m.UserName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m =&gt; m.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m =&gt; m.UserName)
+                    </div>
+</div>
+                ...
+            }
+             ...
+
+wzxhzdk:10
+
+public class ApplicationDbContext : IdentityDbContext<applicationuser>
+{
+    public ApplicationDbContext()
+        : base("DefaultConnection")
+    {
+    }
+
+    public DbSet<checkoutaccount> CheckoutAccounts { get; set; }
+}
+
+wzxhzdk:11
+
+public virtual ApplicationUser User { get; set; }
+public string ApplicationUserId { get; set; }
+
+wzxhzdk:12
+
+[HttpPost]
+[AllowAnonymous]
+[ValidateAntiForgeryToken]
+public async Task<actionresult> Register(RegisterViewModel model)
+{
+    if (ModelState.IsValid)
+    {
+        var user = new ApplicationUser() { UserName = model.Email, Email = model.Email};
+        var result = await UserManager.CreateAsync(user, model.Password);
+        if (result.Succeeded)
+        {
+            //创建CheckoutAcount
+            var db = new ApplicationDbContext();
+            var checkoutAccount = new CheckoutAccount
+            {
+                AccountNumber = "00000123",
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Balance = 0,
+                ApplicationUserId = user.Id
+            };
+            db.CheckoutAccounts.Add(checkoutAccount);
+            db.SaveChanges();
+
+            await SignInAsync(user, isPersistent: false);
+            return RedirectToAction("Index", "Home");
+        }
+        else
+        {
+            AddErrors(result);
+        }
+    }
+
+    // 如果我们进行到这一步时某个地方出错，则重新显示表单
+    return View(model);
+}
+
+wzxhzdk:13
+
+return View(model);
+
+wzxhzdk:14
+
+@model MvcMovie.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div>
+<h4>Movie</h4>
+<hr/>
+<dl class="dl-horizontal">
+<dt>
+            @Html.DisplayNameFor(model =&gt; model.Title)
+        </dt>
+         @*Markup omitted for clarity.*@        
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+wzxhzdk:15
+
+@model IEnumerable<mvcmovie.models.movie> 
+@foreach (var item in Model) {
+    <tr>
+<td>
+            @Html.DisplayFor(modelItem =&gt; item.Title)
+        </td>
+<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) 
+        </td>
+</tr>
+}
+
+wzxhzdk:16
+
+[Required]
+[StringLength(10)]
+[Column(TypeName = "varchar")]
+[RegularExpression(@"\d{6,10}", ErrorMessage = "账户必须是6-10个字符")]
+[Display(Name = "账户")]
+public string AccountNumber { get; set; }
+
+wzxhzdk:17
+
+PM&gt; Enable-Migrations -ContextType ApplicationDbContext
+正在检查上下文的目标是否为现有数据库...
+检测到使用数据库初始值设定项创建的数据库。已搭建与现有数据库对应的迁移“201410311619291_InitialCreate”的基架。若要改用自动迁移，请删除 Migrations 文件夹并重新运行指定了 -EnableAutomaticMigrations 参数的 Enable-Migrations。
+已为项目 AspNetMVCEssential 启用 Code First 迁移。
+
+wzxhzdk:18
+
+PM&gt; Add-Migration AccountNumberChanges
+正在为迁移“AccountNumberChanges”搭建基架。
+此迁移文件的设计器代码包含当前 Code First 模型的快照。在下一次搭建迁移基架时，将使用此快照计算对模型的更改。如果对要包含在此迁移中的模型进行其他更改，则您可通过再次运行“Add-Migration AccountNumberChanges”重新搭建基架。
+
+wzxhzdk:19
+
+PM&gt; Update-Database -Script
+正在应用显式迁移: [201410311643166_AccountNumberChanges]。
+正在应用显式迁移: 201410311643166_AccountNumberChanges。
+
+wzxhzdk:20
+
+PM&gt; Update-Database -Verbose
+Using StartUp project 'AspNetMVCEssential'.
+Using NuGet project 'AspNetMVCEssential'.
+指定“-Verbose”标志以查看应用于目标数据库的 SQL 语句。
+目标数据库为: “aspnet-AspNetMVCEssential-20141031091551”(DataSource: .，提供程序: System.Data.SqlClient，来源: Configuration)。
+正在应用显式迁移: [201410311643166_AccountNumberChanges]。
+正在应用显式迁移: 201410311643166_AccountNumberChanges。
+...
+正在运行 Seed 方法。
+
+wzxhzdk:21
+
+PM&gt; Update-Databse -TargetMigration IntialCreate
+
+wzxhzdk:22
+
+internal sealed class Configuration : DbMigrationsConfiguration<aspnetmvcessential.models.applicationdbcontext>
+{
+    public Configuration()
+    {
+        //设置自动迁移
+        AutomaticMigrationsEnabled = true;
+
+        ContextKey = "AspNetMVCEssential.Models.ApplicationDbContext";
+    }
+    //...
+}
+
+wzxhzdk:23
+
+PM&gt; Update-Database -Verbose
+Using StartUp project 'AspNetMVCEssential'.
+Using NuGet project 'AspNetMVCEssential'.
+指定“-Verbose”标志以查看应用于目标数据库的 SQL 语句。
+目标数据库为: “aspnet-AspNetMVCEssential-20141031091551”(DataSource: .，提供程序: System.Data.SqlClient，来源: Configuration)。
+没有挂起的显式迁移。
+正在应用自动迁移: 201410311656382_AutomaticMigration。
+System.Data.Entity.Migrations.Infrastructure.AutomaticDataLossException: 未应用自动迁移，因为自动迁移会导致数据丢失。如果要在可能导致数据丢失的情况下允许应用自动迁移，请在 DbMigrationsConfiguration 上将 AutomaticMigrationDataLossAllowed 设置为 "true"。也可以将 Update-Database 与 "-Force" 选项一起使用，或者构建基架执行显式迁移。
+   在 System.Data.Entity.Migrations.DbMigrator.AutoMigrate(String migrationId, VersionedModel sourceModel, VersionedModel targetModel, Boolean downgrading)
+。。。
+   在 System.Data.Entity.Migrations.MigrationsDomainCommand.Execute(Action command)
+未应用自动迁移，因为自动迁移会导致数据丢失。如果要在可能导致数据丢失的情况下允许应用自动迁移，请在 DbMigrationsConfiguration 上将 AutomaticMigrationDataLossAllowed 设置为 "true"。也可以将 Update-Database 与 "-Force" 选项一起使用，或者构建基架执行显式迁移。
+
+wzxhzdk:24
+
+PM&gt; Update-Database -Verbose -Force
+```</aspnetmvcessential.models.applicationdbcontext></mvcmovie.models.movie></actionresult></checkoutaccount></applicationuser></section></div></div>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="aspnet-mvc5-xue-xi-bi-ji-3-model.html" data-title="ASP.NET MVC5 学习笔记-3 Model" data-url="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-3-model.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html" title="Previous: ASP.NET MVC5 学习笔记-4 OWIN和Katana">ASP.NET MVC5 学习笔记-4 OWIN和Katana</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html" title="Next: ASP.NET MVC5 学习笔记-5 测试">ASP.NET MVC5 学习笔记-5 测试</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2014-10-31T20:48:00">10 31, 2014</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#DotNet-ref">DotNet</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#ASP.NET-MVC-ref">ASP.NET MVC
+                    <span>5</span>
+</a></li>
+                <li><a href="/tags.html#DotNet-ref">DotNet
+                    <span>5</span>
+</a></li>
+                <li><a href="/tags.html#Web-ref">Web
+                    <span>24</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

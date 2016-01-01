@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Pelican, Python, " />
+        <title>使用Pelican搭建博客  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/shi-yong-pelicanda-jian-bo-ke.html"> 使用Pelican搭建博客  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <h2 id="1">1 环境配置</h2>
+<h3 id="11-pelican">1.1 安装Pelican</h3>
+<p><strong>注</strong>:以下是在windows环境下安装pelican，Python版本使用的是3.41版本，该版本自带pip工具</p>
+<div class="highlight"><pre>pip install virtualenv
+virtualenv pelican_env
+<span class="nb">cd </span>pelican_env<span class="se">\s</span>cript
+.<span class="se">\a</span>ctivate.bat
+</pre></div>
+
+
+<p>上面的命令创建并激活了pelican_env，下面在该环境下开始安装pelican工具</p>
+<div class="highlight"><pre>pip install pelican markdown ghp-import
+</pre></div>
+
+
+<h3 id="12-github-page">1.2 创建Github Page</h3>
+<p>在Github上创建一个仓库，仓库名是<code>用户名.github.io</code>，注意这里的用户名是自己的用户名。如下图所示.</p>
+<p><img alt="Github Page" src="images/github.png" /></p>
+<p>创建好后，克隆到本地</p>
+<div class="highlight"><pre>git clone https://github.com/liulixiang1988/liulixiang1988.github.io
+<span class="nb">cd </span>liulixiang1988.github.io
+</pre></div>
+
+
+<h2 id="2-pelican">2 使用Pelican写博客</h2>
+<h3 id="21-pelican">2.1 创建Pelican博客</h3>
+<p>创建分支</p>
+<div class="highlight"><pre>git checkout -b <span class="nb">source</span> 
+</pre></div>
+
+
+<p>创建Pelican</p>
+<div class="highlight"><pre>pelican-quickstart
+</pre></div>
+
+
+<p>创建的过程中，会问你一些问题，你可以参考下面的回答。</p>
+<div class="highlight"><pre>&gt; Where <span class="k">do </span>you want to create your new web site? <span class="o">[</span>.<span class="o">]</span> 
+&gt; What will be the title of this web site? Buttermilch
+&gt; Who will be the author of this web site? Tony Stark
+&gt; What will be the default language of this web site? <span class="o">[</span>en<span class="o">]</span> 
+&gt; Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span> n
+&gt; Do you want to <span class="nb">enable </span>article pagination? <span class="o">(</span>Y/n<span class="o">)</span> 
+&gt; How many articles per page <span class="k">do </span>you want? <span class="o">[</span>10<span class="o">]</span> 
+&gt; Do you want to generate a Fabfile/Makefile ... and publishing? <span class="o">(</span>Y/n<span class="o">)</span> 
+&gt; Do you want an auto-reload &amp; simpleHTTP ... and site development? <span class="o">(</span>Y/n<span class="o">)</span> 
+&gt; Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span> 
+&gt; Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span> 
+&gt; Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span> 
+&gt; Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span> 
+&gt; Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span>
+</pre></div>
+
+
+<h3 id="22-markdown">2.2 创建Markdown的博文</h3>
+<p>在content目录下创建一个test.md的文件，然后用记事本或者notepad++或者sublime text打开，编写如下内容。</p>
+<div class="highlight"><pre><span class="n">Title</span><span class="o">:</span> <span class="err">你好，世界！</span>
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2014</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">22</span> <span class="mi">16</span><span class="o">:</span><span class="mi">08</span>
+<span class="n">Category</span><span class="o">:</span> <span class="n">Python</span>
+<span class="n">Tags</span><span class="o">:</span> <span class="n">python</span>
+<span class="n">Author</span><span class="o">:</span> <span class="err">刘理想</span>
+<span class="n">Summary</span><span class="o">:</span> <span class="err">你好，世界！</span>
+<span class="err">你好，世界，世界，你好。</span>
+</pre></div>
+
+
+<h3 id="23">2.3 本地测试</h3>
+<p>编写好了之后，就可以在本地进行测试了。</p>
+<div class="highlight"><pre>make html
+make serve
+</pre></div>
+
+
+<h3 id="24">2.4 提交更改</h3>
+<div class="highlight"><pre>git add .
+git commit -m <span class="s2">&quot;initial commit&quot;</span>
+</pre></div>
+
+
+<h3 id="25">2.5 发布</h3>
+<div class="highlight"><pre>git branch gh-pages
+ghp-import output
+git checkout master
+git merge gh-pages
+git push --all
+</pre></div>
+
+
+<h2 id="_1">参考</h2>
+<ul>
+<li>http://ntanjerome.org/blog/how-to-setup-github-user-page-with-pelican</li>
+</ul>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="shi-yong-pelicanda-jian-bo-ke.html" data-title="使用Pelican搭建博客" data-url="http://liulixiang1988.github.io/shi-yong-pelicanda-jian-bo-ke.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/fan-yi-shi-yong-pythonde-mo-zhu-fang-fa-chuang-zao-geng-hao-de-zheng-ze-api.html" title="Previous: [翻译]使用Python的魔术方法创造更好的正则API">[翻译]使用Python的魔术方法创造更好的正则API</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html" title="Next: Android学习笔记-01 Android四大核心组件之Actity">Android学习笔记-01 Android四大核心组件之Actity</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2014-08-26T17:08:00"> 8 26, 2014</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Python-ref">Python</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Pelican-ref">Pelican
+                    <span>2</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

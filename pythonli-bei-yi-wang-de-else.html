@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="python, Python, " />
+        <title>python里被遗忘的else  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/pythonli-bei-yi-wang-de-else.html"> python里被遗忘的else  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <p>本文讨论的是python中的<code>for … else</code>和<code>while…else</code>语法，最少被用到也最容易被误解的语法特性。</p>
+<p>python中的<code>for</code>和<code>while</code>循环都又一个可选的<code>else</code>（有点像if语句和try语句中的那样），当循环正常完成时执行。也就是说，<code>else</code>只有在循环正常退出时才能执行。<code>break</code>、<code>return</code>或者循环中产生的异常都不会让<code>else</code>正常执行。</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Iterated over everything :)&#39;</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="mo">01234</span><span class="n">Iterated</span> <span class="n">over</span> <span class="n">everything</span> <span class="p">:)</span>
+</pre></div>
+
+
+<p>上面的代码里，我们遍历了<code>range(5)</code>。由于我们让循环正常完成，所以<code>else</code>语句也执行了，并且打印出了Iterated over everything:). 相反的，如果我们用<code>break</code>等语法退出循环，<code>else</code>就不会被执行。</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+<span class="o">...</span>         <span class="k">break</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Iterated over everything :)&#39;</span><span class="p">)</span>
+<span class="o">...</span><span class="mo">01</span>
+</pre></div>
+
+
+<p>注意，即使循环序列是空的，<code>else</code>也会被执行，毕竟所有的循环都已经正常走完。</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[]:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Still iterated over everything (i.e. nothing)&#39;</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">Still</span> <span class="n">iterated</span> <span class="n">over</span> <span class="n">everything</span> <span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">nothing</span><span class="p">)</span>
+
+<span class="err">而且，不要忘了哦，不要忘了哦，上面的内容对</span><span class="sb">`while...else`</span><span class="err">也适用哦。</span>
+
+<span class="sb">``</span><span class="err">`</span><span class="n">python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+<span class="o">...</span>     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="n">i</span>
+<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="s">&#39;Yep&#39;</span>
+<span class="o">...</span> 
+<span class="mi">12345</span><span class="n">Yep</span>
+</pre></div>
+
+
+<p>但是，为什么呢？</p>
+<p><code>else</code>语句在循环中的一个通常用法是实现搜索循环，比如你要实现搜索符合某个条件的元素，如果没有符合条件的元素就执行额外的处理或者引发异常</p>
+<div class="highlight"><pre><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">meets_condition</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>    
+    <span class="c"># raise error or do additional processing </span>
+</pre></div>
+
+
+<p>如果没有<code>else</code>你就需要设置一个标识，然后检察这个标识用来确认是否有符合条件的元素。</p>
+<div class="highlight"><pre><span class="n">condition_is_met</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">meets_condition</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">condition_is_met</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">condition_is_met</span><span class="p">:</span>
+    <span class="c"># raise error or do additional processing</span>
+</pre></div>
+
+
+<p>这并不是啥了不起的大事，毕竟你在其它语言中不得不这样做。但是如同python中的其它特性一样，else语句可以让这种做法更优雅，更Pythonic。在上面的利子中，适用else使你的代码更符合Python之道。</p>
+<p>并不存在不得不在循环中适用<code>else</code>语句的情况，然和情况下你都可以适用标识变量等方法。但是<code>else</code>语句让代码更优雅，可读性更高。有些人认为它更Pythonic，表达的意思更清楚（Hi，我也是呢！），另一些或许认为它让人困惑并且多余。就我个人来说，我件事在循环中适用<code>else</code>语句，除非有更好的方法让代码变的更加易读(对我来说，可以归结为如何保持代码的可读性）</p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="pythonli-bei-yi-wang-de-else.html" data-title="python里被遗忘的else" data-url="http://liulixiang1988.github.io/pythonli-bei-yi-wang-de-else.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/2014-04-19.html" title="Previous: 醉笑陪公三万场">醉笑陪公三万场</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/fan-yi-shi-yong-pythonde-mo-zhu-fang-fa-chuang-zao-geng-hao-de-zheng-ze-api.html" title="Next: [翻译]使用Python的魔术方法创造更好的正则API">[翻译]使用Python的魔术方法创造更好的正则API</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2014-07-20T17:08:00"> 7 20, 2014</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Python-ref">Python</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#python-ref">python
+                    <span>6</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

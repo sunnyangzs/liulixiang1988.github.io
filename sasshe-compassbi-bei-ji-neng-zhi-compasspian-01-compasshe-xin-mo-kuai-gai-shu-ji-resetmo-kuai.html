@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="CSS, SASS, Web, " />
+        <title>Sass和Compass必备技能之Compass篇-01 Compass核心模块概述及Reset模块  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html"> Sass和Compass必备技能之Compass篇-01 Compass核心模块概述及Reset模块  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <h2 id="1-compass">1. Compass核心模块</h2>
+<p><img alt="images/compass-1.png" src="images/compass-1.png" /></p>
+<p>Reset(<code>@import "compass/reset";</code>)和Layout(<code>@import "compass/layout";</code>)并没有包含在compass的核心模块中，需要单独引用。</p>
+<p><code>@import "compass";</code>包含了CSS3/Helpers/Typography/Utilities模块：
+- CSS3模块</p>
+<h2 id="2-normalizecssreset">2. 使用normalize.css替换reset</h2>
+<p>《grunt beginer》</p>
+<p>http://necolas.github.io/normalize.css/</p>
+<p>可以使用compass插件：</p>
+<h3 id="21">2.1 安装</h3>
+<p><code>gem install compass-normalize</code></p>
+<h3 id="22-configrb">2.2 在config.rb中引入</h3>
+<p><code>require 'compass-normalize'</code>
+<strong>注意：config.rb中的require 'compass/import-once/activate'是防止多次引入，如果需要多次引入，使用@import 'compass/reset!',即后面加上叹号</strong>
+如果输出格式是压缩的，在注释的最前面加一个感叹号<code>/*!注释*/</code>.</p>
+<p>有时，你并不想全部使用normalize所有的模块，那么可以分别引入normalize的模块，normalize有以下8个模块：</p>
+<p><img alt="images/compass-2.png" src="images/compass-2.png" /></p>
+<p>引入方式：先引入<code>@import "normalize-version";</code> 然后引入要使用的模块 <code>@import "normalize/base";</code></p>
+<div class="highlight"><pre><span class="c1">//@import &quot;normalize&quot;;</span>
+<span class="c1">//or</span>
+<span class="cp">@import</span> <span class="s2">&quot;normalize-version&quot;</span><span class="p">;</span>
+<span class="c1">//base</span>
+<span class="cp">@import</span> <span class="s2">&quot;normalize/base&quot;</span><span class="p">;</span>
+<span class="cm">/*link*/</span>
+<span class="cp">@import</span> <span class="s2">&quot;normalize/links&quot;</span><span class="p">;</span>
+</pre></div>
+
+
+<h3 id="23-sass">2.3 在sass页面中使用</h3>
+<p>reset的mixin和normalize里相对应</p>
+<p><img alt="images/compass-3.png" src="images/compass-3.png" /></p>
+<p>使用方法：</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/reset/utilities&quot;</span><span class="p">;</span>
+
+<span class="p">.</span><span class="n">test</span><span class="o">-</span><span class="n">reset</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">model</span> <span class="p">{</span>
+    <span class="err">@</span><span class="n">include</span> <span class="n">reset</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">model</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>文档：http://compass-style.org/</p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html" data-title="Sass和Compass必备技能之Compass篇-01 Compass核心模块概述及Reset模块" data-url="http://liulixiang1988.github.io/sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/androidxue-xi-bi-ji-08-imageviewkong-jian.html" title="Previous: Android学习笔记-08 ImageView控件">Android学习笔记-08 ImageView控件</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html" title="Next: Sass和Compass必备技能之Compass篇-02 模块简介">Sass和Compass必备技能之Compass篇-02 模块简介</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-04-20T20:51:00"> 4 20, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Web-ref">Web</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#CSS-ref">CSS
+                    <span>19</span>
+</a></li>
+                <li><a href="/tags.html#SASS-ref">SASS
+                    <span>9</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

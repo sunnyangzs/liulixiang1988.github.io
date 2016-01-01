@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="css3, compass, sass, Web, " />
+        <title>CSS3笔记01-过渡transition  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/css3bi-ji-01-guo-du-transition.html"> CSS3笔记01-过渡transition  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <p>使用compass:</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/css3/transition&quot;</span><span class="p">;</span>
+<span class="n">div</span><span class="p">.</span><span class="n">foo</span><span class="p">{</span>
+    <span class="n">width</span><span class="o">:</span> <span class="mi">50</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">padding</span><span class="o">:</span> <span class="mi">5</span><span class="n">px</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+    <span class="n">background</span><span class="o">:</span> <span class="cp">#9f3;</span>
+    <span class="err">@</span><span class="n">include</span> <span class="n">transition</span><span class="o">-</span><span class="nf">property</span><span class="p">(</span><span class="n">background</span><span class="p">,</span> <span class="n">width</span><span class="p">);</span>
+    <span class="err">@</span><span class="n">include</span> <span class="n">transition</span><span class="o">-</span><span class="nf">duration</span><span class="p">(</span><span class="mf">0.5</span><span class="n">s</span><span class="p">);</span>
+    <span class="err">@</span><span class="n">include</span> <span class="n">transition</span><span class="o">-</span><span class="n">timing</span><span class="o">-</span><span class="kd">function</span><span class="p">(</span><span class="n">ease</span><span class="o">-</span><span class="k">in</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">div</span><span class="p">.</span><span class="n">foo</span><span class="o">:</span><span class="n">hover</span><span class="p">{</span>
+    <span class="n">background</span><span class="o">:</span> <span class="cp">#690;</span>
+    <span class="n">width</span><span class="o">:</span> <span class="mi">100</span><span class="n">px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>对应的css3:</p>
+<div class="highlight"><pre><span class="nt">div</span><span class="nc">.foo</span> <span class="p">{</span>
+  <span class="k">width</span><span class="o">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="k">padding</span><span class="o">:</span> <span class="m">5px</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="k">background</span><span class="o">:</span> <span class="m">#9f3</span><span class="p">;</span>
+  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transition</span><span class="o">-</span><span class="n">property</span><span class="o">:</span> <span class="k">background</span><span class="o">,</span> <span class="k">width</span><span class="p">;</span>
+  <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transition</span><span class="o">-</span><span class="n">property</span><span class="o">:</span> <span class="k">background</span><span class="o">,</span> <span class="k">width</span><span class="p">;</span>
+  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transition</span><span class="o">-</span><span class="n">property</span><span class="o">:</span> <span class="k">background</span><span class="o">,</span> <span class="k">width</span><span class="p">;</span>
+  <span class="n">transition</span><span class="o">-</span><span class="n">property</span><span class="o">:</span> <span class="k">background</span><span class="o">,</span> <span class="k">width</span><span class="p">;</span>
+  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transition</span><span class="o">-</span><span class="n">duration</span><span class="o">:</span> <span class="m">0.5s</span><span class="p">;</span>
+  <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transition</span><span class="o">-</span><span class="n">duration</span><span class="o">:</span> <span class="m">0.5s</span><span class="p">;</span>
+  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transition</span><span class="o">-</span><span class="n">duration</span><span class="o">:</span> <span class="m">0.5s</span><span class="p">;</span>
+  <span class="n">transition</span><span class="o">-</span><span class="n">duration</span><span class="o">:</span> <span class="m">0.5s</span><span class="p">;</span>
+  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transition</span><span class="o">-</span><span class="n">timing</span><span class="o">-</span><span class="n">function</span><span class="o">:</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="p">;</span>
+  <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transition</span><span class="o">-</span><span class="n">timing</span><span class="o">-</span><span class="n">function</span><span class="o">:</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="p">;</span>
+  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transition</span><span class="o">-</span><span class="n">timing</span><span class="o">-</span><span class="n">function</span><span class="o">:</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="p">;</span>
+  <span class="n">transition</span><span class="o">-</span><span class="n">timing</span><span class="o">-</span><span class="n">function</span><span class="o">:</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* line 13, ../sass/transition.scss */</span>
+<span class="nt">div</span><span class="nc">.foo</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="k">background</span><span class="o">:</span> <span class="m">#690</span><span class="p">;</span>
+  <span class="k">width</span><span class="o">:</span> <span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li><code>transition-property</code>:代表过渡的属性，可以使<code>background</code>,<code>opactiy</code>, <code>font-size</code>和<code>width</code>等,也可以使用<code>all</code>代表全部属性；</li>
+<li><code>transition-duration</code>：代表过渡的持续时间，注意结尾要有单位，比如<code>3s</code>等；</li>
+<li><code>transition-timing-function</code>: 过渡的时间函数，有六种<code>[ ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier(x1, y1, x2, y2)]</code>平滑、线性、由慢到快、由快到慢、由慢到快再到慢，以及三次贝赛尔曲线类型；</li>
+<li><code>transition-delay</code>: 延迟过渡，注意要有单位。</li>
+</ul>
+<p>也可以使用<code>transition</code>一次写完：
+compass:
+<code>single-transition($property, $duration, $function, $delay)</code>
+scss:
+<code>transition:background 0.3s ease 0.3s</code></p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="css3bi-ji-01-guo-du-transition.html" data-title="CSS3笔记01-过渡transition" data-url="http://liulixiang1988.github.io/css3bi-ji-01-guo-du-transition.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html" title="Previous: Ionic使用教程-条码扫描">Ionic使用教程-条码扫描</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/css3bi-ji-02-xuan-ting-xiao-guo.html" title="Next: CSS3笔记02-悬停效果">CSS3笔记02-悬停效果</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-06-13T20:31:00"> 6 13, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Web-ref">Web</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#compass-ref">compass
+                    <span>3</span>
+</a></li>
+                <li><a href="/tags.html#css3-ref">css3
+                    <span>5</span>
+</a></li>
+                <li><a href="/tags.html#sass-ref">sass
+                    <span>9</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>
