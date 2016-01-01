@@ -60,48 +60,48 @@
 
             <h2 id="1-jdbc">1. JDBC编程步骤</h2>
 <p><strong>加载驱动程序：</strong></p>
-<div class="highlight"><pre>Class.forName(driverClass)
-//加载MySql驱动
-Class.forName(&quot;com.mysql.jdbc.Driver&quot;)
-//加载Oracle驱动
-Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;)
+<div class="highlight"><pre><span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="n">driverClass</span><span class="p">)</span>
+<span class="c1">//加载MySql驱动</span>
+<span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="s">&quot;com.mysql.jdbc.Driver&quot;</span><span class="p">)</span>
+<span class="c1">//加载Oracle驱动</span>
+<span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="s">&quot;oracle.jdbc.driver.OracleDriver&quot;</span><span class="p">)</span>
 </pre></div>
 
 
 <p><strong>获得数据库连接：</strong></p>
-<div class="highlight"><pre><span class="nt">DriverManager</span><span class="nc">.getConnection</span><span class="o">(</span><span class="s2">&quot;jdbc:mysql://127.0.0.1:3306/imooc&quot;</span><span class="o">,</span> <span class="s2">&quot;root&quot;</span><span class="o">,</span> <span class="s2">&quot;root&quot;</span><span class="o">);</span>
+<div class="highlight"><pre><span class="n">DriverManager</span><span class="p">.</span><span class="n">getConnection</span><span class="p">(</span><span class="s">&quot;jdbc:mysql://127.0.0.1:3306/imooc&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">);</span>
 </pre></div>
 
 
 <p><strong>创建Statement\PreparedStatement对象：</strong></p>
-<div class="highlight"><pre>conn.createStatement();
-conn.prepareStatement(sql);
+<div class="highlight"><pre><span class="n">conn</span><span class="p">.</span><span class="n">createStatement</span><span class="p">();</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
 </pre></div>
 
 
 <p>例子：</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.sql.DriverManager</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.sql.ResultSet</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.sql.Statement</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">Connection</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">DriverManager</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">ResultSet</span><span class="p">;</span>
+<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">Statement</span><span class="p">;</span>
 
-<span class="n">public</span> <span class="k">class</span> <span class="nc">DbUtil</span> <span class="p">{</span>
+<span class="n">public</span> <span class="n">class</span> <span class="n">DbUtil</span> <span class="p">{</span>
 
-    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">URL</span> <span class="o">=</span> <span class="s">&quot;jdbc:mysql://localhost:3306/imooc&quot;</span><span class="p">;</span>
-    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">USER</span> <span class="o">=</span> <span class="s">&quot;liulx&quot;</span><span class="p">;</span>
-    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">PASSWORD</span> <span class="o">=</span> <span class="s">&quot;123456&quot;</span><span class="p">;</span>
+    <span class="n">public</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">URL</span> <span class="o">=</span> <span class="s">&quot;jdbc:mysql://localhost:3306/imooc&quot;</span><span class="p">;</span>
+    <span class="n">public</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">USER</span> <span class="o">=</span> <span class="s">&quot;liulx&quot;</span><span class="p">;</span>
+    <span class="n">public</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">PASSWORD</span> <span class="o">=</span> <span class="s">&quot;123456&quot;</span><span class="p">;</span>
 
-    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="n">throws</span> <span class="ne">Exception</span> <span class="p">{</span>
-        <span class="o">//</span><span class="mf">1.</span><span class="err">加载驱动程序</span>
-        <span class="n">Class</span><span class="o">.</span><span class="n">forName</span><span class="p">(</span><span class="s">&quot;com.mysql.jdbc.Driver&quot;</span><span class="p">);</span>
-        <span class="o">//</span><span class="mf">2.</span> <span class="err">获得数据库连接</span>
-        <span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">DriverManager</span><span class="o">.</span><span class="n">getConnection</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">USER</span><span class="p">,</span> <span class="n">PASSWORD</span><span class="p">);</span>
-        <span class="o">//</span><span class="mf">3.</span><span class="err">操作数据库，实现增删改查</span>
-        <span class="n">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">createStatement</span><span class="p">();</span>
-        <span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="n">executeQuery</span><span class="p">(</span><span class="s">&quot;SELECT user_name, age FROM imooc_goddess&quot;</span><span class="p">);</span>
-        <span class="o">//</span><span class="err">如果有数据，</span><span class="n">rs</span><span class="o">.</span><span class="n">next</span><span class="p">()</span><span class="err">返回</span><span class="n">true</span>
-        <span class="k">while</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">next</span><span class="p">()){</span>
-            <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s">&quot;user_name&quot;</span><span class="p">)</span><span class="o">+</span><span class="s">&quot; 年龄：&quot;</span><span class="o">+</span><span class="n">rs</span><span class="o">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">));</span>
+    <span class="n">public</span> <span class="k">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="n">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+        <span class="c1">//1.加载驱动程序</span>
+        <span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="s">&quot;com.mysql.jdbc.Driver&quot;</span><span class="p">);</span>
+        <span class="c1">//2. 获得数据库连接</span>
+        <span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">DriverManager</span><span class="p">.</span><span class="n">getConnection</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">USER</span><span class="p">,</span> <span class="n">PASSWORD</span><span class="p">);</span>
+        <span class="c1">//3.操作数据库，实现增删改查</span>
+        <span class="n">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">createStatement</span><span class="p">();</span>
+        <span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">stmt</span><span class="p">.</span><span class="n">executeQuery</span><span class="p">(</span><span class="s">&quot;SELECT user_name, age FROM imooc_goddess&quot;</span><span class="p">);</span>
+        <span class="c1">//如果有数据，rs.next()返回true</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">rs</span><span class="p">.</span><span class="n">next</span><span class="p">()){</span>
+            <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">rs</span><span class="p">.</span><span class="n">getString</span><span class="p">(</span><span class="s">&quot;user_name&quot;</span><span class="p">)</span><span class="o">+</span><span class="s">&quot; 年龄：&quot;</span><span class="o">+</span><span class="n">rs</span><span class="p">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">));</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -109,177 +109,177 @@ conn.prepareStatement(sql);
 
 
 <h2 id="2">2. 增删改查</h2>
-<div class="highlight"><pre><span class="n">public</span> <span class="k">class</span> <span class="nc">DbUtil</span> <span class="p">{</span>
-    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">URL</span> <span class="o">=</span> <span class="s">&quot;jdbc:mysql://localhost:3306/imooc&quot;</span><span class="p">;</span>
-    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">USER</span> <span class="o">=</span> <span class="s">&quot;liulx&quot;</span><span class="p">;</span>
-    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">PASSWORD</span> <span class="o">=</span> <span class="s">&quot;123456&quot;</span><span class="p">;</span>
-    <span class="n">private</span> <span class="n">static</span> <span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
-    <span class="n">static</span><span class="p">{</span>
-        <span class="k">try</span> <span class="p">{</span>
-            <span class="o">//</span><span class="mf">1.</span><span class="err">加载驱动程序</span>
-            <span class="n">Class</span><span class="o">.</span><span class="n">forName</span><span class="p">(</span><span class="s">&quot;com.mysql.jdbc.Driver&quot;</span><span class="p">);</span>
-            <span class="o">//</span><span class="mf">2.</span> <span class="err">获得数据库连接</span>
-            <span class="n">conn</span> <span class="o">=</span> <span class="n">DriverManager</span><span class="o">.</span><span class="n">getConnection</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">USER</span><span class="p">,</span> <span class="n">PASSWORD</span><span class="p">);</span>
-        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">ClassNotFoundException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
-        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">SQLException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+<div class="highlight"><pre><span class="k">public</span> <span class="nf">class</span> <span class="nx">DbUtil</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="nf">static</span> <span class="nx">final</span> <span class="kt">String</span> <span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;jdbc:mysql://localhost:3306/imooc&quot;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nf">static</span> <span class="nx">final</span> <span class="kt">String</span> <span class="n">USER</span> <span class="o">=</span> <span class="s2">&quot;liulx&quot;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nf">static</span> <span class="nx">final</span> <span class="kt">String</span> <span class="n">PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;123456&quot;</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nf">static</span> <span class="nb">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
+    <span class="nx">static</span><span class="p">{</span>
+        <span class="nx">try</span> <span class="p">{</span>
+            <span class="c1">//1.加载驱动程序</span>
+            <span class="nx">Class.forName</span><span class="p">(</span><span class="s2">&quot;com.mysql.jdbc.Driver&quot;</span><span class="p">);</span>
+            <span class="c1">//2. 获得数据库连接</span>
+            <span class="n">conn</span> <span class="o">=</span> <span class="nx">DriverManager.getConnection</span><span class="p">(</span><span class="nb">URL</span><span class="p">,</span> <span class="nb">USER</span><span class="p">,</span> <span class="nx">PASSWORD</span><span class="p">);</span>
+        <span class="p">}</span> <span class="nx">catch</span> <span class="p">(</span><span class="nx">ClassNotFoundException</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">e.printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span> <span class="nx">catch</span> <span class="p">(</span><span class="nx">SQLException</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">e.printStackTrace</span><span class="p">();</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="n">public</span> <span class="n">static</span> <span class="n">Connection</span> <span class="n">getConnection</span><span class="p">(){</span>
-        <span class="k">return</span> <span class="n">conn</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nf">static</span> <span class="nb">Connection</span> <span class="nx">getConnection</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="nx">conn</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="o">//</span><span class="err">模型</span>
-<span class="n">package</span> <span class="n">liulx</span><span class="o">.</span><span class="n">model</span><span class="p">;</span>
+<span class="c1">//模型</span>
+<span class="nx">package</span> <span class="nx">liulx.model</span><span class="p">;</span>
 
-<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">java.util.Date</span><span class="p">;</span>
 
-<span class="n">public</span> <span class="k">class</span> <span class="nc">Goddess</span> <span class="p">{</span>
+<span class="k">public</span> <span class="nf">class</span> <span class="nx">Goddess</span> <span class="p">{</span>
 
-    <span class="n">private</span> <span class="n">Integer</span> <span class="nb">id</span><span class="p">;</span>
-    <span class="n">private</span> <span class="n">String</span> <span class="n">user_name</span><span class="p">;</span>
-    <span class="n">private</span> <span class="n">Integer</span> <span class="n">sex</span><span class="p">;</span>
-    <span class="n">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="p">;</span>
-    <span class="n">private</span> <span class="n">Date</span> <span class="n">birthday</span><span class="p">;</span> <span class="o">//</span><span class="err">注意用的是</span><span class="n">java</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">Date</span>
-    <span class="n">private</span> <span class="n">String</span> <span class="n">email</span><span class="p">;</span>
-    <span class="n">private</span> <span class="n">String</span> <span class="n">mobile</span><span class="p">;</span>
-    <span class="n">private</span> <span class="n">String</span> <span class="n">create_user</span><span class="p">;</span>
-    <span class="n">private</span> <span class="n">String</span> <span class="n">update_user</span><span class="p">;</span>
-    <span class="n">private</span> <span class="n">Date</span> <span class="n">create_date</span><span class="p">;</span>
-    <span class="n">private</span> <span class="n">Date</span> <span class="n">update_date</span><span class="p">;</span>
-    <span class="n">private</span> <span class="n">Integer</span> <span class="n">isDel</span><span class="p">;</span>
-    <span class="o">//</span><span class="n">getter</span> <span class="n">setter</span><span class="err">方法。。。</span>
+    <span class="k">private</span> <span class="nf">Integer</span> <span class="nb">id</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nf">String</span> <span class="nx">user_name</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nf">Integer</span> <span class="nx">sex</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nf">Integer</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nf">Date</span> <span class="nx">birthday</span><span class="p">;</span> <span class="c1">//注意用的是java.util.Date</span>
+    <span class="k">private</span> <span class="nf">String</span> <span class="nx">email</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nf">String</span> <span class="nx">mobile</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nf">String</span> <span class="nx">create_user</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nf">String</span> <span class="nx">update_user</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nf">Date</span> <span class="nx">create_date</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nf">Date</span> <span class="nx">update_date</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nf">Integer</span> <span class="nx">isDel</span><span class="p">;</span>
+    <span class="c1">//getter setter方法。。。</span>
 <span class="p">}</span>
 
-<span class="o">//---------</span><span class="n">dao</span><span class="err">层</span><span class="o">--------------</span>
-<span class="n">package</span> <span class="n">liulx</span><span class="o">.</span><span class="n">dao</span><span class="p">;</span>
+<span class="c1">//---------dao层--------------</span>
+<span class="nx">package</span> <span class="nx">liulx.dao</span><span class="p">;</span>
 
-<span class="kn">import</span> <span class="nn">liulx.db.DbUtil</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">liulx.model.Goddess</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">liulx.db.DbUtil</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">liulx.model.Goddess</span><span class="p">;</span>
 
-<span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.sql.ResultSet</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.sql.Statement</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">java.sql.Connection</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">java.sql.ResultSet</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">java.sql.SQLException</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">java.sql.Statement</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">java.util.ArrayList</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">java.util.List</span><span class="p">;</span>
 
-<span class="n">public</span> <span class="k">class</span> <span class="nc">GoddessDao</span> <span class="p">{</span>
-    <span class="o">//</span><span class="err">增加</span>
-    <span class="n">public</span> <span class="n">void</span> <span class="n">addGoddess</span><span class="p">(</span><span class="n">Goddess</span> <span class="n">g</span><span class="p">)</span> <span class="n">throws</span> <span class="n">SQLException</span> <span class="p">{</span>
-        <span class="o">//</span><span class="err">获取连接</span>
-        <span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">DbUtil</span><span class="o">.</span><span class="n">getConnection</span><span class="p">();</span>
-        <span class="o">//</span><span class="n">sql</span>
-        <span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&quot;INSERT INTO imooc_goddess(user_name, sex, age, birthday, email, mobile,&quot;</span><span class="o">+</span>
-            <span class="s">&quot;create_user, create_date, update_user, update_date, isdel)&quot;</span>
-                <span class="o">+</span><span class="s">&quot;values(&quot;</span><span class="o">+</span><span class="s">&quot;?,?,?,?,?,?,?,CURRENT_DATE(),?,CURRENT_DATE(),?)&quot;</span><span class="p">;</span>
-        <span class="o">//</span><span class="err">预编译</span>
-        <span class="n">PreparedStatement</span> <span class="n">ptmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span> <span class="o">//</span><span class="err">预编译</span><span class="n">SQL</span><span class="err">，减少</span><span class="n">sql</span><span class="err">执行</span>
+<span class="k">public</span> <span class="nf">class</span> <span class="nx">GoddessDao</span> <span class="p">{</span>
+    <span class="c1">//增加</span>
+    <span class="k">public</span> <span class="nf">void</span> <span class="nx">addGoddess</span><span class="p">(</span><span class="nx">Goddess</span> <span class="nx">g</span><span class="p">)</span> <span class="nx">throws</span> <span class="nx">SQLException</span> <span class="p">{</span>
+        <span class="c1">//获取连接</span>
+        <span class="nb">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="nx">DbUtil.getConnection</span><span class="p">();</span>
+        <span class="c1">//sql</span>
+        <span class="kt">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO imooc_goddess(user_name, sex, age, birthday, email, mobile,&quot;</span><span class="o">+</span>
+            <span class="s2">&quot;create_user, create_date, update_user, update_date, isdel)&quot;</span>
+                <span class="o">+</span><span class="s2">&quot;values(&quot;</span><span class="o">+</span><span class="s2">&quot;?,?,?,?,?,?,?,CURRENT_DATE(),?,CURRENT_DATE(),?)&quot;</span><span class="p">;</span>
+        <span class="c1">//预编译</span>
+        <span class="nx">PreparedStatement</span> <span class="n">ptmt</span> <span class="o">=</span> <span class="nx">conn.prepareStatement</span><span class="p">(</span><span class="nb">sql</span><span class="p">);</span> <span class="c1">//预编译SQL，减少sql执行</span>
 
-        <span class="o">//</span><span class="err">传参</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getUser_name</span><span class="p">());</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setInt</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getSex</span><span class="p">());</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setInt</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getAge</span><span class="p">());</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setDate</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">new</span> <span class="n">Date</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">getBirthday</span><span class="p">()</span><span class="o">.</span><span class="n">getTime</span><span class="p">()));</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setString</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getEmail</span><span class="p">());</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setString</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getMobile</span><span class="p">());</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setString</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getCreate_user</span><span class="p">());</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setString</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getUpdate_user</span><span class="p">());</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setInt</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getIsDel</span><span class="p">());</span>
+        <span class="c1">//传参</span>
+        <span class="nx">ptmt.setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">g.getUser_name</span><span class="p">());</span>
+        <span class="nx">ptmt.setInt</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nx">g.getSex</span><span class="p">());</span>
+        <span class="nx">ptmt.setInt</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nx">g.getAge</span><span class="p">());</span>
+        <span class="nx">ptmt.setDate</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="nb">new</span> <span class="kt">Date</span><span class="p">(</span><span class="nx">g.getBirthday</span><span class="p">()</span><span class="bp">.</span><span class="nx">getTime</span><span class="p">()));</span>
+        <span class="nx">ptmt.setString</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nx">g.getEmail</span><span class="p">());</span>
+        <span class="nx">ptmt.setString</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="nx">g.getMobile</span><span class="p">());</span>
+        <span class="nx">ptmt.setString</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="nx">g.getCreate_user</span><span class="p">());</span>
+        <span class="nx">ptmt.setString</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="nx">g.getUpdate_user</span><span class="p">());</span>
+        <span class="nx">ptmt.setInt</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="nx">g.getIsDel</span><span class="p">());</span>
 
-        <span class="o">//</span><span class="err">执行</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">execute</span><span class="p">();</span>
+        <span class="c1">//执行</span>
+        <span class="nx">ptmt.execute</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="n">public</span> <span class="n">void</span> <span class="n">updateGoddess</span><span class="p">(){</span>
-        <span class="o">//</span><span class="err">获取连接</span>
-        <span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">DbUtil</span><span class="o">.</span><span class="n">getConnection</span><span class="p">();</span>
-        <span class="o">//</span><span class="n">sql</span><span class="p">,</span> <span class="err">每行加空格</span>
-        <span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&quot;UPDATE imooc_goddess&quot;</span> <span class="o">+</span>
-                <span class="s">&quot; set user_name=?, sex=?, age=?, birthday=?, email=?, mobile=?,&quot;</span><span class="o">+</span>
-                <span class="s">&quot; update_user=?, update_date=CURRENT_DATE(), isdel=? &quot;</span><span class="o">+</span>
-                <span class="s">&quot; where id=?&quot;</span><span class="p">;</span>
-        <span class="o">//</span><span class="err">预编译</span>
-        <span class="n">PreparedStatement</span> <span class="n">ptmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span> <span class="o">//</span><span class="err">预编译</span><span class="n">SQL</span><span class="err">，减少</span><span class="n">sql</span><span class="err">执行</span>
+    <span class="k">public</span> <span class="nf">void</span> <span class="nx">updateGoddess</span><span class="p">(){</span>
+        <span class="c1">//获取连接</span>
+        <span class="nb">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="nx">DbUtil.getConnection</span><span class="p">();</span>
+        <span class="c1">//sql, 每行加空格</span>
+        <span class="kt">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;UPDATE imooc_goddess&quot;</span> <span class="o">+</span>
+                <span class="s2">&quot; set user_name=?, sex=?, age=?, birthday=?, email=?, mobile=?,&quot;</span><span class="o">+</span>
+                <span class="s2">&quot; update_user=?, update_date=CURRENT_DATE(), isdel=? &quot;</span><span class="o">+</span>
+                <span class="s2">&quot; where id=?&quot;</span><span class="p">;</span>
+        <span class="c1">//预编译</span>
+        <span class="nx">PreparedStatement</span> <span class="n">ptmt</span> <span class="o">=</span> <span class="nx">conn.prepareStatement</span><span class="p">(</span><span class="nb">sql</span><span class="p">);</span> <span class="c1">//预编译SQL，减少sql执行</span>
 
-        <span class="o">//</span><span class="err">传参</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getUser_name</span><span class="p">());</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setInt</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getSex</span><span class="p">());</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setInt</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getAge</span><span class="p">());</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setDate</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">new</span> <span class="n">Date</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">getBirthday</span><span class="p">()</span><span class="o">.</span><span class="n">getTime</span><span class="p">()));</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setString</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getEmail</span><span class="p">());</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setString</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getMobile</span><span class="p">());</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setString</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getUpdate_user</span><span class="p">());</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setInt</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getIsDel</span><span class="p">());</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setInt</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">getId</span><span class="p">());</span>
+        <span class="c1">//传参</span>
+        <span class="nx">ptmt.setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">g.getUser_name</span><span class="p">());</span>
+        <span class="nx">ptmt.setInt</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nx">g.getSex</span><span class="p">());</span>
+        <span class="nx">ptmt.setInt</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nx">g.getAge</span><span class="p">());</span>
+        <span class="nx">ptmt.setDate</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="nb">new</span> <span class="kt">Date</span><span class="p">(</span><span class="nx">g.getBirthday</span><span class="p">()</span><span class="bp">.</span><span class="nx">getTime</span><span class="p">()));</span>
+        <span class="nx">ptmt.setString</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nx">g.getEmail</span><span class="p">());</span>
+        <span class="nx">ptmt.setString</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="nx">g.getMobile</span><span class="p">());</span>
+        <span class="nx">ptmt.setString</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="nx">g.getUpdate_user</span><span class="p">());</span>
+        <span class="nx">ptmt.setInt</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="nx">g.getIsDel</span><span class="p">());</span>
+        <span class="nx">ptmt.setInt</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="nx">g.getId</span><span class="p">());</span>
 
-        <span class="o">//</span><span class="err">执行</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">execute</span><span class="p">();</span>
+        <span class="c1">//执行</span>
+        <span class="nx">ptmt.execute</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="n">public</span> <span class="n">void</span> <span class="n">delGoddess</span><span class="p">(){</span>
-        <span class="o">//</span><span class="err">获取连接</span>
-        <span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">DbUtil</span><span class="o">.</span><span class="n">getConnection</span><span class="p">();</span>
-        <span class="o">//</span><span class="n">sql</span><span class="p">,</span> <span class="err">每行加空格</span>
-        <span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&quot;delete from imooc_goddess where id=?&quot;</span><span class="p">;</span>
-        <span class="o">//</span><span class="err">预编译</span><span class="n">SQL</span><span class="err">，减少</span><span class="n">sql</span><span class="err">执行</span>
-        <span class="n">PreparedStatement</span> <span class="n">ptmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
+    <span class="k">public</span> <span class="nf">void</span> <span class="nx">delGoddess</span><span class="p">(){</span>
+        <span class="c1">//获取连接</span>
+        <span class="nb">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="nx">DbUtil.getConnection</span><span class="p">();</span>
+        <span class="c1">//sql, 每行加空格</span>
+        <span class="kt">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;delete from imooc_goddess where id=?&quot;</span><span class="p">;</span>
+        <span class="c1">//预编译SQL，减少sql执行</span>
+        <span class="nx">PreparedStatement</span> <span class="n">ptmt</span> <span class="o">=</span> <span class="nx">conn.prepareStatement</span><span class="p">(</span><span class="nb">sql</span><span class="p">);</span>
 
-        <span class="o">//</span><span class="err">传参</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">id</span><span class="p">);</span>
+        <span class="c1">//传参</span>
+        <span class="nx">ptmt.setInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">id</span><span class="p">);</span>
 
-        <span class="o">//</span><span class="err">执行</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">execute</span><span class="p">();</span>
+        <span class="c1">//执行</span>
+        <span class="nx">ptmt.execute</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="n">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Goddess</span><span class="o">&gt;</span> <span class="n">query</span><span class="p">()</span> <span class="n">throws</span> <span class="n">SQLException</span> <span class="p">{</span>
-        <span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">DbUtil</span><span class="o">.</span><span class="n">getConnection</span><span class="p">();</span>
-        <span class="n">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">createStatement</span><span class="p">();</span>
-        <span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="n">executeQuery</span><span class="p">(</span><span class="s">&quot;SELECT user_name, age FROM imooc_goddess&quot;</span><span class="p">);</span>
+    <span class="k">public</span> <span class="nf">List</span><span class="o">&lt;</span><span class="nx">Goddess</span><span class="o">&gt;</span> <span class="nx">query</span><span class="p">()</span> <span class="nx">throws</span> <span class="nx">SQLException</span> <span class="p">{</span>
+        <span class="nb">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="nx">DbUtil.getConnection</span><span class="p">();</span>
+        <span class="nb">Statement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="nx">conn.createStatement</span><span class="p">();</span>
+        <span class="k">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="nx">stmt.executeQuery</span><span class="p">(</span><span class="s2">&quot;SELECT user_name, age FROM imooc_goddess&quot;</span><span class="p">);</span>
 
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">Goddess</span><span class="o">&gt;</span> <span class="n">gs</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Goddess</span><span class="o">&gt;</span><span class="p">();</span>
-        <span class="n">Goddess</span> <span class="n">g</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
-        <span class="k">while</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">next</span><span class="p">()){</span>
-            <span class="n">g</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Goddess</span><span class="p">();</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">setUser_name</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s">&quot;user_name&quot;</span><span class="p">));</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">setAge</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">));</span>
+        <span class="nb">List</span><span class="o">&lt;</span><span class="nx">Goddess</span><span class="o">&gt;</span> <span class="n">gs</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">ArrayList</span><span class="o">&lt;</span><span class="nx">Goddess</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="nx">Goddess</span> <span class="n">g</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="nx">rs.next</span><span class="p">()){</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">Goddess</span><span class="p">();</span>
+            <span class="nx">g.setUser_name</span><span class="p">(</span><span class="nx">rs.getString</span><span class="p">(</span><span class="s2">&quot;user_name&quot;</span><span class="p">));</span>
+            <span class="nx">g.setAge</span><span class="p">(</span><span class="nx">rs.getInt</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">));</span>
 
-            <span class="n">gs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">g</span><span class="p">);</span>
+            <span class="nx">gs.add</span><span class="p">(</span><span class="nx">g</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="k">return</span> <span class="n">gs</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">gs</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">public</span> <span class="n">Goddess</span> <span class="n">get</span><span class="p">(){</span>
-        <span class="n">Goddess</span> <span class="n">g</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
-        <span class="o">//</span><span class="err">获取连接</span>
-        <span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">DbUtil</span><span class="o">.</span><span class="n">getConnection</span><span class="p">();</span>
-        <span class="o">//</span><span class="n">sql</span><span class="p">,</span> <span class="err">每行加空格</span>
-        <span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s">&quot;select * from  imooc_goddess where id=?&quot;</span><span class="p">;</span>
-        <span class="o">//</span><span class="err">预编译</span><span class="n">SQL</span><span class="err">，减少</span><span class="n">sql</span><span class="err">执行</span>
-        <span class="n">PreparedStatement</span> <span class="n">ptmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
-        <span class="o">//</span><span class="err">传参</span>
-        <span class="n">ptmt</span><span class="o">.</span><span class="n">setInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">id</span><span class="p">);</span>
-        <span class="o">//</span><span class="err">执行</span>
-        <span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">ptmt</span><span class="o">.</span><span class="n">executeQuery</span><span class="p">();</span>
-        <span class="k">while</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">next</span><span class="p">()){</span>
-            <span class="n">g</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Goddess</span><span class="p">();</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">setId</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">));</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">setUser_name</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s">&quot;user_name&quot;</span><span class="p">));</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">setAge</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">));</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">setSex</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">&quot;sex&quot;</span><span class="p">));</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">setBirthday</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getDate</span><span class="p">(</span><span class="s">&quot;birthday&quot;</span><span class="p">));</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">setEmail</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s">&quot;email&quot;</span><span class="p">));</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">setMobile</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s">&quot;mobile&quot;</span><span class="p">));</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">setCreate_date</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getDate</span><span class="p">(</span><span class="s">&quot;create_date&quot;</span><span class="p">));</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">setCreate_user</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s">&quot;create_user&quot;</span><span class="p">));</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">setUpdate_date</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getDate</span><span class="p">(</span><span class="s">&quot;update_date&quot;</span><span class="p">));</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">setUpdate_user</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s">&quot;update_user&quot;</span><span class="p">));</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">setIsDel</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">&quot;isdel&quot;</span><span class="p">));</span>
+    <span class="k">public</span> <span class="nf">Goddess</span> <span class="nb">get</span><span class="p">(){</span>
+        <span class="nx">Goddess</span> <span class="n">g</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
+        <span class="c1">//获取连接</span>
+        <span class="nb">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="nx">DbUtil.getConnection</span><span class="p">();</span>
+        <span class="c1">//sql, 每行加空格</span>
+        <span class="kt">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;select * from  imooc_goddess where id=?&quot;</span><span class="p">;</span>
+        <span class="c1">//预编译SQL，减少sql执行</span>
+        <span class="nx">PreparedStatement</span> <span class="n">ptmt</span> <span class="o">=</span> <span class="nx">conn.prepareStatement</span><span class="p">(</span><span class="nb">sql</span><span class="p">);</span>
+        <span class="c1">//传参</span>
+        <span class="nx">ptmt.setInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">id</span><span class="p">);</span>
+        <span class="c1">//执行</span>
+        <span class="k">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="nx">ptmt.executeQuery</span><span class="p">();</span>
+        <span class="k">while</span><span class="p">(</span><span class="nx">rs.next</span><span class="p">()){</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">Goddess</span><span class="p">();</span>
+            <span class="nx">g.setId</span><span class="p">(</span><span class="nx">rs.getInt</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">));</span>
+            <span class="nx">g.setUser_name</span><span class="p">(</span><span class="nx">rs.getString</span><span class="p">(</span><span class="s2">&quot;user_name&quot;</span><span class="p">));</span>
+            <span class="nx">g.setAge</span><span class="p">(</span><span class="nx">rs.getInt</span><span class="p">(</span><span class="s2">&quot;age&quot;</span><span class="p">));</span>
+            <span class="nx">g.setSex</span><span class="p">(</span><span class="nx">rs.getInt</span><span class="p">(</span><span class="s2">&quot;sex&quot;</span><span class="p">));</span>
+            <span class="nx">g.setBirthday</span><span class="p">(</span><span class="nx">rs.getDate</span><span class="p">(</span><span class="s2">&quot;birthday&quot;</span><span class="p">));</span>
+            <span class="nx">g.setEmail</span><span class="p">(</span><span class="nx">rs.getString</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">));</span>
+            <span class="nx">g.setMobile</span><span class="p">(</span><span class="nx">rs.getString</span><span class="p">(</span><span class="s2">&quot;mobile&quot;</span><span class="p">));</span>
+            <span class="nx">g.setCreate_date</span><span class="p">(</span><span class="nx">rs.getDate</span><span class="p">(</span><span class="s2">&quot;create_date&quot;</span><span class="p">));</span>
+            <span class="nx">g.setCreate_user</span><span class="p">(</span><span class="nx">rs.getString</span><span class="p">(</span><span class="s2">&quot;create_user&quot;</span><span class="p">));</span>
+            <span class="nx">g.setUpdate_date</span><span class="p">(</span><span class="nx">rs.getDate</span><span class="p">(</span><span class="s2">&quot;update_date&quot;</span><span class="p">));</span>
+            <span class="nx">g.setUpdate_user</span><span class="p">(</span><span class="nx">rs.getString</span><span class="p">(</span><span class="s2">&quot;update_user&quot;</span><span class="p">));</span>
+            <span class="nx">g.setIsDel</span><span class="p">(</span><span class="nx">rs.getInt</span><span class="p">(</span><span class="s2">&quot;isdel&quot;</span><span class="p">));</span>
         <span class="p">}</span>
-        <span class="k">return</span> <span class="n">g</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">g</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -322,7 +322,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-13T20:11:00+08:00"> 4 13, 2015</time>
+            <time pubdate="pubdate" datetime="2015-04-13T20:11:00"> 4 13, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Java-ref">Java</a> 
             <h4>Tags</h4>

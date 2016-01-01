@@ -114,61 +114,61 @@
 <hr/>
 <h2 id="2">2. 路由</h2>
 <h3 id="21">2.1 路由规则</h3>
-<div class="highlight"><pre>{controller}/{action}/{id}
+<div class="highlight"><pre><span class="p">{</span><span class="n">controller</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="n">action</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span>
 </pre></div>
 <p>其中{id}是可选的。</p>
 <h3 id="22-routeconfigcs">2.2 路由定义RouteConfig.cs</h3>
-<div class="highlight"><pre>public class RouteConfig
-{
-    public static void RegisterRoutes(RouteCollection routes)
-    {
-        routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+<div class="highlight"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">RouteConfig</span>
+<span class="p">{</span>
+    <span class="n">public</span> <span class="k">static</span> <span class="kt">void</span> <span class="n">RegisterRoutes</span><span class="p">(</span><span class="n">RouteCollection</span> <span class="n">routes</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">routes</span><span class="p">.</span><span class="n">IgnoreRoute</span><span class="p">(</span><span class="s">"{resource}.axd/{*pathInfo}"</span><span class="p">);</span>
 
-        routes.MapRoute(
-            name: "Default",
-            url: "{controller}/{action}/{id}",
-            defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-        );
-    }
-}
+        <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+            <span class="nl">name:</span> <span class="s">"Default"</span><span class="p">,</span>
+            <span class="nl">url:</span> <span class="s">"{controller}/{action}/{id}"</span><span class="p">,</span>
+            <span class="nl">defaults:</span> <span class="n">new</span> <span class="p">{</span> <span class="n">controller</span> <span class="o">=</span> <span class="s">"Home"</span><span class="p">,</span> <span class="n">action</span> <span class="o">=</span> <span class="s">"Index"</span><span class="p">,</span> <span class="n">id</span> <span class="o">=</span> <span class="n">UrlParameter</span><span class="p">.</span><span class="n">Optional</span> <span class="p">}</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 <p>我们自定义一个路由：</p>
-<div class="highlight"><pre>public static void RegisterRoutes(RouteCollection routes)
-{
-    routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+<div class="highlight"><pre><span class="n">public</span> <span class="k">static</span> <span class="kt">void</span> <span class="nf">RegisterRoutes</span><span class="p">(</span><span class="n">RouteCollection</span> <span class="n">routes</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">routes</span><span class="p">.</span><span class="n">IgnoreRoute</span><span class="p">(</span><span class="s">"{resource}.axd/{*pathInfo}"</span><span class="p">);</span>
 
-    routes.MapRoute(
-        name: "Serial Number",
-        url: "serial/{lettercase}",
-        defaults: new { controller = "Home", action = "Serial", lettercase="upper" }
-    );
+    <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+        <span class="nl">name:</span> <span class="s">"Serial Number"</span><span class="p">,</span>
+        <span class="nl">url:</span> <span class="s">"serial/{lettercase}"</span><span class="p">,</span>
+        <span class="nl">defaults:</span> <span class="n">new</span> <span class="p">{</span> <span class="n">controller</span> <span class="o">=</span> <span class="s">"Home"</span><span class="p">,</span> <span class="n">action</span> <span class="o">=</span> <span class="s">"Serial"</span><span class="p">,</span> <span class="n">lettercase</span><span class="o">=</span><span class="s">"upper"</span> <span class="p">}</span>
+    <span class="p">);</span>
 
-    routes.MapRoute(
-        name: "Default",
-        url: "{controller}/{action}/{id}",
-        defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-    );
-}
+    <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+        <span class="nl">name:</span> <span class="s">"Default"</span><span class="p">,</span>
+        <span class="nl">url:</span> <span class="s">"{controller}/{action}/{id}"</span><span class="p">,</span>
+        <span class="nl">defaults:</span> <span class="n">new</span> <span class="p">{</span> <span class="n">controller</span> <span class="o">=</span> <span class="s">"Home"</span><span class="p">,</span> <span class="n">action</span> <span class="o">=</span> <span class="s">"Index"</span><span class="p">,</span> <span class="n">id</span> <span class="o">=</span> <span class="n">UrlParameter</span><span class="p">.</span><span class="n">Optional</span> <span class="p">}</span>
+    <span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 <p>它定义了一个路由，路由名称为"Serial Number", url以"serial"开头，含有一个lettercase参数，使用HomeController.Serial来处理，lettercase默认值为"upper".</p>
 <p>现在在HomeController.cs中定义：</p>
-<div class="highlight"><pre>public ActionResult Serial(string lettercase)
-{
-    var serial = "ASP.NET mvc5";
-    if (lettercase == "lower")
-    {
-        serial = serial.ToLower();
-    }
-    return Content(serial);
-}
+<div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">Serial</span><span class="p">(</span><span class="n">string</span> <span class="n">lettercase</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">var</span> <span class="n">serial</span> <span class="o">=</span> <span class="s">"ASP.NET mvc5"</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">lettercase</span> <span class="o">==</span> <span class="s">"lower"</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">serial</span> <span class="o">=</span> <span class="n">serial</span><span class="p">.</span><span class="n">ToLower</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">Content</span><span class="p">(</span><span class="n">serial</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 <p>此时访问：http://localhost:17681/serial/ 或者 http://localhost:17681/serial/lower 都可以。</p>
 <p>如果路由中没有包含{lettercase}，则可以使用querystring方式传递lettercase: http://localhost:17681/serial/?lettercase=lower:</p>
-<div class="highlight"><pre>routes.MapRoute(
-    name: "Serial Number",
-    url: "serial",
-    defaults: new { controller = "Home", action = "Serial" }
-);
+<div class="highlight"><pre><span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+    <span class="nl">name:</span> <span class="s">"Serial Number"</span><span class="p">,</span>
+    <span class="nl">url:</span> <span class="s">"serial"</span><span class="p">,</span>
+    <span class="nl">defaults:</span> <span class="n">new</span> <span class="p">{</span> <span class="n">controller</span> <span class="o">=</span> <span class="s">"Home"</span><span class="p">,</span> <span class="n">action</span> <span class="o">=</span> <span class="s">"Serial"</span> <span class="p">}</span>
+<span class="p">);</span>
 </pre></div>
 <p>vs快捷键：F5运行调试； ctrl+F5：运行但不调试，此时运行时可以修改代码；ctrl+shift+b：编译代码，可以在运行时重新加载而无需重启。</p>
 <h2 id="3">3 返回类型</h2>
@@ -181,51 +181,51 @@
 <li>RedirectToRouteResult:重定向</li>
 </ul>
 <h3 id="31-partialviewresult">3.1 PartialViewResult的例子</h3>
-<div class="highlight"><pre>public ActionResult Index()
-{
-    return PartialView();
-}
+<div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">Index</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">PartialView</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 <h3 id="32-jsonresult">3.2 JsonResult的例子</h3>
-<div class="highlight"><pre>public ActionResult Serial(string lettercase)
-{
-    var serial = "ASP.NET mvc5";
-    if (lettercase == "lower")
-    {
-        serial = serial.ToLower();
-    }
-    //return Content(serial);
-    return Json(new {name = "serial", value = serial}, JsonRequestBehavior.AllowGet);
-}
+<div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">Serial</span><span class="p">(</span><span class="n">string</span> <span class="n">lettercase</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">var</span> <span class="n">serial</span> <span class="o">=</span> <span class="s">"ASP.NET mvc5"</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">lettercase</span> <span class="o">==</span> <span class="s">"lower"</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">serial</span> <span class="o">=</span> <span class="n">serial</span><span class="p">.</span><span class="n">ToLower</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="c1">//return Content(serial);</span>
+    <span class="k">return</span> <span class="n">Json</span><span class="p">(</span><span class="n">new</span> <span class="p">{</span><span class="n">name</span> <span class="o">=</span> <span class="s">"serial"</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">serial</span><span class="p">},</span> <span class="n">JsonRequestBehavior</span><span class="p">.</span><span class="n">AllowGet</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 <h3 id="33-redirecttorouteresult">3.3 RedirectToRouteResult的例子</h3>
-<div class="highlight"><pre>public ActionResult Serial(string lettercase)
-{
-    var serial = "ASP.NET mvc5";
-    if (lettercase == "lower")
-    {
-        serial = serial.ToLower();
-    }
-    return RedirectToAction("Index");
-}
+<div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">Serial</span><span class="p">(</span><span class="n">string</span> <span class="n">lettercase</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">var</span> <span class="n">serial</span> <span class="o">=</span> <span class="s">"ASP.NET mvc5"</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">lettercase</span> <span class="o">==</span> <span class="s">"lower"</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">serial</span> <span class="o">=</span> <span class="n">serial</span><span class="p">.</span><span class="n">ToLower</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">RedirectToAction</span><span class="p">(</span><span class="s">"Index"</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 <hr/>
 <h2 id="4-action-selector">4 Action Selector</h2>
 <h3 id="41-httppost">4.1 HttpPost</h3>
-<div class="highlight"><pre>public ActionResult Contact()
-{
-    ViewBag.TheMessage = "有问题的话请留言哦~";
+<div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">Contact</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">ViewBag</span><span class="p">.</span><span class="n">TheMessage</span> <span class="o">=</span> <span class="s">"有问题的话请留言哦~"</span><span class="p">;</span>
 
-    return View();
-}
+    <span class="k">return</span> <span class="n">View</span><span class="p">();</span>
+<span class="p">}</span>
 
-[HttpPost]
-public ActionResult Contact(string message)
-{
-    ViewBag.TheMessage = "感谢你的留言~";
+<span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+<span class="n">public</span> <span class="n">ActionResult</span> <span class="n">Contact</span><span class="p">(</span><span class="n">string</span> <span class="n">message</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">ViewBag</span><span class="p">.</span><span class="n">TheMessage</span> <span class="o">=</span> <span class="s">"感谢你的留言~"</span><span class="p">;</span>
 
-    return View();
-}
+    <span class="k">return</span> <span class="nf">View</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 <p>对应的视图</p>
 <div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"POST"</span><span class="nt">&gt;</span>
@@ -249,21 +249,21 @@ public ActionResult Contact(string message)
 <span class="err">}</span>
 </pre></div>
 <p>对应的视图使用<code>@Html.AntiForgeryToken</code>：</p>
-<div class="highlight"><pre>@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
+<div class="highlight"><pre><span class="p">@</span><span class="nx">using</span> <span class="p">(</span><span class="nx">Html.BeginForm</span><span class="p">())</span> 
+<span class="p">{</span>
+    <span class="p">@</span><span class="nx">Html.AntiForgeryToken</span><span class="p">()</span>
 
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-horizontal"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;h4&gt;</span>Movie<span class="nt">&lt;/h4&gt;</span>
-        <span class="nt">&lt;hr</span> <span class="nt">/&gt;</span>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-            @Html.LabelFor(model =&gt; model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-10"</span><span class="nt">&gt;</span>
-                @Html.EditorFor(model =&gt; model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model =&gt; model.Title, "", new { @class = "text-danger" })
-            <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
+    <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"form-horizontal"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">Movie</span><span class="o">&lt;/</span><span class="nx">h4</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">hr</span> <span class="o">/&gt;</span>
+        <span class="p">@</span><span class="nx">Html.ValidationSummary</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="nb">new</span> <span class="p">{</span> <span class="p">@</span><span class="n">class</span> <span class="o">=</span> <span class="s2">"text-danger"</span> <span class="p">})</span>
+        <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"form-group"</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.LabelFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.Title</span><span class="p">,</span> <span class="nx">htmlAttributes</span><span class="p">:</span> <span class="nb">new</span> <span class="p">{</span> <span class="p">@</span><span class="n">class</span> <span class="o">=</span> <span class="s2">"control-label col-md-2"</span> <span class="p">})</span>
+            <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"col-md-10"</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.EditorFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.Title</span><span class="p">,</span> <span class="nb">new</span> <span class="p">{</span> <span class="n">htmlAttributes</span> <span class="o">=</span> <span class="nb">new</span> <span class="p">{</span> <span class="p">@</span><span class="n">class</span> <span class="o">=</span> <span class="s2">"form-control"</span> <span class="p">}</span> <span class="p">})</span>
+                <span class="p">@</span><span class="nx">Html.ValidationMessageFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.Title</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="nb">new</span> <span class="p">{</span> <span class="p">@</span><span class="n">class</span> <span class="o">=</span> <span class="s2">"text-danger"</span> <span class="p">})</span>
+            <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
 </pre></div>
 <h4 id="412-post-modelstateisvalid">4.1.2 验证Post请求 <code>ModelState.IsValid</code></h4>
 <p>使用<code>ModelState.IsValid</code>来验证发送来的模型是否正常。</p>
@@ -319,15 +319,15 @@ public ActionResult Contact(string message)
 <li>重写<code>OnActionExecuting</code>方法，该方法在Action之前执行</li>
 <li>重写<code>OnActionExecuted</code>方法，该方法在Action之后执行</li>
 </ul>
-<div class="highlight"><pre>public class MyLoggingFilterAttribute : ActionFilterAttribute
-{
-    public override void OnActionExecuted(ActionExecutedContext filterContext)
-    {
-        var request = filterContext.HttpContext.Request;
-        // Logger.logRequest(request.UserHostAddress);
-        base.OnActionExecuted(filterContext);
-    }
-}
+<div class="highlight"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">MyLoggingFilterAttribute</span> <span class="o">:</span> <span class="n">ActionFilterAttribute</span>
+<span class="p">{</span>
+    <span class="n">public</span> <span class="n">override</span> <span class="kt">void</span> <span class="n">OnActionExecuted</span><span class="p">(</span><span class="n">ActionExecutedContext</span> <span class="n">filterContext</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">filterContext</span><span class="p">.</span><span class="n">HttpContext</span><span class="p">.</span><span class="n">Request</span><span class="p">;</span>
+        <span class="c1">// Logger.logRequest(request.UserHostAddress);</span>
+        <span class="n">base</span><span class="p">.</span><span class="n">OnActionExecuted</span><span class="p">(</span><span class="n">filterContext</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 <p>调用</p>
 <div class="highlight"><pre><span class="k">[MyLoggingFilter]</span>
@@ -338,15 +338,15 @@ public ActionResult Contact(string message)
 <span class="err">}</span>
 </pre></div>
 <p>要想在全局应用自定义的Filter，可以这样：</p>
-<div class="highlight"><pre>public class FilterConfig
-{
-    public static void RegisterGlobalFilters(GlobalFilterCollection filters)
-    {
-        //添加自定义Filter
-        filters.Add(new MyLoggingFilterAttribute());
-        filters.Add(new HandleErrorAttribute());
-    }
-}
+<div class="highlight"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">FilterConfig</span>
+<span class="p">{</span>
+    <span class="n">public</span> <span class="k">static</span> <span class="kt">void</span> <span class="n">RegisterGlobalFilters</span><span class="p">(</span><span class="n">GlobalFilterCollection</span> <span class="n">filters</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//添加自定义Filter</span>
+        <span class="n">filters</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">new</span> <span class="n">MyLoggingFilterAttribute</span><span class="p">());</span>
+        <span class="n">filters</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">new</span> <span class="n">HandleErrorAttribute</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 <h3 id="53-result-filter">5.3 Result Filter</h3>
 <div class="highlight"><pre><span class="k">[OutputCache(Duration=1800)]</span>
@@ -417,7 +417,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-10-31T09:28:00+08:00">10 31, 2014</time>
+            <time pubdate="pubdate" datetime="2014-10-31T09:28:00">10 31, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#DotNet-ref">DotNet</a> 
             <h4>Tags</h4>

@@ -63,15 +63,15 @@
 - Python：3.4
 - WFastCGI: 2.2
 应用所用到的包版本如下：</p>
-<div class="highlight"><pre>Flask==0.10.1
-Flask-SQLAlchemy==2.1
-itsdangerous==0.24
-Jinja2==2.8
-MarkupSafe==0.23
-pyodbc==3.0.10
-SQLAlchemy==1.0.9
-Werkzeug==0.11.2
-wheel==0.24.0
+<div class="highlight"><pre><span class="n">Flask</span><span class="o">==</span><span class="mf">0.10.1</span>
+<span class="n">Flask</span><span class="o">-</span><span class="n">SQLAlchemy</span><span class="o">==</span><span class="mf">2.1</span>
+<span class="n">itsdangerous</span><span class="o">==</span><span class="mf">0.24</span>
+<span class="n">Jinja2</span><span class="o">==</span><span class="mf">2.8</span>
+<span class="n">MarkupSafe</span><span class="o">==</span><span class="mf">0.23</span>
+<span class="n">pyodbc</span><span class="o">==</span><span class="mf">3.0.10</span>
+<span class="n">SQLAlchemy</span><span class="o">==</span><span class="mf">1.0.9</span>
+<span class="n">Werkzeug</span><span class="o">==</span><span class="mf">0.11.2</span>
+<span class="n">wheel</span><span class="o">==</span><span class="mf">0.24.0</span>
 </pre></div>
 
 
@@ -81,7 +81,7 @@ wheel==0.24.0
 <h2 id="2">2. 安装</h2>
 <h3 id="21">2.1 下载安装包</h3>
 <p>通过PyPI安装：</p>
-<div class="highlight"><pre>pip install wfastcgi
+<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">wfastcgi</span>
 </pre></div>
 
 
@@ -94,27 +94,27 @@ wheel==0.24.0
 <p><strong>注</strong>：windows10上的IIS 10现在不支持url重写。</p>
 <h2 id="3-wfastcgi">3. 启用wfastcgi</h2>
 <p>一旦<code>wfastcgi</code>和IIS安装完毕，用管理员的身份运行<code>wfastcgi-enable</code>来在IIS上启用<code>wfastcgi</code>配置。这个能配置一个<a href="#routehandlers">路由处理器</a>的CGI应用。</p>
-<div class="highlight"><pre>wfastcgi-enable
+<div class="highlight"><pre><span class="n">wfastcgi</span><span class="o">-</span><span class="n">enable</span>
 </pre></div>
 
 
 <p>要在卸载之前禁用<code>wfastcgi</code>，运行<code>wfastcgi-disable</code>：</p>
-<div class="highlight"><pre>wfastcgi-disable
-pip uninstall wfastcgi
+<div class="highlight"><pre><span class="n">wfastcgi</span><span class="o">-</span><span class="n">disable</span>
+<span class="n">pip</span> <span class="n">uninstall</span> <span class="n">wfastcgi</span>
 </pre></div>
 
 
 <p><strong>注意</strong>: 卸载<code>wfastcgi</code>不会自动的取消注册CGI应用。</p>
 <p>如果传递给<code>wfastcgi-enable</code>或者<code>wfastcgi-disable</code>的第一个参数是一个有效的文件，整个命令行就用来注册或取消注册这个CGI处理器。</p>
 <p>例如，下面的命令就是在IIS Express上启用wfastcgi，而且指定主机配置。</p>
-<div class="highlight"><pre>wfastcgi-enable &quot;C:\Program Files (x86)\IIS Express\appcmd.exe&quot;
-    /apphostconfig:C:\Path\To\applicationhost.config
+<div class="highlight"><pre><span class="n">wfastcgi</span><span class="o">-</span><span class="n">enable</span> <span class="s">&quot;C:\Program Files (x86)\IIS Express</span><span class="se">\a</span><span class="s">ppcmd.exe&quot;</span>
+    <span class="o">/</span><span class="n">apphostconfig</span><span class="o">:</span><span class="n">C</span><span class="o">:</span><span class="err">\</span><span class="n">Path</span><span class="err">\</span><span class="n">To</span><span class="err">\</span><span class="n">applicationhost</span><span class="p">.</span><span class="n">config</span>
 </pre></div>
 
 
 <p>你也可以使用<code>wfastcgi-disable</code>来禁用相同配置的wfastcgi:</p>
-<div class="highlight"><pre>wfastcgi-disable &quot;C:\Program Files (x86)\IIS Express\appcmd.exe&quot;
-    /apphostconfig:C:\Path\To\applicationhost.config
+<div class="highlight"><pre><span class="n">wfastcgi</span><span class="o">-</span><span class="n">disable</span> <span class="s">&quot;C:\Program Files (x86)\IIS Express</span><span class="se">\a</span><span class="s">ppcmd.exe&quot;</span>
+    <span class="o">/</span><span class="n">apphostconfig</span><span class="o">:</span><span class="n">C</span><span class="o">:</span><span class="err">\</span><span class="n">Path</span><span class="err">\</span><span class="n">To</span><span class="err">\</span><span class="n">applicationhost</span><span class="p">.</span><span class="n">config</span>
 </pre></div>
 
 
@@ -123,7 +123,7 @@ pip uninstall wfastcgi
 使用PTVS创建一个Flask项目（Django项目类似）：
 <img alt="Alt text" src="images/1448584435904.png" /></p>
 <p>PTVS会自动根据模板创建一个项目，点击运行，就会在项目根目录下创建一个web.config文件。我在下面对文件进行了一些修改说明。</p>
-<div class="highlight"><pre>?xml version=&quot;1.0&quot;?&gt;
+<div class="highlight"><pre><span class="o">?</span><span class="kt">xml</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="cp">?&gt;</span>
 <span class="nt">&lt;configuration&gt;</span>
   <span class="nt">&lt;system.diagnostics&gt;</span>
     <span class="c">&lt;!--如果不用此节点可以移除--&gt;</span>
@@ -206,7 +206,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-11-27T09:17:00+08:00">11 27, 2015</time>
+            <time pubdate="pubdate" datetime="2015-11-27T09:17:00">11 27, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Python-ref">Python</a> 
             <h4>Tags</h4>

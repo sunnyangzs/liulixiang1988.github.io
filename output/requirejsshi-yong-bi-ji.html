@@ -6,7 +6,7 @@
         <meta name="author" content="刘理想" />
         <meta name="copyright" content="刘理想" />
 
-<meta name="keywords" content="JavaScript, Web, " />
+<meta name="keywords" content="JavaScript, RequireJS, 模块化, Web, " />
         <title>RequireJS使用笔记  · Liu Lixiang的博客
 </title>
         <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
@@ -71,14 +71,14 @@
 <p>requirejs加载完之后，立即引入的文件由<code>data-main</code>来定义。这里文件为<code>js/main.js</code></p>
 <p>我们创建的main.js如下：</p>
 <div class="highlight"><pre><span class="c1">//定义别名</span>
-<span class="nx">requirejs</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
-    <span class="nx">paths</span><span class="o">:</span><span class="p">{</span>
-        <span class="nx">jquery</span><span class="o">:</span> <span class="s1">&#39;jquery-1.11.3.min&#39;</span>
+<span class="n">requirejs</span><span class="p">.</span><span class="k">config</span><span class="p">({</span>
+    <span class="nl">paths:</span><span class="p">{</span>
+        <span class="nl">jquery:</span> <span class="p">&#39;</span><span class="n">jquery</span><span class="o">-</span><span class="mf">1.11.3</span><span class="p">.</span><span class="n">min</span><span class="p">&#39;</span>
     <span class="p">}</span>
 <span class="p">})</span>
 <span class="c1">//引用模块</span>
-<span class="nx">requirejs</span><span class="p">(</span><span class="cp">[</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span> <span class="s1">&#39;validate&#39;</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">validate</span><span class="p">){</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">validate</span><span class="p">.</span><span class="nx">isEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="n">requirejs</span><span class="p">([&#39;</span><span class="n">jquery</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">validate</span><span class="p">&#39;],</span> <span class="k">function</span><span class="p">(</span><span class="err">$</span><span class="p">,</span> <span class="n">validate</span><span class="p">){</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">validate</span><span class="p">.</span><span class="n">isEqual</span><span class="p">(</span><span class="mh">1</span><span class="p">,</span> <span class="mh">2</span><span class="p">));</span>
 <span class="p">});</span>
 </pre></div>
 
@@ -134,13 +134,19 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-07-22T15:30:00+08:00"> 7 22, 2015</time>
+            <time pubdate="pubdate" datetime="2015-07-22T15:30:00"> 7 22, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article"> 
                 <li><a href="/tags.html#JavaScript-ref">JavaScript
-                    <span>7</span>
+                    <span>12</span>
+</a></li>
+                <li><a href="/tags.html#模块化-ref">模块化
+                    <span>1</span>
+</a></li>
+                <li><a href="/tags.html#RequireJS-ref">RequireJS
+                    <span>1</span>
 </a></li>
             </ul>
 

@@ -69,14 +69,14 @@
 
 
 <p>2、更改li的图标</p>
-<div class="highlight"><pre><span class="nt">list-style-image</span><span class="o">:</span> <span class="nt">url</span><span class="o">(../</span><span class="nt">images</span><span class="o">/</span><span class="nt">li_bg</span><span class="nc">.gif</span><span class="o">);</span>
+<div class="highlight"><pre><span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">-</span><span class="n">image</span><span class="o">:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">li_bg</span><span class="p">.</span><span class="n">gif</span><span class="p">);</span>
 </pre></div>
 
 
 <p>去除li的默认图标</p>
-<div class="highlight"><pre><span class="nt">list-style-type</span><span class="nd">:none</span><span class="o">;</span>
-<span class="o">//</span><span class="err">或者</span>
-<span class="nt">list-style</span><span class="nd">:none</span>
+<div class="highlight"><pre><span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">-</span><span class="n">type</span><span class="o">:</span><span class="n">none</span><span class="p">;</span>
+<span class="c1">//或者</span>
+<span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">:</span><span class="n">none</span>
 </pre></div>
 
 
@@ -88,33 +88,33 @@
 <p>4、菜单的宽度直接设置li的width</p>
 <p>5、文本垂直居中
 设置元素文字行高等于盒子的高度</p>
-<div class="highlight"><pre><span class="nt">line-height</span><span class="o">:</span> <span class="nt">27px</span><span class="o">;</span>
+<div class="highlight"><pre><span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span> <span class="mi">27</span><span class="n">px</span><span class="p">;</span>
 </pre></div>
 
 
 <p>6、去掉a链接的下划线</p>
-<div class="highlight"><pre><span class="nt">text-decoration</span><span class="o">:</span> <span class="nt">none</span><span class="o">;</span>
+<div class="highlight"><pre><span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
 </pre></div>
 
 
 <p>设置链接正常状态：</p>
-<div class="highlight"><pre><span class="nt">a</span><span class="p">{</span>
-    <span class="o">&amp;:</span><span class="n">link</span><span class="o">,</span> <span class="o">&amp;:</span><span class="n">visited</span><span class="err">{</span>
-        <span class="k">color</span><span class="o">:</span><span class="m">#8E8E8E</span><span class="p">;</span>
-        <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">a</span><span class="p">{</span>
+    <span class="o">&amp;:</span><span class="n">link</span><span class="p">,</span> <span class="o">&amp;:</span><span class="n">visited</span><span class="p">{</span>
+        <span class="nl">color:</span><span class="err">#</span><span class="mf">8E8</span><span class="n">E8E</span><span class="p">;</span>
+        <span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="o">&amp;</span><span class="nd">:hover</span><span class="o">,</span> <span class="o">&amp;</span><span class="nd">:active</span><span class="p">{</span>
-    <span class="k">color</span><span class="o">:</span><span class="m">#D90</span><span class="p">;</span>
-    <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+    <span class="o">&amp;:</span><span class="n">hover</span><span class="p">,</span> <span class="o">&amp;:</span><span class="n">active</span><span class="p">{</span>
+    <span class="nl">color:</span><span class="err">#</span><span class="n">D90</span><span class="p">;</span>
+    <span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="err">}</span>
+<span class="p">}</span>
 </pre></div>
 
 
 <p>7、文字与图片水平中间对齐</p>
-<div class="highlight"><pre><span class="nt">img</span><span class="p">{</span>
-    <span class="k">vertical-align</span><span class="o">:</span> <span class="k">middle</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">img</span><span class="p">{</span>
+    <span class="n">vertical</span><span class="o">-</span><span class="n">align</span><span class="o">:</span> <span class="n">middle</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -147,71 +147,71 @@ html</p>
 
 
 <p>对应的LESS</p>
-<div class="highlight"><pre><span class="na">.top</span><span class="err">{</span>
-    <span class="nl">width:</span> <span class="err">100%;</span>
-    <span class="nl">height:</span><span class="err">27</span><span class="nf">px</span><span class="err">;</span>
-    <span class="nl">background:</span> <span class="nf">url</span><span class="p">(..</span><span class="err">/</span><span class="no">images</span><span class="err">/</span><span class="no">top_bg.jpg</span><span class="p">)</span> <span class="no">repert-x</span><span class="err">;</span>
+<div class="highlight"><pre><span class="p">.</span><span class="n">top</span><span class="p">{</span>
+    <span class="nl">width:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+    <span class="nl">height:</span><span class="mi">27</span><span class="n">px</span><span class="p">;</span>
+    <span class="nl">background:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">top_bg</span><span class="p">.</span><span class="n">jpg</span><span class="p">)</span> <span class="n">repert</span><span class="o">-</span><span class="n">x</span><span class="p">;</span>
 
-    <span class="err">&amp;</span><span class="nf">_content</span><span class="err">{</span>
-        <span class="nl">width:</span><span class="err">1000</span><span class="nf">px</span><span class="err">;</span>
-        <span class="nl">margin:</span> <span class="err">0</span> <span class="nf">auto</span><span class="err">;</span>
+    <span class="o">&amp;</span><span class="n">_content</span><span class="p">{</span>
+        <span class="nl">width:</span><span class="mi">1000</span><span class="n">px</span><span class="p">;</span>
+        <span class="nl">margin:</span> <span class="mi">0</span> <span class="k">auto</span><span class="p">;</span>
 
-        <span class="nf">li</span><span class="err">{</span>
-            <span class="nl">list-style-image:</span> <span class="nf">url</span><span class="p">(..</span><span class="err">/</span><span class="no">images</span><span class="err">/</span><span class="no">li_bg.gif</span><span class="p">)</span><span class="err">;</span>
-            <span class="nl">float:</span> <span class="nf">right</span><span class="err">;</span>
-            <span class="nl">width:</span> <span class="err">80</span><span class="nf">px</span><span class="err">;</span>
-            <span class="nl">line-height:</span> <span class="err">27</span><span class="nf">px</span><span class="err">;</span>
-        <span class="err">}</span>
+        <span class="n">li</span><span class="p">{</span>
+            <span class="n">list</span><span class="o">-</span><span class="n">style</span><span class="o">-</span><span class="n">image</span><span class="o">:</span> <span class="n">url</span><span class="p">(..</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">li_bg</span><span class="p">.</span><span class="n">gif</span><span class="p">);</span>
+            <span class="nl">float:</span> <span class="n">right</span><span class="p">;</span>
+            <span class="nl">width:</span> <span class="mi">80</span><span class="n">px</span><span class="p">;</span>
+            <span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="o">:</span> <span class="mi">27</span><span class="n">px</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        <span class="nf">a</span><span class="err">{</span>
-            <span class="err">&amp;:</span><span class="nf">link</span><span class="p">,</span> <span class="err">&amp;</span><span class="p">:</span><span class="no">visited</span><span class="err">{</span>
-                <span class="nl">color:</span><span class="c">#8E8E8E;</span>
-                <span class="nl">text-decoration:</span> <span class="nf">none</span><span class="err">;</span>
-            <span class="err">}</span>
+        <span class="n">a</span><span class="p">{</span>
+            <span class="o">&amp;:</span><span class="n">link</span><span class="p">,</span> <span class="o">&amp;:</span><span class="n">visited</span><span class="p">{</span>
+                <span class="nl">color:</span><span class="err">#</span><span class="mf">8E8</span><span class="n">E8E</span><span class="p">;</span>
+                <span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
+            <span class="p">}</span>
 
-            <span class="err">&amp;:</span><span class="nf">hover</span><span class="p">,</span> <span class="err">&amp;</span><span class="p">:</span><span class="no">active</span><span class="err">{</span>
-            <span class="nl">color:</span><span class="c">#D90;</span>
-            <span class="nl">text-decoration:</span> <span class="nf">none</span><span class="err">;</span>
-            <span class="err">}</span>
-        <span class="err">}</span>
+            <span class="o">&amp;:</span><span class="n">hover</span><span class="p">,</span> <span class="o">&amp;:</span><span class="n">active</span><span class="p">{</span>
+            <span class="nl">color:</span><span class="err">#</span><span class="n">D90</span><span class="p">;</span>
+            <span class="n">text</span><span class="o">-</span><span class="n">decoration</span><span class="o">:</span> <span class="n">none</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
 
 
-    <span class="err">}</span>
-<span class="err">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-<span class="na">.wrap</span><span class="err">{</span>
-    <span class="nl">width:</span><span class="err">1000</span><span class="nf">px</span><span class="err">;</span>
-    <span class="nl">margin:</span> <span class="err">0</span> <span class="nf">auto</span><span class="err">;</span>
-    <span class="nl">background-color:</span> <span class="c">#FFF;</span>
+<span class="p">.</span><span class="n">wrap</span><span class="p">{</span>
+    <span class="nl">width:</span><span class="mi">1000</span><span class="n">px</span><span class="p">;</span>
+    <span class="nl">margin:</span> <span class="mi">0</span> <span class="k">auto</span><span class="p">;</span>
+    <span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="o">:</span> <span class="err">#</span><span class="n">FFF</span><span class="p">;</span>
 
-    <span class="na">.logo</span><span class="err">{</span>
-        <span class="nl">height:</span> <span class="err">80</span><span class="nf">px</span><span class="err">;</span>
+    <span class="p">.</span><span class="n">logo</span><span class="p">{</span>
+        <span class="nl">height:</span> <span class="mi">80</span><span class="n">px</span><span class="p">;</span>
 
-        <span class="err">&amp;</span><span class="nf">_left</span><span class="err">{</span>
-            <span class="nl">width:</span><span class="err">200</span><span class="nf">px</span><span class="err">;</span>
-            <span class="nl">float:</span><span class="nf">left</span><span class="err">;</span>
-        <span class="err">}</span>
+        <span class="o">&amp;</span><span class="n">_left</span><span class="p">{</span>
+            <span class="nl">width:</span><span class="mi">200</span><span class="n">px</span><span class="p">;</span>
+            <span class="nl">float:</span><span class="n">left</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        <span class="err">&amp;</span><span class="nf">_right</span><span class="err">{</span>
-            <span class="nl">width:</span><span class="err">300</span><span class="nf">px</span><span class="err">;</span>
-            <span class="nl">float:</span><span class="nf">right</span><span class="err">;</span>
-            <span class="nl">height:</span><span class="err">28</span><span class="nf">px</span><span class="err">;</span>
-            <span class="nl">margin-top:</span><span class="err">30</span><span class="nf">px</span><span class="err">;</span>
-            <span class="nl">color:</span><span class="c">#8E8E8E;</span>
+        <span class="o">&amp;</span><span class="n">_right</span><span class="p">{</span>
+            <span class="nl">width:</span><span class="mi">300</span><span class="n">px</span><span class="p">;</span>
+            <span class="nl">float:</span><span class="n">right</span><span class="p">;</span>
+            <span class="nl">height:</span><span class="mi">28</span><span class="n">px</span><span class="p">;</span>
+            <span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="o">:</span><span class="mi">30</span><span class="n">px</span><span class="p">;</span>
+            <span class="nl">color:</span><span class="err">#</span><span class="mf">8E8</span><span class="n">E8E</span><span class="p">;</span>
 
-            <span class="nf">img</span><span class="err">{</span>
-                <span class="nl">vertical-align:</span> <span class="nf">middle</span><span class="err">;</span>
-                <span class="nl">margin-right:</span> <span class="err">10</span><span class="nf">px</span><span class="err">;</span>
-            <span class="err">}</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
-<span class="err">}</span>
+            <span class="n">img</span><span class="p">{</span>
+                <span class="n">vertical</span><span class="o">-</span><span class="n">align</span><span class="o">:</span> <span class="n">middle</span><span class="p">;</span>
+                <span class="n">margin</span><span class="o">-</span><span class="n">right</span><span class="o">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-<span class="na">.tel</span><span class="err">{</span>
-    <span class="nl">font-family:</span> <span class="err">&quot;微软雅黑&quot;;</span>
-    <span class="nl">font-size:</span> <span class="err">16</span><span class="nf">px</span><span class="err">;</span>
-    <span class="nl">color:</span> <span class="c">#C00;</span>
-<span class="err">}</span>
+<span class="p">.</span><span class="n">tel</span><span class="p">{</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="s">&quot;微软雅黑&quot;</span><span class="p">;</span>
+    <span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="o">:</span> <span class="mi">16</span><span class="n">px</span><span class="p">;</span>
+    <span class="nl">color:</span> <span class="err">#</span><span class="n">C00</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 
  
@@ -252,7 +252,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-01T09:05:00+08:00"> 4 1, 2015</time>
+            <time pubdate="pubdate" datetime="2015-04-01T09:05:00"> 4 1, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>
