@@ -1,4 +1,4 @@
-Title:使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)
+Title:[翻译]使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)
 Date:2014-10-30
 Author:刘理想
 Category: DotNet
