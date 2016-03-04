@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Kotlin, 学习笔记, Web, " />
+        <title>使用React Native创建一个天气应用  · Liu Lixiang的博客
+</title>
+        <link href="http://liulixiang1988.github.io/theme/css/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="http://liulixiang1988.github.io/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/shi-yong-react-nativechuang-jian-yi-ge-tian-qi-ying-yong.html"> 使用React Native创建一个天气应用  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#react-native">使用React Native创建一个天气应用</a><ul>
+<li><a href="#1">1. 创建应用</a></li>
+<li><a href="#2">2. 处理用户输入</a></li>
+<li><a href="#3">3. 显示数据</a></li>
+<li><a href="#4">4. 请求网络数据</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
+
+            <h1 id="react-native">使用React Native创建一个天气应用</h1>
+<ul>
+<li>来自Learning React Native</li>
+<li>代码地址：https://github.com/liulixiang1988/react-apps/tree/master/book_demos/WeatherProject</li>
+</ul>
+
+<p>效果如下：</p>
+<p><img alt="react native" src="images/QQ20160304-0.png"/></p>
+<h2 id="1">1. 创建应用</h2>
+<div class="highlight"><pre><span class="n">react</span><span class="o">-</span><span class="n">native</span> <span class="n">init</span> <span class="n">WeatherProject</span>
+</pre></div>
+<p>将index.ios/index.android.js文件中的初始组件放到单独的文件WeatherProject.js中。</p>
+<p>此时的index.ios.js/index.adnroid.js如下：</p>
+<div class="highlight"><pre><span class="s1">'use strict'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">AppRegistry</span><span class="p">,</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-native'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">WeatherProject</span> <span class="nx">from</span> <span class="s1">'./WeatherProject'</span><span class="p">;</span>
+
+<span class="nx">AppRegistry</span><span class="p">.</span><span class="nx">registerComponent</span><span class="p">(</span><span class="s1">'WeatherProject'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">WeatherProject</span><span class="p">);</span>
+</pre></div>
+<h2 id="2">2. 处理用户输入</h2>
+<p>根据用户输入的城市名获取天气（天气信息来自<a href="http://www.heweather.com/">和风天气</a>）</p>
+<p>修改WeatherProject.js</p>
+<div class="highlight"><pre><span class="s1">'user strict'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">Component</span><span class="p">,</span>
+  <span class="nx">StyleSheet</span><span class="p">,</span>
+  <span class="nx">Text</span><span class="p">,</span>
+  <span class="nx">TextInput</span><span class="p">,</span>
+  <span class="nx">View</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-native'</span><span class="p">;</span>
+
+
+<span class="kr">const</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="nx">container</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">justifyContent</span><span class="o">:</span> <span class="s1">'center'</span><span class="p">,</span>
+    <span class="nx">alignItems</span><span class="o">:</span> <span class="s1">'center'</span><span class="p">,</span>
+    <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">'#F5FCFF'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">welcome</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="nx">textAlign</span><span class="o">:</span> <span class="s1">'center'</span><span class="p">,</span>
+    <span class="nx">margin</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">input</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="nx">borderWidth</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="mi">40</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">});</span>
+
+
+<span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">WeatherProject</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span>
+    <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">city</span><span class="o">:</span> <span class="s1">''</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">_handleTextChange</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span><span class="p">.</span><span class="nx">text</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="nx">city</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span><span class="p">.</span><span class="nx">text</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">welcome</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="err">城市：</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">city</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="err">/Text&gt;</span>
+        <span class="o">&lt;</span><span class="nx">TextInput</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">input</span><span class="p">}</span> <span class="nx">onSubmitEditing</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">_handleTextChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="err">/View&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="3">3. 显示数据</h2>
+<p>修改WeatherProject.js添加虚拟数据：</p>
+<div class="highlight"><pre><span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span>
+   <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="nx">city</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>
+     <span class="nx">forcast</span><span class="o">:</span> <span class="p">{</span>
+       <span class="nx">main</span><span class="o">:</span> <span class="s1">'阴'</span><span class="p">,</span>
+       <span class="nx">description</span><span class="o">:</span> <span class="s1">'多云'</span><span class="p">,</span>
+       <span class="nx">temp</span><span class="o">:</span><span class="mi">20</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>添加Forecast.js:</p>
+<div class="highlight"><pre><span class="s1">'user strict'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">Component</span><span class="p">,</span>
+  <span class="nx">StyleSheet</span><span class="p">,</span>
+  <span class="nx">Text</span><span class="p">,</span>
+  <span class="nx">View</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-native'</span><span class="p">;</span>
+
+
+<span class="kr">const</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="nx">bigText</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="nx">textAlign</span><span class="o">:</span> <span class="s1">'center'</span><span class="p">,</span>
+    <span class="nx">margin</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="nx">color</span><span class="o">:</span> <span class="s1">'#FFFFFF'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">mainText</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">fontSize</span><span class="o">:</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="nx">textAlign</span><span class="o">:</span> <span class="s1">'center'</span><span class="p">,</span>
+    <span class="nx">color</span><span class="o">:</span> <span class="s1">'#FFFFFF'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+
+<span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">Forecast</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">View</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">bigText</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">main</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="err">/Text&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">mainText</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="err">当前：</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="err">/Text&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">bigText</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">temp</span><span class="p">}</span><span class="err">度</span>
+        <span class="o">&lt;</span><span class="err">/Text&gt;</span>
+      <span class="o">&lt;</span><span class="err">/View&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>更新WeatherProject.js来应用Forecast:</p>
+<div class="highlight"><pre><span class="s1">'user strict'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">Component</span><span class="p">,</span>
+  <span class="nx">Image</span><span class="p">,</span>
+  <span class="nx">StyleSheet</span><span class="p">,</span>
+  <span class="nx">Text</span><span class="p">,</span>
+  <span class="nx">TextInput</span><span class="p">,</span>
+  <span class="nx">View</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-native'</span><span class="p">;</span>
+
+
+<span class="kr">import</span> <span class="nx">Forecast</span> <span class="nx">from</span> <span class="s1">'./Forecast'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">baseFontSize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="nx">backdrop</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">flexDirection</span><span class="o">:</span> <span class="s1">'column'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">container</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">justifyContent</span><span class="o">:</span> <span class="s1">'center'</span><span class="p">,</span>
+    <span class="nx">alignItems</span><span class="o">:</span> <span class="s1">'center'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">row</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">flexDirection</span><span class="o">:</span> <span class="s1">'row'</span><span class="p">,</span>
+    <span class="nx">flexWrap</span><span class="o">:</span> <span class="s1">'nowrap'</span><span class="p">,</span>
+    <span class="nx">alignItems</span><span class="o">:</span> <span class="s1">'flex-start'</span><span class="p">,</span>
+    <span class="nx">padding</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">overlay</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">paddingTop</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">'#000000'</span><span class="p">,</span>
+    <span class="nx">opacity</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="nx">flexDirection</span><span class="o">:</span> <span class="s1">'column'</span><span class="p">,</span>
+    <span class="nx">alignItems</span><span class="o">:</span> <span class="s1">'center'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">cityContainer</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">borderBottomColor</span><span class="o">:</span> <span class="s1">'#DDDDDD'</span><span class="p">,</span>
+    <span class="nx">borderBottomWidth</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">marginLeft</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nx">marginTop</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">cityName</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">width</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="nx">baseFontSize</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">mainText</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">fontSize</span><span class="o">:</span> <span class="nx">baseFontSize</span><span class="p">,</span>
+    <span class="nx">color</span><span class="o">:</span> <span class="s1">'#FFFFFF'</span><span class="p">,</span>
+  <span class="p">}</span>
+
+<span class="p">});</span>
+
+
+<span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">WeatherProject</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span>
+    <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">city</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>
+      <span class="nx">forecast</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">main</span><span class="o">:</span> <span class="s1">'阴'</span><span class="p">,</span>
+        <span class="nx">description</span><span class="o">:</span> <span class="s1">'多云'</span><span class="p">,</span>
+        <span class="nx">temp</span><span class="o">:</span><span class="mi">20</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">_handleTextChange</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span><span class="p">.</span><span class="nx">text</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="nx">city</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span><span class="p">.</span><span class="nx">text</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Image</span> <span class="nx">source</span><span class="o">=</span><span class="p">{</span><span class="nx">require</span><span class="p">(</span><span class="s1">'image!flowers'</span><span class="p">)}</span>
+               <span class="nx">resizeMode</span><span class="o">=</span><span class="s1">'cover'</span>
+               <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">backdrop</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">overlay</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">row</span><span class="p">}</span><span class="o">&gt;</span>
+              <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">cityContainer</span><span class="p">}</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">TextInput</span>
+                  <span class="nx">style</span><span class="o">=</span><span class="p">{[</span><span class="nx">styles</span><span class="p">.</span><span class="nx">cityName</span><span class="p">,</span> <span class="nx">styles</span><span class="p">.</span><span class="nx">mainText</span><span class="p">]}</span>
+                  <span class="nx">returnKeyType</span><span class="o">=</span><span class="s1">'go'</span>
+                  <span class="nx">onSubmitEditing</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">_handleTextChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="o">/&gt;</span>
+              <span class="o">&lt;</span><span class="err">/View&gt;</span>
+              <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">mainText</span><span class="p">}</span><span class="o">&gt;</span>
+                <span class="err">天气</span>
+              <span class="o">&lt;</span><span class="err">/Text&gt;</span>
+            <span class="o">&lt;</span><span class="err">/View&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Forecast</span> 
+              <span class="nx">main</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">forecast</span><span class="p">.</span><span class="nx">main</span><span class="p">}</span>
+              <span class="nx">description</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">forecast</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span>
+              <span class="nx">temp</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">forecast</span><span class="p">.</span><span class="nx">temp</span><span class="p">}</span><span class="o">/&gt;</span>
+          <span class="o">&lt;</span><span class="err">/View&gt;</span>
+        <span class="o">&lt;</span><span class="err">/Image&gt;</span>
+      <span class="o">&lt;</span><span class="err">/View&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="4">4. 请求网络数据</h2>
+<div class="highlight"><pre><span class="s1">'user strict'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">Component</span><span class="p">,</span>
+  <span class="nx">Image</span><span class="p">,</span>
+  <span class="nx">StyleSheet</span><span class="p">,</span>
+  <span class="nx">Text</span><span class="p">,</span>
+  <span class="nx">TextInput</span><span class="p">,</span>
+  <span class="nx">View</span>
+<span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-native'</span><span class="p">;</span>
+
+
+<span class="kr">import</span> <span class="nx">Forecast</span> <span class="nx">from</span> <span class="s1">'./Forecast'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">baseFontSize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">styles</span> <span class="o">=</span> <span class="nx">StyleSheet</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="nx">backdrop</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">flexDirection</span><span class="o">:</span> <span class="s1">'column'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">container</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">justifyContent</span><span class="o">:</span> <span class="s1">'center'</span><span class="p">,</span>
+    <span class="nx">alignItems</span><span class="o">:</span> <span class="s1">'center'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">row</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">flexDirection</span><span class="o">:</span> <span class="s1">'row'</span><span class="p">,</span>
+    <span class="nx">flexWrap</span><span class="o">:</span> <span class="s1">'nowrap'</span><span class="p">,</span>
+    <span class="nx">alignItems</span><span class="o">:</span> <span class="s1">'flex-start'</span><span class="p">,</span>
+    <span class="nx">padding</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">overlay</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">paddingTop</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nx">backgroundColor</span><span class="o">:</span> <span class="s1">'#000000'</span><span class="p">,</span>
+    <span class="nx">opacity</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="nx">flexDirection</span><span class="o">:</span> <span class="s1">'column'</span><span class="p">,</span>
+    <span class="nx">alignItems</span><span class="o">:</span> <span class="s1">'center'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">cityContainer</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">borderBottomColor</span><span class="o">:</span> <span class="s1">'#DDDDDD'</span><span class="p">,</span>
+    <span class="nx">borderBottomWidth</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">marginLeft</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nx">marginTop</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">cityName</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">width</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="nx">baseFontSize</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">mainText</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">flex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">fontSize</span><span class="o">:</span> <span class="nx">baseFontSize</span><span class="p">,</span>
+    <span class="nx">color</span><span class="o">:</span> <span class="s1">'#FFFFFF'</span><span class="p">,</span>
+  <span class="p">}</span>
+
+<span class="p">});</span>
+
+
+<span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">WeatherProject</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span>
+    <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">city</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>
+      <span class="nx">forecast</span><span class="o">:</span> <span class="kc">null</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">_handleTextChange</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">city</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">nativeEvent</span><span class="p">.</span><span class="nx">text</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">city_code</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">city</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="nx">city</span><span class="o">:</span> <span class="nx">city</span>
+    <span class="p">});</span>
+    <span class="nx">fetch</span><span class="p">(</span><span class="s1">'https://api.heweather.com/x3/citylist?search=allchina&amp;key=ef29baab02f049adaa4ce2afba6f29b9'</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span><span class="o">=&gt;</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">responseJson</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">responseJson</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">item</span> <span class="nx">of</span> <span class="nx">responseJson</span><span class="p">.</span><span class="nx">city_info</span><span class="p">){</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">city</span> <span class="o">==</span> <span class="nx">city</span><span class="p">){</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"city"</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_getWeatherInfo</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">})</span>
+      <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">_getWeatherInfo</span><span class="p">(</span><span class="nx">city_code</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">'https://api.heweather.com/x3/weather?cityid='</span><span class="o">+</span><span class="nx">city_code</span><span class="o">+</span><span class="s1">'&amp;key=ef29baab02f049adaa4ce2afba6f29b9'</span><span class="p">;</span>
+    <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span><span class="o">=&gt;</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">responseJson</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">weatherInfo</span> <span class="o">=</span> <span class="nx">responseJson</span><span class="p">[</span><span class="s2">"HeWeather data service 3.0"</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">weatherInfo</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+          <span class="nx">forecast</span><span class="o">:</span><span class="p">{</span>
+            <span class="nx">main</span><span class="o">:</span> <span class="nx">weatherInfo</span><span class="p">.</span><span class="nx">daily_forecast</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">cond</span><span class="p">.</span><span class="nx">txt_n</span><span class="p">,</span>
+            <span class="nx">description</span><span class="o">:</span> <span class="nx">weatherInfo</span><span class="p">.</span><span class="nx">aqi</span><span class="p">.</span><span class="nx">city</span><span class="p">.</span><span class="nx">qlty</span><span class="p">,</span>
+            <span class="nx">temp</span><span class="o">:</span> <span class="nx">weatherInfo</span><span class="p">.</span><span class="nx">daily_forecast</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">tmp</span><span class="p">.</span><span class="nx">min</span><span class="o">+</span><span class="s1">'~'</span><span class="o">+</span><span class="nx">weatherInfo</span><span class="p">.</span><span class="nx">daily_forecast</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">tmp</span><span class="p">.</span><span class="nx">max</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+      <span class="p">})</span>
+      <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="nx">error</span><span class="p">);});</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">forecast</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">){</span>
+      <span class="nx">content</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">Forecast</span> 
+              <span class="nx">main</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">forecast</span><span class="p">.</span><span class="nx">main</span><span class="p">}</span>
+              <span class="nx">description</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">forecast</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span>
+              <span class="nx">temp</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">forecast</span><span class="p">.</span><span class="nx">temp</span><span class="p">}</span><span class="o">/&gt;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Image</span> <span class="nx">source</span><span class="o">=</span><span class="p">{</span><span class="nx">require</span><span class="p">(</span><span class="s1">'image!flowers'</span><span class="p">)}</span>
+               <span class="nx">resizeMode</span><span class="o">=</span><span class="s1">'cover'</span>
+               <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">backdrop</span><span class="p">}</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">overlay</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">row</span><span class="p">}</span><span class="o">&gt;</span>
+              <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">cityContainer</span><span class="p">}</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">TextInput</span>
+                  <span class="nx">style</span><span class="o">=</span><span class="p">{[</span><span class="nx">styles</span><span class="p">.</span><span class="nx">cityName</span><span class="p">,</span> <span class="nx">styles</span><span class="p">.</span><span class="nx">mainText</span><span class="p">]}</span>
+                  <span class="nx">returnKeyType</span><span class="o">=</span><span class="s1">'go'</span>
+                  <span class="nx">onSubmitEditing</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">_handleTextChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="o">/&gt;</span>
+              <span class="o">&lt;</span><span class="err">/View&gt;</span>
+              <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">mainText</span><span class="p">}</span><span class="o">&gt;</span>
+                <span class="err">天气</span>
+              <span class="o">&lt;</span><span class="err">/Text&gt;</span>
+            <span class="o">&lt;</span><span class="err">/View&gt;</span>
+            <span class="p">{</span><span class="nx">content</span><span class="p">}</span>
+          <span class="o">&lt;</span><span class="err">/View&gt;</span>
+        <span class="o">&lt;</span><span class="err">/Image&gt;</span>
+      <span class="o">&lt;</span><span class="err">/View&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="shi-yong-react-nativechuang-jian-yi-ge-tian-qi-ying-yong.html" data-title="使用React Native创建一个天气应用" data-url="http://liulixiang1988.github.io/shi-yong-react-nativechuang-jian-yi-ge-tian-qi-ying-yong.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/kotlinxue-xi-bi-ji.html" title="Previous: Kotlin学习笔记">Kotlin学习笔记</a></li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2016-03-04T14:40:00"> 3 4, 2016</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Web-ref">Web</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Kotlin-ref">Kotlin
+                    <span>2</span>
+</a></li>
+                <li><a href="/tags.html#学习笔记-ref">学习笔记
+                    <span>2</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://liulixiang1988.github.io/theme/js/jquery.min.js"></script>
+        <script src="http://liulixiang1988.github.io/theme/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>
