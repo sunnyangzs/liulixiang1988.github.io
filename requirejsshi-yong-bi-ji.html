@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="JavaScript, RequireJS, 模块化, Web, " />
+        <title>RequireJS使用笔记  · Liu Lixiang的博客
+</title>
+        <link href="http://liulixiang1988.github.io/theme/css/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="http://liulixiang1988.github.io/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/requirejsshi-yong-bi-ji.html"> RequireJS使用笔记  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <p>RequireJS的项目地址在：http://requirejs.org/</p>
+<p>RequireJS常用的方法：
+1. requirejs.config 给模块指定别名
+2. requirejs 引入模块
+3. define 编写模块</p>
+<h2 id="_1">入口文件</h2>
+<div class="highlight"><pre>   <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/require.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">data-main=</span><span class="s">&quot;js/main&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+
+<p>requirejs加载完之后，立即引入的文件由<code>data-main</code>来定义。这里文件为<code>js/main.js</code></p>
+<p>我们创建的main.js如下：</p>
+<div class="highlight"><pre><span class="c1">//定义别名</span>
+<span class="n">requirejs</span><span class="p">.</span><span class="k">config</span><span class="p">({</span>
+    <span class="nl">paths:</span><span class="p">{</span>
+        <span class="nl">jquery:</span> <span class="p">&#39;</span><span class="n">jquery</span><span class="o">-</span><span class="mf">1.11.3</span><span class="p">.</span><span class="n">min</span><span class="p">&#39;</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+<span class="c1">//引用模块</span>
+<span class="n">requirejs</span><span class="p">([&#39;</span><span class="n">jquery</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">validate</span><span class="p">&#39;],</span> <span class="k">function</span><span class="p">(</span><span class="err">$</span><span class="p">,</span> <span class="n">validate</span><span class="p">){</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">validate</span><span class="p">.</span><span class="n">isEqual</span><span class="p">(</span><span class="mh">1</span><span class="p">,</span> <span class="mh">2</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>其中<code>validate</code>在<code>validate.js</code>中定义:</p>
+<div class="highlight"><pre><span class="nx">define</span><span class="p">(</span><span class="cp">[</span><span class="s1">&#39;jquery&#39;</span><span class="cp">]</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">){</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">isEmpty</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){},</span>
+        <span class="nx">checkLength</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){},</span>
+        <span class="nx">isEqual</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">str1</span><span class="p">,</span> <span class="nx">str2</span><span class="p">){</span>
+            <span class="k">return</span> <span class="nx">str1</span> <span class="o">===</span> <span class="nx">str2</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="requirejsshi-yong-bi-ji.html" data-title="RequireJS使用笔记" data-url="http://liulixiang1988.github.io/requirejsshi-yong-bi-ji.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/css3bian-ping-hua-feng-ge-bo-ke.html" title="Previous: CSS3扁平化风格博客">CSS3扁平化风格博客</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/ce-bian-lan-gong-ju-tiao-kai-fa.html" title="Next: 侧边栏工具条开发">侧边栏工具条开发</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-07-22T15:30:00"> 7 22, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Web-ref">Web</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#JavaScript-ref">JavaScript
+                    <span>12</span>
+</a></li>
+                <li><a href="/tags.html#模块化-ref">模块化
+                    <span>1</span>
+</a></li>
+                <li><a href="/tags.html#RequireJS-ref">RequireJS
+                    <span>1</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://liulixiang1988.github.io/theme/js/jquery.min.js"></script>
+        <script src="http://liulixiang1988.github.io/theme/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

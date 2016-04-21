@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <feed xmlns="http://www.w3.org/2005/Atom"><title>理想国</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2014-04-19T00:00:00+08:00</updated><entry><title>醉笑陪公三万场</title><link href="http://liulixiang1988.github.io/2014-04-19.html" rel="alternate"></link><updated>2014-04-19T00:00:00+08:00</updated><author><name>理想</name></author><id>tag:liulixiang1988.github.io,2014-04-19:2014-04-19.html</id><summary type="html">&lt;p&gt;在百度上看到&lt;a href="http://zhidao.baidu.com/link?url=2FYYejydAEvBpdnti51Ul2MPYlCV6SUQkc821EFyfywhbn1rLQv4PCbPJLBvFDwDIvk0NRdaCY7XqTngf80ltq"&gt;这篇&lt;/a&gt;。昨日参加同事婚礼，不胜唏嘘。&lt;/p&gt;
+=======
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Liu Lixiang的博客</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2014-04-19T00:00:00+08:00</updated><entry><title>醉笑陪公三万场</title><link href="http://liulixiang1988.github.io/2014-04-19.html" rel="alternate"></link><updated>2014-04-19T00:00:00+08:00</updated><author><name>理想</name></author><id>tag:liulixiang1988.github.io,2014-04-19:2014-04-19.html</id><summary type="html">&lt;p&gt;在百度上看到&lt;a href="http://zhidao.baidu.com/link?url=2FYYejydAEvBpdnti51Ul2MPYlCV6SUQkc821EFyfywhbn1rLQv4PCbPJLBvFDwDIvk0NRdaCY7XqTngf80ltq"&gt;这篇&lt;/a&gt;。昨日参加同事婚礼，不胜唏嘘。&lt;/p&gt;
+>>>>>>> gh-pages
 &lt;blockquote&gt;
 &lt;p&gt;东武望馀杭&lt;br /&gt;
 云海天涯两杳茫&lt;br /&gt;

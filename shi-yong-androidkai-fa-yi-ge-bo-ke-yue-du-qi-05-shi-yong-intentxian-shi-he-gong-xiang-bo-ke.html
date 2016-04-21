@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
@@ -76,6 +77,69 @@
 
   <div class="entry-content"><h2>1 在浏览器中打开网页</h2>
 <h3>1.1 <code>ListView</code>添加单击事件响应</h3>
+=======
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Android学习笔记, Android, Androi博客阅读, Android, " />
+        <title>使用Android开发一个博客阅读器-05 使用Intent显示和共享博客  · Liu Lixiang的博客
+</title>
+        <link href="http://liulixiang1988.github.io/theme/css/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="http://liulixiang1988.github.io/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html"> 使用Android开发一个博客阅读器-05 使用Intent显示和共享博客  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <h2 id="1">1 在浏览器中打开网页</h2>
+<h3 id="11-listview">1.1 <code>ListView</code>添加单击事件响应</h3>
+>>>>>>> gh-pages
 <p>要是<code>ListView</code>响应单击事件，重载函数：</p>
 <div class="highlight"><pre><span class="nd">@Override</span>
 <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onListItemClick</span><span class="o">(</span><span class="n">ListView</span> <span class="n">l</span><span class="o">,</span> <span class="n">View</span> <span class="n">v</span><span class="o">,</span> <span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="kt">long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>     
@@ -89,7 +153,11 @@
 - v: ListView中被点击的视图
 - position：被点击的视图在list中的位置
 - id：被点击视图的行ID</p>
+<<<<<<< HEAD
 <h3>1.2 获取URL</h3>
+=======
+<h3 id="12-url">1.2 获取URL</h3>
+>>>>>>> gh-pages
 <div class="highlight"><pre><span class="nd">@Override</span>
 <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onListItemClick</span><span class="o">(</span><span class="n">ListView</span> <span class="n">l</span><span class="o">,</span> <span class="n">View</span> <span class="n">v</span><span class="o">,</span> <span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="kt">long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>     
     <span class="kd">super</span><span class="o">.</span><span class="na">onListItemClick</span><span class="o">(</span><span class="n">l</span><span class="o">,</span> <span class="n">v</span><span class="o">,</span> <span class="n">position</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
@@ -105,7 +173,11 @@
 </pre></div>
 
 
+<<<<<<< HEAD
 <h3>1.3 使用Intent在浏览器中打开URL</h3>
+=======
+<h3 id="13-intenturl">1.3 使用Intent在浏览器中打开URL</h3>
+>>>>>>> gh-pages
 <div class="highlight"><pre><span class="nd">@Override</span>
 <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onListItemClick</span><span class="o">(</span><span class="n">ListView</span> <span class="n">l</span><span class="o">,</span> <span class="n">View</span> <span class="n">v</span><span class="o">,</span> <span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="kt">long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>     
     <span class="kd">super</span><span class="o">.</span><span class="na">onListItemClick</span><span class="o">(</span><span class="n">l</span><span class="o">,</span> <span class="n">v</span><span class="o">,</span> <span class="n">position</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
@@ -126,8 +198,13 @@
 
 
 <p>使用<code>Intent.setData</code>来设置<code>Uri</code>，Uri则是通过<code>Uri.parse(String)</code>来创建。</p>
+<<<<<<< HEAD
 <h2>2 在应用中打开网页</h2>
 <h3>2.1 创建一个包含<code>WebView</code>的Activity</h3>
+=======
+<h2 id="2">2 在应用中打开网页</h2>
+<h3 id="21-webviewactivity">2.1 创建一个包含<code>WebView</code>的Activity</h3>
+>>>>>>> gh-pages
 <p><img alt="1" src="images/android-blog-reader-05-02.png" />
 <img alt="2" src="images/android-blog-reader-05-03.png" />
 <img alt="3" src="images/android-blog-reader-05-04.png" /></p>
@@ -147,14 +224,22 @@
 </pre></div>
 
 
+<<<<<<< HEAD
 <h3>2.2 使用Inent调用</h3>
+=======
+<h3 id="22-inent">2.2 使用Inent调用</h3>
+>>>>>>> gh-pages
 <p>在MainListActivity中，修改<code>Intent</code>：</p>
 <div class="highlight"><pre><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">BlogPostActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 </pre></div>
 
 
 <p>其他不变。这种创建方法是显示创建。</p>
+<<<<<<< HEAD
 <h3>2.3 在包含<code>WebView</code>的Activity中打开网页</h3>
+=======
+<h3 id="23-webviewactivity">2.3 在包含<code>WebView</code>的Activity中打开网页</h3>
+>>>>>>> gh-pages
 <div class="highlight"><pre><span class="nd">@Override</span>
 <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
     <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
@@ -170,9 +255,15 @@
 
 
 <p>打开网页用的是<code>webView.loadUrl()</code>方法</p>
+<<<<<<< HEAD
 <h2>3 使用Intent进行简单的共享</h2>
 <h3>3.1 下载ActionBar图标</h3>
 <h3>3.2 创建ActionBar Item</h3>
+=======
+<h2 id="3-intent">3 使用Intent进行简单的共享</h2>
+<h3 id="31-actionbar">3.1 下载ActionBar图标</h3>
+<h3 id="32-actionbar-item">3.2 创建ActionBar Item</h3>
+>>>>>>> gh-pages
 <p>打开menu/blog_post.xml，删除原来的item，然后添加新的item。</p>
 <p><img alt="5" src="images/android-blog-reader-05-05.png" /></p>
 <p>打开xml文件，使用eclipse的<code>ctrl+shift+f</code>，格式化代码如下：</p>
@@ -187,7 +278,11 @@
 </pre></div>
 
 
+<<<<<<< HEAD
 <h3>3.3 添加菜单项点击响应</h3>
+=======
+<h3 id="33">3.3 添加菜单项点击响应</h3>
+>>>>>>> gh-pages
 <p>重写</p>
 <div class="highlight"><pre><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onOptionsItemSelected</span><span class="o">(</span><span class="n">MenuItem</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// Handle action bar item clicks here. The action bar will</span>
@@ -202,7 +297,11 @@
 </pre></div>
 
 
+<<<<<<< HEAD
 <h3>3.4 创建共享Intent</h3>
+=======
+<h3 id="34-intent">3.4 创建共享Intent</h3>
+>>>>>>> gh-pages
 <div class="highlight"><pre><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onOptionsItemSelected</span><span class="o">(</span><span class="n">MenuItem</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// Handle action bar item clicks here. The action bar will</span>
@@ -228,6 +327,7 @@
 - <code>Intent.ACTION_SEND</code> - 用来设置发送Intent
 - <code>shareIntent.putExtra(Intent.EXTRA_TEXT, url);</code>与<code>ACTION_SEND</code>配合使用
 - <code>Intent.createChooser(shareIntent, getString(R.string.share_post))</code>选择Intent菜单</p>
+<<<<<<< HEAD
 <h2>4 总结</h2>
 <p>本节主要学习了如何使用Intent在浏览器、应用中打开网址，以及如何使用简单的共享。</p>
 <p>至此，该应用完结，你创建了一个完整的应用。</p></div>
@@ -250,6 +350,18 @@
     <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html" data-title="使用Android开发一个博客阅读器-05 使用Intent显示和共享博客" data-url="./shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html"></div>
+=======
+<h2 id="4">4 总结</h2>
+<p>本节主要学习了如何使用Intent在浏览器、应用中打开网址，以及如何使用简单的共享。</p>
+<p>至此，该应用完结，你创建了一个完整的应用。</p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html" data-title="使用Android开发一个博客阅读器-05 使用Intent显示和共享博客" data-url="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html"></div>
+>>>>>>> gh-pages
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -264,6 +376,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 	})();
 	</script>
 <!-- 多说公共JS代码 end -->
+<<<<<<< HEAD
     </div>
   </section>
 </div>
@@ -359,4 +472,66 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
   <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
 </p></footer>
 </body>
+=======
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-04-zai-listzhong-zhan-xian-shu-ju.html" title="Previous: 使用Android开发一个博客阅读器-04 在List中展现数据">使用Android开发一个博客阅读器-04 在List中展现数据</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html" title="Next: 使用Android开发阅后即焚应用-01 开始">使用Android开发阅后即焚应用-01 开始</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2014-10-01T13:30:00">10 1, 2014</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Android-ref">Android</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Androi博客阅读-ref">Androi博客阅读
+                    <span>5</span>
+</a></li>
+                <li><a href="/tags.html#Android-ref">Android
+                    <span>17</span>
+</a></li>
+                <li><a href="/tags.html#Android学习笔记-ref">Android学习笔记
+                    <span>14</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://liulixiang1988.github.io/theme/js/jquery.min.js"></script>
+        <script src="http://liulixiang1988.github.io/theme/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+>>>>>>> gh-pages
 </html>

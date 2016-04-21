@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
@@ -77,10 +78,101 @@
   <div class="entry-content"><p>[TOC]</p>
 <h1>ASP.NET MVC5 学习笔记-4 OWIN和Katana</h1>
 <h2>1. Owin</h2>
+=======
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="DotNet, Web, ASP.NET MVC, DotNet, " />
+        <title>ASP.NET MVC5 学习笔记-4 OWIN和Katana  · Liu Lixiang的博客
+</title>
+        <link href="http://liulixiang1988.github.io/theme/css/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="http://liulixiang1988.github.io/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html"> ASP.NET MVC5 学习笔记-4 OWIN和Katana  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#aspnet-mvc5-4-owinkatana">ASP.NET MVC5 学习笔记-4 OWIN和Katana</a><ul>
+<li><a href="#1-owin">1. Owin</a></li>
+<li><a href="#2-local-authentication">2. 本地认证Local Authentication</a></li>
+<li><a href="#3-facebook">3. 添加Facebook认证</a></li>
+<li><a href="#4-identity">4. Identity身份</a><ul>
+<li><a href="#41-claim">4.1 使用Claim添加自定义的字段</a></li>
+<li><a href="#42-model">4.2 在model中添加自定义的字段</a></li>
+</ul>
+</li>
+<li><a href="#5">5 基于角色的认证</a><ul>
+<li><a href="#51">5.1 为每个用户添加余额显示</a></li>
+<li><a href="#52">5.2 显示用户账户余额列表</a></li>
+</ul>
+</li>
+<li><a href="#6">6 给用户赋值角色</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
+
+            
+<h1 id="aspnet-mvc5-4-owinkatana">ASP.NET MVC5 学习笔记-4 OWIN和Katana</h1>
+<h2 id="1-owin">1. Owin</h2>
+>>>>>>> gh-pages
 <p>OWIN全名：Open Web Interface for .NET. 它是一个说明，而非一个框架，该声明用来实现Web服务器和框架的松耦合。它提供了模块化、轻量级和便携的设计。类似Node.js, WSGI.</p>
 <p>Katana是微软实现的OWIN组件的集合。包含基础设施组件和功能性组件。并且暴露出了OWIN管道用来添加组件。可以在IIS、OwinHost.exe或者自定义的服务器中托管。</p>
 <p>比如OWIN提供了新的登录模式，比如，打开Web.config文件，我们看到：</p>
 <div class="highlight"><pre><span class="nt">&lt;system.web&gt;</span>
+<<<<<<< HEAD
     <span class="nt">&lt;authentication</span> <span class="na">mode=</span><span class="s">&quot;None&quot;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;compilation</span> <span class="na">debug=</span><span class="s">&quot;true&quot;</span> <span class="na">targetFramework=</span><span class="s">&quot;4.5&quot;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;httpRuntime</span> <span class="na">targetFramework=</span><span class="s">&quot;4.5&quot;</span> <span class="nt">/&gt;</span>
@@ -88,6 +180,13 @@
 </pre></div>
 
 
+=======
+    <span class="nt">&lt;authentication</span> <span class="na">mode=</span><span class="s">"None"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;compilation</span> <span class="na">debug=</span><span class="s">"true"</span> <span class="na">targetFramework=</span><span class="s">"4.5"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;httpRuntime</span> <span class="na">targetFramework=</span><span class="s">"4.5"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/system.web&gt;</span>
+</pre></div>
+>>>>>>> gh-pages
 <p>我们看到<code>&lt;authentication mode="None"/&gt;</code>，这里我们不在使用传统的Form认证，而是使用Owin的认证。我们打开Startup.cs文件，看到如下内容：</p>
 <div class="highlight"><pre><span class="n">public</span> <span class="n">partial</span> <span class="n">class</span> <span class="n">Startup</span>
 <span class="p">{</span>
@@ -97,8 +196,11 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> gh-pages
 <p>这里我们使用<code>ConfigureAuth(app)</code>来配置认证，打开这个方法的定义，可以看到如下方法：</p>
 <div class="highlight"><pre><span class="n">public</span> <span class="kt">void</span> <span class="nf">ConfigureAuth</span><span class="p">(</span><span class="n">IAppBuilder</span> <span class="n">app</span><span class="p">)</span>
 <span class="p">{</span>
@@ -106,13 +208,18 @@
     <span class="n">app</span><span class="p">.</span><span class="n">UseCookieAuthentication</span><span class="p">(</span><span class="n">new</span> <span class="n">CookieAuthenticationOptions</span>
     <span class="p">{</span>
         <span class="n">AuthenticationType</span> <span class="o">=</span> <span class="n">DefaultAuthenticationTypes</span><span class="p">.</span><span class="n">ApplicationCookie</span><span class="p">,</span>
+<<<<<<< HEAD
         <span class="n">LoginPath</span> <span class="o">=</span> <span class="n">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">&quot;/Account/Login&quot;</span><span class="p">)</span>
+=======
+        <span class="n">LoginPath</span> <span class="o">=</span> <span class="n">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">"/Account/Login"</span><span class="p">)</span>
+>>>>>>> gh-pages
     <span class="p">});</span>
     <span class="c1">// Use a cookie to temporarily store information about a user logging in with a third party login provider</span>
     <span class="n">app</span><span class="p">.</span><span class="n">UseExternalSignInCookie</span><span class="p">(</span><span class="n">DefaultAuthenticationTypes</span><span class="p">.</span><span class="n">ExternalCookie</span><span class="p">);</span>
 
     <span class="c1">// 取消注释以下行可允许使用第三方登录提供程序登录</span>
     <span class="c1">//app.UseMicrosoftAccountAuthentication(</span>
+<<<<<<< HEAD
     <span class="c1">//    clientId: &quot;&quot;,</span>
     <span class="c1">//    clientSecret: &quot;&quot;);</span>
 
@@ -123,24 +230,46 @@
     <span class="c1">//app.UseFacebookAuthentication(</span>
     <span class="c1">//   appId: &quot;&quot;,</span>
     <span class="c1">//   appSecret: &quot;&quot;);</span>
+=======
+    <span class="c1">//    clientId: "",</span>
+    <span class="c1">//    clientSecret: "");</span>
+
+    <span class="c1">//app.UseTwitterAuthentication(</span>
+    <span class="c1">//   consumerKey: "",</span>
+    <span class="c1">//   consumerSecret: "");</span>
+
+    <span class="c1">//app.UseFacebookAuthentication(</span>
+    <span class="c1">//   appId: "",</span>
+    <span class="c1">//   appSecret: "");</span>
+>>>>>>> gh-pages
 
     <span class="c1">//app.UseGoogleAuthentication();</span>
 <span class="p">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
 <hr />
 <h2>2. 本地认证Local Authentication</h2>
+=======
+<hr/>
+<h2 id="2-local-authentication">2. 本地认证Local Authentication</h2>
+>>>>>>> gh-pages
 <p>默认就是本地认证：</p>
 <div class="highlight"><pre><span class="c1">// 使应用程序可以使用 Cookie 来存储已登录用户的信息</span>
 <span class="n">app</span><span class="p">.</span><span class="n">UseCookieAuthentication</span><span class="p">(</span><span class="k">new</span> <span class="n">CookieAuthenticationOptions</span>
 <span class="p">{</span>
     <span class="n">AuthenticationType</span> <span class="o">=</span> <span class="n">DefaultAuthenticationTypes</span><span class="p">.</span><span class="n">ApplicationCookie</span><span class="p">,</span>
+<<<<<<< HEAD
     <span class="n">LoginPath</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">&quot;/Account/Login&quot;</span><span class="p">)</span>
+=======
+    <span class="n">LoginPath</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PathString</span><span class="p">(</span><span class="s">"/Account/Login"</span><span class="p">)</span>
+>>>>>>> gh-pages
 <span class="p">});</span>
 <span class="c1">// Use a cookie to temporarily store information about a user logging in with a third party login provider</span>
 <span class="n">app</span><span class="p">.</span><span class="n">UseExternalSignInCookie</span><span class="p">(</span><span class="n">DefaultAuthenticationTypes</span><span class="p">.</span><span class="n">ExternalCookie</span><span class="p">);</span>
 </pre></div>
+<<<<<<< HEAD
 
 
 <h2>3. 添加Facebook认证</h2>
@@ -165,6 +294,28 @@
 <p>第二步，如果在创建账户后需要做一些其他的操作，修改AccountController.cs中的<code>ExternalLoginConfirmation</code>方法。</p>
 <h2>4. Identity身份</h2>
 <h3>4.1 使用Claim添加自定义的字段</h3>
+=======
+<h2 id="3-facebook">3. 添加Facebook认证</h2>
+<div class="highlight"><pre><span class="c1">// 取消注释以下行可允许使用第三方登录提供程序登录</span>
+<span class="c1">//app.UseMicrosoftAccountAuthentication(</span>
+<span class="c1">//    clientId: "",</span>
+<span class="c1">//    clientSecret: "");</span>
+
+<span class="c1">//app.UseTwitterAuthentication(</span>
+<span class="c1">//   consumerKey: "",</span>
+<span class="c1">//   consumerSecret: "");</span>
+
+<span class="c1">//app.UseFacebookAuthentication(</span>
+<span class="c1">//   appId: "",</span>
+<span class="c1">//   appSecret: "");</span>
+
+<span class="c1">//app.UseGoogleAuthentication();</span>
+</pre></div>
+<p>取消注释对应的行，并且添加appId和appSecret。</p>
+<p>第二步，如果在创建账户后需要做一些其他的操作，修改AccountController.cs中的<code>ExternalLoginConfirmation</code>方法。</p>
+<h2 id="4-identity">4. Identity身份</h2>
+<h3 id="41-claim">4.1 使用Claim添加自定义的字段</h3>
+>>>>>>> gh-pages
 <p>Identity 是第一个产生出来为每个用户识别身份的。<code>Account</code>的<code>Register</code>方法先生成创建一个<code>IdentityResult</code>，然后再使用<code>SignInAsync</code>。</p>
 <p>Claim是一个关于用户的声明，由Identity provider提供，比如用户1有Admin角色。</p>
 <p>Asp.Net生成的数据库中有<code>AspNetUsers</code>，<code>AspNetUserRoles</code>和<code>AspNetUserClaims</code>表，其中<code>AspNetUserClaims</code>用来存储用户自定义的一些信息。
@@ -184,7 +335,11 @@
             <span class="nx">service.CreateCheckingAccount</span><span class="p">(</span><span class="nx">model.FirstName</span><span class="p">,</span> <span class="nx">model.LastName</span><span class="p">,</span>
                 <span class="nx">user.Id</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
             <span class="nx">await</span> <span class="nx">SignInAsync</span><span class="p">(</span><span class="nb">user</span><span class="p">,</span> <span class="nx">isPersistent</span><span class="p">:</span> <span class="kc">false</span><span class="p">);</span>
+<<<<<<< HEAD
             <span class="k">return</span> <span class="nx">RedirectToAction</span><span class="p">(</span><span class="s2">&quot;Index&quot;</span><span class="p">,</span> <span class="s2">&quot;Home&quot;</span><span class="p">);</span>
+=======
+            <span class="k">return</span> <span class="nx">RedirectToAction</span><span class="p">(</span><span class="s2">"Index"</span><span class="p">,</span> <span class="s2">"Home"</span><span class="p">);</span>
+>>>>>>> gh-pages
         <span class="p">}</span>
         <span class="k">else</span>
         <span class="p">{</span>
@@ -196,15 +351,22 @@
     <span class="k">return</span> <span class="nx">View</span><span class="p">(</span><span class="nx">model</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> gh-pages
 <p>获取Claims</p>
 <div class="highlight"><pre><span class="n">var</span> <span class="n">identity</span> <span class="o">=</span> <span class="p">(</span><span class="n">ClaimsIdentity</span><span class="p">)</span> <span class="n">User</span><span class="p">.</span><span class="n">Identity</span><span class="p">;</span>
 <span class="n">var</span> <span class="n">name</span> <span class="o">=</span> <span class="n">identity</span><span class="p">.</span><span class="n">FindFirstValue</span><span class="p">(</span><span class="n">ClaimTypes</span><span class="p">.</span><span class="n">GivenName</span><span class="p">)</span> <span class="o">??</span> <span class="n">identity</span><span class="p">.</span><span class="n">GetUserName</span><span class="p">();</span>
 </pre></div>
+<<<<<<< HEAD
 
 
 <h3>4.2 在model中添加自定义的字段</h3>
+=======
+<h3 id="42-model">4.2 在model中添加自定义的字段</h3>
+>>>>>>> gh-pages
 <p>打开<code>IdentityModels.cs</code>，在<code>ApplicationUser</code>中添加:</p>
 <div class="highlight"><pre><span class="k">public</span> <span class="nf">class</span> <span class="nx">ApplicationUser</span> <span class="p">:</span> <span class="nx">IdentityUser</span>
 <span class="p">{</span>
@@ -216,6 +378,7 @@
     <span class="k">public</span> <span class="nf">string</span> <span class="nx">Pin</span> <span class="p">{</span> <span class="nb">get</span><span class="p">;</span> <span class="nb">set</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
 <h2>5 基于角色的认证</h2>
@@ -225,6 +388,13 @@
 </pre></div>
 
 
+=======
+<h2 id="5">5 基于角色的认证</h2>
+<h3 id="51">5.1 为每个用户添加余额显示</h3>
+<p>每个Controller都有一个User属性，获取当前UserId的方法如下：</p>
+<div class="highlight"><pre><span class="n">var</span> <span class="n">userId</span> <span class="o">=</span> <span class="n">User</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">GetUserId</span><span class="p">();</span>
+</pre></div>
+>>>>>>> gh-pages
 <p>比如，我们要获取之前定义的账户余额，可以打开<code>CheckingAccountController.cs</code>中添加下面的代码</p>
 <div class="highlight"><pre><span class="n">private</span> <span class="n">ApplicationDbContext</span> <span class="n">db</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ApplicationDbContext</span><span class="p">();</span>
 
@@ -237,16 +407,22 @@
     <span class="k">return</span> <span class="n">View</span><span class="p">(</span><span class="n">checkingAccount</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
 <p>这样每个用户就都能看到自己的账户余额了。</p>
 <h3>5.2 显示用户账户余额列表</h3>
+=======
+<p>这样每个用户就都能看到自己的账户余额了。</p>
+<h3 id="52">5.2 显示用户账户余额列表</h3>
+>>>>>>> gh-pages
 <p>在<code>CheckingAccountController.cs</code>中添加：</p>
 <div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">List</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="n">View</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">CheckoutAccounts</span><span class="p">.</span><span class="n">ToList</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
 <p>现在，我们为List添加视图，右键：
@@ -269,6 +445,24 @@
 
 <p>请注意，我们添加了<code>[Authorize(Roles="Admin")]</code>来限定只有Admin组的才能访问，下一节我们讲介绍如何使用角色分配。</p>
 <h2>6 给用户赋值角色</h2>
+=======
+<p>现在，我们为List添加视图，右键：
+<img alt="Alt text" src="images/1416841607073.png"/></p>
+<p><strong>注意</strong>，如果按照上图配置发生错误，并且错误是“运行所选代码生成器时出错”，那么应该将数据上下文类留空，这样就可以了。</p>
+<p>然后编辑生成的模板，将编辑改为：</p>
+<div class="highlight"><pre><span class="err">@</span><span class="n">Html</span><span class="p">.</span><span class="n">ActionLink</span><span class="p">(</span><span class="s">"详细"</span><span class="p">,</span> <span class="s">"DetailsForAdmin"</span><span class="p">,</span> <span class="n">new</span> <span class="p">{</span> <span class="n">id</span><span class="o">=</span><span class="n">item</span><span class="p">.</span><span class="n">Id</span> <span class="p">})</span> <span class="o">|</span>
+</pre></div>
+<p>并且，在<code>CheckingAccountController.cs</code>中添加：</p>
+<div class="highlight"><pre><span class="k">[Authorize(Roles = "Admin")]</span>
+<span class="err">public</span> <span class="err">ActionResult</span> <span class="err">DetailsForAdmin(int</span> <span class="err">id)</span>
+<span class="err">{</span>
+    <span class="na">var checkingAccount</span> <span class="o">=</span> <span class="s">db.CheckoutAccounts.First(c =&gt; c.Id == id);</span>
+<span class="s">    return View("Details", checkingAccount);</span>
+<span class="err">}</span>
+</pre></div>
+<p>请注意，我们添加了<code>[Authorize(Roles="Admin")]</code>来限定只有Admin组的才能访问，下一节我们讲介绍如何使用角色分配。</p>
+<h2 id="6">6 给用户赋值角色</h2>
+>>>>>>> gh-pages
 <p>打开<code>Migrations\Configurations</code>，在<code>Seed</code>方法中添加如下：</p>
 <div class="highlight"><pre><span class="k">protected</span> <span class="nf">override</span> <span class="bp">void</span> <span class="nx">Seed</span><span class="p">(</span><span class="nx">AspNetMVCEssential.Models.ApplicationDbContext</span> <span class="nx">context</span><span class="p">)</span>
 <span class="p">{</span>
@@ -276,6 +470,7 @@
     <span class="kd">var</span> <span class="n">userStore</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">UserStore</span><span class="o">&lt;</span><span class="nx">ApplicationUser</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
     <span class="kd">var</span> <span class="n">userManager</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">UserManager</span><span class="o">&lt;</span><span class="nx">ApplicationUser</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">userStore</span><span class="p">);</span>
 
+<<<<<<< HEAD
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">context.Users.Any</span><span class="p">(</span><span class="n">u</span> <span class="o">=&gt;</span> <span class="nx">u.UserName</span> <span class="o">==</span> <span class="s2">&quot;liulixiang1988&quot;</span><span class="p">))</span>
     <span class="p">{</span>
         <span class="c1">//1、创建用户</span>
@@ -316,6 +511,36 @@
     <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html" data-title="ASP.NET MVC5 学习笔记-4 OWIN和Katana" data-url="./aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html"></div>
+=======
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">context.Users.Any</span><span class="p">(</span><span class="n">u</span> <span class="o">=&gt;</span> <span class="nx">u.UserName</span> <span class="o">==</span> <span class="s2">"liulixiang1988"</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="c1">//1、创建用户</span>
+        <span class="kd">var</span> <span class="n">user</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">ApplicationUser</span> <span class="p">{</span> <span class="n">UserName</span> <span class="o">=</span> <span class="s2">"liulixiang1988"</span><span class="p">,</span> <span class="n">Email</span> <span class="o">=</span> <span class="s2">"liulixiang1988@gmail.com"</span> <span class="p">};</span>
+        <span class="c1">//下面这句会创建一个用户并且会立即执行，不需调用SaveChanges</span>
+        <span class="nx">userManager.Create</span><span class="p">(</span><span class="nb">user</span><span class="p">,</span> <span class="s2">"passW0rd"</span><span class="p">);</span>
+
+        <span class="c1">//2、创建用户相关的账户</span>
+        <span class="kd">var</span> <span class="n">service</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">CheckingAccountService</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+        <span class="nx">service.CreateCheckingAccount</span><span class="p">(</span><span class="s2">"liulixiang1988"</span><span class="p">,</span> <span class="s2">"管理员"</span><span class="p">,</span> <span class="nx">user.Id</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+
+        <span class="c1">//3、添加角色并保存</span>
+        <span class="nx">context.Roles.AddOrUpdate</span><span class="p">(</span><span class="n">r</span> <span class="o">=&gt;</span> <span class="nx">r.Name</span><span class="p">,</span> <span class="nb">new</span> <span class="nx">IdentityRole</span> <span class="p">{</span> <span class="n">Name</span> <span class="o">=</span> <span class="s2">"Admin"</span> <span class="p">});</span>
+        <span class="nx">context.SaveChanges</span><span class="p">();</span>
+
+        <span class="c1">//4、给用户添加角色，指定Id和角色名</span>
+        <span class="nx">userManager.AddToRole</span><span class="p">(</span><span class="nx">user.Id</span><span class="p">,</span> <span class="s2">"Admin"</span><span class="p">);</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html" data-title="ASP.NET MVC5 学习笔记-4 OWIN和Katana" data-url="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html"></div>
+>>>>>>> gh-pages
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -330,6 +555,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 	})();
 	</script>
 <!-- 多说公共JS代码 end -->
+<<<<<<< HEAD
     </div>
   </section>
 </div>
@@ -425,4 +651,66 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
   <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
 </p></footer>
 </body>
+=======
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html" title="Previous: ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器">ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-3-model.html" title="Next: ASP.NET MVC5 学习笔记-3 Model">ASP.NET MVC5 学习笔记-3 Model</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2014-10-31T20:48:00">10 31, 2014</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#DotNet-ref">DotNet</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#ASP.NET-MVC-ref">ASP.NET MVC
+                    <span>5</span>
+</a></li>
+                <li><a href="/tags.html#DotNet-ref">DotNet
+                    <span>5</span>
+</a></li>
+                <li><a href="/tags.html#Web-ref">Web
+                    <span>24</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://liulixiang1988.github.io/theme/js/jquery.min.js"></script>
+        <script src="http://liulixiang1988.github.io/theme/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+>>>>>>> gh-pages
 </html>

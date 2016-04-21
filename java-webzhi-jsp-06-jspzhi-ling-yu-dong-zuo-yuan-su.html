@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Java, Web, JSP, Java, " />
+        <title>Java Web之JSP-06 JSP指令与动作元素  · Liu Lixiang的博客
+</title>
+        <link href="http://liulixiang1988.github.io/theme/css/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="http://liulixiang1988.github.io/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/java-webzhi-jsp-06-jspzhi-ling-yu-dong-zuo-yuan-su.html"> Java Web之JSP-06 JSP指令与动作元素  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <h2 id="1-include">1. include指令</h2>
+<p>常用的有page、include、taglib指令这三种指令；
+page：位于页面顶端，一个页面可以包含多个page指令
+include：将一个外部文件嵌入jsp中，同时解析这个页面中的jsp语句。
+taglib：使用标签库，自定义新的标签，在jsp中启动定制行为。</p>
+<p>语法 <code>&lt;% include file="地址"%&gt;</code>。
+案例：显示当前时间的页面。
+（1）写一个只输出时间的方法的date.jsp。
+（2）用于显示的页面,包含<code>&lt;% include file="date.jsp"%&gt;</code></p>
+<h2 id="2-include">2. include动作</h2>
+<ol>
+<li>是一个动作标签<code>&lt;jsp:xxx&gt;</code></li>
+<li>语法：<code>&lt;jsp:include page="URL" flush="true|false"&gt;</code></li>
+<li>page属性：要包含的页面</li>
+<li>flush属性：被包含的页面是否从缓冲区里读取</li>
+</ol>
+<h2 id="3-include">3. include指令和动作的区别</h2>
+<ol>
+<li>包含内容： 指令包含的是【源代码】，动作包含的是页面输出的【结果】</li>
+<li>生成的servlet：指令会生成一个整体的Servlet；而动作会分别生成两个，即在一个Servlet中调用另一个Servlet</li>
+<li>其他区别如图：</li>
+<li>使用场合】：页面内容不经常变化使用include指令，页面内容经常变化使用<code>&lt;jsp:include&gt;</code>动作</li>
+</ol>
+<p><img alt="images/java-web-jsp-04.jpg" src="images/java-web-jsp-04.jpg" /></p>
+<h2 id="4-forward">4. forward指令</h2>
+<p>forward动作
+1、语法：<code>&lt;jsp:forward page="URL"/&gt;</code>
+2、等于服务器内部转发指令 <code>request.getRequestDispacher("URL").forward(req,res);</code>
+相当于是服务器内部跳转，URL地址不会发生变化。
+四种跳转.
+<code>&lt;% response.sendRedirect("login_seccess.jsp"); %&gt;</code>//告诉浏览器此路不通,你再问问另一页面能解决你的问题不?
+<code>&lt;jsp:forward page="login_fail.jsp"/&gt;</code> //服务器将请求转发到另一页面,浏览器不知情.
+<code>&lt;% pageContext.forward("login_fail.jsp");%&gt;</code> //服务器将请求转发到另一页面,浏览器不知情.
+<code>&lt;% request.getRequestDispatcher("login_fail.jsp").forward(request,response);%&gt;</code> //服务器将请求转发到另一页面,浏览器不知情.</p>
+<h2 id="5-param">5. param动作</h2>
+<ol>
+<li>语法：<code>&lt;jsp:param name="参数名" value="参数值"&gt;</code></li>
+<li>【常常与<code>&lt;jsp:forward&gt;&lt;/jsp:forward&gt;</code>一起使用】，并作为其【子标签】。</li>
+<li>用于传递新参数或者【修改原有参数值】，修改参数时使用form表单里的参数名称即可。同样用request.getParameter("参数名")获取</li>
+</ol>
+<p>必须与forward、include及plugin动作配合使用。通常与forward动作一起使用，作为它的子标签，它的作用是指定某个参数值，可以用于传递参数.</p>
+<div class="highlight"><pre><span class="nt">&lt;jsp:forward</span> <span class="na">page=</span><span class="s">&quot;url&quot;</span><span class="nt">&gt;</span> 
+<span class="nt">&lt;jsp:param</span> <span class="na">value=</span><span class="s">&quot;123@qq.com&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span><span class="nt">/&gt;</span> 
+<span class="nt">&lt;/jsp:forward&gt;</span>
+</pre></div>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="java-webzhi-jsp-06-jspzhi-ling-yu-dong-zuo-yuan-su.html" data-title="Java Web之JSP-06 JSP指令与动作元素" data-url="http://liulixiang1988.github.io/java-webzhi-jsp-06-jspzhi-ling-yu-dong-zuo-yuan-su.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/java-webzhi-jsp-05-jspzhuang-tai-guan-li.html" title="Previous: Java Web之JSP-05 JSP状态管理">Java Web之JSP-05 JSP状态管理</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/jdbcshi-yong-bi-ji.html" title="Next: JDBC使用笔记">JDBC使用笔记</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-04-13T19:37:00"> 4 13, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Java-ref">Java</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Java-ref">Java
+                    <span>12</span>
+</a></li>
+                <li><a href="/tags.html#JSP-ref">JSP
+                    <span>9</span>
+</a></li>
+                <li><a href="/tags.html#Web-ref">Web
+                    <span>24</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://liulixiang1988.github.io/theme/js/jquery.min.js"></script>
+        <script src="http://liulixiang1988.github.io/theme/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

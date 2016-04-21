@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="JavaScript, React, Web, " />
+        <title>React使用笔记(4)-React状态和属性详解  · Liu Lixiang的博客
+</title>
+        <link href="http://liulixiang1988.github.io/theme/css/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="http://liulixiang1988.github.io/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/reactshi-yong-bi-ji-4-reactzhuang-tai-he-shu-xing-xiang-jie.html"> React使用笔记(4)-React状态和属性详解  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#1">1. 属性的含义和用法</a><ul>
+<li><a href="#11">1.1 属性赋值</a></li>
+</ul>
+</li>
+<li><a href="#2">2. 状态的含义和用法</a></li>
+<li><a href="#3">3. 属性和状态的对比</a></li>
+<li><a href="#4">4. 实战：文章评论框</a></li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
+
+            
+<h2 id="1">1. 属性的含义和用法</h2>
+<h3 id="11">1.1 属性赋值</h3>
+<p><code>&lt;HelloWorld name="?"&gt;&lt;HelloWorld&gt;</code>中属性的值可以有以下几种形式：</p>
+<ul>
+<li><code>"Tom"</code> 字符串</li>
+<li><code>{123}</code> 字符</li>
+<li><code>{"Tom"}</code> 等同于第一种方法</li>
+<li><code>{[1, 2, 3]}</code> 数组，属性接收的也是数组，这样就能做一些类似<code>checkbox</code>的事情了</li>
+<li><code>{variable or function}</code> 对象或者函数</li>
+</ul>
+<p>还有一种写法，叫做<strong>展开语法</strong>，用3个点加对象名来实现：</p>
+<div class="highlight"><pre><span class="n">var</span> <span class="n">props</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nl">one:</span> <span class="s">"123"</span><span class="p">,</span>
+    <span class="nl">two:</span> <span class="mi">321</span>
+<span class="p">};</span>
+<span class="o">&lt;</span><span class="n">Hello</span> <span class="p">{...</span><span class="n">props</span><span class="p">}</span><span class="o">/&gt;</span>
+</pre></div>
+<p>还有一种不常用的方法<code>setProps</code>:</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="n">instance</span> <span class="o">=</span> <span class="nx">React.render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">HelloWorld</span><span class="o">&gt;&lt;/</span><span class="nx">HelloWorld</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">document.body</span><span class="p">);</span>
+<span class="nx">instance.setProps</span><span class="p">({</span><span class="nb">name</span><span class="p">:</span><span class="s2">"Tom"</span><span class="p">});</span>
+</pre></div>
+<h2 id="2">2. 状态的含义和用法</h2>
+<ul>
+<li><code>getInitialState</code>: 初始化每个实例特有的状态。</li>
+<li><code>setState</code>: 更新组件状态</li>
+</ul>
+<h2 id="3">3. 属性和状态的对比</h2>
+<table>
+<thead>
+<tr>
+<th>--</th>
+<th>属性</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>能否从父组件获取初始值</td>
+<td>能</td>
+<td>否</td>
+</tr>
+<tr>
+<td>能否由父组件修改</td>
+<td>能</td>
+<td>否</td>
+</tr>
+<tr>
+<td>能否在组件内部设置默认值</td>
+<td>能</td>
+<td>能</td>
+</tr>
+<tr>
+<td>能否在组件内部修改</td>
+<td>否</td>
+<td>能</td>
+</tr>
+<tr>
+<td>能否设置子组件的初始值</td>
+<td>能</td>
+<td>否</td>
+</tr>
+<tr>
+<td>能否修改子组件的值</td>
+<td>能</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<p>记住一点：组件在运行时，<strong>需要修改</strong>的数据就是状态。</p>
+<h2 id="4">4. 实战：文章评论框</h2>
+<p>首先我们先写个框架：</p>
+<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+var Content = React.createClass({
+    render: function(){
+        return <span class="nt">&lt;p&gt;</span>content<span class="nt">&lt;/p&gt;</span>;
+    },
+});
+
+var Comment = React.createClass({
+    render: function(){
+        return <span class="nt">&lt;Content&gt;&lt;/Content&gt;</span>
+    },
+});
+React.render(<span class="nt">&lt;Content</span> <span class="nt">&gt;&lt;/Content&gt;</span>, document.body);
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+<p>然后我们动态设置一个下拉框：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="n">Comment</span> <span class="o">=</span> <span class="nx">React.createClass</span><span class="p">({</span>
+    <span class="nx">getInitialState</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nb">name</span><span class="p">:</span> <span class="err">[</span><span class="s2">"Tim"</span><span class="p">,</span> <span class="s2">"Hank"</span><span class="p">,</span> <span class="s2">"John"</span><span class="cp">]</span>
+        };
+    },
+    render: function(){
+        var options = <span class="cp">[]</span>;
+        for (var i = 0; i <span class="nt">&lt; this.state.name.length</span><span class="err">;</span> <span class="err">i++)</span> <span class="err">{</span>
+            <span class="err">options.push(&lt;option</span> <span class="na">value=</span><span class="s">{i}</span><span class="nt">&gt;</span>{this.state.name<span class="cp">[</span><span class="nx">i</span><span class="cp">]</span>}<span class="nt">&lt;/option&gt;</span>);
+        };
+        return <span class="nt">&lt;div&gt;</span>
+            <span class="nt">&lt;select&gt;</span>
+                {options}
+            <span class="nt">&lt;/select&gt;</span>
+            <span class="nt">&lt;Content&gt;&lt;/Content&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>;
+    },
+});
+</pre></div>
+<p>为了获取被选中的值，我们添加一个<code>selectName</code>的<code>state</code>，并且在select下拉选择改变时，设置<code>selectName</code>，并且将这个值传递给<code>Comment</code>：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="n">Content</span> <span class="o">=</span> <span class="nx">React.createClass</span><span class="p">({</span>
+    <span class="nb">render</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">this.props.selectName</span><span class="p">}</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="p">},</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="n">Comment</span> <span class="o">=</span> <span class="nx">React.createClass</span><span class="p">({</span>
+    <span class="nx">getInitialState</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nb">name</span><span class="p">:</span> <span class="err">[</span><span class="s2">"Tim"</span><span class="p">,</span> <span class="s2">"Hank"</span><span class="p">,</span> <span class="s2">"John"</span><span class="cp">]</span>,
+            selectName: ''
+        };
+    },
+    handleSelect: function(event){
+        this.setState({selectName: event.target.value});
+    },
+    render: function(){
+        var options = <span class="cp">[]</span>;
+        for (var i = 0; i <span class="nt">&lt; this.state.name.length</span><span class="err">;</span> <span class="err">i++)</span> <span class="err">{</span>
+            <span class="err">options.push(&lt;option</span> <span class="na">value=</span><span class="s">{i}</span><span class="nt">&gt;</span>{this.state.name<span class="cp">[</span><span class="nx">i</span><span class="cp">]</span>}<span class="nt">&lt;/option&gt;</span>);
+        };
+        return <span class="nt">&lt;div&gt;</span>
+            <span class="nt">&lt;select</span> <span class="na">onChange=</span><span class="s">{this.handleSelect}</span><span class="nt">&gt;</span>
+                {options}
+            <span class="nt">&lt;/select&gt;</span>
+            <span class="nt">&lt;Content</span> <span class="na">selectName=</span><span class="s">{this.state.selectName}</span><span class="nt">&gt;&lt;/Content&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>;
+    },
+});
+</pre></div>
+<p>然后我们给<code>Comment</code>添加一个<code>&lt;textarea&gt;</code>，用来输入评论。</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="n">Content</span> <span class="o">=</span> <span class="nx">React.createClass</span><span class="p">({</span>
+    <span class="nx">getInitialState</span><span class="p">:</span> <span class="nx">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">text</span><span class="p">:</span> <span class="s2">"reply to: "</span><span class="o">+</span> <span class="nx">this.props.selectName</span><span class="p">,</span>
+        <span class="p">};</span>
+    <span class="p">},</span>
+    <span class="nb">render</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="o">&lt;</span><span class="nb">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">textarea</span> <span class="n">placeholder</span><span class="o">=</span><span class="s2">"please enter something"</span><span class="o">&gt;&lt;/</span><span class="nx">textarea</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="p">},</span>
+<span class="p">});</span>
+</pre></div>
+<p>下一步，我们监听文本框的变化，并把变化记录在<code>state</code>中。</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="n">Content</span> <span class="o">=</span> <span class="nx">React.createClass</span><span class="p">({</span>
+    <span class="nx">getInitialState</span><span class="p">:</span> <span class="nx">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">inputText</span><span class="p">:</span> <span class="s2">""</span>
+        <span class="p">};</span>
+    <span class="p">},</span>
+    <span class="nx">handleChange</span><span class="p">:</span> <span class="nx">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">this.setState</span><span class="p">({</span><span class="nx">inputText</span><span class="p">:</span> <span class="nx">event.target.value</span><span class="p">});</span>
+    <span class="p">},</span>
+    <span class="nx">handleSubmit</span><span class="p">:</span> <span class="nx">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console.log</span><span class="p">(</span><span class="s2">"reply to: "</span><span class="o">+</span> <span class="nx">this.props.selectName</span><span class="o">+</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">+</span><span class="nx">this.state.inputText</span><span class="p">);</span>  
+    <span class="p">},</span>
+    <span class="nb">render</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="o">&lt;</span><span class="nb">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">textarea</span> <span class="n">onChange</span><span class="o">=</span><span class="p">{</span><span class="nx">this.handleChange</span><span class="p">}</span> <span class="n">placeholder</span><span class="o">=</span><span class="s2">"please enter something"</span><span class="o">&gt;&lt;/</span><span class="nx">textarea</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">button</span> <span class="n">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">this.handleSubmit</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">submit</span><span class="o">&lt;/</span><span class="nx">button</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="p">},</span>
+<span class="p">});</span>
+</pre></div>
+<p>这里有一个bug，就是<code>getInitialState</code>只执行一次，当父组件给其传递值之后，这个函数不会再被调用，这是常见的一个问题，即把需要计算的属性放在<code>getInitialState</code>中，常见的做法是把需要计算的动作放在最后。</p>
+<p>我们对代码进行修改， 我们移除状态，并直接再需要用到属性的地方直接引用。</p>
+<div class="highlight"><pre><span class="n">getInitialState</span><span class="o">:</span> <span class="kd">function</span> <span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="o">{</span>
+        <span class="n">inputText</span><span class="o">:</span> <span class="s2">""</span>
+    <span class="o">};</span>
+<span class="o">},</span>
+<span class="n">handleSubmit</span><span class="o">:</span> <span class="kd">function</span> <span class="o">(</span><span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="s2">"reply to: "</span><span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">props</span><span class="o">.</span><span class="na">selectName</span><span class="o">+</span><span class="s2">"\n"</span><span class="o">+</span><span class="k">this</span><span class="o">.</span><span class="na">state</span><span class="o">.</span><span class="na">inputText</span><span class="o">);</span>  
+<span class="o">},</span>
+</pre></div>
+<p>我们再说一遍，把真正需要计算的值放在需要用到的地方。</p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="reactshi-yong-bi-ji-4-reactzhuang-tai-he-shu-xing-xiang-jie.html" data-title="React使用笔记(4)-React状态和属性详解" data-url="http://liulixiang1988.github.io/reactshi-yong-bi-ji-4-reactzhuang-tai-he-shu-xing-xiang-jie.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/pythonshu-ju-fen-xi-3-dataframe.html" title="Previous: Python数据分析(3)-DataFrame">Python数据分析(3)-DataFrame</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/mysqlchang-yong.html" title="Next: MySQL常用">MySQL常用</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-12-03T20:58:00">12 3, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Web-ref">Web</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#JavaScript-ref">JavaScript
+                    <span>12</span>
+</a></li>
+                <li><a href="/tags.html#React-ref">React
+                    <span>7</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://liulixiang1988.github.io/theme/js/jquery.min.js"></script>
+        <script src="http://liulixiang1988.github.io/theme/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

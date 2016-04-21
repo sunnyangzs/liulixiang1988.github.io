@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="css3, compass, sass, Web, " />
+        <title>CSS3笔记02-悬停效果  · Liu Lixiang的博客
+</title>
+        <link href="http://liulixiang1988.github.io/theme/css/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="http://liulixiang1988.github.io/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/css3bi-ji-02-xuan-ting-xiao-guo.html"> CSS3笔记02-悬停效果  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <h2 id="1">1. 首先需要了解几个伪类：</h2>
+<ul>
+<li><code>:hover</code>选择器：当鼠标悬停在所指定的元素上时所使用的样式；</li>
+<li><code>:active</code>选择器：当所指定的元素处于激活状态（鼠标在元素上按下还没有松开）时所使用的样式；</li>
+<li><code>:focus</code>选择器：当元素获得光标焦点时使用的样式，主要用在文本框输入文字时使用.</li>
+</ul>
+<h2 id="2-rgba">2. rgba</h2>
+<div class="highlight"><pre><span class="nl">color:</span> <span class="err">#</span><span class="n">eee</span><span class="p">;</span>
+<span class="nl">color:</span> <span class="n">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">);</span>
+</pre></div>
+
+
+<p>rgba增加了透明度，在上面例子中多添加一个<code>color:#eee;</code>是为了使不支持rgba的浏览器仍然有color可用。</p>
+<h2 id="3-text-shadow">3. 文本阴影(text-shadow)</h2>
+<div class="highlight"><pre><span class="n">a</span><span class="p">{</span>
+    <span class="n">text</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="n">px</span> <span class="mi">1</span><span class="n">px</span> <span class="n">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>text-shadow的属性如下：</p>
+<div class="highlight"><pre><span class="n">text</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="n">h</span><span class="o">-</span><span class="n">shadow</span> <span class="n">v</span><span class="o">-</span><span class="n">shadow</span> <span class="n">blur</span> <span class="n">color</span><span class="p">;</span>
+</pre></div>
+
+
+<ul>
+<li>h-shadow: 必需。水平阴影的位置。允许负值。</li>
+<li>v-shadow: 必需。垂直阴影的位置。允许负值。</li>
+<li>blur: 可选。模糊的距离。</li>
+<li>color: 可选。阴影的颜色。参阅 CSS 颜色值。</li>
+</ul>
+<p>scss:</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/css3/text-shadow&quot;</span><span class="p">;</span>
+<span class="n">single</span><span class="o">-</span><span class="n">text</span><span class="o">-</span><span class="nf">shadow</span><span class="p">(</span><span class="n">$hoff</span><span class="p">,</span> <span class="n">$voff</span><span class="p">,</span> <span class="n">$blur</span><span class="p">,</span> <span class="n">$spread</span><span class="p">,</span> <span class="n">$color</span><span class="p">);</span>
+</pre></div>
+
+
+<h2 id="4">4. 悬停与聚焦的样式：</h2>
+<p>scss：</p>
+<div class="highlight"><pre><span class="nt">a</span><span class="p">{</span>
+    <span class="k">padding</span><span class="o">:</span> <span class="m">5px</span> <span class="m">15px</span><span class="p">;</span>
+    <span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span><span class="p">;</span>
+    <span class="k">color</span><span class="o">:</span> <span class="m">#eee</span><span class="p">;</span>
+    <span class="k">color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">7</span><span class="p">);</span>
+    <span class="o">@</span><span class="n">include</span> <span class="n">single</span><span class="o">-</span><span class="k">text-shadow</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">1px</span><span class="o">,</span> <span class="m">1px</span><span class="o">,</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">3</span><span class="p">));</span>
+
+    <span class="o">&amp;:</span><span class="n">hover</span><span class="o">,&amp;:</span><span class="n">focus</span><span class="err">{</span>
+        <span class="k">color</span><span class="o">:</span> <span class="m">#fff</span><span class="p">;</span>
+        <span class="k">background</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">15</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>css：</p>
+<div class="highlight"><pre><span class="nf">#nav</span> <span class="nt">li</span> <span class="nt">a</span> <span class="p">{</span>
+  <span class="k">padding</span><span class="o">:</span> <span class="m">5px</span> <span class="m">15px</span><span class="p">;</span>
+  <span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span><span class="p">;</span>
+  <span class="k">color</span><span class="o">:</span> <span class="m">#eee</span><span class="p">;</span>
+  <span class="k">color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">7</span><span class="p">);</span>
+  <span class="k">text-shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">1px</span> <span class="m">#aaaaaa</span><span class="p">;</span>
+  <span class="k">text-shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">1px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">3</span><span class="p">)</span> <span class="m">#aaaaaa</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nf">#nav</span> <span class="nt">li</span> <span class="nt">a</span><span class="nd">:hover</span><span class="o">,</span> <span class="nf">#nav</span> <span class="nt">li</span> <span class="nt">a</span><span class="nd">:focus</span> <span class="p">{</span>
+  <span class="k">color</span><span class="o">:</span> <span class="m">#fff</span><span class="p">;</span>
+  <span class="k">background</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">15</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="5-border-radius">5. 使用border-radius圆角化悬停</h2>
+<p>scss:</p>
+<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/css3/border-radius&quot;</span><span class="p">;</span>
+
+<span class="n">border</span><span class="o">-</span><span class="nf">radius</span><span class="p">(</span><span class="n">$radius</span><span class="p">,</span> <span class="n">$vertical</span><span class="o">-</span><span class="n">radius</span><span class="p">)</span>
+</pre></div>
+
+
+<p>css3:</p>
+<div class="highlight"><pre><span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">14</span><span class="n">px</span><span class="p">;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">14</span><span class="n">px</span><span class="p">;</span>
+<span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">14</span><span class="n">px</span><span class="p">;</span>
+</pre></div>
+
+
+<h2 id="6">6. 添加过渡</h2>
+<p>scss:</p>
+<div class="highlight"><pre><span class="err">@</span><span class="n">include</span> <span class="n">single</span><span class="o">-</span><span class="n">transition</span><span class="p">(</span><span class="n">all</span><span class="p">,</span> <span class="mf">0.3</span><span class="n">s</span><span class="p">,</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">);</span>
+</pre></div>
+
+
+<p>css3:</p>
+<div class="highlight"><pre><span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span> <span class="n">all</span> <span class="mf">0.3</span><span class="n">s</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
+<span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span> <span class="n">all</span> <span class="mf">0.3</span><span class="n">s</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span> <span class="n">all</span> <span class="mf">0.3</span><span class="n">s</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
+<span class="nl">transition:</span> <span class="n">all</span> <span class="mf">0.3</span><span class="n">s</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
+</pre></div>
+
+
+<h2 id="7-opacity">7. 透明度opacity</h2>
+<div class="highlight"><pre><span class="n">opacity</span><span class="o">:</span> <span class="mf">0.25</span><span class="o">;</span>
+<span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">fiter</span><span class="o">:</span> <span class="s2">&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=25)&quot;</span><span class="o">;</span> <span class="cm">/*IE8 hack*/</span>
+<span class="n">filter</span><span class="o">:</span> <span class="n">alpha</span><span class="o">(</span><span class="n">opacity</span><span class="o">=</span><span class="mi">25</span><span class="o">);</span> <span class="cm">/*IE5-7 hack*/</span>
+</pre></div>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="css3bi-ji-02-xuan-ting-xiao-guo.html" data-title="CSS3笔记02-悬停效果" data-url="http://liulixiang1988.github.io/css3bi-ji-02-xuan-ting-xiao-guo.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/css3bi-ji-01-guo-du-transition.html" title="Previous: CSS3笔记01-过渡transition">CSS3笔记01-过渡transition</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/css3bi-ji-03-bian-xing-transform.html" title="Next: CSS3笔记03-变形transform">CSS3笔记03-变形transform</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-06-13T20:58:00"> 6 13, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Web-ref">Web</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#compass-ref">compass
+                    <span>3</span>
+</a></li>
+                <li><a href="/tags.html#css3-ref">css3
+                    <span>5</span>
+</a></li>
+                <li><a href="/tags.html#sass-ref">sass
+                    <span>9</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://liulixiang1988.github.io/theme/js/jquery.min.js"></script>
+        <script src="http://liulixiang1988.github.io/theme/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

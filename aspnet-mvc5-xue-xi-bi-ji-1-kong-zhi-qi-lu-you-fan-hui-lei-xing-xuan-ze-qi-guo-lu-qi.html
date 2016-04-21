@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
@@ -91,20 +92,151 @@
 
 <p>其中{id}是可选的。</p>
 <h3>2.2 路由定义RouteConfig.cs</h3>
+=======
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="DotNet, Web, ASP.NET MVC, DotNet, " />
+        <title>ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器  · Liu Lixiang的博客
+</title>
+        <link href="http://liulixiang1988.github.io/theme/css/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="http://liulixiang1988.github.io/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html"> ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#aspnet-mvc5-1">ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器</a><ul>
+<li><a href="#1-action">1. Action</a><ul>
+<li><a href="#11">1.1 新建项目</a></li>
+<li><a href="#12">1.2 控制器</a></li>
+</ul>
+</li>
+<li><a href="#2">2. 路由</a><ul>
+<li><a href="#21">2.1 路由规则</a></li>
+<li><a href="#22-routeconfigcs">2.2 路由定义RouteConfig.cs</a></li>
+</ul>
+</li>
+<li><a href="#3">3 返回类型</a><ul>
+<li><a href="#31-partialviewresult">3.1 PartialViewResult的例子</a></li>
+<li><a href="#32-jsonresult">3.2 JsonResult的例子</a></li>
+<li><a href="#33-redirecttorouteresult">3.3 RedirectToRouteResult的例子</a></li>
+</ul>
+</li>
+<li><a href="#4-action-selector">4 Action Selector</a><ul>
+<li><a href="#41-httppost">4.1 HttpPost</a><ul>
+<li><a href="#411-csrfvalidateantiforgerytoken">4.1.1 防止CSRF，使用ValidateAntiForgeryToken：</a></li>
+<li><a href="#412-post-modelstateisvalid">4.1.2 验证Post请求 ModelState.IsValid</a></li>
+</ul>
+</li>
+<li><a href="#42-actionname">4.2 ActionName</a></li>
+<li><a href="#43-route">4.3 Route</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 过滤器</a><ul>
+<li><a href="#51-authorize">5.1 Authorize属性</a></li>
+<li><a href="#52-action-filter">5.2 Action filter</a></li>
+<li><a href="#53-result-filter">5.3 Result Filter</a></li>
+<li><a href="#54-exception-filter">5.4 Exception Filter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
+
+            
+<h1 id="aspnet-mvc5-1">ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器</h1>
+<h2 id="1-action">1. Action</h2>
+<h3 id="11">1.1 新建项目</h3>
+<p>新建项目-&gt;Web-&gt;Asp.net Web应用程序，选择MVC，选择添加测试。</p>
+<p>在解决方案上右键，选择"管理NuGet程序包"，在更新页更新全部程序包。</p>
+<h3 id="12">1.2 控制器</h3>
+<p>控制器在Controllers文件夹内，命名规则是"名称+Controller"</p>
+<hr/>
+<h2 id="2">2. 路由</h2>
+<h3 id="21">2.1 路由规则</h3>
+<div class="highlight"><pre><span class="p">{</span><span class="n">controller</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="n">action</span><span class="p">}</span><span class="o">/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span>
+</pre></div>
+<p>其中{id}是可选的。</p>
+<h3 id="22-routeconfigcs">2.2 路由定义RouteConfig.cs</h3>
+>>>>>>> gh-pages
 <div class="highlight"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">RouteConfig</span>
 <span class="p">{</span>
     <span class="n">public</span> <span class="k">static</span> <span class="kt">void</span> <span class="n">RegisterRoutes</span><span class="p">(</span><span class="n">RouteCollection</span> <span class="n">routes</span><span class="p">)</span>
     <span class="p">{</span>
+<<<<<<< HEAD
         <span class="n">routes</span><span class="p">.</span><span class="n">IgnoreRoute</span><span class="p">(</span><span class="s">&quot;{resource}.axd/{*pathInfo}&quot;</span><span class="p">);</span>
 
         <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
             <span class="nl">name:</span> <span class="s">&quot;Default&quot;</span><span class="p">,</span>
             <span class="nl">url:</span> <span class="s">&quot;{controller}/{action}/{id}&quot;</span><span class="p">,</span>
             <span class="nl">defaults:</span> <span class="n">new</span> <span class="p">{</span> <span class="n">controller</span> <span class="o">=</span> <span class="s">&quot;Home&quot;</span><span class="p">,</span> <span class="n">action</span> <span class="o">=</span> <span class="s">&quot;Index&quot;</span><span class="p">,</span> <span class="n">id</span> <span class="o">=</span> <span class="n">UrlParameter</span><span class="p">.</span><span class="n">Optional</span> <span class="p">}</span>
+=======
+        <span class="n">routes</span><span class="p">.</span><span class="n">IgnoreRoute</span><span class="p">(</span><span class="s">"{resource}.axd/{*pathInfo}"</span><span class="p">);</span>
+
+        <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+            <span class="nl">name:</span> <span class="s">"Default"</span><span class="p">,</span>
+            <span class="nl">url:</span> <span class="s">"{controller}/{action}/{id}"</span><span class="p">,</span>
+            <span class="nl">defaults:</span> <span class="n">new</span> <span class="p">{</span> <span class="n">controller</span> <span class="o">=</span> <span class="s">"Home"</span><span class="p">,</span> <span class="n">action</span> <span class="o">=</span> <span class="s">"Index"</span><span class="p">,</span> <span class="n">id</span> <span class="o">=</span> <span class="n">UrlParameter</span><span class="p">.</span><span class="n">Optional</span> <span class="p">}</span>
+>>>>>>> gh-pages
         <span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
 <p>我们自定义一个路由：</p>
@@ -127,18 +259,44 @@
 </pre></div>
 
 
+=======
+<p>我们自定义一个路由：</p>
+<div class="highlight"><pre><span class="n">public</span> <span class="k">static</span> <span class="kt">void</span> <span class="nf">RegisterRoutes</span><span class="p">(</span><span class="n">RouteCollection</span> <span class="n">routes</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">routes</span><span class="p">.</span><span class="n">IgnoreRoute</span><span class="p">(</span><span class="s">"{resource}.axd/{*pathInfo}"</span><span class="p">);</span>
+
+    <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+        <span class="nl">name:</span> <span class="s">"Serial Number"</span><span class="p">,</span>
+        <span class="nl">url:</span> <span class="s">"serial/{lettercase}"</span><span class="p">,</span>
+        <span class="nl">defaults:</span> <span class="n">new</span> <span class="p">{</span> <span class="n">controller</span> <span class="o">=</span> <span class="s">"Home"</span><span class="p">,</span> <span class="n">action</span> <span class="o">=</span> <span class="s">"Serial"</span><span class="p">,</span> <span class="n">lettercase</span><span class="o">=</span><span class="s">"upper"</span> <span class="p">}</span>
+    <span class="p">);</span>
+
+    <span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+        <span class="nl">name:</span> <span class="s">"Default"</span><span class="p">,</span>
+        <span class="nl">url:</span> <span class="s">"{controller}/{action}/{id}"</span><span class="p">,</span>
+        <span class="nl">defaults:</span> <span class="n">new</span> <span class="p">{</span> <span class="n">controller</span> <span class="o">=</span> <span class="s">"Home"</span><span class="p">,</span> <span class="n">action</span> <span class="o">=</span> <span class="s">"Index"</span><span class="p">,</span> <span class="n">id</span> <span class="o">=</span> <span class="n">UrlParameter</span><span class="p">.</span><span class="n">Optional</span> <span class="p">}</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+>>>>>>> gh-pages
 <p>它定义了一个路由，路由名称为"Serial Number", url以"serial"开头，含有一个lettercase参数，使用HomeController.Serial来处理，lettercase默认值为"upper".</p>
 <p>现在在HomeController.cs中定义：</p>
 <div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">Serial</span><span class="p">(</span><span class="n">string</span> <span class="n">lettercase</span><span class="p">)</span>
 <span class="p">{</span>
+<<<<<<< HEAD
     <span class="n">var</span> <span class="n">serial</span> <span class="o">=</span> <span class="s">&quot;ASP.NET mvc5&quot;</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">lettercase</span> <span class="o">==</span> <span class="s">&quot;lower&quot;</span><span class="p">)</span>
+=======
+    <span class="n">var</span> <span class="n">serial</span> <span class="o">=</span> <span class="s">"ASP.NET mvc5"</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">lettercase</span> <span class="o">==</span> <span class="s">"lower"</span><span class="p">)</span>
+>>>>>>> gh-pages
     <span class="p">{</span>
         <span class="n">serial</span> <span class="o">=</span> <span class="n">serial</span><span class="p">.</span><span class="n">ToLower</span><span class="p">();</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">Content</span><span class="p">(</span><span class="n">serial</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
 <p>此时访问：http://localhost:17681/serial/ 或者 http://localhost:17681/serial/lower 都可以。</p>
@@ -153,6 +311,18 @@
 
 <p>vs快捷键：F5运行调试； ctrl+F5：运行但不调试，此时运行时可以修改代码；ctrl+shift+b：编译代码，可以在运行时重新加载而无需重启。</p>
 <h2>3 返回类型</h2>
+=======
+<p>此时访问：http://localhost:17681/serial/ 或者 http://localhost:17681/serial/lower 都可以。</p>
+<p>如果路由中没有包含{lettercase}，则可以使用querystring方式传递lettercase: http://localhost:17681/serial/?lettercase=lower:</p>
+<div class="highlight"><pre><span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span>
+    <span class="nl">name:</span> <span class="s">"Serial Number"</span><span class="p">,</span>
+    <span class="nl">url:</span> <span class="s">"serial"</span><span class="p">,</span>
+    <span class="nl">defaults:</span> <span class="n">new</span> <span class="p">{</span> <span class="n">controller</span> <span class="o">=</span> <span class="s">"Home"</span><span class="p">,</span> <span class="n">action</span> <span class="o">=</span> <span class="s">"Serial"</span> <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+<p>vs快捷键：F5运行调试； ctrl+F5：运行但不调试，此时运行时可以修改代码；ctrl+shift+b：编译代码，可以在运行时重新加载而无需重启。</p>
+<h2 id="3">3 返回类型</h2>
+>>>>>>> gh-pages
 <p>内建Action Result类型：</p>
 <ul>
 <li>ViewResult：渲染返回完整的网页</li>
@@ -161,12 +331,17 @@
 <li>JsonResult: 返回Json类型</li>
 <li>RedirectToRouteResult:重定向</li>
 </ul>
+<<<<<<< HEAD
 <h3>3.1 PartialViewResult的例子</h3>
+=======
+<h3 id="31-partialviewresult">3.1 PartialViewResult的例子</h3>
+>>>>>>> gh-pages
 <div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">Index</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="n">PartialView</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
 <h3>3.2 JsonResult的例子</h3>
@@ -174,10 +349,18 @@
 <span class="p">{</span>
     <span class="n">var</span> <span class="n">serial</span> <span class="o">=</span> <span class="s">&quot;ASP.NET mvc5&quot;</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">lettercase</span> <span class="o">==</span> <span class="s">&quot;lower&quot;</span><span class="p">)</span>
+=======
+<h3 id="32-jsonresult">3.2 JsonResult的例子</h3>
+<div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">Serial</span><span class="p">(</span><span class="n">string</span> <span class="n">lettercase</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">var</span> <span class="n">serial</span> <span class="o">=</span> <span class="s">"ASP.NET mvc5"</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">lettercase</span> <span class="o">==</span> <span class="s">"lower"</span><span class="p">)</span>
+>>>>>>> gh-pages
     <span class="p">{</span>
         <span class="n">serial</span> <span class="o">=</span> <span class="n">serial</span><span class="p">.</span><span class="n">ToLower</span><span class="p">();</span>
     <span class="p">}</span>
     <span class="c1">//return Content(serial);</span>
+<<<<<<< HEAD
     <span class="k">return</span> <span class="n">Json</span><span class="p">(</span><span class="n">new</span> <span class="p">{</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;serial&quot;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">serial</span><span class="p">},</span> <span class="n">JsonRequestBehavior</span><span class="p">.</span><span class="n">AllowGet</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -202,6 +385,28 @@
 <div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">Contact</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="n">ViewBag</span><span class="p">.</span><span class="n">TheMessage</span> <span class="o">=</span> <span class="s">&quot;有问题的话请留言哦~&quot;</span><span class="p">;</span>
+=======
+    <span class="k">return</span> <span class="n">Json</span><span class="p">(</span><span class="n">new</span> <span class="p">{</span><span class="n">name</span> <span class="o">=</span> <span class="s">"serial"</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">serial</span><span class="p">},</span> <span class="n">JsonRequestBehavior</span><span class="p">.</span><span class="n">AllowGet</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<h3 id="33-redirecttorouteresult">3.3 RedirectToRouteResult的例子</h3>
+<div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">Serial</span><span class="p">(</span><span class="n">string</span> <span class="n">lettercase</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">var</span> <span class="n">serial</span> <span class="o">=</span> <span class="s">"ASP.NET mvc5"</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">lettercase</span> <span class="o">==</span> <span class="s">"lower"</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">serial</span> <span class="o">=</span> <span class="n">serial</span><span class="p">.</span><span class="n">ToLower</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">RedirectToAction</span><span class="p">(</span><span class="s">"Index"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<hr/>
+<h2 id="4-action-selector">4 Action Selector</h2>
+<h3 id="41-httppost">4.1 HttpPost</h3>
+<div class="highlight"><pre><span class="n">public</span> <span class="n">ActionResult</span> <span class="nf">Contact</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">ViewBag</span><span class="p">.</span><span class="n">TheMessage</span> <span class="o">=</span> <span class="s">"有问题的话请留言哦~"</span><span class="p">;</span>
+>>>>>>> gh-pages
 
     <span class="k">return</span> <span class="n">View</span><span class="p">();</span>
 <span class="p">}</span>
@@ -209,11 +414,16 @@
 <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
 <span class="n">public</span> <span class="n">ActionResult</span> <span class="n">Contact</span><span class="p">(</span><span class="n">string</span> <span class="n">message</span><span class="p">)</span>
 <span class="p">{</span>
+<<<<<<< HEAD
     <span class="n">ViewBag</span><span class="p">.</span><span class="n">TheMessage</span> <span class="o">=</span> <span class="s">&quot;感谢你的留言~&quot;</span><span class="p">;</span>
+=======
+    <span class="n">ViewBag</span><span class="p">.</span><span class="n">TheMessage</span> <span class="o">=</span> <span class="s">"感谢你的留言~"</span><span class="p">;</span>
+>>>>>>> gh-pages
 
     <span class="k">return</span> <span class="nf">View</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
 <p>对应的视图</p>
@@ -228,24 +438,44 @@
 <div class="highlight"><pre><span class="k">[HttpPost]</span>
 <span class="k">[ValidateAntiForgeryToken]</span>
 <span class="na">public ActionResult Create([Bind(Include</span> <span class="o">=</span> <span class="s">&quot;ID,Title,ReleaseDate,Genre,Price&quot;)] Movie movie)</span>
+=======
+<p>对应的视图</p>
+<div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"POST"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"message"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre></div>
+<h4 id="411-csrfvalidateantiforgerytoken">4.1.1 防止CSRF，使用<code>ValidateAntiForgeryToken</code>：</h4>
+<div class="highlight"><pre><span class="k">[HttpPost]</span>
+<span class="k">[ValidateAntiForgeryToken]</span>
+<span class="na">public ActionResult Create([Bind(Include</span> <span class="o">=</span> <span class="s">"ID,Title,ReleaseDate,Genre,Price")] Movie movie)</span>
+>>>>>>> gh-pages
 <span class="err">{</span>
     <span class="err">if</span> <span class="err">(ModelState.IsValid)</span>
     <span class="err">{</span>
         <span class="err">db.Movies.Add(movie)</span><span class="c1">;</span>
         <span class="err">db.SaveChanges()</span><span class="c1">;</span>
+<<<<<<< HEAD
         <span class="err">return</span> <span class="err">RedirectToAction(&quot;Index&quot;)</span><span class="c1">;</span>
+=======
+        <span class="err">return</span> <span class="err">RedirectToAction("Index")</span><span class="c1">;</span>
+>>>>>>> gh-pages
     <span class="err">}</span>
 
     <span class="err">return</span> <span class="err">View(movie)</span><span class="c1">;</span>
 <span class="err">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> gh-pages
 <p>对应的视图使用<code>@Html.AntiForgeryToken</code>：</p>
 <div class="highlight"><pre><span class="p">@</span><span class="nx">using</span> <span class="p">(</span><span class="nx">Html.BeginForm</span><span class="p">())</span> 
 <span class="p">{</span>
     <span class="p">@</span><span class="nx">Html.AntiForgeryToken</span><span class="p">()</span>
 
+<<<<<<< HEAD
     <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;form-horizontal&quot;</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">Movie</span><span class="o">&lt;/</span><span class="nx">h4</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="nx">hr</span> <span class="o">/&gt;</span>
@@ -265,16 +495,40 @@
 <div class="highlight"><pre><span class="k">[HttpPost]</span>
 <span class="k">[ValidateAntiForgeryToken]</span>
 <span class="na">public ActionResult Edit([Bind(Include</span><span class="o">=</span><span class="s">&quot;ID,Title,ReleaseDate,Genre,Price&quot;)] Movie movie)</span>
+=======
+    <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"form-horizontal"</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">Movie</span><span class="o">&lt;/</span><span class="nx">h4</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">hr</span> <span class="o">/&gt;</span>
+        <span class="p">@</span><span class="nx">Html.ValidationSummary</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="nb">new</span> <span class="p">{</span> <span class="p">@</span><span class="n">class</span> <span class="o">=</span> <span class="s2">"text-danger"</span> <span class="p">})</span>
+        <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"form-group"</span><span class="o">&gt;</span>
+            <span class="p">@</span><span class="nx">Html.LabelFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.Title</span><span class="p">,</span> <span class="nx">htmlAttributes</span><span class="p">:</span> <span class="nb">new</span> <span class="p">{</span> <span class="p">@</span><span class="n">class</span> <span class="o">=</span> <span class="s2">"control-label col-md-2"</span> <span class="p">})</span>
+            <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">"col-md-10"</span><span class="o">&gt;</span>
+                <span class="p">@</span><span class="nx">Html.EditorFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.Title</span><span class="p">,</span> <span class="nb">new</span> <span class="p">{</span> <span class="n">htmlAttributes</span> <span class="o">=</span> <span class="nb">new</span> <span class="p">{</span> <span class="p">@</span><span class="n">class</span> <span class="o">=</span> <span class="s2">"form-control"</span> <span class="p">}</span> <span class="p">})</span>
+                <span class="p">@</span><span class="nx">Html.ValidationMessageFor</span><span class="p">(</span><span class="n">model</span> <span class="o">=&gt;</span> <span class="nx">model.Title</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="nb">new</span> <span class="p">{</span> <span class="p">@</span><span class="n">class</span> <span class="o">=</span> <span class="s2">"text-danger"</span> <span class="p">})</span>
+            <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+</pre></div>
+<h4 id="412-post-modelstateisvalid">4.1.2 验证Post请求 <code>ModelState.IsValid</code></h4>
+<p>使用<code>ModelState.IsValid</code>来验证发送来的模型是否正常。</p>
+<div class="highlight"><pre><span class="k">[HttpPost]</span>
+<span class="k">[ValidateAntiForgeryToken]</span>
+<span class="na">public ActionResult Edit([Bind(Include</span><span class="o">=</span><span class="s">"ID,Title,ReleaseDate,Genre,Price")] Movie movie)</span>
+>>>>>>> gh-pages
 <span class="err">{</span>
     <span class="err">if</span> <span class="err">(ModelState.IsValid)</span>
     <span class="err">{</span>
         <span class="na">db.Entry(movie).State</span> <span class="o">=</span> <span class="s">EntityState.Modified;</span>
 <span class="s">        db.SaveChanges();</span>
+<<<<<<< HEAD
 <span class="s">        return RedirectToAction(&quot;Index&quot;);</span>
+=======
+<span class="s">        return RedirectToAction("Index");</span>
+>>>>>>> gh-pages
 <span class="s">    }</span>
 <span class="s">    return View(movie);</span>
 <span class="err">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
 <hr />
@@ -292,11 +546,27 @@
 <p>此时访问地址就是http://localhost:17681/Home/about-the-site</p>
 <h3>4.3 Route</h3>
 <div class="highlight"><pre><span class="k">[Route(&quot;home/create&quot;)]</span>
+=======
+<hr/>
+<h3 id="42-actionname">4.2 ActionName</h3>
+<div class="highlight"><pre><span class="k">[ActionName("about-the-site")]</span>
+<span class="err">public</span> <span class="err">ActionResult</span> <span class="err">About()</span>
+<span class="err">{</span>
+    <span class="na">ViewBag.Message</span> <span class="o">=</span> <span class="s">"Your application description page.";</span>
+
+    <span class="err">return</span> <span class="err">View("About")</span><span class="c1">;</span>
+<span class="err">}</span>
+</pre></div>
+<p>此时访问地址就是http://localhost:17681/Home/about-the-site</p>
+<h3 id="43-route">4.3 Route</h3>
+<div class="highlight"><pre><span class="k">[Route("home/create")]</span>
+>>>>>>> gh-pages
 <span class="err">public</span> <span class="err">ActionResult</span> <span class="err">Create()</span>
 <span class="err">{</span>
 
 <span class="err">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
 <hr />
@@ -304,11 +574,19 @@
 <p>常见的过滤器</p>
 <h3>5.1 Authorize属性</h3>
 <div class="highlight"><pre><span class="k">[Authorize(Roles=&quot;administrator&quot;, Users=&quot;liulx&quot;)]</span>
+=======
+<hr/>
+<h2 id="5">5. 过滤器</h2>
+<p>常见的过滤器</p>
+<h3 id="51-authorize">5.1 Authorize属性</h3>
+<div class="highlight"><pre><span class="k">[Authorize(Roles="administrator", Users="liulx")]</span>
+>>>>>>> gh-pages
 <span class="k">[HttpPost]</span>
 <span class="err">public</span> <span class="err">ActionResult</span> <span class="err">Create(Customer</span> <span class="err">customer)</span>
 <span class="err">{</span>
     <span class="err">db.Customers.Add(customer)</span><span class="c1">;</span>
     <span class="err">db.SaveChanges()</span><span class="c1">;</span>
+<<<<<<< HEAD
     <span class="err">return</span> <span class="err">RedirectToAction(&quot;Index&quot;)</span><span class="c1">;</span>
 <span class="err">}</span>
 </pre></div>
@@ -316,6 +594,13 @@
 
 <p><code>Authorize</code>可以不带参数，修饰class，如果class是<code>Authorize</code>修饰的，那么可以用[AllowAnonymous]修饰对应的方法允许匿名访问。</p>
 <h3>5.2 Action filter</h3>
+=======
+    <span class="err">return</span> <span class="err">RedirectToAction("Index")</span><span class="c1">;</span>
+<span class="err">}</span>
+</pre></div>
+<p><code>Authorize</code>可以不带参数，修饰class，如果class是<code>Authorize</code>修饰的，那么可以用[AllowAnonymous]修饰对应的方法允许匿名访问。</p>
+<h3 id="52-action-filter">5.2 Action filter</h3>
+>>>>>>> gh-pages
 <p>创建自定义的Action Filter：</p>
 <ul>
 <li>继承<code>ActionFilterAttribute</code>类</li>
@@ -332,8 +617,11 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> gh-pages
 <p>调用</p>
 <div class="highlight"><pre><span class="k">[MyLoggingFilter]</span>
 <span class="err">public</span> <span class="err">ActionResult</span> <span class="err">Index()</span>
@@ -342,8 +630,11 @@
     <span class="err">return</span> <span class="err">View()</span><span class="c1">;</span>
 <span class="err">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> gh-pages
 <p>要想在全局应用自定义的Filter，可以这样：</p>
 <div class="highlight"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">FilterConfig</span>
 <span class="p">{</span>
@@ -355,9 +646,13 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
 <h3>5.3 Result Filter</h3>
+=======
+<h3 id="53-result-filter">5.3 Result Filter</h3>
+>>>>>>> gh-pages
 <div class="highlight"><pre><span class="k">[OutputCache(Duration=1800)]</span>
 <span class="err">public</span> <span class="err">ActionResult</span> <span class="err">Index()</span>
 <span class="err">{</span>
@@ -365,29 +660,43 @@
     <span class="err">return</span> <span class="err">View()</span><span class="c1">;</span>
 <span class="err">}</span>
 
+<<<<<<< HEAD
 <span class="k">[OutputCache(Duration=1800, VaryByParam=&quot;id&quot;)]</span>
+=======
+<span class="k">[OutputCache(Duration=1800, VaryByParam="id")]</span>
+>>>>>>> gh-pages
 <span class="err">public</span> <span class="err">ActionResult</span> <span class="err">Details(int</span> <span class="err">id)</span>
 <span class="err">{</span>
     <span class="na">Product p</span> <span class="o">=</span> <span class="s">db.Products.Find(id);</span>
 <span class="s">    return View(p);</span>
 <span class="err">}</span>
 </pre></div>
+<<<<<<< HEAD
 
 
 <h3>5.4 Exception Filter</h3>
 <div class="highlight"><pre><span class="k">[HandleError(View=&quot;MyError&quot;)]</span>
+=======
+<h3 id="54-exception-filter">5.4 Exception Filter</h3>
+<div class="highlight"><pre><span class="k">[HandleError(View="MyError")]</span>
+>>>>>>> gh-pages
 <span class="err">public</span> <span class="err">ActionResult</span> <span class="err">Index()</span>
 <span class="err">{</span>
     <span class="err">//</span> <span class="err">throw</span> <span class="err">new</span> <span class="err">StackOverflowException()</span><span class="c1">;</span>
     <span class="err">return</span> <span class="err">View()</span><span class="c1">;</span>
 <span class="err">}</span>
 
+<<<<<<< HEAD
 <span class="k">[HandleError(View=&quot;MyError2&quot;, ExceptionType=typeof(DivideByZeroException))]</span>
+=======
+<span class="k">[HandleError(View="MyError2", ExceptionType=typeof(DivideByZeroException))]</span>
+>>>>>>> gh-pages
 <span class="err">public</span> <span class="err">ActionResult</span> <span class="err">Details(int</span> <span class="err">id)</span>
 <span class="err">{</span>
     <span class="na">Product p</span> <span class="o">=</span> <span class="s">db.Products.Find(id);</span>
 <span class="s">    return View(p);</span>
 <span class="err">}</span>
+<<<<<<< HEAD
 </pre></div></div>
     <footer>
 <p class="meta">
@@ -408,6 +717,16 @@
     <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html" data-title="ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器" data-url="./aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html"></div>
+=======
+</pre></div>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html" data-title="ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器" data-url="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html"></div>
+>>>>>>> gh-pages
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -422,6 +741,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 	})();
 	</script>
 <!-- 多说公共JS代码 end -->
+<<<<<<< HEAD
     </div>
   </section>
 </div>
@@ -517,4 +837,66 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
   <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
 </p></footer>
 </body>
+=======
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-2-razor.html" title="Previous: ASP.NET MVC5 学习笔记-2 Razor">ASP.NET MVC5 学习笔记-2 Razor</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html" title="Next: ASP.NET MVC5 学习笔记-4 OWIN和Katana">ASP.NET MVC5 学习笔记-4 OWIN和Katana</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2014-10-31T09:28:00">10 31, 2014</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#DotNet-ref">DotNet</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#ASP.NET-MVC-ref">ASP.NET MVC
+                    <span>5</span>
+</a></li>
+                <li><a href="/tags.html#DotNet-ref">DotNet
+                    <span>5</span>
+</a></li>
+                <li><a href="/tags.html#Web-ref">Web
+                    <span>24</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://liulixiang1988.github.io/theme/js/jquery.min.js"></script>
+        <script src="http://liulixiang1988.github.io/theme/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+>>>>>>> gh-pages
 </html>

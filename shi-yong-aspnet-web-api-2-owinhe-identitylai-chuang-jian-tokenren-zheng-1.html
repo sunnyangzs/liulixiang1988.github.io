@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
@@ -84,13 +85,88 @@
 <p>使用VS2013，创建"ASP.NET Web应用程序"，解决方案名为AngularJSAuthentication，项目名为AngularJSAuthentication.API:</p>
 <p><img alt="Alt text" src="images/dot-net-owin-1.png" /></p>
 <h3>1.2 第二步 安装必要的NuGet包</h3>
+=======
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content=", DotNet, " />
+        <title>使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)  · Liu Lixiang的博客
+</title>
+        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html"> 使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <h1 id="aspnet-web-api-2owinidentitytoken1">使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</h1>
+<h2 id="0">0. 简介</h2>
+<h3 id="01-token">0.1 Token认证</h3>
+<h3 id="02-web-api">0.2 Web API</h3>
+<hr />
+<h2 id="1-api">1. 创建后端API</h2>
+<h3 id="11-web-api">1.1 第一步 创建Web API项目</h3>
+<p>使用VS2013，创建"ASP.NET Web应用程序"，解决方案名为AngularJSAuthentication，项目名为AngularJSAuthentication.API:</p>
+<p><img alt="Alt text" src="images/dot-net-owin-1.png" /></p>
+<h3 id="12-nuget">1.2 第二步 安装必要的NuGet包</h3>
+>>>>>>> gh-pages
 <div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AspNet</span><span class="p">.</span><span class="n">WebApi</span><span class="p">.</span><span class="n">Owin</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">5.1.2</span>
 <span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Owin</span><span class="p">.</span><span class="n">Host</span><span class="p">.</span><span class="n">SystemWeb</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">2.1.0</span>
 </pre></div>
 
 
 <p>其中，<code>Microsoft.Owin.Host.SystemWeb</code>包是用来Owin服务器的API能够在IIS上运行</p>
+<<<<<<< HEAD
 <h3>1.3 第三步 添加Owin"启动(Startup)"类</h3>
+=======
+<h3 id="13-owinstartup">1.3 第三步 添加Owin"启动(Startup)"类</h3>
+>>>>>>> gh-pages
 <p>右键，添加新类<code>Startup</code>，我们会修改好几次这个类，现在它应该是这个样子：</p>
 <div class="highlight"><pre><span class="n">using</span> <span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">Http</span><span class="p">;</span>
 <span class="n">using</span> <span class="n">AngularJSAuthentication</span><span class="p">.</span><span class="n">API</span><span class="p">;</span>
@@ -139,9 +215,15 @@
 </pre></div>
 
 
+<<<<<<< HEAD
 <h3>1.4 第四步 删除Global.asax类</h3>
 <p>不再需要这个类，也不需要<code>Application_Start</code>事件，因为我们已经配置了<code>Startup</code>类，所以放心删除它吧。</p>
 <h3>1.5 第五步 添加Windows Identity System(Windows身份认证系统)</h3>
+=======
+<h3 id="14-globalasax">1.4 第四步 删除Global.asax类</h3>
+<p>不再需要这个类，也不需要<code>Application_Start</code>事件，因为我们已经配置了<code>Startup</code>类，所以放心删除它吧。</p>
+<h3 id="15-windows-identity-systemwindows">1.5 第五步 添加Windows Identity System(Windows身份认证系统)</h3>
+>>>>>>> gh-pages
 <p>配置过Web API后，现在可以添加支持注册和验证用户的包了，安装如下包</p>
 <div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AspNet</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">Owin</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">2.0.1</span>
 <span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AspNet</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">EntityFramework</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">2.0.1</span>
@@ -194,7 +276,11 @@
 </pre></div>
 
 
+<<<<<<< HEAD
 <h3>1.6 第六步 添加仓库类来支持ASP.NET Identity System</h3>
+=======
+<h3 id="16-aspnet-identity-system">1.6 第六步 添加仓库类来支持ASP.NET Identity System</h3>
+>>>>>>> gh-pages
 <p>现在，我们要实现两个方法<code>RegisterUser</code>和<code>FindUser</code>，因此，我们添加一个名为<code>AuthRepository</code>的类：</p>
 <div class="highlight"><pre><span class="k">public</span> <span class="nf">class</span> <span class="nx">AuthRepository</span> <span class="p">:</span> <span class="nx">IDisposable</span>
 <span class="p">{</span>
@@ -236,7 +322,11 @@
 
 
 <p>我们依赖<code>UserManager</code>来提供用户信息的逻辑操作。<code>UserManager</code>指导什么时候hash密码，怎么以及何时验证用户，以及如何管理请求。读<a href="http://odetocode.com/blogs/scott/archive/2014/01/20/implementing-asp-net-identity.aspx">ASP.NET Identity System</a>来了解更多。</p>
+<<<<<<< HEAD
 <h3>1.7 第七步 添加我们的“账户”控制器("Account" Controller)</h3>
+=======
+<h3 id="17-account-controller">1.7 第七步 添加我们的“账户”控制器("Account" Controller)</h3>
+>>>>>>> gh-pages
 <p>现在是时候添加我们的第一个Web API控制器了，这个控制器用来注册新用户。在<code>Controllers</code>文件夹下添加一个空Web API 2的控制器<code>AccountController</code>：</p>
 <div class="highlight"><pre><span class="k">[RoutePrefix(&quot;api/account&quot;)]</span>
 <span class="err">public</span> <span class="err">class</span> <span class="err">AccountController</span> <span class="err">:</span> <span class="err">ApiController</span>
@@ -318,7 +408,11 @@
 <p>现在可以使用HTTP POST请求网址：“http://localhost:port/api/account/register”，如果一切正常就会收到HTTP状态码200，而且数据库会自动在表<code>dbo.AspNetUsers</code>中创建一个用户。</p>
 <p><strong>注意：</strong>通过HTTPS发送POST请求非常重要，因为敏感信息会被加密。</p>
 <p><code>GetErrorResult</code>方法是一个帮助方法用来验证<code>UserModel</code>，并且返回相应的HTTP状态码。</p>
+<<<<<<< HEAD
 <h3>1.8 第八步 添加具有安全保护的“订单”控制器(Order Controller)</h3>
+=======
+<h3 id="18-order-controller">1.8 第八步 添加具有安全保护的“订单”控制器(Order Controller)</h3>
+>>>>>>> gh-pages
 <p>现在我们想要添加控制器来处理我们的订单，我们设定这个控制器为认证用户返回订单，为了保持简单我们返回静态数据。因此在<code>Controllers</code>下添加一个<code>OrdersController</code>：</p>
 <div class="highlight"><pre><span class="k">[RoutePrefix(&quot;api/Orders&quot;)]</span>
 <span class="err">public</span> <span class="err">class</span> <span class="err">OrdersController</span> <span class="err">:</span> <span class="err">ApiController</span>
@@ -361,7 +455,11 @@
 
 
 <p>注意我们在<code>Get</code>上加了一个<code>Authorize</code>属性，此时，如果访问 “http://localhost:port/api/orders”就会收到401未授权状态码。因为我们的请求当中并没有包含授权头信息。</p>
+<<<<<<< HEAD
 <h3>1.9 第九步 添加支持OAuth Token生成功能</h3>
+=======
+<h3 id="19-oauth-token">1.9 第九步 添加支持OAuth Token生成功能</h3>
+>>>>>>> gh-pages
 <p>现在我们该让API增加OAuth功能</p>
 <div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Owin</span><span class="p">.</span><span class="n">Security</span><span class="p">.</span><span class="n">OAuth</span> <span class="o">-</span><span class="n">Version</span> <span class="mf">2.1.0</span>
 </pre></div>
@@ -401,7 +499,11 @@
 <li>我们指明如何验证用户的凭据，来返回令牌，就是使用后面我们要定义的一个类<code>SimpleAuthorizationServerProvider</code></li>
 </ul>
 <p>然后将选项实例传递给扩展方法<code>UseOAuthAuthorizationServer</code>，这样我们就将认证中间件添加到了管道当中去了。</p>
+<<<<<<< HEAD
 <h3>1.10 第十步 实现"SimpleAuthorizationServerProvider"类</h3>
+=======
+<h3 id="110-simpleauthorizationserverprovider">1.10 第十步 实现"SimpleAuthorizationServerProvider"类</h3>
+>>>>>>> gh-pages
 <p>创建一个<code>Providers</code>文件夹，然后添加一个<code>SimpleAuthorizationServerProvider</code>类：</p>
 <div class="highlight"><pre><span class="n">public</span> <span class="n">class</span> <span class="n">SimpleAuthorizationServerProvider</span><span class="o">:</span> <span class="n">OAuthAuthorizationServerProvider</span>
 <span class="p">{</span>
@@ -441,7 +543,11 @@
 <p>如果认证成功，我们创建一个<code>ClaimsIdentity</code>类，并且传递认证类型给它。然后添加两个请求(<code>sub</code>和<code>role</code>)，他们会被包含在签名令牌中。也可以添加别的,但是会增加令牌的大小。</p>
 <p>最后使用<code>context.Validate(identity)</code>生成令牌。</p>
 <p>为了让令牌中间件提供者允许CORS，我们需要添加头"Access-Control-Allow-Origin"到Owin的上下文中。如果忘记这么做，从浏览器中调用生成令牌就会失败。</p>
+<<<<<<< HEAD
 <h3>1.11 第十一步 允许ASP.NET Web API支持CORS</h3>
+=======
+<h3 id="111-aspnet-web-apicors">1.11 第十一步 允许ASP.NET Web API支持CORS</h3>
+>>>>>>> gh-pages
 <p>首先，需要安装对应的NuGet包：</p>
 <div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Owin</span><span class="p">.</span><span class="n">Cors</span>
 </pre></div>
@@ -461,11 +567,16 @@
 </pre></div>
 
 
+<<<<<<< HEAD
 <h3>1.12 第十二步 测试后端API</h3>
+=======
+<h3 id="112-api">1.12 第十二步 测试后端API</h3>
+>>>>>>> gh-pages
 <p><img alt="Alt text" src="images/dot-net-owin-2.png" /></p>
 <p>注意，content-type和payload type都是"x-www-form-urlencoded"类型，因此payload body将是form(grant_type=password&amp;username="liulx"&amp;password="123456")。如果一切正常我们会在响应中收到一个签名令牌。</p>
 <p>"grant_type"指明授权类型，此处是密码。</p>
 <p>现在既然有了token，我们就可以访问安全数据/api/Orders了：</p>
+<<<<<<< HEAD
 <p><img alt="Alt text" src="images/dot-net-owin-3.png" /></p></div>
     <footer>
 <p class="meta">
@@ -481,6 +592,16 @@
     <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html" data-title="使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)" data-url="./shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html"></div>
+=======
+<p><img alt="Alt text" src="images/dot-net-owin-3.png" /></p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html" data-title="使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)" data-url="http://liulixiang1988.github.io/shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html"></div>
+>>>>>>> gh-pages
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -495,6 +616,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 	})();
 	</script>
 <!-- 多说公共JS代码 end -->
+<<<<<<< HEAD
     </div>
   </section>
 </div>
@@ -590,4 +712,54 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
   <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
 </p></footer>
 </body>
+=======
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html" title="Previous: Flask笔记－01 基本应用框架">Flask笔记－01 基本应用框架</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-2-razor.html" title="Next: ASP.NET MVC5 学习笔记-2 Razor">ASP.NET MVC5 学习笔记-2 Razor</a> »</li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2014-10-30T00:00:00">10 30, 2014</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#DotNet-ref">DotNet</a> 
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+>>>>>>> gh-pages
 </html>
