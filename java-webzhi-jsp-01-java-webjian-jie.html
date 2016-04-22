@@ -1,94 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Java Web之JSP-01 Java Web简介</title>
-  <meta name="author" content="理想">
-
-
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
-        rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
-
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-</head>
-
-<body>
-  <header role="banner"><hgroup>
-  <h1><a href="./">理想国</a></h1>
-</hgroup></header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-</ul>
-
-
-<form action="//google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-
-<ul class="main-navigation">
-    <li >
-    <a href="./category/android.html">Android</a>
-    </li>
-    <li >
-    <a href="./category/dotnet.html">Dotnet</a>
-    </li>
-    <li class="active">
-    <a href="./category/java.html">Java</a>
-    </li>
-    <li >
-    <a href="./category/python.html">Python</a>
-    </li>
-    <li >
-    <a href="./category/sheng-huo.html">生活</a>
-    </li>
-    <li >
-    <a href="./category/web.html">Web</a>
-    </li>
-    <li >
-    <a href="./category/yi-dong-kai-fa.html">移动开发</a>
-    </li>
-</ul></nav>
-  <div id="main">
-    <div id="content">
-<div>
-  <article class="hentry" role="article">
-<header>
-      <h1 class="entry-title">Java Web之JSP-01 Java Web简介</h1>
-      <p class="meta"><time datetime="2015-04-07T21:40:00" pubdate>二 07 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. Tomcat配置</h2>
-<h3>1.1 创建环境变量</h3>
-<p>创建环境变量<code>CATALINA_HOME</code>,值为Tomcat所在根目录（比如，windows下可能为为<code>C:\Program Files (x86)\Apache Software Foundation\Tomcat 7.0</code>).</p>
-<h3>1.2 启动Tomcat</h3>
-<p>在<code>CATALINA_HOME</code>的bin目录下有startup脚本。</p>
-<h3>1.3 测试</h3>
-<p>地址：http://localhost:8080</p>
-<h2>2. Tomcat目录结构</h2>
-<p><img alt="tomcat" src="images/java-web-jsp-01.png" /></p>
-<h2>3. 手工编写第一个Java  Web应用程序</h2>
-<h3>3.1 创建Web App目录</h3>
-<p>在Tomcat的webapps目录下创建目录myhome</p>
-<h3>3.2 在myhome目录下创建内容</h3>
-=======
 <html lang="en-US">
     <head>
         <meta charset="utf-8"> 
@@ -161,7 +71,6 @@
 <h3 id="31-web-app">3.1 创建Web App目录</h3>
 <p>在Tomcat的webapps目录下创建目录myhome</p>
 <h3 id="32-myhome">3.2 在myhome目录下创建内容</h3>
->>>>>>> gh-pages
 <p>1、创建index.jsp:</p>
 <div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
@@ -190,11 +99,7 @@
 
 
 <p>创建classes和lib子文件夹</p>
-<<<<<<< HEAD
-<h2>4. WEB-INF目录详解</h2>
-=======
 <h2 id="4-web-inf">4. WEB-INF目录详解</h2>
->>>>>>> gh-pages
 <ol>
 <li>WEB-INF目录是一个安全目录，只有通过服务器才能访问。</li>
 <li>web.xml,项目部署文件，比如配置项目的欢迎页面。</li>
@@ -209,19 +114,6 @@
 <li>classes文件夹，用以放置*.class文件。</li>
 <li>lib文件夹，用于存放需要的jar包。</li>
 </ol>
-<<<<<<< HEAD
-<h2>5. 使用eclipse开发web</h2>
-<h3>5.1 MyEclipse配置JRE</h3>
-<p>windows-&gt;preference-&gt;java-&gt;Installed JREs</p>
-<h3>5.2 MyEclipse集成Tomcat服务器</h3>
-<p>windows-&gt;preference-&gt;Myeclipse-&gt;server-&gt;Runtime Environments</p>
-<p>启动Tomcat</p>
-<h3>5.3 使用MyEclipse创建Java web应用</h3>
-<p>新建web project，命名为MyFirstWebApp，其余默认</p>
-<h3>5.4 修改字体</h3>
-<p>windows-&gt;preference-&gt;General-&gt;Appearance-&gt;Colors and Fonts，然后修改Text Font。</p>
-<h2>6. 修改Tomcat服务器默认端口</h2>
-=======
 <h2 id="5-eclipseweb">5. 使用eclipse开发web</h2>
 <h3 id="51-myeclipsejre">5.1 MyEclipse配置JRE</h3>
 <p>windows-&gt;preference-&gt;java-&gt;Installed JREs</p>
@@ -233,34 +125,11 @@
 <h3 id="54">5.4 修改字体</h3>
 <p>windows-&gt;preference-&gt;General-&gt;Appearance-&gt;Colors and Fonts，然后修改Text Font。</p>
 <h2 id="6-tomcat">6. 修改Tomcat服务器默认端口</h2>
->>>>>>> gh-pages
 <p>修改conf/server.xml文件</p>
 <div class="highlight"><pre><span class="o">&lt;</span><span class="n">Connector</span> <span class="n">executor</span><span class="o">=</span><span class="s">&quot;tomcatThreadPool&quot;</span>
            <span class="n">port</span><span class="o">=</span><span class="s">&quot;8080&quot;</span> <span class="n">protocol</span><span class="o">=</span><span class="s">&quot;HTTP/1.1&quot;</span>
            <span class="n">connectionTimeout</span><span class="o">=</span><span class="s">&quot;20000&quot;</span>
            <span class="n">redirectPort</span><span class="o">=</span><span class="s">&quot;8443&quot;</span> <span class="o">/&gt;</span>
-<<<<<<< HEAD
-</pre></div></div>
-    <footer>
-<p class="meta">
-  <span class="byline author vcard">
-    Posted by <span class="fn">刘理想</span>
-  </span>
-<time datetime="2015-04-07T21:40:00" pubdate>二 07 四月 2015</time>  <span class="categories">
-    <a class="category" href="./tag/java.html">Java</a>
-    <a class="category" href="./tag/web.html">Web</a>
-    <a class="category" href="./tag/jsp.html">JSP</a>
-  </span>
-</p><div class="sharing">
-</div>    </footer>
-  </article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="DuoShuoComment" aria-live="polite">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="java-webzhi-jsp-01-java-webjian-jie.html" data-title="Java Web之JSP-01 Java Web简介" data-url="./java-webzhi-jsp-01-java-webjian-jie.html"></div>
-=======
 </pre></div>
 
  
@@ -269,7 +138,6 @@
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="java-webzhi-jsp-01-java-webjian-jie.html" data-title="Java Web之JSP-01 Java Web简介" data-url="http://liulixiang1988.github.io/java-webzhi-jsp-01-java-webjian-jie.html"></div>
->>>>>>> gh-pages
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -284,103 +152,6 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 	})();
 	</script>
 <!-- 多说公共JS代码 end -->
-<<<<<<< HEAD
-    </div>
-  </section>
-</div>
-<aside class="sidebar">
-  <section>
-	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
-  </section>
-  <section>
-    <h1>Recent Posts</h1>
-    <ul id="recent_posts">
-      <li class="post">
-          <a href="./java-webzhi-jsp-02-jspji-chu-yu-fa.html">Java Web之JSP-02 JSP基础语法</a>
-      </li>
-      <li class="post">
-          <a href="./java-webzhi-jsp-01-java-webjian-jie.html">Java Web之JSP-01 Java Web简介</a>
-      </li>
-      <li class="post">
-          <a href="./htmlcssbu-yi.html">HTML\CSS补遗</a>
-      </li>
-      <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html">企业网站布局实践-10 新闻详情页的制作</a>
-      </li>
-      <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html">企业网站布局实践-09 新闻列表页制作</a>
-      </li>
-    </ul>
-  </section>
-  <section>
-      
-    <h1>Categories</h1>
-    <ul id="recent_posts">
-        <li><a href="./category/android.html">Android</a></li>
-        <li><a href="./category/dotnet.html">DotNet</a></li>
-        <li><a href="./category/java.html">Java</a></li>
-        <li><a href="./category/python.html">Python</a></li>
-        <li><a href="./category/sheng-huo.html">生活</a></li>
-        <li><a href="./category/web.html">Web</a></li>
-        <li><a href="./category/yi-dong-kai-fa.html">移动开发</a></li>
-    </ul>
-  </section>
- 
-
-  <section>
-  <h1>Tags</h1>
-    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/java.html">Java</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/css.html">CSS</a>  </section>
-
-
-
-  <section>
-    <h1>GitHub Repos</h1>
-    <ul id="gh_repos">
-      <li class="loading">Status updating...</li>
-    </ul>
-      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
-    <script type="text/javascript">
-      $.domReady(function(){
-          if (!window.jXHR){
-              var jxhr = document.createElement('script');
-              jxhr.type = 'text/javascript';
-              jxhr.src = './theme/js/jXHR.js';
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(jxhr, s);
-          }
-
-          github.showRepos({
-              user: 'liulixiang1988',
-              count: 5,
-              skip_forks: false,
-              target: '#gh_repos'
-          });
-      });
-    </script>
-    <script src="./theme/js/github.js" type="text/javascript"> </script>
-  </section>
-
-    <section>
-        <h1>Social</h1>
-        <ul>
-            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
-        </ul>
-    </section>
-    <section>
-        <h1>Blogroll</h1>
-        <ul>
-            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
-        </ul>
-    </section>
-
-</aside>    </div>
-  </div>
-  <footer role="contentinfo"><p>
-    Copyright &copy;  2014-2015  - 理想 -
-  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
-</p></footer>
-</body>
-=======
 </div>
 </section> 
             <aside>
@@ -441,5 +212,4 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         </script>
 
     </body>
->>>>>>> gh-pages
 </html>

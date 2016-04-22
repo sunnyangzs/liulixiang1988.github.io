@@ -1,84 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>使用Android开发一个阅后即焚－03 在tab中使用fragment</title>
-  <meta name="author" content="理想">
-
-
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
-        rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
-
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-</head>
-
-<body>
-  <header role="banner"><hgroup>
-  <h1><a href="./">理想国</a></h1>
-</hgroup></header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-</ul>
-
-
-<form action="//google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-
-<ul class="main-navigation">
-    <li class="active">
-    <a href="./category/android.html">Android</a>
-    </li>
-    <li >
-    <a href="./category/dotnet.html">Dotnet</a>
-    </li>
-    <li >
-    <a href="./category/java.html">Java</a>
-    </li>
-    <li >
-    <a href="./category/python.html">Python</a>
-    </li>
-    <li >
-    <a href="./category/sheng-huo.html">生活</a>
-    </li>
-    <li >
-    <a href="./category/web.html">Web</a>
-    </li>
-    <li >
-    <a href="./category/yi-dong-kai-fa.html">移动开发</a>
-    </li>
-</ul></nav>
-  <div id="main">
-    <div id="content">
-<div>
-  <article class="hentry" role="article">
-<header>
-      <h1 class="entry-title">使用Android开发一个阅后即焚－03 在tab中使用fragment</h1>
-      <p class="meta"><time datetime="2014-10-15T23:06:00" pubdate>三 15 十月 2014</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 为什么使用fragment?</h2>
-<p>简而言之，fragment可以让我们复用设计和代码。</p>
-<h2>2. fragment如何作为tab使用</h2>
-=======
 <html lang="en-US">
     <head>
         <meta charset="utf-8"> 
@@ -141,7 +61,6 @@
             <h2 id="1-fragment">1. 为什么使用fragment?</h2>
 <p>简而言之，fragment可以让我们复用设计和代码。</p>
 <h2 id="2-fragmenttab">2. fragment如何作为tab使用</h2>
->>>>>>> gh-pages
 <ul>
 <li>在Activity里创建一个fragment container</li>
 <li>创建fragment对应的class和layout</li>
@@ -150,11 +69,7 @@
 <li>添加<code>TabListener</code>来加载新的fragment</li>
 </ul>
 <p>可以在layout中使用fragment元素来显示的包含fragment。</p>
-<<<<<<< HEAD
-<h2>3. 从模板中修改tab</h2>
-=======
 <h2 id="3-tab">3. 从模板中修改tab</h2>
->>>>>>> gh-pages
 <p>tab中的fragment到底是在哪里定义的呢？我们打开MainActivity，看到文件最后，定义了静态类：</p>
 <div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">PlaceholderFragment</span> <span class="kd">extends</span> <span class="n">Fragment</span> <span class="o">{</span>
     <span class="cm">/**</span>
@@ -235,15 +150,9 @@
 
 
 <p>另外，更改数量为2，两个的标题分别为“收件箱”和“好友”。</p>
-<<<<<<< HEAD
-<h2>4. 从模板中修改fragment</h2>
-<p>现在我们已经有了所有的一切，除了fragement，目前用来的还是默认的fragment。我们要做的就是把它给替换掉。</p>
-<h3>4.1 添加<code>InboxFragment</code></h3>
-=======
 <h2 id="4-fragment">4. 从模板中修改fragment</h2>
 <p>现在我们已经有了所有的一切，除了fragement，目前用来的还是默认的fragment。我们要做的就是把它给替换掉。</p>
 <h3 id="41-inboxfragment">4.1 添加<code>InboxFragment</code></h3>
->>>>>>> gh-pages
 <p>新建一个类，类名是<code>InboxFragment</code>, 这个类继承自，继承自<code>android.app.ListFragment</code>(也可以继承自<code>android.support.v4.app.ListFragment</code>，这样Android4.0之前的版本也能够使用）。
 这里需要说明的是因为我们创建的是List类型的视图，所以创建了ListFragment，如同ListActivity对应Activity一样，ListFragment也对应继承自Fragment。</p>
 <p>打开MainActivity，复制其中的PlaceHolderFragment的<code>onCreateView</code>方法到<code>InboxFragment</code>之中。Fragment像Activity一样也有<code>onCreate</code>方法，但是这里我们关注的是<code>onCreateView</code>方法，该方法在对应的Layout画面渲染时调用。修改后的类如下所示，同时，删除MainActivity中对应的PlaceHolderFragment。</p>
@@ -260,11 +169,7 @@
 
 
 <p>上面的例子中<code>inflater.inflate(R.layout.fragment_main, container, false)</code>可以当作Activity中的<code>setContentView</code>方法，其中第一个参数就是layout，第二个参数是MainActivity中的<code>ViewPage</code>，第三个参数始终是<code>false</code>。</p>
-<<<<<<< HEAD
-<h3>4.2 修改InboxFragment对应的layout</h3>
-=======
 <h3 id="42-inboxfragmentlayout">4.2 修改InboxFragment对应的layout</h3>
->>>>>>> gh-pages
 <p>首先，重构<code>fragment_main.xml</code>为<code>fragment_inbox.xml</code>.</p>
 <p>然后，修改<code>fragment_inbox</code>的内容：</p>
 <div class="highlight"><pre><span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
@@ -292,15 +197,9 @@
 
 
 <p>我们在这里做了一个列表，并且列表为空时显示“没有新消息”（在empty_inbox_label中定义）。</p>
-<<<<<<< HEAD
-<h3>4.3 添加好友列表</h3>
-<p>类似的，添加<code>FriendsFragment</code>,<code>fragment_friends.xml</code>等，然后修改SectionPagerAdapter`。</p>
-<h3>4.4 修改<code>SectionsPagerAdapter</code></h3>
-=======
 <h3 id="43">4.3 添加好友列表</h3>
 <p>类似的，添加<code>FriendsFragment</code>,<code>fragment_friends.xml</code>等，然后修改SectionPagerAdapter`。</p>
 <h3 id="44-sectionspageradapter">4.4 修改<code>SectionsPagerAdapter</code></h3>
->>>>>>> gh-pages
 <div class="highlight"><pre><span class="n">public</span> <span class="n">Fragment</span> <span class="nf">getItem</span><span class="p">(</span><span class="kt">int</span> <span class="n">position</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">switch</span> <span class="p">(</span><span class="n">position</span><span class="p">){</span>
         <span class="k">case</span> <span class="mi">0</span> :
@@ -315,11 +214,7 @@
 
 <p>最后，运行如下：</p>
 <p><img alt="images" src="images/Snip20141104_1.png" /></p>
-<<<<<<< HEAD
-<h2>5 理解基于Fragment的代码的其他部分</h2>
-=======
 <h2 id="5-fragment">5 理解基于Fragment的代码的其他部分</h2>
->>>>>>> gh-pages
 <p>我们知道，创建一个Fragment程序分为以下几步：</p>
 <ol>
 <li>在Activity中创建一个Fragment的容器（创建<code>SectionsPagerAdapter</code>，并且在<code>MainActivity</code>中添加了<code>SectionsPagerAdapter</code>实例）</li>
@@ -363,26 +258,6 @@
                         <span class="p">.</span><span class="n">setTabListener</span><span class="p">(</span><span class="n">this</span><span class="p">));</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<<<<<<< HEAD
-</pre></div></div>
-    <footer>
-<p class="meta">
-  <span class="byline author vcard">
-    Posted by <span class="fn">刘理想</span>
-  </span>
-<time datetime="2014-10-15T23:06:00" pubdate>三 15 十月 2014</time>  <span class="categories">
-    <a class="category" href="./tag/android.html">Android</a>
-  </span>
-</p><div class="sharing">
-</div>    </footer>
-  </article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="DuoShuoComment" aria-live="polite">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html" data-title="使用Android开发一个阅后即焚－03 在tab中使用fragment" data-url="./shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html"></div>
-=======
 </pre></div>
 
  
@@ -391,7 +266,6 @@
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html" data-title="使用Android开发一个阅后即焚－03 在tab中使用fragment" data-url="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html"></div>
->>>>>>> gh-pages
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -406,103 +280,6 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 	})();
 	</script>
 <!-- 多说公共JS代码 end -->
-<<<<<<< HEAD
-    </div>
-  </section>
-</div>
-<aside class="sidebar">
-  <section>
-	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
-  </section>
-  <section>
-    <h1>Recent Posts</h1>
-    <ul id="recent_posts">
-      <li class="post">
-          <a href="./java-webzhi-jsp-02-jspji-chu-yu-fa.html">Java Web之JSP-02 JSP基础语法</a>
-      </li>
-      <li class="post">
-          <a href="./java-webzhi-jsp-01-java-webjian-jie.html">Java Web之JSP-01 Java Web简介</a>
-      </li>
-      <li class="post">
-          <a href="./htmlcssbu-yi.html">HTML\CSS补遗</a>
-      </li>
-      <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html">企业网站布局实践-10 新闻详情页的制作</a>
-      </li>
-      <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html">企业网站布局实践-09 新闻列表页制作</a>
-      </li>
-    </ul>
-  </section>
-  <section>
-      
-    <h1>Categories</h1>
-    <ul id="recent_posts">
-        <li><a href="./category/android.html">Android</a></li>
-        <li><a href="./category/dotnet.html">DotNet</a></li>
-        <li><a href="./category/java.html">Java</a></li>
-        <li><a href="./category/python.html">Python</a></li>
-        <li><a href="./category/sheng-huo.html">生活</a></li>
-        <li><a href="./category/web.html">Web</a></li>
-        <li><a href="./category/yi-dong-kai-fa.html">移动开发</a></li>
-    </ul>
-  </section>
- 
-
-  <section>
-  <h1>Tags</h1>
-    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/java.html">Java</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/css.html">CSS</a>  </section>
-
-
-
-  <section>
-    <h1>GitHub Repos</h1>
-    <ul id="gh_repos">
-      <li class="loading">Status updating...</li>
-    </ul>
-      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
-    <script type="text/javascript">
-      $.domReady(function(){
-          if (!window.jXHR){
-              var jxhr = document.createElement('script');
-              jxhr.type = 'text/javascript';
-              jxhr.src = './theme/js/jXHR.js';
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(jxhr, s);
-          }
-
-          github.showRepos({
-              user: 'liulixiang1988',
-              count: 5,
-              skip_forks: false,
-              target: '#gh_repos'
-          });
-      });
-    </script>
-    <script src="./theme/js/github.js" type="text/javascript"> </script>
-  </section>
-
-    <section>
-        <h1>Social</h1>
-        <ul>
-            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
-        </ul>
-    </section>
-    <section>
-        <h1>Blogroll</h1>
-        <ul>
-            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
-        </ul>
-    </section>
-
-</aside>    </div>
-  </div>
-  <footer role="contentinfo"><p>
-    Copyright &copy;  2014-2015  - 理想 -
-  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
-</p></footer>
-</body>
-=======
 </div>
 </section> 
             <aside>
@@ -557,5 +334,4 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         </script>
 
     </body>
->>>>>>> gh-pages
 </html>

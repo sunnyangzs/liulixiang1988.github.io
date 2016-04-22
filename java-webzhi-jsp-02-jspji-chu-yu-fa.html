@@ -1,82 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Java Web之JSP-02 JSP基础语法</title>
-  <meta name="author" content="理想">
-
-
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
-        rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
-
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-</head>
-
-<body>
-  <header role="banner"><hgroup>
-  <h1><a href="./">理想国</a></h1>
-</hgroup></header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-</ul>
-
-
-<form action="//google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-
-<ul class="main-navigation">
-    <li >
-    <a href="./category/android.html">Android</a>
-    </li>
-    <li >
-    <a href="./category/dotnet.html">Dotnet</a>
-    </li>
-    <li class="active">
-    <a href="./category/java.html">Java</a>
-    </li>
-    <li >
-    <a href="./category/python.html">Python</a>
-    </li>
-    <li >
-    <a href="./category/sheng-huo.html">生活</a>
-    </li>
-    <li >
-    <a href="./category/web.html">Web</a>
-    </li>
-    <li >
-    <a href="./category/yi-dong-kai-fa.html">移动开发</a>
-    </li>
-</ul></nav>
-  <div id="main">
-    <div id="content">
-<div>
-  <article class="hentry" role="article">
-<header>
-      <h1 class="entry-title">Java Web之JSP-02 JSP基础语法</h1>
-      <p class="meta"><time datetime="2015-04-08T00:30:00" pubdate>三 08 四月 2015</time></p>
-</header>
-
-  <div class="entry-content"><article class="markdown-body"><h2 id="1-jsp"><a name="user-content-1-jsp" href="#1-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. JSP简介</h2>
-=======
 <html lang="en-US">
     <head>
         <meta charset="utf-8"> 
@@ -137,7 +59,6 @@
         <div class="span8 offset2 article-content">
 
             <h2 id="1-jsp">1. JSP简介</h2>
->>>>>>> gh-pages
 <p>JSP页面元素构成：</p>
 <ol>
 <li>静态内容</li>
@@ -147,15 +68,6 @@
 <li>表达式</li>
 <li>指令</li>
 </ol>
-<<<<<<< HEAD
-<h3 id="11-jsp"><a name="user-content-11-jsp" href="#11-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.1 jsp指令</h3>
-<p>page指令：通常位于jsp页面的顶端，同一个页面可以有多个page指令。<br />
-include指令：将一个外部文件嵌入到当前jsp文件中，同时解析这个页面中的jsp语句。<br />
-taglib指令：使用标签库定义心得自定义标签。在jsp页面中启用定制行为</p>
-<p>page指令语法：</p>
-<pre><code>&lt;%@page 属性1=&quot;value&quot; 属性2=&quot;value1, value2&quot; ... %&gt;
-</code></pre>
-=======
 <h3 id="11-jsp">1.1 jsp指令</h3>
 <p>page指令：通常位于jsp页面的顶端，同一个页面可以有多个page指令。
 include指令：将一个外部文件嵌入到当前jsp文件中，同时解析这个页面中的jsp语句。
@@ -164,7 +76,6 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
 <div class="highlight"><pre><span class="cp">&lt;%</span><span class="vi">@page</span> <span class="err">属性</span><span class="mi">1</span><span class="o">=</span><span class="s2">&quot;value&quot;</span> <span class="err">属性</span><span class="mi">2</span><span class="o">=</span><span class="s2">&quot;value1, value2&quot;</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="cp">%&gt;</span><span class="x"></span>
 </pre></div>
 
->>>>>>> gh-pages
 
 <table>
 <thead>
@@ -192,95 +103,12 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
 </tr>
 </tbody>
 </table>
-<<<<<<< HEAD
-<h3 id="12-jsp"><a name="user-content-12-jsp" href="#12-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.2 JSP注释</h3>
-=======
 <h3 id="12-jsp">1.2 JSP注释</h3>
->>>>>>> gh-pages
 <ol>
 <li>html注释 <code>&lt;!--html注释--&gt;</code></li>
 <li>jsp注释<code>&lt;%--注释--%&gt;</code></li>
 <li>jsp脚本注释 <code>// /**/</code></li>
 </ol>
-<<<<<<< HEAD
-<h3 id="13-jsp"><a name="user-content-13-jsp" href="#13-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.3 jsp脚本</h3>
-<p>语法：</p>
-<pre><code>&lt;%
-out.println(&quot;大家好，欢迎大家学习javaee开发&quot;);
-%&gt;
-</code></pre>
-
-<h3 id="14-jsp"><a name="user-content-14-jsp" href="#14-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.4 jsp声明</h3>
-<p>在jsp页面中定义变量或者方法</p>
-<pre><code>&lt;%!java代码 %&gt;
-
-&lt;%! String s = &quot;lixiang&quot;; 
-int add(int x, int y){
-    return x+y;
-}
-</code></pre>
-
-<h3 id="15-jsp"><a name="user-content-15-jsp" href="#15-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.5 jsp表达式</h3>
-<pre><code>&lt;%=表达式%&gt; //注意：表达式不以分号结束
-
-&lt;%=s%&gt;
-&lt;%=add(5+4)%&gt;
-</code></pre>
-
-<h3 id="16-jsp"><a name="user-content-16-jsp" href="#16-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.6 jsp页面生命周期</h3>
-<p><img alt="img" src="/Users/liulixiang/Documents/blog/liulixiang1988.github.io/content/images/java-web-jsp-02.png" /></p>
-<p><code>jspService()</code>方法被调用来处理客户端的请求。对每一个请求，JSP引擎创建一个新的线程来处理该请求。如果有多个客户端同时请求该JSP文件，则JSP引擎会创建多个线程。每个客户端请求对应一个线程。以多线程方式执行可以大大降低对系统的资源需求，提高系统的并发量及响应时间。但也要注意多线程的编程带来的同步问题，由于该Servlet始终驻于内存，所以响应时间是非常快的。</p>
-<h3 id="17-jsp"><a name="user-content-17-jsp" href="#17-jsp" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.7 jsp练习：打印乘法表</h3>
-<pre><code>
-&lt;%!
-  String printMultiTable(){
-    String s = &quot;&quot;;
-    for(int i = 1; i &lt;= 9; i++){
-      for(int j=1; j&lt;=i; j++){
-        s += j + &quot;*&quot; + i + &quot;=&quot; + i*j+&quot;&amp;nbsp;&amp;nbsp;&quot;;
-      }
-      s+=&quot;&lt;br/&gt;&quot;;
-    }
-    return s;
-  }
-
-  void printMultiTable2(JspWriter out) throws IOException {
-    for(int i=1; i&lt;=9; i++){
-      for(int j=1; j&lt;=i; j++){
-        out.println(j+&quot;*&quot;+i+&quot;=&quot;+i*j+&quot;&amp;nbsp;&amp;nbsp;&quot;);
-      }
-      out.println(&quot;&lt;br&gt;&quot;);
-    }
-  }
-%&gt;
-
-&lt;h1&gt;九九乘法表&lt;/h1&gt;
-&lt;hr/&gt;
-&lt;%=printMultiTable()%&gt;
-
-&lt;hr/&gt;
-&lt;% printMultiTable2(out); %&gt;
-</code></pre></article></div>
-    <footer>
-<p class="meta">
-  <span class="byline author vcard">
-    Posted by <span class="fn">刘理想</span>
-  </span>
-<time datetime="2015-04-08T00:30:00" pubdate>三 08 四月 2015</time>  <span class="categories">
-    <a class="category" href="./tag/java.html">Java</a>
-    <a class="category" href="./tag/web.html">Web</a>
-    <a class="category" href="./tag/jsp.html">JSP</a>
-  </span>
-</p><div class="sharing">
-</div>    </footer>
-  </article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="DuoShuoComment" aria-live="polite">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="java-webzhi-jsp-02-jspji-chu-yu-fa.html" data-title="Java Web之JSP-02 JSP基础语法" data-url="./java-webzhi-jsp-02-jspji-chu-yu-fa.html"></div>
-=======
 <h3 id="13-jsp">1.3 jsp脚本</h3>
 <p>语法：</p>
 <div class="highlight"><pre><span class="cp">&lt;%</span>
@@ -348,7 +176,6 @@ int add(int x, int y){
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="java-webzhi-jsp-02-jspji-chu-yu-fa.html" data-title="Java Web之JSP-02 JSP基础语法" data-url="http://liulixiang1988.github.io/java-webzhi-jsp-02-jspji-chu-yu-fa.html"></div>
->>>>>>> gh-pages
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -363,103 +190,6 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 	})();
 	</script>
 <!-- 多说公共JS代码 end -->
-<<<<<<< HEAD
-    </div>
-  </section>
-</div>
-<aside class="sidebar">
-  <section>
-	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
-  </section>
-  <section>
-    <h1>Recent Posts</h1>
-    <ul id="recent_posts">
-      <li class="post">
-          <a href="./java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html">Java Web之JSP-03 JSP内置对象</a>
-      </li>
-      <li class="post">
-          <a href="./java-chang-yong-fang-fa.html">Java-常用方法</a>
-      </li>
-      <li class="post">
-          <a href="./java-webzhi-jsp-02-jspji-chu-yu-fa.html">Java Web之JSP-02 JSP基础语法</a>
-      </li>
-      <li class="post">
-          <a href="./java-webzhi-jsp-02-jspji-chu-yu-fa.html">Java Web之JSP-02 JSP基础语法</a>
-      </li>
-      <li class="post">
-          <a href="./java-webzhi-jsp-01-java-webjian-jie.html">Java Web之JSP-01 Java Web简介</a>
-      </li>
-    </ul>
-  </section>
-  <section>
-      
-    <h1>Categories</h1>
-    <ul id="recent_posts">
-        <li><a href="./category/android.html">Android</a></li>
-        <li><a href="./category/dotnet.html">DotNet</a></li>
-        <li><a href="./category/java.html">Java</a></li>
-        <li><a href="./category/python.html">Python</a></li>
-        <li><a href="./category/sheng-huo.html">生活</a></li>
-        <li><a href="./category/web.html">Web</a></li>
-        <li><a href="./category/yi-dong-kai-fa.html">移动开发</a></li>
-    </ul>
-  </section>
- 
-
-  <section>
-  <h1>Tags</h1>
-    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/java.html">Java</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/css.html">CSS</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/dotnet.html">DotNet</a>  </section>
-
-
-
-  <section>
-    <h1>GitHub Repos</h1>
-    <ul id="gh_repos">
-      <li class="loading">Status updating...</li>
-    </ul>
-      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
-    <script type="text/javascript">
-      $.domReady(function(){
-          if (!window.jXHR){
-              var jxhr = document.createElement('script');
-              jxhr.type = 'text/javascript';
-              jxhr.src = './theme/js/jXHR.js';
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(jxhr, s);
-          }
-
-          github.showRepos({
-              user: 'liulixiang1988',
-              count: 5,
-              skip_forks: false,
-              target: '#gh_repos'
-          });
-      });
-    </script>
-    <script src="./theme/js/github.js" type="text/javascript"> </script>
-  </section>
-
-    <section>
-        <h1>Social</h1>
-        <ul>
-            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
-        </ul>
-    </section>
-    <section>
-        <h1>Blogroll</h1>
-        <ul>
-            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
-        </ul>
-    </section>
-
-</aside>    </div>
-  </div>
-  <footer role="contentinfo"><p>
-    Copyright &copy;  2014-2015  - 理想 -
-  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
-</p></footer>
-</body>
-=======
 </div>
 </section> 
             <aside>
@@ -520,5 +250,4 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         </script>
 
     </body>
->>>>>>> gh-pages
 </html>

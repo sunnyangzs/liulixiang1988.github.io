@@ -1,82 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>python里被遗忘的else</title>
-  <meta name="author" content="理想">
-
-
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
-        rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
-
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-</head>
-
-<body>
-  <header role="banner"><hgroup>
-  <h1><a href="./">理想国</a></h1>
-</hgroup></header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-</ul>
-
-
-<form action="//google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-
-<ul class="main-navigation">
-    <li >
-    <a href="./category/android.html">Android</a>
-    </li>
-    <li >
-    <a href="./category/dotnet.html">Dotnet</a>
-    </li>
-    <li >
-    <a href="./category/java.html">Java</a>
-    </li>
-    <li class="active">
-    <a href="./category/python.html">Python</a>
-    </li>
-    <li >
-    <a href="./category/sheng-huo.html">生活</a>
-    </li>
-    <li >
-    <a href="./category/web.html">Web</a>
-    </li>
-    <li >
-    <a href="./category/yi-dong-kai-fa.html">移动开发</a>
-    </li>
-</ul></nav>
-  <div id="main">
-    <div id="content">
-<div>
-  <article class="hentry" role="article">
-<header>
-      <h1 class="entry-title">python里被遗忘的else</h1>
-      <p class="meta"><time datetime="2014-07-20T17:08:00" pubdate>日 20 七月 2014</time></p>
-</header>
-
-  <div class="entry-content"><p>本文讨论的是python中的<code>for … else</code>和<code>while…else</code>语法，最少被用到也最容易被误解的语法特性。</p>
-=======
 <html lang="en-US">
     <head>
         <meta charset="utf-8"> 
@@ -137,7 +59,6 @@
         <div class="span8 offset2 article-content">
 
             <p>本文讨论的是python中的<code>for … else</code>和<code>while…else</code>语法，最少被用到也最容易被误解的语法特性。</p>
->>>>>>> gh-pages
 <p>python中的<code>for</code>和<code>while</code>循环都又一个可选的<code>else</code>（有点像if语句和try语句中的那样），当循环正常完成时执行。也就是说，<code>else</code>只有在循环正常退出时才能执行。<code>break</code>、<code>return</code>或者循环中产生的异常都不会让<code>else</code>正常执行。</p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
@@ -202,26 +123,6 @@
 
 
 <p>这并不是啥了不起的大事，毕竟你在其它语言中不得不这样做。但是如同python中的其它特性一样，else语句可以让这种做法更优雅，更Pythonic。在上面的利子中，适用else使你的代码更符合Python之道。</p>
-<<<<<<< HEAD
-<p>并不存在不得不在循环中适用<code>else</code>语句的情况，然和情况下你都可以适用标识变量等方法。但是<code>else</code>语句让代码更优雅，可读性更高。有些人认为它更Pythonic，表达的意思更清楚（Hi，我也是呢！），另一些或许认为它让人困惑并且多余。就我个人来说，我件事在循环中适用<code>else</code>语句，除非有更好的方法让代码变的更加易读(对我来说，可以归结为如何保持代码的可读性）</p></div>
-    <footer>
-<p class="meta">
-  <span class="byline author vcard">
-    Posted by <span class="fn">刘理想</span>
-  </span>
-<time datetime="2014-07-20T17:08:00" pubdate>日 20 七月 2014</time>  <span class="categories">
-    <a class="category" href="./tag/python.html">python</a>
-  </span>
-</p><div class="sharing">
-</div>    </footer>
-  </article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="DuoShuoComment" aria-live="polite">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="pythonli-bei-yi-wang-de-else.html" data-title="python里被遗忘的else" data-url="./pythonli-bei-yi-wang-de-else.html"></div>
-=======
 <p>并不存在不得不在循环中适用<code>else</code>语句的情况，然和情况下你都可以适用标识变量等方法。但是<code>else</code>语句让代码更优雅，可读性更高。有些人认为它更Pythonic，表达的意思更清楚（Hi，我也是呢！），另一些或许认为它让人困惑并且多余。就我个人来说，我件事在循环中适用<code>else</code>语句，除非有更好的方法让代码变的更加易读(对我来说，可以归结为如何保持代码的可读性）</p>
 
  
@@ -230,7 +131,6 @@
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="pythonli-bei-yi-wang-de-else.html" data-title="python里被遗忘的else" data-url="http://liulixiang1988.github.io/pythonli-bei-yi-wang-de-else.html"></div>
->>>>>>> gh-pages
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -245,103 +145,6 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 	})();
 	</script>
 <!-- 多说公共JS代码 end -->
-<<<<<<< HEAD
-    </div>
-  </section>
-</div>
-<aside class="sidebar">
-  <section>
-	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
-  </section>
-  <section>
-    <h1>Recent Posts</h1>
-    <ul id="recent_posts">
-      <li class="post">
-          <a href="./java-webzhi-jsp-02-jspji-chu-yu-fa.html">Java Web之JSP-02 JSP基础语法</a>
-      </li>
-      <li class="post">
-          <a href="./java-webzhi-jsp-01-java-webjian-jie.html">Java Web之JSP-01 Java Web简介</a>
-      </li>
-      <li class="post">
-          <a href="./htmlcssbu-yi.html">HTML\CSS补遗</a>
-      </li>
-      <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html">企业网站布局实践-10 新闻详情页的制作</a>
-      </li>
-      <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html">企业网站布局实践-09 新闻列表页制作</a>
-      </li>
-    </ul>
-  </section>
-  <section>
-      
-    <h1>Categories</h1>
-    <ul id="recent_posts">
-        <li><a href="./category/android.html">Android</a></li>
-        <li><a href="./category/dotnet.html">DotNet</a></li>
-        <li><a href="./category/java.html">Java</a></li>
-        <li><a href="./category/python.html">Python</a></li>
-        <li><a href="./category/sheng-huo.html">生活</a></li>
-        <li><a href="./category/web.html">Web</a></li>
-        <li><a href="./category/yi-dong-kai-fa.html">移动开发</a></li>
-    </ul>
-  </section>
- 
-
-  <section>
-  <h1>Tags</h1>
-    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/java.html">Java</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/css.html">CSS</a>  </section>
-
-
-
-  <section>
-    <h1>GitHub Repos</h1>
-    <ul id="gh_repos">
-      <li class="loading">Status updating...</li>
-    </ul>
-      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
-    <script type="text/javascript">
-      $.domReady(function(){
-          if (!window.jXHR){
-              var jxhr = document.createElement('script');
-              jxhr.type = 'text/javascript';
-              jxhr.src = './theme/js/jXHR.js';
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(jxhr, s);
-          }
-
-          github.showRepos({
-              user: 'liulixiang1988',
-              count: 5,
-              skip_forks: false,
-              target: '#gh_repos'
-          });
-      });
-    </script>
-    <script src="./theme/js/github.js" type="text/javascript"> </script>
-  </section>
-
-    <section>
-        <h1>Social</h1>
-        <ul>
-            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
-        </ul>
-    </section>
-    <section>
-        <h1>Blogroll</h1>
-        <ul>
-            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
-        </ul>
-    </section>
-
-</aside>    </div>
-  </div>
-  <footer role="contentinfo"><p>
-    Copyright &copy;  2014-2015  - 理想 -
-  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
-</p></footer>
-</body>
-=======
 </div>
 </section> 
             <aside>
@@ -396,5 +199,4 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         </script>
 
     </body>
->>>>>>> gh-pages
 </html>

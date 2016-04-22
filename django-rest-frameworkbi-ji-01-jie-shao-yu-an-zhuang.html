@@ -1,82 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Django REST Framework笔记-01 介绍与安装</title>
-  <meta name="author" content="理想">
-
-
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
-        rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
-
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-</head>
-
-<body>
-  <header role="banner"><hgroup>
-  <h1><a href="./">理想国</a></h1>
-</hgroup></header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-</ul>
-
-
-<form action="//google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-
-<ul class="main-navigation">
-    <li >
-    <a href="./category/android.html">Android</a>
-    </li>
-    <li >
-    <a href="./category/dotnet.html">Dotnet</a>
-    </li>
-    <li >
-    <a href="./category/java.html">Java</a>
-    </li>
-    <li class="active">
-    <a href="./category/python.html">Python</a>
-    </li>
-    <li >
-    <a href="./category/sheng-huo.html">生活</a>
-    </li>
-    <li >
-    <a href="./category/web.html">Web</a>
-    </li>
-    <li >
-    <a href="./category/yi-dong-kai-fa.html">移动开发</a>
-    </li>
-</ul></nav>
-  <div id="main">
-    <div id="content">
-<div>
-  <article class="hentry" role="article">
-<header>
-      <h1 class="entry-title">Django REST Framework笔记-01 介绍与安装</h1>
-      <p class="meta"><time datetime="2014-09-08T22:15:00" pubdate>一 08 九月 2014</time></p>
-</header>
-
-  <div class="entry-content"><h2>一、 Django Rest Framework介绍</h2>
-=======
 <html lang="en-US">
     <head>
         <meta charset="utf-8"> 
@@ -137,7 +59,6 @@
         <div class="span8 offset2 article-content">
 
             <h2 id="django-rest-framework">一、 Django Rest Framework介绍</h2>
->>>>>>> gh-pages
 <p>项目地址：http://www.django-rest-framework.org/</p>
 <p>Django REST framewrok（简称DRF），强大而且灵活的工具箱，它使创建Web API变得简单。</p>
 <p>你需要使用REST框架的一些原因：</p>
@@ -150,11 +71,7 @@
 <li>大公司比如Mozilla和Eventbrite都用它，靠谱~</li>
 </ul>
 <p><img alt="Browsable API" src="http://www.django-rest-framework.org/img/quickstart.png" /></p>
-<<<<<<< HEAD
-<h2>二、安装需求</h2>
-=======
 <h2 id="_1">二、安装需求</h2>
->>>>>>> gh-pages
 <p>REST框架具有以下要求：</p>
 <ul>
 <li>Python(2.6.5+, 2.7, 3.2, 3.3)</li>
@@ -171,11 +88,7 @@
 <li><a href="https://github.com/lukaszb/django-guardian">django-guardian</a> (1.1.1+) - 支持对象级别的权限控制</li>
 </ul>
 <p><strong>注意</strong>: <code>oauth2</code>包很容易让人误解为OAuth2，其实只支持OAuth 1.0a，并且注意在Python3中OAuth 1.0a和Oauth2.0不能同时存在。</p>
-<<<<<<< HEAD
-<h2>三、安装</h2>
-=======
 <h2 id="_2">三、安装</h2>
->>>>>>> gh-pages
 <p>1、使用<code>pip</code>进行安装，包含那些你想要的可选包：</p>
 <div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">djangorestframework</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">markdown</span>       <span class="err">#</span> <span class="n">Markdown</span> <span class="n">support</span> <span class="k">for</span> <span class="n">the</span> <span class="n">browsable</span> <span class="n">API</span><span class="p">.</span>
@@ -205,11 +118,7 @@
 
 
 <p><strong>注意</strong>，URL路径可以是任意的。但是必须使用<code>'rest_framework'</code>命名空间来包含<code>'rest_framework.urls'</code></p>
-<<<<<<< HEAD
-<h2>四、例子</h2>
-=======
 <h2 id="_3">四、例子</h2>
->>>>>>> gh-pages
 <p>来看一个用REST框架建立基于model的简单API例子。</p>
 <p>我们将创建一个获取获取工程用户信息的读写API。</p>
 <p>所有REST框架的全局设置都被保存到一个叫做<code>REST_FRAMEWORK</code>的配置字典中。我们在<code>settings.py</code>模块中添加下面的内容：</p>
@@ -254,15 +163,9 @@
 
 
 <p>现在可以在浏览器中输入http://127.0.0.1:8000/来打开API了。并且查看你刚创建的'users' API。如果你在右上角点登录，那么现在就应该可以添加、创建和删除用户了。</p>
-<<<<<<< HEAD
-<h2>五、快速开始</h2>
-<p>迫不及待的想要开始了？<a href="http://www.django-rest-framework.org/tutorial/quickstart">快速开始</a>是最快的方法让你能够创建并运行REST API的方法。</p>
-<h2>六、教程</h2>
-=======
 <h2 id="_4">五、快速开始</h2>
 <p>迫不及待的想要开始了？<a href="http://www.django-rest-framework.org/tutorial/quickstart">快速开始</a>是最快的方法让你能够创建并运行REST API的方法。</p>
 <h2 id="_5">六、教程</h2>
->>>>>>> gh-pages
 <p>教程将让你通过REST框架创建每一部分。学习它需要一些时间，但是它会让你对每一部分如何相互匹配在一起邮个全方位的了解，强烈建议读一下。</p>
 <ul>
 <li><a href="http://www.django-rest-framework.org/tutorial/1-serialization">1-序列化</a></li>
@@ -272,27 +175,6 @@
 <li><a href="http://www.django-rest-framework.org/tutorial/5-relationships-and-hyperlinked-apis">5-关系和超链接API</a></li>
 <li><a href="http://www.django-rest-framework.org/tutorial/6-viewsets-and-routers">6-视图集合和路由</a></li>
 </ul>
-<<<<<<< HEAD
-<p>为了测试，我们提供了一个API教程结束时的例子，在<a href="http://restframework.herokuapp.com/">这里</a>.</p></div>
-    <footer>
-<p class="meta">
-  <span class="byline author vcard">
-    Posted by <span class="fn">刘理想</span>
-  </span>
-<time datetime="2014-09-08T22:15:00" pubdate>一 08 九月 2014</time>  <span class="categories">
-    <a class="category" href="./tag/python.html">Python</a>
-    <a class="category" href="./tag/django.html">Django</a>
-  </span>
-</p><div class="sharing">
-</div>    </footer>
-  </article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="DuoShuoComment" aria-live="polite">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html" data-title="Django REST Framework笔记-01 介绍与安装" data-url="./django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html"></div>
-=======
 <p>为了测试，我们提供了一个API教程结束时的例子，在<a href="http://restframework.herokuapp.com/">这里</a>.</p>
 
  
@@ -301,7 +183,6 @@
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html" data-title="Django REST Framework笔记-01 介绍与安装" data-url="http://liulixiang1988.github.io/django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html"></div>
->>>>>>> gh-pages
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -316,103 +197,6 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 	})();
 	</script>
 <!-- 多说公共JS代码 end -->
-<<<<<<< HEAD
-    </div>
-  </section>
-</div>
-<aside class="sidebar">
-  <section>
-	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
-  </section>
-  <section>
-    <h1>Recent Posts</h1>
-    <ul id="recent_posts">
-      <li class="post">
-          <a href="./java-webzhi-jsp-02-jspji-chu-yu-fa.html">Java Web之JSP-02 JSP基础语法</a>
-      </li>
-      <li class="post">
-          <a href="./java-webzhi-jsp-01-java-webjian-jie.html">Java Web之JSP-01 Java Web简介</a>
-      </li>
-      <li class="post">
-          <a href="./htmlcssbu-yi.html">HTML\CSS补遗</a>
-      </li>
-      <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html">企业网站布局实践-10 新闻详情页的制作</a>
-      </li>
-      <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html">企业网站布局实践-09 新闻列表页制作</a>
-      </li>
-    </ul>
-  </section>
-  <section>
-      
-    <h1>Categories</h1>
-    <ul id="recent_posts">
-        <li><a href="./category/android.html">Android</a></li>
-        <li><a href="./category/dotnet.html">DotNet</a></li>
-        <li><a href="./category/java.html">Java</a></li>
-        <li><a href="./category/python.html">Python</a></li>
-        <li><a href="./category/sheng-huo.html">生活</a></li>
-        <li><a href="./category/web.html">Web</a></li>
-        <li><a href="./category/yi-dong-kai-fa.html">移动开发</a></li>
-    </ul>
-  </section>
- 
-
-  <section>
-  <h1>Tags</h1>
-    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/java.html">Java</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/css.html">CSS</a>  </section>
-
-
-
-  <section>
-    <h1>GitHub Repos</h1>
-    <ul id="gh_repos">
-      <li class="loading">Status updating...</li>
-    </ul>
-      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
-    <script type="text/javascript">
-      $.domReady(function(){
-          if (!window.jXHR){
-              var jxhr = document.createElement('script');
-              jxhr.type = 'text/javascript';
-              jxhr.src = './theme/js/jXHR.js';
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(jxhr, s);
-          }
-
-          github.showRepos({
-              user: 'liulixiang1988',
-              count: 5,
-              skip_forks: false,
-              target: '#gh_repos'
-          });
-      });
-    </script>
-    <script src="./theme/js/github.js" type="text/javascript"> </script>
-  </section>
-
-    <section>
-        <h1>Social</h1>
-        <ul>
-            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
-        </ul>
-    </section>
-    <section>
-        <h1>Blogroll</h1>
-        <ul>
-            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
-        </ul>
-    </section>
-
-</aside>    </div>
-  </div>
-  <footer role="contentinfo"><p>
-    Copyright &copy;  2014-2015  - 理想 -
-  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
-</p></footer>
-</body>
-=======
 </div>
 </section> 
             <aside>
@@ -470,5 +254,4 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         </script>
 
     </body>
->>>>>>> gh-pages
 </html>

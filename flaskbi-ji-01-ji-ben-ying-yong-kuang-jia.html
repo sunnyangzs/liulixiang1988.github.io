@@ -1,82 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Flask笔记－01 基本应用框架</title>
-  <meta name="author" content="理想">
-
-
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="./favicon.png" rel="icon">
-  <link href="./theme/css/main.css" media="screen, projection"
-        rel="stylesheet" type="text/css">
-  <script src="./theme/js/modernizr-2.0.js"></script>
-  <script src="./theme/js/ender.js"></script>
-  <script src="./theme/js/octopress.js" type="text/javascript"></script>
-
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-</head>
-
-<body>
-  <header role="banner"><hgroup>
-  <h1><a href="./">理想国</a></h1>
-</hgroup></header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-</ul>
-
-
-<form action="//google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:." />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-
-<ul class="main-navigation">
-    <li >
-    <a href="./category/android.html">Android</a>
-    </li>
-    <li >
-    <a href="./category/dotnet.html">Dotnet</a>
-    </li>
-    <li >
-    <a href="./category/java.html">Java</a>
-    </li>
-    <li class="active">
-    <a href="./category/python.html">Python</a>
-    </li>
-    <li >
-    <a href="./category/sheng-huo.html">生活</a>
-    </li>
-    <li >
-    <a href="./category/web.html">Web</a>
-    </li>
-    <li >
-    <a href="./category/yi-dong-kai-fa.html">移动开发</a>
-    </li>
-</ul></nav>
-  <div id="main">
-    <div id="content">
-<div>
-  <article class="hentry" role="article">
-<header>
-      <h1 class="entry-title">Flask笔记－01 基本应用框架</h1>
-      <p class="meta"><time datetime="2014-10-18T23:11:00" pubdate>六 18 十月 2014</time></p>
-</header>
-
-  <div class="entry-content"><h2>1. 初始化</h2>
-=======
 <html lang="en-US">
     <head>
         <meta charset="utf-8"> 
@@ -137,7 +59,6 @@
         <div class="span8 offset2 article-content">
 
             <h2 id="1">1. 初始化</h2>
->>>>>>> gh-pages
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
@@ -145,11 +66,7 @@
 
 
 <p><code>__name__</code>的作用是用来给Flask来判断应用的根路径的。</p>
-<<<<<<< HEAD
-<h2>2. 路由和视图函数</h2>
-=======
 <h2 id="2">2. 路由和视图函数</h2>
->>>>>>> gh-pages
 <div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
     <span class="k">return</span> <span class="s">&#39;Hello World!&#39;</span>
@@ -162,11 +79,7 @@
 
 
 <p>其中<code>&lt;name&gt;</code>就是参数，如果你想给参数加上类型，可以使用<code>/user/&lt;int:id&gt;</code>，Flask支持在路由中使用<code>int</code>, <code>float</code>和<code>path</code>等类型。<code>path</code>是字符串，但是并不把<code>/</code>当作分隔符，而是把它看作动态组成的一部分。</p>
-<<<<<<< HEAD
-<h2>3. 启动服务器</h2>
-=======
 <h2 id="3">3. 启动服务器</h2>
->>>>>>> gh-pages
 <p>Flask包含了一个小型的开发服务器，启动它：</p>
 <div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -174,11 +87,7 @@
 
 
 <p>其中<code>debug=True</code>用来开启debug模式。正式环境中不需要。</p>
-<<<<<<< HEAD
-<h2>4. 一个完整的应用</h2>
-=======
 <h2 id="4">4. 一个完整的应用</h2>
->>>>>>> gh-pages
 <p>上面我们分别介绍了一部分，现在看看一个整体应用，保存到文件hello.py中：</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 
@@ -201,13 +110,8 @@
 </pre></div>
 
 
-<<<<<<< HEAD
-<h2>5. 请求响应循环</h2>
-<h3>5.1 应用和请求上下文</h3>
-=======
 <h2 id="5">5. 请求响应循环</h2>
 <h3 id="51">5.1 应用和请求上下文</h3>
->>>>>>> gh-pages
 <p>Flask使用<code>上下文Context</code>的概念来让一些对象暂时性的全局可访问。因为有了上下文，所以可以这样写：</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
 
@@ -268,11 +172,7 @@
 
 
 <p>注意，使用<code>app.app_context()</code>来获得应用上下文。</p>
-<<<<<<< HEAD
-<h3>5.2 请求分发</h3>
-=======
 <h3 id="52">5.2 请求分发</h3>
->>>>>>> gh-pages
 <p>Flask使用<em>URL映射</em>来进行请求分发。创建映射可以使用<code>app.route()</code>装饰器或者<code>app.add_url_rule()</code>。</p>
 <p>要查看Flask应用中的URL映射，可以这样</p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">flask_web_dev</span> <span class="kn">import</span> <span class="n">app</span>
@@ -284,11 +184,7 @@
 
 
 <p>其中<code>GET, HEAD, OPTIONS</code>时方法。<code>/static/&lt;filename&gt;</code>是Flask用来做静态文件映射的特殊方法。</p>
-<<<<<<< HEAD
-<h3>5.3 请求勾子</h3>
-=======
 <h3 id="53">5.3 请求勾子</h3>
->>>>>>> gh-pages
 <p>有时需要在请求执行前和执行后运行一些代码，比如应用启动时创建数据库连接，或者验证发出请求的用户。我们可以使用请求勾子：</p>
 <ul>
 <li><code>before_first_request</code>：注册一个在第一个请求前被运行的方法</li>
@@ -297,11 +193,7 @@
 <li><code>teardown_request</code>: 注册一个在请求后执行的方法，即使请求发出异常后仍然执行</li>
 </ul>
 <p>一种常见的模式是用全局变量<code>g</code>在请求勾子方法和视图方法之间共享数据，比如，<code>before_request</code>处理方法用来从数据库中加载用户，并且存储到<code>g.user</code>中。在视图方法中可以使用它。</p>
-<<<<<<< HEAD
-<h3>5.4 响应</h3>
-=======
 <h3 id="54">5.4 响应</h3>
->>>>>>> gh-pages
 <p>Flask期望视图函数返回一个值作为响应给请求。</p>
 <p>如果希望返回状态码：</p>
 <div class="highlight"><pre><span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
@@ -340,17 +232,10 @@
 </pre></div>
 
 
-<<<<<<< HEAD
-<h2>6. Flask扩展</h2>
-<p>Flask被设计的易于扩展，它有意避开了一些重要领域比如用户认证和数据库，留给用户来自由实现。可以使用扩展或者python包来实现不同的想法。</p>
-<p>下面将使用<code>Flask-Script</code>来使flask应用可以接受命令行参数。</p>
-<h3>6.1 使用Flask-Script来实现命令行参数。</h3>
-=======
 <h2 id="6-flask">6. Flask扩展</h2>
 <p>Flask被设计的易于扩展，它有意避开了一些重要领域比如用户认证和数据库，留给用户来自由实现。可以使用扩展或者python包来实现不同的想法。</p>
 <p>下面将使用<code>Flask-Script</code>来使flask应用可以接受命令行参数。</p>
 <h3 id="61-flask-script">6.1 使用Flask-Script来实现命令行参数。</h3>
->>>>>>> gh-pages
 <p>Flask本身实现了一些可配置项，但要在<code>app.run()</code>中指定，这不方便。Flask-Script就是添加命令行解析用的。</p>
 <div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">flask</span><span class="o">-</span><span class="n">script</span>
 </pre></div>
@@ -420,27 +305,6 @@
 </pre></div>
 
 
-<<<<<<< HEAD
-<p>下一章我们将介绍模板。</p></div>
-    <footer>
-<p class="meta">
-  <span class="byline author vcard">
-    Posted by <span class="fn">刘理想</span>
-  </span>
-<time datetime="2014-10-18T23:11:00" pubdate>六 18 十月 2014</time>  <span class="categories">
-    <a class="category" href="./tag/flask.html">Flask</a>
-    <a class="category" href="./tag/flaskbi-ji.html">Flask笔记</a>
-  </span>
-</p><div class="sharing">
-</div>    </footer>
-  </article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="DuoShuoComment" aria-live="polite">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html" data-title="Flask笔记－01 基本应用框架" data-url="./flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html"></div>
-=======
 <p>下一章我们将介绍模板。</p>
 
  
@@ -449,7 +313,6 @@
 <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html" data-title="Flask笔记－01 基本应用框架" data-url="http://liulixiang1988.github.io/flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html"></div>
->>>>>>> gh-pages
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -464,103 +327,6 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 	})();
 	</script>
 <!-- 多说公共JS代码 end -->
-<<<<<<< HEAD
-    </div>
-  </section>
-</div>
-<aside class="sidebar">
-  <section>
-	  <img src="./images/avatar.jpg" alt="刘理想" width=""/> 
-  </section>
-  <section>
-    <h1>Recent Posts</h1>
-    <ul id="recent_posts">
-      <li class="post">
-          <a href="./java-webzhi-jsp-02-jspji-chu-yu-fa.html">Java Web之JSP-02 JSP基础语法</a>
-      </li>
-      <li class="post">
-          <a href="./java-webzhi-jsp-01-java-webjian-jie.html">Java Web之JSP-01 Java Web简介</a>
-      </li>
-      <li class="post">
-          <a href="./htmlcssbu-yi.html">HTML\CSS补遗</a>
-      </li>
-      <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html">企业网站布局实践-10 新闻详情页的制作</a>
-      </li>
-      <li class="post">
-          <a href="./qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html">企业网站布局实践-09 新闻列表页制作</a>
-      </li>
-    </ul>
-  </section>
-  <section>
-      
-    <h1>Categories</h1>
-    <ul id="recent_posts">
-        <li><a href="./category/android.html">Android</a></li>
-        <li><a href="./category/dotnet.html">DotNet</a></li>
-        <li><a href="./category/java.html">Java</a></li>
-        <li><a href="./category/python.html">Python</a></li>
-        <li><a href="./category/sheng-huo.html">生活</a></li>
-        <li><a href="./category/web.html">Web</a></li>
-        <li><a href="./category/yi-dong-kai-fa.html">移动开发</a></li>
-    </ul>
-  </section>
- 
-
-  <section>
-  <h1>Tags</h1>
-    <a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a>,    <a href="./tag/flaskbi-ji.html">Flask笔记</a>,    <a href="./tag/pelican.html">pelican</a>,    <a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a>,    <a href="./tag/web.html">Web</a>,    <a href="./tag/django.html">Django</a>,    <a href="./tag/phonegap.html">PhoneGap</a>,    <a href="./tag/flask.html">Flask</a>,    <a href="./tag/net.html">.NET</a>,    <a href="./tag/less.html">LESS</a>,    <a href="./tag/jsp.html">JSP</a>,    <a href="./tag/c.html">C#</a>,    <a href="./tag/android.html">Android</a>,    <a href="./tag/life.html">life</a>,    <a href="./tag/nancy.html">Nancy</a>,    <a href="./tag/aspnet-mvc.html">ASP.NET MVC</a>,    <a href="./tag/html.html">HTML</a>,    <a href="./tag/java.html">Java</a>,    <a href="./tag/python.html">Python</a>,    <a href="./tag/dotnet.html">DotNet</a>,    <a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>,    <a href="./tag/css.html">CSS</a>  </section>
-
-
-
-  <section>
-    <h1>GitHub Repos</h1>
-    <ul id="gh_repos">
-      <li class="loading">Status updating...</li>
-    </ul>
-      <a href="https://github.com/liulixiang1988">@liulixiang1988</a> on GitHub
-    <script type="text/javascript">
-      $.domReady(function(){
-          if (!window.jXHR){
-              var jxhr = document.createElement('script');
-              jxhr.type = 'text/javascript';
-              jxhr.src = './theme/js/jXHR.js';
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(jxhr, s);
-          }
-
-          github.showRepos({
-              user: 'liulixiang1988',
-              count: 5,
-              skip_forks: false,
-              target: '#gh_repos'
-          });
-      });
-    </script>
-    <script src="./theme/js/github.js" type="text/javascript"> </script>
-  </section>
-
-    <section>
-        <h1>Social</h1>
-        <ul>
-            <li><a href="http://weibo.com/liulixiang1988" target="_blank">微博</a></li>
-        </ul>
-    </section>
-    <section>
-        <h1>Blogroll</h1>
-        <ul>
-            <li><a href="https://github.com/liulixiang1988/" target="_blank">GitHub</a></li>
-        </ul>
-    </section>
-
-</aside>    </div>
-  </div>
-  <footer role="contentinfo"><p>
-    Copyright &copy;  2014-2015  - 理想 -
-  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
-</p></footer>
-</body>
-=======
 </div>
 </section> 
             <aside>
@@ -618,5 +384,4 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         </script>
 
     </body>
->>>>>>> gh-pages
 </html>
