@@ -82,7 +82,7 @@
 <p>构建用户登录界面如下：</p>
 <p><img alt="用户" src="images/Snip20141004_6.png" /></p>
 <p>对应的xml如下</p>
-<div class="highlight"><pre><span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
     <span class="na">xmlns:tools=</span><span class="s">&quot;http://schemas.android.com/tools&quot;</span>
     <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
     <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
@@ -134,7 +134,7 @@
 
 
 <p>现在，我们想运行一下看看效果，但是启动界面时<code>MainActivity</code>，因此，我们在<code>MainActivity</code>的<code>onCreate</code>方法中添加：</p>
-<div class="highlight"><pre><span class="nd">@Override</span>
+<div class="highlight"><pre><span></span><span class="nd">@Override</span>
 <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
     <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
     <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
@@ -154,7 +154,7 @@
 <p>设置Layout如下：</p>
 <p><img alt="设置Layout" src="images/Snip20141004_7.png" /></p>
 <p>对应的xml如下：</p>
-<div class="highlight"><pre><span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
     <span class="na">xmlns:tools=</span><span class="s">&quot;http://schemas.android.com/tools&quot;</span>
     <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
     <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
@@ -208,7 +208,7 @@
 
 
 <p>添加从登录LoginActivity到注册SignupActivity的跳转。打开LoginActivity，添加如下：</p>
-<div class="highlight"><pre><span class="kd">protected</span> <span class="n">TextView</span> <span class="n">txtSignup</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><span class="kd">protected</span> <span class="n">TextView</span> <span class="n">txtSignup</span><span class="o">;</span>
 
 <span class="nd">@Override</span>
 <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
@@ -232,7 +232,7 @@
 <p>Up导航是在app内导航到上一级别，<strong>始终是在同一个app内</strong>, 而Back导航则是根据用户的历史记录进行导航，比如导航到桌面或者其他应用中。</p>
 <p>现在我们想要设置Signup(注册)的Up导航是Login(登录)，该怎么办呢？</p>
 <p>打开AndroidManifest.xml，在Signup中添加<code>android:parentActivityName</code>，如下：</p>
-<div class="highlight"><pre><span class="nt">&lt;activity</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;activity</span>
     <span class="na">android:name=</span><span class="s">&quot;.SignupActivity&quot;</span>
     <span class="na">android:label=</span><span class="s">&quot;@string/title_activity_signup&quot;</span>
     <span class="na">android:parentActivityName=</span><span class="s">&quot;.LoginActivity&quot;</span><span class="nt">&gt;</span>
@@ -248,7 +248,7 @@
 <p><img alt="收件箱" src="images/Snip20141004_9.png" /></p>
 <p>这肯定不对，因为用户没有登录，不应该看到这个画面。</p>
 <p>这种是由于什么原因导致的呢？Android在Activity跳转的过程中，会自己维护一个堆栈用来存放Activity的顺序，该堆栈适用后进先出的方式，在按返回按钮时会逐层返回Activity。有时我们想开辟一个新的堆栈，这个时候就需要添加一些flag来告诉Android我们的想法。对于Rabbit应用，我们希望用户在登录界面点击返回按钮时不要回到收件箱。这个时候，我们需要在MainActivity中设置flag。</p>
-<div class="highlight"><pre><span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">LoginActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<div class="highlight"><pre><span></span><span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">LoginActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 <span class="c1">//第1种方法</span>
 <span class="c1">//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);</span>
 <span class="c1">//第2种方法</span>
@@ -298,7 +298,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-10-04T09:48:00">10 4, 2014</time>
+            <time pubdate="pubdate" datetime="2014-10-04T09:48:00+08:00">10 4, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Android-ref">Android</a> 
             <h4>Tags</h4>

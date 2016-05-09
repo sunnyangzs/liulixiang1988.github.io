@@ -61,7 +61,7 @@
             <h1 id="android-03-androidbroadcast">Android学习笔记 - 03 Android四大核心组件之BroadCast</h1>
 <h2 id="broadcast-receiver">一、BroadCast Receiver静态声明</h2>
 <h3 id="1broadcast-receiver">1、声明BroadCast Receiver</h3>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBroadCast</span> <span class="kd">extends</span> <span class="n">BroadcastReceiver</span> <span class="o">{</span>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBroadCast</span> <span class="kd">extends</span> <span class="n">BroadcastReceiver</span> <span class="o">{</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onReceive</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
     <span class="o">}</span>
@@ -72,7 +72,7 @@
 <p>一旦广播接收器接收到消息，就会执行<code>onReceive</code>方法</p>
 <h3 id="2activitybroadcast">2、Activity发送消息给BroadCast</h3>
 <p>消息的发送是使用<code>sendBroadcast</code>方法，传递给它一个<code>Intent</code></p>
-<div class="highlight"><pre><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnSendBroadCast_click</span><span class="o">(){</span>
+<div class="highlight"><pre><span></span><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnSendBroadCast_click</span><span class="o">(){</span>
     <span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">MyBroadCast</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
     <span class="n">i</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="s">&quot;txt&quot;</span><span class="o">,</span> <span class="s">&quot;理想，你好&quot;</span><span class="o">);</span>
     <span class="n">sendBroadcast</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
@@ -81,7 +81,7 @@
 
 
 <h3 id="3broadcast-receiver">3、Broadcast Receiver接收消息的处理方法</h3>
-<div class="highlight"><pre><span class="nd">@Override</span>
+<div class="highlight"><pre><span></span><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onReceive</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Receive Message:&quot;</span> <span class="o">+</span> <span class="n">intent</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">&quot;txt&quot;</span><span class="o">));</span>
 <span class="o">}</span>
@@ -91,7 +91,7 @@
 <h2 id="broad-receiver">二、 Broad Receiver动态声明</h2>
 <h3 id="1broadcast-receiver_1">1、声明一个Broadcast Receiver</h3>
 <p>这里声明广播接收器时同时声明了一个ACTION用来给别的应用或Activity注册使用</p>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBroadCast2</span> <span class="kd">extends</span> <span class="n">BroadcastReceiver</span> <span class="o">{</span>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBroadCast2</span> <span class="kd">extends</span> <span class="n">BroadcastReceiver</span> <span class="o">{</span>
 
     <span class="c1">//Action格式：包名+intent.action.类名</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ACTION</span><span class="o">=</span><span class="s">&quot;liulx.L04BroadCast.intent.action.MyBroadCast2&quot;</span><span class="o">;</span>
@@ -113,7 +113,7 @@
     private final MyBroadCast2 mybc = new MyBroadCast2() ;</li>
 <li>按钮的点击方法分别为：</li>
 </ul>
-<div class="highlight"><pre><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnRegisterBC_click</span><span class="o">(){</span>
+<div class="highlight"><pre><span></span><span class="kd">private</span> <span class="kt">void</span> <span class="nf">btnRegisterBC_click</span><span class="o">(){</span>
     <span class="n">registerReceiver</span><span class="o">(</span><span class="n">mybc</span><span class="o">,</span> <span class="k">new</span> <span class="n">IntentFilter</span><span class="o">(</span><span class="n">MyBroadCast2</span><span class="o">.</span><span class="na">ACTION</span><span class="o">));</span>
 <span class="o">}</span>
 
@@ -173,7 +173,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-08-27T09:51:00"> 8 27, 2014</time>
+            <time pubdate="pubdate" datetime="2014-08-27T09:51:00+08:00"> 8 27, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Android-ref">Android</a> 
             <h4>Tags</h4>

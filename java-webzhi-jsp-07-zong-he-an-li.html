@@ -59,62 +59,62 @@
         <div class="span8 offset2 article-content">
 
             <h2 id="1-jdbc-dbhelper">1. JDBC DBHelper</h2>
-<div class="highlight"><pre><span class="n">package</span> <span class="n">util</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">util</span><span class="p">;</span>
 
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">Connection</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">sql</span><span class="p">.</span><span class="n">DriverManager</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.DriverManager</span><span class="p">;</span>
 
-<span class="n">public</span> <span class="n">class</span> <span class="n">DBHelper</span> <span class="p">{</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">DBHelper</span> <span class="p">{</span>
 
-    <span class="n">private</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">driver</span> <span class="o">=</span> <span class="s">&quot;com.mysql.jdbc.Driver&quot;</span><span class="p">;</span> <span class="c1">//数据库驱动</span>
-    <span class="c1">//连接数据库的URL地址</span>
-    <span class="n">private</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">url</span><span class="o">=</span><span class="s">&quot;jdbc:mysql://localhost:3306/shopping?useUnicode=true&amp;characterEncoding=UTF-8&quot;</span><span class="p">;</span> 
-    <span class="n">private</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">username</span><span class="o">=</span><span class="s">&quot;root&quot;</span><span class="p">;</span><span class="c1">//数据库的用户名</span>
-    <span class="n">private</span> <span class="k">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">password</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="c1">//数据库的密码</span>
+    <span class="n">private</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">driver</span> <span class="o">=</span> <span class="s2">&quot;com.mysql.jdbc.Driver&quot;</span><span class="p">;</span> <span class="o">//</span><span class="err">数据库驱动</span>
+    <span class="o">//</span><span class="err">连接数据库的</span><span class="n">URL地址</span>
+    <span class="n">private</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">url</span><span class="o">=</span><span class="s2">&quot;jdbc:mysql://localhost:3306/shopping?useUnicode=true&amp;characterEncoding=UTF-8&quot;</span><span class="p">;</span> 
+    <span class="n">private</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">;</span><span class="o">//</span><span class="err">数据库的用户名</span>
+    <span class="n">private</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span><span class="o">//</span><span class="err">数据库的密码</span>
 
-    <span class="n">private</span> <span class="k">static</span> <span class="n">Connection</span> <span class="n">conn</span><span class="o">=</span><span class="n">null</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">static</span> <span class="n">Connection</span> <span class="n">conn</span><span class="o">=</span><span class="n">null</span><span class="p">;</span>
 
-    <span class="c1">//静态代码块负责加载驱动</span>
-    <span class="k">static</span> 
+    <span class="o">//</span><span class="err">静态代码块负责加载驱动</span>
+    <span class="n">static</span> 
     <span class="p">{</span>
-        <span class="n">try</span>
+        <span class="k">try</span>
         <span class="p">{</span>
-            <span class="n">Class</span><span class="p">.</span><span class="n">forName</span><span class="p">(</span><span class="n">driver</span><span class="p">);</span>
+            <span class="n">Class</span><span class="o">.</span><span class="n">forName</span><span class="p">(</span><span class="n">driver</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="n">catch</span><span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+        <span class="n">catch</span><span class="p">(</span><span class="ne">Exception</span> <span class="n">ex</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="n">ex</span><span class="p">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+            <span class="n">ex</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="c1">//单例模式返回数据库连接对象</span>
-    <span class="n">public</span> <span class="k">static</span> <span class="n">Connection</span> <span class="n">getConnection</span><span class="p">()</span> <span class="n">throws</span> <span class="n">Exception</span>
+    <span class="o">//</span><span class="err">单例模式返回数据库连接对象</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">Connection</span> <span class="n">getConnection</span><span class="p">()</span> <span class="n">throws</span> <span class="ne">Exception</span>
     <span class="p">{</span>
         <span class="k">if</span><span class="p">(</span><span class="n">conn</span><span class="o">==</span><span class="n">null</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="n">conn</span> <span class="o">=</span> <span class="n">DriverManager</span><span class="p">.</span><span class="n">getConnection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
+            <span class="n">conn</span> <span class="o">=</span> <span class="n">DriverManager</span><span class="o">.</span><span class="n">getConnection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
             <span class="k">return</span> <span class="n">conn</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">conn</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">public</span> <span class="k">static</span> <span class="kt">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
 
-        <span class="n">try</span>
+        <span class="k">try</span>
         <span class="p">{</span>
-           <span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="p">.</span><span class="n">getConnection</span><span class="p">();</span>
+           <span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">getConnection</span><span class="p">();</span>
            <span class="k">if</span><span class="p">(</span><span class="n">conn</span><span class="o">!=</span><span class="n">null</span><span class="p">)</span>
            <span class="p">{</span>
-               <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;数据库连接正常！&quot;</span><span class="p">);</span>
+               <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;数据库连接正常！&quot;</span><span class="p">);</span>
            <span class="p">}</span>
            <span class="k">else</span>
            <span class="p">{</span>
-               <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;数据库连接异常！&quot;</span><span class="p">);</span>
+               <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;数据库连接异常！&quot;</span><span class="p">);</span>
            <span class="p">}</span>
         <span class="p">}</span>
-        <span class="n">catch</span><span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+        <span class="n">catch</span><span class="p">(</span><span class="ne">Exception</span> <span class="n">ex</span><span class="p">)</span>
         <span class="p">{</span>
-            <span class="n">ex</span><span class="p">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+            <span class="n">ex</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
         <span class="p">}</span>
 
     <span class="p">}</span>
@@ -123,222 +123,222 @@
 
 
 <h2 id="2">2. 实体类</h2>
-<div class="highlight"><pre><span class="n">package</span> <span class="n">entity</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>package entity;
 
-<span class="c1">//商品类</span>
-<span class="n">public</span> <span class="n">class</span> <span class="n">Items</span> <span class="p">{</span>
+//商品类
+public class Items {
 
-    <span class="n">private</span> <span class="kt">int</span> <span class="n">id</span><span class="p">;</span> <span class="c1">// 商品编号</span>
-    <span class="n">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span> <span class="c1">// 商品名称</span>
-    <span class="n">private</span> <span class="n">String</span> <span class="n">city</span><span class="p">;</span> <span class="c1">// 产地</span>
-    <span class="n">private</span> <span class="kt">int</span> <span class="n">price</span><span class="p">;</span> <span class="c1">// 价格</span>
-    <span class="n">private</span> <span class="kt">int</span> <span class="n">number</span><span class="p">;</span> <span class="c1">// 库存</span>
-    <span class="n">private</span> <span class="n">String</span> <span class="n">picture</span><span class="p">;</span> <span class="c1">// 商品图片</span>
+    private int id; // 商品编号
+    private String name; // 商品名称
+    private String city; // 产地
+    private int price; // 价格
+    private int number; // 库存
+    private String picture; // 商品图片
 
-    <span class="n">public</span> <span class="kt">int</span> <span class="nf">getId</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">id</span><span class="p">;</span>
-    <span class="p">}</span>
+    public int getId() {
+        return id;
+    }
 
-    <span class="n">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">this</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
-    <span class="p">}</span>
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    <span class="n">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
-    <span class="p">}</span>
+    public String getName() {
+        return name;
+    }
 
-    <span class="n">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">this</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
-    <span class="p">}</span>
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    <span class="n">public</span> <span class="n">String</span> <span class="nf">getCity</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">city</span><span class="p">;</span>
-    <span class="p">}</span>
+    public String getCity() {
+        return city;
+    }
 
-    <span class="n">public</span> <span class="kt">void</span> <span class="nf">setCity</span><span class="p">(</span><span class="n">String</span> <span class="n">city</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">this</span><span class="p">.</span><span class="n">city</span> <span class="o">=</span> <span class="n">city</span><span class="p">;</span>
-    <span class="p">}</span>
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-    <span class="n">public</span> <span class="kt">int</span> <span class="nf">getPrice</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">price</span><span class="p">;</span>
-    <span class="p">}</span>
+    public int getPrice() {
+        return price;
+    }
 
-    <span class="n">public</span> <span class="kt">void</span> <span class="nf">setPrice</span><span class="p">(</span><span class="kt">int</span> <span class="n">price</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">this</span><span class="p">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span><span class="p">;</span>
-    <span class="p">}</span>
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
-    <span class="n">public</span> <span class="kt">int</span> <span class="nf">getNumber</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">number</span><span class="p">;</span>
-    <span class="p">}</span>
+    public int getNumber() {
+        return number;
+    }
 
-    <span class="n">public</span> <span class="kt">void</span> <span class="nf">setNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">number</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">this</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span><span class="p">;</span>
-    <span class="p">}</span>
+    public void setNumber(int number) {
+        this.number = number;
+    }
 
-    <span class="n">public</span> <span class="n">String</span> <span class="nf">getPicture</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">picture</span><span class="p">;</span>
-    <span class="p">}</span>
+    public String getPicture() {
+        return picture;
+    }
 
-    <span class="n">public</span> <span class="kt">void</span> <span class="nf">setPicture</span><span class="p">(</span><span class="n">String</span> <span class="n">picture</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">this</span><span class="p">.</span><span class="n">picture</span> <span class="o">=</span> <span class="n">picture</span><span class="p">;</span>
-    <span class="p">}</span>
-
-<span class="p">}</span>
-</pre></div>
-
-
-<h2 id="3-dao">3. DAO</h2>
-<div class="highlight"><pre><span class="nx">package</span> <span class="nx">dao</span><span class="p">;</span>
-
-<span class="k">import</span> <span class="nx">java.sql.Connection</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">java.sql.PreparedStatement</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">java.sql.ResultSet</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">java.util.ArrayList</span><span class="p">;</span>
-
-<span class="k">import</span> <span class="nx">util.DBHelper</span><span class="p">;</span>
-
-<span class="k">import</span> <span class="nx">entity.Items</span><span class="p">;</span>
-
-<span class="c1">//商品的业务逻辑类</span>
-<span class="k">public</span> <span class="nf">class</span> <span class="nx">ItemsDAO</span> <span class="p">{</span>
-
-    <span class="c1">// 获得所有的商品信息</span>
-    <span class="k">public</span> <span class="nf">ArrayList</span><span class="o">&lt;</span><span class="nx">Items</span><span class="o">&gt;</span> <span class="nx">getAllItems</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nb">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
-        <span class="nx">PreparedStatement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
-        <span class="k">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
-        <span class="nx">ArrayList</span><span class="o">&lt;</span><span class="nx">Items</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">ArrayList</span><span class="o">&lt;</span><span class="nx">Items</span><span class="o">&gt;</span><span class="p">();</span> <span class="c1">// 商品集合</span>
-        <span class="nx">try</span> <span class="p">{</span>
-            <span class="n">conn</span> <span class="o">=</span> <span class="nx">DBHelper.getConnection</span><span class="p">();</span>
-            <span class="kt">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;select * from items;&quot;</span><span class="p">;</span> <span class="c1">// SQL语句</span>
-            <span class="n">stmt</span> <span class="o">=</span> <span class="nx">conn.prepareStatement</span><span class="p">(</span><span class="nb">sql</span><span class="p">);</span>
-            <span class="n">rs</span> <span class="o">=</span> <span class="nx">stmt.executeQuery</span><span class="p">();</span>
-            <span class="k">while</span> <span class="p">(</span><span class="nx">rs.next</span><span class="p">())</span> <span class="p">{</span>
-                <span class="nx">Items</span> <span class="n">item</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">Items</span><span class="p">();</span>
-                <span class="nx">item.setId</span><span class="p">(</span><span class="nx">rs.getInt</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">));</span>
-                <span class="nx">item.setName</span><span class="p">(</span><span class="nx">rs.getString</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">));</span>
-                <span class="nx">item.setCity</span><span class="p">(</span><span class="nx">rs.getString</span><span class="p">(</span><span class="s2">&quot;city&quot;</span><span class="p">));</span>
-                <span class="nx">item.setNumber</span><span class="p">(</span><span class="nx">rs.getInt</span><span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">));</span>
-                <span class="nx">item.setPrice</span><span class="p">(</span><span class="nx">rs.getInt</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">));</span>
-                <span class="nx">item.setPicture</span><span class="p">(</span><span class="nx">rs.getString</span><span class="p">(</span><span class="s2">&quot;picture&quot;</span><span class="p">));</span>
-                <span class="nx">list.add</span><span class="p">(</span><span class="nb">item</span><span class="p">);</span><span class="c1">// 把一个商品加入集合</span>
-            <span class="p">}</span>
-            <span class="k">return</span> <span class="nb">list</span><span class="p">;</span> <span class="c1">// 返回集合。</span>
-        <span class="p">}</span> <span class="nx">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">ex.printStackTrace</span><span class="p">();</span>
-            <span class="k">return</span> <span class="kt">null</span><span class="p">;</span>
-        <span class="p">}</span> <span class="nx">finally</span> <span class="p">{</span>
-            <span class="c1">// 释放数据集对象</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">rs</span> <span class="o">!=</span> <span class="kt">null</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">try</span> <span class="p">{</span>
-                    <span class="nx">rs.close</span><span class="p">();</span>
-                    <span class="n">rs</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
-                <span class="p">}</span> <span class="nx">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">ex.printStackTrace</span><span class="p">();</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-            <span class="c1">// 释放语句对象</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">stmt</span> <span class="o">!=</span> <span class="kt">null</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">try</span> <span class="p">{</span>
-                    <span class="nx">stmt.close</span><span class="p">();</span>
-                    <span class="n">stmt</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
-                <span class="p">}</span> <span class="nx">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">ex.printStackTrace</span><span class="p">();</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-
-    <span class="p">}</span>
-
-    <span class="c1">// 根据商品编号获得商品资料</span>
-    <span class="k">public</span> <span class="nf">Items</span> <span class="nx">getItemsById</span><span class="p">(</span><span class="nx">int</span> <span class="nb">id</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nb">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
-        <span class="nx">PreparedStatement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
-        <span class="k">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
-        <span class="nx">try</span> <span class="p">{</span>
-            <span class="n">conn</span> <span class="o">=</span> <span class="nx">DBHelper.getConnection</span><span class="p">();</span>
-            <span class="kt">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;select * from items where id=?;&quot;</span><span class="p">;</span> <span class="c1">// SQL语句</span>
-            <span class="n">stmt</span> <span class="o">=</span> <span class="nx">conn.prepareStatement</span><span class="p">(</span><span class="nb">sql</span><span class="p">);</span>
-            <span class="nx">stmt.setInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">id</span><span class="p">);</span>
-            <span class="n">rs</span> <span class="o">=</span> <span class="nx">stmt.executeQuery</span><span class="p">();</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">rs.next</span><span class="p">())</span> <span class="p">{</span>
-                <span class="nx">Items</span> <span class="n">item</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">Items</span><span class="p">();</span>
-                <span class="nx">item.setId</span><span class="p">(</span><span class="nx">rs.getInt</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">));</span>
-                <span class="nx">item.setName</span><span class="p">(</span><span class="nx">rs.getString</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">));</span>
-                <span class="nx">item.setCity</span><span class="p">(</span><span class="nx">rs.getString</span><span class="p">(</span><span class="s2">&quot;city&quot;</span><span class="p">));</span>
-                <span class="nx">item.setNumber</span><span class="p">(</span><span class="nx">rs.getInt</span><span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">));</span>
-                <span class="nx">item.setPrice</span><span class="p">(</span><span class="nx">rs.getInt</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">));</span>
-                <span class="nx">item.setPicture</span><span class="p">(</span><span class="nx">rs.getString</span><span class="p">(</span><span class="s2">&quot;picture&quot;</span><span class="p">));</span>
-                <span class="k">return</span> <span class="nb">item</span><span class="p">;</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="kt">null</span><span class="p">;</span>
-            <span class="p">}</span>
-
-        <span class="p">}</span> <span class="nx">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">ex.printStackTrace</span><span class="p">();</span>
-            <span class="k">return</span> <span class="kt">null</span><span class="p">;</span>
-        <span class="p">}</span> <span class="nx">finally</span> <span class="p">{</span>
-            <span class="c1">// 释放数据集对象</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">rs</span> <span class="o">!=</span> <span class="kt">null</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">try</span> <span class="p">{</span>
-                    <span class="nx">rs.close</span><span class="p">();</span>
-                    <span class="n">rs</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
-                <span class="p">}</span> <span class="nx">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">ex.printStackTrace</span><span class="p">();</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-            <span class="c1">// 释放语句对象</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">stmt</span> <span class="o">!=</span> <span class="kt">null</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">try</span> <span class="p">{</span>
-                    <span class="nx">stmt.close</span><span class="p">();</span>
-                    <span class="n">stmt</span> <span class="o">=</span> <span class="kt">null</span><span class="p">;</span>
-                <span class="p">}</span> <span class="nx">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">ex.printStackTrace</span><span class="p">();</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="c1">//获取最近浏览的前五条商品信息</span>
-    <span class="k">public</span> <span class="nf">ArrayList</span><span class="o">&lt;</span><span class="nx">Items</span><span class="o">&gt;</span> <span class="nx">getViewList</span><span class="p">(</span><span class="kt">String</span> <span class="nb">list</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nx">System.out.println</span><span class="p">(</span><span class="s2">&quot;list:&quot;</span><span class="o">+</span><span class="nb">list</span><span class="p">);</span>
-        <span class="nx">ArrayList</span><span class="o">&lt;</span><span class="nx">Items</span><span class="o">&gt;</span> <span class="n">itemlist</span> <span class="o">=</span> <span class="nb">new</span> <span class="nx">ArrayList</span><span class="o">&lt;</span><span class="nx">Items</span><span class="o">&gt;</span><span class="p">();</span>
-        <span class="nx">int</span> <span class="n">iCount</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span> <span class="c1">//每次返回前五条记录</span>
-        <span class="k">if</span><span class="p">(</span><span class="nb">list</span><span class="o">!=</span><span class="kt">null</span><span class="o">&amp;&amp;</span><span class="nx">list.length</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">String</span><span class="err">[</span><span class="cp">]</span> arr = list.split(&quot;,&quot;);
-            System.out.println(&quot;arr.length=&quot;+arr.length);
-            //如果商品记录大于等于5条
-            if(arr.length&gt;=5)
-            {
-               for(int i=arr.length-1;i&gt;=arr.length-iCount;i--)
-               {
-                  itemlist.add(getItemsById(Integer.parseInt(arr<span class="cp">[</span><span class="nx">i</span><span class="cp">]</span>)));  
-               }
-            }
-            else
-            {
-                for(int i=arr.length-1;i&gt;=0;i--)
-                {
-                    itemlist.add(getItemsById(Integer.parseInt(arr<span class="cp">[</span><span class="nx">i</span><span class="cp">]</span>)));
-                }
-            }
-            return itemlist;
-        }
-        else
-        {
-            return null;
-        }
-
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
 }
 </pre></div>
 
 
+<h2 id="3-dao">3. DAO</h2>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">dao</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.PreparedStatement</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.ResultSet</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">util.DBHelper</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">entity.Items</span><span class="p">;</span>
+
+<span class="o">//</span><span class="err">商品的业务逻辑类</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">ItemsDAO</span> <span class="p">{</span>
+
+    <span class="o">//</span> <span class="err">获得所有的商品信息</span>
+    <span class="n">public</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Items</span><span class="o">&gt;</span> <span class="n">getAllItems</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+        <span class="n">PreparedStatement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+        <span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Items</span><span class="o">&gt;</span> <span class="nb">list</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Items</span><span class="o">&gt;</span><span class="p">();</span> <span class="o">//</span> <span class="err">商品集合</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">conn</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">getConnection</span><span class="p">();</span>
+            <span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;select * from items;&quot;</span><span class="p">;</span> <span class="o">//</span> <span class="n">SQL语句</span>
+            <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
+            <span class="n">rs</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="n">executeQuery</span><span class="p">();</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">next</span><span class="p">())</span> <span class="p">{</span>
+                <span class="n">Items</span> <span class="n">item</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Items</span><span class="p">();</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">setId</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getInt</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">));</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">));</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">setCity</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s2">&quot;city&quot;</span><span class="p">));</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">setNumber</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getInt</span><span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">));</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">setPrice</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getInt</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">));</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">setPicture</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s2">&quot;picture&quot;</span><span class="p">));</span>
+                <span class="nb">list</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">);</span><span class="o">//</span> <span class="err">把一个商品加入集合</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">;</span> <span class="o">//</span> <span class="err">返回集合。</span>
+        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="ne">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ex</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+            <span class="k">return</span> <span class="n">null</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+            <span class="o">//</span> <span class="err">释放数据集对象</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">rs</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">try</span> <span class="p">{</span>
+                    <span class="n">rs</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+                    <span class="n">rs</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+                <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="ne">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">ex</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="o">//</span> <span class="err">释放语句对象</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">stmt</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">try</span> <span class="p">{</span>
+                    <span class="n">stmt</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+                    <span class="n">stmt</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+                <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="ne">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">ex</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+
+    <span class="o">//</span> <span class="err">根据商品编号获得商品资料</span>
+    <span class="n">public</span> <span class="n">Items</span> <span class="n">getItemsById</span><span class="p">(</span><span class="nb">int</span> <span class="nb">id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+        <span class="n">PreparedStatement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+        <span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">conn</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">getConnection</span><span class="p">();</span>
+            <span class="n">String</span> <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;select * from items where id=?;&quot;</span><span class="p">;</span> <span class="o">//</span> <span class="n">SQL语句</span>
+            <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
+            <span class="n">stmt</span><span class="o">.</span><span class="n">setInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">id</span><span class="p">);</span>
+            <span class="n">rs</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="n">executeQuery</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">next</span><span class="p">())</span> <span class="p">{</span>
+                <span class="n">Items</span> <span class="n">item</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Items</span><span class="p">();</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">setId</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getInt</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">));</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">));</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">setCity</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s2">&quot;city&quot;</span><span class="p">));</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">setNumber</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getInt</span><span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">));</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">setPrice</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getInt</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">));</span>
+                <span class="n">item</span><span class="o">.</span><span class="n">setPicture</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="s2">&quot;picture&quot;</span><span class="p">));</span>
+                <span class="k">return</span> <span class="n">item</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">null</span><span class="p">;</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="ne">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ex</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+            <span class="k">return</span> <span class="n">null</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+            <span class="o">//</span> <span class="err">释放数据集对象</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">rs</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">try</span> <span class="p">{</span>
+                    <span class="n">rs</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+                    <span class="n">rs</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+                <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="ne">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">ex</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="o">//</span> <span class="err">释放语句对象</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">stmt</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">try</span> <span class="p">{</span>
+                    <span class="n">stmt</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+                    <span class="n">stmt</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+                <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="ne">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">ex</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="o">//</span><span class="err">获取最近浏览的前五条商品信息</span>
+    <span class="n">public</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Items</span><span class="o">&gt;</span> <span class="n">getViewList</span><span class="p">(</span><span class="n">String</span> <span class="nb">list</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;list:&quot;</span><span class="o">+</span><span class="nb">list</span><span class="p">);</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Items</span><span class="o">&gt;</span> <span class="n">itemlist</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Items</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="nb">int</span> <span class="n">iCount</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span> <span class="o">//</span><span class="err">每次返回前五条记录</span>
+        <span class="k">if</span><span class="p">(</span><span class="nb">list</span><span class="o">!=</span><span class="n">null</span><span class="o">&amp;&amp;</span><span class="nb">list</span><span class="o">.</span><span class="n">length</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">String</span><span class="p">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="nb">list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;arr.length=&quot;</span><span class="o">+</span><span class="n">arr</span><span class="o">.</span><span class="n">length</span><span class="p">);</span>
+            <span class="o">//</span><span class="err">如果商品记录大于等于</span><span class="mi">5</span><span class="err">条</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">length</span><span class="o">&gt;=</span><span class="mi">5</span><span class="p">)</span>
+            <span class="p">{</span>
+               <span class="k">for</span><span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="o">=</span><span class="n">arr</span><span class="o">.</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="n">arr</span><span class="o">.</span><span class="n">length</span><span class="o">-</span><span class="n">iCount</span><span class="p">;</span><span class="n">i</span><span class="o">--</span><span class="p">)</span>
+               <span class="p">{</span>
+                  <span class="n">itemlist</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">getItemsById</span><span class="p">(</span><span class="n">Integer</span><span class="o">.</span><span class="n">parseInt</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">])));</span>  
+               <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="k">for</span><span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="o">=</span><span class="n">arr</span><span class="o">.</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">--</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">itemlist</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">getItemsById</span><span class="p">(</span><span class="n">Integer</span><span class="o">.</span><span class="n">parseInt</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">])));</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">itemlist</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">null</span><span class="p">;</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
 <h2 id="4-indexjsp">4. index.jsp</h2>
-<div class="highlight"><pre><span class="cp">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;java&quot;</span> <span class="n">import</span><span class="o">=</span><span class="s2">&quot;java.util.*&quot;</span> <span class="n">contentType</span><span class="o">=</span><span class="s2">&quot;text/html; charset=utf-8&quot;</span><span class="cp">%&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;java&quot;</span> <span class="n">import</span><span class="o">=</span><span class="s2">&quot;java.util.*&quot;</span> <span class="n">contentType</span><span class="o">=</span><span class="s2">&quot;text/html; charset=utf-8&quot;</span><span class="cp">%&gt;</span>
 <span class="cp">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">import</span><span class="o">=</span><span class="s2">&quot;entity.Items&quot;</span><span class="cp">%&gt;</span>
 <span class="cp">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">import</span><span class="o">=</span><span class="s2">&quot;dao.ItemsDAO&quot;</span><span class="cp">%&gt;</span>
 <span class="cp">&lt;%</span>
@@ -424,7 +424,7 @@
 
 
 <h2 id="5-detailjsp">5. detail.jsp</h2>
-<div class="highlight"><pre><span class="cp">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;java&quot;</span> <span class="n">import</span><span class="o">=</span><span class="s2">&quot;java.util.*&quot;</span> <span class="n">contentType</span><span class="o">=</span><span class="s2">&quot;text/html; charset=utf-8&quot;</span> <span class="cp">%&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;java&quot;</span> <span class="n">import</span><span class="o">=</span><span class="s2">&quot;java.util.*&quot;</span> <span class="n">contentType</span><span class="o">=</span><span class="s2">&quot;text/html; charset=utf-8&quot;</span> <span class="cp">%&gt;</span>
 <span class="cp">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">import</span><span class="o">=</span><span class="s2">&quot;entity.Items&quot;</span><span class="cp">%&gt;</span>
 <span class="cp">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="n">import</span><span class="o">=</span><span class="s2">&quot;dao.ItemsDAO&quot;</span><span class="cp">%&gt;</span>
 <span class="cp">&lt;%</span>
@@ -504,9 +504,9 @@
           <span class="cp">%&gt;</span>
           <span class="cp">&lt;%</span> 
               <span class="nb">String</span> <span class="n">list</span> <span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">;</span>
-              <span class="sr">//</span><span class="err">从客户端获得</span><span class="no">Cookies</span><span class="err">集合</span>
+              <span class="sr">//</span><span class="err">从客户端获得</span><span class="no">Cookies集合</span>
               <span class="no">Cookie</span><span class="o">[]</span> <span class="n">cookies</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getCookies</span><span class="p">();</span>
-              <span class="sr">//</span><span class="err">遍历这个</span><span class="no">Cookies</span><span class="err">集合</span>
+              <span class="sr">//</span><span class="err">遍历这个</span><span class="no">Cookies集合</span>
               <span class="k">if</span><span class="p">(</span><span class="n">cookies!</span><span class="o">=</span><span class="n">null</span><span class="o">&amp;&amp;</span><span class="n">cookies</span><span class="o">.</span><span class="n">length</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
               <span class="p">{</span>
                   <span class="k">for</span><span class="p">(</span><span class="no">Cookie</span> <span class="ss">c</span><span class="p">:</span><span class="n">cookies</span><span class="p">)</span>
@@ -606,13 +606,13 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-13T20:11:00"> 4 13, 2015</time>
+            <time pubdate="pubdate" datetime="2015-04-13T20:11:00+08:00"> 4 13, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Java-ref">Java</a> 
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article"> 
                 <li><a href="/tags.html#Java-ref">Java
-                    <span>12</span>
+                    <span>13</span>
 </a></li>
                 <li><a href="/tags.html#JSP-ref">JSP
                     <span>9</span>

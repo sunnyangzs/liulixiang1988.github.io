@@ -60,14 +60,14 @@
 
             <h2 id="_1">文件相关</h2>
 <h3 id="jqueryinput-file"><a href="http://stackoverflow.com/questions/740114/how-to-use-jquery-to-get-the-current-value-of-a-file-input-field">jQuery获取当前input file里的值</a>：</h3>
-<div class="highlight"><pre><span class="err">$</span><span class="p">(</span><span class="s">&quot;#fileinput&quot;</span><span class="p">).</span><span class="n">val</span><span class="p">();</span>
+<div class="highlight"><pre><span></span>$(&quot;#fileinput&quot;).val();
 </pre></div>
 
 
 <h3 id="jqueryinput-file_1"><a href="http://stackoverflow.com/questions/10703102/jquery-get-all-filenames-inside-input-file">jQuery获取input file里的多个值</a></h3>
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">files</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#basicUploadFile&#39;</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s2">&quot;files&quot;</span><span class="p">);</span> <span class="c1">//files是FileList对象</span>
+<div class="highlight"><pre><span></span>var files = $(&#39;#basicUploadFile&#39;).prop(&quot;files&quot;); //files是FileList对象
 
-<span class="kd">var</span> <span class="nx">names</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">files</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">val</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span> <span class="p">});</span> <span class="c1">//names是字符串数组</span>
+var names = $.map(files, function(val) { return val.name; }); //names是字符串数组
 </pre></div>
 
 
@@ -112,7 +112,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-05-13T15:08:00"> 5 13, 2015</time>
+            <time pubdate="pubdate" datetime="2015-05-13T15:08:00+08:00"> 5 13, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>

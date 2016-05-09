@@ -83,39 +83,39 @@
 
             
 <h2 id="1">1. 文件基本结构</h2>
-<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;title&gt;&lt;/title&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content</span><span class="o">=</span><span class="s">"IE=edge"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">""</span><span class="p">&gt;</span>
     <span class="c">&lt;!--react.js--&gt;</span>
-    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"js/react.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"js/react.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
     <span class="c">&lt;!--解析JSX--&gt;</span>
-    <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"js/JSXTransformer.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"container"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"js/JSXTransformer.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"container"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
     <span class="c">&lt;!--JSX的声明需要是type="text/jsx"--&gt;</span>
-    <span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
-    var Hello = React.createClass({
-        render: function(){
-            return <span class="nt">&lt;div&gt;</span>Hello, {this.props.name}<span class="nt">&lt;/div&gt;</span>;
-        }
-    });
-    React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><span class="s">"world"</span><span class="nt">/&gt;</span>, 
-        document.getElementById('container'));
-    <span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/jsx"</span><span class="p">&gt;</span>
+    <span class="kd">var</span> <span class="nx">Hello</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+        <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+            <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;;</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="nx">React</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Hello</span> <span class="nx">name</span><span class="o">=</span><span class="s2">"world"</span><span class="o">/&gt;</span><span class="p">,</span> 
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'container'</span><span class="p">));</span>
+    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 <p>注意：JSX的type是<code>text/jsx</code>.</p>
 <h2 id="2">2. 添加样式</h2>
 <h3 id="21-css">2.1 使用外部CSS样式</h3>
 <p>注意，在JSX中不能直接给components添加<code>class</code>，因为<code>class</code>在ES6中是关键字，并且在ES6之前也是保留字，使用<code>className</code>来代替。</p>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
 var Hello = React.createClass({
     render: function(){
         return <span class="nt">&lt;div</span> <span class="na">className=</span><span class="s">"alert-text"</span><span class="nt">&gt;</span>Hello, {this.props.name}<span class="nt">&lt;/div&gt;</span>;
@@ -128,10 +128,10 @@ React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><spa
 <h3 id="22-css">2.2 使用内联CSS样式</h3>
 <p>JSX中内联样式需要使用字典来表示，并且使用驼峰命名法代替原有的<code>font-size</code>等格式的样式，比如<code>fontSize</code>来代替<code>font-size</code>等。
 <strong>注意</strong>，如果样式出现错误，可以通过控制台来查看错误。</p>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
 var Hello = React.createClass({
     render: function(){
-        return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">{{color:'red'}}</span><span class="nt">&gt;</span>Hello, {this.props.name}<span class="nt">&lt;/div&gt;</span>;
+        return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="cp">{{</span><span class="nv">color</span><span class="s1">:'red'</span><span class="cp">}}</span><span class="err">&gt;</span><span class="s">Hello,</span> <span class="err">{this.props.name}&lt;/div</span><span class="nt">&gt;</span>;
     }
 });
 React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><span class="s">"world"</span><span class="nt">/&gt;</span>, 
@@ -139,14 +139,14 @@ React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><spa
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 <p><code>style={{color:'red'}}</code>中有两个括号，可能会让人看着发晕，其实它与下面是等价的</p>
-<div class="highlight"><pre><span class="n">var</span> <span class="n">styleObj</span> <span class="o">=</span> <span class="p">{</span><span class="n">color</span><span class="o">:</span> <span class="err">'</span><span class="n">red</span><span class="err">'</span><span class="p">};</span>
-<span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="n">styleObj</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="nt">var</span> <span class="nt">styleObj</span> <span class="o">=</span> <span class="p">{</span><span class="nb">color</span><span class="o">:</span> <span class="s1">'red'</span><span class="p">}</span><span class="o">;</span>
+<span class="nt">style</span><span class="o">=</span><span class="p">{</span><span class="n">styleObj</span><span class="p">}</span>
 </pre></div>
 <h2 id="3-4">3. 条件判断的4种写法</h2>
 <p>现在假设我们要写一个页面，如果属性中有<code>name</code>，就输出<code>Hello, name</code>，如果<code>name</code>为空，就输出<code>Hello, world</code>。</p>
 <h3 id="31">3.1 三元表达式</h3>
 <p>类似C语言的三元表达式。</p>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
 var Hello = React.createClass({
     render: function(){
         return <span class="nt">&lt;div&gt;</span>Hello, {this.props.name ? this.props.name: "world"}<span class="nt">&lt;/div&gt;</span>;
@@ -157,7 +157,7 @@ React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><spa
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 <h3 id="32">3.2 使用变量</h3>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
 var Hello = React.createClass({
     getName: function(){
         if (this.props.name) {
@@ -177,7 +177,7 @@ React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><spa
 </pre></div>
 <h3 id="33">3.3 直接调用函数</h3>
 <p>这个跟第二种方法类似，就是把大括号去掉。</p>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
 var Hello = React.createClass({
     getName: function(){
         if (this.props.name) {
@@ -195,7 +195,7 @@ React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><spa
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 <h3 id="34">3.4 使用比较运算符</h3>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
 var Hello = React.createClass({
     render: function(){
         return <span class="nt">&lt;div&gt;</span>Hello, {this.props.name || "World"}<span class="nt">&lt;/div&gt;</span>;
@@ -206,7 +206,7 @@ React.render(<span class="nt">&lt;Hello</span> <span class="na">name=</span><spa
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 <h2 id="4">4. 函数表达式</h2>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
 var Hello = React.createClass({
     render: function(){
         return <span class="nt">&lt;div&gt;</span>Hello, {
@@ -263,7 +263,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-11-27T20:56:00">11 27, 2015</time>
+            <time pubdate="pubdate" datetime="2015-11-27T20:56:00+08:00">11 27, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>

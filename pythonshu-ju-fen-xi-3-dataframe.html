@@ -76,8 +76,8 @@
 <p><code>Series</code>是一维序列，而<code>DataFrame</code>是一种二维表结构，它包含一组类似于<code>index</code>的有序列，每列可以是不同的值。因此可以把<code>DataFrame</code>看作是共享同一个<code>index</code>的<code>Series</code>集合。</p>
 <h2 id="2-dataframe">2. <code>DataFrame</code>的创建</h2>
 <p>创建<code>DataFrame</code>的方法与<code>Series</code>类似。并且自带index,也可以指定index。</p>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Wangdachui'</span><span class="p">,</span> <span class="s">'Linling'</span><span class="p">,</span> <span class="s">'Niuyun'</span><span class="p">],</span> <span class="s">'pay'</span><span class="p">:[</span><span class="mi">4000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">6000</span><span class="p">]}</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'name'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Wangdachui'</span><span class="p">,</span> <span class="s1">'Linling'</span><span class="p">,</span> <span class="s1">'Niuyun'</span><span class="p">],</span> <span class="s1">'pay'</span><span class="p">:[</span><span class="mi">4000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">6000</span><span class="p">]}</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">frame</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span>
@@ -87,21 +87,21 @@
 <span class="mi">2</span>      <span class="n">Niuyun</span>  <span class="mi">6000</span>
 </pre></div>
 <h2 id="3-dataframe">3. <code>DataFrame</code>的基本操作</h2>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">frame</span><span class="p">[</span><span class="s">'name'</span><span class="p">]</span> <span class="c">#列明</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">frame</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="c1">#列明</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span>
 <span class="mi">0</span>    <span class="n">Wangdachui</span>
 <span class="mi">1</span>       <span class="n">Linling</span>
 <span class="mi">2</span>        <span class="n">Niuyun</span>
 <span class="n">Name</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">frame</span><span class="o">.</span><span class="n">pay</span> <span class="c">#列名</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">frame</span><span class="o">.</span><span class="n">pay</span> <span class="c1">#列名</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span>
 <span class="mi">0</span>    <span class="mi">4000</span>
 <span class="mi">1</span>    <span class="mi">5000</span>
 <span class="mi">2</span>    <span class="mi">6000</span>
 <span class="n">Name</span><span class="p">:</span> <span class="n">pay</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">frame</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c">#获取某一行，从0开始</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">frame</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1">#获取某一行，从0开始</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span>
 <span class="n">name</span>    <span class="n">Niuyun</span>
 <span class="n">pay</span>       <span class="mi">6000</span>
@@ -109,7 +109,7 @@
 </pre></div>
 <p>取<code>DataFrame</code>对象的列和行可获得<code>Series</code></p>
 <p><code>DataFrame</code>对象的修改和删除</p>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">frame</span><span class="p">[</span><span class="s">'name'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'admin'</span> <span class="c">#修改列名</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">frame</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'admin'</span> <span class="c1">#修改列名</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">frame</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span>
     <span class="n">name</span>   <span class="n">pay</span>
@@ -117,7 +117,7 @@
 <span class="mi">1</span>  <span class="n">admin</span>  <span class="mi">5000</span>
 <span class="mi">2</span>  <span class="n">admin</span>  <span class="mi">6000</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="k">del</span> <span class="n">frame</span><span class="p">[</span><span class="s">'pay'</span><span class="p">]</span> <span class="c">#删除列</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="k">del</span> <span class="n">frame</span><span class="p">[</span><span class="s1">'pay'</span><span class="p">]</span> <span class="c1">#删除列</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">frame</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span>
     <span class="n">name</span>
@@ -126,7 +126,7 @@
 <span class="mi">2</span>  <span class="n">admin</span>
 </pre></div>
 <h2 id="4-dataframename">4. <code>DataFrame</code>的<code>name</code>属性</h2>
-<div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'name'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Wangdachui'</span><span class="p">,</span> <span class="s">'Linling'</span><span class="p">,</span> <span class="s">'Niuyun'</span><span class="p">],</span> <span class="s">'pay'</span><span class="p">:[</span><span class="mi">4000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">6000</span><span class="p">]}</span>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'name'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Wangdachui'</span><span class="p">,</span> <span class="s1">'Linling'</span><span class="p">,</span> <span class="s1">'Niuyun'</span><span class="p">],</span> <span class="s1">'pay'</span><span class="p">:[</span><span class="mi">4000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">6000</span><span class="p">]}</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">frame</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">14</span><span class="p">]:</span>
@@ -135,7 +135,7 @@
 <span class="mi">1</span>     <span class="n">Linling</span>  <span class="mi">5000</span>
 <span class="mi">2</span>      <span class="n">Niuyun</span>  <span class="mi">6000</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">'No'</span> <span class="c">#设置index的name属性</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'No'</span> <span class="c1">#设置index的name属性</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">frame</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">16</span><span class="p">]:</span>
           <span class="n">name</span>   <span class="n">pay</span>
@@ -185,7 +185,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-11-29T15:54:00">11 29, 2015</time>
+            <time pubdate="pubdate" datetime="2015-11-29T15:54:00+08:00">11 29, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Python-ref">Python</a> 
             <h4>Tags</h4>

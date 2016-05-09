@@ -59,16 +59,16 @@
         <div class="span8 offset2 article-content">
 
             <h2 id="1-sassscss">1. sass和scss形式的相互转换</h2>
-<div class="highlight"><pre><span class="err">$</span><span class="n">sass</span><span class="o">-</span><span class="n">convert</span> <span class="n">main</span><span class="p">.</span><span class="n">sass</span> <span class="n">main</span><span class="p">.</span><span class="n">scss</span>
-<span class="err">或者</span>
-<span class="err">$</span><span class="n">sass</span><span class="o">-</span><span class="n">convert</span> <span class="n">main</span><span class="p">.</span><span class="n">scss</span> <span class="n">main</span><span class="p">.</span><span class="n">sass</span>
+<div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">sass</span><span class="x">-convert main.sass main.scss</span>
+<span class="x">或者</span>
+<span class="p">$</span><span class="nv">sass</span><span class="x">-convert main.scss main.sass</span>
 </pre></div>
 
 
 <h2 id="2">2. 创建应用</h2>
-<div class="highlight"><pre><span class="err">$</span><span class="n">compass</span> <span class="n">create</span> <span class="n">learn</span><span class="o">-</span><span class="n">sass</span><span class="o">-</span><span class="n">syntax</span>
-<span class="err">$</span><span class="n">cd</span> <span class="n">learn</span><span class="o">-</span><span class="n">sass</span><span class="o">-</span><span class="n">syntax</span>
-<span class="err">$</span><span class="n">compass</span> <span class="n">watch</span>
+<div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">compass</span><span class="x"> create learn-sass-syntax</span>
+<span class="p">$</span><span class="nv">cd</span><span class="x"> learn-sass-syntax</span>
+<span class="p">$</span><span class="nv">compass</span><span class="x"> watch</span>
 </pre></div>
 
 
@@ -77,7 +77,7 @@
 <p>编码问题，如果出现中文编译失败，打开<code>rubygems\gems\sass\lib\sass\engine.rb</code>文件，在require后面添加<code>Encoding.default_external=Encoding.find('utf-8')</code>。</p>
 <h3 id="31-import">3.1 引用@import</h3>
 <p>使用下划线命名的文件比如_variables.scss，sass称为<strong>局部文件</strong>，是用到其它文件中的。如果在其他文件中引用，请使用:</p>
-<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;variables&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="cp">@import</span> <span class="s2">&quot;variables&quot;</span><span class="p">;</span>
 </pre></div>
 
 
@@ -98,10 +98,10 @@
 <p>Sass局部文件的文件名以下划线开头。Sass不会将局部文件编译成单独的文件，而只把这个文件用于导入。导入局部文件不用输入下划线，比如有一个局部文件<code>themes/_night-sky.scss</code>，导入这个文件只需要<code>@import "themes/night-sky";</code></p>
 <h4 id="312">3.1.2 默认变量值</h4>
 <p>使用<code>!default</code>来声明默认变量，作用是：如果这个变量被声明赋值了，就用它声明的值，否则就用这个默认值。</p>
-<div class="highlight"><pre><span class="err">$</span><span class="n">fancybox</span><span class="o">-</span><span class="n">width</span><span class="o">:</span> <span class="mi">400</span><span class="n">px</span> <span class="o">!</span><span class="k">default</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="o">$</span><span class="nt">fancybox-width</span><span class="o">:</span> <span class="nt">400px</span> <span class="o">!</span><span class="nt">default</span><span class="o">;</span>
 
-<span class="p">.</span><span class="n">fancybox</span> <span class="p">{</span>
-    <span class="nl">width:</span> <span class="err">$</span><span class="n">fancybox</span><span class="o">-</span><span class="n">width</span><span class="p">;</span>
+<span class="nc">.fancybox</span> <span class="p">{</span>
+    <span class="nb">width</span><span class="o">:</span> <span class="err">$</span><span class="n">fancybox</span><span class="o">-</span><span class="nb">width</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -109,77 +109,77 @@
 <p>如果用户在导入你的Sass局部文件之前声明了<code>$fancybox-width</code>变量，那么你的局部文件中对<code>$fancybox-width</code>赋值400px就无效。如果用户没有做这样的声明，则<code>$fancybox-width</code>将默认为400px.</p>
 <h4 id="313">3.1.3 嵌套导入</h4>
 <p>比如有一个<code>_blue-theme.scss</code>的文件，内容如下：</p>
-<div class="highlight"><pre><span class="n">aside</span><span class="p">{</span>
-    <span class="nl">background:</span> <span class="n">blue</span><span class="p">;</span>
-    <span class="nl">color:</span> <span class="n">white</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="nt">aside</span><span class="p">{</span>
+    <span class="nb">background</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;</span>
+    <span class="nb">color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p>然后导入到一个CSS规则内：</p>
-<div class="highlight"><pre><span class="p">.</span><span class="n">blue</span><span class="o">-</span><span class="n">theme</span> <span class="p">{</span> <span class="err">@</span><span class="n">import</span> <span class="s">&quot;blue-hteme&quot;</span><span class="p">;}</span>
+<div class="highlight"><pre><span></span><span class="o">.</span><span class="n">blue</span><span class="o">-</span><span class="n">theme</span> <span class="p">{</span> <span class="nd">@import</span> <span class="s2">&quot;blue-hteme&quot;</span><span class="p">;}</span>
 </pre></div>
 
 
 <p>被翻译成：</p>
-<div class="highlight"><pre><span class="p">.</span><span class="n">blue</span><span class="o">-</span><span class="n">theme</span><span class="p">{</span>
-    <span class="n">aside</span><span class="p">{</span>
-        <span class="nl">background:</span> <span class="n">blue</span><span class="p">;</span>
-        <span class="nl">color:</span> <span class="err">#</span><span class="n">fff</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="na">.blue-theme</span><span class="err">{</span>
+    <span class="nf">aside</span><span class="err">{</span>
+        <span class="nl">background:</span> <span class="nf">blue</span><span class="err">;</span>
+        <span class="nl">color:</span> <span class="c">#fff;</span>
+    <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <hr />
 <h3 id="32">3.2 变量声明</h3>
-<div class="highlight"><pre><span class="err">$</span><span class="n">headline</span><span class="o">-</span><span class="n">ff</span><span class="o">:</span> <span class="n">Braggadocio</span><span class="p">,</span> <span class="n">Arial</span><span class="p">,</span> <span class="n">Verdana</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="n">sans</span><span class="o">-</span><span class="n">serif</span><span class="p">;</span>
-<span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="o">:</span> <span class="n">Arial</span><span class="p">,</span> <span class="n">Verdana</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="n">sans</span><span class="o">-</span><span class="n">serif</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="o">$</span><span class="nt">headline-ff</span><span class="o">:</span> <span class="nt">Braggadocio</span><span class="o">,</span> <span class="nt">Arial</span><span class="o">,</span> <span class="nt">Verdana</span><span class="o">,</span> <span class="nt">Helvetica</span><span class="o">,</span> <span class="nt">sans-serif</span><span class="o">;</span>
+<span class="o">$</span><span class="nt">main-sec-ff</span><span class="o">:</span> <span class="nt">Arial</span><span class="o">,</span> <span class="nt">Verdana</span><span class="o">,</span> <span class="nt">Helvetica</span><span class="o">,</span> <span class="nt">sans-serif</span><span class="o">;</span>
 </pre></div>
 
 
 <p>变量声明中用中划线和下划线的变量是相同的，比如<code>$link-color</code>和<code>$link_color</code>是同一个变量。除了变量，后面介绍的混合器也使这样。</p>
 <h3 id="33">3.3 注释</h3>
-<div class="highlight"><pre><span class="cm">/*会被引用到编译后的css文件中*/</span>
-<span class="c1">//不会被引用到对应的css文件中</span>
+<div class="highlight"><pre><span></span><span class="cm">/*会被引用到编译后的css文件中*/</span><span class="w"></span>
+<span class="o">//</span><span class="err">不会被引用到对应的</span>css文件中<span class="w"></span>
 </pre></div>
 
 
 <h3 id="34-css">3.4 嵌套CSS规则</h3>
 <p>类似LESS</p>
-<div class="highlight"><pre><span class="p">.</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="p">{</span>
-    <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="na">.main-sec</span><span class="err">{</span>
+    <span class="nl">font-family:</span> <span class="nf">$main-sec-ff</span><span class="err">;</span>
 
-    <span class="p">.</span><span class="n">headline</span><span class="p">{</span>
-        <span class="n">font</span><span class="o">-</span><span class="n">family</span><span class="o">:</span> <span class="err">$</span><span class="n">main</span><span class="o">-</span><span class="n">sec</span><span class="o">-</span><span class="n">ff</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    <span class="na">.headline</span><span class="err">{</span>
+        <span class="nl">font-family:</span> <span class="nf">$main-sec-ff</span><span class="err">;</span>
+    <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <h4 id="341">3.4.1 父类选择器&amp;</h4>
 <p>同LESS的&amp;</p>
 <h4 id="342">3.4.2 群组选择器的嵌套</h4>
-<div class="highlight"><pre><span class="p">.</span><span class="n">container</span><span class="p">{</span>
-    <span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">h3</span><span class="p">{</span> <span class="n">margin</span><span class="o">-</span><span class="n">bottom</span><span class="o">:</span> <span class="mf">.8</span><span class="n">em</span><span class="p">;}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="na">.container</span><span class="err">{</span>
+    <span class="nf">h1</span><span class="p">,</span> <span class="no">h2</span><span class="p">,</span> <span class="no">h3</span><span class="err">{</span> <span class="no">margin-bottom</span><span class="p">:</span> <span class="no">.8em</span><span class="err">;}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <p>被翻译成：</p>
-<div class="highlight"><pre><span class="p">.</span><span class="n">container</span> <span class="n">h1</span><span class="p">,</span> <span class="p">.</span><span class="n">container</span> <span class="n">h2</span><span class="p">,</span> <span class="p">.</span><span class="n">container</span> <span class="n">h3</span><span class="p">{</span><span class="n">margin</span><span class="o">-</span><span class="n">bottom</span><span class="o">:</span> <span class="mf">.8</span><span class="n">em</span><span class="p">;}</span>
+<div class="highlight"><pre><span></span><span class="na">.container</span> <span class="no">h1</span><span class="p">,</span> <span class="no">.container</span> <span class="no">h2</span><span class="p">,</span> <span class="no">.container</span> <span class="no">h3</span><span class="err">{</span><span class="no">margin-bottom</span><span class="p">:</span> <span class="no">.8em</span><span class="err">;}</span>
 </pre></div>
 
 
 <p>同样的，</p>
-<div class="highlight"><pre><span class="n">nav</span><span class="p">,</span> <span class="n">aside</span> <span class="p">{</span>
-    <span class="n">a</span> <span class="p">{</span><span class="n">color</span><span class="o">:</span> <span class="n">blue</span><span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span>nav, aside {
+    a {color: blue}
+}
 </pre></div>
 
 
 <p>被翻译成：</p>
-<div class="highlight"><pre><span class="n">nav</span> <span class="n">a</span><span class="p">,</span> <span class="n">aside</span> <span class="n">a</span><span class="p">{</span> <span class="n">color</span><span class="o">:</span> <span class="n">blue</span><span class="p">;}</span>
+<div class="highlight"><pre><span></span><span class="nt">nav</span> <span class="nt">a</span><span class="o">,</span> <span class="nt">aside</span> <span class="nt">a</span><span class="p">{</span> <span class="nb">color</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;}</span>
 </pre></div>
 
 
@@ -187,54 +187,54 @@
 <p><code>&gt;</code>是直接子元素选择：<code>article &gt; section</code>.</p>
 <p><code>+</code>同层相邻组合选择器
 <code>~</code>同层全体组合选择器</p>
-<div class="highlight"><pre><span class="n">article</span> <span class="p">{</span>
-    <span class="o">~</span> <span class="n">article</span> <span class="p">{</span> <span class="n">border</span><span class="o">-</span><span class="n">top</span><span class="o">:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">dashed</span> <span class="err">#</span><span class="n">ccc</span><span class="p">;}</span>
-    <span class="o">&gt;</span> <span class="n">section</span> <span class="p">{</span> <span class="n">background</span><span class="o">:</span> <span class="err">#</span><span class="n">eee</span><span class="p">;}</span>
-    <span class="n">dl</span> <span class="o">&gt;</span> <span class="p">{</span>
-        <span class="n">dt</span> <span class="p">{</span> <span class="n">color</span> <span class="o">:</span> <span class="err">#</span><span class="mi">333</span><span class="p">;}</span>
-        <span class="n">dd</span> <span class="p">{</span> <span class="n">color</span> <span class="o">:</span> <span class="err">#</span><span class="mi">555</span><span class="p">;}</span>
-    <span class="p">}</span>
-    <span class="n">nav</span> <span class="o">+</span> <span class="o">&amp;</span> <span class="p">{</span> <span class="n">margin</span><span class="o">-</span><span class="n">top</span><span class="o">:</span> <span class="mi">0</span><span class="p">;}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="nt">article</span> <span class="p">{</span>
+    <span class="o">~</span> <span class="n">article</span> <span class="err">{</span> <span class="nb">border-top</span><span class="o">:</span> <span class="m">1px</span> <span class="nb">dashed</span> <span class="m">#ccc</span><span class="p">;}</span>
+    <span class="o">&gt;</span> <span class="nt">section</span> <span class="p">{</span> <span class="nb">background</span><span class="o">:</span> <span class="m">#eee</span><span class="p">;}</span>
+    <span class="nt">dl</span> <span class="o">&gt;</span> <span class="p">{</span>
+        <span class="n">dt</span> <span class="err">{</span> <span class="nb">color</span> <span class="o">:</span> <span class="m">#333</span><span class="p">;}</span>
+        <span class="nt">dd</span> <span class="p">{</span> <span class="nb">color</span> <span class="o">:</span> <span class="m">#555</span><span class="p">;}</span>
+    <span class="err">}</span>
+    <span class="nt">nav</span> <span class="o">+</span> <span class="o">&amp;</span> <span class="p">{</span> <span class="nb">margin-top</span><span class="o">:</span> <span class="m">0</span><span class="p">;}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <h4 id="342_1">3.4.2 属性嵌套</h4>
 <p>LESS中没有这个，<strong>注意要用冒号</strong>。</p>
-<div class="highlight"><pre><span class="n">nav</span><span class="p">{</span>
-    <span class="nl">border:</span> <span class="p">{</span>
-        <span class="nl">style:</span> <span class="n">solid</span><span class="p">;</span>
-        <span class="nl">width:</span> <span class="mi">1</span><span class="n">px</span><span class="p">;</span>
-        <span class="nl">color:</span> <span class="err">#</span><span class="n">ccc</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="nt">nav</span><span class="p">{</span>
+    <span class="nb">border</span><span class="o">:</span> <span class="err">{</span>
+        <span class="n">style</span><span class="o">:</span> <span class="nb">solid</span><span class="p">;</span>
+        <span class="nb">width</span><span class="o">:</span> <span class="m">1px</span><span class="p">;</span>
+        <span class="nb">color</span><span class="o">:</span> <span class="m">#ccc</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <p>被翻译成：</p>
-<div class="highlight"><pre><span class="n">nav</span><span class="p">{</span>
-    <span class="n">border</span><span class="o">-</span><span class="n">style</span><span class="o">:</span> <span class="n">solid</span><span class="p">;</span>
-    <span class="n">border</span><span class="o">-</span><span class="n">width</span><span class="o">:</span> <span class="mi">1</span><span class="n">px</span><span class="p">;</span>
-    <span class="n">border</span><span class="o">-</span><span class="n">color</span><span class="o">:</span> <span class="err">#</span><span class="n">ccc</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="nt">nav</span><span class="p">{</span>
+    <span class="nb">border-style</span><span class="o">:</span> <span class="nb">solid</span><span class="p">;</span>
+    <span class="nb">border-width</span><span class="o">:</span> <span class="m">1px</span><span class="p">;</span>
+    <span class="nb">border-color</span><span class="o">:</span> <span class="m">#ccc</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p>甚至可以这样：</p>
-<div class="highlight"><pre><span class="n">nav</span><span class="p">{</span>
-    <span class="nl">border:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="err">#</span><span class="n">ccc</span> <span class="p">{</span>
-        <span class="nl">left:</span> <span class="mi">0</span><span class="n">px</span><span class="p">;</span>
-        <span class="nl">right:</span> <span class="mi">0</span><span class="n">px</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="nt">nav</span><span class="p">{</span>
+    <span class="nb">border</span><span class="o">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span> <span class="err">{</span>
+        <span class="nb">left</span><span class="o">:</span> <span class="m">0px</span><span class="p">;</span>
+        <span class="nb">right</span><span class="o">:</span> <span class="m">0px</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <p>翻译为：</p>
-<div class="highlight"><pre><span class="n">nav</span><span class="p">{</span>
-    <span class="nl">border:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="err">#</span><span class="n">ccc</span><span class="p">;</span>
-    <span class="n">border</span><span class="o">-</span><span class="n">left</span><span class="o">:</span> <span class="mi">0</span><span class="n">px</span><span class="p">;</span>
-    <span class="n">border</span><span class="o">-</span><span class="n">right</span><span class="o">:</span> <span class="mi">0</span><span class="n">px</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="nt">nav</span><span class="p">{</span>
+    <span class="nb">border</span><span class="o">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+    <span class="nb">border-left</span><span class="o">:</span> <span class="m">0px</span><span class="p">;</span>
+    <span class="nb">border-right</span><span class="o">:</span> <span class="m">0px</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -276,7 +276,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-17T22:09:00"> 4 17, 2015</time>
+            <time pubdate="pubdate" datetime="2015-04-17T22:09:00+08:00"> 4 17, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>

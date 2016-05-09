@@ -67,23 +67,23 @@
 <p>以上是为什么需要前端路由的原因</p>
 <h2 id="_1">路由</h2>
 <p>需要自己导入angular-route模块。</p>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;framework/angular1.3.15/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;framework/angular1.3.15/angular.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;framework/angular1.3.15/angular-route.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script&gt;</span>
 var bookStoreApp = angular.module(&#39;bookStoreApp&#39;,
- <span class="cp">[</span><span class="s1">&#39;ngRoute&#39;</span><span class="p">,</span> <span class="s1">&#39;bookStoreCtrls&#39;</span><span class="cp">]</span>);
+ [&#39;ngRoute&#39;, &#39;bookStoreCtrls&#39;]);
 
-bookStoreApp.config(<span class="cp">[</span><span class="s1">&#39;$routeProvider&#39;</span><span class="p">,</span> <span class="nx">function</span><span class="p">(</span><span class="nv">$routeProvider</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$routeProvider.when</span><span class="p">(</span><span class="s1">&#39;/hello&#39;</span><span class="p">,{</span>
-            <span class="nx">templateUrl</span><span class="p">:</span><span class="s1">&#39;tpls/hello.html&#39;</span><span class="p">,</span>
-            <span class="nx">controller</span><span class="p">:</span> <span class="s1">&#39;HelloCtrl&#39;</span>
-        <span class="p">})</span><span class="bp">.</span><span class="nx">when</span><span class="p">(</span><span class="s1">&#39;/list&#39;</span><span class="p">,</span> <span class="p">{</span>
-            <span class="nx">templateUrl</span><span class="p">:</span><span class="s1">&#39;tpls/bookList.html&#39;</span><span class="p">,</span>
-            <span class="nx">controller</span><span class="p">:</span> <span class="s1">&#39;BookListCtrl&#39;</span>
-        <span class="p">})</span><span class="bp">.</span><span class="nx">otherwise</span><span class="p">({</span>
-            <span class="nb">redirectTo</span><span class="p">:</span><span class="s1">&#39;/hello&#39;</span>
-        <span class="p">});</span>
-<span class="p">}</span><span class="cp">]</span>);
+bookStoreApp.config([&#39;$routeProvider&#39;, function($routeProvider) {
+    $routeProvider.when(&#39;/hello&#39;,{
+            templateUrl:&#39;tpls/hello.html&#39;,
+            controller: &#39;HelloCtrl&#39;
+        }).when(&#39;/list&#39;, {
+            templateUrl:&#39;tpls/bookList.html&#39;,
+            controller: &#39;BookListCtrl&#39;
+        }).otherwise({
+            redirectTo:&#39;/hello&#39;
+        });
+}]);
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 
@@ -132,7 +132,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-05-03T21:13:00"> 5 3, 2015</time>
+            <time pubdate="pubdate" datetime="2015-05-03T21:13:00+08:00"> 5 3, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>

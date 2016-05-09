@@ -129,75 +129,75 @@
 <h3 id="01">0.1 简介</h3>
 <h3 id="02-kotlin">0.2 Kotlin安装</h3>
 <h3 id="03-hello-kotlin">0.3 Hello, Kotlin</h3>
-<div class="highlight"><pre><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span><span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span>
+<div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span><span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span>
 <span class="p">{</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"Hello, Kotlin!"</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 <h2 id="1">1. 类型和变量</h2>
 <h3 id="11-variable-declarations">1.1 变量声明(Variable Declarations)</h3>
-<div class="highlight"><pre><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="n">val_declarations</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="k">fun</span> <span class="nf">val_declarations</span><span class="p">(){</span>
     <span class="c1">//val声明的变量不能更改</span>
-    <span class="k">val</span> <span class="n">a</span><span class="p">:</span><span class="n">Int</span> <span class="p">=</span> <span class="m">64</span>
-    <span class="k">val</span> <span class="n">b</span><span class="p">:</span><span class="n">Long</span> <span class="p">=</span> <span class="m">123</span>
+    <span class="k">val</span> <span class="py">a</span><span class="p">:</span><span class="n">Int</span> <span class="p">=</span> <span class="m">64</span>
+    <span class="k">val</span> <span class="py">b</span><span class="p">:</span><span class="n">Long</span> <span class="p">=</span> <span class="m">123</span>
 
     <span class="c1">//这种事不行的,必须每个占一行:</span>
     <span class="c1">//val c = 3, d = 4</span>
 
-    <span class="k">val</span> <span class="n">c</span><span class="p">:</span><span class="n">Float</span> <span class="p">=</span> <span class="m">3.4f</span> <span class="c1">//后面跟'F'或者'f'</span>
-    <span class="k">val</span> <span class="n">d</span><span class="p">:</span><span class="n">Double</span> <span class="p">=</span> <span class="m">3.4</span>
-    <span class="k">val</span> <span class="n">e</span><span class="p">:</span><span class="n">Double</span> <span class="p">=</span> <span class="m">12.3</span><span class="n">e5</span>
+    <span class="k">val</span> <span class="py">c</span><span class="p">:</span><span class="n">Float</span> <span class="p">=</span> <span class="m">3.4f</span> <span class="c1">//后面跟'F'或者'f'</span>
+    <span class="k">val</span> <span class="py">d</span><span class="p">:</span><span class="n">Double</span> <span class="p">=</span> <span class="m">3.4</span>
+    <span class="k">val</span> <span class="py">e</span><span class="p">:</span><span class="n">Double</span> <span class="p">=</span> <span class="m">12.3</span><span class="n">e5</span>
     <span class="c1">//不赋值的val声明</span>
-    <span class="k">val</span> <span class="n">f</span><span class="p">:</span> <span class="n">Int</span>
+    <span class="k">val</span> <span class="py">f</span><span class="p">:</span> <span class="n">Int</span>
     <span class="n">f</span> <span class="p">=</span> <span class="m">13</span>
 
-    <span class="k">val</span> <span class="n">g</span><span class="p">:</span><span class="n">StringBuffer</span> <span class="p">=</span> <span class="n">StringBuffer</span><span class="p">(</span><span class="s">"test"</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">g</span><span class="p">:</span><span class="n">StringBuffer</span> <span class="p">=</span> <span class="n">StringBuffer</span><span class="p">(</span><span class="s">"test"</span><span class="p">)</span>
     <span class="n">g</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="s">"T"</span><span class="p">)</span>
     <span class="c1">//打印</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"$a $b $c $d $e $f"</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"$g"</span><span class="p">)</span>
 
     <span class="c1">//可更改的变量</span>
-    <span class="k">var</span> <span class="n">h</span><span class="p">:</span><span class="n">Int</span> <span class="p">=</span> <span class="m">123</span>
+    <span class="k">var</span> <span class="py">h</span><span class="p">:</span><span class="n">Int</span> <span class="p">=</span> <span class="m">123</span>
     <span class="n">h</span> <span class="p">=</span> <span class="m">45</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"$h"</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 <h3 id="12-type-deduction">1.2 类型推导(Type Deduction)</h3>
 <p>类型能够根据赋值进行推到</p>
-<div class="highlight"><pre><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="n">val_declarations</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="k">fun</span> <span class="nf">val_declarations</span><span class="p">(){</span>
     <span class="c1">//val声明的变量不能更改</span>
-    <span class="k">val</span> <span class="n">a</span> <span class="p">=</span> <span class="m">64</span>
-    <span class="k">val</span> <span class="n">b</span><span class="p">=</span> <span class="m">123</span>
-    <span class="k">val</span> <span class="n">c</span> <span class="p">=</span> <span class="m">3.4f</span> <span class="c1">//后面跟'F'或者'f'</span>
-    <span class="k">val</span> <span class="n">d</span> <span class="p">=</span> <span class="m">3.4</span>
-    <span class="k">val</span> <span class="n">e</span> <span class="p">=</span> <span class="m">12.3</span><span class="n">e5</span>
+    <span class="k">val</span> <span class="py">a</span> <span class="p">=</span> <span class="m">64</span>
+    <span class="k">val</span> <span class="py">b</span><span class="p">=</span> <span class="m">123</span>
+    <span class="k">val</span> <span class="py">c</span> <span class="p">=</span> <span class="m">3.4f</span> <span class="c1">//后面跟'F'或者'f'</span>
+    <span class="k">val</span> <span class="py">d</span> <span class="p">=</span> <span class="m">3.4</span>
+    <span class="k">val</span> <span class="py">e</span> <span class="p">=</span> <span class="m">12.3</span><span class="n">e5</span>
     <span class="c1">//不赋值的val声明，变量类型不能省略</span>
-    <span class="k">val</span> <span class="n">f</span><span class="p">:</span> <span class="n">Int</span>
+    <span class="k">val</span> <span class="py">f</span><span class="p">:</span> <span class="n">Int</span>
     <span class="n">f</span> <span class="p">=</span> <span class="m">13</span>
 
-    <span class="k">val</span> <span class="n">g</span> <span class="p">=</span> <span class="n">StringBuffer</span><span class="p">(</span><span class="s">"test"</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">g</span> <span class="p">=</span> <span class="n">StringBuffer</span><span class="p">(</span><span class="s">"test"</span><span class="p">)</span>
     <span class="n">g</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="s">"T"</span><span class="p">)</span>
     <span class="c1">//打印</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"$a $b $c $d $e $f"</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"$g"</span><span class="p">)</span>
 
     <span class="c1">//可更改的变量</span>
-    <span class="k">var</span> <span class="n">h</span> <span class="p">=</span> <span class="m">123</span>
+    <span class="k">var</span> <span class="py">h</span> <span class="p">=</span> <span class="m">123</span>
     <span class="n">h</span> <span class="p">=</span> <span class="m">45</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"$h"</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 <h3 id="13-ranges">1.3 Ranges</h3>
-<div class="highlight"><pre><span class="cm">/**</span>
+<div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Created by liulixiang on 16/2/26.</span>
 <span class="cm"> */</span>
 <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
@@ -205,57 +205,57 @@
 <span class="p">}</span>
 
 <span class="k">fun</span> <span class="nf">ranges</span><span class="p">(){</span>
-    <span class="k">val</span> <span class="n">a</span><span class="p">:</span> <span class="n">IntRange</span> <span class="p">=</span> <span class="m">1.</span><span class="p">.</span><span class="m">10</span> <span class="c1">//闭区间,而不是左闭右开. 1, 2, ..., 10(含10)</span>
+    <span class="k">val</span> <span class="py">a</span><span class="p">:</span> <span class="n">IntRange</span> <span class="p">=</span> <span class="m">1.</span><span class="p">.</span><span class="m">10</span> <span class="c1">//闭区间,而不是左闭右开. 1, 2, ..., 10(含10)</span>
     <span class="c1">//遍历range,使用in语法</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">x</span> <span class="k">in</span> <span class="n">a</span><span class="p">)</span> <span class="n">println</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
     <span class="c1">//除了上面的声明方式,还有以下声明方式:</span>
-    <span class="k">val</span> <span class="n">b</span> <span class="p">=</span> <span class="m">1.</span><span class="n">rangeTo</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">b</span> <span class="p">=</span> <span class="m">1.</span><span class="n">rangeTo</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
 
     <span class="n">println</span><span class="p">(</span><span class="s">"=====逆序====="</span><span class="p">)</span>
-    <span class="k">val</span> <span class="n">c</span><span class="p">:</span><span class="n">IntProgression</span> <span class="p">=</span> <span class="n">b</span><span class="p">.</span><span class="n">reversed</span><span class="p">()</span>
+    <span class="k">val</span> <span class="py">c</span><span class="p">:</span><span class="n">IntProgression</span> <span class="p">=</span> <span class="n">b</span><span class="p">.</span><span class="n">reversed</span><span class="p">()</span>
     <span class="k">for</span><span class="p">(</span><span class="n">x</span> <span class="k">in</span> <span class="n">c</span><span class="p">)</span> <span class="n">println</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
     <span class="n">println</span><span class="p">(</span><span class="s">"=====range求和====="</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"sum of ints $c = ${c.sum()}"</span><span class="p">)</span>
 
     <span class="n">println</span><span class="p">(</span><span class="s">"=====递减的range====="</span><span class="p">)</span>
-    <span class="k">val</span> <span class="n">d</span> <span class="p">=</span> <span class="m">10.d</span><span class="n">ownTo</span><span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="c1">//不能用10..1</span>
+    <span class="k">val</span> <span class="py">d</span> <span class="p">=</span> <span class="m">10.</span><span class="n">downTo</span><span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="c1">//不能用10..1</span>
     <span class="k">for</span><span class="p">(</span><span class="n">x</span> <span class="k">in</span> <span class="n">d</span><span class="p">)</span> <span class="n">println</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
     <span class="n">println</span><span class="p">(</span><span class="s">"=====省略括号======"</span><span class="p">)</span>
-    <span class="k">val</span> <span class="n">e</span> <span class="p">=</span> <span class="m">10</span> <span class="n">downTo</span> <span class="m">1</span>
+    <span class="k">val</span> <span class="py">e</span> <span class="p">=</span> <span class="m">10</span> <span class="n">downTo</span> <span class="m">1</span>
     <span class="k">for</span><span class="p">(</span><span class="n">x</span> <span class="k">in</span> <span class="n">e</span><span class="p">)</span> <span class="n">println</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
     <span class="n">println</span><span class="p">(</span><span class="s">"=====根据变量声明range======"</span><span class="p">)</span>
-    <span class="k">val</span> <span class="n">m</span> <span class="p">=</span> <span class="m">8</span>
-    <span class="k">val</span> <span class="n">n</span> <span class="p">=</span> <span class="p">-</span><span class="m">3</span>
-    <span class="k">val</span> <span class="n">f</span> <span class="p">=</span> <span class="n">IntRange</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="n">min</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">Math</span><span class="p">.</span><span class="n">max</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="k">val</span> <span class="py">m</span> <span class="p">=</span> <span class="m">8</span>
+    <span class="k">val</span> <span class="py">n</span> <span class="p">=</span> <span class="p">-</span><span class="m">3</span>
+    <span class="k">val</span> <span class="py">f</span> <span class="p">=</span> <span class="n">IntRange</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="n">min</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">Math</span><span class="p">.</span><span class="n">max</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
     <span class="k">for</span><span class="p">(</span><span class="n">x</span> <span class="k">in</span> <span class="n">f</span><span class="p">)</span> <span class="n">println</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
     <span class="n">println</span><span class="p">(</span><span class="s">"=====指定步长======"</span><span class="p">)</span>
-    <span class="k">val</span> <span class="n">g</span> <span class="p">=</span> <span class="m">100</span> <span class="n">downTo</span> <span class="m">1</span> <span class="n">step</span> <span class="m">3</span>
+    <span class="k">val</span> <span class="py">g</span> <span class="p">=</span> <span class="m">100</span> <span class="n">downTo</span> <span class="m">1</span> <span class="n">step</span> <span class="m">3</span>
     <span class="k">for</span><span class="p">(</span><span class="n">x</span> <span class="k">in</span> <span class="n">g</span><span class="p">)</span> <span class="n">print</span><span class="p">(</span><span class="s">"$x\t"</span><span class="p">)</span>
     <span class="n">println</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
 <h3 id="14">1.4 数组</h3>
 <h3 id="15-strings-and-string-interpolation">1.5 Strings and String Interpolation</h3>
-<div class="highlight"><pre><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="n">characters_and_strings</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="k">fun</span> <span class="nf">characters_and_strings</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">//字符</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"=====字符====="</span><span class="p">)</span>
-    <span class="k">val</span> <span class="n">a</span><span class="p">:</span><span class="n">Char</span> <span class="p">=</span> <span class="err">'\</span><span class="n">u0041</span><span class="err">'</span>
+    <span class="k">val</span> <span class="py">a</span><span class="p">:</span><span class="n">Char</span> <span class="p">=</span> <span class="err">'\</span><span class="n">u0041</span><span class="err">'</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span> <span class="p">==</span> <span class="m">65</span><span class="p">){</span>
         <span class="n">println</span><span class="p">(</span><span class="s">"match"</span><span class="p">)</span>
     <span class="p">}</span>
 
     <span class="c1">//字符串</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"=====字符====="</span><span class="p">)</span>
-    <span class="k">val</span> <span class="n">b</span><span class="p">:</span><span class="n">String</span> <span class="p">=</span> <span class="s">"Hello"</span>
+    <span class="k">val</span> <span class="py">b</span><span class="p">:</span><span class="n">String</span> <span class="p">=</span> <span class="s">"Hello"</span>
     <span class="n">println</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"取字符串中的字符:${b[0]}"</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"遍历字符串中的字符:"</span><span class="p">)</span>
@@ -264,42 +264,42 @@
 
     <span class="c1">//原始字符串</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"=====原始字符串====="</span><span class="p">)</span>
-    <span class="k">val</span> <span class="n">raw</span> <span class="p">=</span> <span class="s">"""Hello</span>
+    <span class="k">val</span> <span class="py">raw</span> <span class="p">=</span> <span class="s">"""Hello</span>
 <span class="s">"test"</span>
 <span class="n">world</span><span class="s">"""</span>
     <span class="n">println</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
 
     <span class="c1">//字符串模板</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"=====字符串模板====="</span><span class="p">)</span>
-    <span class="k">val</span> <span class="n">c</span> <span class="p">=</span> <span class="m">123.0</span>
-    <span class="k">val</span> <span class="n">d</span> <span class="p">=</span> <span class="s">"c = $c, price = ${'$'}${c/10}"</span>
+    <span class="k">val</span> <span class="py">c</span> <span class="p">=</span> <span class="m">123.0</span>
+    <span class="k">val</span> <span class="py">d</span> <span class="p">=</span> <span class="s">"c = $c, price = ${'$'}${c/10}"</span>
     <span class="n">println</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 
     <span class="c1">//range</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"=====range====="</span><span class="p">)</span>
-    <span class="k">val</span> <span class="n">e</span> <span class="p">=</span> <span class="s">"${(10 downTo 1).toList().map { it.toString().toList() }.joinToString()}"</span>
+    <span class="k">val</span> <span class="py">e</span> <span class="p">=</span> <span class="s">"${(10 downTo 1).toList().map { it.toString().toList() }.joinToString()}"</span>
     <span class="n">println</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 <h2 id="2">2. 控制流</h2>
 <h3 id="21-nullability">2.1 Nullability</h3>
 <p>在kotlin中<code>var x:String = null</code>是不允许的，因为它要求<code>x</code>不能为空。</p>
-<div class="highlight"><pre><span class="nx">fun</span> <span class="nx">main</span><span class="p">(</span><span class="nx">args</span><span class="p">:</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">){}</span>
+<div class="highlight"><pre><span></span>fun main(args: Array&lt;String&gt;){}
 </pre></div>
 <p>对于上面的<code>args</code>表示的是由不能为空的<code>String</code>组成的不能为空的<code>Array</code>。</p>
 <p>如果为null该怎么办，在类型名后添加<code>?</code>。</p>
-<div class="highlight"><pre><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="n">nullability</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="k">fun</span> <span class="nf">nullability</span><span class="p">(){</span>
-    <span class="k">var</span> <span class="n">y</span><span class="p">:</span><span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+    <span class="k">var</span> <span class="py">y</span><span class="p">:</span><span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
     <span class="c1">//下面的是错误的</span>
     <span class="c1">//println(y.length)</span>
-    <span class="k">var</span> <span class="n">len</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="n">y</span><span class="p">?.</span><span class="n">length</span>
+    <span class="k">var</span> <span class="py">len</span><span class="p">:</span> <span class="n">Int</span><span class="p">?</span> <span class="p">=</span> <span class="n">y</span><span class="o">?.</span><span class="n">length</span>
     <span class="n">println</span><span class="p">(</span><span class="n">len</span><span class="p">)</span>
     <span class="c1">//或者这样返回-1，其中?:类似else，也就是说如果y是Null，就返回-1</span>
-    <span class="k">var</span> <span class="n">len2</span><span class="p">:</span><span class="n">Int</span> <span class="p">=</span> <span class="n">y</span><span class="p">?.</span><span class="n">length</span> <span class="p">?:</span> <span class="p">-</span><span class="m">1</span>
+    <span class="k">var</span> <span class="py">len2</span><span class="p">:</span><span class="n">Int</span> <span class="p">=</span> <span class="n">y</span><span class="o">?.</span><span class="n">length</span> <span class="o">?:</span> <span class="p">-</span><span class="m">1</span>
     <span class="n">println</span><span class="p">(</span><span class="n">len2</span><span class="p">)</span>
 
     <span class="c1">//注意：1.系统库其实自动添加了null 检查，比如 System.out.println，其实是System?.out?.println</span>
@@ -309,16 +309,16 @@
 <h3 id="22-if">2.2 If 语句</h3>
 <p>第一种是 <code>? :</code>形式
 if语句直接返回值。</p>
-<div class="highlight"><pre><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="n">if_statement</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="k">fun</span> <span class="nf">if_statement</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">//? :</span>
-    <span class="k">val</span> <span class="n">temp</span> <span class="p">=</span> <span class="m">20</span>
-    <span class="k">val</span> <span class="n">feel</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">temp</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">temp</span> <span class="p">=</span> <span class="m">20</span>
+    <span class="k">val</span> <span class="py">feel</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">temp</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">)</span>
         <span class="s">"cold"</span>
-    <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">temp</span> <span class="p">&gt;</span> <span class="m">20</span><span class="p">)</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">temp</span> <span class="p">&gt;</span> <span class="m">20</span><span class="p">)</span>
         <span class="s">"warm"</span>
     <span class="k">else</span> <span class="s">"ok"</span>
 
@@ -327,13 +327,13 @@ if语句直接返回值。</p>
 <span class="p">}</span>
 </pre></div>
 <h3 id="23-flow-based-typing">2.3 根据循环自动类型转换(Flow-Based Typing)</h3>
-<div class="highlight"><pre><span class="k">fun</span> <span class="nf">flow_based_typing</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="n">s</span><span class="p">:</span><span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="s">"hjkh"</span>
+<div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">flow_based_typing</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="py">s</span><span class="p">:</span><span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="s">"hjkh"</span>
     <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">!=</span><span class="k">null</span><span class="p">){</span>
         <span class="c1">//不需要s?.length</span>
         <span class="n">println</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">)</span>
     <span class="p">}</span>
-    <span class="k">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Cloneable</span> <span class="p">=</span> <span class="n">intArrayOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+    <span class="k">var</span> <span class="py">x</span><span class="p">:</span> <span class="n">Cloneable</span> <span class="p">=</span> <span class="n">intArrayOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="k">is</span> <span class="n">IntArray</span><span class="p">){</span>
         <span class="c1">//不需要(x as IntArray).size</span>
         <span class="n">println</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
@@ -341,19 +341,19 @@ if语句直接返回值。</p>
 <span class="p">}</span>
 </pre></div>
 <h3 id="24-forfor-iteration">2.4 for遍历(for Iteration)</h3>
-<div class="highlight"><pre><span class="k">fun</span> <span class="nf">for_loop</span><span class="p">(){</span>
+<div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">for_loop</span><span class="p">(){</span>
     <span class="c1">//普通for循环</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">a</span> <span class="k">in</span> <span class="p">(</span><span class="m">10</span> <span class="n">downTo</span> <span class="m">1</span><span class="p">))</span> <span class="n">print</span><span class="p">(</span><span class="s">"$a\t"</span><span class="p">)</span>
     <span class="n">println</span><span class="p">()</span>
 
     <span class="c1">//数组for循环</span>
-    <span class="k">val</span> <span class="n">ints</span> <span class="p">=</span> <span class="n">intArrayOf</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">ints</span> <span class="p">=</span> <span class="n">intArrayOf</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
     <span class="k">for</span><span class="p">((</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">ints</span><span class="p">.</span><span class="n">withIndex</span><span class="p">()){</span>
         <span class="n">println</span><span class="p">(</span><span class="s">"$index:\t$value"</span><span class="p">)</span>
     <span class="p">}</span>
 
     <span class="c1">//字典for循环</span>
-    <span class="k">val</span> <span class="n">capitals</span> <span class="p">=</span> <span class="n">mapOf</span><span class="p">(</span><span class="s">"Paris"</span> <span class="n">to</span> <span class="s">"France"</span><span class="p">,</span> <span class="s">"London"</span> <span class="n">to</span> <span class="s">"UK"</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">capitals</span> <span class="p">=</span> <span class="n">mapOf</span><span class="p">(</span><span class="s">"Paris"</span> <span class="n">to</span> <span class="s">"France"</span><span class="p">,</span> <span class="s">"London"</span> <span class="n">to</span> <span class="s">"UK"</span><span class="p">)</span>
     <span class="k">for</span> <span class="p">((</span><span class="n">capital</span><span class="p">,</span> <span class="n">country</span><span class="p">)</span> <span class="k">in</span> <span class="n">capitals</span><span class="p">){</span>
         <span class="n">println</span><span class="p">(</span><span class="s">"${country}'s capital is $capital"</span><span class="p">)</span>
     <span class="p">}</span>
@@ -363,18 +363,18 @@ if语句直接返回值。</p>
 <h2 id="3">3. 函数</h2>
 <h3 id="31-top-level-function">3.1 顶层函数(Top-Level Function)</h3>
 <p>谈论顶层函数之前需要先讨论package，如果没有指定package，就会放到默认包中。</p>
-<div class="highlight"><pre><span class="k">package</span> <span class="nn">KotlinSamples.Functions</span>
+<div class="highlight"><pre><span></span><span class="k">package</span> <span class="nn">KotlinSamples.Functions</span>
 <span class="k">fun</span> <span class="nf">say_hello</span><span class="p">(){</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
-<div class="highlight"><pre><span class="n">import</span> <span class="n">KotlinSamples</span><span class="p">.</span><span class="n">Functions</span><span class="p">.*</span>
+<div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">KotlinSamples.Functions.*</span>
 <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="n">say_hello</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
 <h3 id="32-return-types-and-arguments">3.2 返回类型和参数(Return Types and Arguments)</h3>
-<div class="highlight"><pre><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"4*3 is ${triple(4)}"</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"4*4 is ${sqr(4)}"</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"pay ${calculate_wages(160)}"</span><span class="p">)</span>
@@ -394,17 +394,17 @@ if语句直接返回值。</p>
 <span class="p">}</span>
 </pre></div>
 <h3 id="33-variable-argument-functions">3.3 可变长参数函数(Variable-Argument Functions)</h3>
-<div class="highlight"><pre><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"result is ${sum_up(1, 3, 5)}"</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"result is ${sum_up2(4, 5, 6)}"</span><span class="p">)</span>
     <span class="c1">//解包操作</span>
-    <span class="k">val</span> <span class="n">stuff</span> <span class="p">=</span> <span class="n">intArrayOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span> <span class="p">,</span><span class="m">3</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">stuff</span> <span class="p">=</span> <span class="n">intArrayOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span> <span class="p">,</span><span class="m">3</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="n">sum_up</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="p">*</span><span class="n">stuff</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">9</span><span class="p">))</span>
 <span class="p">}</span>
 
 <span class="c1">//可变长参数</span>
-<span class="k">fun</span> <span class="nf">sum_up</span><span class="p">(</span><span class="n">vararg</span> <span class="n">values</span><span class="p">:</span><span class="n">Int</span><span class="p">):</span><span class="n">Int</span><span class="p">{</span>
-    <span class="k">var</span> <span class="n">result</span> <span class="p">=</span> <span class="m">0</span>
+<span class="k">fun</span> <span class="nf">sum_up</span><span class="p">(</span><span class="k">vararg</span> <span class="n">values</span><span class="p">:</span><span class="n">Int</span><span class="p">):</span><span class="n">Int</span><span class="p">{</span>
+    <span class="k">var</span> <span class="py">result</span> <span class="p">=</span> <span class="m">0</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">v</span> <span class="k">in</span> <span class="n">values</span><span class="p">){</span>
         <span class="n">result</span> <span class="p">+=</span> <span class="n">v</span>
     <span class="p">}</span>
@@ -412,14 +412,14 @@ if语句直接返回值。</p>
 <span class="p">}</span>
 
 <span class="c1">//函数式的解法</span>
-<span class="k">fun</span> <span class="nf">sum_up2</span><span class="p">(</span><span class="n">vararg</span> <span class="n">values</span><span class="p">:</span><span class="n">Int</span><span class="p">):</span><span class="n">Int</span><span class="p">{</span>
+<span class="k">fun</span> <span class="nf">sum_up2</span><span class="p">(</span><span class="k">vararg</span> <span class="n">values</span><span class="p">:</span><span class="n">Int</span><span class="p">):</span><span class="n">Int</span><span class="p">{</span>
     <span class="k">return</span> <span class="n">values</span><span class="p">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
 <h3 id="34-local-aka-nested-or-inner-functions">3.4 内签函数(Local a.k.a. Nested or Inner Functions)</h3>
-<div class="highlight"><pre><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="c1">//解包赋值</span>
-    <span class="k">val</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span> <span class="p">=</span> <span class="n">solve_quadratic_equation</span><span class="p">(</span><span class="m">1.0</span><span class="p">,</span> <span class="m">10.0</span><span class="p">,</span> <span class="m">16.0</span><span class="p">)</span>
+    <span class="k">val</span> <span class="err">(</span><span class="py">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span> <span class="p">=</span> <span class="n">solve_quadratic_equation</span><span class="p">(</span><span class="m">1.0</span><span class="p">,</span> <span class="m">10.0</span><span class="p">,</span> <span class="m">16.0</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"x1 = $x1, x2 = $x2"</span><span class="p">)</span>
 <span class="p">}</span>
 
@@ -428,42 +428,42 @@ if语句直接返回值。</p>
     <span class="k">fun</span> <span class="nf">calculate_discriminant</span><span class="p">():</span> <span class="n">Double</span><span class="p">{</span>
         <span class="k">return</span> <span class="n">b</span><span class="p">*</span><span class="n">b</span> <span class="p">-</span> <span class="m">4</span><span class="p">*</span><span class="n">a</span><span class="p">*</span><span class="n">c</span>
     <span class="p">}</span>
-    <span class="k">val</span> <span class="n">root_disc</span> <span class="p">=</span> <span class="n">Math</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">calculate_discriminant</span><span class="p">())</span>
-    <span class="k">return</span> <span class="nf">Pair</span><span class="p">((-</span><span class="n">b</span><span class="p">+</span><span class="n">root_disc</span><span class="p">)/(</span><span class="m">2</span><span class="p">*</span><span class="n">a</span><span class="p">),</span> <span class="p">(-</span><span class="n">b</span><span class="p">-</span><span class="n">root_disc</span><span class="p">)/(</span><span class="m">2</span><span class="p">*</span><span class="n">a</span><span class="p">))</span>
+    <span class="k">val</span> <span class="py">root_disc</span> <span class="p">=</span> <span class="n">Math</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">calculate_discriminant</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">Pair</span><span class="p">((-</span><span class="n">b</span><span class="p">+</span><span class="n">root_disc</span><span class="p">)/(</span><span class="m">2</span><span class="p">*</span><span class="n">a</span><span class="p">),</span> <span class="p">(-</span><span class="n">b</span><span class="p">-</span><span class="n">root_disc</span><span class="p">)/(</span><span class="m">2</span><span class="p">*</span><span class="n">a</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 <h3 id="35-extension-functions-and-properties">3.5 扩展函数和扩展属性(Extension Functions and Properties)</h3>
-<div class="highlight"><pre><span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">util</span><span class="p">.*</span>
+<div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">java.util.*</span>
 
 <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="n">extension_functions</span><span class="p">()</span>
 <span class="p">}</span>
 <span class="c1">//扩展函数</span>
-<span class="k">fun</span> <span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">ArrayList</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;.</span><span class="n">swap</span><span class="p">(</span><span class="n">index1</span><span class="p">:</span><span class="n">Int</span><span class="p">,</span> <span class="n">index2</span><span class="p">:</span><span class="n">Int</span><span class="p">){</span>
+<span class="k">fun</span> <span class="err">&lt;</span><span class="nf">T</span><span class="p">&gt;</span> <span class="n">ArrayList</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;.</span><span class="n">swap</span><span class="p">(</span><span class="n">index1</span><span class="p">:</span><span class="n">Int</span><span class="p">,</span> <span class="n">index2</span><span class="p">:</span><span class="n">Int</span><span class="p">){</span>
     <span class="c1">//this指向实例</span>
-    <span class="k">val</span> <span class="n">temp</span> <span class="p">=</span> <span class="k">this</span><span class="p">[</span><span class="n">index1</span><span class="p">]</span>
+    <span class="k">val</span> <span class="py">temp</span> <span class="p">=</span> <span class="k">this</span><span class="p">[</span><span class="n">index1</span><span class="p">]</span>
     <span class="k">this</span><span class="p">[</span><span class="n">index1</span><span class="p">]</span> <span class="p">=</span> <span class="k">this</span><span class="p">[</span><span class="n">index2</span><span class="p">]</span>
     <span class="k">this</span><span class="p">[</span><span class="n">index2</span><span class="p">]</span> <span class="p">=</span> <span class="n">temp</span>
 <span class="p">}</span>
 
 <span class="c1">//给所有的对象添加函数，用Any?</span>
-<span class="k">fun</span> <span class="n">Any</span><span class="p">?.</span><span class="n">print</span><span class="p">(){</span>
+<span class="k">fun</span> <span class="nf">Any</span><span class="o">?.</span><span class="n">print</span><span class="p">(){</span>
     <span class="k">if</span><span class="p">(</span> <span class="k">this</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="n">println</span><span class="p">(</span><span class="s">"Object is null"</span><span class="p">)</span>
-    <span class="k">else</span> <span class="nf">println</span><span class="p">(</span><span class="s">"Object is ${this.toString()}"</span><span class="p">)</span>
+    <span class="k">else</span> <span class="n">println</span><span class="p">(</span><span class="s">"Object is ${this.toString()}"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">//扩展函数</span>
-<span class="k">val</span> <span class="n">String</span><span class="p">?.</span><span class="n">empty</span><span class="p">:</span> <span class="n">Boolean</span>
+<span class="k">val</span> <span class="py">String</span><span class="o">?.</span><span class="n">empty</span><span class="p">:</span> <span class="n">Boolean</span>
     <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="p">(</span><span class="k">this</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="k">this</span><span class="p">.</span><span class="n">length</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
 
 <span class="k">fun</span> <span class="nf">extension_functions</span><span class="p">(){</span>
-    <span class="k">val</span> <span class="n">mylist</span> <span class="p">=</span> <span class="n">arrayListOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">mylist</span> <span class="p">=</span> <span class="n">arrayListOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
     <span class="c1">//调用扩展函数</span>
     <span class="n">mylist</span><span class="p">.</span><span class="n">swap</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="n">mylist</span><span class="p">)</span>
     <span class="n">mylist</span><span class="p">.</span><span class="n">print</span><span class="p">()</span>
 
-    <span class="k">val</span> <span class="n">s</span><span class="p">:</span><span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+    <span class="k">val</span> <span class="py">s</span><span class="p">:</span><span class="n">String</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
     <span class="n">s</span><span class="p">.</span><span class="n">print</span><span class="p">()</span>
     <span class="c1">//调用扩展属性</span>
     <span class="n">println</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">empty</span><span class="p">)</span>
@@ -471,62 +471,62 @@ if语句直接返回值。</p>
 <span class="p">}</span>
 </pre></div>
 <h3 id="36-infix-functions">3.6 中缀函数(Infix Functions)</h3>
-<div class="highlight"><pre><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="n">infix_functions</span><span class="p">()</span>
 <span class="p">}</span>
 <span class="c1">//定义中缀函数</span>
-<span class="n">infix</span> <span class="k">fun</span> <span class="n">Double</span><span class="p">.</span><span class="n">averageWith</span><span class="p">(</span><span class="n">other</span><span class="p">:</span> <span class="n">Double</span><span class="p">):</span><span class="n">Double</span><span class="p">{</span>
+<span class="k">infix</span> <span class="k">fun</span> <span class="nf">Double</span><span class="p">.</span><span class="n">averageWith</span><span class="p">(</span><span class="n">other</span><span class="p">:</span> <span class="n">Double</span><span class="p">):</span><span class="n">Double</span><span class="p">{</span>
     <span class="c1">//this是左边的运算符</span>
     <span class="k">return</span> <span class="p">(</span><span class="k">this</span> <span class="p">+</span> <span class="n">other</span><span class="p">)</span> <span class="p">/</span> <span class="m">2.0</span>
 <span class="p">}</span>
 <span class="k">fun</span> <span class="nf">infix_functions</span><span class="p">(){</span>
-    <span class="k">val</span> <span class="n">x</span> <span class="p">=</span> <span class="sc">'z'</span> <span class="n">downTo</span> <span class="sc">'a'</span>
+    <span class="k">val</span> <span class="py">x</span> <span class="p">=</span> <span class="sc">'z'</span> <span class="n">downTo</span> <span class="sc">'a'</span>
     <span class="k">for</span><span class="p">(</span><span class="n">a</span> <span class="k">in</span> <span class="n">x</span><span class="p">)</span> <span class="n">print</span><span class="p">(</span><span class="s">"$a\t"</span><span class="p">)</span>
     <span class="n">println</span><span class="p">()</span>
 
-    <span class="k">val</span> <span class="n">capitals</span> <span class="p">=</span> <span class="n">mapOf</span><span class="p">(</span><span class="s">"Paris"</span> <span class="n">to</span> <span class="s">"France"</span><span class="p">,</span> <span class="s">"London"</span> <span class="n">to</span> <span class="s">"UK"</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">capitals</span> <span class="p">=</span> <span class="n">mapOf</span><span class="p">(</span><span class="s">"Paris"</span> <span class="n">to</span> <span class="s">"France"</span><span class="p">,</span> <span class="s">"London"</span> <span class="n">to</span> <span class="s">"UK"</span><span class="p">)</span>
     <span class="k">for</span><span class="p">((</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">capitals</span><span class="p">)</span>
         <span class="n">println</span><span class="p">(</span><span class="s">"$key\t$value"</span><span class="p">)</span>
     <span class="n">println</span><span class="p">()</span>
 
     <span class="c1">//调用中缀函数</span>
-    <span class="k">val</span> <span class="n">a</span> <span class="p">=</span> <span class="m">3.0</span>
-    <span class="k">val</span> <span class="n">b</span> <span class="p">=</span> <span class="m">10.0</span>
+    <span class="k">val</span> <span class="py">a</span> <span class="p">=</span> <span class="m">3.0</span>
+    <span class="k">val</span> <span class="py">b</span> <span class="p">=</span> <span class="m">10.0</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"The average of $a and $b is ${a averageWith b}"</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 <h2 id="4-lambda">4 Lambda函数</h2>
 <h3 id="41-lambda">4.1 Lambda函数</h3>
-<div class="highlight"><pre><span class="k">package</span> <span class="nn">KotlinSamples.Lambda</span>
+<div class="highlight"><pre><span></span><span class="k">package</span> <span class="nn">KotlinSamples.Lambda</span>
 
 <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
-    <span class="k">val</span> <span class="n">product</span> <span class="p">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span><span class="n">Int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="n">Int</span> <span class="p">-&gt;</span> <span class="n">x</span> <span class="p">*</span> <span class="n">y</span><span class="p">}</span>
+    <span class="k">val</span> <span class="py">product</span> <span class="p">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span><span class="n">Int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="n">Int</span> <span class="p">-&gt;</span> <span class="n">x</span> <span class="p">*</span> <span class="n">y</span><span class="p">}</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"${product(2, 3)}"</span><span class="p">)</span>
     <span class="c1">//可以把签名放在前面</span>
-    <span class="k">val</span> <span class="n">product2</span><span class="p">:(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">)-&gt;</span><span class="n">Int</span> <span class="p">=</span> <span class="p">{</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">-&gt;</span> <span class="n">x</span><span class="p">*</span> <span class="n">y</span><span class="p">}</span>
+    <span class="k">val</span> <span class="py">product2</span><span class="p">:(</span><span class="n">Int</span><span class="p">,</span> <span class="n">Int</span><span class="p">)-&gt;</span><span class="n">Int</span> <span class="p">=</span> <span class="p">{</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">-&gt;</span> <span class="n">x</span><span class="p">*</span> <span class="n">y</span><span class="p">}</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"${product2(4, 6)}"</span><span class="p">)</span>
 
     <span class="c1">//lambda作为参数</span>
-    <span class="k">val</span> <span class="n">numbers</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
-    <span class="k">val</span> <span class="n">n</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="n">count</span> <span class="p">{</span> <span class="n">it</span> <span class="p">&gt;</span> <span class="m">2</span> <span class="p">}</span> <span class="c1">//等价于number.count({x-&gt;x&gt;2})</span>
+    <span class="k">val</span> <span class="py">numbers</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">n</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="n">count</span> <span class="p">{</span> <span class="n">it</span> <span class="p">&gt;</span> <span class="m">2</span> <span class="p">}</span> <span class="c1">//等价于number.count({x-&gt;x&gt;2})</span>
     <span class="n">println</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
     <span class="c1">//闭包,kotlin中允许在lambda中修改外界的值</span>
-    <span class="k">var</span> <span class="n">sum</span> <span class="p">=</span> <span class="m">0</span>
+    <span class="k">var</span> <span class="py">sum</span> <span class="p">=</span> <span class="m">0</span>
     <span class="n">numbers</span><span class="p">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">sum</span> <span class="p">+=</span> <span class="n">it</span> <span class="p">}</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"sum of $numbers is $sum"</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 <h3 id="42">4.2 高阶函数</h3>
 <p>高阶函数是含有函数作为参数的函数，或者是返回值是函数的函数。</p>
-<div class="highlight"><pre><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
-    <span class="k">val</span> <span class="n">numbers</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">7</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
-    <span class="k">val</span> <span class="n">maxvalue</span> <span class="p">=</span> <span class="n">max</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="p">{</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">-&gt;</span> <span class="n">x</span> <span class="p">&lt;</span> <span class="n">y</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">numbers</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">7</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">maxvalue</span> <span class="p">=</span> <span class="n">max</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="p">{</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">-&gt;</span> <span class="n">x</span> <span class="p">&lt;</span> <span class="n">y</span><span class="p">}</span>
     <span class="n">println</span><span class="p">(</span><span class="n">maxvalue</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="k">fun</span> <span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">max</span><span class="p">(</span><span class="n">collection</span><span class="p">:</span> <span class="n">Collection</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;,</span> <span class="n">less</span><span class="p">:(</span><span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="p">)-&gt;</span><span class="n">Boolean</span><span class="p">):</span> <span class="n">T</span><span class="p">?{</span>
-    <span class="k">var</span> <span class="n">max</span><span class="p">:</span><span class="n">T</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+<span class="k">fun</span> <span class="err">&lt;</span><span class="nf">T</span><span class="p">&gt;</span> <span class="n">max</span><span class="p">(</span><span class="n">collection</span><span class="p">:</span> <span class="n">Collection</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;,</span> <span class="n">less</span><span class="p">:(</span><span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="p">)-&gt;</span><span class="n">Boolean</span><span class="p">):</span> <span class="n">T</span><span class="p">?{</span>
+    <span class="k">var</span> <span class="py">max</span><span class="p">:</span><span class="n">T</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
     <span class="k">for</span><span class="p">(</span><span class="n">x</span> <span class="k">in</span> <span class="n">collection</span><span class="p">){</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">max</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">less</span><span class="p">(</span><span class="n">max</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
             <span class="n">max</span> <span class="p">=</span> <span class="n">x</span>
@@ -535,7 +535,7 @@ if语句直接返回值。</p>
 <span class="p">}</span>
 </pre></div>
 <h3 id="43">4.3 带接受者的函数类型</h3>
-<div class="highlight"><pre><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
     <span class="c1">//Function type with receiver</span>
     <span class="c1">//类似扩展函数,但是只能作用于局部,而且这个函数是个lambda表达式,被存储在变量中</span>
     <span class="n">fun_type_with_recevier</span><span class="p">()</span>
@@ -546,23 +546,23 @@ if语句直接返回值。</p>
 
 <span class="k">fun</span> <span class="nf">fun_type_with_recevier</span><span class="p">(){</span>
     <span class="c1">//声明形式类似扩展函数,但是返回到变量中</span>
-    <span class="k">val</span> <span class="n">increaseBy</span> <span class="p">=</span> <span class="k">fun</span> <span class="n">Int</span><span class="p">.(</span><span class="n">value</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span> <span class="p">=</span> <span class="k">this</span> <span class="p">+</span> <span class="n">value</span>
-    <span class="k">var</span> <span class="n">x</span> <span class="p">=</span> <span class="m">1</span>
+    <span class="k">val</span> <span class="py">increaseBy</span> <span class="p">=</span> <span class="k">fun</span> <span class="nf">Int</span><span class="p">.(</span><span class="n">value</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span> <span class="p">=</span> <span class="k">this</span> <span class="p">+</span> <span class="n">value</span>
+    <span class="k">var</span> <span class="py">x</span> <span class="p">=</span> <span class="m">1</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"$x + 3 = ${x.increaseBy(3)}"</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 <h3 id="44-functors">4.4 Functors</h3>
 <p>不知道为什么，一直报错：Error:(10, 15) Kotlin: operator modifier is required on 'invoke' in 'Average'</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Average</span><span class="p">{</span>
-    <span class="k">public</span> <span class="k">fun</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">vararg</span> <span class="n">values</span><span class="p">:</span> <span class="n">Double</span><span class="p">):</span><span class="n">Double</span><span class="p">{</span>
-        <span class="k">val</span> <span class="n">sum</span> <span class="p">=</span> <span class="n">values</span><span class="p">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Average</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">fun</span> <span class="nf">invoke</span><span class="p">(</span><span class="k">vararg</span> <span class="n">values</span><span class="p">:</span> <span class="n">Double</span><span class="p">):</span><span class="n">Double</span><span class="p">{</span>
+        <span class="k">val</span> <span class="py">sum</span> <span class="p">=</span> <span class="n">values</span><span class="p">.</span><span class="n">sum</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">sum</span><span class="p">/</span><span class="n">values</span><span class="p">.</span><span class="n">size</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
-    <span class="k">val</span> <span class="n">a</span> <span class="p">=</span> <span class="n">Average</span><span class="p">()</span>
+    <span class="k">val</span> <span class="py">a</span> <span class="p">=</span> <span class="n">Average</span><span class="p">()</span>
     <span class="c1">//functor</span>
-    <span class="k">val</span> <span class="n">avg</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="m">1.0</span><span class="p">,</span> <span class="m">2.0</span><span class="p">,</span> <span class="m">3.0</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">avg</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="m">1.0</span><span class="p">,</span> <span class="m">2.0</span><span class="p">,</span> <span class="m">3.0</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="n">avg</span><span class="p">)</span>
 <span class="c1">//    fun String.invoke():String{</span>
 <span class="c1">//        return "("+this+")"</span>
@@ -573,12 +573,12 @@ if语句直接返回值。</p>
 </pre></div>
 <h2 id="5">5 类</h2>
 <h3 id="51-property">5.1 属性(property)</h3>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Person</span><span class="p">{</span>
-    <span class="n">lateinit</span> <span class="k">var</span> <span class="n">name</span><span class="p">:</span><span class="n">String</span> <span class="c1">//如果不初始化,需要加lateinit</span>
-    <span class="k">var</span> <span class="n">age</span><span class="p">:</span><span class="n">Int</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span>
-    <span class="k">val</span> <span class="n">canVote</span><span class="p">:</span><span class="n">Boolean</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">{</span>
+    <span class="k">lateinit</span> <span class="k">var</span> <span class="py">name</span><span class="p">:</span><span class="n">String</span> <span class="c1">//如果不初始化,需要加lateinit</span>
+    <span class="k">var</span> <span class="py">age</span><span class="p">:</span><span class="n">Int</span> <span class="p">=</span> <span class="p">-</span><span class="m">1</span>
+    <span class="k">val</span> <span class="py">canVote</span><span class="p">:</span><span class="n">Boolean</span>
         <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="n">age</span> <span class="p">&gt;</span> <span class="m">16</span>
-    <span class="k">var</span> <span class="n">ssn</span> <span class="p">=</span> <span class="s">"00000"</span>
+    <span class="k">var</span> <span class="py">ssn</span> <span class="p">=</span> <span class="s">"00000"</span>
         <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="n">field</span>
         <span class="k">set</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">println</span><span class="p">(</span><span class="s">"$name's ssn is changed to $value"</span><span class="p">)</span>
@@ -587,7 +587,7 @@ if语句直接返回值。</p>
 <span class="p">}</span>
 
 <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="n">me</span> <span class="p">=</span> <span class="n">Person</span><span class="p">()</span>
+    <span class="k">var</span> <span class="py">me</span> <span class="p">=</span> <span class="n">Person</span><span class="p">()</span>
     <span class="n">me</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">"lixiang"</span>
     <span class="n">me</span><span class="p">.</span><span class="n">age</span> <span class="p">=</span> <span class="m">28</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"${me.name} can ${if (!me.canVote) "</span><span class="n">not</span> <span class="s">" else ""}vote"</span><span class="p">)</span>
@@ -595,52 +595,52 @@ if语句直接返回值。</p>
 <span class="p">}</span>
 </pre></div>
 <h3 id="52">5.2 构造函数和初始化</h3>
-<div class="highlight"><pre><span class="c1">//注意,class的构造中需要给参数带上var或者val才是添加属性</span>
-<span class="k">class</span> <span class="nf">Human</span><span class="p">(</span><span class="k">var</span> <span class="n">name</span><span class="p">:</span><span class="n">String</span><span class="p">,</span> <span class="k">val</span> <span class="n">age</span><span class="p">:</span><span class="n">Int</span><span class="p">){</span>
+<div class="highlight"><pre><span></span><span class="c1">//注意,class的构造中需要给参数带上var或者val才是添加属性</span>
+<span class="k">class</span> <span class="nc">Human</span><span class="p">(</span><span class="k">var</span> <span class="py">name</span><span class="p">:</span><span class="n">String</span><span class="p">,</span> <span class="k">val</span> <span class="py">age</span><span class="p">:</span><span class="n">Int</span><span class="p">){</span>
     <span class="c1">//初始化</span>
     <span class="n">init</span><span class="p">{</span>
         <span class="n">println</span><span class="p">(</span><span class="s">"$name is $age"</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="n">me</span> <span class="p">=</span> <span class="n">Human</span><span class="p">(</span><span class="s">"Lixiang"</span><span class="p">,</span> <span class="m">28</span><span class="p">)</span>
+    <span class="k">var</span> <span class="py">me</span> <span class="p">=</span> <span class="n">Human</span><span class="p">(</span><span class="s">"Lixiang"</span><span class="p">,</span> <span class="m">28</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"My name is ${me.name}, and my age is ${me.age}"</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 <h3 id="53-delegated-properties">5.3 委托属性(Delegated Properties)</h3>
-<div class="highlight"><pre><span class="k">package</span> <span class="nn">KotlinSample.demo3</span>
+<div class="highlight"><pre><span></span><span class="k">package</span> <span class="nn">KotlinSample.demo3</span>
 
-<span class="n">import</span> <span class="n">kotlin</span><span class="p">.</span><span class="n">properties</span><span class="p">.</span><span class="n">Delegates</span>
-<span class="n">import</span> <span class="n">kotlin</span><span class="p">.</span><span class="n">reflect</span><span class="p">.</span><span class="n">KProperty</span>
+<span class="k">import</span> <span class="nn">kotlin.properties.Delegates</span>
+<span class="k">import</span> <span class="nn">kotlin.reflect.KProperty</span>
 
 <span class="k">class</span> <span class="nc">Delegate</span><span class="p">{</span>
-    <span class="n">operator</span> <span class="k">fun</span> <span class="nf">getValue</span><span class="p">(</span><span class="n">thisRef</span><span class="p">:</span><span class="n">Any</span><span class="p">?,</span> <span class="n">property</span><span class="p">:</span> <span class="n">KProperty</span><span class="p">&lt;*&gt;):</span><span class="n">String</span><span class="p">{</span>
+    <span class="k">operator</span> <span class="k">fun</span> <span class="nf">getValue</span><span class="p">(</span><span class="n">thisRef</span><span class="p">:</span><span class="n">Any</span><span class="p">?,</span> <span class="n">property</span><span class="p">:</span> <span class="n">KProperty</span><span class="p">&lt;*&gt;):</span><span class="n">String</span><span class="p">{</span>
         <span class="k">return</span> <span class="s">"$thisRef, thank you for delegating '${property.name}' to me!"</span>
     <span class="p">}</span>
 
-    <span class="n">operator</span> <span class="k">fun</span> <span class="nf">setValue</span><span class="p">(</span><span class="n">thisRef</span><span class="p">:</span> <span class="n">Any</span><span class="p">?,</span> <span class="n">property</span><span class="p">:</span> <span class="n">KProperty</span><span class="p">&lt;*&gt;,</span> <span class="n">value</span><span class="p">:</span><span class="n">String</span><span class="p">){</span>
+    <span class="k">operator</span> <span class="k">fun</span> <span class="nf">setValue</span><span class="p">(</span><span class="n">thisRef</span><span class="p">:</span> <span class="n">Any</span><span class="p">?,</span> <span class="n">property</span><span class="p">:</span> <span class="n">KProperty</span><span class="p">&lt;*&gt;,</span> <span class="n">value</span><span class="p">:</span><span class="n">String</span><span class="p">){</span>
         <span class="n">println</span><span class="p">(</span><span class="s">"$value has been assigned to '${property.name}' in $thisRef"</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="k">class</span> <span class="nc">Person</span><span class="p">{</span>
     <span class="c1">//委托</span>
-    <span class="k">var</span> <span class="n">name</span><span class="p">:</span> <span class="n">String</span> <span class="n">by</span> <span class="n">Delegate</span><span class="p">()</span>
+    <span class="k">var</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span> <span class="k">by</span> <span class="n">Delegate</span><span class="p">()</span>
     <span class="c1">//委托的一种用法,惰性</span>
-    <span class="k">val</span> <span class="n">lazyValue</span><span class="p">:</span> <span class="n">String</span> <span class="n">by</span> <span class="n">lazy</span> <span class="p">{</span>
+    <span class="k">val</span> <span class="py">lazyValue</span><span class="p">:</span> <span class="n">String</span> <span class="k">by</span> <span class="n">lazy</span> <span class="p">{</span>
         <span class="n">println</span><span class="p">(</span><span class="s">"lazyValue初始化"</span><span class="p">)</span>
         <span class="s">"test"</span>
     <span class="p">}</span>
 
     <span class="c1">//委托的用法,通知,其中"John"是初始值</span>
-    <span class="k">var</span> <span class="n">othername</span><span class="p">:</span> <span class="n">String</span> <span class="n">by</span> <span class="n">Delegates</span><span class="p">.</span><span class="n">observable</span><span class="p">(</span><span class="s">"John"</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">prop</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="k">new</span> <span class="p">-&gt;</span> <span class="n">println</span><span class="p">(</span><span class="s">"${prop.name} $old -&gt; $new"</span><span class="p">)</span>
+    <span class="k">var</span> <span class="py">othername</span><span class="p">:</span> <span class="n">String</span> <span class="k">by</span> <span class="n">Delegates</span><span class="p">.</span><span class="n">observable</span><span class="p">(</span><span class="s">"John"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">prop</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="n">new</span> <span class="p">-&gt;</span> <span class="n">println</span><span class="p">(</span><span class="s">"${prop.name} $old -&gt; $new"</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="n">p</span> <span class="p">=</span> <span class="n">Person</span><span class="p">()</span>
+    <span class="k">var</span> <span class="py">p</span> <span class="p">=</span> <span class="n">Person</span><span class="p">()</span>
     <span class="n">p</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">"Lixiang"</span>
-    <span class="k">val</span> <span class="n">s</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span>
+    <span class="k">val</span> <span class="py">s</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span>
     <span class="n">println</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
     <span class="c1">//只求一次值</span>
     <span class="n">println</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">lazyValue</span><span class="p">)</span>
@@ -651,14 +651,14 @@ if语句直接返回值。</p>
 </pre></div>
 <h3 id="54-data-classes">5.4 数据类(Data Classes)</h3>
 <p>数据类主要用来存储数据</p>
-<div class="highlight"><pre><span class="k">package</span> <span class="nn">KotlinSample.demo4</span>
+<div class="highlight"><pre><span></span><span class="k">package</span> <span class="nn">KotlinSample.demo4</span>
 
 <span class="c1">//data class用来保存数据,他有以下几种方法</span>
 <span class="c1">//equals()/hashCode()</span>
 <span class="c1">//toString()</span>
 <span class="c1">//copy() 深拷贝</span>
 <span class="c1">//destructuring 解包操作</span>
-<span class="n">data</span> <span class="k">class</span> <span class="nf">User</span><span class="p">(</span><span class="k">val</span> <span class="n">name</span><span class="p">:</span><span class="n">String</span><span class="p">,</span> <span class="k">val</span> <span class="n">age</span><span class="p">:</span> <span class="n">Int</span><span class="p">){</span>
+<span class="k">data</span> <span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="k">val</span> <span class="py">name</span><span class="p">:</span><span class="n">String</span><span class="p">,</span> <span class="k">val</span> <span class="py">age</span><span class="p">:</span> <span class="n">Int</span><span class="p">){</span>
     <span class="c1">//你也可以重写</span>
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">toString</span><span class="p">():</span> <span class="n">String</span><span class="p">{</span>
         <span class="k">return</span> <span class="s">"My name is $name, age is $age"</span>
@@ -666,56 +666,56 @@ if语句直接返回值。</p>
 <span class="p">}</span>
 
 <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
-    <span class="k">val</span> <span class="n">a</span> <span class="p">=</span> <span class="n">User</span><span class="p">(</span><span class="s">"Lixiang"</span><span class="p">,</span> <span class="m">20</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">a</span> <span class="p">=</span> <span class="n">User</span><span class="p">(</span><span class="s">"Lixiang"</span><span class="p">,</span> <span class="m">20</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-    <span class="k">val</span> <span class="n">b</span> <span class="p">=</span> <span class="n">User</span><span class="p">(</span><span class="s">"Lixiang"</span><span class="p">,</span> <span class="m">20</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">b</span> <span class="p">=</span> <span class="n">User</span><span class="p">(</span><span class="s">"Lixiang"</span><span class="p">,</span> <span class="m">20</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="n">a</span> <span class="p">==</span> <span class="n">b</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="n">a</span> <span class="p">===</span> <span class="n">b</span><span class="p">)</span>
-    <span class="k">val</span> <span class="n">c</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">val</span> <span class="py">c</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">println</span><span class="p">(</span><span class="n">c</span> <span class="p">==</span> <span class="n">a</span><span class="p">)</span>
     <span class="n">println</span><span class="p">(</span><span class="n">c</span> <span class="p">===</span><span class="n">a</span><span class="p">)</span>
     <span class="c1">//解包</span>
-    <span class="k">val</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span> <span class="p">=</span> <span class="n">c</span>
+    <span class="k">val</span> <span class="err">(</span><span class="py">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span> <span class="p">=</span> <span class="n">c</span>
     <span class="n">println</span><span class="p">(</span><span class="s">"$name, $age"</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 <h3 id="55-singleton">5.5 单例(Singleton)</h3>
-<div class="highlight"><pre><span class="k">package</span> <span class="nn">KotlinSample.demo5</span>
+<div class="highlight"><pre><span></span><span class="k">package</span> <span class="nn">KotlinSample.demo5</span>
 
 <span class="k">class</span> <span class="nc">PointFactory</span><span class="p">{</span>
     <span class="k">fun</span> <span class="nf">NewCartersianPoint</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="n">Double</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="n">Double</span><span class="p">):</span> <span class="n">Point</span><span class="p">{</span>
-        <span class="k">return</span> <span class="nf">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="p">}</span>
 
     <span class="k">fun</span> <span class="nf">NewPolarPoint</span><span class="p">(</span><span class="n">rho</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span> <span class="n">Double</span><span class="p">):</span> <span class="n">Point</span><span class="p">{</span>
-        <span class="k">return</span> <span class="nf">Point</span><span class="p">(</span><span class="n">rho</span><span class="p">*</span><span class="n">Math</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">rho</span><span class="p">*</span><span class="n">Math</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="n">rho</span><span class="p">*</span><span class="n">Math</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">rho</span><span class="p">*</span><span class="n">Math</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">class</span> <span class="nf">Point</span><span class="p">(</span><span class="k">val</span> <span class="n">x</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="k">val</span> <span class="n">y</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Point</span><span class="p">(</span><span class="k">val</span> <span class="py">x</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="k">val</span> <span class="py">y</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span>
 
 <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="n">pf</span> <span class="p">=</span> <span class="n">PointFactory</span><span class="p">()</span>
-    <span class="k">var</span> <span class="n">point</span> <span class="p">=</span> <span class="n">pf</span><span class="p">.</span><span class="n">NewPolarPoint</span><span class="p">(</span><span class="m">3.0</span><span class="p">,</span> <span class="n">Math</span><span class="p">.</span><span class="n">PI</span><span class="p">/</span><span class="m">2</span><span class="p">)</span>
+    <span class="k">var</span> <span class="py">pf</span> <span class="p">=</span> <span class="n">PointFactory</span><span class="p">()</span>
+    <span class="k">var</span> <span class="py">point</span> <span class="p">=</span> <span class="n">pf</span><span class="p">.</span><span class="n">NewPolarPoint</span><span class="p">(</span><span class="m">3.0</span><span class="p">,</span> <span class="n">Math</span><span class="p">.</span><span class="n">PI</span><span class="p">/</span><span class="m">2</span><span class="p">)</span>
     <span class="n">print</span><span class="p">(</span><span class="s">"${point.x} ${point.y}"</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 <h3 id="56-companion-objects">5.6 伴随对象(Companion Objects)</h3>
 <p>Kotlin中没有静态方法，使用伴随对象来实现类似静态方法的效果</p>
-<div class="highlight"><pre><span class="k">package</span> <span class="nn">KotlinSample.demo6</span>
+<div class="highlight"><pre><span></span><span class="k">package</span> <span class="nn">KotlinSample.demo6</span>
 
-<span class="k">interface</span> <span class="n">IFactory</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="p">{</span>
+<span class="k">interface</span> <span class="nc">IFactory</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="k">fun</span> <span class="nf">create</span><span class="p">():</span> <span class="n">T</span>
 <span class="p">}</span>
 
 <span class="c1">//注意,伴随对象并不是真正的static的</span>
-<span class="k">class</span> <span class="nf">Point</span><span class="p">(</span><span class="k">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="k">var</span> <span class="n">y</span><span class="p">:</span> <span class="n">Double</span><span class="p">){</span>
+<span class="k">class</span> <span class="nc">Point</span><span class="p">(</span><span class="k">var</span> <span class="py">x</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="k">var</span> <span class="py">y</span><span class="p">:</span> <span class="n">Double</span><span class="p">){</span>
     <span class="c1">//伴随对象,使用companion object修饰,其中Factory可以注释掉,也就是下面的代码也是可用的:</span>
     <span class="c1">//companion object {</span>
     <span class="c1">//伴随对象还能实现接口</span>
-    <span class="n">companion</span> <span class="n">object</span> <span class="cm">/*Factory*/</span> <span class="p">:</span> <span class="n">IFactory</span><span class="p">&lt;</span><span class="n">Point</span><span class="p">&gt;{</span>
+    <span class="k">companion</span> <span class="k">object</span> <span class="err">/*</span><span class="nc">Factory</span><span class="p">*/</span> <span class="p">:</span> <span class="n">IFactory</span><span class="p">&lt;</span><span class="n">Point</span><span class="p">&gt;{</span>
         <span class="k">override</span> <span class="k">fun</span> <span class="nf">create</span><span class="p">():</span> <span class="n">Point</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nf">Point</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span> <span class="m">0.0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span> <span class="m">0.0</span><span class="p">)</span>
         <span class="p">}</span>
 
         <span class="k">fun</span> <span class="nf">createCarterian</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Double</span><span class="p">):</span> <span class="n">Point</span> <span class="p">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -724,28 +724,28 @@ if语句直接返回值。</p>
 <span class="p">}</span>
 
 <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="n">simplePoint</span> <span class="p">=</span> <span class="n">Point</span><span class="p">(</span><span class="m">1.0</span><span class="p">,</span> <span class="m">2.0</span><span class="p">)</span>
+    <span class="k">var</span> <span class="py">simplePoint</span> <span class="p">=</span> <span class="n">Point</span><span class="p">(</span><span class="m">1.0</span><span class="p">,</span> <span class="m">2.0</span><span class="p">)</span>
 
     <span class="c1">//var factoryPoint = Point.Factory.createCarterian(1.0, 2.0)</span>
     <span class="c1">//类似静态方法的调用</span>
-    <span class="k">var</span> <span class="n">factoryPoint2</span> <span class="p">=</span> <span class="n">Point</span><span class="p">.</span><span class="n">createPolar</span><span class="p">(</span><span class="m">1.0</span><span class="p">,</span> <span class="m">2.0</span><span class="p">)</span>
+    <span class="k">var</span> <span class="py">factoryPoint2</span> <span class="p">=</span> <span class="n">Point</span><span class="p">.</span><span class="n">createPolar</span><span class="p">(</span><span class="m">1.0</span><span class="p">,</span> <span class="m">2.0</span><span class="p">)</span>
 
-    <span class="k">var</span> <span class="n">defaultPoint</span> <span class="p">=</span> <span class="n">Point</span><span class="p">.</span><span class="n">create</span><span class="p">()</span>
+    <span class="k">var</span> <span class="py">defaultPoint</span> <span class="p">=</span> <span class="n">Point</span><span class="p">.</span><span class="n">create</span><span class="p">()</span>
     <span class="c1">//或者如果没有给伴随对象起名字,也可以用下面这个方法</span>
-    <span class="k">var</span> <span class="n">defaultPoint2</span> <span class="p">=</span> <span class="n">Point</span><span class="p">.</span><span class="n">Companion</span><span class="p">.</span><span class="n">create</span><span class="p">()</span>
+    <span class="k">var</span> <span class="py">defaultPoint2</span> <span class="p">=</span> <span class="n">Point</span><span class="p">.</span><span class="n">Companion</span><span class="p">.</span><span class="n">create</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
 <h3 id="57-inheritance">5.7 继承(Inheritance)</h3>
-<div class="highlight"><pre><span class="c1">//只有open的class才能被继承</span>
-<span class="n">open</span> <span class="k">class</span> <span class="nf">Person</span><span class="p">(</span><span class="k">val</span> <span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">){</span>
+<div class="highlight"><pre><span></span><span class="c1">//只有open的class才能被继承</span>
+<span class="k">open</span> <span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="k">val</span> <span class="py">name</span><span class="p">:</span> <span class="n">String</span><span class="p">){</span>
     <span class="c1">//同样只有open方法才能被overwrite</span>
-    <span class="n">open</span> <span class="k">fun</span> <span class="nf">talk</span><span class="p">(){</span>
+    <span class="k">open</span> <span class="k">fun</span> <span class="nf">talk</span><span class="p">(){</span>
         <span class="n">println</span><span class="p">(</span><span class="s">"I'm $name"</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="c1">//父类已经有了name,所以不能再给这里的name添加val/var</span>
 <span class="c1">//Person有构造方法,因此必须对其进行调用</span>
-<span class="k">class</span> <span class="nf">Manager</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="k">var</span> <span class="n">subordinates</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;)</span> <span class="p">:</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="p">){</span>
+<span class="k">class</span> <span class="nc">Manager</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="k">var</span> <span class="py">subordinates</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;)</span> <span class="p">:</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="p">){</span>
     <span class="c1">//重写方法</span>
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">talk</span><span class="p">(){</span>
         <span class="n">println</span><span class="p">(</span><span class="s">"I'm $name, I have ${subordinates.size} subordinates"</span><span class="p">)</span>
@@ -753,10 +753,10 @@ if语句直接返回值。</p>
 <span class="p">}</span>
 
 <span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
-    <span class="k">val</span> <span class="n">lixiang</span> <span class="p">=</span> <span class="n">Person</span><span class="p">(</span><span class="s">"理想"</span><span class="p">)</span>
+    <span class="k">val</span> <span class="py">lixiang</span> <span class="p">=</span> <span class="n">Person</span><span class="p">(</span><span class="s">"理想"</span><span class="p">)</span>
     <span class="n">lixiang</span><span class="p">.</span><span class="n">talk</span><span class="p">()</span>
 
-    <span class="k">val</span> <span class="n">boss</span> <span class="p">=</span> <span class="n">Manager</span><span class="p">(</span><span class="s">"龙"</span><span class="p">,</span> <span class="n">listOf</span><span class="p">(</span><span class="n">lixiang</span><span class="p">))</span>
+    <span class="k">val</span> <span class="py">boss</span> <span class="p">=</span> <span class="n">Manager</span><span class="p">(</span><span class="s">"龙"</span><span class="p">,</span> <span class="n">listOf</span><span class="p">(</span><span class="n">lixiang</span><span class="p">))</span>
     <span class="n">boss</span><span class="p">.</span><span class="n">talk</span><span class="p">()</span>
 <span class="p">}</span>
 </pre></div>
@@ -807,7 +807,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-03-01T22:30:00"> 3 1, 2016</time>
+            <time pubdate="pubdate" datetime="2016-03-01T22:30:00+08:00"> 3 1, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Java-ref">Java</a> 
             <h4>Tags</h4>

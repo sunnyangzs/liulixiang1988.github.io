@@ -63,7 +63,7 @@
 <p>创建Android项目，项目名称BlogReader，视图名称为MainListActivity。</p>
 <h3 id="12-activity">1.2 更改Activity</h3>
 <p>打开MainListActivity.java文件，修改继承为<code>ListActivity</code>，如下</p>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainListActivity</span> <span class="kd">extends</span> <span class="n">ListActivity</span>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainListActivity</span> <span class="kd">extends</span> <span class="n">ListActivity</span>
 </pre></div>
 
 
@@ -77,7 +77,7 @@
 <p>添加<code>ListView</code>，如下所示：</p>
 </li>
 </ol>
-<div class="highlight"><pre><span class="nt">&lt;ListView</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;ListView</span>
     <span class="na">android:id=</span><span class="s">&quot;@+id/listView1&quot;</span>
     <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
     <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
@@ -91,7 +91,7 @@
 <li>更改<code>ListView</code>的ID</li>
 </ol>
 <p>如果我们给<code>ListView</code>分配了一个特殊的ID，Android会自动为<code>ListActivity</code>调用这个<code>ListView</code>，修改上面的<code>ListView</code>如下：</p>
-<div class="highlight"><pre><span class="nt">&lt;ListView</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;ListView</span>
     <span class="na">android:id=</span><span class="s">&quot;@android:id/list&quot;</span>
     <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
     <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
@@ -104,7 +104,7 @@
 <ol>
 <li>删除<code>RelativeLayout</code>自动生成的padding，整个layout文件如下：</li>
 </ol>
-<div class="highlight"><pre><span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
     <span class="na">xmlns:tools=</span><span class="s">&quot;http://schemas.android.com/tools&quot;</span>
     <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
     <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
@@ -127,7 +127,7 @@
 <hr />
 <h2 id="2">2 处理没有数据的情况</h2>
 <p>当博客列表中没有数据时，我们最好给用户一个提醒，让用户知道是没有数据，而不是在加载数据。<code>ListActivity</code>提供了一个简单的方法来完成这件事。我们添加一个<code>TextView</code>，它能同<code>ListActivity</code>协同工作来完成这个工作，不过需要给它添加一个特殊的<code>id</code>，用来在list为空时显示。</p>
-<div class="highlight"><pre><span class="nt">&lt;TextView</span> 
+<div class="highlight"><pre><span></span><span class="nt">&lt;TextView</span> 
     <span class="na">android:id=</span><span class="s">&quot;@android:id/empty&quot;</span>
     <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
     <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
@@ -144,7 +144,7 @@
 <h2 id="3-list">3 向List中添加数据</h2>
 <h3 id="31">3.1 添加数组数据</h3>
 <p>打开MainListActivity.java，添加数组变量：</p>
-<div class="highlight"><pre><span class="kd">protected</span> <span class="n">String</span><span class="o">[]</span> <span class="n">names</span> <span class="o">=</span> <span class="o">{</span>
+<div class="highlight"><pre><span></span><span class="kd">protected</span> <span class="n">String</span><span class="o">[]</span> <span class="n">names</span> <span class="o">=</span> <span class="o">{</span>
         <span class="s">&quot;刘理想&quot;</span><span class="o">,</span>
         <span class="s">&quot;Andrew&quot;</span><span class="o">,</span>
         <span class="s">&quot;Bubble&quot;</span><span class="o">,</span>
@@ -159,7 +159,7 @@
 
 <h3 id="32-arrayadapter">3.2 添加<code>ArrayAdapter</code></h3>
 <p>在<code>onCreate</code>中添加如下两行：</p>
-<div class="highlight"><pre><span class="n">ArrayAdapter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayAdapter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="k">this</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_list_item_1</span><span class="o">,</span> <span class="n">names</span><span class="o">);</span>
+<div class="highlight"><pre><span></span><span class="n">ArrayAdapter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayAdapter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="k">this</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_list_item_1</span><span class="o">,</span> <span class="n">names</span><span class="o">);</span>
 <span class="n">setListAdapter</span><span class="o">(</span><span class="n">adapter</span><span class="o">);</span>
 </pre></div>
 
@@ -176,13 +176,13 @@
 <h2 id="4-string">4. 关于@String资源</h2>
 <h3 id="41-javaresvaluesstringsxml">4.1 在java文件中引用res/values/strings.xml中定义的字符串</h3>
 <p>使用<code>Context</code>类的<code>getString</code>方法：</p>
-<div class="highlight"><pre><span class="n">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">hello</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><span class="n">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">hello</span><span class="o">)</span>
 </pre></div>
 
 
 <h3 id="42">4.2 添加字符串数组</h3>
 <p>打开res/values/strings.xml文件，添加字符串数组如下：</p>
-<div class="highlight"><pre><span class="nt">&lt;string-array</span> <span class="na">name=</span><span class="s">&quot;names&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;string-array</span> <span class="na">name=</span><span class="s">&quot;names&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;item&gt;</span>刘理想<span class="nt">&lt;/item&gt;</span>
     <span class="nt">&lt;item&gt;</span>Andrew<span class="nt">&lt;/item&gt;</span>
     <span class="nt">&lt;item&gt;</span>Bubble<span class="nt">&lt;/item&gt;</span>
@@ -196,13 +196,13 @@
 
 
 <p>更改java 文件中的数组声明：</p>
-<div class="highlight"><pre><span class="kd">protected</span> <span class="n">String</span><span class="o">[]</span> <span class="n">names</span> <span class="o">;</span>
+<div class="highlight"><pre><span></span><span class="kd">protected</span> <span class="n">String</span><span class="o">[]</span> <span class="n">names</span> <span class="o">;</span>
 </pre></div>
 
 
 <h3 id="43">4.3 调用字符串数组</h3>
 <p>通过以下方法</p>
-<div class="highlight"><pre><span class="n">Resources</span> <span class="n">resource</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">();</span>
+<div class="highlight"><pre><span></span><span class="n">Resources</span> <span class="n">resource</span> <span class="o">=</span> <span class="n">getResources</span><span class="o">();</span>
 <span class="n">names</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="na">getStringArray</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">array</span><span class="o">.</span><span class="na">names</span><span class="o">);</span>
 </pre></div>
 
@@ -247,7 +247,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-09-24T16:16:00"> 9 24, 2014</time>
+            <time pubdate="pubdate" datetime="2014-09-24T16:16:00+08:00"> 9 24, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Android-ref">Android</a> 
             <h4>Tags</h4>

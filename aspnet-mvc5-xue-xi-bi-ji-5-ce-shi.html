@@ -97,51 +97,51 @@
 <h2 id="2">2. 创建单元测试</h2>
 <p><strong>注意：单元测试不要包含数据库操作，包含数据库操作的一般成为集成测试。</strong></p>
 <h3 id="21">2.1 编写测试代码</h3>
-<div class="highlight"><pre><span class="n">namespace</span> <span class="n">AspNetMVCEssential</span><span class="p">.</span><span class="n">Tests</span><span class="p">.</span><span class="n">Controllers</span>
-<span class="p">{</span>
-    <span class="p">[</span><span class="n">TestClass</span><span class="p">]</span>
-    <span class="n">public</span> <span class="n">class</span> <span class="n">HomeControllerTest</span>
-    <span class="p">{</span>
-        <span class="p">[</span><span class="n">TestMethod</span><span class="p">]</span>
-        <span class="n">public</span> <span class="kt">void</span> <span class="n">Index</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="c1">// Arrange</span>
-            <span class="n">HomeController</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">new</span> <span class="n">HomeController</span><span class="p">();</span>
+<div class="highlight"><pre><span></span>namespace AspNetMVCEssential.Tests.Controllers
+{
+    [TestClass]
+    public class HomeControllerTest
+    {
+        [TestMethod]
+        public void Index()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
 
-            <span class="c1">// Act</span>
-            <span class="n">ViewResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">Index</span><span class="p">()</span> <span class="n">as</span> <span class="n">ViewResult</span><span class="p">;</span>
+            // Act
+            ViewResult result = controller.Index() as ViewResult;
 
-            <span class="c1">// Assert</span>
-            <span class="n">Assert</span><span class="p">.</span><span class="n">IsNotNull</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
-        <span class="p">}</span>
+            // Assert
+            Assert.IsNotNull(result);
+        }
 
-        <span class="p">[</span><span class="n">TestMethod</span><span class="p">]</span>
-        <span class="n">public</span> <span class="kt">void</span> <span class="n">About</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="c1">// Arrange</span>
-            <span class="n">HomeController</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">new</span> <span class="n">HomeController</span><span class="p">();</span>
+        [TestMethod]
+        public void About()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
 
-            <span class="c1">// Act</span>
-            <span class="n">ViewResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">About</span><span class="p">()</span> <span class="n">as</span> <span class="n">ViewResult</span><span class="p">;</span>
+            // Act
+            ViewResult result = controller.About() as ViewResult;
 
-            <span class="c1">// Assert</span>
-            <span class="n">Assert</span><span class="p">.</span><span class="n">AreEqual</span><span class="p">(</span><span class="s">"Your application description page."</span><span class="p">,</span> <span class="n">result</span><span class="p">.</span><span class="n">ViewBag</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
-        <span class="p">}</span>
+            // Assert
+            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+        }
 
-        <span class="p">[</span><span class="n">TestMethod</span><span class="p">]</span>
-        <span class="n">public</span> <span class="kt">void</span> <span class="n">Contact</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="c1">// Arrange</span>
-            <span class="n">HomeController</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">new</span> <span class="n">HomeController</span><span class="p">();</span>
+        [TestMethod]
+        public void Contact()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
 
-            <span class="c1">// Act</span>
-            <span class="n">ViewResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">controller</span><span class="p">.</span><span class="n">Contact</span><span class="p">()</span> <span class="n">as</span> <span class="n">ViewResult</span><span class="p">;</span>
+            // Act
+            ViewResult result = controller.Contact() as ViewResult;
 
-            <span class="c1">// Assert</span>
-            <span class="n">Assert</span><span class="p">.</span><span class="n">IsNotNull</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+            // Assert
+            Assert.IsNotNull(result);
+        }
+    }
+}
 </pre></div>
 <h3 id="22">2.2 运行测试</h3>
 <p>选定菜单“测试”-&gt;“运行”-&gt;运行所有测试或者未成功的测试。
@@ -152,82 +152,82 @@
 <p>我们要对<code>TransactionController.cs</code>进行测试，直接操作数据库不行，怎么办呢？我们可以使用虚拟的接口来进行测试。这需要我们更改一些代码.</p>
 <h3 id="31-transactioncontrollercs">3.1 首先，我们更改<code>TransactionController.cs</code></h3>
 <p>更改db为<code>IApplicationDbContext</code>类型，并且添加构造方法：</p>
-<div class="highlight"><pre><span class="n">private</span> <span class="n">IApplicationDbContext</span> <span class="n">db</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>private IApplicationDbContext db;
 
-<span class="c1">//实际使用</span>
-<span class="n">public</span> <span class="nf">TransactionController</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">db</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ApplicationDbContext</span><span class="p">();</span>
-<span class="p">}</span>
+//实际使用
+public TransactionController()
+{
+    db = new ApplicationDbContext();
+}
 
-<span class="c1">//生成使用</span>
-<span class="n">public</span> <span class="nf">TransactionController</span><span class="p">(</span><span class="n">IApplicationDbContext</span> <span class="n">dbContext</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">db</span> <span class="o">=</span> <span class="n">dbContext</span><span class="p">;</span>
-<span class="p">}</span>
+//生成使用
+public TransactionController(IApplicationDbContext dbContext)
+{
+    db = dbContext;
+}
 </pre></div>
 <h3 id="32-iapplicationdbcontext">3.2 创建IApplicationDbContext对象</h3>
-<div class="highlight"><pre><span class="k">public</span> <span class="nf">interface</span> <span class="nx">IApplication</span>
-<span class="p">{</span>
-    <span class="nx">IDbSet</span><span class="o">&lt;</span><span class="nx">CheckingAccount</span><span class="o">&gt;</span> <span class="nx">CheckingAccounts</span><span class="p">{</span><span class="nb">get</span><span class="p">;</span><span class="nb">set</span><span class="p">;}</span>
-    <span class="nx">IDbSet</span><span class="o">&lt;</span><span class="nx">Transaction</span><span class="o">&gt;</span> <span class="nx">Transactions</span><span class="p">{</span><span class="nb">get</span><span class="p">;</span> <span class="nb">set</span><span class="p">;}</span>
+<div class="highlight"><pre><span></span>public interface IApplication
+{
+    IDbSet&lt;CheckingAccount&gt; CheckingAccounts{get;set;}
+    IDbSet&lt;Transaction&gt; Transactions{get; set;}
 
-    <span class="k">public</span> <span class="nf">int</span> <span class="nx">SaveChanges</span><span class="p">();</span>
-<span class="p">}</span>
+    public int SaveChanges();
+}
 </pre></div>
 <p>让实际的ApplicationDbContext实现IApplicationDbContext。</p>
 <p>另外创建一个假的FakeApplicationDbContext实现IApplicationDbContext</p>
-<div class="highlight"><pre><span class="k">public</span> <span class="nf">class</span> <span class="nx">FakeApplicationDbContext</span><span class="p">:</span><span class="nx">IApplicationDbContext</span>
-<span class="p">{</span>
-    <span class="nx">IDbSet</span><span class="o">&lt;</span><span class="nx">CheckingAccount</span><span class="o">&gt;</span> <span class="nx">CheckingAccounts</span><span class="p">{</span><span class="nb">get</span><span class="p">;</span><span class="nb">set</span><span class="p">;}</span>
-    <span class="nx">IDbSet</span><span class="o">&lt;</span><span class="nx">Transaction</span><span class="o">&gt;</span> <span class="nx">Transactions</span><span class="p">{</span><span class="nb">get</span><span class="p">;</span> <span class="nb">set</span><span class="p">;}</span>
+<div class="highlight"><pre><span></span>public class FakeApplicationDbContext:IApplicationDbContext
+{
+    IDbSet&lt;CheckingAccount&gt; CheckingAccounts{get;set;}
+    IDbSet&lt;Transaction&gt; Transactions{get; set;}
 
-    <span class="k">public</span> <span class="nf">int</span> <span class="nx">SaveChanges</span><span class="p">(){</span><span class="k">return</span> <span class="mi">0</span><span class="p">}</span>
-<span class="p">}</span>
+    public int SaveChanges(){return 0}
+}
 </pre></div>
 <p>再创建一个FakeDbSet</p>
-<div class="highlight"><pre><span class="nx">using</span> <span class="nx">System</span><span class="p">;</span>
-<span class="nx">using</span> <span class="nx">System.Collections.Generic</span><span class="p">;</span>
-<span class="nx">using</span> <span class="nx">System.Linq</span><span class="p">;</span>
-<span class="nx">using</span> <span class="nx">System.Text</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-<span class="nx">namespace</span> <span class="nx">EntityExtensions</span> <span class="p">{</span>
-    <span class="k">public</span> <span class="nf">class</span> <span class="nx">FakeDbSet</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="nx">System.Data.Entity.IDbSet</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="nb">T</span> <span class="p">:</span> <span class="nb">class</span> <span class="p">{</span>
-        <span class="k">private</span> <span class="nf">readonly</span> <span class="nb">List</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="nb">new</span> <span class="nb">List</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span><span class="p">();</span>
+namespace EntityExtensions {
+    public class FakeDbSet&lt;T&gt; : System.Data.Entity.IDbSet&lt;T&gt; where T : class {
+        private readonly List&lt;T&gt; list = new List&lt;T&gt;();
 
-        <span class="k">public</span> <span class="nf">FakeDbSet</span><span class="p">()</span> <span class="p">{</span>
-            <span class="n">list</span> <span class="o">=</span> <span class="nb">new</span> <span class="nb">List</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span><span class="p">();</span>
-        <span class="p">}</span>
+        public FakeDbSet() {
+            list = new List&lt;T&gt;();
+        }
 
-        <span class="k">public</span> <span class="nf">FakeDbSet</span><span class="p">(</span><span class="na">IEnumerable</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span> <span class="nb">contents</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">this.list</span> <span class="o">=</span> <span class="nx">contents.ToList</span><span class="p">();</span>
-        <span class="p">}</span>
+        public FakeDbSet(IEnumerable&lt;T&gt; contents) {
+            this.list = contents.ToList();
+        }
 
-        <span class="vi">#region</span> <span class="nx">IDbSet</span><span class="o">&lt;</span><span class="nb">T</span><span class="o">&gt;</span> <span class="nb">Members</span>
+        #region IDbSet&lt;T&gt; Members
 
-        <span class="k">public</span> <span class="nf">T</span> <span class="nb">Add</span><span class="p">(</span><span class="na">T</span> <span class="nx">entity</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">this.list.Add</span><span class="p">(</span><span class="nx">entity</span><span class="p">);</span>
-            <span class="k">return</span> <span class="nx">entity</span><span class="p">;</span>
-        <span class="p">}</span>
+        public T Add(T entity) {
+            this.list.Add(entity);
+            return entity;
+        }
 
-        <span class="k">public</span> <span class="nf">T</span> <span class="nx">Attach</span><span class="p">(</span><span class="nb">T</span> <span class="nx">entity</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">this.list.Add</span><span class="p">(</span><span class="nx">entity</span><span class="p">);</span>
-            <span class="k">return</span> <span class="nx">entity</span><span class="p">;</span>
-        <span class="p">}</span>
+        public T Attach(T entity) {
+            this.list.Add(entity);
+            return entity;
+        }
 
-        <span class="k">public</span> <span class="nf">TDerivedEntity</span> <span class="nb">Create</span><span class="o">&lt;</span><span class="nx">TDerivedEntity</span><span class="o">&gt;</span><span class="p">()</span> <span class="k">where</span> <span class="nx">TDerivedEntity</span> <span class="p">:</span> <span class="nb">class</span><span class="p">,</span> <span class="nb">T</span> <span class="p">{</span>
-            <span class="nb">throw</span> <span class="nb">new</span> <span class="nx">NotImplementedException</span><span class="p">();</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="nf">T</span> <span class="nb">Create</span><span class="p">()</span> <span class="p">{</span>
-            <span class="nb">throw</span> <span class="nb">new</span> <span class="nx">NotImplementedException</span><span class="p">();</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="nf">T</span> <span class="nb">Find</span><span class="p">(</span><span class="k">params</span> <span class="nb">object</span><span class="err">[</span><span class="cp">]</span> keyValues) {
+        public TDerivedEntity Create&lt;TDerivedEntity&gt;() where TDerivedEntity : class, T {
             throw new NotImplementedException();
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<span class="nt">&lt;T&gt;</span> Local {
+        public T Create() {
+            throw new NotImplementedException();
+        }
+
+        public T Find(params object[] keyValues) {
+            throw new NotImplementedException();
+        }
+
+        public System.Collections.ObjectModel.ObservableCollection&lt;T&gt; Local {
             get {
                 throw new NotImplementedException();
             }
@@ -240,9 +240,9 @@
 
         #endregion
 
-        #region IEnumerable<span class="nt">&lt;T&gt;</span> Members
+        #region IEnumerable&lt;T&gt; Members
 
-        public IEnumerator<span class="nt">&lt;T&gt;</span> GetEnumerator() {
+        public IEnumerator&lt;T&gt; GetEnumerator() {
             return this.list.GetEnumerator();
         }
 
@@ -275,7 +275,7 @@
 }
 </pre></div>
 <p>另外一种方法是使用</p>
-<div class="highlight"><pre><span class="n">Install</span><span class="o">-</span><span class="n">Package</span> <span class="n">FakeDbSet</span>
+<div class="highlight"><pre><span></span>Install-Package FakeDbSet
 </pre></div>
 <h2 id="4-tdd">4 TDD</h2>
 <h3 id="41-tdd">4.1 TDD基本流程</h3>
@@ -323,7 +323,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-12-04T22:15:00">12 4, 2014</time>
+            <time pubdate="pubdate" datetime="2014-12-04T22:15:00+08:00">12 4, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#DotNet-ref">DotNet</a> 
             <h4>Tags</h4>

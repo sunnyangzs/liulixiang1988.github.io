@@ -72,7 +72,7 @@
 - 添加<code>onPostExecute</code>方法，参数类型还是<code>JSONObject</code>，在这里通知UI线程进行更新列表
 - 在MainListActivity中增加一个<code>JSONObject</code>字段，用来保存获取的JSON数据</p>
 <p>代码如下：</p>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainListActivity</span> <span class="kd">extends</span> <span class="n">ListActivity</span> <span class="o">{</span>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainListActivity</span> <span class="kd">extends</span> <span class="n">ListActivity</span> <span class="o">{</span>
     <span class="c1">//...</span>
     <span class="kd">protected</span> <span class="n">JSONObject</span> <span class="n">blogData</span><span class="o">;</span>
 
@@ -150,7 +150,7 @@
 
 <hr />
 <h2 id="2-adapter">2 填充字符串数组，并且创建Adapter适配器</h2>
-<div class="highlight"><pre><span class="n">JSONArray</span> <span class="n">jsonPosts</span> <span class="o">=</span> <span class="n">blogData</span><span class="o">.</span><span class="na">getJSONArray</span><span class="o">(</span><span class="s">&quot;posts&quot;</span><span class="o">);</span>
+<div class="highlight"><pre><span></span><span class="n">JSONArray</span> <span class="n">jsonPosts</span> <span class="o">=</span> <span class="n">blogData</span><span class="o">.</span><span class="na">getJSONArray</span><span class="o">(</span><span class="s">&quot;posts&quot;</span><span class="o">);</span>
 <span class="n">blogPostTitles</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">jsonPosts</span><span class="o">.</span><span class="na">length</span><span class="o">()];</span>
 <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">jsonPosts</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++){</span>
     <span class="n">JSONObject</span> <span class="n">post</span> <span class="o">=</span> <span class="n">jsonPosts</span><span class="o">.</span><span class="na">getJSONObject</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
@@ -167,7 +167,7 @@
 <hr />
 <h2 id="3">3 使用对话窗处理错误</h2>
 <p><code>AlertDialog.Builder</code>是工厂模式。</p>
-<div class="highlight"><pre><span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+<div class="highlight"><pre><span></span><span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AlertDialog</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
 <span class="n">builder</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">error_title</span><span class="o">);</span>
 <span class="n">builder</span><span class="o">.</span><span class="na">setMessage</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">error_message</span><span class="o">);</span>
 <span class="n">builder</span><span class="o">.</span><span class="na">setPositiveButton</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">ok</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
@@ -185,7 +185,7 @@
 <li>设置<code>ListView</code>对应的empty <code>TextView</code></li>
 </ol>
 <p>首先，清空<code>TextView</code>的Text</p>
-<div class="highlight"><pre><span class="nt">&lt;TextView</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;TextView</span>
     <span class="na">android:id=</span><span class="s">&quot;@android:id/empty&quot;</span>
     <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
     <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
@@ -195,7 +195,7 @@
 
 
 <p>然后，打开MainListActivity.java，在错误对话框代码下面添加如下代码：</p>
-<div class="highlight"><pre><span class="n">TextView</span> <span class="n">textView</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">getListView</span><span class="o">().</span><span class="na">getEmptyView</span><span class="o">();</span>
+<div class="highlight"><pre><span></span><span class="n">TextView</span> <span class="n">textView</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextView</span><span class="o">)</span> <span class="n">getListView</span><span class="o">().</span><span class="na">getEmptyView</span><span class="o">();</span>
 <span class="n">textView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">no_data</span><span class="o">));</span>
 </pre></div>
 
@@ -205,7 +205,7 @@
 <ol>
 <li>添加指示器</li>
 </ol>
-<div class="highlight"><pre><span class="nt">&lt;ProgressBar</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;ProgressBar</span>
     <span class="na">android:id=</span><span class="s">&quot;@+id/progressBar1&quot;</span>
     <span class="na">style=</span><span class="s">&quot;?android:attr/progressBarStyleLarge&quot;</span>
     <span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
@@ -220,7 +220,7 @@
 </ul>
 <p>在程序中添加<code>protected ProgressBar progressBar;</code></p>
 <p>在<code>onCreate</code>中初始化<code>progressBar</code>并且使其可见：</p>
-<div class="highlight"><pre><span class="n">progressBar</span> <span class="o">=</span> <span class="o">(</span><span class="n">ProgressBar</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">progressBar1</span><span class="o">);</span>   
+<div class="highlight"><pre><span></span><span class="n">progressBar</span> <span class="o">=</span> <span class="o">(</span><span class="n">ProgressBar</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">progressBar1</span><span class="o">);</span>   
 
 <span class="k">if</span> <span class="o">(</span><span class="n">isNetworkAvailable</span><span class="o">())</span> <span class="o">{</span>
     <span class="n">progressBar</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">VISIBLE</span><span class="o">);</span> <span class="c1">//设置可见</span>
@@ -233,7 +233,7 @@
 
 
 <p>在<code>updateList</code>中将<code>progressBar</code>设置为不可见：</p>
-<div class="highlight"><pre><span class="n">progressBar</span><span class="p">.</span><span class="n">setVisibility</span><span class="p">(</span><span class="n">View</span><span class="p">.</span><span class="n">INVISIBLE</span><span class="p">);</span>
+<div class="highlight"><pre><span></span>progressBar.setVisibility(View.INVISIBLE);
 </pre></div>
 
 
@@ -243,7 +243,7 @@
 <p>修改<code>updateList</code>为<code>handleBlogResponse</code>，并将<code>blogData==null</code>时的内容提取到新方法<code>updateDisplayForError()</code>中。</p>
 <hr />
 <h2 id="5-list">5 给List添加作者</h2>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">KEY_TITLE</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">KEY_TITLE</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">KEY_AUTHOR</span><span class="o">=</span><span class="s">&quot;author&quot;</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleBlogResponse</span><span class="o">(){</span>
@@ -284,7 +284,7 @@
 
             <span class="c1">//使用SimpleAdapter代替ArrayAdapter，可以添加映射</span>
             <span class="n">SimpleAdapter</span> <span class="n">adapter</span> <span class="o">=</span> 
-                    <span class="k">new</span> <span class="nf">SimpleAdapter</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">blogPosts</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_list_item_2</span><span class="o">,</span> <span class="n">keys</span><span class="o">,</span> <span class="n">ids</span><span class="o">);</span>
+                    <span class="k">new</span> <span class="n">SimpleAdapter</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">blogPosts</span><span class="o">,</span> <span class="n">android</span><span class="o">.</span><span class="na">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">simple_list_item_2</span><span class="o">,</span> <span class="n">keys</span><span class="o">,</span> <span class="n">ids</span><span class="o">);</span>
             <span class="n">setListAdapter</span><span class="o">(</span><span class="n">adapter</span><span class="o">);</span>
         <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">JSONException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">Log</span><span class="o">.</span><span class="na">e</span><span class="o">(</span><span class="n">TAG</span><span class="o">,</span> <span class="s">&quot;Exception caught&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
@@ -335,7 +335,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-09-27T11:30:00"> 9 27, 2014</time>
+            <time pubdate="pubdate" datetime="2014-09-27T11:30:00+08:00"> 9 27, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Android-ref">Android</a> 
             <h4>Tags</h4>

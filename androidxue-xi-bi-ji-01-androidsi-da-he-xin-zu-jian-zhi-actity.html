@@ -73,7 +73,7 @@
 <li>在<code>onCreate</code>中添加<code>findViewById(R.id.btnId)</code>,使用<code>cmd+1</code>自动转换</li>
 <li>添加点击事件</li>
 </ol>
-<div class="highlight"><pre><span class="c1">//点击</span>
+<div class="highlight"><pre><span></span><span class="c1">//点击</span>
 <span class="n">btn</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">View</span><span class="o">.</span><span class="na">OnClickListern</span><span class="o">(){</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">){</span>
@@ -93,7 +93,7 @@
 <p>在第二个Aty中：
 <code>getIntent().getStringExtra("数据名称")</code></p>
 <h3 id="2intentputextrastring-bundle">2、Intent.putExtra(string, bundle)</h3>
-<div class="highlight"><pre><span class="c1">//存</span>
+<div class="highlight"><pre><span></span><span class="c1">//存</span>
 <span class="n">Bundle</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundle</span><span class="o">();</span>
 <span class="n">data</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">&quot;txt&quot;</span><span class="o">,</span> <span class="s">&quot;hello&quot;</span><span class="o">)</span>
 <span class="n">i</span><span class="o">.</span><span class="na">putExtra</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
@@ -105,7 +105,7 @@
 
 
 <h3 id="3aty">3、取得第二个Aty传回的数据</h3>
-<div class="highlight"><pre><span class="n">startActivityForResult</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><span class="n">startActivityForResult</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
 
 <span class="kd">protected</span> <span class="nf">onActivityResult</span><span class="o">(</span><span class="kt">int</span> <span class="n">requestCode</span><span class="o">,</span> <span class="kt">int</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">data</span><span class="o">){</span>
     <span class="n">string</span> <span class="n">result</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getStringExtra</span><span class="o">(</span><span class="s">&quot;result&quot;</span><span class="o">)</span>
@@ -156,7 +156,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-08-27T09:48:00"> 8 27, 2014</time>
+            <time pubdate="pubdate" datetime="2014-08-27T09:48:00+08:00"> 8 27, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Android-ref">Android</a> 
             <h4>Tags</h4>

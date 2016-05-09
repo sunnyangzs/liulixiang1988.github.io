@@ -89,7 +89,7 @@
 <p>父组件和子组件是如何通信的呢？
 父组件给子组件通信是用属性。
 子组件对父组件通信是：父组件把事件处理函数作为属性传递给子组件，子组件再进行调用。</p>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
     var Radio = React.createClass({ 
         getInitialState: function () {
             return {
@@ -112,7 +112,7 @@
                     {child.props.children}
                     <span class="nt">&lt;br/&gt;</span>
                 <span class="nt">&lt;/label&gt;</span>;
-                children<span class="cp">[</span><span class="s1">'label'</span> <span class="o">+</span> <span class="nx">i</span><span class="cp">]</span> = label; 
+                children['label' + i] = label; 
             }.bind(this));
             return <span class="nt">&lt;span&gt;</span>{children}<span class="nt">&lt;/span&gt;</span>; 
         }
@@ -183,7 +183,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-11-03T23:53:00">11 3, 2015</time>
+            <time pubdate="pubdate" datetime="2015-11-03T23:53:00+08:00">11 3, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>

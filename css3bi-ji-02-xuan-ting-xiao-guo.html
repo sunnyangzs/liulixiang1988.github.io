@@ -65,21 +65,21 @@
 <li><code>:focus</code>选择器：当元素获得光标焦点时使用的样式，主要用在文本框输入文字时使用.</li>
 </ul>
 <h2 id="2-rgba">2. rgba</h2>
-<div class="highlight"><pre><span class="nl">color:</span> <span class="err">#</span><span class="n">eee</span><span class="p">;</span>
-<span class="nl">color:</span> <span class="n">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="nt">color</span><span class="o">:</span> <span class="nn">#eee</span><span class="o">;</span>
+<span class="nt">color</span><span class="o">:</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">255</span><span class="o">,</span> <span class="nt">255</span><span class="o">,</span> <span class="nt">255</span><span class="o">,</span> <span class="nt">0</span><span class="nc">.7</span><span class="o">);</span>
 </pre></div>
 
 
 <p>rgba增加了透明度，在上面例子中多添加一个<code>color:#eee;</code>是为了使不支持rgba的浏览器仍然有color可用。</p>
 <h2 id="3-text-shadow">3. 文本阴影(text-shadow)</h2>
-<div class="highlight"><pre><span class="n">a</span><span class="p">{</span>
-    <span class="n">text</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="n">px</span> <span class="mi">1</span><span class="n">px</span> <span class="n">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="nt">a</span><span class="p">{</span>
+    <span class="nb">text-shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">1px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">5</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <p>text-shadow的属性如下：</p>
-<div class="highlight"><pre><span class="n">text</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="n">h</span><span class="o">-</span><span class="n">shadow</span> <span class="n">v</span><span class="o">-</span><span class="n">shadow</span> <span class="n">blur</span> <span class="n">color</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="nt">text-shadow</span><span class="o">:</span> <span class="nt">h-shadow</span> <span class="nt">v-shadow</span> <span class="nt">blur</span> <span class="nt">color</span><span class="o">;</span>
 </pre></div>
 
 
@@ -90,75 +90,75 @@
 <li>color: 可选。阴影的颜色。参阅 CSS 颜色值。</li>
 </ul>
 <p>scss:</p>
-<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/css3/text-shadow&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="cp">@import</span> <span class="s2">&quot;compass/css3/text-shadow&quot;</span><span class="p">;</span>
 <span class="n">single</span><span class="o">-</span><span class="n">text</span><span class="o">-</span><span class="nf">shadow</span><span class="p">(</span><span class="n">$hoff</span><span class="p">,</span> <span class="n">$voff</span><span class="p">,</span> <span class="n">$blur</span><span class="p">,</span> <span class="n">$spread</span><span class="p">,</span> <span class="n">$color</span><span class="p">);</span>
 </pre></div>
 
 
 <h2 id="4">4. 悬停与聚焦的样式：</h2>
 <p>scss：</p>
-<div class="highlight"><pre><span class="nt">a</span><span class="p">{</span>
-    <span class="k">padding</span><span class="o">:</span> <span class="m">5px</span> <span class="m">15px</span><span class="p">;</span>
-    <span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span><span class="p">;</span>
-    <span class="k">color</span><span class="o">:</span> <span class="m">#eee</span><span class="p">;</span>
-    <span class="k">color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">7</span><span class="p">);</span>
-    <span class="o">@</span><span class="n">include</span> <span class="n">single</span><span class="o">-</span><span class="k">text-shadow</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">1px</span><span class="o">,</span> <span class="m">1px</span><span class="o">,</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">3</span><span class="p">));</span>
+<div class="highlight"><pre><span></span><span class="nt">a</span><span class="p">{</span>
+    <span class="nb">padding</span><span class="o">:</span> <span class="m">5px</span> <span class="m">15px</span><span class="p">;</span>
+    <span class="nb">font-weight</span><span class="o">:</span> <span class="nb">bold</span><span class="p">;</span>
+    <span class="nb">color</span><span class="o">:</span> <span class="m">#eee</span><span class="p">;</span>
+    <span class="nb">color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">7</span><span class="p">);</span>
+    <span class="o">@</span><span class="n">include</span> <span class="n">single</span><span class="o">-</span><span class="nb">text-shadow</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">1px</span><span class="o">,</span> <span class="m">1px</span><span class="o">,</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">3</span><span class="p">));</span>
 
     <span class="o">&amp;:</span><span class="n">hover</span><span class="o">,&amp;:</span><span class="n">focus</span><span class="err">{</span>
-        <span class="k">color</span><span class="o">:</span> <span class="m">#fff</span><span class="p">;</span>
-        <span class="k">background</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">15</span><span class="p">);</span>
+        <span class="nb">color</span><span class="o">:</span> <span class="m">#fff</span><span class="p">;</span>
+        <span class="nb">background</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">15</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="err">}</span>
 </pre></div>
 
 
 <p>css：</p>
-<div class="highlight"><pre><span class="nf">#nav</span> <span class="nt">li</span> <span class="nt">a</span> <span class="p">{</span>
-  <span class="k">padding</span><span class="o">:</span> <span class="m">5px</span> <span class="m">15px</span><span class="p">;</span>
-  <span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span><span class="p">;</span>
-  <span class="k">color</span><span class="o">:</span> <span class="m">#eee</span><span class="p">;</span>
-  <span class="k">color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">7</span><span class="p">);</span>
-  <span class="k">text-shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">1px</span> <span class="m">#aaaaaa</span><span class="p">;</span>
-  <span class="k">text-shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">1px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">3</span><span class="p">)</span> <span class="m">#aaaaaa</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="nn">#nav</span> <span class="nt">li</span> <span class="nt">a</span> <span class="p">{</span>
+  <span class="nb">padding</span><span class="o">:</span> <span class="m">5px</span> <span class="m">15px</span><span class="p">;</span>
+  <span class="nb">font-weight</span><span class="o">:</span> <span class="nb">bold</span><span class="p">;</span>
+  <span class="nb">color</span><span class="o">:</span> <span class="m">#eee</span><span class="p">;</span>
+  <span class="nb">color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">7</span><span class="p">);</span>
+  <span class="nb">text-shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">1px</span> <span class="m">#aaaaaa</span><span class="p">;</span>
+  <span class="nb">text-shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">1px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">3</span><span class="p">)</span> <span class="m">#aaaaaa</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nf">#nav</span> <span class="nt">li</span> <span class="nt">a</span><span class="nd">:hover</span><span class="o">,</span> <span class="nf">#nav</span> <span class="nt">li</span> <span class="nt">a</span><span class="nd">:focus</span> <span class="p">{</span>
-  <span class="k">color</span><span class="o">:</span> <span class="m">#fff</span><span class="p">;</span>
-  <span class="k">background</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">15</span><span class="p">);</span>
+<span class="nn">#nav</span> <span class="nt">li</span> <span class="nt">a</span><span class="nd">:hover</span><span class="o">,</span> <span class="nn">#nav</span> <span class="nt">li</span> <span class="nt">a</span><span class="nd">:focus</span> <span class="p">{</span>
+  <span class="nb">color</span><span class="o">:</span> <span class="m">#fff</span><span class="p">;</span>
+  <span class="nb">background</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">15</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <h2 id="5-border-radius">5. 使用border-radius圆角化悬停</h2>
 <p>scss:</p>
-<div class="highlight"><pre><span class="cp">@import</span> <span class="s2">&quot;compass/css3/border-radius&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="cp">@import</span> <span class="s2">&quot;compass/css3/border-radius&quot;</span><span class="p">;</span>
 
 <span class="n">border</span><span class="o">-</span><span class="nf">radius</span><span class="p">(</span><span class="n">$radius</span><span class="p">,</span> <span class="n">$vertical</span><span class="o">-</span><span class="n">radius</span><span class="p">)</span>
 </pre></div>
 
 
 <p>css3:</p>
-<div class="highlight"><pre><span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">14</span><span class="n">px</span><span class="p">;</span>
-<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">14</span><span class="n">px</span><span class="p">;</span>
-<span class="n">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="mi">14</span><span class="n">px</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="nt">-moz-border-radius</span><span class="o">:</span> <span class="nt">14px</span><span class="o">;</span>
+<span class="nt">-webkit-border-radius</span><span class="o">:</span> <span class="nt">14px</span><span class="o">;</span>
+<span class="nt">border-radius</span><span class="o">:</span> <span class="nt">14px</span><span class="o">;</span>
 </pre></div>
 
 
 <h2 id="6">6. 添加过渡</h2>
 <p>scss:</p>
-<div class="highlight"><pre><span class="err">@</span><span class="n">include</span> <span class="n">single</span><span class="o">-</span><span class="n">transition</span><span class="p">(</span><span class="n">all</span><span class="p">,</span> <span class="mf">0.3</span><span class="n">s</span><span class="p">,</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">);</span>
+<div class="highlight"><pre><span></span>@include single-transition(all, 0.3s, ease-in-out);
 </pre></div>
 
 
 <p>css3:</p>
-<div class="highlight"><pre><span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span> <span class="n">all</span> <span class="mf">0.3</span><span class="n">s</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
-<span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span> <span class="n">all</span> <span class="mf">0.3</span><span class="n">s</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
-<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transition</span><span class="o">:</span> <span class="n">all</span> <span class="mf">0.3</span><span class="n">s</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
-<span class="nl">transition:</span> <span class="n">all</span> <span class="mf">0.3</span><span class="n">s</span> <span class="n">ease</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">out</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="nt">-moz-transition</span><span class="o">:</span> <span class="nt">all</span> <span class="nt">0</span><span class="nc">.3s</span> <span class="nt">ease-in-out</span><span class="o">;</span>
+<span class="nt">-o-transition</span><span class="o">:</span> <span class="nt">all</span> <span class="nt">0</span><span class="nc">.3s</span> <span class="nt">ease-in-out</span><span class="o">;</span>
+<span class="nt">-webkit-transition</span><span class="o">:</span> <span class="nt">all</span> <span class="nt">0</span><span class="nc">.3s</span> <span class="nt">ease-in-out</span><span class="o">;</span>
+<span class="nt">transition</span><span class="o">:</span> <span class="nt">all</span> <span class="nt">0</span><span class="nc">.3s</span> <span class="nt">ease-in-out</span><span class="o">;</span>
 </pre></div>
 
 
 <h2 id="7-opacity">7. 透明度opacity</h2>
-<div class="highlight"><pre><span class="n">opacity</span><span class="o">:</span> <span class="mf">0.25</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><span class="n">opacity</span><span class="o">:</span> <span class="mf">0.25</span><span class="o">;</span>
 <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">fiter</span><span class="o">:</span> <span class="s2">&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=25)&quot;</span><span class="o">;</span> <span class="cm">/*IE8 hack*/</span>
 <span class="n">filter</span><span class="o">:</span> <span class="n">alpha</span><span class="o">(</span><span class="n">opacity</span><span class="o">=</span><span class="mi">25</span><span class="o">);</span> <span class="cm">/*IE5-7 hack*/</span>
 </pre></div>
@@ -201,7 +201,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-06-13T20:58:00"> 6 13, 2015</time>
+            <time pubdate="pubdate" datetime="2015-06-13T20:58:00+08:00"> 6 13, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>
