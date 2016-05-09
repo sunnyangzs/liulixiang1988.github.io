@@ -4,7 +4,7 @@ Category: Java
 Tags: Java, Spring
 Author: 刘理想
 
-[toc]
+[TOC]
 
 ##1. 环境配置
 
