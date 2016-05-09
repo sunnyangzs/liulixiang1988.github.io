@@ -67,24 +67,24 @@
 （2）doFIlter()核心：完成实际的过滤操作。当用户请求访问与过滤器【关联的URL】时，Web容器将先调用过滤器的doFilter方法，FilterChain arg2参数可以调用chain.doFilter方法，将请求传给下一个过滤器（或目标资源），或利用转发，重定向将请求转发给其他资源。
 (3)web容器在消耗过滤器前调用该方法，用于释放过滤器占用的资源。（大多数情况用不到）</p>
 <h3 id="21-filter">2.1 定义Filter</h3>
-<div class="highlight"><pre><span class="n">package</span> <span class="n">liulx</span><span class="p">.</span><span class="n">FilterDemo</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">liulx</span><span class="o">.</span><span class="n">FilterDemo</span><span class="p">;</span>
 
-<span class="n">import</span> <span class="n">javax</span><span class="p">.</span><span class="n">servlet</span><span class="p">.</span><span class="o">*</span><span class="p">;</span>
-<span class="n">import</span> <span class="n">java</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">IOException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.</span><span class="o">*</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
 
-<span class="n">public</span> <span class="n">class</span> <span class="n">FirstFilter</span> <span class="n">implements</span> <span class="n">Filter</span> <span class="p">{</span>
-    <span class="n">public</span> <span class="kt">void</span> <span class="n">destroy</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Filter Destroy&quot;</span><span class="p">);</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">FirstFilter</span> <span class="n">implements</span> <span class="n">Filter</span> <span class="p">{</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">destroy</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;Filter Destroy&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="n">public</span> <span class="kt">void</span> <span class="n">doFilter</span><span class="p">(</span><span class="n">ServletRequest</span> <span class="n">req</span><span class="p">,</span> <span class="n">ServletResponse</span> <span class="n">resp</span><span class="p">,</span> <span class="n">FilterChain</span> <span class="n">chain</span><span class="p">)</span> <span class="n">throws</span> <span class="n">ServletException</span><span class="p">,</span> <span class="n">IOException</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Do filter before request&quot;</span><span class="p">);</span>
-        <span class="n">chain</span><span class="p">.</span><span class="n">doFilter</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Do filter after request&quot;</span><span class="p">);</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">doFilter</span><span class="p">(</span><span class="n">ServletRequest</span> <span class="n">req</span><span class="p">,</span> <span class="n">ServletResponse</span> <span class="n">resp</span><span class="p">,</span> <span class="n">FilterChain</span> <span class="n">chain</span><span class="p">)</span> <span class="n">throws</span> <span class="n">ServletException</span><span class="p">,</span> <span class="n">IOException</span> <span class="p">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;Do filter before request&quot;</span><span class="p">);</span>
+        <span class="n">chain</span><span class="o">.</span><span class="n">doFilter</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">resp</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;Do filter after request&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="n">public</span> <span class="kt">void</span> <span class="n">init</span><span class="p">(</span><span class="n">FilterConfig</span> <span class="n">config</span><span class="p">)</span> <span class="n">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="n">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Init First Filter&quot;</span><span class="p">);</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">init</span><span class="p">(</span><span class="n">FilterConfig</span> <span class="n">config</span><span class="p">)</span> <span class="n">throws</span> <span class="n">ServletException</span> <span class="p">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;Init First Filter&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -94,7 +94,7 @@
 <p><img alt="images/java-web-filter-02.png" src="images/java-web-filter-02.png" /></p>
 <p>过滤器能够改变用户请求的Web资源，也就是能够改变用户请求的路径。
 过滤器不能直接返回数据，不能直接处理用户请求。</p>
-<div class="highlight"><pre><span class="nt">&lt;filter&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;filter&gt;</span>
     <span class="nt">&lt;filter-name&gt;</span>FirstFilter<span class="nt">&lt;/filter-name&gt;</span>
     <span class="nt">&lt;filter-class&gt;</span>liulx.FilterDemo.FirstFilter<span class="nt">&lt;/filter-class&gt;</span>
 <span class="nt">&lt;/filter&gt;</span>
@@ -117,7 +117,7 @@
 <li>FORWARD 目标资源通过RequestDispatcher的forward访问时，调用过滤器</li>
 <li>ERROR 目标资源是通过声明式异常处理机制调用时，调用过滤器</li>
 </ul>
-<div class="highlight"><pre>    <span class="nt">&lt;filter&gt;</span>
+<div class="highlight"><pre><span></span>    <span class="nt">&lt;filter&gt;</span>
         <span class="nt">&lt;filter-name&gt;</span>FirstFilter<span class="nt">&lt;/filter-name&gt;</span>
         <span class="nt">&lt;filter-class&gt;</span>liulx.FilterDemo.FirstFilter<span class="nt">&lt;/filter-class&gt;</span>
     <span class="nt">&lt;/filter&gt;</span>
@@ -149,10 +149,10 @@
 <p>Servlet 3.0 ASYNC标记：异步处理</p>
 <h2 id="5-servlet-30">5 Servlet 3.0</h2>
 <p>@WebFilter注解</p>
-<div class="highlight"><pre><span class="err">@</span><span class="n">WebFilter</span><span class="p">(</span><span class="n">servletNames</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;SimpleServlet&quot;</span><span class="p">},</span> <span class="n">filterName</span><span class="o">=</span><span class="s">&quot;SimpleFilter&quot;</span><span class="p">)</span>
-<span class="n">public</span> <span class="n">class</span> <span class="n">LessThanSixFilter</span> <span class="n">implements</span> <span class="n">Filter</span><span class="p">{</span>
-<span class="p">...</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span>@WebFilter(servletNames={&quot;SimpleServlet&quot;}, filterName=&quot;SimpleFilter&quot;)
+public class LessThanSixFilter implements Filter{
+...
+}
 </pre></div>
 
 
@@ -197,13 +197,13 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-22T15:45:00"> 4 22, 2015</time>
+            <time pubdate="pubdate" datetime="2015-04-22T15:45:00+08:00"> 4 22, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Java-ref">Java</a> 
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article"> 
                 <li><a href="/tags.html#Java-ref">Java
-                    <span>12</span>
+                    <span>13</span>
 </a></li>
                 <li><a href="/tags.html#Web-ref">Web
                     <span>24</span>

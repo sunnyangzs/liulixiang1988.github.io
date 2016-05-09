@@ -66,7 +66,7 @@
 <li>在aty中添加两个按钮btnStart, btnStop</li>
 <li>添加方法，让main实现OnClickListener</li>
 </ol>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">){</span>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">){</span>
     <span class="k">switch</span> <span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">()){</span>
     <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btnStart</span><span class="o">:</span>
         <span class="k">break</span><span class="o">;</span>
@@ -95,7 +95,7 @@ eclipse cmd+d:删除行</p>
 <li>让class实现</li>
 <li>在Service中创建onBind()</li>
 </ol>
-<div class="highlight"><pre><span class="kd">public</span> <span class="n">IBinder</span> <span class="nf">onBind</span><span class="o">(</span><span class="n">Intent</span> <span class="n">arg0</span><span class="o">){</span><span class="k">return</span> <span class="n">esb</span><span class="o">;}</span>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="n">IBinder</span> <span class="nf">onBind</span><span class="o">(</span><span class="n">Intent</span> <span class="n">arg0</span><span class="o">){</span><span class="k">return</span> <span class="n">esb</span><span class="o">;}</span>
 <span class="kd">private</span> <span class="kd">final</span> <span class="n">EchoServiceBinder</span> <span class="n">esb</span> <span class="o">=</span> <span class="k">new</span> <span class="o">...{}</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">EchoServiceBinder</span> <span class="kd">extends</span> <span class="n">Binder</span><span class="o">{</span>
     <span class="o">...</span>
@@ -112,7 +112,7 @@ eclipse cmd+d:删除行</p>
 <ol>
 <li>在service中添加timer和tasktimer</li>
 </ol>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">startTimer</span><span class="o">(){</span>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">startTimer</span><span class="o">(){</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">timer</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
         <span class="n">timer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Timer</span><span class="o">();</span>
         <span class="n">timerTask</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TimerTask</span><span class="o">()</span> <span class="o">{</span>
@@ -146,7 +146,7 @@ eclipse cmd+d:删除行</p>
 <ol>
 <li>在service的<code>onCreate</code>和<code>unDestroy</code>方法中启动和停止timer</li>
 </ol>
-<div class="highlight"><pre><span class="nd">@Override</span>
+<div class="highlight"><pre><span></span><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onUnbind</span><span class="o">(</span><span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;服务-取消服务绑定&quot;</span><span class="o">);</span>
     <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">onUnbind</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
@@ -164,7 +164,7 @@ eclipse cmd+d:删除行</p>
 <ol>
 <li>在service类中，提供公共方法，以备后面通信时使用，比如：</li>
 </ol>
-<div class="highlight"><pre><span class="kd">private</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><span class="kd">private</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getInt</span><span class="o">(){</span>
     <span class="k">return</span> <span class="n">i</span><span class="o">;</span>
@@ -175,7 +175,7 @@ eclipse cmd+d:删除行</p>
 <ol>
 <li>在Activity方法中获取Service对象</li>
 </ol>
-<div class="highlight"><pre><span class="kd">private</span> <span class="n">EchoService</span> <span class="n">echoService</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><span class="kd">private</span> <span class="n">EchoService</span> <span class="n">echoService</span><span class="o">;</span>
 
 <span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onServiceConnected</span><span class="o">(</span><span class="n">ComponentName</span> <span class="n">name</span><span class="o">,</span> <span class="n">IBinder</span> <span class="n">binder</span><span class="o">)</span> <span class="o">{</span>
@@ -188,7 +188,7 @@ eclipse cmd+d:删除行</p>
 <ol>
 <li>最后就可以在Activity中使用Service了</li>
 </ol>
-<div class="highlight"><pre><span class="nd">@Override</span>
+<div class="highlight"><pre><span></span><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">switch</span><span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">()){</span>
     <span class="c1">//...</span>
@@ -244,7 +244,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-08-27T09:50:00"> 8 27, 2014</time>
+            <time pubdate="pubdate" datetime="2014-08-27T09:50:00+08:00"> 8 27, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Android-ref">Android</a> 
             <h4>Tags</h4>

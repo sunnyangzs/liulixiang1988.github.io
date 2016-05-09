@@ -63,7 +63,7 @@
 <p>Intent是与基本组件相关联的数据对象，每个基本组件都有一个对应的Intent，Intent指定了对应的组件对象。</p>
 <p>IntentFilter用来描述一个Intent</p>
 <h3 id="11-component">1.1 使用Component引用对象</h3>
-<div class="highlight"><pre><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">();</span>
+<div class="highlight"><pre><span></span><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">();</span>
 <span class="n">i</span><span class="o">.</span><span class="na">setComponent</span><span class="o">(</span><span class="k">new</span> <span class="n">ComponentName</span><span class="o">(</span><span class="s">&quot;liulx.L06Intent&quot;</span><span class="o">,</span> <span class="s">&quot;liulx.L06Intent.Aty1&quot;</span><span class="o">));</span>
 <span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
 </pre></div>
@@ -75,7 +75,7 @@
 <h3 id="12-action">1.2 使用Action建立对象</h3>
 <h4 id="121-action">1.2.1 创建Action</h4>
 <p>如果需要使用Action来启动一个Activity的话，需要给这个Activity配置一个<code>intent-filter</code>，打开AndroidManifest.xml文件，找到相应的Acitivity，添加<code>intent-filter</code>节点：</p>
-<div class="highlight"><pre><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&quot;.Aty1&quot;</span> <span class="na">android:label=</span><span class="s">&quot;Aty1&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&quot;.Aty1&quot;</span> <span class="na">android:label=</span><span class="s">&quot;Aty1&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;intent-filter&gt;</span>
         <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&quot;liulx.L06Intent.intent.action.Aty1&quot;</span> <span class="nt">/&gt;</span>
         <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.category.DEFAULT&quot;</span><span class="nt">/&gt;</span>
@@ -88,14 +88,14 @@
 <p>一般还需添加一个<code>category</code>,使用<code>DEFAULT</code>即可。</p>
 <h4 id="122-action">1.2.2 根据Action来创建对象</h4>
 <p>在需要创建对象（Activity/Service等)的地方，使用Action来创建：</p>
-<div class="highlight"><pre><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="s">&quot;liulx.L06Intent.intent.action.Aty1&quot;</span><span class="o">);</span>
+<div class="highlight"><pre><span></span><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="s">&quot;liulx.L06Intent.intent.action.Aty1&quot;</span><span class="o">);</span>
 </pre></div>
 
 
 <p><strong>注意：</strong>与<code>setComponent</code>方法不同，通过action创建的方法叫做<strong>隐式创建</strong>,它不需要知道类的包名和类的全名，只需要知道Action地址就可以了。</p>
 <h2 id="2">2 实例：打开图片</h2>
 <h3 id="21">2.1 使用默认图片查看工具打开图片</h3>
-<div class="highlight"><pre><span class="n">File</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;/storage/sdcard0/001.jpg&quot;</span><span class="o">);</span>
+<div class="highlight"><pre><span></span><span class="n">File</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;/storage/sdcard0/001.jpg&quot;</span><span class="o">);</span>
 <span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">);</span>
 <span class="n">i</span><span class="o">.</span><span class="na">setDataAndType</span><span class="o">(</span><span class="n">Uri</span><span class="o">.</span><span class="na">fromFile</span><span class="o">(</span><span class="n">f</span><span class="o">),</span> <span class="s">&quot;image/*&quot;</span><span class="o">);</span>
 <span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
@@ -104,7 +104,7 @@
 
 <h3 id="22-activity">2.2 使用自己的Activity打开图片</h3>
 <p>首先，创建一个Activity,并且，它设置对应的AndroidManifest.xml</p>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ImageViewer</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ImageViewer</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
     <span class="n">ImageView</span> <span class="n">iv</span><span class="o">;</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
@@ -121,7 +121,7 @@
 
 
 <p>注意，<code>intent-filter</code>的设置，action name用VIEW，category用DEFAULT, data的mimeType为"image/*"， schema为"file"表示本地文件。</p>
-<div class="highlight"><pre><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&quot;.ImageViewer&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&quot;.ImageViewer&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;intent-filter&gt;</span>
         <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.action.VIEW&quot;</span><span class="nt">/&gt;</span>
         <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&quot;android.intent.category.DEFAULT&quot;</span><span class="nt">/&gt;</span>
@@ -133,14 +133,14 @@
 
 <h2 id="3">3 实例：打电话与打开网页</h2>
 <h3 id="31">3.1 打电话</h3>
-<div class="highlight"><pre><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">);</span>
+<div class="highlight"><pre><span></span><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">);</span>
 <span class="n">i</span><span class="o">.</span><span class="na">setData</span><span class="o">(</span><span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&quot;tel:10086&quot;</span><span class="o">));</span>
 <span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
 </pre></div>
 
 
 <h3 id="32">3.2 打开网页</h3>
-<div class="highlight"><pre><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&quot;http://www.baidu.com&quot;</span><span class="o">));</span>
+<div class="highlight"><pre><span></span><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">ACTION_VIEW</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&quot;http://www.baidu.com&quot;</span><span class="o">));</span>
 <span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
 </pre></div>
 
@@ -182,7 +182,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-08-27T09:52:00"> 8 27, 2014</time>
+            <time pubdate="pubdate" datetime="2014-08-27T09:52:00+08:00"> 8 27, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Android-ref">Android</a> 
             <h4>Tags</h4>

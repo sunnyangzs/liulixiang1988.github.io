@@ -62,7 +62,7 @@
 <p><img alt="侧边栏" src="images/qy-web-11.png" /></p>
 <p>从图中我们知道，除标题外，其余内容大致分成上下两部分。分别是上面的视频和下面的广告。下面我们来实现这个效果。</p>
 <h2 id="2">2. 文档结构</h2>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;sidebar&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;sidebar&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;video&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>
            <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">&quot;title_left&quot;</span><span class="nt">&gt;</span>媒体聚焦<span class="nt">&lt;/h2&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;title_right&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;news.html&quot;</span><span class="nt">&gt;</span>More<span class="ni">&amp;gt;&amp;gt;</span><span class="nt">&lt;/a&gt;&lt;/span&gt;</span>
@@ -79,25 +79,25 @@
 
 
 <h2 id="3-less">3. LESS实现</h2>
-<div class="highlight"><pre><span class="p">.</span><span class="n">sidebar</span><span class="p">{</span>
-    <span class="nl">width:</span><span class="mi">230</span><span class="n">px</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="na">.sidebar</span><span class="err">{</span>
+    <span class="nl">width:</span><span class="err">230</span><span class="nf">px</span><span class="err">;</span>
 
-    <span class="p">.</span><span class="n">video</span><span class="p">{</span>
-        <span class="nl">height:</span> <span class="mi">185</span><span class="n">px</span><span class="p">;</span>
-        <span class="n">margin</span><span class="o">-</span><span class="n">bottom</span><span class="o">:</span> <span class="mi">10</span><span class="n">px</span><span class="p">;</span>
-        <span class="nl">border:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="err">#</span><span class="n">E8E8E8</span><span class="p">;</span>
+    <span class="na">.video</span><span class="err">{</span>
+        <span class="nl">height:</span> <span class="err">185</span><span class="nf">px</span><span class="err">;</span>
+        <span class="nl">margin-bottom:</span> <span class="err">10</span><span class="nf">px</span><span class="err">;</span>
+        <span class="nl">border:</span> <span class="err">1</span><span class="nf">px</span> <span class="no">solid</span> <span class="c">#E8E8E8;</span>
 
-        <span class="o">&amp;</span><span class="n">_content</span><span class="p">{</span>
-            <span class="nl">height:</span><span class="mi">150</span><span class="n">px</span><span class="p">;</span>
-            <span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="o">:</span> <span class="n">center</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        <span class="err">&amp;</span><span class="nf">_content</span><span class="err">{</span>
+            <span class="nl">height:</span><span class="err">150</span><span class="nf">px</span><span class="err">;</span>
+            <span class="nl">text-align:</span> <span class="nf">center</span><span class="err">;</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+<span class="err">}</span>
 
-<span class="p">.</span><span class="n">service</span><span class="p">{</span>
-    <span class="nl">height:</span><span class="mi">55</span><span class="n">px</span><span class="p">;</span>
-    <span class="nl">border:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="err">#</span><span class="n">E8E8E8</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="na">.service</span><span class="err">{</span>
+    <span class="nl">height:</span><span class="err">55</span><span class="nf">px</span><span class="err">;</span>
+    <span class="nl">border:</span> <span class="err">1</span><span class="nf">px</span> <span class="no">solid</span> <span class="c">#E8E8E8;</span>
+<span class="err">}</span>
 </pre></div>
 
  
@@ -138,7 +138,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-04T21:01:00"> 4 4, 2015</time>
+            <time pubdate="pubdate" datetime="2015-04-04T21:01:00+08:00"> 4 4, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>

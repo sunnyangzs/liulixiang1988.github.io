@@ -59,87 +59,87 @@
         <div class="span8 offset2 article-content">
 
             <h2 id="1-less">1. LESS注释</h2>
-<div class="highlight"><pre><span class="c1">//不会被编译到CSS中</span>
-<span class="cm">/*编译到CSS*/</span>
+<div class="highlight"><pre><span></span>//不会被编译到CSS中
+/*编译到CSS*/
 </pre></div>
 
 
 <h2 id="2">2. 变量</h2>
-<div class="highlight"><pre><span class="c1">//定义</span>
-<span class="p">@</span><span class="nl">test_width:</span> <span class="mh">10</span><span class="n">px</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">定义</span>
+<span class="k">@test_width</span><span class="o">:</span> <span class="nt">10px</span><span class="p">;</span>
 
-<span class="p">.</span><span class="n">box</span><span class="p">{</span>
-    <span class="nl">width:</span><span class="p">@</span><span class="n">test_width</span><span class="p">;</span> <span class="c1">//调用</span>
+<span class="nc">.box</span><span class="p">{</span>
+    <span class="nb">width</span><span class="o">:@</span><span class="n">test_width</span><span class="p">;</span> <span class="o">//</span><span class="err">调用</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <h2 id="3">3. 混合</h2>
-<div class="highlight"><pre><span class="c1">//第一种</span>
-<span class="p">.</span><span class="n">box1</span><span class="p">{</span>
-    <span class="nl">border:</span> <span class="mh">5</span><span class="n">px</span> <span class="n">solid</span> <span class="n">pink</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="o">//</span><span class="nt">第一种</span>
+<span class="nc">.box1</span><span class="p">{</span>
+    <span class="nb">border</span><span class="o">:</span> <span class="m">5px</span> <span class="nb">solid</span> <span class="nb">pink</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">.</span><span class="n">box2</span><span class="p">{</span>
-    <span class="p">.</span><span class="n">box1</span><span class="p">;</span>
+<span class="nc">.box2</span><span class="p">{</span>
+    <span class="o">.</span><span class="n">box1</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">//第二种</span>
+<span class="o">//</span><span class="nt">第二种</span>
 
-<span class="p">.</span><span class="n">box3</span><span class="p">(@</span><span class="n">border_width</span><span class="p">){</span>
-    <span class="nl">border:</span> <span class="p">@</span><span class="n">border_width</span> <span class="n">solid</span> <span class="n">yellow</span><span class="p">;</span>
+<span class="nc">.box3</span><span class="o">(</span><span class="k">@border_width</span><span class="o">)</span><span class="p">{</span>
+    <span class="nt">border</span><span class="o">:</span> <span class="k">@border_width</span> <span class="nt">solid</span> <span class="nt">yellow</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">.</span><span class="n">box3_1</span><span class="p">{</span>
-    <span class="p">.</span><span class="n">box3</span><span class="p">(</span><span class="mh">3</span><span class="n">px</span><span class="p">);</span>
+<span class="nc">.box3_1</span><span class="p">{</span>
+    <span class="o">.</span><span class="n">box3</span><span class="p">(</span><span class="m">3px</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">//第三种</span>
-<span class="p">.</span><span class="n">box4</span><span class="p">(@</span><span class="nl">border_width:</span><span class="mh">1</span><span class="n">px</span><span class="p">){</span>
-    <span class="nl">border:</span> <span class="p">@</span><span class="n">border_width</span> <span class="n">solid</span> <span class="n">yellow</span><span class="p">;</span>
+<span class="o">//</span><span class="nt">第三种</span>
+<span class="nc">.box4</span><span class="o">(</span><span class="k">@border_width</span><span class="nd">:1px</span><span class="o">)</span><span class="p">{</span>
+    <span class="nt">border</span><span class="o">:</span> <span class="k">@border_width</span> <span class="nt">solid</span> <span class="nt">yellow</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="p">.</span><span class="n">box4_1</span><span class="p">{</span>
-    <span class="p">.</span><span class="n">box4</span><span class="p">();</span>
+<span class="nc">.box4_1</span><span class="p">{</span>
+    <span class="o">.</span><span class="n">box4</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
 
 <h2 id="4">4. 匹配模式</h2>
-<div class="highlight"><pre><span class="p">.</span><span class="n">traingle</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="err">@</span><span class="n">w</span><span class="o">:</span><span class="mi">5</span><span class="n">px</span><span class="p">,</span> <span class="err">@</span><span class="n">c</span><span class="o">:</span><span class="err">#</span><span class="n">ccc</span><span class="p">){</span>
+<div class="highlight"><pre><span></span><span class="na">.traingle</span><span class="p">(</span><span class="no">top</span><span class="p">,</span> <span class="na">@w</span><span class="p">:</span><span class="mi">5</span><span class="no">px</span><span class="p">,</span> <span class="na">@c</span><span class="p">:</span><span class="c">#ccc){</span>
 
-<span class="p">}</span>
+<span class="err">}</span>
 
-<span class="p">.</span><span class="n">traingle</span><span class="p">(</span><span class="n">bottom</span><span class="p">,</span> <span class="err">@</span><span class="n">w</span><span class="o">:</span><span class="mi">5</span><span class="n">px</span><span class="p">,</span> <span class="err">@</span><span class="n">c</span><span class="o">:</span><span class="err">#</span><span class="n">ccc</span><span class="p">){</span>
+<span class="na">.traingle</span><span class="p">(</span><span class="no">bottom</span><span class="p">,</span> <span class="na">@w</span><span class="p">:</span><span class="mi">5</span><span class="no">px</span><span class="p">,</span> <span class="na">@c</span><span class="p">:</span><span class="c">#ccc){</span>
 
-<span class="p">}</span>
+<span class="err">}</span>
 
-<span class="c1">//通用匹配，不论匹配哪一个都会把这个给带上</span>
-<span class="p">.</span><span class="n">traingle</span><span class="p">(</span><span class="err">@</span><span class="n">_</span><span class="p">,</span> <span class="err">@</span><span class="n">w</span><span class="o">:</span><span class="mi">5</span><span class="n">px</span><span class="p">,</span> <span class="err">@</span><span class="n">c</span><span class="o">:</span><span class="err">#</span><span class="n">ccc</span><span class="p">){</span>
+<span class="err">//通用匹配，不论匹配哪一个都会把这个给带上</span>
+<span class="na">.traingle</span><span class="p">(</span><span class="na">@_</span><span class="p">,</span> <span class="na">@w</span><span class="p">:</span><span class="mi">5</span><span class="no">px</span><span class="p">,</span> <span class="na">@c</span><span class="p">:</span><span class="c">#ccc){</span>
 
-<span class="p">}</span>
+<span class="err">}</span>
 
-<span class="p">.</span><span class="n">box</span><span class="p">{</span>
-    <span class="p">.</span><span class="n">traingle</span><span class="p">(</span><span class="n">top</span><span class="p">);</span><span class="c1">//也会调用通用匹配哦</span>
-<span class="p">}</span>
+<span class="na">.box</span><span class="err">{</span>
+    <span class="na">.traingle</span><span class="p">(</span><span class="no">top</span><span class="p">)</span><span class="err">;//也会调用通用匹配哦</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <h2 id="5">5. 嵌套</h2>
-<div class="highlight"><pre><span class="n">ul</span><span class="p">{</span>
-    <span class="c1">//...</span>
+<div class="highlight"><pre><span></span>ul{
+    //...
 
-    <span class="n">li</span><span class="p">{</span>
+    li{
 
-    <span class="p">}</span>
+    }
 
-    <span class="n">a</span> <span class="p">{</span>
-        <span class="c1">//...</span>
-        <span class="o">&amp;:</span><span class="n">hover</span><span class="p">{</span>
+    a {
+        //...
+        &amp;:hover{
 
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        }
+    }
+}
 </pre></div>
 
  
@@ -180,7 +180,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-03-29T08:59:00"> 3 29, 2015</time>
+            <time pubdate="pubdate" datetime="2015-03-29T08:59:00+08:00"> 3 29, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>

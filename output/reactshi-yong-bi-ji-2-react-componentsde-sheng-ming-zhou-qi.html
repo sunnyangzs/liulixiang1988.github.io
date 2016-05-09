@@ -97,7 +97,7 @@
 <li><code>componentDidMount</code>：成功render并渲染完成真实DOM之后触发，<strong>可以修改</strong>DOM。</li>
 </ul>
 <p>我们使用<code>getInitialState</code>, <code>componentWillMount</code>, <code>componentDidMount</code>来添加React Component在Mount阶段的hook函数，其中<code>getIntialState</code>返回一个键值对对象。</p>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"container"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"container"</span><span class="nt">&gt;&lt;/div&gt;</span>
 <span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
     var Hello = React.createClass({
         getInitialState: function(){
@@ -108,7 +108,7 @@
             }
         },
         render: function(){
-            return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">{{color:'red'}}</span><span class="nt">&gt;</span>Hello, {this.props.name}<span class="nt">&lt;/div&gt;</span>;
+            return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="cp">{{</span><span class="nv">color</span><span class="s1">:'red'</span><span class="cp">}}</span><span class="err">&gt;</span><span class="s">Hello,</span> <span class="err">{this.props.name}&lt;/div</span><span class="nt">&gt;</span>;
         },
         componentWillMount: function(){
             alert("component will mount");
@@ -123,20 +123,20 @@
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 <p><code>getIntialState</code>返回的对象如何使用呢，使用<code>{this.state}</code>就可以了:</p>
-<div class="highlight"><pre><span class="nb">render</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
-    <span class="k">return</span> <span class="o">&lt;</span><span class="nb">div</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="nx">this.state</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="p">{</span><span class="nx">this.props.name</span><span class="p">}</span><span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span>render: function(){
+    return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">{this.state}</span><span class="nt">&gt;</span>Hello, {this.props.name}<span class="nt">&lt;/div&gt;</span>;
+}
 </pre></div>
 <p>这里<code>state</code>中都是合法有效的键值，如果不是的话需要这样用：</p>
-<div class="highlight"><pre><span class="nb">render</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
-    <span class="k">return</span> <span class="o">&lt;</span><span class="nb">div</span> <span class="n">style</span><span class="o">=</span><span class="p">{{</span><span class="nx">opacity</span><span class="p">:</span><span class="nx">this.state.opacity</span><span class="p">,</span> <span class="nx">fontSize</span><span class="p">:</span> <span class="nx">this.state.fontSize</span><span class="p">}}</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="p">{</span><span class="nx">this.props.name</span><span class="p">}</span><span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span>render: function(){
+    return <span class="nt">&lt;div</span> <span class="na">style=</span><span class="cp">{{</span><span class="nv">opacity</span><span class="o">:</span><span class="nv">this.state.opacity</span><span class="o">,</span> <span class="nv">fontSize</span><span class="o">:</span> <span class="nv">this.state.fontSize</span><span class="cp">}}</span><span class="err">&gt;</span><span class="s">Hello,</span> <span class="err">{this.props.name}&lt;/div</span><span class="nt">&gt;</span>;
+}
 </pre></div>
 <p><code>props</code>和<code>state</code>的区别是什么呢？<code>props</code>是属于调用者的，而<code>state</code>是属于当前组件的。</p>
 <hr/>
 <h3 id="22-state">2.2 如何修改state呢？</h3>
 <p>我们调用<code>setState</code>，比如我们在组件mount后一秒更改<code>state</code>，我们这样：</p>
-<div class="highlight"><pre><span class="n">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="o">(){</span>
+<div class="highlight"><pre><span></span><span class="n">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="o">(){</span>
     <span class="n">var</span> <span class="n">_self</span> <span class="o">=</span> <span class="k">this</span><span class="o">;</span>
     <span class="n">window</span><span class="o">.</span><span class="na">setTimeout</span><span class="o">(</span><span class="kd">function</span><span class="o">(){</span>
         <span class="n">_self</span><span class="o">.</span><span class="na">setState</span><span class="o">({</span>
@@ -150,14 +150,14 @@
 <p><code>this</code>指的是调用函数的那个对象，也就是函数的所有者，而<code>setTimeout</code>中的<code>function</code>并不属于任何对象，它只是一个纯粹的函数调用，所以属于全局对象，这种情况下，<code>this</code>是<code>global</code>，因此我们为了调用组件对象，需要使用<code>var _self = this</code>的这种方法。</p>
 <p>既然说到了<code>this</code>，我们不妨多讲一些<code>this</code>的使用情况，比如：</p>
 <p>我们把函数当做构造函数来使用，这种情况下，<code>this</code>就是指构造函数生成的对象：</p>
-<div class="highlight"><pre><span class="kd">function</span> <span class="nx">test</span><span class="p">(){</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span>function test(){
+    this.x = 1;
+}
 
-<span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">test</span><span class="p">();</span>
+var o = new test();
 </pre></div>
 <p>还有一种则是调用函数的<code>apply</code>, <code>call</code>, <code>bind</code>等方法，其作用是改变函数的调用对象，它们的第一个参数就是改变后的调用这个函数的对象，因此这种情况下，<code>this</code>指的就是第一个参数所代表的对象。因此，刚才的例子可以这样写，让<code>function</code>里面的<code>this</code>指向<code>function</code>外面的<code>this</code>。</p>
-<div class="highlight"><pre><span class="n">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="o">(){</span>
+<div class="highlight"><pre><span></span><span class="n">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="o">(){</span>
     <span class="n">window</span><span class="o">.</span><span class="na">setTimeout</span><span class="o">(</span><span class="kd">function</span><span class="o">(){</span>
         <span class="k">this</span><span class="o">.</span><span class="na">setState</span><span class="o">({</span>
             <span class="n">opacity</span><span class="o">:</span> <span class="mf">0.5</span><span class="o">,</span>
@@ -178,7 +178,7 @@
 <li><code>compoentDidUpdate</code>: 组件更新后调用，可以修改DOM。</li>
 </ul>
 <p>一般我们很少会更新上面的4个函数。</p>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
 var HelloWorld = React.createClass({
     componentWillReceiveProps: function(){
         console.log("1");
@@ -223,7 +223,7 @@ React.render(<span class="nt">&lt;HelloUniverse</span> <span class="nt">&gt;&lt;
 <p>当我们要把一个组件销毁掉的时候，则是<code>unmounting</code>阶段了，它只有一个调用函数：</p>
 <p><code>componentWillUnmount</code>:我们在这个函数内执行一些clean up的操作，比如释放内存、图片等。得益于浏览器的垃圾回收机制，我们基本不需要使用这个函数。</p>
 <p>第一种Unmount的方法，是直接通过<code>render</code>的返回值来删除。</p>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
 var HelloWorld = React.createClass({
     render: function(){
         console.log("4");
@@ -257,7 +257,7 @@ React.render(<span class="nt">&lt;HelloUniverse</span> <span class="nt">&gt;&lt;
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 <p>第二种方法是使用React提供的<code>React.unmountComponentAtNode</code>方法来删除：</p>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
 var HelloWorld = React.createClass({
     render: function(){
         console.log("4");
@@ -274,7 +274,7 @@ var HelloUniverse = React.createClass({
     },
     handleChange: function(event){
         if (event.target.value == '123') {
-            React.unmountComponentAtNode(document.getElementsByTagName("body")<span class="cp">[</span><span class="mi">0</span><span class="cp">]</span>);
+            React.unmountComponentAtNode(document.getElementsByTagName("body")[0]);
             return;
         }
         this.setState({name: event.target.value});
@@ -330,7 +330,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-11-27T21:23:00">11 27, 2015</time>
+            <time pubdate="pubdate" datetime="2015-11-27T21:23:00+08:00">11 27, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>

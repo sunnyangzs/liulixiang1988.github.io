@@ -61,15 +61,15 @@
             <h2 id="1">1 环境配置</h2>
 <h3 id="11-pelican">1.1 安装Pelican</h3>
 <p><strong>注</strong>:以下是在windows环境下安装pelican，Python版本使用的是3.41版本，该版本自带pip工具</p>
-<div class="highlight"><pre>pip install virtualenv
+<div class="highlight"><pre><span></span>pip install virtualenv
 virtualenv pelican_env
-<span class="nb">cd </span>pelican_env<span class="se">\s</span>cript
+<span class="nb">cd</span> pelican_env<span class="se">\s</span>cript
 .<span class="se">\a</span>ctivate.bat
 </pre></div>
 
 
 <p>上面的命令创建并激活了pelican_env，下面在该环境下开始安装pelican工具</p>
-<div class="highlight"><pre>pip install pelican markdown ghp-import
+<div class="highlight"><pre><span></span>pip install pelican markdown ghp-import
 </pre></div>
 
 
@@ -77,33 +77,33 @@ virtualenv pelican_env
 <p>在Github上创建一个仓库，仓库名是<code>用户名.github.io</code>，注意这里的用户名是自己的用户名。如下图所示.</p>
 <p><img alt="Github Page" src="images/github.png" /></p>
 <p>创建好后，克隆到本地</p>
-<div class="highlight"><pre>git clone https://github.com/liulixiang1988/liulixiang1988.github.io
-<span class="nb">cd </span>liulixiang1988.github.io
+<div class="highlight"><pre><span></span>git clone https://github.com/liulixiang1988/liulixiang1988.github.io
+<span class="nb">cd</span> liulixiang1988.github.io
 </pre></div>
 
 
 <h2 id="2-pelican">2 使用Pelican写博客</h2>
 <h3 id="21-pelican">2.1 创建Pelican博客</h3>
 <p>创建分支</p>
-<div class="highlight"><pre>git checkout -b <span class="nb">source</span> 
+<div class="highlight"><pre><span></span>git checkout -b <span class="nb">source</span> 
 </pre></div>
 
 
 <p>创建Pelican</p>
-<div class="highlight"><pre>pelican-quickstart
+<div class="highlight"><pre><span></span>pelican-quickstart
 </pre></div>
 
 
 <p>创建的过程中，会问你一些问题，你可以参考下面的回答。</p>
-<div class="highlight"><pre>&gt; Where <span class="k">do </span>you want to create your new web site? <span class="o">[</span>.<span class="o">]</span> 
+<div class="highlight"><pre><span></span>&gt; Where <span class="k">do</span> you want to create your new web site? <span class="o">[</span>.<span class="o">]</span> 
 &gt; What will be the title of this web site? Buttermilch
 &gt; Who will be the author of this web site? Tony Stark
 &gt; What will be the default language of this web site? <span class="o">[</span>en<span class="o">]</span> 
 &gt; Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span> n
-&gt; Do you want to <span class="nb">enable </span>article pagination? <span class="o">(</span>Y/n<span class="o">)</span> 
-&gt; How many articles per page <span class="k">do </span>you want? <span class="o">[</span>10<span class="o">]</span> 
+&gt; Do you want to <span class="nb">enable</span> article pagination? <span class="o">(</span>Y/n<span class="o">)</span> 
+&gt; How many articles per page <span class="k">do</span> you want? <span class="o">[</span>10<span class="o">]</span> 
 &gt; Do you want to generate a Fabfile/Makefile ... and publishing? <span class="o">(</span>Y/n<span class="o">)</span> 
-&gt; Do you want an auto-reload &amp; simpleHTTP ... and site development? <span class="o">(</span>Y/n<span class="o">)</span> 
+&gt; Do you want an auto-reload <span class="p">&amp;</span> simpleHTTP ... and site development? <span class="o">(</span>Y/n<span class="o">)</span> 
 &gt; Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span> 
 &gt; Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span> 
 &gt; Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span> 
@@ -114,7 +114,7 @@ virtualenv pelican_env
 
 <h3 id="22-markdown">2.2 创建Markdown的博文</h3>
 <p>在content目录下创建一个test.md的文件，然后用记事本或者notepad++或者sublime text打开，编写如下内容。</p>
-<div class="highlight"><pre><span class="n">Title</span><span class="o">:</span> <span class="err">你好，世界！</span>
+<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="err">你好，世界！</span>
 <span class="n">Date</span><span class="o">:</span> <span class="mi">2014</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">22</span> <span class="mi">16</span><span class="o">:</span><span class="mi">08</span>
 <span class="n">Category</span><span class="o">:</span> <span class="n">Python</span>
 <span class="n">Tags</span><span class="o">:</span> <span class="n">python</span>
@@ -126,19 +126,19 @@ virtualenv pelican_env
 
 <h3 id="23">2.3 本地测试</h3>
 <p>编写好了之后，就可以在本地进行测试了。</p>
-<div class="highlight"><pre>make html
+<div class="highlight"><pre><span></span>make html
 make serve
 </pre></div>
 
 
 <h3 id="24">2.4 提交更改</h3>
-<div class="highlight"><pre>git add .
+<div class="highlight"><pre><span></span>git add .
 git commit -m <span class="s2">&quot;initial commit&quot;</span>
 </pre></div>
 
 
 <h3 id="25">2.5 发布</h3>
-<div class="highlight"><pre>git branch gh-pages
+<div class="highlight"><pre><span></span>git branch gh-pages
 ghp-import output
 git checkout master
 git merge gh-pages
@@ -189,7 +189,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-08-26T17:08:00"> 8 26, 2014</time>
+            <time pubdate="pubdate" datetime="2014-08-26T17:08:00+08:00"> 8 26, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Python-ref">Python</a> 
             <h4>Tags</h4>

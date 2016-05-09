@@ -61,11 +61,11 @@
             <p>Anaconda和Python(x,y)都自带了下面的这些库。</p>
 <h2 id="1-numpy">1. NumPy</h2>
 <p>强大的ndarray和ufunc函数。</p>
-<div class="highlight"><pre><span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
-<span class="n">xArray</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">xArray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="kp">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">xArray</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">:</span> 
-<span class="n">array</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> 
+<span class="kp">array</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
        <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
        <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]])</span>
 </pre></div>
@@ -73,10 +73,10 @@
 
 <h2 id="2-scipy">2. SciPy</h2>
 <p>科学计算（插值、积分、优化和图像处理）</p>
-<div class="highlight"><pre><span class="n">from</span> <span class="n">scipy</span> <span class="n">import</span> <span class="n">linalg</span>
-<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
-<span class="n">linalg</span><span class="p">.</span><span class="n">det</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="err">#计算行列式</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">:</span> <span class="o">-</span><span class="mf">2.0</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="c1">#计算行列式</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="o">-</span><span class="mf">2.0</span>
 </pre></div>
 
 
@@ -85,9 +85,9 @@
 常用的pyplot是一个简单提供类似Matlab接口的模块。</p>
 <h2 id="4-pandas">4. Pandas</h2>
 <p>基于SciPy和NumPy，拥有高效的Series和DataFrame数据结构，数据操作和分析能力非常强，拥有能够高效处理大数据集的切片等功能，提供优化库功能读写多种文件格式，如CSV, HDF5等</p>
-<div class="highlight"><pre><span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="err">#头</span><span class="mi">3</span><span class="err">行</span>
-<span class="n">df</span><span class="p">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="err">#最后</span><span class="mi">4</span><span class="err">行</span>
-<span class="n">df</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="err">&#39;</span><span class="n">score</span><span class="err">&#39;</span><span class="p">)</span> <span class="err">#按照</span><span class="n">score</span><span class="err">列排序</span>
+<div class="highlight"><pre><span></span>df.head(3) #头3行
+df.tail(4) #最后4行
+df.sort(columns=&#39;score&#39;) #按照score列排序
 </pre></div>
 
 
@@ -132,7 +132,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-11-25T13:04:00">11 25, 2015</time>
+            <time pubdate="pubdate" datetime="2015-11-25T13:04:00+08:00">11 25, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Python-ref">Python</a> 
             <h4>Tags</h4>

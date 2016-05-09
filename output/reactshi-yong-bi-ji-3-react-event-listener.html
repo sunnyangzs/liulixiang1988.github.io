@@ -96,7 +96,7 @@
             
 <h2 id="1">1. 构造基本结构</h2>
 <p>首先，我们先创建一个按钮，一个输入框。我们准备点击按钮时，后面有一个<code>&lt;span&gt;</code>显示和隐藏。代码如下：</p>
-<div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"container"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"container"</span><span class="nt">&gt;&lt;/div&gt;</span>
 <span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
     var TestClickComponent = React.createClass({
         render: function(){
@@ -136,32 +136,32 @@
 <h2 id="2-button">2. 给<code>&lt;button&gt;</code>添加事件绑定</h2>
 <p>用驼峰式命名的方式来绑定事件，比如<code>onClick</code>。注意这里的<code>onClick</code>事件和原生HTML属性中的<code>onclick</code>不是一回事儿。这里，它并不是一个真事的DOM节点，它只是一个React Element，而且写法也不一样，HTML标签的属性对于大小写是不敏感的，而React Element对于大小写是敏感的。</p>
 <p><code>onClick</code>的处理函数一般通过对象属性封装在React组件的对象实例上。</p>
-<div class="highlight"><pre><span class="kd">var</span> <span class="n">TestClickComponent</span> <span class="o">=</span> <span class="nx">React.createClass</span><span class="p">({</span>
-    <span class="nx">handleClick</span><span class="p">:</span> <span class="nx">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+<div class="highlight"><pre><span></span>var TestClickComponent = React.createClass({
+    handleClick: function(event){
 
-    <span class="p">},</span>
+    },
 
-    <span class="nb">render</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="o">&lt;</span><span class="nb">div</span><span class="o">&gt;</span>
-                <span class="o">&lt;</span><span class="nx">button</span> <span class="n">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">this.handleClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">显示</span><span class="o">|</span><span class="nx">隐藏</span><span class="o">&lt;/</span><span class="nx">button</span><span class="o">&gt;</span>
-                <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">测试点击</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
-            <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
-            <span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">});</span>
+    render: function(){
+        return (
+            <span class="nt">&lt;div&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">onClick=</span><span class="s">{this.handleClick}</span><span class="nt">&gt;</span>显示|隐藏<span class="nt">&lt;/button&gt;</span>
+                <span class="nt">&lt;span&gt;</span>测试点击<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            );
+    }
+});
 </pre></div>
 <p><code>handleClick</code>函数的参数是React封装的<code>event</code>对象。这个<code>event</code>对象是在原生的js的<code>event</code>对象的基础上封装的，因此，我们可以调用一些在原生js的<code>event</code>对象上的方法：</p>
-<div class="highlight"><pre><span class="nx">handleClick</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+<div class="highlight"><pre><span></span><span class="nx">handleClick</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
     <span class="nx">event</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
     <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 <p>我们如何在<code>event</code>事件处理函数内处理<code>&lt;span&gt;</code>呢，我们通过给<code>&lt;span&gt;</code>添加一个<code>ref</code>属性，然后就能在<code>this.refs</code>中获取这个对象了。</p>
-<div class="highlight"><pre><span class="nt">&lt;span</span> <span class="na">ref=</span><span class="s">"tip"</span><span class="nt">&gt;</span>测试点击<span class="nt">&lt;/span&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;span</span> <span class="na">ref=</span><span class="s">"tip"</span><span class="nt">&gt;</span>测试点击<span class="nt">&lt;/span&gt;</span>
 </pre></div>
 <p>注意，我们使用<code>this.refs.tip</code>引用的并不是真实的DOM节点，而是React组件。我们要操作DOM节点该怎么办呢？使用React给我们封装的方法<code>React.findDOMNode</code>，参数就是我们的React组件。</p>
-<div class="highlight"><pre><span class="n">handleClick</span><span class="o">:</span> <span class="kd">function</span><span class="o">(</span><span class="n">event</span><span class="o">){</span>
+<div class="highlight"><pre><span></span><span class="n">handleClick</span><span class="o">:</span> <span class="kd">function</span><span class="o">(</span><span class="n">event</span><span class="o">){</span>
     <span class="n">var</span> <span class="n">tipE</span> <span class="o">=</span> <span class="n">React</span><span class="o">.</span><span class="na">findDOMNode</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">refs</span><span class="o">.</span><span class="na">tip</span><span class="o">)</span>
 
     <span class="k">if</span> <span class="o">(</span><span class="n">tipE</span><span class="o">.</span><span class="na">style</span><span class="o">.</span><span class="na">display</span> <span class="o">===</span> <span class="s1">'none'</span><span class="o">){</span>
@@ -175,20 +175,20 @@
 </pre></div>
 <h2 id="3-input">3. 给<code>&lt;input&gt;</code>添加事件绑定</h2>
 <p>我们给<code>&lt;input&gt;</code>添加<code>onChange</code>事件，这里我们使用<code>event.target.value</code>来获取<code>&lt;input&gt;</code>的值，然后设置<code>state</code>，对应的<code>&lt;span&gt;</code>的内容就会跟着改变。</p>
-<div class="highlight"><pre><span class="nx">changeHandler</span><span class="p">:</span> <span class="nx">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
-    <span class="nx">this.setState</span><span class="p">({</span>
-        <span class="nx">inputContent</span><span class="p">:</span> <span class="nx">event.target.value</span>
-    <span class="p">});</span>
-    <span class="nx">event.preventDefault</span><span class="p">();</span>
-    <span class="nx">event.stopPropagation</span><span class="p">();</span>
-<span class="p">},</span>
-<span class="nb">render</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
-    <span class="k">return</span> <span class="p">(</span>
-        <span class="o">&lt;</span><span class="nb">div</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nb">input</span> <span class="k">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="n">onChange</span><span class="o">=</span><span class="p">{</span><span class="nx">this.changeHandler</span><span class="p">}</span><span class="o">/&gt;&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">this.state.inputContent</span><span class="p">}</span><span class="o">&lt;/</span><span class="nx">span</span><span class="o">&gt;</span>
-        <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
-        <span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span>changeHandler: function(event){
+    this.setState({
+        inputContent: event.target.value
+    });
+    event.preventDefault();
+    event.stopPropagation();
+},
+render: function(){
+    return (
+        <span class="nt">&lt;div&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">onChange=</span><span class="s">{this.changeHandler}/</span><span class="nt">&gt;&lt;span&gt;</span>{this.state.inputContent}<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        );
+}
 </pre></div>
 <h2 id="4-dom">4. 非DOM属性</h2>
 <p>非DOM属性 
@@ -344,7 +344,7 @@
 <h2 id="7">7. 实例演练</h2>
 <h3 id="71">7.1 使用滚动事件对象</h3>
 <p>鼠标滚轮的数值可以当做RGB值使用</p>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
 var Hello = React.createClass({
     getInitialState: function () {
         return {
@@ -369,30 +369,30 @@ React.render(<span class="nt">&lt;Hello/&gt;</span>,
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 <h3 id="72">7.2 键盘事件</h3>
-<div class="highlight"><pre><span class="kd">var</span> <span class="n">Hello</span> <span class="o">=</span> <span class="nx">React.createClass</span><span class="p">({</span>
-    <span class="nx">getInitialState</span><span class="p">:</span> <span class="nx">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">{</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s1">''</span>
-        <span class="p">};</span>
-    <span class="p">},</span>
-    <span class="nx">handleKeyPress</span><span class="p">:</span> <span class="nx">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">this.setState</span><span class="p">({</span><span class="nx">password</span><span class="p">:</span> <span class="nx">this.state.password</span><span class="o">+</span><span class="nx">event.which</span><span class="p">});</span>
-        <span class="nx">console.log</span><span class="p">(</span><span class="nx">this.state</span><span class="p">);</span>
-    <span class="p">},</span>
-    <span class="nx">handleChange</span><span class="p">:</span> <span class="nx">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
-        <span class="n">event.target.value</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
-    <span class="p">},</span>
-    <span class="nb">render</span><span class="p">:</span> <span class="nx">function</span><span class="p">(){</span>
-        <span class="nx">console.log</span><span class="p">(</span><span class="nx">this.state</span><span class="p">);</span>
-        <span class="k">return</span> <span class="o">&lt;</span><span class="nb">div</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nb">input</span> <span class="k">type</span><span class="o">=</span><span class="s2">"text"</span> <span class="n">onKeyPress</span><span class="o">=</span><span class="p">{</span><span class="nx">this.handleKeyPress</span><span class="p">}</span> <span class="n">onChange</span><span class="o">=</span><span class="p">{</span><span class="nx">this.handleChange</span><span class="p">}</span> <span class="o">/&gt;</span>
-        <span class="o">&lt;</span><span class="nx">p</span> <span class="n">style</span><span class="o">=</span><span class="p">{{</span><span class="s1">'display'</span><span class="p">:</span> <span class="nx">this.state.password.indexOf</span><span class="p">(</span><span class="s1">'495051'</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="s1">'0'</span> <span class="o">?</span> <span class="s1">'inline'</span><span class="p">:</span> <span class="s1">'none'</span><span class="p">}}</span><span class="o">&gt;</span><span class="nx">you</span> <span class="nx">got</span> <span class="nx">it</span><span class="o">!&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
-        <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">});</span>
+<div class="highlight"><pre><span></span>var Hello = React.createClass({
+    getInitialState: function () {
+        return {
+            password: ''
+        };
+    },
+    handleKeyPress: function (event) {
+        this.setState({password: this.state.password+event.which});
+        console.log(this.state);
+    },
+    handleChange: function(event){
+        event.target.value = '';
+    },
+    render: function(){
+        console.log(this.state);
+        return <span class="nt">&lt;div&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">onKeyPress=</span><span class="s">{this.handleKeyPress}</span> <span class="na">onChange=</span><span class="s">{this.handleChange}</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">style=</span><span class="cp">{{</span><span class="s1">'display'</span><span class="o">:</span> <span class="nv">this.state.password.indexOf</span><span class="o">(</span><span class="s1">'495051'</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="s1">'0'</span> <span class="err">?</span> <span class="s1">'inline'</span><span class="o">:</span> <span class="s1">'none'</span><span class="cp">}}</span><span class="err">&gt;</span><span class="s">you</span> <span class="err">got</span> <span class="err">it!&lt;/p</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>;
+    }
+});
 </pre></div>
 <h2 id="8">8. 事件和状态关联</h2>
-<div class="highlight"><pre><span class="n">handleChange</span><span class="o">:</span> <span class="kd">function</span><span class="o">(</span><span class="n">event</span><span class="o">){</span>
+<div class="highlight"><pre><span></span><span class="n">handleChange</span><span class="o">:</span> <span class="kd">function</span><span class="o">(</span><span class="n">event</span><span class="o">){</span>
     <span class="k">this</span><span class="o">.</span><span class="na">setState</span><span class="o">({</span><span class="n">inputText</span><span class="o">:</span> <span class="n">event</span><span class="o">.</span><span class="na">target</span><span class="o">.</span><span class="na">value</span><span class="o">});</span>
 <span class="o">}</span>
 </pre></div>
@@ -437,7 +437,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-11-28T12:18:00">11 28, 2015</time>
+            <time pubdate="pubdate" datetime="2015-11-28T12:18:00+08:00">11 28, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>

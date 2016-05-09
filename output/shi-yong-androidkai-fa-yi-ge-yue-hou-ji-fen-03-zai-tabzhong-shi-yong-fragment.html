@@ -71,7 +71,7 @@
 <p>可以在layout中使用fragment元素来显示的包含fragment。</p>
 <h2 id="3-tab">3. 从模板中修改tab</h2>
 <p>tab中的fragment到底是在哪里定义的呢？我们打开MainActivity，看到文件最后，定义了静态类：</p>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">PlaceholderFragment</span> <span class="kd">extends</span> <span class="n">Fragment</span> <span class="o">{</span>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">PlaceholderFragment</span> <span class="kd">extends</span> <span class="n">Fragment</span> <span class="o">{</span>
     <span class="cm">/**</span>
 <span class="cm">     * The fragment argument representing the section number for this</span>
 <span class="cm">     * fragment.</span>
@@ -105,7 +105,7 @@
 
 <p>现在先不对这个类做太多深入了解，我们往上看，会看到一个<code>SectionsPagerAdapter</code>类的定义，这个类用可以看作是mvc中的控制器，用来连接视图和模型，其中视图就是屏幕，模型就是Fragment。</p>
 <p>我们把它抽出来存放到一个单独的类中：</p>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SectionsPagerAdapter</span> <span class="kd">extends</span> <span class="n">FragmentPagerAdapter</span> <span class="o">{</span>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SectionsPagerAdapter</span> <span class="kd">extends</span> <span class="n">FragmentPagerAdapter</span> <span class="o">{</span>
 
     <span class="kd">private</span> <span class="n">Context</span> <span class="n">mContext</span><span class="o">;</span>
 
@@ -143,7 +143,7 @@
 
 
 <p>注意，因为<code>getString</code>是<code>Context</code>类的方法。因此，我们需要传进来<code>Context</code>，而<code>Activity</code>类是<code>Context</code>的子类，所以调用时将<code>Activity</code>传给它即可。</p>
-<div class="highlight"><pre><span class="c1">// Create the adapter that will return a fragment for each of the three</span>
+<div class="highlight"><pre><span></span><span class="c1">// Create the adapter that will return a fragment for each of the three</span>
 <span class="c1">// primary sections of the activity.</span>
 <span class="n">mSectionsPagerAdapter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SectionsPagerAdapter</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">getFragmentManager</span><span class="o">());</span>
 </pre></div>
@@ -156,7 +156,7 @@
 <p>新建一个类，类名是<code>InboxFragment</code>, 这个类继承自，继承自<code>android.app.ListFragment</code>(也可以继承自<code>android.support.v4.app.ListFragment</code>，这样Android4.0之前的版本也能够使用）。
 这里需要说明的是因为我们创建的是List类型的视图，所以创建了ListFragment，如同ListActivity对应Activity一样，ListFragment也对应继承自Fragment。</p>
 <p>打开MainActivity，复制其中的PlaceHolderFragment的<code>onCreateView</code>方法到<code>InboxFragment</code>之中。Fragment像Activity一样也有<code>onCreate</code>方法，但是这里我们关注的是<code>onCreateView</code>方法，该方法在对应的Layout画面渲染时调用。修改后的类如下所示，同时，删除MainActivity中对应的PlaceHolderFragment。</p>
-<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">InboxFragment</span> <span class="kd">extends</span> <span class="n">ListFragment</span> <span class="o">{</span>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">InboxFragment</span> <span class="kd">extends</span> <span class="n">ListFragment</span> <span class="o">{</span>
 
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="n">View</span> <span class="nf">onCreateView</span><span class="o">(</span><span class="n">LayoutInflater</span> <span class="n">inflater</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">container</span><span class="o">,</span>
@@ -172,7 +172,7 @@
 <h3 id="42-inboxfragmentlayout">4.2 修改InboxFragment对应的layout</h3>
 <p>首先，重构<code>fragment_main.xml</code>为<code>fragment_inbox.xml</code>.</p>
 <p>然后，修改<code>fragment_inbox</code>的内容：</p>
-<div class="highlight"><pre><span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
     <span class="na">xmlns:tools=</span><span class="s">&quot;http://schemas.android.com/tools&quot;</span>
     <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
     <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
@@ -200,15 +200,15 @@
 <h3 id="43">4.3 添加好友列表</h3>
 <p>类似的，添加<code>FriendsFragment</code>,<code>fragment_friends.xml</code>等，然后修改SectionPagerAdapter`。</p>
 <h3 id="44-sectionspageradapter">4.4 修改<code>SectionsPagerAdapter</code></h3>
-<div class="highlight"><pre><span class="n">public</span> <span class="n">Fragment</span> <span class="nf">getItem</span><span class="p">(</span><span class="kt">int</span> <span class="n">position</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">switch</span> <span class="p">(</span><span class="n">position</span><span class="p">){</span>
-        <span class="k">case</span> <span class="mi">0</span> :
-            <span class="k">return</span> <span class="n">new</span> <span class="n">InboxFragment</span><span class="p">();</span>
-        <span class="k">case</span> <span class="mi">1</span>:
-            <span class="k">return</span> <span class="n">new</span> <span class="n">FriendsFragment</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">null</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span>public Fragment getItem(int position) {
+    switch (position){
+        case 0 :
+            return new InboxFragment();
+        case 1:
+            return new FriendsFragment();
+    }
+    return null;
+}
 </pre></div>
 
 
@@ -224,40 +224,40 @@
 <li>添加TabListener来加载新的Fragment</li>
 </ol>
 <p>我们已经做了步骤1、2、3，现在我们打开<code>MainActivity</code>来看看它的<code>onCreate</code>方法：</p>
-<div class="highlight"><pre><span class="n">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//...</span>
+<div class="highlight"><pre><span></span>protected void onCreate(Bundle savedInstanceState) {
+    //...
 
-    <span class="c1">// 设置Action Bar</span>
-    <span class="n">final</span> <span class="n">ActionBar</span> <span class="n">actionBar</span> <span class="o">=</span> <span class="n">getActionBar</span><span class="p">();</span>
-    <span class="n">actionBar</span><span class="p">.</span><span class="n">setNavigationMode</span><span class="p">(</span><span class="n">ActionBar</span><span class="p">.</span><span class="n">NAVIGATION_MODE_TABS</span><span class="p">);</span>
+    // 设置Action Bar
+    final ActionBar actionBar = getActionBar();
+    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-    <span class="c1">// 设置返回fragment的adapter</span>
-    <span class="n">mSectionsPagerAdapter</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SectionsPagerAdapter</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">getFragmentManager</span><span class="p">());</span>
+    // 设置返回fragment的adapter
+    mSectionsPagerAdapter = new SectionsPagerAdapter(this, getFragmentManager());
 
-    <span class="c1">// 设置ViewPager</span>
-    <span class="n">mViewPager</span> <span class="o">=</span> <span class="p">(</span><span class="n">ViewPager</span><span class="p">)</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">pager</span><span class="p">);</span>
-    <span class="n">mViewPager</span><span class="p">.</span><span class="n">setAdapter</span><span class="p">(</span><span class="n">mSectionsPagerAdapter</span><span class="p">);</span>
+    // 设置ViewPager
+    mViewPager = (ViewPager) findViewById(R.id.pager);
+    mViewPager.setAdapter(mSectionsPagerAdapter);
 
-    <span class="c1">//在不同的区域滑动时，选择对应的tab，并且使用对应的ActionBar.Tab#select()来完成这些</span>
-    <span class="n">mViewPager</span><span class="p">.</span><span class="n">setOnPageChangeListener</span><span class="p">(</span><span class="n">new</span> <span class="n">ViewPager</span><span class="p">.</span><span class="n">SimpleOnPageChangeListener</span><span class="p">()</span> <span class="p">{</span>
-        <span class="err">@</span><span class="n">Override</span>
-        <span class="n">public</span> <span class="kt">void</span> <span class="n">onPageSelected</span><span class="p">(</span><span class="kt">int</span> <span class="n">position</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">actionBar</span><span class="p">.</span><span class="n">setSelectedNavigationItem</span><span class="p">(</span><span class="n">position</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
+    //在不同的区域滑动时，选择对应的tab，并且使用对应的ActionBar.Tab#select()来完成这些
+    mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        @Override
+        public void onPageSelected(int position) {
+            actionBar.setSelectedNavigationItem(position);
+        }
+    });
 
-    <span class="c1">// 对每一节，添加tab到action bar</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">mSectionsPagerAdapter</span><span class="p">.</span><span class="n">getCount</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Create a tab with text corresponding to the page title defined by</span>
-        <span class="c1">// the adapter. Also specify this Activity object, which implements</span>
-        <span class="c1">// the TabListener interface, as the callback (listener) for when</span>
-        <span class="c1">// this tab is selected.</span>
-        <span class="n">actionBar</span><span class="p">.</span><span class="n">addTab</span><span class="p">(</span>
-                <span class="n">actionBar</span><span class="p">.</span><span class="n">newTab</span><span class="p">()</span>
-                        <span class="p">.</span><span class="n">setText</span><span class="p">(</span><span class="n">mSectionsPagerAdapter</span><span class="p">.</span><span class="n">getPageTitle</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-                        <span class="p">.</span><span class="n">setTabListener</span><span class="p">(</span><span class="n">this</span><span class="p">));</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    // 对每一节，添加tab到action bar
+    for (int i = 0; i &lt; mSectionsPagerAdapter.getCount(); i++) {
+        // Create a tab with text corresponding to the page title defined by
+        // the adapter. Also specify this Activity object, which implements
+        // the TabListener interface, as the callback (listener) for when
+        // this tab is selected.
+        actionBar.addTab(
+                actionBar.newTab()
+                        .setText(mSectionsPagerAdapter.getPageTitle(i))
+                        .setTabListener(this));
+    }
+}
 </pre></div>
 
  
@@ -298,7 +298,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-10-15T23:06:00">10 15, 2014</time>
+            <time pubdate="pubdate" datetime="2014-10-15T23:06:00+08:00">10 15, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Android-ref">Android</a> 
             <h4>Tags</h4>

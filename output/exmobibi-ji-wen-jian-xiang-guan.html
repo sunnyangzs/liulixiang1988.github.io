@@ -60,13 +60,13 @@
 
             <h2 id="_1">文件下载</h2>
 <p>文件下载与打开</p>
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="sr">/doc$|docx$|pdf$/</span><span class="p">)){</span>
-        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;matched&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="o">$(</span><span class="s2">&quot;a&quot;</span><span class="o">)</span><span class="nc">.click</span><span class="o">(</span><span class="nt">function</span><span class="o">()</span><span class="p">{</span>
+    <span class="n">if</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">/</span><span class="n">doc</span><span class="err">$</span><span class="o">|</span><span class="n">docx</span><span class="err">$</span><span class="o">|</span><span class="n">pdf</span><span class="err">$</span><span class="o">/</span><span class="p">))</span><span class="err">{</span>
+        <span class="n">alert</span><span class="p">(</span><span class="s2">&quot;matched&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="nx">ClientUtil</span><span class="p">.</span><span class="nx">download</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">),</span><span class="s2">&quot;res:&quot;</span><span class="o">+</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">(),</span> <span class="kc">null</span><span class="p">,</span><span class="kc">null</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span>
-    <span class="nx">NativeUtil</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;res:&quot;</span><span class="o">+</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">());</span>
-<span class="p">});</span>
+    <span class="nt">ClientUtil</span><span class="nc">.download</span><span class="o">($(</span><span class="nt">this</span><span class="o">)</span><span class="nc">.attr</span><span class="o">(</span><span class="s1">&#39;href&#39;</span><span class="o">),</span><span class="s2">&quot;res:&quot;</span><span class="o">+$(</span><span class="nt">this</span><span class="o">)</span><span class="nc">.text</span><span class="o">(),</span> <span class="nt">null</span><span class="o">,</span><span class="nt">null</span><span class="o">,</span><span class="nt">false</span><span class="o">);</span>
+    <span class="nt">NativeUtil</span><span class="nc">.open</span><span class="o">(</span><span class="s2">&quot;res:&quot;</span><span class="o">+$(</span><span class="nt">this</span><span class="o">)</span><span class="nc">.text</span><span class="o">());</span>
+<span class="err">}</span><span class="o">);</span>
 </pre></div>
 
  
@@ -107,7 +107,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-05-13T15:39:00"> 5 13, 2015</time>
+            <time pubdate="pubdate" datetime="2015-05-13T15:39:00+08:00"> 5 13, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#移动开发-ref">移动开发</a> 
             <h4>Tags</h4>

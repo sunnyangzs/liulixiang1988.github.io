@@ -72,7 +72,7 @@
 
             
 <h2 id="1-css3">1. CSS3动画</h2>
-<div class="highlight"><pre><span class="nt">&lt;head&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;title&gt;</span>React动画<span class="nt">&lt;/title&gt;</span>
     <span class="nt">&lt;style&gt;</span>
@@ -103,11 +103,11 @@
 
         var TodoList = React.createClass({
           getInitialState: function() {
-            return {items: <span class="cp">[</span><span class="s1">'hello'</span><span class="p">,</span> <span class="s1">'world'</span><span class="p">,</span> <span class="s1">'click'</span><span class="p">,</span> <span class="s1">'me'</span><span class="cp">]</span>};
+            return {items: ['hello', 'world', 'click', 'me']};
           },
           handleAdd: function() {
             var newItems =
-              this.state.items.concat(<span class="cp">[</span><span class="nx">prompt</span><span class="p">(</span><span class="s1">'Enter some text'</span><span class="p">)</span><span class="cp">]</span>);
+              this.state.items.concat([prompt('Enter some text')]);
             this.setState({items: newItems});
           },
           handleRemove: function(i) {
@@ -139,7 +139,7 @@
 <span class="nt">&lt;/body&gt;</span>
 </pre></div>
 <h2 id="2-js">2. JS动画</h2>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"./react-0.13.2/react-0.13.2/build/react.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"./react-0.13.2/react-0.13.2/build/react.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"./react-0.13.2/react-0.13.2/build/JSXTransformer.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
     var Positioner = React.createClass({
@@ -173,7 +173,7 @@
 <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 <h2 id="3-raf">3. rAF动画</h2>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/jsx"</span><span class="nt">&gt;</span>
     var Positioner = React.createClass({
         getInitialState: function() {
             return {
@@ -242,7 +242,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-11-04T10:09:00">11 4, 2015</time>
+            <time pubdate="pubdate" datetime="2015-11-04T10:09:00+08:00">11 4, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>

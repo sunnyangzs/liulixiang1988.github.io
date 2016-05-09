@@ -86,13 +86,13 @@
 <p>定义ANT_HOME=C:\apache-ant-1.9.3</p>
 <h2 id="2-phonegap">2 安装PhoneGap</h2>
 <h3 id="21-phonegap">2.1 安装PhoneGap</h3>
-<div class="highlight"><pre><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">phonegap</span>
+<div class="highlight"><pre><span></span>npm install -g phonegap
 </pre></div>
 
 
 <p>安装过后通过<code>phonegap -v</code>看是否安装成功</p>
 <h3 id="22-cordova">2.2 安装cordova</h3>
-<div class="highlight"><pre><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">cordova</span>
+<div class="highlight"><pre><span></span>npm install -g cordova
 </pre></div>
 
 
@@ -100,12 +100,12 @@
 <p>一般安装phonegap即可</p>
 <h2 id="3-phonegapcordova">3 使用PhoneGap和Cordova</h2>
 <h3 id="31">3.1 创建项目</h3>
-<div class="highlight"><pre><span class="o">&gt;</span><span class="n">phonegap</span> <span class="n">create</span> <span class="n">project_name</span> <span class="n">project_id</span> <span class="n">display_name</span>
+<div class="highlight"><pre><span></span>&gt;phonegap create project_name project_id display_name
 </pre></div>
 
 
 <p>或者使用cordova创建：</p>
-<div class="highlight"><pre><span class="o">&gt;</span><span class="n">cordova</span> <span class="n">create</span> <span class="n">project_name</span> <span class="n">project_id</span> <span class="n">displayname</span>
+<div class="highlight"><pre><span></span>&gt;cordova create project_name project_id displayname
 </pre></div>
 
 
@@ -117,59 +117,59 @@
 <li>www：应用代码目录</li>
 </ul>
 <h3 id="33-build">3.3 build</h3>
-<div class="highlight"><pre><span class="o">&gt;</span><span class="n">phonegap</span> <span class="n">build</span> <span class="n">android</span>
-<span class="o">&gt;</span><span class="n">phonegap</span> <span class="n">build</span> <span class="n">ios</span>
+<div class="highlight"><pre><span></span>&gt;phonegap build android
+&gt;phonegap build ios
 </pre></div>
 
 
 <p>或者使用cordova命令</p>
-<div class="highlight"><pre><span class="o">&gt;</span><span class="n">cordova</span> <span class="n">platform</span> <span class="n">add</span> <span class="n">android</span>
-<span class="o">&gt;</span><span class="n">cordova</span> <span class="n">build</span> <span class="n">android</span>
+<div class="highlight"><pre><span></span>&gt;cordova platform add android
+&gt;cordova build android
 
-<span class="o">&gt;</span><span class="n">cordova</span> <span class="n">platform</span> <span class="n">add</span> <span class="n">ios</span>
-<span class="o">&gt;</span><span class="n">cordova</span> <span class="n">build</span> <span class="n">ios</span>
+&gt;cordova platform add ios
+&gt;cordova build ios
 
-<span class="o">&gt;</span><span class="n">cordova</span> <span class="n">build</span>
+&gt;cordova build
 </pre></div>
 
 
 <p>如果想要移除某个平台</p>
-<div class="highlight"><pre><span class="o">&gt;</span><span class="n">cordova</span> <span class="n">platform</span> <span class="n">remove</span> <span class="n">android</span>
+<div class="highlight"><pre><span></span>&gt;cordova platform remove android
 </pre></div>
 
 
 <h2 id="4">4 测试</h2>
 <h3 id="41-ios">4.1 iOS测试</h3>
-<div class="highlight"><pre><span class="o">&gt;</span><span class="n">sudo</span> <span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">ios</span><span class="o">-</span><span class="n">deploy</span>
-<span class="o">&gt;</span><span class="n">sudo</span> <span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">ios</span><span class="o">-</span><span class="n">sim</span> 
-<span class="o">&gt;</span><span class="n">phonegap</span> <span class="n">run</span> <span class="n">ios</span>
+<div class="highlight"><pre><span></span>&gt;sudo npm install -g ios-deploy
+&gt;sudo npm install -g ios-sim 
+&gt;phonegap run ios
 </pre></div>
 
 
 <h3 id="42-android">4.2 Android测试</h3>
-<div class="highlight"><pre><span class="o">&gt;</span><span class="n">phonegap</span> <span class="n">run</span> <span class="n">android</span>
+<div class="highlight"><pre><span></span>&gt;phonegap run android
 </pre></div>
 
 
 <h3 id="43-cordova">4.3 cordova</h3>
-<div class="highlight"><pre><span class="o">&gt;</span><span class="n">cordova</span> <span class="n">run</span> <span class="n">android</span>
+<div class="highlight"><pre><span></span>&gt;cordova run android
 </pre></div>
 
 
 <h2 id="5">5 插件</h2>
 <h3 id="51">5.1 安装插件</h3>
-<div class="highlight"><pre><span class="o">&gt;</span><span class="n">phonegap</span> <span class="n">plugin</span> <span class="n">add</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">cordova</span><span class="p">.</span><span class="n">device</span>
+<div class="highlight"><pre><span></span>&gt;phonegap plugin add org.apache.cordova.device
 </pre></div>
 
 
 <p>或者直接使用url</p>
 <h3 id="52">5.2 移除插件</h3>
-<div class="highlight"><pre><span class="o">&gt;</span><span class="n">phonegap</span> <span class="n">plugin</span> <span class="n">remove</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">cordova</span><span class="p">.</span><span class="n">device</span>
+<div class="highlight"><pre><span></span>&gt;phonegap plugin remove org.apache.cordova.device
 </pre></div>
 
 
 <h3 id="53">5.3 查看安装的插件</h3>
-<div class="highlight"><pre><span class="o">&gt;</span><span class="n">phonegap</span> <span class="n">plugin</span> <span class="n">list</span>
+<div class="highlight"><pre><span></span>&gt;phonegap plugin list
 </pre></div>
 
 
@@ -177,19 +177,19 @@
 <h2 id="7-hooks">7 Hooks</h2>
 <p>before_prepare, before_build, before_install, 等
 after_prepare, after_build, after_build, etc</p>
-<div class="highlight"><pre><span class="o">&gt;</span><span class="n">cordova</span> <span class="n">prepare</span>
+<div class="highlight"><pre><span></span>&gt;cordova prepare
 </pre></div>
 
 
 <h2 id="8">8 编译部署</h2>
 <h3 id="81-phonegap-build">8.1 phoneGap build</h3>
-<div class="highlight"><pre><span class="o">&gt;</span><span class="n">phonegap</span> <span class="n">remote</span> <span class="n">login</span> <span class="o">-</span><span class="n">u</span> <span class="n">username</span> <span class="o">-</span><span class="n">p</span> <span class="n">password</span>
-<span class="o">&gt;</span><span class="n">phonegap</span> <span class="n">remote</span> <span class="n">build</span> <span class="n">android</span>
+<div class="highlight"><pre><span></span>&gt;phonegap remote login -u username -p password
+&gt;phonegap remote build android
 </pre></div>
 
 
 <h3 id="82-phonegap-serve">8.2 phonegap serve</h3>
-<div class="highlight"><pre><span class="o">&gt;</span><span class="n">phonegap</span> <span class="n">serve</span> <span class="err">#能直接运行</span>
+<div class="highlight"><pre><span></span>&gt;phonegap serve #能直接运行
 </pre></div>
 
 
@@ -236,7 +236,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-03-29T08:59:00"> 3 29, 2015</time>
+            <time pubdate="pubdate" datetime="2015-03-29T08:59:00+08:00"> 3 29, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#移动开发-ref">移动开发</a> 
             <h4>Tags</h4>

@@ -72,22 +72,22 @@
 <p>在Tomcat的webapps目录下创建目录myhome</p>
 <h3 id="32-myhome">3.2 在myhome目录下创建内容</h3>
 <p>1、创建index.jsp:</p>
-<div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;title&gt;</span>你好<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;h1&gt;</span>你好世界<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>你好<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>你好世界<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 
 
 <p>2、创建WEB-INF目录
 从Tomcat的webapps/examples/WEB-INF下拷贝web.xml，并且只保留根标签</p>
-<div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
 <span class="nt">&lt;web-app</span> <span class="na">xmlns=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee&quot;</span>
   <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
   <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee</span>
@@ -104,7 +104,7 @@
 <li>WEB-INF目录是一个安全目录，只有通过服务器才能访问。</li>
 <li>web.xml,项目部署文件，比如配置项目的欢迎页面。</li>
 </ol>
-<div class="highlight"><pre>    <span class="nt">&lt;welcome-file-list&gt;</span>
+<div class="highlight"><pre><span></span>    <span class="nt">&lt;welcome-file-list&gt;</span>
         <span class="nt">&lt;welcome-file&gt;</span>/haha.jsp<span class="nt">&lt;/welcome-file&gt;</span>
     <span class="nt">&lt;/welcome-file-list&gt;</span>
 </pre></div>
@@ -126,10 +126,10 @@
 <p>windows-&gt;preference-&gt;General-&gt;Appearance-&gt;Colors and Fonts，然后修改Text Font。</p>
 <h2 id="6-tomcat">6. 修改Tomcat服务器默认端口</h2>
 <p>修改conf/server.xml文件</p>
-<div class="highlight"><pre><span class="o">&lt;</span><span class="n">Connector</span> <span class="n">executor</span><span class="o">=</span><span class="s">&quot;tomcatThreadPool&quot;</span>
-           <span class="n">port</span><span class="o">=</span><span class="s">&quot;8080&quot;</span> <span class="n">protocol</span><span class="o">=</span><span class="s">&quot;HTTP/1.1&quot;</span>
-           <span class="n">connectionTimeout</span><span class="o">=</span><span class="s">&quot;20000&quot;</span>
-           <span class="n">redirectPort</span><span class="o">=</span><span class="s">&quot;8443&quot;</span> <span class="o">/&gt;</span>
+<div class="highlight"><pre><span></span>&lt;Connector executor=&quot;tomcatThreadPool&quot;
+           port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;
+           connectionTimeout=&quot;20000&quot;
+           redirectPort=&quot;8443&quot; /&gt;
 </pre></div>
 
  
@@ -170,13 +170,13 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-04-07T21:40:00"> 4 7, 2015</time>
+            <time pubdate="pubdate" datetime="2015-04-07T21:40:00+08:00"> 4 7, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Java-ref">Java</a> 
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article"> 
                 <li><a href="/tags.html#Java-ref">Java
-                    <span>12</span>
+                    <span>13</span>
 </a></li>
                 <li><a href="/tags.html#JSP-ref">JSP
                     <span>9</span>

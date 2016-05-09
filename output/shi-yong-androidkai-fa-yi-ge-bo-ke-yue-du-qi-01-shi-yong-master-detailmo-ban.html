@@ -70,13 +70,13 @@
 <h2 id="fragments">Fragments中几种方法的调用顺序</h2>
 <h3 id="1onattachactivity-activity">1.<code>onAttach(Activity activity)</code>第一个被调用</h3>
 <p>包含Fragment的Activity必须实现<code>Callbacks</code>接口。</p>
-<div class="highlight"><pre><span class="nd">@Override</span>
+<div class="highlight"><pre><span></span><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAttach</span><span class="o">(</span><span class="n">Activity</span> <span class="n">activity</span><span class="o">)</span> <span class="o">{</span>
     <span class="kd">super</span><span class="o">.</span><span class="na">onAttach</span><span class="o">(</span><span class="n">activity</span><span class="o">);</span>
 
     <span class="c1">// Activities containing this fragment must implement its callbacks.</span>
     <span class="k">if</span> <span class="o">(!(</span><span class="n">activity</span> <span class="k">instanceof</span> <span class="n">Callbacks</span><span class="o">))</span> <span class="o">{</span>
-        <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalStateException</span><span class="o">(</span><span class="s">&quot;Activity must implement fragment&#39;s callbacks.&quot;</span><span class="o">);</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalStateException</span><span class="o">(</span><span class="s">&quot;Activity must implement fragment&#39;s callbacks.&quot;</span><span class="o">);</span>
     <span class="o">}</span>
 
     <span class="n">mCallbacks</span> <span class="o">=</span> <span class="o">(</span><span class="n">Callbacks</span><span class="o">)</span> <span class="n">activity</span><span class="o">;</span>
@@ -86,7 +86,7 @@
 
 <h3 id="2-oncreatebundle-savedinstancestate">2. <code>onCreate(Bundle savedInstanceState)</code>第二个被调用</h3>
 <p>这里设置一些数据项。</p>
-<div class="highlight"><pre><span class="nd">@Override</span>
+<div class="highlight"><pre><span></span><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
     <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
 
@@ -101,7 +101,7 @@
 
 
 <h3 id="3onviewcreatedview-view-bundle-savedinstancestate">3.<code>onViewCreated(View view, Bundle savedInstanceState)</code>第三个被调用</h3>
-<div class="highlight"><pre><span class="nd">@Override</span>
+<div class="highlight"><pre><span></span><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onViewCreated</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">,</span> <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
     <span class="kd">super</span><span class="o">.</span><span class="na">onViewCreated</span><span class="o">(</span><span class="n">view</span><span class="o">,</span> <span class="n">savedInstanceState</span><span class="o">);</span>
 
@@ -115,7 +115,7 @@
 
 
 <h3 id="4-listfragmentonlistitemclicklistview-listview-view-view-int-position-long-id">4. 对于ListFragment，当点击时，<code>onListItemClick(ListView listView, View view, int position, long id)</code>被调用</h3>
-<div class="highlight"><pre><span class="nd">@Override</span>
+<div class="highlight"><pre><span></span><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onListItemClick</span><span class="o">(</span><span class="n">ListView</span> <span class="n">listView</span><span class="o">,</span> <span class="n">View</span> <span class="n">view</span><span class="o">,</span> <span class="kt">int</span> <span class="n">position</span><span class="o">,</span> <span class="kt">long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
     <span class="kd">super</span><span class="o">.</span><span class="na">onListItemClick</span><span class="o">(</span><span class="n">listView</span><span class="o">,</span> <span class="n">view</span><span class="o">,</span> <span class="n">position</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
 
@@ -130,7 +130,7 @@
 <h2 id="detailactivity">理解DetailActivity源码</h2>
 <p>DetailActivity中包含的Fragment是手工添加的，而非通过Layout文件添加。添加的代码在<code>onCreate</code>方法中。
 我们使用<code>fragment.setArguments(arguments)</code>来设置参数，其中参数<code>arguments</code>是<code>Bundle</code>类型。</p>
-<div class="highlight"><pre><span class="nd">@Override</span>
+<div class="highlight"><pre><span></span><span class="nd">@Override</span>
 <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
     <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
     <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_blogpost_detail</span><span class="o">);</span>
@@ -168,7 +168,7 @@
 <h2 id="detailfragment">理解DetailFragment源码</h2>
 <p>DetailFragment中包含一个<code>mItem</code>，它是<code>DummyContent.DummyItem</code>类型。
 在<code>onCreate</code>方法中，我们使用<code>getArguments</code>来获取传递的<code>Bundle</code>类型的参数，然后再调用<code>Bundle.getString()</code>方法就能获取<code>Bundle</code>中的数据。</p>
-<div class="highlight"><pre>    <span class="nd">@Override</span>
+<div class="highlight"><pre><span></span>    <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
         <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
 
@@ -183,7 +183,7 @@
 
 
 <p>再来看看<code>onCreateView</code>方法，用<code>mItem.content</code>来填充数据，我们也可以换成其他的数据类型。</p>
-<div class="highlight"><pre>    <span class="nd">@Override</span>
+<div class="highlight"><pre><span></span>    <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="n">View</span> <span class="nf">onCreateView</span><span class="o">(</span><span class="n">LayoutInflater</span> <span class="n">inflater</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">container</span><span class="o">,</span>
             <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">View</span> <span class="n">rootView</span> <span class="o">=</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">fragment_blogpost_detail</span><span class="o">,</span> <span class="n">container</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
@@ -235,7 +235,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-09-19T21:36:00"> 9 19, 2014</time>
+            <time pubdate="pubdate" datetime="2014-09-19T21:36:00+08:00"> 9 19, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Android-ref">Android</a> 
             <h4>Tags</h4>

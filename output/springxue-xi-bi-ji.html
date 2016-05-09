@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Java, Spring, Java, " />
+        <title>Spring学习笔记  · Liu Lixiang的博客
+</title>
+        <link href="http://liulixiang1988.github.io/theme/css/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="http://liulixiang1988.github.io/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/springxue-xi-bi-ji.html"> Spring学习笔记  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <p>[toc]</p>
+<h2 id="1">1. 环境配置</h2>
+<h3 id="11">1.1 创建应用</h3>
+<p>打开idea,新建应用：</p>
+<p><img alt="img" src="images/QQ20160430-0.png" /></p>
+<p>然后输入包名、应用名：</p>
+<p><img alt="img" src="images/QQ20160430-1.png" /></p>
+<p>其他默认。</p>
+<h3 id="12-buildgradle">1.2 修改build.gradle</h3>
+<p>打开build.gradle，修改dependencies:</p>
+<div class="highlight"><pre><span></span>group &#39;io.github.liulixiang1988&#39;
+version &#39;1.0-SNAPSHOT&#39;
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath &#39;org.springframework.boot:spring-boot-gradle-plugin:1.3.3.RELEASE&#39;
+    }
+}
+
+apply plugin: &#39;java&#39;
+apply plugin: &#39;spring-boot&#39;
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile &#39;org.springframework.boot:spring-boot-starter-web:1.3.3.RELEASE&#39;
+}
+</pre></div>
+
+
+<p>注意，我们使用spring boot，它依赖于spring mvc的。并且，添加了<code>buildscript</code>和<code>apply plugin: 'spring-boot'</code>，用来运行spring应用。</p>
+<p>然后在项目根目录下新建<code>src/main/java</code>文件夹。</p>
+<p>现在通过IDEA的View-&gt;Tools View-&gt;Gradle打开Gradle面板，点击同步图标来下载安装依赖。</p>
+<h3 id="13-spring">1.3 添加spring配置文件</h3>
+<p>在<code>src/main/java</code>中新建包<code>io.github.liulixiang1988</code>。并在这个包里新建<code>AppConfig.java</code>。它用来启动应用。</p>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">io.github.liulixiang1988</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.boot.SpringApplication</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.boot.autoconfigure.EnableAutoConfiguration</span><span class="o">;</span>
+
+<span class="nd">@EnableAutoConfiguration</span> <span class="c1">//自动配置</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppConfig</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="n">SpringApplication</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">Appconfig</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>此时，右键选择运行gradle面板下的Tasks/application/bootRun任务。</p>
+<p>打开浏览器http://127.0.0.1:8080/ 可以看到页面：</p>
+<p><img alt="img" src="images/2016-05-01_09-48-40.png" /></p>
+<p>这就说明你成功了。</p>
+<h2 id="2">2. 创建控制器和视图</h2>
+<h3 id="21-http">2.1 创建控制器处理HTTP请求</h3>
+<p>首先在<code>io.github.liulixiang1988</code>下创建一个包<code>controller</code>。然后在这个包里创建<code>GifController</code>类。</p>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">io.github.liulixiang1988.controller</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Controller</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.ResponseBody</span><span class="o">;</span>
+
+<span class="nd">@Controller</span> <span class="c1">//1. 标识控制器</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GifController</span> <span class="o">{</span>
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="c1">//2. 添加映射</span>
+    <span class="nd">@ResponseBody</span> <span class="c1">//3. 返回响应</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">listGifs</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&quot;List of all gifs&quot;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>添加过Controller之后，应用并不能自己发现Controller，因此，我们修改<code>AppConfig.java</code>，添加<code>@ComponentScan</code>。</p>
+<div class="highlight"><pre><span></span><span class="nd">@EnableAutoConfiguration</span> <span class="c1">//自动配置</span>
+<span class="nd">@ComponentScan</span> <span class="c1">//扫描控制器</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AppConfig</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="n">SpringApplication</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">AppConfig</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>现在重新运行bootRun任务，打开http://127.0.0.1:8080 可以看到如下响应。</p>
+<p><img alt="img" src="images/2016-05-01_10-26-20.png" /></p>
+<h3 id="22-thymeleaf">2.2 使用Thymeleaf渲染模板</h3>
+<p>我们使用Thymeleaf来渲染模板，因此，需要先修改<code>build.gradle</code>用来添加相应的库。</p>
+<div class="highlight"><pre><span></span>dependencies {
+    compile &#39;org.springframework.boot:spring-boot-starter-thymeleaf&#39;
+}
+</pre></div>
+
+
+<p>然后在gradle面板中的刷新按钮安装对应的包。</p>
+<p>Thymeleaf默认寻找src/main/resources/templates下的模板，因此，我们创建对应的文件夹。</p>
+<p>在templates目录下面创建home.html。注意，Thymeleaf要求必须html标签必须有结束标签或者自关闭的。</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Giflib | Home<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>首页<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>hello<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://placehold.it/300x300/5fcf80/ffffff&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;logo&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>现在修改控制器GifController:</p>
+<div class="highlight"><pre><span></span><span class="nd">@Controller</span> <span class="c1">//1. 标识控制器</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GifController</span> <span class="o">{</span>
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="c1">//2. 添加映射</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">listGifs</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&quot;home&quot;</span><span class="o">;</span> <span class="c1">//3. 返回模板名称</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h3 id="23">2.3 添加静态文件</h3>
+<p>在<code>resources</code>目录下新建<code>static</code>目录用来存放静态文件。我们在<code>static</code>文件夹下分别创建<code>css</code>, <code>fonts</code>, <code>js</code>文件夹。直接把bootstrap添加进来。</p>
+<p>修改<code>home.html</code>：</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span>  <span class="na">xmlns:th</span><span class="o">=</span><span class="s">&quot;http://www.thymeleaf.org&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Giflib | Home<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">th:href</span><span class="o">=</span><span class="s">&quot;@{/css/bootstrap.min.css}&quot;</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">th:href</span><span class="o">=</span><span class="s">&quot;@{/css/app.css}&quot;</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>首页<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>hello<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">img</span> <span class="na">th:src</span><span class="o">=</span><span class="s">&quot;@{/gifs/compiler-bot.gif}&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;logo&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">th:src</span><span class="o">=</span><span class="s">&quot;@{/js/bootstrap.min.js}&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>需要说明的是：
+- 添加<code>xmlns:th</code>
+- 静态文件的链接是以<code>static</code>文件夹为根目录，使用<code>@{}</code>引入。</p>
+<h2 id="3">3. 模型、数据存取</h2>
+<h3 id="31">3.1 数据注入到模板</h3>
+<p>首先，创建<code>model</code>模块，并在下面创建<code>Gif.java</code>:</p>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">io.github.liulixiang1988.model</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.time.LocalDate</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Gif</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">LocalDate</span> <span class="n">dateUploaded</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">username</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">favorite</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Gif</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">LocalDate</span> <span class="n">dateUploaded</span><span class="o">,</span> <span class="n">String</span> <span class="n">username</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">favorite</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">dateUploaded</span> <span class="o">=</span> <span class="n">dateUploaded</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">username</span> <span class="o">=</span> <span class="n">username</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">favorite</span> <span class="o">=</span> <span class="n">favorite</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">LocalDate</span> <span class="nf">getDateUploaded</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">dateUploaded</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDateUploaded</span><span class="o">(</span><span class="n">LocalDate</span> <span class="n">dateUploaded</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">dateUploaded</span> <span class="o">=</span> <span class="n">dateUploaded</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getUsername</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">username</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUsername</span><span class="o">(</span><span class="n">String</span> <span class="n">username</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">username</span> <span class="o">=</span> <span class="n">username</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isFavorite</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">favorite</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setFavorite</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">favorite</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">favorite</span> <span class="o">=</span> <span class="n">favorite</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>修改<code>GifController</code>，注入数据：</p>
+<div class="highlight"><pre><span></span><span class="nd">@Controller</span> <span class="c1">//1. 标识控制器</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GifController</span> <span class="o">{</span>
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="c1">//2. 添加映射</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">listGifs</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&quot;home&quot;</span><span class="o">;</span> <span class="c1">//3. 返回模板名称</span>
+    <span class="o">}</span>
+
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&quot;/gif&quot;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDetails</span><span class="o">(</span><span class="n">ModelMap</span> <span class="n">modelMap</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Gif</span> <span class="n">gif</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Gif</span><span class="o">(</span><span class="s">&quot;compiler-bot&quot;</span><span class="o">,</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">2016</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">1</span><span class="o">),</span> <span class="s">&quot;刘理想&quot;</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+        <span class="n">modelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;gif&quot;</span><span class="o">,</span> <span class="n">gif</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">&quot;gif-details&quot;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>数据注入是使用<code>ModelMap</code>来实现的。</p>
+<p>打开模板<code>gif-detail.html</code>，调用注入的数据方法是<code>${}</code>方法。</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;frame row&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col s12&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">th:src=</span><span class="s">&quot;@{&#39;/gifs/&#39;+ </span><span class="cp">${</span><span class="n">gif</span><span class="o">.</span><span class="n">name</span><span class="cp">}</span><span class="s"> +&#39;.gif&#39;}&quot;</span> <span class="na">alt=</span><span class="s">&quot;gif&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;mark favorite&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+
+<h3 id="32">3.2 创建数据仓库组件</h3>
+<p>创建包<code>data</code>，并在其中创建<code>GifRepository</code>类。</p>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">io.github.liulixiang1988.data</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.time.LocalDate</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">io.github.liulixiang1988.model.Gif</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Component</span><span class="o">;</span>
+
+<span class="nd">@Component</span> <span class="c1">//声明组件,用于依赖注入</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GitRepository</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Gif</span><span class="o">&gt;</span> <span class="n">ALL_GIFS</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span>
+            <span class="k">new</span> <span class="n">Gif</span><span class="o">(</span><span class="s">&quot;android-explosion&quot;</span><span class="o">,</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">2016</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">1</span><span class="o">),</span> <span class="s">&quot;刘理想&quot;</span><span class="o">,</span> <span class="kc">true</span><span class="o">),</span>
+            <span class="k">new</span> <span class="n">Gif</span><span class="o">(</span><span class="s">&quot;ben-and-mike&quot;</span><span class="o">,</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">2016</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">10</span><span class="o">),</span> <span class="s">&quot;刘理想&quot;</span><span class="o">,</span> <span class="kc">true</span><span class="o">),</span>
+            <span class="k">new</span> <span class="n">Gif</span><span class="o">(</span><span class="s">&quot;book-dominos&quot;</span><span class="o">,</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">2016</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">1</span><span class="o">),</span> <span class="s">&quot;刘理想&quot;</span><span class="o">,</span> <span class="kc">true</span><span class="o">),</span>
+            <span class="k">new</span> <span class="n">Gif</span><span class="o">(</span><span class="s">&quot;complier-bot&quot;</span><span class="o">,</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">2016</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">12</span><span class="o">),</span> <span class="s">&quot;刘理想&quot;</span><span class="o">,</span> <span class="kc">true</span><span class="o">),</span>
+            <span class="k">new</span> <span class="n">Gif</span><span class="o">(</span><span class="s">&quot;cowboy-coder&quot;</span><span class="o">,</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">2016</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">13</span><span class="o">),</span> <span class="s">&quot;刘理想&quot;</span><span class="o">,</span> <span class="kc">false</span><span class="o">),</span>
+            <span class="k">new</span> <span class="n">Gif</span><span class="o">(</span><span class="s">&quot;infinite-andrew&quot;</span><span class="o">,</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">2016</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">15</span><span class="o">),</span> <span class="s">&quot;刘理想&quot;</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>
+    <span class="o">);</span>
+
+    <span class="kd">public</span> <span class="n">Gif</span> <span class="nf">findByName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">Gif</span> <span class="n">gif</span> <span class="o">:</span> <span class="n">ALL_GIFS</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">gif</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">name</span><span class="o">))</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">gif</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>注意，这里使用<code>@Component</code>声明了组件，为后期的依赖注入做好准备。</p>
+<p>现在修改<code>GifController</code>，添加<code>GifRepository</code>字段。</p>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GifController</span> <span class="o">{</span>
+    <span class="nd">@Autowired</span> <span class="c1">//依赖注入</span>
+    <span class="kd">private</span> <span class="n">GifRepository</span> <span class="n">gifRepository</span><span class="o">;</span>
+<span class="c1">//...</span>
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&quot;/gif&quot;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDetails</span><span class="o">(</span><span class="n">ModelMap</span> <span class="n">modelMap</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Gif</span> <span class="n">gif</span> <span class="o">=</span> <span class="n">gifRepository</span><span class="o">.</span><span class="na">findByName</span><span class="o">(</span><span class="s">&quot;ben-and-mike&quot;</span><span class="o">);</span>
+        <span class="n">modelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;gif&quot;</span><span class="o">,</span> <span class="n">gif</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">&quot;gif-details&quot;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h3 id="33-pathvariable">3.3 使用<code>@PathVariable</code>创建动态页</h3>
+<div class="highlight"><pre><span></span><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&quot;/gif/{name}&quot;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">getDetails</span><span class="o">(</span><span class="nd">@PathVariable</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">ModelMap</span> <span class="n">modelMap</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Gif</span> <span class="n">gif</span> <span class="o">=</span> <span class="n">gifRepository</span><span class="o">.</span><span class="na">findByName</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+    <span class="n">modelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;gif&quot;</span><span class="o">,</span> <span class="n">gif</span><span class="o">);</span>
+    <span class="k">return</span> <span class="s">&quot;gif-details&quot;</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>然后修改对应的模板：</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col s12&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">th:src=</span><span class="s">&quot;@{&#39;/gifs/&#39;+ </span><span class="cp">${</span><span class="n">gif</span><span class="o">.</span><span class="n">name</span><span class="cp">}</span><span class="s"> +&#39;.gif&#39;}&quot;</span> <span class="na">alt=</span><span class="s">&quot;gif&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">th:class=</span><span class="s">&quot;(</span><span class="cp">${</span><span class="n">gif</span><span class="o">.</span><span class="n">favorite</span><span class="cp">}</span><span class="s"> ? &#39;un&#39; : &#39;&#39;) +&#39;mark favorite&#39;&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+
+<h3 id="34">3.4 列表展示</h3>
+<p>列表数据注入：</p>
+<div class="highlight"><pre><span></span><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="c1">//2. 添加映射</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">listGifs</span><span class="o">(</span><span class="n">ModelMap</span> <span class="n">modelMap</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Gif</span><span class="o">&gt;</span> <span class="n">allGifs</span> <span class="o">=</span> <span class="n">gifRepository</span><span class="o">.</span><span class="na">getAllGifs</span><span class="o">();</span>
+    <span class="n">modelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;gifs&quot;</span><span class="o">,</span> <span class="n">allGifs</span><span class="o">);</span>
+    <span class="k">return</span> <span class="s">&quot;home&quot;</span><span class="o">;</span> <span class="c1">//3. 返回模板名称</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>模板展示：</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">th:each=</span><span class="s">&quot;gif : </span><span class="cp">${</span><span class="n">gifs</span><span class="cp">}</span><span class="s">&quot;</span> <span class="na">class=</span><span class="s">&quot;col s12 l4&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">th:href=</span><span class="s">&quot;@{&#39;/gif/&#39;+</span><span class="cp">${</span><span class="n">gif</span><span class="o">.</span><span class="n">name</span><span class="cp">}</span><span class="s">}&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">th:src=</span><span class="s">&quot;@{&#39;/gifs/&#39;+</span><span class="cp">${</span><span class="n">gif</span><span class="o">.</span><span class="n">name</span><span class="cp">}</span><span class="s">+&#39;.gif&#39;}&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">th:class=</span><span class="s">&quot;@{(</span><span class="cp">${</span><span class="n">gif</span><span class="o">.</span><span class="n">favorite</span><span class="cp">}</span><span class="s"> ? &#39;un&#39;: &#39;&#39;)+&#39;mark favorite&#39;}&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+
+<h2 id="4-mvc">4. MVC架构</h2>
+<h3 id="41-category">4.1 添加Category类</h3>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">io.github.liulixiang1988.model</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Category</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Category</span><span class="o">(</span><span class="kt">int</span> <span class="n">id</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="kt">int</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h3 id="42-categoryrepository">4.2 添加CategoryRepository类</h3>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">io.github.liulixiang1988.data</span><span class="o">;</span>
+
+
+<span class="kn">import</span> <span class="nn">io.github.liulixiang1988.model.Category</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Component</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CategoryRepository</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Category</span><span class="o">&gt;</span> <span class="n">ALL_CATEGORIES</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span>
+            <span class="k">new</span> <span class="n">Category</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">&quot;Technology&quot;</span><span class="o">),</span>
+            <span class="k">new</span> <span class="n">Category</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">&quot;People&quot;</span><span class="o">),</span>
+            <span class="k">new</span> <span class="n">Category</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="s">&quot;Destruction&quot;</span><span class="o">)</span>
+    <span class="o">);</span>
+
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Category</span><span class="o">&gt;</span> <span class="nf">getAllCategories</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">ALL_CATEGORIES</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">Category</span> <span class="nf">findById</span><span class="o">(</span><span class="kt">int</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">Category</span> <span class="n">category</span> <span class="o">:</span>
+                <span class="n">ALL_CATEGORIES</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">category</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">==</span> <span class="n">id</span><span class="o">){</span>
+                <span class="k">return</span> <span class="n">category</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h3 id="43-cateogrycontroller">4.3 添加CateogryController</h3>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">io.github.liulixiang1988.controller</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">io.github.liulixiang1988.data.CategoryRepository</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.github.liulixiang1988.data.GifRepository</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.github.liulixiang1988.model.Category</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.github.liulixiang1988.model.Gif</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Controller</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.ui.ModelMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.PathVariable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CategoryController</span> <span class="o">{</span>
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">CategoryRepository</span> <span class="n">categoryRepository</span><span class="o">;</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">GifRepository</span> <span class="n">gifRepository</span><span class="o">;</span>
+
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&quot;/categories&quot;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">listCategories</span><span class="o">(</span><span class="n">ModelMap</span> <span class="n">modelMap</span><span class="o">){</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Category</span><span class="o">&gt;</span> <span class="n">categories</span> <span class="o">=</span> <span class="n">categoryRepository</span><span class="o">.</span><span class="na">getAllCategories</span><span class="o">();</span>
+        <span class="n">modelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;categories&quot;</span><span class="o">,</span> <span class="n">categories</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">&quot;categories&quot;</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&quot;/category/{id}&quot;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">category</span><span class="o">(</span><span class="nd">@PathVariable</span> <span class="kt">int</span> <span class="n">id</span><span class="o">,</span> <span class="n">ModelMap</span> <span class="n">modelMap</span><span class="o">){</span>
+        <span class="n">Category</span> <span class="n">category</span> <span class="o">=</span> <span class="n">categoryRepository</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="n">modelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;category&quot;</span><span class="o">,</span> <span class="n">category</span><span class="o">);</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Gif</span><span class="o">&gt;</span> <span class="n">gifs</span> <span class="o">=</span> <span class="n">gifRepository</span><span class="o">.</span><span class="na">findByCategoryId</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="n">modelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;gifs&quot;</span><span class="o">,</span> <span class="n">gifs</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">&quot;category&quot;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h3 id="44">4.4 修改模板</h3>
+<div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;search-bar container&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col s12&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;#&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;input-field&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">&quot;q&quot;</span> <span class="na">type=</span><span class="s">&quot;search&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Search all gifs...&quot;</span> <span class="na">required=</span><span class="s">&quot;required&quot;</span> <span class="na">autocomplete=</span><span class="s">&quot;off&quot;/</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;material-icons&quot;</span><span class="nt">&gt;</span>search<span class="nt">&lt;/i&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;categories container&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--</span>
+<span class="c">            Repeat the div element for each object in the &#39;categories&#39;</span>
+<span class="c">            collection of the model map. Each object in the loop</span>
+<span class="c">            should be named &#39;category&#39;</span>
+<span class="c">        --&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">th:each=</span><span class="s">&quot;category: </span><span class="cp">${</span><span class="n">categories</span><span class="cp">}</span><span class="s">&quot;</span> <span class="na">class=</span><span class="s">&quot;col s12 l4&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;card&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;card-content&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;card-title&quot;</span><span class="nt">&gt;</span>
+                        <span class="c">&lt;!--</span>
+<span class="c">                            Set the href attribute of the a tag to be the URI to</span>
+<span class="c">                            a specific category according to the category&#39;s id.</span>
+<span class="c">                            For example, /category/1 or /category/2</span>
+
+<span class="c">                            Then, set the text between the a tags to be the category name,</span>
+<span class="c">                            coming from the &#39;name&#39; field of the &#39;category&#39; object</span>
+<span class="c">                            in the model map</span>
+<span class="c">                        --&gt;</span>
+                        <span class="nt">&lt;a</span> <span class="na">th:href=</span><span class="s">&quot;@{&#39;/category/&#39;+</span><span class="cp">${</span><span class="n">category</span><span class="o">.</span><span class="n">id</span><span class="cp">}</span><span class="s">}&quot;</span> <span class="na">th:text=</span><span class="s">&quot;</span><span class="cp">${</span><span class="n">category</span><span class="o">.</span><span class="n">name</span><span class="cp">}</span><span class="s">&quot;</span><span class="nt">&gt;</span>Category Name<span class="nt">&lt;/a&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;gifs container&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--</span>
+<span class="c">        In the div element, replace the &#39;category name&#39; text</span>
+<span class="c">        with the value of the &#39;name&#39; field of the &#39;category&#39;</span>
+<span class="c">        object from the model map</span>
+<span class="c">    --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;chip&quot;</span> <span class="na">th:text=</span><span class="s">&quot;</span><span class="cp">${</span><span class="n">category</span><span class="o">.</span><span class="n">name</span><span class="cp">}</span><span class="s">&quot;</span><span class="nt">&gt;</span>category name<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--</span>
+<span class="c">            Repeat the div element for each object in the &#39;gifs&#39;</span>
+<span class="c">            collection of the model map. Each object in the loop</span>
+<span class="c">            should be named &#39;gif&#39;</span>
+<span class="c">        --&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">th:each=</span><span class="s">&quot;gif : </span><span class="cp">${</span><span class="n">gifs</span><span class="cp">}</span><span class="s">&quot;</span> <span class="na">class=</span><span class="s">&quot;col s12 l4&quot;</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!--</span>
+<span class="c">                    In the a tag, make the href attribute point to</span>
+<span class="c">                    the GIF detail page using the &#39;name&#39; field of</span>
+<span class="c">                    the &#39;gif&#39; object from the loop above</span>
+<span class="c">             --&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">th:href=</span><span class="s">&quot;@{&#39;/gif/&#39;+ </span><span class="cp">${</span><span class="n">gif</span><span class="o">.</span><span class="n">name</span><span class="cp">}</span><span class="s">}&quot;</span><span class="nt">&gt;</span>
+                <span class="c">&lt;!--</span>
+<span class="c">                    In the img tag, make the src attribute point</span>
+<span class="c">                    to the static GIF image, according to the &#39;name&#39;</span>
+<span class="c">                    field of the &#39;gif&#39; object from the loop above</span>
+<span class="c">                --&gt;</span>
+                <span class="nt">&lt;img</span> <span class="na">th:src=</span><span class="s">&quot;@{&#39;/gifs/&#39;+ </span><span class="cp">${</span><span class="n">gif</span><span class="o">.</span><span class="n">name</span><span class="cp">}</span><span class="s"> +&#39;.gif&#39;}&quot;</span> <span class="nt">/&gt;</span>
+                <span class="c">&lt;!--</span>
+<span class="c">                    In the a tag, make the class attribute have the value</span>
+<span class="c">                    of &#39;mark favorite&#39; or &#39;unmark favorite&#39; according to</span>
+<span class="c">                    the &#39;favorite&#39; field of the &#39;gif&#39; object from the</span>
+<span class="c">                    loop above</span>
+<span class="c">                --&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">th:class=</span><span class="s">&quot;(</span><span class="cp">${</span><span class="n">gif</span><span class="o">.</span><span class="n">favorite</span><span class="cp">}</span><span class="s"> ? &#39;un&#39; : &#39;&#39;) +&#39;mark favorite&#39;&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
+            <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="springxue-xi-bi-ji.html" data-title="Spring学习笔记" data-url="http://liulixiang1988.github.io/springxue-xi-bi-ji.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/shi-yong-react-nativechuang-jian-yi-ge-tian-qi-ying-yong.html" title="Previous: 使用React Native创建一个天气应用">使用React Native创建一个天气应用</a></li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2016-04-30T15:43:00+08:00"> 4 30, 2016</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Java-ref">Java</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Java-ref">Java
+                    <span>13</span>
+</a></li>
+                <li><a href="/tags.html#Spring-ref">Spring
+                    <span>1</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://liulixiang1988.github.io/theme/js/jquery.min.js"></script>
+        <script src="http://liulixiang1988.github.io/theme/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>

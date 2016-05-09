@@ -90,48 +90,48 @@
 <p>类似的还有CommonJS Module/2.0规范。</p>
 <h2 id="2-seajs">2. SeaJS的应用</h2>
 <p>目录结构：</p>
-<div class="highlight"><pre><span class="n">examples</span><span class="o">/</span>
-  <span class="o">|--</span> <span class="n">sea</span><span class="o">-</span><span class="n">modules</span>      <span class="err">存放</span> <span class="n">seajs</span><span class="err">、</span><span class="n">jquery</span> <span class="err">等文件，这也是模块的部署目录</span>
-  <span class="o">|--</span> <span class="k">static</span>           <span class="err">存放各个项目的</span> <span class="n">js</span><span class="err">、</span><span class="n">css</span> <span class="err">文件</span>
-  <span class="o">|</span>     <span class="o">|--</span> <span class="n">hello</span>
-  <span class="o">|</span>     <span class="o">|--</span> <span class="n">lucky</span>
-  <span class="o">|</span>     <span class="err">`</span><span class="o">--</span> <span class="n">todo</span>
-  <span class="err">`</span><span class="o">--</span> <span class="n">app</span>              <span class="err">存放</span> <span class="n">html</span> <span class="err">等文件</span>
-        <span class="o">|--</span> <span class="n">hello</span><span class="p">.</span><span class="n">html</span>
-        <span class="o">|--</span> <span class="n">lucky</span><span class="p">.</span><span class="n">html</span>
-        <span class="err">`</span><span class="o">--</span> <span class="n">todo</span><span class="p">.</span><span class="n">html</span>
+<div class="highlight"><pre><span></span>examples/
+  |-- sea-modules      存放 seajs、jquery 等文件，这也是模块的部署目录
+  |-- static           存放各个项目的 js、css 文件
+  |     |-- hello
+  |     |-- lucky
+  |     `-- todo
+  `-- app              存放 html 等文件
+        |-- hello.html
+        |-- lucky.html
+        `-- todo.html
 </pre></div>
 <p>我们从 <code>hello.html</code> 入手，来瞧瞧使用 Sea.js 如何组织代码。</p>
 <h3 id="21">2.1 在页面中加载模块</h3>
 <p>在 <code>hello.html</code> 页尾，通过 <code>script</code> 引入 <code>sea.js</code> 后，有一段配置代码：</p>
-<div class="highlight"><pre><span class="c1">// seajs 的简单配置</span>
-<span class="n">seajs</span><span class="p">.</span><span class="k">config</span><span class="p">({</span>
-  <span class="nl">base:</span> <span class="s">"../sea-modules/"</span><span class="p">,</span>
-  <span class="k">alias</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s">"jquery"</span><span class="o">:</span> <span class="s">"jquery/jquery/1.10.1/jquery.js"</span>
-  <span class="p">}</span>
-<span class="p">})</span>
+<div class="highlight"><pre><span></span>// seajs 的简单配置
+seajs.config({
+  base: "../sea-modules/",
+  alias: {
+    "jquery": "jquery/jquery/1.10.1/jquery.js"
+  }
+})
 
-<span class="c1">// 加载入口模块</span>
-<span class="n">seajs</span><span class="p">.</span><span class="k">use</span><span class="p">(</span><span class="s">"../static/hello/src/main"</span><span class="p">)</span>
+// 加载入口模块
+seajs.use("../static/hello/src/main")
 </pre></div>
 <p><code>sea.js</code> 在下载完成后，会自动加载入口模块。页面中的代码就这么简单。</p>
 <h3 id="22">2.2 模块代码</h3>
 <p>这个小游戏有两个模块 <code>spinning.js</code> 和 <code>main.js</code>，遵循统一的写法：</p>
-<div class="highlight"><pre><span class="c1">// 所有模块都通过 define 来定义</span>
-<span class="n">define</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="n">require</span><span class="p">,</span> <span class="n">exports</span><span class="p">,</span> <span class="k">module</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span>// 所有模块都通过 define 来定义
+define(function(require, exports, module) {
 
-  <span class="c1">// 通过 require 引入依赖</span>
-  <span class="k">var</span> <span class="err">$</span> <span class="o">=</span> <span class="n">require</span><span class="p">('</span><span class="n">jquery</span><span class="p">');</span>
-  <span class="k">var</span> <span class="n">Spinning</span> <span class="o">=</span> <span class="n">require</span><span class="p">('.</span><span class="o">/</span><span class="n">spinning</span><span class="p">');</span>
+  // 通过 require 引入依赖
+  var $ = require('jquery');
+  var Spinning = require('./spinning');
 
-  <span class="c1">// 通过 exports 对外提供接口</span>
-  <span class="n">exports</span><span class="p">.</span><span class="n">doSomething</span> <span class="o">=</span> <span class="p">...</span>
+  // 通过 exports 对外提供接口
+  exports.doSomething = ...
 
-  <span class="c1">// 或者通过 module.exports 提供整个接口</span>
-  <span class="k">module</span><span class="p">.</span><span class="n">exports</span> <span class="o">=</span> <span class="p">...</span>
+  // 或者通过 module.exports 提供整个接口
+  module.exports = ...
 
-<span class="p">});</span>
+});
 </pre></div>
 <p>上面就是 <code>Sea.js</code> 推荐的 CMD 模块书写格式。如果你有使用过 Node.js，一切都很自然。</p>
 
@@ -173,7 +173,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-11-04T13:10:00">11 4, 2015</time>
+            <time pubdate="pubdate" datetime="2015-11-04T13:10:00+08:00">11 4, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>

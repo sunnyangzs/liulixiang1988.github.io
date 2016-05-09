@@ -83,11 +83,11 @@
 <p>效果如下：</p>
 <p><img alt="react native" src="images/QQ20160304-0.png"/></p>
 <h2 id="1">1. 创建应用</h2>
-<div class="highlight"><pre><span class="n">react</span><span class="o">-</span><span class="n">native</span> <span class="n">init</span> <span class="n">WeatherProject</span>
+<div class="highlight"><pre><span></span>react-native init WeatherProject
 </pre></div>
 <p>将index.ios/index.android.js文件中的初始组件放到单独的文件WeatherProject.js中。</p>
 <p>此时的index.ios.js/index.adnroid.js如下：</p>
-<div class="highlight"><pre><span class="s1">'use strict'</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="s1">'use strict'</span><span class="p">;</span>
 <span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">AppRegistry</span><span class="p">,</span>
 <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-native'</span><span class="p">;</span>
@@ -98,7 +98,7 @@
 <h2 id="2">2. 处理用户输入</h2>
 <p>根据用户输入的城市名获取天气（天气信息来自<a href="http://www.heweather.com/">和风天气</a>）</p>
 <p>修改WeatherProject.js</p>
-<div class="highlight"><pre><span class="s1">'user strict'</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="s1">'user strict'</span><span class="p">;</span>
 
 <span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">Component</span><span class="p">,</span>
@@ -149,7 +149,7 @@
     <span class="k">return</span> <span class="p">(</span>
       <span class="o">&lt;</span><span class="nx">View</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">container</span><span class="p">}</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">welcome</span><span class="p">}</span><span class="o">&gt;</span>
-          <span class="err">城市：</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">city</span><span class="p">}</span>
+          <span class="nx">城市</span><span class="err">：</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">city</span><span class="p">}</span>
         <span class="o">&lt;</span><span class="err">/Text&gt;</span>
         <span class="o">&lt;</span><span class="nx">TextInput</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">input</span><span class="p">}</span> <span class="nx">onSubmitEditing</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">_handleTextChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="o">/&gt;</span>
       <span class="o">&lt;</span><span class="err">/View&gt;</span>
@@ -159,7 +159,7 @@
 </pre></div>
 <h2 id="3">3. 显示数据</h2>
 <p>修改WeatherProject.js添加虚拟数据：</p>
-<div class="highlight"><pre><span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span>
+<div class="highlight"><pre><span></span><span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span>
    <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
      <span class="nx">city</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>
@@ -172,7 +172,7 @@
 <span class="p">}</span>
 </pre></div>
 <p>添加Forecast.js:</p>
-<div class="highlight"><pre><span class="s1">'user strict'</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="s1">'user strict'</span><span class="p">;</span>
 
 <span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">Component</span><span class="p">,</span>
@@ -207,10 +207,10 @@
           <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">main</span><span class="p">}</span>
         <span class="o">&lt;</span><span class="err">/Text&gt;</span>
         <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">mainText</span><span class="p">}</span><span class="o">&gt;</span>
-          <span class="err">当前：</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span>
+          <span class="nx">当前</span><span class="err">：</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">description</span><span class="p">}</span>
         <span class="o">&lt;</span><span class="err">/Text&gt;</span>
         <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">bigText</span><span class="p">}</span><span class="o">&gt;</span>
-          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">temp</span><span class="p">}</span><span class="err">度</span>
+          <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">temp</span><span class="p">}</span><span class="nx">度</span>
         <span class="o">&lt;</span><span class="err">/Text&gt;</span>
       <span class="o">&lt;</span><span class="err">/View&gt;</span>
     <span class="p">);</span>
@@ -218,7 +218,7 @@
 <span class="p">}</span>
 </pre></div>
 <p>更新WeatherProject.js来应用Forecast:</p>
-<div class="highlight"><pre><span class="s1">'user strict'</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="s1">'user strict'</span><span class="p">;</span>
 
 <span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">Component</span><span class="p">,</span>
@@ -314,7 +314,7 @@
                   <span class="nx">onSubmitEditing</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">_handleTextChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="o">/&gt;</span>
               <span class="o">&lt;</span><span class="err">/View&gt;</span>
               <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">mainText</span><span class="p">}</span><span class="o">&gt;</span>
-                <span class="err">天气</span>
+                <span class="nx">天气</span>
               <span class="o">&lt;</span><span class="err">/Text&gt;</span>
             <span class="o">&lt;</span><span class="err">/View&gt;</span>
             <span class="o">&lt;</span><span class="nx">Forecast</span> 
@@ -329,7 +329,7 @@
 <span class="p">}</span>
 </pre></div>
 <h2 id="4">4. 请求网络数据</h2>
-<div class="highlight"><pre><span class="s1">'user strict'</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="s1">'user strict'</span><span class="p">;</span>
 
 <span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">Component</span><span class="p">,</span>
@@ -410,7 +410,7 @@
       <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span><span class="o">=&gt;</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
       <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">responseJson</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">responseJson</span><span class="p">);</span>
-        <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">item</span> <span class="nx">of</span> <span class="nx">responseJson</span><span class="p">.</span><span class="nx">city_info</span><span class="p">){</span>
+        <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">item</span> <span class="k">of</span> <span class="nx">responseJson</span><span class="p">.</span><span class="nx">city_info</span><span class="p">){</span>
           <span class="k">if</span> <span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">city</span> <span class="o">==</span> <span class="nx">city</span><span class="p">){</span>
             <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"city"</span><span class="p">);</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">_getWeatherInfo</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
@@ -462,7 +462,7 @@
                   <span class="nx">onSubmitEditing</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">_handleTextChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">)}</span><span class="o">/&gt;</span>
               <span class="o">&lt;</span><span class="err">/View&gt;</span>
               <span class="o">&lt;</span><span class="nx">Text</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">mainText</span><span class="p">}</span><span class="o">&gt;</span>
-                <span class="err">天气</span>
+                <span class="nx">天气</span>
               <span class="o">&lt;</span><span class="err">/Text&gt;</span>
             <span class="o">&lt;</span><span class="err">/View&gt;</span>
             <span class="p">{</span><span class="nx">content</span><span class="p">}</span>
@@ -502,6 +502,8 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
             <ul class="articles_timeline">
  
                 <li class="previous_article">« <a href="http://liulixiang1988.github.io/kotlinxue-xi-bi-ji.html" title="Previous: Kotlin学习笔记">Kotlin学习笔记</a></li>
+ 
+                <li class="next_article"><a href="http://liulixiang1988.github.io/springxue-xi-bi-ji.html" title="Next: Spring学习笔记">Spring学习笔记</a> »</li>
             </ul>
             </nav>
             </aside>
@@ -510,7 +512,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-03-04T14:40:00"> 3 4, 2016</time>
+            <time pubdate="pubdate" datetime="2016-03-04T14:40:00+08:00"> 3 4, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Web-ref">Web</a> 
             <h4>Tags</h4>

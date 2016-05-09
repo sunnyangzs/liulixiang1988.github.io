@@ -60,31 +60,31 @@
 
             <p>本文讨论的是python中的<code>for … else</code>和<code>while…else</code>语法，最少被用到也最容易被误解的语法特性。</p>
 <p>python中的<code>for</code>和<code>while</code>循环都又一个可选的<code>else</code>（有点像if语句和try语句中的那样），当循环正常完成时执行。也就是说，<code>else</code>只有在循环正常退出时才能执行。<code>break</code>、<code>return</code>或者循环中产生的异常都不会让<code>else</code>正常执行。</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="o">...</span> <span class="k">else</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Iterated over everything :)&#39;</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iterated over everything :)&#39;</span><span class="p">)</span>
 <span class="o">...</span>
 <span class="mo">01234</span><span class="n">Iterated</span> <span class="n">over</span> <span class="n">everything</span> <span class="p">:)</span>
 </pre></div>
 
 
 <p>上面的代码里，我们遍历了<code>range(5)</code>。由于我们让循环正常完成，所以<code>else</code>语句也执行了，并且打印出了Iterated over everything:). 相反的，如果我们用<code>break</code>等语法退出循环，<code>else</code>就不会被执行。</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
 <span class="o">...</span>         <span class="k">break</span>
 <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="o">...</span> <span class="k">else</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Iterated over everything :)&#39;</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iterated over everything :)&#39;</span><span class="p">)</span>
 <span class="o">...</span><span class="mo">01</span>
 </pre></div>
 
 
 <p>注意，即使循环序列是空的，<code>else</code>也会被执行，毕竟所有的循环都已经正常走完。</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[]:</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[]:</span>
 <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="o">...</span> <span class="k">else</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">&#39;Still iterated over everything (i.e. nothing)&#39;</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Still iterated over everything (i.e. nothing)&#39;</span><span class="p">)</span>
 <span class="o">...</span>
 <span class="n">Still</span> <span class="n">iterated</span> <span class="n">over</span> <span class="n">everything</span> <span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">nothing</span><span class="p">)</span>
 
@@ -96,7 +96,7 @@
 <span class="o">...</span>     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="o">...</span>     <span class="k">print</span> <span class="n">i</span>
 <span class="o">...</span> <span class="k">else</span><span class="p">:</span>
-<span class="o">...</span>     <span class="k">print</span> <span class="s">&#39;Yep&#39;</span>
+<span class="o">...</span>     <span class="k">print</span> <span class="s1">&#39;Yep&#39;</span>
 <span class="o">...</span> 
 <span class="mi">12345</span><span class="n">Yep</span>
 </pre></div>
@@ -104,21 +104,21 @@
 
 <p>但是，为什么呢？</p>
 <p><code>else</code>语句在循环中的一个通常用法是实现搜索循环，比如你要实现搜索符合某个条件的元素，如果没有符合条件的元素就执行额外的处理或者引发异常</p>
-<div class="highlight"><pre><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">meets_condition</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="k">break</span>
 <span class="k">else</span><span class="p">:</span>    
-    <span class="c"># raise error or do additional processing </span>
+    <span class="c1"># raise error or do additional processing </span>
 </pre></div>
 
 
 <p>如果没有<code>else</code>你就需要设置一个标识，然后检察这个标识用来确认是否有符合条件的元素。</p>
-<div class="highlight"><pre><span class="n">condition_is_met</span> <span class="o">=</span> <span class="bp">False</span>
+<div class="highlight"><pre><span></span><span class="n">condition_is_met</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">meets_condition</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="n">condition_is_met</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">condition_is_met</span><span class="p">:</span>
-    <span class="c"># raise error or do additional processing</span>
+    <span class="c1"># raise error or do additional processing</span>
 </pre></div>
 
 
@@ -163,7 +163,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-07-20T17:08:00"> 7 20, 2014</time>
+            <time pubdate="pubdate" datetime="2014-07-20T17:08:00+08:00"> 7 20, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Python-ref">Python</a> 
             <h4>Tags</h4>

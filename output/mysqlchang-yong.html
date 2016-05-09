@@ -84,7 +84,7 @@
             
 <p>本文将持续更新。</p>
 <h2 id="1-macpath">1. Mac上安装后需要配置的PATH</h2>
-<div class="highlight"><pre><span class="n">export</span> <span class="n">PATH</span><span class="o">=</span><span class="err">$</span><span class="n">PATH</span><span class="o">:/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">bin</span>
+<div class="highlight"><pre><span></span><span class="x">export PATH=</span><span class="p">$</span><span class="nv">PATH</span><span class="x">:/usr/local/mysql/bin</span>
 </pre></div>
 <h2 id="2-pythonmysql">2. Python使用MySQL</h2>
 <p>Python中有5种常见客户端可连接MySQL.</p>
@@ -105,23 +105,23 @@
 <p>目前来讲，<code>pymysql</code>使用的人最多。</p>
 <h2 id="3-root">3. 使用root用户</h2>
 <h3 id="31-root">3.1 并且修改root密码</h3>
-<div class="highlight"><pre><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="err">#进入</span><span class="n">mysql</span>
-<span class="cp">#或者已经有密码了</span>
-<span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span> <span class="err">密码</span>
-<span class="cp">#修改密码</span>
-<span class="n">mysql</span><span class="o">&gt;</span><span class="n">update</span> <span class="n">mysql</span><span class="p">.</span><span class="n">user</span> <span class="n">set</span> <span class="n">password</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">(</span><span class="err">'</span><span class="mi">123456</span><span class="err">'</span><span class="p">)</span> <span class="n">where</span> <span class="n">User</span><span class="o">=</span><span class="err">'</span><span class="n">root</span><span class="err">'</span>
+<div class="highlight"><pre><span></span>mysql -u root #进入mysql
+#或者已经有密码了
+mysql -u root -p 密码
+#修改密码
+mysql&gt;update mysql.user set password=PASSWORD('123456') where User='root'
 </pre></div>
 <p>但是，在MySQL5.6之后，这么更改用户会出错：</p>
-<div class="highlight"><pre><span class="n">ERROR</span> <span class="mi">1820</span> <span class="p">(</span><span class="n">HY000</span><span class="p">)</span><span class="o">:</span> <span class="n">You</span> <span class="n">must</span> <span class="n">reset</span> <span class="n">your</span> <span class="n">password</span> <span class="n">using</span> <span class="n">ALTER</span> <span class="n">USER</span> <span class="n">statement</span> <span class="n">before</span> <span class="n">executing</span> <span class="n">this</span> <span class="n">statement</span>
+<div class="highlight"><pre><span></span>ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement
 </pre></div>
 <p>这个时候的做法是：</p>
-<div class="highlight"><pre><span class="n">SET</span> <span class="n">PASSWORD</span> <span class="o">=</span> <span class="n">PASSWORD</span><span class="p">(</span><span class="err">'</span><span class="n">your</span> <span class="n">new</span> <span class="n">password</span><span class="err">'</span><span class="p">);</span>
-<span class="n">ALTER</span> <span class="n">USER</span> <span class="err">'</span><span class="n">root</span><span class="sc">'@'</span><span class="n">localhost</span><span class="err">'</span> <span class="n">PASSWORD</span> <span class="n">EXPIRE</span> <span class="n">NEVER</span><span class="p">;</span>
-<span class="n">flush</span> <span class="n">privileges</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>SET PASSWORD = PASSWORD('your new password');
+ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
+flush privileges;
 </pre></div>
 <p>参考：https://dev.mysql.com/doc/refman/5.6/en/alter-user.html</p>
 <h3 id="32">3.2 退出</h3>
-<div class="highlight"><pre><span class="n">exit</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>exit;
 </pre></div>
 
  
@@ -162,7 +162,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
         <div class="span2" style="float:right;font-size:0.9em;">
  
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2016-01-01T13:15:00"> 1 1, 2016</time>
+            <time pubdate="pubdate" datetime="2016-01-01T13:15:00+08:00"> 1 1, 2016</time>
             <h4>Category</h4>
             <a class="category-link" href="/categories.html#Database-ref">Database</a> 
             <h4>Tags</h4>
