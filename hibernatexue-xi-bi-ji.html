@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Java, Hibernate, Java, " />
+        <title>Hibernate学习笔记  · Liu Lixiang的博客
+</title>
+        <link href="http://liulixiang1988.github.io/theme/css/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="http://liulixiang1988.github.io/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/hibernatexue-xi-bi-ji.html"> Hibernate学习笔记  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#1-java">1. Java链接数据库</a></li>
+<li><a href="#2-hibernate">2 Hibernate入门</a><ul>
+<li><a href="#21-hibernate">2.1 创建一个使用Hibernate的项目</a></li>
+<li><a href="#22-jpapojo">2.2 使用JPA注解添加POJO</a></li>
+<li><a href="#23-hibernate-sessionfactory">2.3 创建Hibernate SessionFactory</a></li>
+<li><a href="#24-builder">2.4 Builder模式</a></li>
+</ul>
+</li>
+<li><a href="#3-hibernate">3. 使用Hibernate存取数据</a><ul>
+<li><a href="#31">3.1 添加数据</a></li>
+<li><a href="#32">3.2 查询数据</a></li>
+<li><a href="#33">3.3 更新与删除</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
+
+            
+<h2 id="1-java">1. Java链接数据库</h2>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.DriverManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.ResultSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.SQLException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.sql.Statement</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JdbcMain</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+    <span class="c1">// TODO: Load the SQLite JDBC driver (JDBC class implements java.sql.Driver)</span>
+    <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"org.sqlite.JDBC"</span><span class="o">);</span>
+    <span class="c1">// TODO: Create a DB connection</span>
+    <span class="k">try</span><span class="o">(</span><span class="n">Connection</span> <span class="n">connection</span> <span class="o">=</span> <span class="n">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="s">"jdbc:sqlite:contactmgr.db"</span><span class="o">))</span> <span class="o">{</span>
+
+      <span class="c1">// TODO: Create a SQL statement</span>
+      <span class="n">Statement</span> <span class="n">statement</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">createStatement</span><span class="o">();</span>
+
+      <span class="c1">// TODO: Create a DB table</span>
+      <span class="n">statement</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">(</span><span class="s">"DROP TABLE IF EXISTS contacts"</span><span class="o">);</span>
+      <span class="n">statement</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">(</span><span class="s">"CREATE TABLE contacts (id INTEGER PRIMARY KEY, firstname STRING, lastname STRING, email STRING, phone INT(10))"</span><span class="o">);</span>
+
+      <span class="c1">// TODO: Insert a couple contacts</span>
+      <span class="n">statement</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">(</span><span class="s">"INSERT INTO contacts (firstname, lastname, email, phone) VALUES('Liu', 'Lixiang', 'liulixiang1988@gmail.com', 1234567890)"</span><span class="o">);</span>
+      <span class="n">statement</span><span class="o">.</span><span class="na">executeUpdate</span><span class="o">(</span><span class="s">"INSERT INTO contacts (firstname, lastname, email, phone) VALUES('Long', 'Long', 'abc@gmail.com', 0987654321)"</span><span class="o">);</span>
+
+      <span class="c1">// TODO: Fetch all the records from the contacts table</span>
+      <span class="n">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">statement</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="s">"SELECT * FROM contacts"</span><span class="o">);</span>
+
+      <span class="c1">// TODO: Iterate over the ResultSet &amp; display contact info</span>
+      <span class="k">while</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">()){</span>
+        <span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="s">"id"</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">firstName</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"firstname"</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">lastName</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"lastname"</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s %s (%d)"</span><span class="o">,</span> <span class="n">firstName</span><span class="o">,</span> <span class="n">lastName</span><span class="o">,</span> <span class="n">id</span><span class="o">);</span>
+      <span class="o">}</span>
+
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">SQLException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// Display connection or query errors</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"There was a database error: %s%n"</span><span class="o">,</span><span class="n">ex</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+<p>编译：<code>javac JdbcMain.java</code></p>
+<p>运行：<code>java -cp sqlite-jdbc.3.8.6.jar:. JdbcMain</code></p>
+<h2 id="2-hibernate">2 Hibernate入门</h2>
+<h3 id="21-hibernate">2.1 创建一个使用Hibernate的项目</h3>
+<p>创建gradle项目<code>contactmgr-hibernate</code>项目,并修改<code>build.gradle</code>:</p>
+<div class="highlight"><pre><span></span>dependencies {
+    compile 'org.hibernate:hibernate-core:5.1.0.Final'
+    compile 'com.h2database:h2:1.4.191'
+}
+</pre></div>
+<p>在根目录创建<code>data</code>文件夹，用来存放h2文件数据库。</p>
+<p>在<code>resources</code>目录下创建<code>hibernate.cfg.xml</code>，这个文件用来保存<code>SessionFactory</code>的配置：</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;hibernate-configuration&gt;</span>
+    <span class="nt">&lt;session-factory&gt;</span>
+        <span class="c">&lt;!--数据库链接配置--&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"connection.driver_class"</span><span class="nt">&gt;</span>org.h2.Driver<span class="nt">&lt;/property&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"connection.url"</span><span class="nt">&gt;</span>jdbc:h2:./data/contactmgr<span class="nt">&lt;/property&gt;</span>
+        <span class="c">&lt;!--SQL 方言--&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"dialect"</span><span class="nt">&gt;</span>org.hibernate.dialect.H2Dialect<span class="nt">&lt;/property&gt;</span>
+    <span class="nt">&lt;/session-factory&gt;</span>
+<span class="nt">&lt;/hibernate-configuration&gt;</span>
+</pre></div>
+<h3 id="22-jpapojo">2.2 使用JPA注解添加POJO</h3>
+<p>添加包<code>io.github.liulixiang1988.contactmgr</code>，并在其中创建<code>Application</code>类：</p>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">io.github.liulixiang1988.contactmgr</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+<p>然后在<code>contactmgr</code>中创建<code>model</code>包，并创建<code>Contact</code>类：</p>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">io.github.liulixiang1988.contactmgr.model</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.persistence.*</span><span class="o">;</span>
+
+<span class="nd">@Entity</span> <span class="c1">//映射为表</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Contact</span> <span class="o">{</span>
+
+    <span class="nd">@Id</span> <span class="c1">//主键</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span> <span class="c1">//自增长</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">firstName</span><span class="o">;</span>
+
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">;</span>
+
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">email</span><span class="o">;</span>
+
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="n">Long</span> <span class="n">phone</span><span class="o">;</span>
+
+    <span class="c1">// 为JPA准备的</span>
+    <span class="kd">public</span> <span class="nf">Contact</span><span class="o">(){}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"Contact{"</span> <span class="o">+</span>
+                <span class="s">"id="</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span>
+                <span class="s">", firstName='"</span> <span class="o">+</span> <span class="n">firstName</span> <span class="o">+</span> <span class="sc">'\''</span> <span class="o">+</span>
+                <span class="s">", lastName='"</span> <span class="o">+</span> <span class="n">lastName</span> <span class="o">+</span> <span class="sc">'\''</span> <span class="o">+</span>
+                <span class="s">", email='"</span> <span class="o">+</span> <span class="n">email</span> <span class="o">+</span> <span class="sc">'\''</span> <span class="o">+</span>
+                <span class="s">", phone="</span> <span class="o">+</span> <span class="n">phone</span> <span class="o">+</span>
+                <span class="sc">'}'</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="kt">int</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getFirstName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">firstName</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setFirstName</span><span class="o">(</span><span class="n">String</span> <span class="n">firstName</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">firstName</span> <span class="o">=</span> <span class="n">firstName</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getLastName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">lastName</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setLastName</span><span class="o">(</span><span class="n">String</span> <span class="n">lastName</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">lastName</span> <span class="o">=</span> <span class="n">lastName</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getEmail</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">email</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEmail</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">email</span> <span class="o">=</span> <span class="n">email</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getPhone</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">phone</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPhone</span><span class="o">(</span><span class="n">Long</span> <span class="n">phone</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">phone</span> <span class="o">=</span> <span class="n">phone</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+<p>然后我们修改<code>hibernate.cfg.xml</code>来为model做一些配置：</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;hibernate-configuration&gt;</span>
+    <span class="nt">&lt;session-factory&gt;</span>
+        <span class="c">&lt;!--...--&gt;</span>
+        <span class="c">&lt;!--启动时创建数据结构--&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"hbm2ddl.auto"</span><span class="nt">&gt;</span>create<span class="nt">&lt;/property&gt;</span>
+
+        <span class="c">&lt;!--为标识的实体类命名--&gt;</span>
+        <span class="nt">&lt;mapping</span> <span class="na">class=</span><span class="s">"io.github.liulixiang1988.contactmgr.model.Contact"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/session-factory&gt;</span>
+<span class="nt">&lt;/hibernate-configuration&gt;</span>
+</pre></div>
+<h3 id="23-hibernate-sessionfactory">2.3 创建Hibernate SessionFactory</h3>
+<div class="highlight"><pre><span></span>public class Application {
+    //保存一个SessionFactory(我们也只需要一个)
+    private static final SessionFactory sessionFactory = buildSessionFactory();
+
+    private static SessionFactory buildSessionFactory() {
+        //创建StandardServiceRegistry
+        final ServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+        return new MetadataSources(registry).buildMetadata().buildSessionFactory();
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+</pre></div>
+<h3 id="24-builder">2.4 Builder模式</h3>
+<p>修改Contact.java</p>
+<div class="highlight"><pre><span></span>public class Contact {
+
+    //...
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone=" + phone +
+                '}';
+    }
+
+    //...
+
+    public static class ContactBuilder {
+        private String firstName;
+        private String lastName;
+        private String email;
+        private Long phone;
+
+        public ContactBuilder(String firstName, String lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }
+
+        public ContactBuilder withEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public ContactBuilder withPhone(Long phone) {
+            this.phone = phone;
+            return this;
+        }
+
+        public Contact build() {
+            return new Contact(this);
+        }
+    }
+}
+</pre></div>
+<p>修改<code>Application.java</code>:</p>
+<div class="highlight"><pre><span></span>public static void main(String[] args) {
+    Contact contact = new ContactBuilder("Chris","Ramacciotti")
+            .withEmail("rama@teamtreehouse.com")
+            .withPhone(7735556666L)
+            .build();
+}
+</pre></div>
+<h2 id="3-hibernate">3. 使用Hibernate存取数据</h2>
+<p>要让Hibernate支持存取数据，需要添加依赖：</p>
+<div class="highlight"><pre><span></span>compile 'javax.transaction:jta:1.1'
+</pre></div>
+<p>为了能看到Hibernate准备的查询，我们设置：</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"show_sql"</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
+</pre></div>
+<h3 id="31">3.1 添加数据</h3>
+<div class="highlight"><pre><span></span>public static void main(String[] args) {
+    Contact contact = new ContactBuilder("Chris","Ramacciotti")
+            .withEmail("rama@teamtreehouse.com")
+            .withPhone(7735556666L)
+            .build();
+
+    //打开session
+    Session session = sessionFactory.openSession();
+
+    //begin transaction
+    session.beginTransaction();
+
+    //使用session来保存对象
+    session.save(contact);
+
+    //提交session
+    session.getTransaction().commit();
+
+    //关闭session
+    session.close();
+}
+</pre></div>
+<h3 id="32">3.2 查询数据</h3>
+<div class="highlight"><pre><span></span>@SuppressWarnings("unchecked")
+private static List&lt;Contact&gt; fetchAllContact() {
+    Session session = sessionFactory.openSession();
+    //创建Criteria
+    Criteria criteria = session.createCriteria(Contact.class);
+
+    //从Criteria中获取数据
+    List&lt;Contact&gt; contacts = criteria.list();
+
+    //关闭会话
+    session.close();
+    return contacts;
+}
+</pre></div>
+<p>调用可以使用java8的特性，而非使用for循环：</p>
+<div class="highlight"><pre><span></span><span class="nt">fetchAllContact</span><span class="o">()</span><span class="nc">.stream</span><span class="o">()</span><span class="nc">.forEach</span><span class="o">(</span><span class="nt">System</span><span class="nc">.out</span><span class="o">:</span><span class="nd">:println</span><span class="o">);</span>
+</pre></div>
+<p>可以通过修改<code>hibernate.cfg.xml</code>，让每次启动时是更新而不是创建数据库：</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"hbm2ddl.auto"</span><span class="nt">&gt;</span>update<span class="nt">&lt;/property&gt;</span>
+</pre></div>
+<h3 id="33">3.3 更新与删除</h3>
+<div class="highlight"><pre><span></span>private static Contact findContactById(int id) {
+    //打开会话
+    Session session = sessionFactory.openSession();
+    //获取对象或者null
+    Contact contact = session.get(Contact.class, id);
+    //关闭会话
+    session.close();
+    //返回对象
+    return contact;
+}
+
+private static void update(Contact contact) {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    session.update(contact);
+    session.getTransaction().commit();
+    session.close();
+}
+
+private static void delete(Contact contact) {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    session.delete(contact);
+    session.getTransaction().commit();
+    session.close();
+}
+</pre></div>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="hibernatexue-xi-bi-ji.html" data-title="Hibernate学习笔记" data-url="http://liulixiang1988.github.io/hibernatexue-xi-bi-ji.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/springxue-xi-bi-ji.html" title="Previous: Spring学习笔记">Spring学习笔记</a></li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2016-05-09T13:52:00+08:00"> 5 9, 2016</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Java-ref">Java</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Hibernate-ref">Hibernate
+                    <span>1</span>
+</a></li>
+                <li><a href="/tags.html#Java-ref">Java
+                    <span>14</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://liulixiang1988.github.io/theme/js/jquery.min.js"></script>
+        <script src="http://liulixiang1988.github.io/theme/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>
