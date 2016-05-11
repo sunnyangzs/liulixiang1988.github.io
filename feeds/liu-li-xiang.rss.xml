@@ -1,5 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Liu Lixiang的博客</title><link>http://liulixiang1988.github.io/</link><description>机器学习/Python/Android/Web</description><lastBuildDate>Tue, 10 May 2016 13:01:00 +0800</lastBuildDate><item><title>Java lambda简介</title><link>http://liulixiang1988.github.io/java-lambdajian-jie.html</link><description>
+<rss version="2.0"><channel><title>Liu Lixiang的博客</title><link>http://liulixiang1988.github.io/</link><description>机器学习/Python/Android/Web</description><lastBuildDate>Tue, 10 May 2016 22:40:00 +0800</lastBuildDate><item><title>Gradle依赖管理</title><link>http://liulixiang1988.github.io/gradleyi-lai-guan-li.html</link><description>
+&lt;h2 id="1"&gt;1. 添加依赖&lt;/h2&gt;
+&lt;p&gt;指定仓库是maven central&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;repositories {
+    mavenCentral()
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;加入我们要使用apache commons中的csv包，首先在网页https://commons.apache.org/proper/commons-csv/ 中找到对应的maven：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.commons&lt;span class="nt"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;commons-csv&lt;span class="nt"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.3&lt;span class="nt"&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上面的是xml格式，我们把它转换成gradle格式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dependencies {
+    compile group: 'org.apache.commons', name: 'commons-csv', version: '1.3'
+    //等价于
+    //compile 'org.apache.commons:commons-csv:1.3'
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;然后我们在gradle面板刷新项目。&lt;/p&gt;
+&lt;p&gt;也可以在Gradle面板右键选择&lt;code&gt;auto import&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;也可以在命令行运行&lt;code&gt;./gradlew&lt;/code&gt;用来在电脑上安装gradle。以及&lt;code&gt;./gradlew dependencies&lt;/code&gt;是用来安装依赖的。&lt;/p&gt;
+&lt;h2 id="2"&gt;2. 使用依赖&lt;/h2&gt;
+&lt;p&gt;新建类&lt;code&gt;io.github.liulixiang1988.Main&lt;/code&gt;类&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;liulixiang1988&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.apache.commons.csv.CSVFormat&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.apache.commons.csv.CSVPrinter&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;java.io.IOException&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Main&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;static&lt;/span&gt; &lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;try&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;CSVPrinter&lt;/span&gt; &lt;span class="n"&gt;printer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;CSVPrinter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;System&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CSVFormat&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;EXCEL&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="n"&gt;printer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;printRecord&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Liu"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Lixiang"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1988&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="n"&gt;printer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;printRecord&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"L"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"L"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1988&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;catch&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;IOException&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;printStackTrace&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;对于不知道具体名字的包，比如HTML解析包，我们可以到http://search.maven.org/ 去搜索&lt;code&gt;html parser&lt;/code&gt;，但有时候搜索的结果不尽人意，此时我们可以使用google搜索&lt;code&gt;maven html parser&lt;/code&gt;，会返回http://mvnrepository.com/ 网站对&lt;code&gt;maven&lt;/code&gt;的搜索。&lt;/p&gt;
+&lt;p&gt;我们也可以使用github搜索，条件是&lt;code&gt;language:java&lt;/code&gt;，然后按星排名。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">刘理想</dc:creator><pubDate>Tue, 10 May 2016 22:40:00 +0800</pubDate><guid isPermaLink="false">tag:liulixiang1988.github.io,2016-05-10:gradleyi-lai-guan-li.html</guid><category>Java</category><category>Gradle</category></item><item><title>Java lambda简介</title><link>http://liulixiang1988.github.io/java-lambdajian-jie.html</link><description>
 &lt;h2 id="1"&gt;1. 老的方法&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Book.java
 public class Book {
