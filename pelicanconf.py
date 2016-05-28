@@ -42,7 +42,7 @@ SEARCH_BOX = True
 LANDING_PAGE_ABOUT = {
     "title": "Liu Lixiang",
     "details": """
-My Name is Liu Lixiang. I'm a software engineer in Tongling Nonferrous Metals Group.
+My Name is Liu Lixiang. I'm a software engineer in iFlytek.
     """
 }
 
