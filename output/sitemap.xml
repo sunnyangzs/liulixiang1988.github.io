@@ -5,34 +5,41 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://liulixiang1988.github.io/</loc>
-<lastmod>2016-06-21T20:06:07-00:00</lastmod>
+<lastmod>2016-06-21T20:15:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://liulixiang1988.github.io/archives.html</loc>
-<lastmod>2016-06-21T20:06:07-00:00</lastmod>
+<lastmod>2016-06-21T20:15:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://liulixiang1988.github.io/tags.html</loc>
-<lastmod>2016-06-21T20:06:07-00:00</lastmod>
+<lastmod>2016-06-21T20:15:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://liulixiang1988.github.io/categories.html</loc>
-<lastmod>2016-06-21T20:06:07-00:00</lastmod>
+<lastmod>2016-06-21T20:15:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://liulixiang1988.github.io/mavenxiang-mu-guan-li.html</loc>
+<lastmod>2016-06-21T20:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://liulixiang1988.github.io/pelicanshi-yong-duo-shuo-ping-lun-kuang.html</loc>
 <lastmod>2016-06-21T20:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
