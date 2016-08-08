@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = '理想'
 SITENAME = 'Liu Lixiang的博客'
 # SITEURL = 'http://liulixiang1988.github.io'
-SITESUBTITLE = '机器学习/Python/Android/Web'
+SITESUBTITLE = '数据科学/Python/Java'
 
 TIMEZONE = 'Asia/Shanghai'
 

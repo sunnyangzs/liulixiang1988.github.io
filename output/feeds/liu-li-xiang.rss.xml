@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Liu Lixiang的博客</title><link>/</link><description>机器学习/Python/Android/Web</description><lastBuildDate>Mon, 08 Aug 2016 20:06:00 +0800</lastBuildDate><item><title>Netty笔记02-第一个Netty应用</title><link>/nettybi-ji-02-di-yi-ge-nettyying-yong.html</link><description>
+<rss version="2.0"><channel><title>Liu Lixiang的博客</title><link>/</link><description>数据科学/Python/Java</description><lastBuildDate>Mon, 08 Aug 2016 20:06:00 +0800</lastBuildDate><item><title>Netty笔记02-第一个Netty应用</title><link>/nettybi-ji-02-di-yi-ge-nettyying-yong.html</link><description>
 &lt;p&gt;本章包含：
 - 设置开发环境
 - 一个Echo服务和客户端
