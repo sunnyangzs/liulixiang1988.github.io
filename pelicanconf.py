@@ -47,7 +47,7 @@ My Name is Liu Lixiang. I'm a software engineer in iFlytek.
 }
 
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['sitemap', 'extract_toc', 'tipue_search']
+PLUGINS = ['sitemap', 'extract_toc', 'tipue_search', 'render_math']
 MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
 DIRECT_TEMPLATES = (('index', 'tags', 'categories','archives', 'search', '404'))
 STATIC_PATHS = ['theme/images', 'images']
