@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = '理想'
 SITENAME = 'Liu Lixiang的博客'
-SITEURL = 'http://liulixiang1988.github.io'
+# SITEURL = 'http://liulixiang1988.github.io'
 SITESUBTITLE = '机器学习/Python/Android/Web'
 
 TIMEZONE = 'Asia/Shanghai'
@@ -20,16 +20,18 @@ TRANSLATION_FEED_ATOM = None
 LINKS = (('GitHub', 'https://github.com/liulixiang1988/'),)
 
 # Social widget
-SOCIAL = (('微博', 'http://weibo.com/liulixiang1988'),)
+SOCIAL = (('知乎', 'https://www.zhihu.com/people/liulixiang1988'),
+          ('微博', 'http://weibo.com/liulixiang1988'),)
 
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = False
 
-THEME = 'pelican-elegant-1.3'
+THEME = 'gum'
 
 DUOSHUO_SITENAME = "liulixiang1988"
+DUOSHUO_SITEURL = 'http://liulixiang1988.github.io'
 
 GITHUB_USER = "liulixiang1988"
 GITHUB_SHOW_USER_LINK = True
@@ -39,18 +41,14 @@ SIDEBAR_IMAGE_ALT = "刘理想"
 
 SEARCH_BOX = True
 
-LANDING_PAGE_ABOUT = {
-    "title": "Liu Lixiang",
-    "details": """
-My Name is Liu Lixiang. I'm a software engineer in iFlytek.
-    """
-}
-
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['sitemap', 'extract_toc', 'tipue_search', 'render_math']
 MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
-DIRECT_TEMPLATES = (('index', 'tags', 'categories','archives', 'search', '404'))
+DIRECT_TEMPLATES = (('index', 'tags', 'categories', 'archives'))
 STATIC_PATHS = ['theme/images', 'images']
 TAG_SAVE_AS = ''
 CATEGORY_SAVE_AS = ''
 AUTHOR_SAVE_AS = ''
+MENUITEMS = [('分类', '/categories.html'),
+             ('标签', '/tags.html'),
+             ('归档', '/archives.html')]
