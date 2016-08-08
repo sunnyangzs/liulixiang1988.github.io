@@ -1,158 +1,568 @@
 <!DOCTYPE html>
-<html lang="en-US">
-    <head>
-        <meta charset="utf-8"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="理想" />
-        <meta name="copyright" content="理想" />
+<html lang="zh">
+<head>
 
-        <title>liulixiang1988的博客
-</title>
-        <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../theme/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="../theme/css/solarizedlight.css" media="screen">
-        <link rel="shortcut icon" href="../theme/images/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="../theme/images/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="../theme/images/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="../theme/images/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="../theme/images/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="../theme/images/apple-touch-icon-144x144.png" />
-        <link rel="icon" href="../theme/images/apple-touch-icon-144x144.png" />
-    </head>
-    <body>
-        <div id="content-sans-footer">
-        <div class="navbar navbar-static-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="../"><span class=site-name>liulixiang1988的博客</span></a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav pull-right top-menu">
-                            <li ><a href="..">Home</a></li>
-                            <li ><a href="../categories.html">Categories</a></li>
-                            <li ><a href="../tags.html">Tags</a></li>
-                            <li ><a href="../archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="../search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
-                        </ul>
-                    </div>
-                </div>
+        <title>Liu Lixiang的博客</title>
+        <meta charset="utf-8" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Full Atom Feed" />
+        <link href="/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Categories Atom Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="../theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="../theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="../theme/pygment.css" />
+
+        <script src="../theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="../">Liu Lixiang的博客 <small>数据科学/Python/Java</small></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="../">首页</a></li>
+
+                <li><a href="/categories.html">分类</a></li>
+                <li><a href="/tags.html">标签</a></li>
+                <li><a href="/archives.html">归档</a></li>
+                <li><a href="../pages/guan-yu.html">关于</a></li>
+
+              </ul>
             </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="span1"></div>
-                <div class="span10">
-<div class="row-fluid">
-    <header class="page_header span12">
-    <h1><a href="..">Liu Lixiang</a></h1>
-    </header>
 
-    <div class="row-fluid">
-        <div class="span8">
-            <header>
-            <h1 id="about-me">About me</h1>
-            </header>
-            <div class="article-content">
-                
-My Name is Liu Lixiang. I'm a software engineer in Tongling Nonferrous Metals Group.
+<section id="content">
+<h2>Articles in the Python category</h2>
+
+
+   <div class="row">
+
+
+        <div class="eleven columns">
+                 <ol id="post-list">
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="../pelicanshi-yong-duo-shuo-ping-lun-kuang.html" rel="bookmark" title="Permalink to Pelican使用多说评论框">Pelican使用多说评论框</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2016-06-21"> 二 21 六月 2016 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="../author/liu-li-xiang.html"> 刘理想</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> 
+<p>使用之前已经讲过，现在我们要使用多说评论框。首先找到模板目录下<code>comments.html</code>，添加：</p>
+<div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">DUOSHUO_SITENAME</span> <span class="k">and</span> <span class="nv">SITEURL</span> <span class="k">and</span> <span class="nv">article.status</span> <span class="p">!</span><span class="o">=</span> <span class="s2">"draft"</span> <span class="cp">%}</span> 
+<span class="nt">&lt;section&gt;</span> 
+<span class="nt">&lt;h1&gt;</span>评论<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"DuoShuoComment"</span> <span class="na">aria-live=</span><span class="s">"polite"</span><span class="nt">&gt;</span>
+<span class="cp">{%</span> <span class="k">include</span> <span class="s1">'_includes/DuoShuo_Script.html'</span> <span class="cp">%}</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/section&gt;</span> 
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+</pre></div>
+<p>然后新建<code>DuoShuo_Script.html</code>:</p>
+<div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">DUOSHUO_SITENAME</span> <span class="cp">%}</span>
+<span class="c">&lt;!-- 多说评论框 start --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"ds-thread"</span> <span class="na">data-thread-key=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">article.url</span> <span class="cp">}}</span><span class="s">"</span> <span class="na">data-title=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">article.title</span><span class="o">|</span><span class="nf">striptags</span> <span class="cp">}}</span><span class="s">"</span> <span class="na">data-url=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">SITEURL</span> <span class="cp">}}</span><span class="s">/</span><span class="cp">{{</span> <span class="nv">article ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="../pelicanshi-yong-duo-shuo-ping-lun-kuang.html" rel="bookmark" title="Permalink to Pelican使用多说评论框">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="../pythonshu-ju-fen-xi-3-dataframe.html" rel="bookmark" title="Permalink to Python数据分析(3)-DataFrame">Python数据分析(3)-DataFrame</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-11-29"> 日 29 十一月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="../author/liu-li-xiang.html"> 刘理想</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> 
+<h2 id="1-dataframe">1. <code>DataFrame</code>简介</h2>
+<p><code>Series</code>是一维序列，而<code>DataFrame</code>是一种二维表结构，它包含一组类似于<code>index</code>的有序列，每列可以是不同的值。因此可以把<code>DataFrame</code>看作是共享同一个<code>index</code>的<code>Series</code>集合。</p>
+<h2 id="2-dataframe">2. <code>DataFrame</code>的创建</h2>
+<p>创建<code>DataFrame</code>的方法与<code>Series</code>类似。并且自带index,也可以指定index。</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'name'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Wangdachui'</span><span class="p">,</span> <span class="s1">'Linling'</span><span class="p">,</span> <span class="s1">'Niuyun'</span><span class="p">],</span> <span class="s1">'pay'</span><span class="p">:[</span><span class="mi">4000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">6000</span><span class="p">]}</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">pd ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="../pythonshu-ju-fen-xi-3-dataframe.html" rel="bookmark" title="Permalink to Python数据分析(3)-DataFrame">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="../tag/shu-ju-fen-xi.html">数据分析</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="../pythonshu-ju-fen-xi-2-bian-chang-zi-dian-series.html" rel="bookmark" title="Permalink to Python数据分析(2)-变长字典Series">Python数据分析(2)-变长字典Series</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-11-29"> 日 29 十一月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="../author/liu-li-xiang.html"> 刘理想</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> 
+<p>我们知道字典是一种无序的数据结构，而pandas中的<code>Series</code>的数据结构不一样，它相当于定长有序的字典，并且它的index和value之间是独立的。</p>
+<h2 id="1-series">1. <code>Series</code>的创建</h2>
+<p><code>Series</code>的基本特征</p>
+<ul>
+<li>类似一维数组的对象</li>
+<li>由数据和索引组成</li>
+</ul>
+<p><code>Series</code>的创建：</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">aSer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">])</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">aSer</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>
+<span class="mi">0</span>    <span class="mi">1</span>
+<span class="mi">1</span>    <span class="mi">2</span>
+<span class="mi">2</span>    <span class="n">a</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="nb">object</span>
+</pre></div>
+<p>我们可以看到<code>Series</code>自带索引，当然我们还可以指定索引：</p>
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">bSer ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="../pythonshu-ju-fen-xi-2-bian-chang-zi-dian-series.html" rel="bookmark" title="Permalink to Python数据分析(2)-变长字典Series">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="../tag/shu-ju-fen-xi.html">数据分析</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="../pythonshu-ju-fen-xi-1-numpyzhong-de-ndarray.html" rel="bookmark" title="Permalink to Python数据分析(1)-NumPy中的ndarray">Python数据分析(1)-NumPy中的ndarray</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-11-29"> 日 29 十一月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="../author/liu-li-xiang.html"> 刘理想</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> 
+<p><code>ndarray</code>是NumPy中的基本数据机构，别名<code>array</code>，利于节省内存和提高CPU计算时间，提供了丰富的函数。</p>
+<h2 id="1-ndarray">1. <code>ndarray</code>创建函数</h2>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arange</td>
+<td>array</td>
+</tr>
+<tr>
+<td>empty_like</td>
+<td>empty</td>
+</tr>
+<tr>
+<td>fromfile</td>
+<td>fromfunction</td>
+</tr>
+<tr>
+<td>identity</td>
+<td>linespace</td>
+</tr>
+<tr>
+<td>logspace</td>
+<td>mgrid</td>
+</tr>
+<tr>
+<td>ogrid</td>
+<td>ones</td>
+</tr>
+<tr>
+<td>ones_like</td>
+<td>r</td>
+</tr>
+<tr>
+<td>zeros</td>
+<td>zeros_like</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">aArray</span> <span class="o">=</span> <span class="kp">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="c1">#一维数组</span>
+<span class="n">aArray</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="kp">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">bArray</span> <span class="o">=</span> <span class="kp">array</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5 ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="../pythonshu-ju-fen-xi-1-numpyzhong-de-ndarray.html" rel="bookmark" title="Permalink to Python数据分析(1)-NumPy中的ndarray">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="../tag/shu-ju-fen-xi.html">数据分析</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="../shi-yong-wfastcgizai-iisshang-bu-shu-python-flaskying-yong.html" rel="bookmark" title="Permalink to 使用wfastcgi在IIS上部署Python Flask应用">使用wfastcgi在IIS上部署Python Flask应用</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-11-27"> 五 27 十一月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="../author/liu-li-xiang.html"> 刘理想</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>本文介绍了如何在Windows上部署Python Flask应用，相关环境如下：
+- 操作系统：windows 7
+- Python：3.4
+- WFastCGI: 2.2
+应用所用到的包版本如下：</p>
+<div class="highlight"><pre><span></span>Flask==0.10.1
+Flask-SQLAlchemy==2.1
+itsdangerous==0.24
+Jinja2==2.8
+MarkupSafe==0.23
+pyodbc==3.0.10
+SQLAlchemy==1.0.9
+Werkzeug==0.11.2
+wheel==0.24.0
+</pre></div>
+
+
+<h2 id="1-wfastcgi">1. WFastCGI</h2>
+<p>wfastcgi.py使用WSGI和FastCGI提供了IIS和Python之间的桥接，类似于Apache ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="../shi-yong-wfastcgizai-iisshang-bu-shu-python-flaskying-yong.html" rel="bookmark" title="Permalink to 使用wfastcgi在IIS上部署Python Flask应用">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="../tag/flask.html">Flask</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="../pythonkuo-zhan-ku.html" rel="bookmark" title="Permalink to Python扩展库">Python扩展库</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-11-25"> 三 25 十一月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="../author/liu-li-xiang.html"> 刘理想</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>Anaconda和Python(x,y)都自带了下面的这些库。</p>
+<h2 id="1-numpy">1. NumPy</h2>
+<p>强大的ndarray和ufunc函数。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">xArray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="kp">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">xArray</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> 
+<span class="kp">array</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]])</span>
+</pre></div>
+
+
+<h2 id="2-scipy">2. SciPy</h2>
+<p>科学计算（插值、积分、优化和图像处理）</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">linalg ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="../pythonkuo-zhan-ku.html" rel="bookmark" title="Permalink to Python扩展库">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="../tag/shu-ju-fen-xi.html">数据分析</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="../pythondu-qu-wang-luo-tu-pian.html" rel="bookmark" title="Permalink to Python读取网络图片">Python读取网络图片</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-11-07"> 六 07 十一月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="../author/liu-li-xiang.html"> 刘理想</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>Python读取网络图片</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="../pythondu-qu-wang-luo-tu-pian.html" rel="bookmark" title="Permalink to Python读取网络图片">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="../tag/python.html">Python</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="../windowsxia-shi-yong-apachemod_wsgibu-shu-django.html" rel="bookmark" title="Permalink to Windows下使用Apache+mod_wsgi部署Django">Windows下使用Apache+mod_wsgi部署Django</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-06-16"> 二 16 六月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="../author/liu-li-xiang.html"> 刘理想</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>这个总结是在<a href="http://www.cnblogs.com/liulixiang/p/3543021.html">原来笔记</a>里修改而来。</p>
+<h2 id="1">1、环境</h2>
+<ul>
+<li>django 1.8.2</li>
+<li>python 3.4 32位</li>
+<li>apache 2.4.12 32位</li>
+<li>一个可以使用的django project( https://github.com/liulixiang1988/python_study_case/tree/master/django)</li>
+</ul>
+<h2 id="2apache-32">2、安装apache 32位</h2>
+<p>可以在这里下载（http://www.apachelounge.com/download/）
+<em>注意，我们必须在这个网站上下载apache才能运行后面的mod_wsgi</em>
+这时，需要注意我们还必须下载对应的分发环境，如果下载的是apache 2.4 vc14 windows binaries，则必须下载VC14 vcredist_x64/86 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="../windowsxia-shi-yong-apachemod_wsgibu-shu-django.html" rel="bookmark" title="Permalink to Windows下使用Apache+mod_wsgi部署Django">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="../tag/python.html">python</a>
+                                            <a class="danger label" href="../tag/django.html">Django</a>
+                                            <a class="danger label" href="../tag/bu-shu.html">部署</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="../flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html" rel="bookmark" title="Permalink to Flask笔记－01 基本应用框架">Flask笔记－01 基本应用框架</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-10-18"> 六 18 十月 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="../author/liu-li-xiang.html"> 刘理想</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <h2 id="1">1. 初始化</h2>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+</pre></div>
+
+
+<p><code>__name__</code>的作用是用来给Flask来判断应用的根路径的。</p>
+<h2 id="2">2. 路由和视图函数</h2>
+<div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;Hello World!&#39;</span>
+</pre></div>
+
+
+<p>如果要给路由添加参数，可以这样:</p>
+<div class="highlight"><pre><span></span>
+</pre></div>
+
+
+<p>其中<code>&lt;name&gt;</code>就是参数，如果你想给参数加上类型，可以使用<code>/user/&lt;int:id&gt;</code>，Flask支持在路由中使用<code>int</code>, <code>float</code>和<code>path</code>等类型。<code>path</code>是字符串，但是并不把<code>/</code>当作分隔符，而是把它看作动态组成的一部分。</p>
+<h2 id="3">3. 启动服务器</h2>
+<p>Flask包含了一个小型的开发服务器，启动它：</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="../flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html" rel="bookmark" title="Permalink to Flask笔记－01 基本应用框架">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="../tag/flask.html">Flask</a>
+                                            <a class="danger label" href="../tag/flaskbi-ji.html">Flask笔记</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="../django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html" rel="bookmark" title="Permalink to Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移">Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-09-26"> 五 26 九月 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="../author/liu-li-xiang.html"> 刘理想</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>Django数据库中驱动与迁移</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="../django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html" rel="bookmark" title="Permalink to Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="../tag/python.html">Python</a>
+                                            <a class="danger label" href="../tag/django.html">Django</a>
+                                </div>
+
+
+
+                        </article></li>
+                </ol><!-- /#posts-list -->
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<nav class="widget">
+  <h4>社交</h4>
+  <ul class="blank">
+    <li><a href="https://www.zhihu.com/people/liulixiang1988">知乎</a></li>
+    <li><a href="http://weibo.com/liulixiang1988">微博</a></li>
+  </ul>
+</nav>
+
+<h4>分类</h4>
+<ul class="blank">
+		<li><a href="../category/android.html">Android</a></li>
+		<li><a href="../category/database.html">Database</a></li>
+		<li><a href="../category/dotnet.html">DotNet</a></li>
+		<li><a href="../category/ionic.html">ionic</a></li>
+		<li><a href="../category/java.html">Java</a></li>
+		<li><a href="../category/python.html">Python</a></li>
+		<li><a href="../category/sheng-huo.html">生活</a></li>
+		<li><a href="../category/web.html">Web</a></li>
+		<li><a href="../category/yi-dong-kai-fa.html">移动开发</a></li>
+</ul>
+
+
+<h4>标签</h4>
+	<ul class="blank">
+	    <li class="tag-[<pelican.contents.Article object at 0x10523d908>, <pelican.contents.Article object at 0x105121be0>]"><a href="../tag/netty.html">Netty</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1046dd390>]"><a href="../tag/mysql.html">MySQL</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104e38c88>]"><a href="../tag/nancy.html">Nancy</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1051d9e48>, <pelican.contents.Article object at 0x105199898>, <pelican.contents.Article object at 0x104e2e438>, <pelican.contents.Article object at 0x104b75e10>, <pelican.contents.Article object at 0x104e12240>, <pelican.contents.Article object at 0x10519d780>, <pelican.contents.Article object at 0x104e08978>]"><a href="../tag/react.html">React</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104e38c88>]"><a href="../tag/net.html">.NET</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104947cf8>]"><a href="../tag/bu-shu.html">部署</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104947cf8>, <pelican.contents.Article object at 0x1046f1f28>, <pelican.contents.Article object at 0x10482d208>]"><a href="../tag/django.html">Django</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104d038d0>]"><a href="../tag/mo-kuai-hua.html">模块化</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104975780>, <pelican.contents.Article object at 0x10497d828>, <pelican.contents.Article object at 0x1049bfcc0>, <pelican.contents.Article object at 0x1046ef588>, <pelican.contents.Article object at 0x10466e4e0>, <pelican.contents.Article object at 0x104b9ca58>, <pelican.contents.Article object at 0x104980550>, <pelican.contents.Article object at 0x1044f31d0>, <pelican.contents.Article object at 0x1049cabe0>, <pelican.contents.Article object at 0x10491d128>, <pelican.contents.Article object at 0x104b25438>, <pelican.contents.Article object at 0x1049c3d30>, <pelican.contents.Article object at 0x104960ba8>, <pelican.contents.Article object at 0x10482c5f8>, <pelican.contents.Article object at 0x104999358>, <pelican.contents.Article object at 0x10462f320>, <pelican.contents.Article object at 0x10482c320>, <pelican.contents.Article object at 0x1049a07b8>]"><a href="../tag/java.html">Java</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10466e4e0>]"><a href="../tag/hibernate.html">Hibernate</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1049bf710>, <pelican.contents.Article object at 0x1046dd400>, <pelican.contents.Article object at 0x104b9cc18>, <pelican.contents.Article object at 0x1048f47b8>, <pelican.contents.Article object at 0x1048e36d8>]"><a href="../tag/css3.html">CSS3</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104b9cc18>, <pelican.contents.Article object at 0x1048f47b8>, <pelican.contents.Article object at 0x1048e36d8>, <pelican.contents.Article object at 0x104eea828>, <pelican.contents.Article object at 0x1048bfa90>, <pelican.contents.Article object at 0x104b9ce48>, <pelican.contents.Article object at 0x1044cc390>, <pelican.contents.Article object at 0x104ee3390>, <pelican.contents.Article object at 0x104ee3358>]"><a href="../tag/sass.html">sass</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x103c33668>, <pelican.contents.Article object at 0x1044c3ac8>, <pelican.contents.Article object at 0x1044f24e0>, <pelican.contents.Article object at 0x1051690b8>, <pelican.contents.Article object at 0x104d38780>, <pelican.contents.Article object at 0x104ba60b8>, <pelican.contents.Article object at 0x1051d3dd8>, <pelican.contents.Article object at 0x105257d30>, <pelican.contents.Article object at 0x1049a9630>, <pelican.contents.Article object at 0x104bafc50>, <pelican.contents.Article object at 0x1048bb710>, <pelican.contents.Article object at 0x10447f780>, <pelican.contents.Article object at 0x1046110b8>, <pelican.contents.Article object at 0x10460a940>, <pelican.contents.Article object at 0x10448f3c8>, <pelican.contents.Article object at 0x103c25a58>, <pelican.contents.Article object at 0x103c11860>]"><a href="../tag/android.html">Android</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104e38c88>]"><a href="../tag/c.html">C#</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1049bf160>, <pelican.contents.Article object at 0x1048b7cf8>]"><a href="../tag/flask.html">Flask</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x103bd5fd0>, <pelican.contents.Article object at 0x1046dc2e8>, <pelican.contents.Article object at 0x104676240>]"><a href="../tag/life.html">life</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1049824a8>, <pelican.contents.Article object at 0x1049822e8>]"><a href="../tag/ionic.html">ionic</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104eea828>, <pelican.contents.Article object at 0x1048bfa90>, <pelican.contents.Article object at 0x104b9ce48>, <pelican.contents.Article object at 0x1044cc390>, <pelican.contents.Article object at 0x104ee3390>, <pelican.contents.Article object at 0x104ee3358>, <pelican.contents.Article object at 0x10513d828>, <pelican.contents.Article object at 0x104980f28>, <pelican.contents.Article object at 0x103c11668>, <pelican.contents.Article object at 0x10468fcc0>, <pelican.contents.Article object at 0x1044b1160>, <pelican.contents.Article object at 0x1048f9400>, <pelican.contents.Article object at 0x1049a0128>, <pelican.contents.Article object at 0x104ee37b8>, <pelican.contents.Article object at 0x104b9c128>, <pelican.contents.Article object at 0x1049cf9b0>, <pelican.contents.Article object at 0x104e320f0>, <pelican.contents.Article object at 0x1048b71d0>, <pelican.contents.Article object at 0x1051a3d68>]"><a href="../tag/css.html">CSS</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104b25eb8>, <pelican.contents.Article object at 0x1044f30f0>, <pelican.contents.Article object at 0x1044af470>, <pelican.contents.Article object at 0x10494f0b8>]"><a href="../tag/shu-ju-fen-xi.html">数据分析</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1051d9e48>, <pelican.contents.Article object at 0x105199898>, <pelican.contents.Article object at 0x104e2e438>, <pelican.contents.Article object at 0x104b75e10>, <pelican.contents.Article object at 0x1051b70b8>, <pelican.contents.Article object at 0x104e12240>, <pelican.contents.Article object at 0x10519d780>, <pelican.contents.Article object at 0x104e08978>, <pelican.contents.Article object at 0x1049bf710>, <pelican.contents.Article object at 0x104d038d0>, <pelican.contents.Article object at 0x1044d8cf8>, <pelican.contents.Article object at 0x104ba8fd0>]"><a href="../tag/javascript.html">JavaScript</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104d038d0>]"><a href="../tag/requirejs.html">RequireJS</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104804780>, <pelican.contents.Article object at 0x104801e10>, <pelican.contents.Article object at 0x104825b38>, <pelican.contents.Article object at 0x1046810f0>, <pelican.contents.Article object at 0x1046edcc0>]"><a href="../tag/aspnet-mvc.html">ASP.NET MVC</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x105280208>, <pelican.contents.Article object at 0x104947cf8>, <pelican.contents.Article object at 0x1046f1f28>, <pelican.contents.Article object at 0x10482d208>, <pelican.contents.Article object at 0x10523bf28>, <pelican.contents.Article object at 0x1049905f8>]"><a href="../tag/python.html">Python</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1051d3dd8>, <pelican.contents.Article object at 0x105257d30>, <pelican.contents.Article object at 0x1049a9630>, <pelican.contents.Article object at 0x104bafc50>, <pelican.contents.Article object at 0x1048bb710>]"><a href="../tag/androibo-ke-yue-du.html">Androi博客阅读</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1046c3390>]"><a href="../tag/exmobi.html">Exmobi</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104954208>]"><a href="../tag/maven.html">Maven</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1044c3ac8>, <pelican.contents.Article object at 0x1044f24e0>, <pelican.contents.Article object at 0x104ba60b8>, <pelican.contents.Article object at 0x1051d3dd8>, <pelican.contents.Article object at 0x105257d30>, <pelican.contents.Article object at 0x1049a9630>, <pelican.contents.Article object at 0x104bafc50>, <pelican.contents.Article object at 0x1048bb710>, <pelican.contents.Article object at 0x10447f780>, <pelican.contents.Article object at 0x1046110b8>, <pelican.contents.Article object at 0x10460a940>, <pelican.contents.Article object at 0x10448f3c8>, <pelican.contents.Article object at 0x103c25a58>, <pelican.contents.Article object at 0x103c11860>]"><a href="../tag/androidxue-xi-bi-ji.html">Android学习笔记</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10513d828>, <pelican.contents.Article object at 0x104980f28>, <pelican.contents.Article object at 0x103c11668>, <pelican.contents.Article object at 0x10468fcc0>, <pelican.contents.Article object at 0x1044b1160>, <pelican.contents.Article object at 0x1048f9400>, <pelican.contents.Article object at 0x1049a0128>, <pelican.contents.Article object at 0x104ee37b8>, <pelican.contents.Article object at 0x104b9c128>, <pelican.contents.Article object at 0x1049cf9b0>, <pelican.contents.Article object at 0x104e320f0>, <pelican.contents.Article object at 0x1048b71d0>]"><a href="../tag/html.html">HTML</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1046ef588>]"><a href="../tag/functional-programming.html">Functional Programming</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1046edda0>, <pelican.contents.Article object at 0x104676240>]"><a href="../tag/pelican.html">Pelican</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1044fec88>, <pelican.contents.Article object at 0x104ba10b8>]"><a href="../tag/kotlin.html">Kotlin</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10464a5f8>, <pelican.contents.Article object at 0x10467de80>, <pelican.contents.Article object at 0x104658550>, <pelican.contents.Article object at 0x10465c940>, <pelican.contents.Article object at 0x1044dac88>, <pelican.contents.Article object at 0x10464fe48>, <pelican.contents.Article object at 0x104980550>, <pelican.contents.Article object at 0x1044f31d0>, <pelican.contents.Article object at 0x1049cabe0>, <pelican.contents.Article object at 0x10491d128>, <pelican.contents.Article object at 0x104b25438>, <pelican.contents.Article object at 0x1049c3d30>, <pelican.contents.Article object at 0x104960ba8>, <pelican.contents.Article object at 0x10482c5f8>, <pelican.contents.Article object at 0x104999358>, <pelican.contents.Article object at 0x10462f320>, <pelican.contents.Article object at 0x10482c320>, <pelican.contents.Article object at 0x1049a07b8>, <pelican.contents.Article object at 0x104804780>, <pelican.contents.Article object at 0x104801e10>, <pelican.contents.Article object at 0x104825b38>, <pelican.contents.Article object at 0x1046810f0>, <pelican.contents.Article object at 0x1046edcc0>, <pelican.contents.Article object at 0x104e38c88>]"><a href="../tag/web.html">Web</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104b2f860>]"><a href="../tag/jquery.html">jQuery</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104b9ca58>]"><a href="../tag/spring.html">Spring</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1049bfcc0>]"><a href="../tag/gradle.html">Gradle</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10464a5f8>, <pelican.contents.Article object at 0x10467de80>, <pelican.contents.Article object at 0x104658550>, <pelican.contents.Article object at 0x10465c940>, <pelican.contents.Article object at 0x1044dac88>, <pelican.contents.Article object at 0x10464fe48>]"><a href="../tag/angular.html">Angular</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104ba60b8>]"><a href="../tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10491d128>, <pelican.contents.Article object at 0x104b25438>, <pelican.contents.Article object at 0x1049c3d30>, <pelican.contents.Article object at 0x104960ba8>, <pelican.contents.Article object at 0x10482c5f8>, <pelican.contents.Article object at 0x104999358>, <pelican.contents.Article object at 0x10462f320>, <pelican.contents.Article object at 0x10482c320>, <pelican.contents.Article object at 0x1049a07b8>]"><a href="../tag/jsp.html">JSP</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10482c048>]"><a href="../tag/gulp.html">Gulp</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1044f31d0>, <pelican.contents.Article object at 0x1049cabe0>]"><a href="../tag/servlet.html">Servlet</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x103bd5dd8>]"><a href="../tag/android-studio.html">Android Studio</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1049824a8>, <pelican.contents.Article object at 0x1049822e8>]"><a href="../tag/yi-dong-kai-fa.html">移动开发</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104b9cc18>, <pelican.contents.Article object at 0x1048f47b8>, <pelican.contents.Article object at 0x1048e36d8>]"><a href="../tag/compass.html">compass</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104804780>, <pelican.contents.Article object at 0x104801e10>, <pelican.contents.Article object at 0x104825b38>, <pelican.contents.Article object at 0x1046810f0>, <pelican.contents.Article object at 0x1046edcc0>]"><a href="../tag/dotnet.html">DotNet</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10513d828>, <pelican.contents.Article object at 0x104980f28>, <pelican.contents.Article object at 0x103c11668>, <pelican.contents.Article object at 0x10468fcc0>, <pelican.contents.Article object at 0x1044b1160>, <pelican.contents.Article object at 0x1048f9400>, <pelican.contents.Article object at 0x1049a0128>, <pelican.contents.Article object at 0x104ee37b8>, <pelican.contents.Article object at 0x104b9c128>, <pelican.contents.Article object at 0x1049cf9b0>, <pelican.contents.Article object at 0x104e320f0>, <pelican.contents.Article object at 0x1051a3d68>]"><a href="../tag/less.html">LESS</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104b15f28>]"><a href="../tag/phonegap.html">PhoneGap</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1044fec88>, <pelican.contents.Article object at 0x104ba10b8>]"><a href="../tag/xue-xi-bi-ji.html">学习笔记</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1048b7cf8>]"><a href="../tag/flaskbi-ji.html">Flask笔记</a></li>
+</ul>
+
+</div> </div><!-- /.row -->
+
+<p class="paginator">
+    Page 1 / 2
+        <a href="../category/python2.html"><i class="icon-arrow-right"></i></a>
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
     
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
             </div>
-        </div>
+          </div>
+        </footer>
 
     </div>
 
-    <div class="row-fluid">
-        <div class="span12">
-            <header>
-            <h1 id="recent-posts">Recent Posts <a id="allposts" href="../archives.html">all posts</a></h1>
-            </header>
-            <ul class="list-all-articles">
-                <li>
-                <a href="../shi-yong-wfastcgizai-iisshang-bu-shu-python-flaskying-yong.html">使用wfastcgi在IIS上部署Python Flask应用  </a> 
-                <time pubdate="pubdate" datetime="2015-11-27T09:17:00">五 27 十一月 2015</time>
-                </li>
-            </ul>
-            <ul class="list-all-articles">
-                <li>
-                <a href="../pythonkuo-zhan-ku.html">Python扩展库  </a> 
-                <time pubdate="pubdate" datetime="2015-11-25T13:04:00">三 25 十一月 2015</time>
-                </li>
-            </ul>
-            <ul class="list-all-articles">
-                <li>
-                <a href="../pythondu-qu-wang-luo-tu-pian.html">Python读取网络图片  </a> 
-                <time pubdate="pubdate" datetime="2015-11-07T09:39:00">六 07 十一月 2015</time>
-                </li>
-            </ul>
-            <ul class="list-all-articles">
-                <li>
-                <a href="../windowsxia-shi-yong-apachemod_wsgibu-shu-django.html">Windows下使用Apache+mod_wsgi部署Django  </a> 
-                <time pubdate="pubdate" datetime="2015-06-16T10:22:00">二 16 六月 2015</time>
-                </li>
-            </ul>
-            <ul class="list-all-articles">
-                <li>
-                <a href="../flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html">Flask笔记－01 基本应用框架  </a> 
-                <time pubdate="pubdate" datetime="2014-10-18T23:11:00">六 18 十月 2014</time>
-                </li>
-            </ul>
-            <ul class="list-all-articles">
-                <li>
-                <a href="../django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html">Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移  </a> 
-                <time pubdate="pubdate" datetime="2014-09-26T18:55:00">五 26 九月 2014</time>
-                </li>
-            </ul>
-            <ul class="list-all-articles">
-                <li>
-                <a href="../django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html">Django REST Framework笔记-01 介绍与安装  </a> 
-                <time pubdate="pubdate" datetime="2014-09-08T22:15:00">一 08 九月 2014</time>
-                </li>
-            </ul>
-            <ul class="list-all-articles">
-                <li>
-                <a href="../shi-yong-pelicanda-jian-bo-ke.html">使用Pelican搭建博客  </a> 
-                <time pubdate="pubdate" datetime="2014-08-26T17:08:00">二 26 八月 2014</time>
-                </li>
-            </ul>
-            <ul class="list-all-articles">
-                <li>
-                <a href="../fan-yi-shi-yong-pythonde-mo-zhu-fang-fa-chuang-zao-geng-hao-de-zheng-ze-api.html">[翻译]使用Python的魔术方法创造更好的正则API  </a> 
-                <time pubdate="pubdate" datetime="2014-07-27T10:28:00">日 27 七月 2014</time>
-                </li>
-            </ul>
-            <ul class="list-all-articles">
-                <li>
-                <a href="../pythonli-bei-yi-wang-de-else.html">python里被遗忘的else  </a> 
-                <time pubdate="pubdate" datetime="2014-07-20T17:08:00">日 20 七月 2014</time>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-                </div>
-                <div class="span1"></div>
-            </div>
-        </div>
-    </div>
-<footer>
-<div id="footer">
-    <ul class="footer-content">
-        <li class="elegant-subtitle"><span class="site-name">liulixiang1988的博客</span> - 机器学习/Python/Android/Web</li>
-        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
-    </ul>
-</div>
-</footer>        <script src="http://code.jquery.com/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-        <script>
-            function validateForm(query)
-            {
-                return (query.length > 0);
-            }
-        </script>
-    </body>
+
+  <script src="../theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="../theme/js/libs/gumby.min.js"></script>
+  <script src="../theme/js/plugins.js"></script>
+</body>
 </html>

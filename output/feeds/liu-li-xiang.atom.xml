@@ -11122,9 +11122,9 @@ ViewModel不在数据库中存储，专门用于处理Form，类似Django中的F
 
 打开Models文件夹下的AccountViewModel，我们看到ViewModel定义与普通Model并没有明显区别，只是命名约定都是以"ViewModel"结尾。
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p _="{" _display_name="[Display(Name" _required_="[Required]
-" _用户名_='"用户名")]
-' get_="get;" public="public" set_="set;" string="string" username="UserName"&gt;public class LoginViewModel&lt;/p&gt;
+&lt;p _="
+" _display_name="[Display(Name" _required_="[Required]
+"&gt;public class LoginViewModel&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[Required]&lt;/span&gt;
 &lt;span class="k"&gt;[DataType(DataType.Password)]&lt;/span&gt;
 &lt;span class="k"&gt;[Display(Name = "密码")]&lt;/span&gt;
@@ -11889,8 +11889,8 @@ public ActionResult Contact(string message)
 @RenderSection("scripts", required: false)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;RenderBody()就是默认全部。RenderSection()在子模板中可以省略，但定义如下：&lt;/p&gt;
-&lt;p _="=" _wzxhzdk:17_="&amp;lt;script&amp;gt;" testing="testing" true_wzxhzdk:18_="true;&amp;lt;/script&amp;gt;
-" var="var"&gt;```@section scripts&lt;/p&gt;
+&lt;p _="
+" _wzxhzdk:17_="&amp;lt;script&amp;gt;" testing="testing" var="var"&gt;```@section scripts&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;##3. Html Helpers
 
 ###3.1 Html.ActionLink
