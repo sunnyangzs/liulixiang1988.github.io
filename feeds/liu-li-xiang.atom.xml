@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Liu Lixiang的博客</title><link href="http://liulixiang1988.github.io/" rel="alternate"></link><link href="http://liulixiang1988.github.io/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>http://liulixiang1988.github.io/</id><updated>2016-08-08T20:06:00+08:00</updated><entry><title>Netty笔记02-第一个Netty应用</title><link href="http://liulixiang1988.github.io/nettybi-ji-02-di-yi-ge-nettyying-yong.html" rel="alternate"></link><published>2016-08-08T20:06:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2016-08-08:nettybi-ji-02-di-yi-ge-nettyying-yong.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Liu Lixiang的博客</title><link href="/" rel="alternate"></link><link href="/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>/</id><updated>2016-08-08T20:06:00+08:00</updated><entry><title>Netty笔记02-第一个Netty应用</title><link href="/nettybi-ji-02-di-yi-ge-nettyying-yong.html" rel="alternate"></link><published>2016-08-08T20:06:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-08:nettybi-ji-02-di-yi-ge-nettyying-yong.html</id><summary type="html">
 &lt;p&gt;本章包含：
 - 设置开发环境
 - 一个Echo服务和客户端
@@ -230,7 +230,7 @@
 &lt;p&gt;打开两个窗口，分别切换到server和client对应的目录，然后运行:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mvn exec:java
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;源码：https://github.com/liulixiang1988/javademo/tree/master/netty/EchoNetty&lt;/p&gt;</summary><category term="Netty"></category></entry><entry><title>Netty笔记01-Netty简介</title><link href="http://liulixiang1988.github.io/nettybi-ji-01-nettyjian-jie.html" rel="alternate"></link><published>2016-08-05T14:04:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2016-08-05:nettybi-ji-01-nettyjian-jie.html</id><summary type="html">
+&lt;p&gt;源码：https://github.com/liulixiang1988/javademo/tree/master/netty/EchoNetty&lt;/p&gt;</summary><category term="Netty"></category></entry><entry><title>Netty笔记01-Netty简介</title><link href="/nettybi-ji-01-nettyjian-jie.html" rel="alternate"></link><published>2016-08-05T14:04:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-05:nettybi-ji-01-nettyjian-jie.html</id><summary type="html">
 &lt;p&gt;Netty(http://netty.io )是一个用来快速开发可维护高性能服务器和客户端应用的异步事件驱动网络应用框架。&lt;/p&gt;
 &lt;p&gt;高性能系统不仅需要我们有优秀的编码技巧，还需要对网络、多线程与并发有相关的经验。&lt;/p&gt;
 &lt;h2 id="11-java"&gt;1.1 Java网络&lt;/h2&gt;
@@ -313,7 +313,7 @@
 - 注册感兴趣的事件
 - 分发事件到&lt;code&gt;ChannelHandlers&lt;/code&gt;
 - 调度将来的动作&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;EventLoop&lt;/code&gt;自身是由单个线程来驱动的，并且在整个生命周期中都不会改变。&lt;/p&gt;</summary><category term="Netty"></category></entry><entry><title>Java8中的并行流</title><link href="http://liulixiang1988.github.io/java8zhong-de-bing-xing-liu.html" rel="alternate"></link><published>2016-06-22T20:00:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2016-06-22:java8zhong-de-bing-xing-liu.html</id><summary type="html">&lt;p&gt;&lt;em&gt;此笔记是我在阅读《Java8实战》中的一些记录。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;EventLoop&lt;/code&gt;自身是由单个线程来驱动的，并且在整个生命周期中都不会改变。&lt;/p&gt;</summary><category term="Netty"></category></entry><entry><title>Java8中的并行流</title><link href="/java8zhong-de-bing-xing-liu.html" rel="alternate"></link><published>2016-06-22T20:00:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-06-22:java8zhong-de-bing-xing-liu.html</id><summary type="html">&lt;p&gt;&lt;em&gt;此笔记是我在阅读《Java8实战》中的一些记录。&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Java8中增加了流(stream)的概念，为数据的处理带来了很大的方便。&lt;/p&gt;
 &lt;p&gt;并行流将数据分割成不同的块，并且用不同的线程处理不同的块。&lt;/p&gt;
 &lt;p&gt;现在要根据输入&lt;code&gt;n&lt;/code&gt;，求从1到n的和，这里我们不使用&lt;code&gt;n*(1+n)/2&lt;/code&gt;的方式，而是使用累加。我们分别写出迭代、顺序流、并行流的写法。&lt;/p&gt;
@@ -421,7 +421,7 @@
 - 计算流水线操作总成本，处理单个元素用时越多，并行就越划算；
 - 对于较小的数据量，用并行不一定是好事儿；
 - 数据结果是否易于分解，比如&lt;code&gt;ArrayList&lt;/code&gt;比&lt;code&gt;LinkedList&lt;/code&gt;易于分解，&lt;code&gt;range&lt;/code&gt;创建的原始流也易于分解；
-- 终端操作中的合并大家是否很大，大了也不划算。&lt;/p&gt;</summary><category term="Java"></category></entry><entry><title>Maven项目管理</title><link href="http://liulixiang1988.github.io/mavenxiang-mu-guan-li.html" rel="alternate"></link><published>2016-06-21T20:00:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2016-06-21:mavenxiang-mu-guan-li.html</id><summary type="html">
+- 终端操作中的合并大家是否很大，大了也不划算。&lt;/p&gt;</summary><category term="Java"></category></entry><entry><title>Maven项目管理</title><link href="/mavenxiang-mu-guan-li.html" rel="alternate"></link><published>2016-06-21T20:00:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-06-21:mavenxiang-mu-guan-li.html</id><summary type="html">
 &lt;h2 id="maven"&gt;maven快速入门&lt;/h2&gt;
 &lt;p&gt;Maven是基于项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建、报告和文档的软件项目管理工具。&lt;/p&gt;
 &lt;h3 id="maven_1"&gt;maven安装配置&lt;/h3&gt;
@@ -870,7 +870,7 @@ compile test package install都属于default阶段&lt;/p&gt;
   &lt;span class="nt"&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;然后运行&lt;code&gt;mvn clean package&lt;/code&gt;即可。&lt;/p&gt;</summary><category term="Maven"></category></entry><entry><title>Pelican使用多说评论框</title><link href="http://liulixiang1988.github.io/pelicanshi-yong-duo-shuo-ping-lun-kuang.html" rel="alternate"></link><published>2016-06-21T20:00:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2016-06-21:pelicanshi-yong-duo-shuo-ping-lun-kuang.html</id><summary type="html">
+&lt;p&gt;然后运行&lt;code&gt;mvn clean package&lt;/code&gt;即可。&lt;/p&gt;</summary><category term="Maven"></category></entry><entry><title>Pelican使用多说评论框</title><link href="/pelicanshi-yong-duo-shuo-ping-lun-kuang.html" rel="alternate"></link><published>2016-06-21T20:00:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-06-21:pelicanshi-yong-duo-shuo-ping-lun-kuang.html</id><summary type="html">
 &lt;p&gt;使用之前已经讲过，现在我们要使用多说评论框。首先找到模板目录下&lt;code&gt;comments.html&lt;/code&gt;，添加：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;DUOSHUO_SITENAME&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="nv"&gt;SITEURL&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="nv"&gt;article.status&lt;/span&gt; &lt;span class="p"&gt;!&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"draft"&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt; 
 &lt;span class="nt"&gt;&amp;lt;section&amp;gt;&lt;/span&gt; 
@@ -900,7 +900,7 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
     &lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
 &lt;span class="c"&gt;&amp;lt;!-- 多说公共JS代码 end --&amp;gt;&lt;/span&gt;
 &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endif&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>使用Spark进行Java Web开发</title><link href="http://liulixiang1988.github.io/shi-yong-sparkjin-xing-java-webkai-fa.html" rel="alternate"></link><published>2016-05-17T21:16:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2016-05-17:shi-yong-sparkjin-xing-java-webkai-fa.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>使用Spark进行Java Web开发</title><link href="/shi-yong-sparkjin-xing-java-webkai-fa.html" rel="alternate"></link><published>2016-05-17T21:16:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-05-17:shi-yong-sparkjin-xing-java-webkai-fa.html</id><summary type="html">
 &lt;h2 id="1spark"&gt;1.搭建Spark项目&lt;/h2&gt;
 &lt;p&gt;使用Idea创建Gradle项目，包名是：&lt;code&gt;io.github.liulixiang.course&lt;/code&gt;,Artifactid是&lt;code&gt;course-ideas&lt;/code&gt;。
 在builder.gradle里添加spark依赖。&lt;/p&gt;
@@ -981,7 +981,7 @@ cookie使用res设置：&lt;/p&gt;
 &lt;h2 id="12"&gt;12. 细节&lt;/h2&gt;
 &lt;h2 id="13"&gt;13. 消息&lt;/h2&gt;
 &lt;h2 id="14-flash-message"&gt;14. 创建flash message&lt;/h2&gt;
-&lt;h2 id="15"&gt;15. 请求处理&lt;/h2&gt;</summary><category term="Java"></category></entry><entry><title>Gradle依赖管理</title><link href="http://liulixiang1988.github.io/gradleyi-lai-guan-li.html" rel="alternate"></link><published>2016-05-10T22:40:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2016-05-10:gradleyi-lai-guan-li.html</id><summary type="html">
+&lt;h2 id="15"&gt;15. 请求处理&lt;/h2&gt;</summary><category term="Java"></category></entry><entry><title>Gradle依赖管理</title><link href="/gradleyi-lai-guan-li.html" rel="alternate"></link><published>2016-05-10T22:40:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-05-10:gradleyi-lai-guan-li.html</id><summary type="html">
 &lt;h2 id="1"&gt;1. 添加依赖&lt;/h2&gt;
 &lt;p&gt;指定仓库是maven central&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;repositories {
@@ -1027,7 +1027,7 @@ cookie使用res设置：&lt;/p&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;对于不知道具体名字的包，比如HTML解析包，我们可以到http://search.maven.org/ 去搜索&lt;code&gt;html parser&lt;/code&gt;，但有时候搜索的结果不尽人意，此时我们可以使用google搜索&lt;code&gt;maven html parser&lt;/code&gt;，会返回http://mvnrepository.com/ 网站对&lt;code&gt;maven&lt;/code&gt;的搜索。&lt;/p&gt;
-&lt;p&gt;我们也可以使用github搜索，条件是&lt;code&gt;language:java&lt;/code&gt;，然后按星排名。&lt;/p&gt;</summary><category term="Java"></category><category term="Gradle"></category></entry><entry><title>Java lambda简介</title><link href="http://liulixiang1988.github.io/java-lambdajian-jie.html" rel="alternate"></link><published>2016-05-10T13:01:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2016-05-10:java-lambdajian-jie.html</id><summary type="html">
+&lt;p&gt;我们也可以使用github搜索，条件是&lt;code&gt;language:java&lt;/code&gt;，然后按星排名。&lt;/p&gt;</summary><category term="Java"></category><category term="Gradle"></category></entry><entry><title>Java lambda简介</title><link href="/java-lambdajian-jie.html" rel="alternate"></link><published>2016-05-10T13:01:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-05-10:java-lambdajian-jie.html</id><summary type="html">
 &lt;h2 id="1"&gt;1. 老的方法&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//Book.java
 public class Book {
@@ -1127,7 +1127,7 @@ public static void usingLambdaInShortForm(){
     &lt;span class="n"&gt;Collections&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;books&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Comparator&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;comparing&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;getTitle&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
     &lt;span class="n"&gt;books&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;forEach&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;System&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Functional Programming"></category></entry><entry><title>Hibernate学习笔记</title><link href="http://liulixiang1988.github.io/hibernatexue-xi-bi-ji.html" rel="alternate"></link><published>2016-05-09T13:52:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2016-05-09:hibernatexue-xi-bi-ji.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Functional Programming"></category></entry><entry><title>Hibernate学习笔记</title><link href="/hibernatexue-xi-bi-ji.html" rel="alternate"></link><published>2016-05-09T13:52:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-05-09:hibernatexue-xi-bi-ji.html</id><summary type="html">
 &lt;h2 id="1-java"&gt;1. Java链接数据库&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;java.sql.Connection&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;java.sql.DriverManager&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
@@ -1446,7 +1446,7 @@ private static void delete(Contact contact) {
     session.getTransaction().commit();
     session.close();
 }
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Hibernate"></category></entry><entry><title>Spring学习笔记</title><link href="http://liulixiang1988.github.io/springxue-xi-bi-ji.html" rel="alternate"></link><published>2016-04-30T15:43:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2016-04-30:springxue-xi-bi-ji.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Hibernate"></category></entry><entry><title>Spring学习笔记</title><link href="/springxue-xi-bi-ji.html" rel="alternate"></link><published>2016-04-30T15:43:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-04-30:springxue-xi-bi-ji.html</id><summary type="html">
 &lt;h2 id="1"&gt;1. 环境配置&lt;/h2&gt;
 &lt;h3 id="11"&gt;1.1 创建应用&lt;/h3&gt;
 &lt;p&gt;打开idea,新建应用：&lt;/p&gt;
@@ -1924,7 +1924,7 @@ dependencies {
         &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Spring"></category></entry><entry><title>使用React Native创建一个天气应用</title><link href="http://liulixiang1988.github.io/shi-yong-react-nativechuang-jian-yi-ge-tian-qi-ying-yong.html" rel="alternate"></link><published>2016-03-04T14:40:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2016-03-04:shi-yong-react-nativechuang-jian-yi-ge-tian-qi-ying-yong.html</id><summary type="html">&lt;h1 id="react-native"&gt;使用React Native创建一个天气应用&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Spring"></category></entry><entry><title>使用React Native创建一个天气应用</title><link href="/shi-yong-react-nativechuang-jian-yi-ge-tian-qi-ying-yong.html" rel="alternate"></link><published>2016-03-04T14:40:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-03-04:shi-yong-react-nativechuang-jian-yi-ge-tian-qi-ying-yong.html</id><summary type="html">&lt;h1 id="react-native"&gt;使用React Native创建一个天气应用&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;来自Learning React Native&lt;/li&gt;
 &lt;li&gt;代码地址：https://github.com/liulixiang1988/react-apps/tree/master/book_demos/WeatherProject&lt;/li&gt;
@@ -2322,7 +2322,7 @@ dependencies {
     &lt;span class="p"&gt;);&lt;/span&gt;
   &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Kotlin"></category><category term="学习笔记"></category></entry><entry><title>Kotlin学习笔记</title><link href="http://liulixiang1988.github.io/kotlinxue-xi-bi-ji.html" rel="alternate"></link><published>2016-03-01T22:30:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2016-03-01:kotlinxue-xi-bi-ji.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Kotlin"></category><category term="学习笔记"></category></entry><entry><title>Kotlin学习笔记</title><link href="/kotlinxue-xi-bi-ji.html" rel="alternate"></link><published>2016-03-01T22:30:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-03-01:kotlinxue-xi-bi-ji.html</id><summary type="html">
 &lt;h2 id="0-kotlin"&gt;0. Kotlin简介&lt;/h2&gt;
 &lt;h3 id="01"&gt;0.1 简介&lt;/h3&gt;
 &lt;h3 id="02-kotlin"&gt;0.2 Kotlin安装&lt;/h3&gt;
@@ -2965,7 +2965,7 @@ if语句直接返回值。&lt;/p&gt;
 &lt;h3 id="61-enumerations"&gt;6.1 枚举(Enumerations)&lt;/h3&gt;
 &lt;h3 id="62-exceptions"&gt;6.2 异常(Exceptions)&lt;/h3&gt;
 &lt;h3 id="63-operator-overloads"&gt;6.3 操作符重载(Operator Overloads)&lt;/h3&gt;
-&lt;h3 id="64-type-safe-builders"&gt;6.4 Type-Safe Builders&lt;/h3&gt;</summary><category term="Kotlin"></category><category term="学习笔记"></category></entry><entry><title>MySQL常用</title><link href="http://liulixiang1988.github.io/mysqlchang-yong.html" rel="alternate"></link><published>2016-01-01T13:15:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2016-01-01:mysqlchang-yong.html</id><summary type="html">
+&lt;h3 id="64-type-safe-builders"&gt;6.4 Type-Safe Builders&lt;/h3&gt;</summary><category term="Kotlin"></category><category term="学习笔记"></category></entry><entry><title>MySQL常用</title><link href="/mysqlchang-yong.html" rel="alternate"></link><published>2016-01-01T13:15:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-01-01:mysqlchang-yong.html</id><summary type="html">
 &lt;p&gt;本文将持续更新。&lt;/p&gt;
 &lt;h2 id="1-macpath"&gt;1. Mac上安装后需要配置的PATH&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;export PATH=&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="x"&gt;:/usr/local/mysql/bin&lt;/span&gt;
@@ -3006,7 +3006,7 @@ flush privileges;
 &lt;p&gt;参考：https://dev.mysql.com/doc/refman/5.6/en/alter-user.html&lt;/p&gt;
 &lt;h3 id="32"&gt;3.2 退出&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;exit;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="MySQL"></category></entry><entry><title>React使用笔记(4)-React状态和属性详解</title><link href="http://liulixiang1988.github.io/reactshi-yong-bi-ji-4-reactzhuang-tai-he-shu-xing-xiang-jie.html" rel="alternate"></link><published>2015-12-03T20:58:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-12-03:reactshi-yong-bi-ji-4-reactzhuang-tai-he-shu-xing-xiang-jie.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="MySQL"></category></entry><entry><title>React使用笔记(4)-React状态和属性详解</title><link href="/reactshi-yong-bi-ji-4-reactzhuang-tai-he-shu-xing-xiang-jie.html" rel="alternate"></link><published>2015-12-03T20:58:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-12-03:reactshi-yong-bi-ji-4-reactzhuang-tai-he-shu-xing-xiang-jie.html</id><summary type="html">
 &lt;h2 id="1"&gt;1. 属性的含义和用法&lt;/h2&gt;
 &lt;h3 id="11"&gt;1.1 属性赋值&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;&amp;lt;HelloWorld name="?"&amp;gt;&amp;lt;HelloWorld&amp;gt;&lt;/code&gt;中属性的值可以有以下几种形式：&lt;/p&gt;
@@ -3191,7 +3191,7 @@ var Comment = React.createClass({
     &lt;span class="n"&gt;console&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;log&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"reply to: "&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;props&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;selectName&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;"\n"&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;state&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;inputText&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;  
 &lt;span class="o"&gt;},&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;我们再说一遍，把真正需要计算的值放在需要用到的地方。&lt;/p&gt;</summary><category term="JavaScript"></category><category term="React"></category></entry><entry><title>Python数据分析(3)-DataFrame</title><link href="http://liulixiang1988.github.io/pythonshu-ju-fen-xi-3-dataframe.html" rel="alternate"></link><published>2015-11-29T15:54:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-11-29:pythonshu-ju-fen-xi-3-dataframe.html</id><summary type="html">
+&lt;p&gt;我们再说一遍，把真正需要计算的值放在需要用到的地方。&lt;/p&gt;</summary><category term="JavaScript"></category><category term="React"></category></entry><entry><title>Python数据分析(3)-DataFrame</title><link href="/pythonshu-ju-fen-xi-3-dataframe.html" rel="alternate"></link><published>2015-11-29T15:54:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-11-29:pythonshu-ju-fen-xi-3-dataframe.html</id><summary type="html">
 &lt;h2 id="1-dataframe"&gt;1. &lt;code&gt;DataFrame&lt;/code&gt;简介&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;Series&lt;/code&gt;是一维序列，而&lt;code&gt;DataFrame&lt;/code&gt;是一种二维表结构，它包含一组类似于&lt;code&gt;index&lt;/code&gt;的有序列，每列可以是不同的值。因此可以把&lt;code&gt;DataFrame&lt;/code&gt;看作是共享同一个&lt;code&gt;index&lt;/code&gt;的&lt;code&gt;Series&lt;/code&gt;集合。&lt;/p&gt;
 &lt;h2 id="2-dataframe"&gt;2. &lt;code&gt;DataFrame&lt;/code&gt;的创建&lt;/h2&gt;
@@ -3265,7 +3265,7 @@ var Comment = React.createClass({
 &lt;span class="mi"&gt;2&lt;/span&gt;       &lt;span class="n"&gt;Niuyun&lt;/span&gt;  &lt;span class="mi"&gt;6000&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;作者：liulixiang1988#gmail.com (#换成@)
-参考链接：https://www.coursera.org/learn/hipython/home/welcome&lt;/p&gt;</summary><category term="数据分析"></category></entry><entry><title>Python数据分析(2)-变长字典Series</title><link href="http://liulixiang1988.github.io/pythonshu-ju-fen-xi-2-bian-chang-zi-dian-series.html" rel="alternate"></link><published>2015-11-29T15:11:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-11-29:pythonshu-ju-fen-xi-2-bian-chang-zi-dian-series.html</id><summary type="html">
+参考链接：https://www.coursera.org/learn/hipython/home/welcome&lt;/p&gt;</summary><category term="数据分析"></category></entry><entry><title>Python数据分析(2)-变长字典Series</title><link href="/pythonshu-ju-fen-xi-2-bian-chang-zi-dian-series.html" rel="alternate"></link><published>2015-11-29T15:11:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-11-29:pythonshu-ju-fen-xi-2-bian-chang-zi-dian-series.html</id><summary type="html">
 &lt;p&gt;我们知道字典是一种无序的数据结构，而pandas中的&lt;code&gt;Series&lt;/code&gt;的数据结构不一样，它相当于定长有序的字典，并且它的index和value之间是独立的。&lt;/p&gt;
 &lt;h2 id="1-series"&gt;1. &lt;code&gt;Series&lt;/code&gt;的创建&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;Series&lt;/code&gt;的基本特征&lt;/p&gt;
@@ -3377,7 +3377,7 @@ var Comment = React.createClass({
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;name&lt;/code&gt;属性有些像Excel中的字段名称有些像，在后期有很重要的作用。&lt;/p&gt;
 &lt;p&gt;作者：liulixiang1988#gmail.com (#换成@)
-参考链接：https://www.coursera.org/learn/hipython/home/welcome&lt;/p&gt;</summary><category term="数据分析"></category></entry><entry><title>Python数据分析(1)-NumPy中的ndarray</title><link href="http://liulixiang1988.github.io/pythonshu-ju-fen-xi-1-numpyzhong-de-ndarray.html" rel="alternate"></link><published>2015-11-29T14:42:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-11-29:pythonshu-ju-fen-xi-1-numpyzhong-de-ndarray.html</id><summary type="html">
+参考链接：https://www.coursera.org/learn/hipython/home/welcome&lt;/p&gt;</summary><category term="数据分析"></category></entry><entry><title>Python数据分析(1)-NumPy中的ndarray</title><link href="/pythonshu-ju-fen-xi-1-numpyzhong-de-ndarray.html" rel="alternate"></link><published>2015-11-29T14:42:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-11-29:pythonshu-ju-fen-xi-1-numpyzhong-de-ndarray.html</id><summary type="html">
 &lt;p&gt;&lt;code&gt;ndarray&lt;/code&gt;是NumPy中的基本数据机构，别名&lt;code&gt;array&lt;/code&gt;，利于节省内存和提高CPU计算时间，提供了丰富的函数。&lt;/p&gt;
 &lt;h2 id="1-ndarray"&gt;1. &lt;code&gt;ndarray&lt;/code&gt;创建函数&lt;/h2&gt;
 &lt;table&gt;
@@ -3527,7 +3527,7 @@ In [21]: np.multiply.accumulate([2, 3, 8])
 Out[21]: array([ 2,  6, 48])
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;作者：liulixiang1988#gmail.com (#换成@)
-参考链接：https://www.coursera.org/learn/hipython/home/welcome&lt;/p&gt;</summary><category term="数据分析"></category></entry><entry><title>React使用笔记(3)-React Event Listener</title><link href="http://liulixiang1988.github.io/reactshi-yong-bi-ji-3-react-event-listener.html" rel="alternate"></link><published>2015-11-28T12:18:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-11-28:reactshi-yong-bi-ji-3-react-event-listener.html</id><summary type="html">
+参考链接：https://www.coursera.org/learn/hipython/home/welcome&lt;/p&gt;</summary><category term="数据分析"></category></entry><entry><title>React使用笔记(3)-React Event Listener</title><link href="/reactshi-yong-bi-ji-3-react-event-listener.html" rel="alternate"></link><published>2015-11-28T12:18:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-11-28:reactshi-yong-bi-ji-3-react-event-listener.html</id><summary type="html">
 &lt;h2 id="1"&gt;1. 构造基本结构&lt;/h2&gt;
 &lt;p&gt;首先，我们先创建一个按钮，一个输入框。我们准备点击按钮时，后面有一个&lt;code&gt;&amp;lt;span&amp;gt;&lt;/code&gt;显示和隐藏。代码如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"container"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
@@ -3831,7 +3831,7 @@ React.render(&lt;span class="nt"&gt;&amp;lt;Hello/&amp;gt;&lt;/span&gt;,
 &lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;作者：liulixiang1988#gmail.com (#换成@)
-参考链接：http://www.imooc.com/learn/504&lt;/p&gt;</summary><category term="JavaScript"></category><category term="React"></category></entry><entry><title>React使用笔记(2)-React Components的生命周期</title><link href="http://liulixiang1988.github.io/reactshi-yong-bi-ji-2-react-componentsde-sheng-ming-zhou-qi.html" rel="alternate"></link><published>2015-11-27T21:23:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-11-27:reactshi-yong-bi-ji-2-react-componentsde-sheng-ming-zhou-qi.html</id><summary type="html">
+参考链接：http://www.imooc.com/learn/504&lt;/p&gt;</summary><category term="JavaScript"></category><category term="React"></category></entry><entry><title>React使用笔记(2)-React Components的生命周期</title><link href="/reactshi-yong-bi-ji-2-react-componentsde-sheng-ming-zhou-qi.html" rel="alternate"></link><published>2015-11-27T21:23:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-11-27:reactshi-yong-bi-ji-2-react-componentsde-sheng-ming-zhou-qi.html</id><summary type="html">
 &lt;h2 id="1-react-components"&gt;1. React Components的生命周期&lt;/h2&gt;
 &lt;p&gt;React Components的3种状态：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="" src="images/QQ20151127-0.png"/&gt;&lt;/p&gt;
@@ -4046,7 +4046,7 @@ var HelloUniverse = React.createClass({
 React.render(&lt;span class="nt"&gt;&amp;lt;HelloUniverse&lt;/span&gt; &lt;span class="nt"&gt;&amp;gt;&amp;lt;/HelloUniverse&amp;gt;&lt;/span&gt;, 
     document.getElementById('container'));
 &lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="JavaScript"></category><category term="React"></category></entry><entry><title>React使用笔记-React的JSX和Style</title><link href="http://liulixiang1988.github.io/reactshi-yong-bi-ji-reactde-jsxhe-style.html" rel="alternate"></link><published>2015-11-27T20:56:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-11-27:reactshi-yong-bi-ji-reactde-jsxhe-style.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="JavaScript"></category><category term="React"></category></entry><entry><title>React使用笔记-React的JSX和Style</title><link href="/reactshi-yong-bi-ji-reactde-jsxhe-style.html" rel="alternate"></link><published>2015-11-27T20:56:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-11-27:reactshi-yong-bi-ji-reactde-jsxhe-style.html</id><summary type="html">
 &lt;h2 id="1"&gt;1. 文件基本结构&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -4188,7 +4188,7 @@ var Hello = React.createClass({
 React.render(&lt;span class="nt"&gt;&amp;lt;Hello&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;"liulx"&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;, 
     document.getElementById('container'));
 &lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="JavaScript"></category><category term="React"></category></entry><entry><title>使用wfastcgi在IIS上部署Python Flask应用</title><link href="http://liulixiang1988.github.io/shi-yong-wfastcgizai-iisshang-bu-shu-python-flaskying-yong.html" rel="alternate"></link><published>2015-11-27T09:17:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-11-27:shi-yong-wfastcgizai-iisshang-bu-shu-python-flaskying-yong.html</id><summary type="html">&lt;p&gt;本文介绍了如何在Windows上部署Python Flask应用，相关环境如下：
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="JavaScript"></category><category term="React"></category></entry><entry><title>使用wfastcgi在IIS上部署Python Flask应用</title><link href="/shi-yong-wfastcgizai-iisshang-bu-shu-python-flaskying-yong.html" rel="alternate"></link><published>2015-11-27T09:17:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-11-27:shi-yong-wfastcgizai-iisshang-bu-shu-python-flaskying-yong.html</id><summary type="html">&lt;p&gt;本文介绍了如何在Windows上部署Python Flask应用，相关环境如下：
 - 操作系统：windows 7
 - Python：3.4
 - WFastCGI: 2.2
@@ -4296,7 +4296,7 @@ pip uninstall wfastcgi
 &lt;p&gt;app setting被转换为环境变量，并且能够在Python应用中通过&lt;code&gt;os.getenv&lt;/code&gt;来获取。下面这些变量由&lt;code&gt;wfastcgi&lt;/code&gt;使用。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：部署时需要将&lt;code&gt;%ROOTDIR%&lt;/code&gt;全部替换为项目根目录，&lt;code&gt;%INTERPRETERPATH%|%WFASTCGIPATH%&lt;/code&gt;替换为&lt;code&gt;wfastcgi-enable&lt;/code&gt;命令执行时输出，我的是&lt;code&gt;C:\Python34\python.exe|C:\Python34\lib\site-packages\wfastcgi.py&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;此时，将项目部署到IIS上就可以了，创建方法同普通的ASP.NET网站创建方法相同。&lt;/p&gt;
-&lt;p&gt;作者：liulixiang1988#gmail.com (#换成@)&lt;/p&gt;</summary><category term="Flask"></category></entry><entry><title>Python扩展库</title><link href="http://liulixiang1988.github.io/pythonkuo-zhan-ku.html" rel="alternate"></link><published>2015-11-25T13:04:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-11-25:pythonkuo-zhan-ku.html</id><summary type="html">&lt;p&gt;Anaconda和Python(x,y)都自带了下面的这些库。&lt;/p&gt;
+&lt;p&gt;作者：liulixiang1988#gmail.com (#换成@)&lt;/p&gt;</summary><category term="Flask"></category></entry><entry><title>Python扩展库</title><link href="/pythonkuo-zhan-ku.html" rel="alternate"></link><published>2015-11-25T13:04:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-11-25:pythonkuo-zhan-ku.html</id><summary type="html">&lt;p&gt;Anaconda和Python(x,y)都自带了下面的这些库。&lt;/p&gt;
 &lt;h2 id="1-numpy"&gt;1. NumPy&lt;/h2&gt;
 &lt;p&gt;强大的ndarray和ufunc函数。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
@@ -4330,7 +4330,7 @@ df.sort(columns=&amp;#39;score&amp;#39;) #按照score列排序
 
 
 &lt;p&gt;作者：liulixiang1988#gmail.com (#换成@)
-参考链接：https://www.coursera.org/learn/hipython/home/welcome&lt;/p&gt;</summary><category term="数据分析"></category></entry><entry><title>Python读取网络图片</title><link href="http://liulixiang1988.github.io/pythondu-qu-wang-luo-tu-pian.html" rel="alternate"></link><published>2015-11-07T09:39:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-11-07:pythondu-qu-wang-luo-tu-pian.html</id><summary type="html">&lt;h2 id="1-urllib"&gt;1. 使用urllib读取&lt;/h2&gt;
+参考链接：https://www.coursera.org/learn/hipython/home/welcome&lt;/p&gt;</summary><category term="数据分析"></category></entry><entry><title>Python读取网络图片</title><link href="/pythondu-qu-wang-luo-tu-pian.html" rel="alternate"></link><published>2015-11-07T09:39:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-11-07:pythondu-qu-wang-luo-tu-pian.html</id><summary type="html">&lt;h2 id="1-urllib"&gt;1. 使用urllib读取&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;cStringIO&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;StringIO&lt;/span&gt; &lt;span class="c1"&gt;#python 2&lt;/span&gt;
 &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;ImportError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -4354,7 +4354,7 @@ df.sort(columns=&amp;#39;score&amp;#39;) #按照score列排序
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;关于&lt;code&gt;StringIO&lt;/code&gt;和&lt;code&gt;cStringIO&lt;/code&gt;，这些只是在python2中存在，在python3中导入&lt;code&gt;io&lt;/code&gt;，使用&lt;code&gt;io.StringIO&lt;/code&gt;或者&lt;code&gt;io.BytesIO&lt;/code&gt;来使用文本或者数据&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>JavaScript模块化</title><link href="http://liulixiang1988.github.io/javascriptmo-kuai-hua.html" rel="alternate"></link><published>2015-11-04T13:10:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-11-04:javascriptmo-kuai-hua.html</id><summary type="html">
+&lt;p&gt;关于&lt;code&gt;StringIO&lt;/code&gt;和&lt;code&gt;cStringIO&lt;/code&gt;，这些只是在python2中存在，在python3中导入&lt;code&gt;io&lt;/code&gt;，使用&lt;code&gt;io.StringIO&lt;/code&gt;或者&lt;code&gt;io.BytesIO&lt;/code&gt;来使用文本或者数据&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>JavaScript模块化</title><link href="/javascriptmo-kuai-hua.html" rel="alternate"></link><published>2015-11-04T13:10:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-11-04:javascriptmo-kuai-hua.html</id><summary type="html">
 &lt;h2 id="1"&gt;1. 模块化解读&lt;/h2&gt;
 &lt;p&gt;AMD是RequireJS在推广过程中对模块定义的规范化产出。&lt;/p&gt;
 &lt;ul&gt;
@@ -4414,7 +4414,7 @@ define(function(require, exports, module) {
 
 });
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;上面就是 &lt;code&gt;Sea.js&lt;/code&gt; 推荐的 CMD 模块书写格式。如果你有使用过 Node.js，一切都很自然。&lt;/p&gt;</summary><category term="JavaScript"></category></entry><entry><title>React使用笔记(7)-React调优</title><link href="http://liulixiang1988.github.io/reactshi-yong-bi-ji-7-reactdiao-you.html" rel="alternate"></link><published>2015-11-04T11:25:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-11-04:reactshi-yong-bi-ji-7-reactdiao-you.html</id><summary type="html">
+&lt;p&gt;上面就是 &lt;code&gt;Sea.js&lt;/code&gt; 推荐的 CMD 模块书写格式。如果你有使用过 Node.js，一切都很自然。&lt;/p&gt;</summary><category term="JavaScript"></category></entry><entry><title>React使用笔记(7)-React调优</title><link href="/reactshi-yong-bi-ji-7-reactdiao-you.html" rel="alternate"></link><published>2015-11-04T11:25:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-11-04:reactshi-yong-bi-ji-7-reactdiao-you.html</id><summary type="html">
 &lt;p&gt;首先使用&lt;code&gt;react-with-addons.js&lt;/code&gt;代替&lt;code&gt;react.js&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;在浏览器控制台使用&lt;code&gt;React.addons.Perf.start()&lt;/code&gt;来记录操作用时，然后用&lt;code&gt;React.addons.Perf.stop()&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;查看结果：&lt;code&gt;React.addons.Perf.printInclusive()&lt;/code&gt;.&lt;/p&gt;
@@ -4482,7 +4482,7 @@ define(function(require, exports, module) {
     });
     React.render(&lt;span class="nt"&gt;&amp;lt;ChooseNumber&amp;gt;&amp;lt;/ChooseNumber&amp;gt;&lt;/span&gt;, document.body);
 &lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="JavaScript"></category><category term="React"></category></entry><entry><title>React使用笔记(6)-React动画</title><link href="http://liulixiang1988.github.io/reactshi-yong-bi-ji-6-reactdong-hua.html" rel="alternate"></link><published>2015-11-04T10:09:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-11-04:reactshi-yong-bi-ji-6-reactdong-hua.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="JavaScript"></category><category term="React"></category></entry><entry><title>React使用笔记(6)-React动画</title><link href="/reactshi-yong-bi-ji-6-reactdong-hua.html" rel="alternate"></link><published>2015-11-04T10:09:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-11-04:reactshi-yong-bi-ji-6-reactdong-hua.html</id><summary type="html">
 &lt;h2 id="1-css3"&gt;1. CSS3动画&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;charset=&lt;/span&gt;&lt;span class="s"&gt;"UTF-8"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -4614,7 +4614,7 @@ define(function(require, exports, module) {
     React.render(&lt;span class="nt"&gt;&amp;lt;Positioner&amp;gt;&amp;lt;/Positioner&amp;gt;&lt;/span&gt;, document.body);
     React.render(&lt;span class="nt"&gt;&amp;lt;Positioner&lt;/span&gt; &lt;span class="na"&gt;position=&lt;/span&gt;&lt;span class="s"&gt;{100}&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/Positioner&amp;gt;&lt;/span&gt;, document.body);
 &lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="JavaScript"></category><category term="React"></category></entry><entry><title>React使用笔记(5)-React组件的协同使用</title><link href="http://liulixiang1988.github.io/reactshi-yong-bi-ji-5-reactzu-jian-de-xie-tong-shi-yong.html" rel="alternate"></link><published>2015-11-03T23:53:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-11-03:reactshi-yong-bi-ji-5-reactzu-jian-de-xie-tong-shi-yong.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="JavaScript"></category><category term="React"></category></entry><entry><title>React使用笔记(5)-React组件的协同使用</title><link href="/reactshi-yong-bi-ji-5-reactzu-jian-de-xie-tong-shi-yong.html" rel="alternate"></link><published>2015-11-03T23:53:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-11-03:reactshi-yong-bi-ji-5-reactzu-jian-de-xie-tong-shi-yong.html</id><summary type="html">
 &lt;h2 id="1"&gt;1. 组件协同使用介绍&lt;/h2&gt;
 &lt;p&gt;组件的协同就是对组件的一种&lt;strong&gt;组件、管理的方式&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;目的：&lt;/p&gt;
@@ -4688,11 +4688,11 @@ define(function(require, exports, module) {
     });
     React.render(&lt;span class="nt"&gt;&amp;lt;MyForm&amp;gt;&amp;lt;/MyForm&amp;gt;&lt;/span&gt;, document.body);
 &lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="JavaScript"></category><category term="React"></category></entry><entry><title>侧边栏工具条开发</title><link href="http://liulixiang1988.github.io/ce-bian-lan-gong-ju-tiao-kai-fa.html" rel="alternate"></link><published>2015-07-22T16:04:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-07-22:ce-bian-lan-gong-ju-tiao-kai-fa.html</id><summary type="html">&lt;h2 id="1"&gt;1. 案例实现方式&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="JavaScript"></category><category term="React"></category></entry><entry><title>侧边栏工具条开发</title><link href="/ce-bian-lan-gong-ju-tiao-kai-fa.html" rel="alternate"></link><published>2015-07-22T16:04:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-07-22:ce-bian-lan-gong-ju-tiao-kai-fa.html</id><summary type="html">&lt;h2 id="1"&gt;1. 案例实现方式&lt;/h2&gt;
 &lt;p&gt;主要有以下几种方式：
 1. 使用背景图片的方式
 2. 使用图标字体的方式
-3. 利用before和after伪类的方式&lt;/p&gt;</summary><category term="JavaScript"></category><category term="CSS3"></category></entry><entry><title>RequireJS使用笔记</title><link href="http://liulixiang1988.github.io/requirejsshi-yong-bi-ji.html" rel="alternate"></link><published>2015-07-22T15:30:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-07-22:requirejsshi-yong-bi-ji.html</id><summary type="html">&lt;p&gt;RequireJS的项目地址在：http://requirejs.org/&lt;/p&gt;
+3. 利用before和after伪类的方式&lt;/p&gt;</summary><category term="JavaScript"></category><category term="CSS3"></category></entry><entry><title>RequireJS使用笔记</title><link href="/requirejsshi-yong-bi-ji.html" rel="alternate"></link><published>2015-07-22T15:30:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-07-22:requirejsshi-yong-bi-ji.html</id><summary type="html">&lt;p&gt;RequireJS的项目地址在：http://requirejs.org/&lt;/p&gt;
 &lt;p&gt;RequireJS常用的方法：
 1. requirejs.config 给模块指定别名
 2. requirejs 引入模块
@@ -4728,7 +4728,7 @@ requirejs([&amp;#39;jquery&amp;#39;, &amp;#39;validate&amp;#39;], function($, va
         }
     }
 });
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="JavaScript"></category><category term="RequireJS"></category><category term="模块化"></category></entry><entry><title>CSS3扁平化风格博客</title><link href="http://liulixiang1988.github.io/css3bian-ping-hua-feng-ge-bo-ke.html" rel="alternate"></link><published>2015-07-08T19:39:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-07-08:css3bian-ping-hua-feng-ge-bo-ke.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="JavaScript"></category><category term="RequireJS"></category><category term="模块化"></category></entry><entry><title>CSS3扁平化风格博客</title><link href="/css3bian-ping-hua-feng-ge-bo-ke.html" rel="alternate"></link><published>2015-07-08T19:39:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-07-08:css3bian-ping-hua-feng-ge-bo-ke.html</id><summary type="html">
 &lt;h2 id="1"&gt;1. 页面整体分析&lt;/h2&gt;
 &lt;p&gt;做一个网页或者网站，第一步就是先定义网页与网站的结构，这是所有任务的前提。&lt;/p&gt;
 &lt;hr/&gt;
@@ -5120,7 +5120,7 @@ It's the margin of the h1 element that you see at the top. As none of the parent
 Adding &lt;code&gt;overflow:auto&lt;/code&gt; on the parent also keeps the margins from collapsing. &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS3"></category></entry><entry><title>Gulp笔记</title><link href="http://liulixiang1988.github.io/gulpbi-ji.html" rel="alternate"></link><published>2015-07-01T08:42:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-07-01:gulpbi-ji.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS3"></category></entry><entry><title>Gulp笔记</title><link href="/gulpbi-ji.html" rel="alternate"></link><published>2015-07-01T08:42:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-07-01:gulpbi-ji.html</id><summary type="html">
 &lt;h2 id="1"&gt;1. 准备工作&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;安装nodejs&lt;/li&gt;
@@ -5350,7 +5350,7 @@ gulp.task("default", ["clean"], function(){
 &lt;p&gt;也可以把两个watch合并为一个：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gulp.watch(['scss/**/*.scss', 'js/main.js'], ['compileSass', 'concatScripts']);
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;这样，无论是sass还是js文件发生改变，都会引起compileSass和concatScripts任务重新执行，这并不是一个特别好的方法，因为js并不需要compileSass，同样，sass也并不需要concatScripts.&lt;/p&gt;</summary><category term="Gulp"></category></entry><entry><title>Android-常见问题汇总</title><link href="http://liulixiang1988.github.io/android-chang-jian-wen-ti-hui-zong.html" rel="alternate"></link><published>2015-06-26T08:30:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-06-26:android-chang-jian-wen-ti-hui-zong.html</id><summary type="html">&lt;h2 id="androidtoolbar"&gt;使用Android兼容库时ToolBar不显示&lt;/h2&gt;
+&lt;p&gt;这样，无论是sass还是js文件发生改变，都会引起compileSass和concatScripts任务重新执行，这并不是一个特别好的方法，因为js并不需要compileSass，同样，sass也并不需要concatScripts.&lt;/p&gt;</summary><category term="Gulp"></category></entry><entry><title>Android-常见问题汇总</title><link href="/android-chang-jian-wen-ti-hui-zong.html" rel="alternate"></link><published>2015-06-26T08:30:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-06-26:android-chang-jian-wen-ti-hui-zong.html</id><summary type="html">&lt;h2 id="androidtoolbar"&gt;使用Android兼容库时ToolBar不显示&lt;/h2&gt;
 &lt;p&gt;这种情况是因为使用错了兼容库的版本，请使用v7版本的兼容库：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;android.support.v7.app.AppCompatActivity&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -5371,7 +5371,7 @@ gulp.task("default", ["clean"], function(){
 
 
 &lt;p&gt;效果如图：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="img" src="images/android-2015-06-26-1.png" /&gt;&lt;/p&gt;</summary><category term="Android"></category></entry><entry><title>Android Studio使用总结</title><link href="http://liulixiang1988.github.io/android-studioshi-yong-zong-jie.html" rel="alternate"></link><published>2015-06-19T10:17:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-06-19:android-studioshi-yong-zong-jie.html</id><summary type="html"></summary><category term="Android Studio"></category></entry><entry><title>JS笔记-变量与对象</title><link href="http://liulixiang1988.github.io/jsbi-ji-bian-liang-yu-dui-xiang.html" rel="alternate"></link><published>2015-06-18T16:57:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-06-18:jsbi-ji-bian-liang-yu-dui-xiang.html</id><summary type="html">&lt;h2 id="1"&gt;1. 变量声明&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="img" src="images/android-2015-06-26-1.png" /&gt;&lt;/p&gt;</summary><category term="Android"></category></entry><entry><title>Android Studio使用总结</title><link href="/android-studioshi-yong-zong-jie.html" rel="alternate"></link><published>2015-06-19T10:17:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-06-19:android-studioshi-yong-zong-jie.html</id><summary type="html"></summary><category term="Android Studio"></category></entry><entry><title>JS笔记-变量与对象</title><link href="/jsbi-ji-bian-liang-yu-dui-xiang.html" rel="alternate"></link><published>2015-06-18T16:57:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-06-18:jsbi-ji-bian-liang-yu-dui-xiang.html</id><summary type="html">&lt;h2 id="1"&gt;1. 变量声明&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;var a = a || 7; //如果a有值（严格来说是某个可以被转换为true的值），就直接使用，否则把7赋值给a
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -5417,7 +5417,7 @@ obj.x &amp;amp;&amp;amp; obj.x.y
 
 //第二种方法，检测是否存在某一属性，使用in运算符
 if (&amp;#39;a&amp;#39; in this){}
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="JavaScript"></category></entry><entry><title>Windows下使用Apache+mod_wsgi部署Django</title><link href="http://liulixiang1988.github.io/windowsxia-shi-yong-apachemod_wsgibu-shu-django.html" rel="alternate"></link><published>2015-06-16T10:22:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-06-16:windowsxia-shi-yong-apachemod_wsgibu-shu-django.html</id><summary type="html">&lt;p&gt;这个总结是在&lt;a href="http://www.cnblogs.com/liulixiang/p/3543021.html"&gt;原来笔记&lt;/a&gt;里修改而来。&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="JavaScript"></category></entry><entry><title>Windows下使用Apache+mod_wsgi部署Django</title><link href="/windowsxia-shi-yong-apachemod_wsgibu-shu-django.html" rel="alternate"></link><published>2015-06-16T10:22:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-06-16:windowsxia-shi-yong-apachemod_wsgibu-shu-django.html</id><summary type="html">&lt;p&gt;这个总结是在&lt;a href="http://www.cnblogs.com/liulixiang/p/3543021.html"&gt;原来笔记&lt;/a&gt;里修改而来。&lt;/p&gt;
 &lt;h2 id="1"&gt;1、环境&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;django 1.8.2&lt;/li&gt;
@@ -5498,7 +5498,7 @@ Alias /media &amp;quot;F:/git/python/app-host/media&amp;quot;
 https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/modwsgi/
 http://agong.org/2013/windows64-python3-apache-wsgi-django.html&lt;/p&gt;
 &lt;h2 id="8"&gt;8、最后&lt;/h2&gt;
-&lt;p&gt;如果你觉得这篇文章对你比较有帮助，或者有什么问题，欢迎给我留言或者email:550488300@qq.com&lt;/p&gt;</summary><category term="python"></category><category term="Django"></category><category term="部署"></category></entry><entry><title>CSS3笔记03-变形transform</title><link href="http://liulixiang1988.github.io/css3bi-ji-03-bian-xing-transform.html" rel="alternate"></link><published>2015-06-13T22:18:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-06-13:css3bi-ji-03-bian-xing-transform.html</id><summary type="html">&lt;h2 id="1-scale"&gt;1. 缩放scale&lt;/h2&gt;
+&lt;p&gt;如果你觉得这篇文章对你比较有帮助，或者有什么问题，欢迎给我留言或者email:550488300@qq.com&lt;/p&gt;</summary><category term="python"></category><category term="Django"></category><category term="部署"></category></entry><entry><title>CSS3笔记03-变形transform</title><link href="/css3bi-ji-03-bian-xing-transform.html" rel="alternate"></link><published>2015-06-13T22:18:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-06-13:css3bi-ji-03-bian-xing-transform.html</id><summary type="html">&lt;h2 id="1-scale"&gt;1. 缩放scale&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;transform&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;scale&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.2&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -5526,7 +5526,7 @@ http://agong.org/2013/windows64-python3-apache-wsgi-django.html&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;默认是向右和向下，如果是负数，方向相反&lt;/p&gt;</summary><category term="css3"></category><category term="compass"></category><category term="sass"></category></entry><entry><title>CSS3笔记02-悬停效果</title><link href="http://liulixiang1988.github.io/css3bi-ji-02-xuan-ting-xiao-guo.html" rel="alternate"></link><published>2015-06-13T20:58:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-06-13:css3bi-ji-02-xuan-ting-xiao-guo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 首先需要了解几个伪类：&lt;/h2&gt;
+&lt;p&gt;默认是向右和向下，如果是负数，方向相反&lt;/p&gt;</summary><category term="css3"></category><category term="compass"></category><category term="sass"></category></entry><entry><title>CSS3笔记02-悬停效果</title><link href="/css3bi-ji-02-xuan-ting-xiao-guo.html" rel="alternate"></link><published>2015-06-13T20:58:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-06-13:css3bi-ji-02-xuan-ting-xiao-guo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 首先需要了解几个伪类：&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;:hover&lt;/code&gt;选择器：当鼠标悬停在所指定的元素上时所使用的样式；&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;:active&lt;/code&gt;选择器：当所指定的元素处于激活状态（鼠标在元素上按下还没有松开）时所使用的样式；&lt;/li&gt;
@@ -5629,7 +5629,7 @@ http://agong.org/2013/windows64-python3-apache-wsgi-django.html&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;opacity&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ms&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fiter&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=25)&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="cm"&gt;/*IE8 hack*/&lt;/span&gt;
 &lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;opacity&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt; &lt;span class="cm"&gt;/*IE5-7 hack*/&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="css3"></category><category term="compass"></category><category term="sass"></category></entry><entry><title>CSS3笔记01-过渡transition</title><link href="http://liulixiang1988.github.io/css3bi-ji-01-guo-du-transition.html" rel="alternate"></link><published>2015-06-13T20:31:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-06-13:css3bi-ji-01-guo-du-transition.html</id><summary type="html">&lt;p&gt;使用compass:&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="css3"></category><category term="compass"></category><category term="sass"></category></entry><entry><title>CSS3笔记01-过渡transition</title><link href="/css3bi-ji-01-guo-du-transition.html" rel="alternate"></link><published>2015-06-13T20:31:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-06-13:css3bi-ji-01-guo-du-transition.html</id><summary type="html">&lt;p&gt;使用compass:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;@import&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compass/css3/transition&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="n"&gt;div&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="n"&gt;px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -5684,7 +5684,7 @@ http://agong.org/2013/windows64-python3-apache-wsgi-django.html&lt;/p&gt;
 compass:
 &lt;code&gt;single-transition($property, $duration, $function, $delay)&lt;/code&gt;
 scss:
-&lt;code&gt;transition:background 0.3s ease 0.3s&lt;/code&gt;&lt;/p&gt;</summary><category term="css3"></category><category term="compass"></category><category term="sass"></category></entry><entry><title>Ionic使用教程-条码扫描</title><link href="http://liulixiang1988.github.io/ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html" rel="alternate"></link><published>2015-05-27T10:32:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-27:ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html</id><summary type="html">&lt;p&gt;ionic中与硬件交互部分是使用&lt;a href="http://ngcordova.com/"&gt;ngcordova&lt;/a&gt;和cordova来实现。&lt;/p&gt;
+&lt;code&gt;transition:background 0.3s ease 0.3s&lt;/code&gt;&lt;/p&gt;</summary><category term="css3"></category><category term="compass"></category><category term="sass"></category></entry><entry><title>Ionic使用教程-条码扫描</title><link href="/ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html" rel="alternate"></link><published>2015-05-27T10:32:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-05-27:ionicshi-yong-jiao-cheng-tiao-ma-sao-miao.html</id><summary type="html">&lt;p&gt;ionic中与硬件交互部分是使用&lt;a href="http://ngcordova.com/"&gt;ngcordova&lt;/a&gt;和cordova来实现。&lt;/p&gt;
 &lt;h2 id="1ngcordova"&gt;1.下载ngcordova并且加入到文件中&lt;/h2&gt;
 &lt;p&gt;到ngcordova的页面下载，然后添加到页面，注意要添加到&lt;code&gt;cordova.js&lt;/code&gt;之前：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;lib/ngCordova/dist/ng-cordova.min.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
@@ -5740,7 +5740,7 @@ scss:
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;至此，你就完成了条码扫描功能。&lt;/p&gt;</summary><category term="ionic"></category><category term="移动开发"></category></entry><entry><title>JS补遗-数据处理篇</title><link href="http://liulixiang1988.github.io/jsbu-yi-shu-ju-chu-li-pian.html" rel="alternate"></link><published>2015-05-25T10:47:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-25:jsbu-yi-shu-ju-chu-li-pian.html</id><summary type="html">&lt;h2 id="stringjson"&gt;String转JSON&lt;/h2&gt;
+&lt;p&gt;至此，你就完成了条码扫描功能。&lt;/p&gt;</summary><category term="ionic"></category><category term="移动开发"></category></entry><entry><title>JS补遗-数据处理篇</title><link href="/jsbu-yi-shu-ju-chu-li-pian.html" rel="alternate"></link><published>2015-05-25T10:47:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-05-25:jsbu-yi-shu-ju-chu-li-pian.html</id><summary type="html">&lt;h2 id="stringjson"&gt;String转JSON&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;var arr_from_json = JSON.parse( json_string );
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -5752,7 +5752,7 @@ scss:
 
 
 &lt;p&gt;把值转化为JSON字符串
-详细说明：https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify&lt;/p&gt;</summary><category term="JavaScript"></category></entry><entry><title>AngularJS学习笔记-踩坑笔记</title><link href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-cai-keng-bi-ji.html" rel="alternate"></link><published>2015-05-20T14:39:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-20:angularjsxue-xi-bi-ji-cai-keng-bi-ji.html</id><summary type="html">&lt;h2 id="digest-already-in-progress"&gt;&lt;a href="http://stackoverflow.com/questions/12729122/prevent-error-digest-already-in-progress-when-calling-scope-apply"&gt;digest already in progress&lt;/a&gt;&lt;/h2&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>Exmobi笔记-文件相关</title><link href="http://liulixiang1988.github.io/exmobibi-ji-wen-jian-xiang-guan.html" rel="alternate"></link><published>2015-05-13T15:39:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-13:exmobibi-ji-wen-jian-xiang-guan.html</id><summary type="html">&lt;h2 id="_1"&gt;文件下载&lt;/h2&gt;
+详细说明：https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify&lt;/p&gt;</summary><category term="JavaScript"></category></entry><entry><title>AngularJS学习笔记-踩坑笔记</title><link href="/angularjsxue-xi-bi-ji-cai-keng-bi-ji.html" rel="alternate"></link><published>2015-05-20T14:39:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-05-20:angularjsxue-xi-bi-ji-cai-keng-bi-ji.html</id><summary type="html">&lt;h2 id="digest-already-in-progress"&gt;&lt;a href="http://stackoverflow.com/questions/12729122/prevent-error-digest-already-in-progress-when-calling-scope-apply"&gt;digest already in progress&lt;/a&gt;&lt;/h2&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>Exmobi笔记-文件相关</title><link href="/exmobibi-ji-wen-jian-xiang-guan.html" rel="alternate"></link><published>2015-05-13T15:39:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-05-13:exmobibi-ji-wen-jian-xiang-guan.html</id><summary type="html">&lt;h2 id="_1"&gt;文件下载&lt;/h2&gt;
 &lt;p&gt;文件下载与打开&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;$(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;a&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="nc"&gt;.click&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;function&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="n"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;attr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;href&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;match&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;docx&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;pdf&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;
@@ -5761,7 +5761,7 @@ scss:
     &lt;span class="nt"&gt;ClientUtil&lt;/span&gt;&lt;span class="nc"&gt;.download&lt;/span&gt;&lt;span class="o"&gt;($(&lt;/span&gt;&lt;span class="nt"&gt;this&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="nc"&gt;.attr&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;href&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;),&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;res:&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+$(&lt;/span&gt;&lt;span class="nt"&gt;this&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="nc"&gt;.text&lt;/span&gt;&lt;span class="o"&gt;(),&lt;/span&gt; &lt;span class="nt"&gt;null&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nt"&gt;null&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nt"&gt;false&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
     &lt;span class="nt"&gt;NativeUtil&lt;/span&gt;&lt;span class="nc"&gt;.open&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;res:&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+$(&lt;/span&gt;&lt;span class="nt"&gt;this&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="nc"&gt;.text&lt;/span&gt;&lt;span class="o"&gt;());&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Exmobi"></category></entry><entry><title>JS补遗-jQuery篇</title><link href="http://liulixiang1988.github.io/jsbu-yi-jquerypian.html" rel="alternate"></link><published>2015-05-13T15:08:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-13:jsbu-yi-jquerypian.html</id><summary type="html">&lt;h2 id="_1"&gt;文件相关&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Exmobi"></category></entry><entry><title>JS补遗-jQuery篇</title><link href="/jsbu-yi-jquerypian.html" rel="alternate"></link><published>2015-05-13T15:08:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-05-13:jsbu-yi-jquerypian.html</id><summary type="html">&lt;h2 id="_1"&gt;文件相关&lt;/h2&gt;
 &lt;h3 id="jqueryinput-file"&gt;&lt;a href="http://stackoverflow.com/questions/740114/how-to-use-jquery-to-get-the-current-value-of-a-file-input-field"&gt;jQuery获取当前input file里的值&lt;/a&gt;：&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$(&amp;quot;#fileinput&amp;quot;).val();
 &lt;/pre&gt;&lt;/div&gt;
@@ -5775,7 +5775,7 @@ var names = $.map(files, function(val) { return val.name; }); //names是字符�
 
 
 &lt;h3 id="jquery"&gt;&lt;a href="http://stackoverflow.com/questions/5392344/sending-multipart-formdata-with-jquery-ajax"&gt;jQuery文件上传&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id="_2"&gt;&lt;a href="http://stackoverflow.com/questions/20035101/no-access-control-allow-origin-header-is-present-on-the-requested-resource"&gt;文件跨域提交&lt;/a&gt;&lt;/h3&gt;</summary><category term="jQuery"></category></entry><entry><title>Ionic使用教程</title><link href="http://liulixiang1988.github.io/ionicshi-yong-jiao-cheng.html" rel="alternate"></link><published>2015-05-12T19:45:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-12:ionicshi-yong-jiao-cheng.html</id><summary type="html">&lt;p&gt;Ionic项目主页：http://ionicframework.com/ 它是用来构建混合应用的一款前端框架，使用Cordova和AngularJS，目前中文资料尚且较少。这篇文章主要是在学习中做的一个记录，也希望能为后面的学习者提供一些参考。&lt;/p&gt;
+&lt;h3 id="_2"&gt;&lt;a href="http://stackoverflow.com/questions/20035101/no-access-control-allow-origin-header-is-present-on-the-requested-resource"&gt;文件跨域提交&lt;/a&gt;&lt;/h3&gt;</summary><category term="jQuery"></category></entry><entry><title>Ionic使用教程</title><link href="/ionicshi-yong-jiao-cheng.html" rel="alternate"></link><published>2015-05-12T19:45:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-05-12:ionicshi-yong-jiao-cheng.html</id><summary type="html">&lt;p&gt;Ionic项目主页：http://ionicframework.com/ 它是用来构建混合应用的一款前端框架，使用Cordova和AngularJS，目前中文资料尚且较少。这篇文章主要是在学习中做的一个记录，也希望能为后面的学习者提供一些参考。&lt;/p&gt;
 &lt;h2 id="1"&gt;1. 要求&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;安装Node/NPM&lt;/li&gt;
@@ -5914,14 +5914,14 @@ adb lolcat
 &lt;p&gt;http://ionicframework.com/docs/components/
 http://ionicons.com/&lt;/p&gt;
 &lt;h3 id="27"&gt;2.7 分发&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="app.js" src="images/ionic-5.PNG" /&gt;&lt;/p&gt;</summary><category term="ionic"></category><category term="移动开发"></category></entry><entry><title>AngularJS学习笔记05-指令</title><link href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-05-zhi-ling.html" rel="alternate"></link><published>2015-05-04T20:31:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-04:angularjsxue-xi-bi-ji-05-zhi-ling.html</id><summary type="html">&lt;h2 id="angularjs"&gt;AngularJS四大核心特性&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="app.js" src="images/ionic-5.PNG" /&gt;&lt;/p&gt;</summary><category term="ionic"></category><category term="移动开发"></category></entry><entry><title>AngularJS学习笔记05-指令</title><link href="/angularjsxue-xi-bi-ji-05-zhi-ling.html" rel="alternate"></link><published>2015-05-04T20:31:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-05-04:angularjsxue-xi-bi-ji-05-zhi-ling.html</id><summary type="html">&lt;h2 id="angularjs"&gt;AngularJS四大核心特性&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;MVC&lt;/li&gt;
 &lt;li&gt;模块化和依赖注入&lt;/li&gt;
 &lt;li&gt;双向数据绑定&lt;/li&gt;
 &lt;li&gt;指令&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="hello"&gt;解析最简单的指令hello&lt;/h2&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>AngularJS学习笔记04 路由</title><link href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-04-lu-you.html" rel="alternate"></link><published>2015-05-03T21:13:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-03:angularjsxue-xi-bi-ji-04-lu-you.html</id><summary type="html">&lt;h2 id="ajax"&gt;Ajax的不足&lt;/h2&gt;
+&lt;h2 id="hello"&gt;解析最简单的指令hello&lt;/h2&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>AngularJS学习笔记04 路由</title><link href="/angularjsxue-xi-bi-ji-04-lu-you.html" rel="alternate"></link><published>2015-05-03T21:13:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-05-03:angularjsxue-xi-bi-ji-04-lu-you.html</id><summary type="html">&lt;h2 id="ajax"&gt;Ajax的不足&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Ajax请求不会留下History记录&lt;/li&gt;
 &lt;li&gt;用户无法直接通过URL进入应用中的指定页面（保存书签、链接分享给朋友）&lt;/li&gt;
@@ -5954,8 +5954,64 @@ bookStoreApp.config([&amp;#39;$routeProvider&amp;#39;, function($routeProvider) 
 &lt;p&gt;本节重点在于ui-router的使用，与ngRoute的区别是：
 1、可实现路由分开控制多模块页面的各个模块
 2、index.html中的视图部分为&lt;code&gt;&amp;lt;div ui-view&amp;gt;&amp;lt;/div&amp;gt;&lt;/code&gt;
-3、需要依赖ui.router，函数需要引入$stateProvider及$urlRouterProvider
-4、语法类似ngRouter&lt;/p&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>AngularJS学习笔记03 双向数据绑定</title><link href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html" rel="alternate"></link><published>2015-05-01T00:20:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-05-01:angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html</id><summary type="html">&lt;p&gt;内容简介：&lt;/p&gt;
+3、需要依赖ui.router，函数需要引入&lt;span class="math"&gt;\(stateProvider及\)&lt;/span&gt;urlRouterProvider
+4、语法类似ngRouter&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}&lt;/script&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>AngularJS学习笔记03 双向数据绑定</title><link href="/angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html" rel="alternate"></link><published>2015-05-01T00:20:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-05-01:angularjsxue-xi-bi-ji-03-shuang-xiang-shu-ju-bang-ding.html</id><summary type="html">&lt;p&gt;内容简介：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;简单的例子&lt;/li&gt;
 &lt;li&gt;取值表达式和ng-bind指令&lt;/li&gt;
@@ -6060,7 +6116,7 @@ bookStoreApp.config([&amp;#39;$routeProvider&amp;#39;, function($routeProvider) 
 
 
 &lt;p&gt;当&lt;code&gt;menuState.show&lt;/code&gt;为true时显示，为false时隐藏;
-ng-hide与ng-show相反，为true时隐藏，为false时显示。&lt;/p&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>AngularJS学习笔记02-路由、模块和依赖注入</title><link href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html" rel="alternate"></link><published>2015-04-30T22:36:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-30:angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html</id><summary type="html">&lt;p&gt;内容简介：&lt;/p&gt;
+ng-hide与ng-show相反，为true时隐藏，为false时显示。&lt;/p&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>AngularJS学习笔记02-路由、模块和依赖注入</title><link href="/angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html" rel="alternate"></link><published>2015-04-30T22:36:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-30:angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html</id><summary type="html">&lt;p&gt;内容简介：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;AngularJS的模块化实现&lt;/li&gt;
 &lt;li&gt;一个完整项目结构&lt;/li&gt;
@@ -6106,7 +6162,7 @@ ng-hide与ng-show相反，为true时隐藏，为false时显示。&lt;/p&gt;</sum
             &lt;span class="err"&gt;redirectTo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/hello&amp;#39;&lt;/span&gt;
         &lt;span class="p"&gt;})&lt;/span&gt;&lt;span class="x"&gt;;&lt;/span&gt;
 &lt;span class="x"&gt;})&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>AngularJS学习笔记01-MVC</title><link href="http://liulixiang1988.github.io/angularjsxue-xi-bi-ji-01-mvc.html" rel="alternate"></link><published>2015-04-30T20:51:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-30:angularjsxue-xi-bi-ji-01-mvc.html</id><summary type="html">&lt;h2 id="0-angularjs"&gt;0. 第一个AngularJs应用&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>AngularJS学习笔记01-MVC</title><link href="/angularjsxue-xi-bi-ji-01-mvc.html" rel="alternate"></link><published>2015-04-30T20:51:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-30:angularjsxue-xi-bi-ji-01-mvc.html</id><summary type="html">&lt;h2 id="0-angularjs"&gt;0. 第一个AngularJs应用&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt; &lt;span class="na"&gt;ng-app&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
@@ -6256,10 +6312,10 @@ ng-hide与ng-show相反，为true时隐藏，为false时显示。&lt;/p&gt;</sum
 &lt;p&gt;$scope是什么：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;$scope是一个POJO(Plan Old JavaScript Object)&lt;/li&gt;
-&lt;li&gt;$scope 提供了一些工具方法$watch()/$apply()&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(scope 提供了一些工具方法\)&lt;/span&gt;watch()/$apply()&lt;/li&gt;
 &lt;li&gt;$scope是表达式的执行环境(或称为作用域)&lt;/li&gt;
 &lt;li&gt;$scope是一个树形结构，与DOM标签平行&lt;/li&gt;
-&lt;li&gt;子$scope对象会继承父$scope上的属性和方法&lt;/li&gt;
+&lt;li&gt;子&lt;span class="math"&gt;\(scope对象会继承父\)&lt;/span&gt;scope上的属性和方法&lt;/li&gt;
 &lt;li&gt;每一个Angular应用都有一个根$scope对象，一般位于ng-app上&lt;/li&gt;
 &lt;li&gt;$scope可以传播事件，可以向上传播，也可以向下传播&lt;/li&gt;
 &lt;li&gt;$scope不仅是MVC的基础，也是后面实现双向数据绑定的基础&lt;/li&gt;
@@ -6272,7 +6328,63 @@ ng-hide与ng-show相反，为true时隐藏，为false时显示。&lt;/p&gt;</sum
 &lt;li&gt;检测模型变化&lt;/li&gt;
 &lt;li&gt;发出事件&lt;/li&gt;
 &lt;li&gt;销毁&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>Java Web开发技术应用-过滤器</title><link href="http://liulixiang1988.github.io/java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html" rel="alternate"></link><published>2015-04-22T15:45:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-22:java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html</id><summary type="html">&lt;h2 id="1-java-"&gt;1. Java过滤机制-声明周期&lt;/h2&gt;
+&lt;/ul&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}&lt;/script&gt;</summary><category term="Angular"></category><category term="Web"></category></entry><entry><title>Java Web开发技术应用-过滤器</title><link href="/java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html" rel="alternate"></link><published>2015-04-22T15:45:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-22:java-webkai-fa-ji-zhu-ying-yong-guo-lu-qi.html</id><summary type="html">&lt;h2 id="1-java-"&gt;1. Java过滤机制-声明周期&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="images/java-web-filter-01.png" src="images/java-web-filter-01.png" /&gt;&lt;/p&gt;
 &lt;h2 id="2"&gt;2. 第一个过滤器&lt;/h2&gt;
 &lt;p&gt;1、创建一个过滤器类 ，继承自servlet下的Filter
@@ -6371,7 +6483,7 @@ public class LessThanSixFilter implements Filter{
 
 
 &lt;p&gt;&lt;img alt="images/java-web-filter-04.png" src="images/java-web-filter-04.png" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="images/java-web-filter-05.png" src="images/java-web-filter-05.png" /&gt;&lt;/p&gt;</summary><category term="Java"></category><category term="Web"></category></entry><entry><title>Sass和Compass必备技能之Compass篇-02 模块简介</title><link href="http://liulixiang1988.github.io/sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html" rel="alternate"></link><published>2015-04-20T21:43:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-20:sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html</id><summary type="html">&lt;h2 id="1-layout"&gt;1. Layout简介&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="images/java-web-filter-05.png" src="images/java-web-filter-05.png" /&gt;&lt;/p&gt;</summary><category term="Java"></category><category term="Web"></category></entry><entry><title>Sass和Compass必备技能之Compass篇-02 模块简介</title><link href="/sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html" rel="alternate"></link><published>2015-04-20T21:43:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-20:sasshe-compassbi-bei-ji-neng-zhi-compasspian-02-mo-kuai-jian-jie.html</id><summary type="html">&lt;h2 id="1-layout"&gt;1. Layout简介&lt;/h2&gt;
 &lt;p&gt;http://compass-style.org/reference/compass/layout/&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;@import&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compass/layout&amp;quot;&lt;/span&gt;
 &lt;span class="cp"&gt;@import&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compass/layout/grid-background&amp;quot;&lt;/span&gt;
@@ -6402,7 +6514,7 @@ http://compass-style.org/reference/compass/css3/&lt;/p&gt;
 &lt;h2 id="4-typography"&gt;4. Typography模块&lt;/h2&gt;
 &lt;p&gt;http://compass-style.org/reference/compass/typography/&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;@import&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compass/typography&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="SASS"></category></entry><entry><title>Sass和Compass必备技能之Compass篇-01 Compass核心模块概述及Reset模块</title><link href="http://liulixiang1988.github.io/sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html" rel="alternate"></link><published>2015-04-20T20:51:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-20:sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html</id><summary type="html">&lt;h2 id="1-compass"&gt;1. Compass核心模块&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="SASS"></category></entry><entry><title>Sass和Compass必备技能之Compass篇-01 Compass核心模块概述及Reset模块</title><link href="/sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html" rel="alternate"></link><published>2015-04-20T20:51:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-20:sasshe-compassbi-bei-ji-neng-zhi-compasspian-01-compasshe-xin-mo-kuai-gai-shu-ji-resetmo-kuai.html</id><summary type="html">&lt;h2 id="1-compass"&gt;1. Compass核心模块&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="images/compass-1.png" src="images/compass-1.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Reset(&lt;code&gt;@import "compass/reset";&lt;/code&gt;)和Layout(&lt;code&gt;@import "compass/layout";&lt;/code&gt;)并没有包含在compass的核心模块中，需要单独引用。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;@import "compass";&lt;/code&gt;包含了CSS3/Helpers/Typography/Utilities模块：
@@ -6442,7 +6554,7 @@ http://compass-style.org/reference/compass/css3/&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;文档：http://compass-style.org/&lt;/p&gt;</summary><category term="CSS"></category><category term="SASS"></category></entry><entry><title>Android学习笔记-08 ImageView控件</title><link href="http://liulixiang1988.github.io/androidxue-xi-bi-ji-08-imageviewkong-jian.html" rel="alternate"></link><published>2015-04-19T22:13:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-19:androidxue-xi-bi-ji-08-imageviewkong-jian.html</id><summary type="html"></summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>Android学习笔记-07 Android 目录结构</title><link href="http://liulixiang1988.github.io/androidxue-xi-bi-ji-07-android-mu-lu-jie-gou.html" rel="alternate"></link><published>2015-04-19T19:09:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-19:androidxue-xi-bi-ji-07-android-mu-lu-jie-gou.html</id><summary type="html">&lt;p&gt;src存放源代码
+&lt;p&gt;文档：http://compass-style.org/&lt;/p&gt;</summary><category term="CSS"></category><category term="SASS"></category></entry><entry><title>Android学习笔记-08 ImageView控件</title><link href="/androidxue-xi-bi-ji-08-imageviewkong-jian.html" rel="alternate"></link><published>2015-04-19T22:13:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-19:androidxue-xi-bi-ji-08-imageviewkong-jian.html</id><summary type="html"></summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>Android学习笔记-07 Android 目录结构</title><link href="/androidxue-xi-bi-ji-07-android-mu-lu-jie-gou.html" rel="alternate"></link><published>2015-04-19T19:09:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-19:androidxue-xi-bi-ji-07-android-mu-lu-jie-gou.html</id><summary type="html">&lt;p&gt;src存放源代码
 gen存放系统自动生成的配置文件
 Android4.2下含android.jar包文件，所需的SDK
 assets存放资源文件，不会自动生成id且不会自动占用空间，没有应用时不会占空间
@@ -6454,7 +6566,7 @@ layout存放布局文件。xml文件
 values存放字符串，主题，颜色，样式等资源，对应3.0版本，v11对应3.0和v14对应4.0
 menu菜单布局文件
 androidmanifest.xml清单文件，先执行的清单文件，配置一些与应用有关的重要信息，包含包名，权限，程序组件等等&lt;/p&gt;
-&lt;p&gt;&lt;img alt="images/android-07-01.jpg" src="images/android-07-01.jpg" /&gt;&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)</title><link href="http://liulixiang1988.github.io/sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html" rel="alternate"></link><published>2015-04-17T23:19:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-17:sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html</id><summary type="html">&lt;h2 id="1-media"&gt;1. @media&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="images/android-07-01.jpg" src="images/android-07-01.jpg" /&gt;&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)</title><link href="/sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html" rel="alternate"></link><published>2015-04-17T23:19:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-17:sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html</id><summary type="html">&lt;h2 id="1-media"&gt;1. @media&lt;/h2&gt;
 &lt;p&gt;sass中的@media跟CSS区别：&lt;/p&gt;
 &lt;p&gt;sass中的media query可以内嵌在css规则中，在生成CSS的时候，
 media query 才会被提到样式的最高级&lt;/p&gt;
@@ -6511,7 +6623,7 @@ media query 才会被提到样式的最高级&lt;/p&gt;
 &lt;h2 id="4"&gt;4. 输出格式&lt;/h2&gt;
 &lt;p&gt;打开config.rb&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;output_style = :expanded or :nested or :compact or :compressed
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="SASS"></category></entry><entry><title>Sass和Compass必备技能之Sass篇-03 Sass语法介绍(进阶篇)</title><link href="http://liulixiang1988.github.io/sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html" rel="alternate"></link><published>2015-04-17T22:46:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-17:sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html</id><summary type="html">&lt;h2 id="1"&gt;1. 变量操作&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="SASS"></category></entry><entry><title>Sass和Compass必备技能之Sass篇-03 Sass语法介绍(进阶篇)</title><link href="/sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html" rel="alternate"></link><published>2015-04-17T22:46:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-17:sasshe-compassbi-bei-ji-neng-zhi-sasspian-03-sassyu-fa-jie-shao-jin-jie-pian.html</id><summary type="html">&lt;h2 id="1"&gt;1. 变量操作&lt;/h2&gt;
 &lt;p&gt;变量操作有两种方式，第一种是直接操作，第二种是通过函数。&lt;/p&gt;
 &lt;p&gt;通过函数：
 - 跟代码块无关的函数，多是自己内置函数，称functions
@@ -6599,7 +6711,7 @@ media query 才会被提到样式的最高级&lt;/p&gt;
 &lt;p&gt;当一个元素拥有的类似另一个类的细化，这时候使用继承比较合适。 
 extend两个知识点：
 1. extend不可以继承选择器序列
-2. %仅用来被继承，如&lt;code&gt;%error&lt;/code&gt;，则不会输出到css中。&lt;/p&gt;</summary><category term="CSS"></category><category term="SASS"></category></entry><entry><title>Sass和Compass必备技能之Sass篇-02 Sass语法介绍(基础篇)</title><link href="http://liulixiang1988.github.io/sasshe-compassbi-bei-ji-neng-zhi-sasspian-02-sassyu-fa-jie-shao-ji-chu-pian.html" rel="alternate"></link><published>2015-04-17T22:09:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-17:sasshe-compassbi-bei-ji-neng-zhi-sasspian-02-sassyu-fa-jie-shao-ji-chu-pian.html</id><summary type="html">&lt;h2 id="1-sassscss"&gt;1. sass和scss形式的相互转换&lt;/h2&gt;
+2. %仅用来被继承，如&lt;code&gt;%error&lt;/code&gt;，则不会输出到css中。&lt;/p&gt;</summary><category term="CSS"></category><category term="SASS"></category></entry><entry><title>Sass和Compass必备技能之Sass篇-02 Sass语法介绍(基础篇)</title><link href="/sasshe-compassbi-bei-ji-neng-zhi-sasspian-02-sassyu-fa-jie-shao-ji-chu-pian.html" rel="alternate"></link><published>2015-04-17T22:09:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-17:sasshe-compassbi-bei-ji-neng-zhi-sasspian-02-sassyu-fa-jie-shao-ji-chu-pian.html</id><summary type="html">&lt;h2 id="1-sassscss"&gt;1. sass和scss形式的相互转换&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sass&lt;/span&gt;&lt;span class="x"&gt;-convert main.sass main.scss&lt;/span&gt;
 &lt;span class="x"&gt;或者&lt;/span&gt;
 &lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sass&lt;/span&gt;&lt;span class="x"&gt;-convert main.scss main.sass&lt;/span&gt;
@@ -6777,7 +6889,7 @@ extend两个知识点：
     &lt;span class="nb"&gt;border-left&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;0px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="nb"&gt;border-right&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;0px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="SASS"></category></entry><entry><title>Sass和Compass必备技能之Sass篇-01 安装</title><link href="http://liulixiang1988.github.io/sasshe-compassbi-bei-ji-neng-zhi-sasspian-01-an-zhuang.html" rel="alternate"></link><published>2015-04-16T14:55:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-16:sasshe-compassbi-bei-ji-neng-zhi-sasspian-01-an-zhuang.html</id><summary type="html">&lt;h2 id="1-ruby"&gt;1. ruby安装&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="SASS"></category></entry><entry><title>Sass和Compass必备技能之Sass篇-01 安装</title><link href="/sasshe-compassbi-bei-ji-neng-zhi-sasspian-01-an-zhuang.html" rel="alternate"></link><published>2015-04-16T14:55:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-16:sasshe-compassbi-bei-ji-neng-zhi-sasspian-01-an-zhuang.html</id><summary type="html">&lt;h2 id="1-ruby"&gt;1. ruby安装&lt;/h2&gt;
 &lt;p&gt;RVM: Ruby Version Manager（Ruby多版本管理器）&lt;/p&gt;
 &lt;p&gt;安装RVM&lt;/p&gt;
 &lt;p&gt;mac下安装homebrew cakebrew&lt;/p&gt;
@@ -6829,7 +6941,7 @@ compass create learn-compass-init
 #编译的两种方法
 compass compile [path/to/project]
 compass watch [path/to/project]
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="SASS"></category></entry><entry><title>Java Web之Servlet-02 应用MVC架构实现项目</title><link href="http://liulixiang1988.github.io/java-webzhi-servlet-02-ying-yong-mvcjia-gou-shi-xian-xiang-mu.html" rel="alternate"></link><published>2015-04-15T19:49:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-15:java-webzhi-servlet-02-ying-yong-mvcjia-gou-shi-xian-xiang-mu.html</id><summary type="html">&lt;h2 id="1"&gt;1. 获取初始化参数&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="SASS"></category></entry><entry><title>Java Web之Servlet-02 应用MVC架构实现项目</title><link href="/java-webzhi-servlet-02-ying-yong-mvcjia-gou-shi-xian-xiang-mu.html" rel="alternate"></link><published>2015-04-15T19:49:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-15:java-webzhi-servlet-02-ying-yong-mvcjia-gou-shi-xian-xiang-mu.html</id><summary type="html">&lt;h2 id="1"&gt;1. 获取初始化参数&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;servlet&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;init-param&amp;gt;&lt;/span&gt;
         &lt;span class="nt"&gt;&amp;lt;param-name&amp;gt;&lt;/span&gt;username&lt;span class="nt"&gt;&amp;lt;/param-name&amp;gt;&lt;/span&gt;
@@ -6846,7 +6958,7 @@ compass watch [path/to/project]
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;在servlet的init()方法中获取初始化的值：
 this.getInitParameter(&amp;quot;username&amp;quot;);
 this.getInitParameter(&amp;quot;password&amp;quot;);
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="Servlet"></category></entry><entry><title>Java Web之Servlet-01 Servlet基础</title><link href="http://liulixiang1988.github.io/java-webzhi-servlet-01-servletji-chu.html" rel="alternate"></link><published>2015-04-13T20:31:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-13:java-webzhi-servlet-01-servletji-chu.html</id><summary type="html">&lt;h2 id="1-servlet"&gt;1. Servlet概述&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="Servlet"></category></entry><entry><title>Java Web之Servlet-01 Servlet基础</title><link href="/java-webzhi-servlet-01-servletji-chu.html" rel="alternate"></link><published>2015-04-13T20:31:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-13:java-webzhi-servlet-01-servletji-chu.html</id><summary type="html">&lt;h2 id="1-servlet"&gt;1. Servlet概述&lt;/h2&gt;
 &lt;p&gt;jsp前身就是servlet，Servelet是在服务器上运行的小程序。
 一个Servlet就是一个Java类，并且可以通过“请求－响应”编程模型来访问的这个驻留在服务器内存里的Servlet程序。&lt;/p&gt;
 &lt;h2 id="2-tomcat"&gt;2. Tomcat容器等级&lt;/h2&gt;
@@ -6917,7 +7029,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp)
 &lt;h3 id="82-servletjsp"&gt;8.2 Servlet跳转JSP&lt;/h3&gt;
 &lt;p&gt;1、请求重定向：&lt;code&gt;response.sendRedirect(request.getContextPath()+"/xxx.jsp");&lt;/code&gt;这里通过&lt;code&gt;request.getContextPath()&lt;/code&gt;方法获得项目根目录，或者通过&lt;code&gt;../xxx.jsp&lt;/code&gt;取得上层路径得到
 2、服务器内部转发：&lt;code&gt;request.getRequestDispatcher("../xxx.jsp").forward(req,resp);&lt;/code&gt;
-小结：都可以通过../xxx.jsp得到&lt;/p&gt;</summary><category term="Java"></category><category term="Web"></category><category term="Servlet"></category></entry><entry><title>Java Web之JSP-07 综合案例</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-07-zong-he-an-li.html" rel="alternate"></link><published>2015-04-13T20:11:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-13:java-webzhi-jsp-07-zong-he-an-li.html</id><summary type="html">&lt;h2 id="1-jdbc-dbhelper"&gt;1. JDBC DBHelper&lt;/h2&gt;
+小结：都可以通过../xxx.jsp得到&lt;/p&gt;</summary><category term="Java"></category><category term="Web"></category><category term="Servlet"></category></entry><entry><title>Java Web之JSP-07 综合案例</title><link href="/java-webzhi-jsp-07-zong-he-an-li.html" rel="alternate"></link><published>2015-04-13T20:11:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-13:java-webzhi-jsp-07-zong-he-an-li.html</id><summary type="html">&lt;h2 id="1-jdbc-dbhelper"&gt;1. JDBC DBHelper&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="n"&gt;util&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;java.sql.Connection&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -7425,7 +7537,7 @@ public class Items {
     &lt;span class="nt"&gt;&amp;lt;/center&amp;gt;&lt;/span&gt;
   &lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>JDBC使用笔记</title><link href="http://liulixiang1988.github.io/jdbcshi-yong-bi-ji.html" rel="alternate"></link><published>2015-04-13T20:11:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-13:jdbcshi-yong-bi-ji.html</id><summary type="html">&lt;h2 id="1-jdbc"&gt;1. JDBC编程步骤&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>JDBC使用笔记</title><link href="/jdbcshi-yong-bi-ji.html" rel="alternate"></link><published>2015-04-13T20:11:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-13:jdbcshi-yong-bi-ji.html</id><summary type="html">&lt;h2 id="1-jdbc"&gt;1. JDBC编程步骤&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;加载驱动程序：&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Class.forName(driverClass)
 //加载MySql驱动
@@ -7649,7 +7761,7 @@ conn.prepareStatement(sql);
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-06 JSP指令与动作元素</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-06-jspzhi-ling-yu-dong-zuo-yuan-su.html" rel="alternate"></link><published>2015-04-13T19:37:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-13:java-webzhi-jsp-06-jspzhi-ling-yu-dong-zuo-yuan-su.html</id><summary type="html">&lt;h2 id="1-include"&gt;1. include指令&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-06 JSP指令与动作元素</title><link href="/java-webzhi-jsp-06-jspzhi-ling-yu-dong-zuo-yuan-su.html" rel="alternate"></link><published>2015-04-13T19:37:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-13:java-webzhi-jsp-06-jspzhi-ling-yu-dong-zuo-yuan-su.html</id><summary type="html">&lt;h2 id="1-include"&gt;1. include指令&lt;/h2&gt;
 &lt;p&gt;常用的有page、include、taglib指令这三种指令；
 page：位于页面顶端，一个页面可以包含多个page指令
 include：将一个外部文件嵌入jsp中，同时解析这个页面中的jsp语句。
@@ -7693,7 +7805,7 @@ taglib：使用标签库，自定义新的标签，在jsp中启动定制行为�
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;jsp:forward&lt;/span&gt; &lt;span class="na"&gt;page=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;url&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; 
 &lt;span class="nt"&gt;&amp;lt;jsp:param&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;123@qq.com&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;email&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt; 
 &lt;span class="nt"&gt;&amp;lt;/jsp:forward&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-05 JSP状态管理</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-05-jspzhuang-tai-guan-li.html" rel="alternate"></link><published>2015-04-10T16:30:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-10:java-webzhi-jsp-05-jspzhuang-tai-guan-li.html</id><summary type="html">&lt;h2 id="1-http"&gt;1. http协议的无状态性&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-05 JSP状态管理</title><link href="/java-webzhi-jsp-05-jspzhuang-tai-guan-li.html" rel="alternate"></link><published>2015-04-10T16:30:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-10:java-webzhi-jsp-05-jspzhuang-tai-guan-li.html</id><summary type="html">&lt;h2 id="1-http"&gt;1. http协议的无状态性&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;无状态是指，当浏览器发送请求给服务器的时候，服务器会响应。但当同一个浏览器再次发送请求时，服务器不会知道是刚才那个浏览器。&lt;/li&gt;
 &lt;li&gt;简单说，服务器【不会保存用户状态】，不会记得客户端是否访问过，所以这就是无状态协议。&lt;/li&gt;
@@ -7831,7 +7943,7 @@ taglib：使用标签库，自定义新的标签，在jsp中启动定制行为�
 &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;password&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;password&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;placeholder=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;密码&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&amp;lt;br/&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-03 JSP内置对象</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html" rel="alternate"></link><published>2015-04-09T16:47:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-09:java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html</id><summary type="html">&lt;h2 id="1-jsp"&gt;1. jsp内置对象简介&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-03 JSP内置对象</title><link href="/java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html" rel="alternate"></link><published>2015-04-09T16:47:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-09:java-webzhi-jsp-03-jspnei-zhi-dui-xiang.html</id><summary type="html">&lt;h2 id="1-jsp"&gt;1. jsp内置对象简介&lt;/h2&gt;
 &lt;p&gt;1、JSP内置对象是Web容器创建的一组对象，【不使用new关键字】就可以使用的内置对象。
 2、九大内置对象:
 out,request,response,session,application（五大常用对象）
@@ -8071,7 +8183,7 @@ Page,pageContext,exception.config（四个不太常用对象）&lt;/p&gt;
 &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;login.jsp&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;返回登录页&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-04 Java Beans</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-04-java-beans.html" rel="alternate"></link><published>2015-04-09T16:47:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-09:java-webzhi-jsp-04-java-beans.html</id><summary type="html">&lt;h2 id="1-javabean"&gt;1. JavaBean简介&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-04 Java Beans</title><link href="/java-webzhi-jsp-04-java-beans.html" rel="alternate"></link><published>2015-04-09T16:47:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-09:java-webzhi-jsp-04-java-beans.html</id><summary type="html">&lt;h2 id="1-javabean"&gt;1. JavaBean简介&lt;/h2&gt;
 &lt;p&gt;javaBeans就是符合某种特定的规范的java类。使用JavaBeans的好处是解决代码重复编写，减少代码冗余，功能区分明确，提高了代码的可维护性。&lt;/p&gt;
 &lt;p&gt;JavaBean的设计原则：&lt;/p&gt;
 &lt;ol&gt;
@@ -8183,7 +8295,7 @@ page-&amp;gt;request-&amp;gt;session-&amp;gt;application&lt;/p&gt;
 &lt;li&gt;Model1 = JSP + JavaBean。如图：JSP访问页面层 -&amp;gt; Javab业务逻辑层 -&amp;gt; 数据库数据访问层&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img alt="images/java-web-jsp-03.png" src="images/java-web-jsp-03.png" /&gt;&lt;/p&gt;
-&lt;h2 id="6"&gt;6. 阶段项目&lt;/h2&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java-常用方法</title><link href="http://liulixiang1988.github.io/java-chang-yong-fang-fa.html" rel="alternate"></link><published>2015-04-08T00:30:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-08:java-chang-yong-fang-fa.html</id><summary type="html">&lt;p&gt;之前一直用C#比较多，最近开始研究Java，两者之间的库设计差别很大，故再次做个总结。&lt;/p&gt;
+&lt;h2 id="6"&gt;6. 阶段项目&lt;/h2&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java-常用方法</title><link href="/java-chang-yong-fang-fa.html" rel="alternate"></link><published>2015-04-08T00:30:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-08:java-chang-yong-fang-fa.html</id><summary type="html">&lt;p&gt;之前一直用C#比较多，最近开始研究Java，两者之间的库设计差别很大，故再次做个总结。&lt;/p&gt;
 &lt;h2 id="1"&gt;1. 日期&lt;/h2&gt;
 &lt;p&gt;1.日期格式化&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;java.text.SimpleDateFormat&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -8206,7 +8318,7 @@ Date d = sdf.parse(&amp;quot;2015年04月13日&amp;quot;);
 &lt;p&gt;1.新建泛型&lt;/p&gt;
 &lt;p&gt;可以再&lt;code&gt;new&lt;/code&gt;后面直接使用&lt;code&gt;&amp;lt;&amp;gt;&lt;/code&gt;来初始化，不需要指定类型，如下所示：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ArrayList&amp;lt;Crime&amp;gt; crimes = new ArrayList&amp;lt;&amp;gt;();
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-02 JSP基础语法</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-02-jspji-chu-yu-fa.html" rel="alternate"></link><published>2015-04-08T00:30:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-08:java-webzhi-jsp-02-jspji-chu-yu-fa.html</id><summary type="html">&lt;h2 id="1-jsp"&gt;1. JSP简介&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-02 JSP基础语法</title><link href="/java-webzhi-jsp-02-jspji-chu-yu-fa.html" rel="alternate"></link><published>2015-04-08T00:30:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-08:java-webzhi-jsp-02-jspji-chu-yu-fa.html</id><summary type="html">&lt;h2 id="1-jsp"&gt;1. JSP简介&lt;/h2&gt;
 &lt;p&gt;JSP页面元素构成：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;静态内容&lt;/li&gt;
@@ -8316,7 +8428,7 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
 
 &lt;span class="nt"&gt;&amp;lt;hr/&amp;gt;&lt;/span&gt;
 &lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="n"&gt;printMultiTable2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-01 Java Web简介</title><link href="http://liulixiang1988.github.io/java-webzhi-jsp-01-java-webjian-jie.html" rel="alternate"></link><published>2015-04-07T21:40:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-07:java-webzhi-jsp-01-java-webjian-jie.html</id><summary type="html">&lt;h2 id="1-tomcat"&gt;1. Tomcat配置&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>Java Web之JSP-01 Java Web简介</title><link href="/java-webzhi-jsp-01-java-webjian-jie.html" rel="alternate"></link><published>2015-04-07T21:40:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-07:java-webzhi-jsp-01-java-webjian-jie.html</id><summary type="html">&lt;h2 id="1-tomcat"&gt;1. Tomcat配置&lt;/h2&gt;
 &lt;h3 id="11"&gt;1.1 创建环境变量&lt;/h3&gt;
 &lt;p&gt;创建环境变量&lt;code&gt;CATALINA_HOME&lt;/code&gt;,值为Tomcat所在根目录（比如，windows下可能为为&lt;code&gt;C:\Program Files (x86)\Apache Software Foundation\Tomcat 7.0&lt;/code&gt;).&lt;/p&gt;
 &lt;h3 id="12-tomcat"&gt;1.2 启动Tomcat&lt;/h3&gt;
@@ -8388,7 +8500,7 @@ taglib指令：使用标签库定义心得自定义标签。在jsp页面中启�
            port=&amp;quot;8080&amp;quot; protocol=&amp;quot;HTTP/1.1&amp;quot;
            connectionTimeout=&amp;quot;20000&amp;quot;
            redirectPort=&amp;quot;8443&amp;quot; /&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>HTML\CSS补遗</title><link href="http://liulixiang1988.github.io/htmlcssbu-yi.html" rel="alternate"></link><published>2015-04-06T21:36:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-06:htmlcssbu-yi.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Web"></category><category term="JSP"></category></entry><entry><title>HTML\CSS补遗</title><link href="/htmlcssbu-yi.html" rel="alternate"></link><published>2015-04-06T21:36:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-06:htmlcssbu-yi.html</id><summary type="html">
 &lt;h2 id="1-html"&gt;1. HTML标签&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;：有了段落又有了标题，现在如果想在一段话中特别强调某几个文字，这时候就可以用到&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;或&lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;标签。但两者在强调的语气上有区别:&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt; 表示强调，&lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt; 表示更强烈的强调。并且在浏览器中&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt; 默认用&lt;em&gt;斜体&lt;/em&gt;表示，&lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;用&lt;strong&gt;粗体&lt;/strong&gt;表示。两个标签相比，目前国内前端程序员更喜欢使用&lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;表示强调。&lt;/li&gt;
@@ -9153,7 +9265,7 @@ float : left 或 float:right
 }
 &lt;/style&gt;
 &lt;p&gt;```&lt;/p&gt;
-&lt;p&gt;想不起 display:inline-block 是做什么的小伙伴们，单击“元素分类--内联块状元素”可返回到前面小节进行复习。&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-10 新闻详情页的制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html" rel="alternate"></link><published>2015-04-05T20:14:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-05:qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 页面结构&lt;/h2&gt;
+&lt;p&gt;想不起 display:inline-block 是做什么的小伙伴们，单击“元素分类--内联块状元素”可返回到前面小节进行复习。&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-10 新闻详情页的制作</title><link href="/qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html" rel="alternate"></link><published>2015-04-05T20:14:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-05:qi-ye-wang-zhan-bu-ju-shi-jian-10-xin-wen-xiang-qing-ye-de-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 页面结构&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;list_box&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;新闻中心&lt;span class="nt"&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;【慕客访谈▪用户篇】“有为屌丝”在路上&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
@@ -9207,7 +9319,7 @@ float : left 或 float:right
         &lt;span class="nb"&gt;text-indent&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="err"&gt;缩进&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="err"&gt;个文本尺寸&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-09 新闻列表页制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html" rel="alternate"></link><published>2015-04-04T22:12:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-04:qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 新闻列表页的制作&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-09 新闻列表页制作</title><link href="/qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html" rel="alternate"></link><published>2015-04-04T22:12:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-04:qi-ye-wang-zhan-bu-ju-shi-jian-09-xin-wen-lie-biao-ye-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 新闻列表页的制作&lt;/h2&gt;
 &lt;p&gt;新闻列表页和首页对比如下：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="对比" src="images/qy-web-13.png" /&gt;&lt;/p&gt;
 &lt;p&gt;主要是两点不同，第一个是新闻列表页焦点图不再具有切换效果，图片大小也不一样；第二个就是内容区是2栏可变长的。&lt;/p&gt;
@@ -9402,7 +9514,7 @@ float : left 或 float:right
         &lt;span class="p"&gt;}&lt;/span&gt;
     &lt;span class="err"&gt;}&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-08 底部版权区制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-08-di-bu-ban-quan-qu-zhi-zuo.html" rel="alternate"></link><published>2015-04-04T21:31:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-04:qi-ye-wang-zhan-bu-ju-shi-jian-08-di-bu-ban-quan-qu-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 结构分析&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-08 底部版权区制作</title><link href="/qi-ye-wang-zhan-bu-ju-shi-jian-08-di-bu-ban-quan-qu-zhi-zuo.html" rel="alternate"></link><published>2015-04-04T21:31:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-04:qi-ye-wang-zhan-bu-ju-shi-jian-08-di-bu-ban-quan-qu-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 结构分析&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="底部版权区" src="images/qy-web-12.png" /&gt;&lt;/p&gt;
 &lt;h2 id="2"&gt;2. 文档结构&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -9482,7 +9594,7 @@ float : left 或 float:right
         &lt;span class="err"&gt;}&lt;/span&gt;
     &lt;span class="err"&gt;}&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-07 侧边栏制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-07-ce-bian-lan-zhi-zuo.html" rel="alternate"></link><published>2015-04-04T21:01:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-04:qi-ye-wang-zhan-bu-ju-shi-jian-07-ce-bian-lan-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 结构分析&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-07 侧边栏制作</title><link href="/qi-ye-wang-zhan-bu-ju-shi-jian-07-ce-bian-lan-zhi-zuo.html" rel="alternate"></link><published>2015-04-04T21:01:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-04:qi-ye-wang-zhan-bu-ju-shi-jian-07-ce-bian-lan-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 结构分析&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="侧边栏" src="images/qy-web-11.png" /&gt;&lt;/p&gt;
 &lt;p&gt;从图中我们知道，除标题外，其余内容大致分成上下两部分。分别是上面的视频和下面的广告。下面我们来实现这个效果。&lt;/p&gt;
 &lt;h2 id="2"&gt;2. 文档结构&lt;/h2&gt;
@@ -9522,7 +9634,7 @@ float : left 或 float:right
     &lt;span class="nl"&gt;height:&lt;/span&gt;&lt;span class="err"&gt;55&lt;/span&gt;&lt;span class="nf"&gt;px&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;
     &lt;span class="nl"&gt;border:&lt;/span&gt; &lt;span class="err"&gt;1&lt;/span&gt;&lt;span class="nf"&gt;px&lt;/span&gt; &lt;span class="no"&gt;solid&lt;/span&gt; &lt;span class="c"&gt;#E8E8E8;&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-06 课程中心制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-06-ke-cheng-zhong-xin-zhi-zuo.html" rel="alternate"></link><published>2015-04-03T21:33:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-03:qi-ye-wang-zhan-bu-ju-shi-jian-06-ke-cheng-zhong-xin-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 结构分析&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-06 课程中心制作</title><link href="/qi-ye-wang-zhan-bu-ju-shi-jian-06-ke-cheng-zhong-xin-zhi-zuo.html" rel="alternate"></link><published>2015-04-03T21:33:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-03:qi-ye-wang-zhan-bu-ju-shi-jian-06-ke-cheng-zhong-xin-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 结构分析&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="课程中心" src="images/qy-web-09.png" /&gt;&lt;/p&gt;
 &lt;h2 id="2"&gt;2. 网页结构&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;course&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -9643,7 +9755,7 @@ float : left 或 float:right
 
 
 &lt;p&gt;效果图如下：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="images/qy-web-10.png" src="images/qy-web-10.png" /&gt;&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-05 新闻中心制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html" rel="alternate"></link><published>2015-04-03T14:00:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-03:qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1、结构分析&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="images/qy-web-10.png" src="images/qy-web-10.png" /&gt;&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-05 新闻中心制作</title><link href="/qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html" rel="alternate"></link><published>2015-04-03T14:00:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-03:qi-ye-wang-zhan-bu-ju-shi-jian-05-xin-wen-zhong-xin-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1、结构分析&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="新闻中心" src="images/qy-web-07.png" /&gt;&lt;/p&gt;
 &lt;p&gt;从上到下可以分为新闻标题、图片新闻和图片新闻。&lt;/p&gt;
 &lt;h2 id="2"&gt;2、创建结构&lt;/h2&gt;
@@ -9774,7 +9886,7 @@ float : left 或 float:right
 
 
 &lt;p&gt;注意li符号可以通过background、padding-left、list-style-type 3者结合进行设置，也可使用list-style-image进行设置。&lt;/p&gt;
-&lt;p&gt;list-style-type可以设置列表项目符号为：none无项目符号，disc实心圆，circle空心圆，square实心方块等但是不可以设置图片为项目符号。&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-04 信息展示区制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html" rel="alternate"></link><published>2015-04-03T11:22:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-03:qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 结构分析&lt;/h2&gt;
+&lt;p&gt;list-style-type可以设置列表项目符号为：none无项目符号，disc实心圆，circle空心圆，square实心方块等但是不可以设置图片为项目符号。&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-04 信息展示区制作</title><link href="/qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html" rel="alternate"></link><published>2015-04-03T11:22:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-03:qi-ye-wang-zhan-bu-ju-shi-jian-04-xin-xi-zhan-shi-qu-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 结构分析&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="结构分析" src="images/qy-web-05.png" /&gt;&lt;/p&gt;
 &lt;p&gt;分析如下：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="结构分析" src="images/qy-web-06.png" /&gt;&lt;/p&gt;
@@ -9822,7 +9934,7 @@ float : left 或 float:right
     &lt;span class="nb"&gt;width&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;230px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="nb"&gt;background-color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#333&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-03焦点图制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html" rel="alternate"></link><published>2015-04-02T01:19:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-02:qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html</id><summary type="html">&lt;h2 id="1-myfocus"&gt;1. 使用myFocus焦点图库&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-03焦点图制作</title><link href="/qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html" rel="alternate"></link><published>2015-04-02T01:19:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-02:qi-ye-wang-zhan-bu-ju-shi-jian-03jiao-dian-tu-zhi-zuo.html</id><summary type="html">&lt;h2 id="1-myfocus"&gt;1. 使用myFocus焦点图库&lt;/h2&gt;
 &lt;p&gt;http://demo.jb51.net/js/myfocus/download.html&lt;/p&gt;
 &lt;p&gt;选择demo演示下载解压，拷贝js文件夹与当前js文件夹合并。&lt;/p&gt;
 &lt;h3 id="11-myfocus"&gt;1.1 引入myFocus库文件和样式文件&lt;/h3&gt;
@@ -9895,7 +10007,7 @@ float : left 或 float:right
 
 
 &lt;p&gt;运行效果如下：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="焦点图" src="images/qy-web-04.png" /&gt;&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-02导航部分制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html" rel="alternate"></link><published>2015-04-01T23:59:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-01:qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 分析&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="焦点图" src="images/qy-web-04.png" /&gt;&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-02导航部分制作</title><link href="/qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html" rel="alternate"></link><published>2015-04-01T23:59:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-01:qi-ye-wang-zhan-bu-ju-shi-jian-02dao-hang-bu-fen-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 分析&lt;/h2&gt;
 &lt;p&gt;我们将导航分为左中右三部分。
 其中导航中部分为两部分，分别放置菜单栏和搜索框。
 导航栏菜单使用有序列表或无需列表，搜索框使用form表单的input标签。&lt;/p&gt;
@@ -10056,7 +10168,7 @@ float : left 或 float:right
 
 
 &lt;p&gt;效果图：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="菜单效果图" src="images/qy-web-03.jpg" /&gt;&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-01页面头部制作</title><link href="http://liulixiang1988.github.io/qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html" rel="alternate"></link><published>2015-04-01T09:05:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-04-01:qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 总体分析&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="菜单效果图" src="images/qy-web-03.jpg" /&gt;&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>企业网站布局实践-01页面头部制作</title><link href="/qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html" rel="alternate"></link><published>2015-04-01T09:05:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-04-01:qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html</id><summary type="html">&lt;h2 id="1"&gt;1. 总体分析&lt;/h2&gt;
 &lt;p&gt;网站的架构采用自顶向下渐进明细的过程进行规划。&lt;/p&gt;
 &lt;p&gt;网站首页设计如下：
 &lt;img alt="" src="images/qy-web-01.png" /&gt;&lt;/p&gt;
@@ -10210,7 +10322,7 @@ html&lt;/p&gt;
     &lt;span class="nl"&gt;font-size:&lt;/span&gt; &lt;span class="err"&gt;16&lt;/span&gt;&lt;span class="nf"&gt;px&lt;/span&gt;&lt;span class="err"&gt;;&lt;/span&gt;
     &lt;span class="nl"&gt;color:&lt;/span&gt; &lt;span class="c"&gt;#C00;&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>网页布局基础</title><link href="http://liulixiang1988.github.io/wang-ye-bu-ju-ji-chu.html" rel="alternate"></link><published>2015-03-31T14:39:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-03-31:wang-ye-bu-ju-ji-chu.html</id><summary type="html">&lt;h2 id="1"&gt;1. 自动居中一列布局&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="HTML"></category><category term="LESS"></category></entry><entry><title>网页布局基础</title><link href="/wang-ye-bu-ju-ji-chu.html" rel="alternate"></link><published>2015-03-31T14:39:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-03-31:wang-ye-bu-ju-ji-chu.html</id><summary type="html">&lt;h2 id="1"&gt;1. 自动居中一列布局&lt;/h2&gt;
 &lt;h3 id="11"&gt;1.1 相关知识讲解&lt;/h3&gt;
 &lt;h4 id="111-w3c"&gt;1.1.1 W3C标准：&lt;/h4&gt;
 &lt;p&gt;结构化标准语言(HTML和XML)
@@ -10374,7 +10486,7 @@ position有4个属性值：static, relative, absolute, fixed(固定定位)&lt;/p
 relative:父元素相对定位
 absolute：自适应宽度元素绝对定位
 margin:让绝对定位的元素给固定宽度的元素让出一些位置。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;注意：固定宽度列的高度要大于自适应列&lt;/strong&gt;&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category></entry><entry><title>LESS学习笔记</title><link href="http://liulixiang1988.github.io/lessxue-xi-bi-ji.html" rel="alternate"></link><published>2015-03-29T08:59:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-03-29:lessxue-xi-bi-ji.html</id><summary type="html">&lt;h2 id="1-less"&gt;1. LESS注释&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;注意：固定宽度列的高度要大于自适应列&lt;/strong&gt;&lt;/p&gt;</summary><category term="CSS"></category><category term="HTML"></category></entry><entry><title>LESS学习笔记</title><link href="/lessxue-xi-bi-ji.html" rel="alternate"></link><published>2015-03-29T08:59:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-03-29:lessxue-xi-bi-ji.html</id><summary type="html">&lt;h2 id="1-less"&gt;1. LESS注释&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//不会被编译到CSS中
 /*编译到CSS*/
 &lt;/pre&gt;&lt;/div&gt;
@@ -10456,7 +10568,7 @@ margin:让绝对定位的元素给固定宽度的元素让出一些位置。&lt;
         }
     }
 }
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="LESS"></category></entry><entry><title>PhoneGap命令行的使用</title><link href="http://liulixiang1988.github.io/phonegapming-ling-xing-de-shi-yong.html" rel="alternate"></link><published>2015-03-29T08:59:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2015-03-29:phonegapming-ling-xing-de-shi-yong.html</id><summary type="html">&lt;h2 id="1"&gt;1. 环境配置&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CSS"></category><category term="LESS"></category></entry><entry><title>PhoneGap命令行的使用</title><link href="/phonegapming-ling-xing-de-shi-yong.html" rel="alternate"></link><published>2015-03-29T08:59:00+08:00</published><author><name>刘理想</name></author><id>tag:,2015-03-29:phonegapming-ling-xing-de-shi-yong.html</id><summary type="html">&lt;h2 id="1"&gt;1. 环境配置&lt;/h2&gt;
 &lt;h3 id="11"&gt;1.1 常用框架&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;jQuery&lt;/li&gt;
@@ -10594,7 +10706,7 @@ after_prepare, after_build, after_build, etc&lt;/p&gt;
 &lt;h2 id="9"&gt;9 下一步&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;grunt-phonegap&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="PhoneGap"></category></entry><entry><title>ASP.NET MVC5 学习笔记-5 测试</title><link href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html" rel="alternate"></link><published>2014-12-04T22:15:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-12-04:aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html</id><summary type="html">
+&lt;/ul&gt;</summary><category term="PhoneGap"></category></entry><entry><title>ASP.NET MVC5 学习笔记-5 测试</title><link href="/aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html" rel="alternate"></link><published>2014-12-04T22:15:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-12-04:aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html</id><summary type="html">
 &lt;h1 id="aspnet-mvc5-5"&gt;ASP.NET MVC5 学习笔记-5 测试&lt;/h1&gt;
 &lt;h2 id="1"&gt;1. 测试步骤&lt;/h2&gt;
 &lt;ul&gt;
@@ -10791,7 +10903,7 @@ namespace EntityExtensions {
 用最简单的方法实现
 优化&lt;/p&gt;
 &lt;h3 id="42"&gt;4.2 创建测试&lt;/h3&gt;
-&lt;p&gt;注意，测试应该也引用EF。&lt;/p&gt;</summary><category term="DotNet"></category><category term="Web"></category><category term="ASP.NET MVC"></category></entry><entry><title>ASP.NET MVC5 学习笔记-3 Model</title><link href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-3-model.html" rel="alternate"></link><published>2014-10-31T20:48:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-31:aspnet-mvc5-xue-xi-bi-ji-3-model.html</id><summary type="html">
+&lt;p&gt;注意，测试应该也引用EF。&lt;/p&gt;</summary><category term="DotNet"></category><category term="Web"></category><category term="ASP.NET MVC"></category></entry><entry><title>ASP.NET MVC5 学习笔记-3 Model</title><link href="/aspnet-mvc5-xue-xi-bi-ji-3-model.html" rel="alternate"></link><published>2014-10-31T20:48:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-10-31:aspnet-mvc5-xue-xi-bi-ji-3-model.html</id><summary type="html">
 &lt;h1 id="aspnet-mvc5-3-model"&gt;ASP.NET MVC5 学习笔记-3 Model&lt;/h1&gt;
 &lt;h2 id="1-model"&gt;1. Model&lt;/h2&gt;
 &lt;h3 id="11"&gt;1.1 添加一个模型&lt;/h3&gt;
@@ -11249,7 +11361,7 @@ System.Data.Entity.Migrations.Infrastructure.AutomaticDataLossException: 未应�
 wzxhzdk:24
 
 PM&amp;gt; Update-Database -Verbose -Force
-```&lt;/aspnetmvcessential.models.applicationdbcontext&gt;&lt;/mvcmovie.models.movie&gt;&lt;/actionresult&gt;&lt;/checkoutaccount&gt;&lt;/applicationuser&gt;&lt;/section&gt;&lt;/div&gt;&lt;/div&gt;</summary><category term="DotNet"></category><category term="Web"></category><category term="ASP.NET MVC"></category></entry><entry><title>ASP.NET MVC5 学习笔记-4 OWIN和Katana</title><link href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html" rel="alternate"></link><published>2014-10-31T20:48:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-31:aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html</id><summary type="html">
+```&lt;/aspnetmvcessential.models.applicationdbcontext&gt;&lt;/mvcmovie.models.movie&gt;&lt;/actionresult&gt;&lt;/checkoutaccount&gt;&lt;/applicationuser&gt;&lt;/section&gt;&lt;/div&gt;&lt;/div&gt;</summary><category term="DotNet"></category><category term="Web"></category><category term="ASP.NET MVC"></category></entry><entry><title>ASP.NET MVC5 学习笔记-4 OWIN和Katana</title><link href="/aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html" rel="alternate"></link><published>2014-10-31T20:48:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-10-31:aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html</id><summary type="html">
 &lt;h1 id="aspnet-mvc5-4-owinkatana"&gt;ASP.NET MVC5 学习笔记-4 OWIN和Katana&lt;/h1&gt;
 &lt;h2 id="1-owin"&gt;1. Owin&lt;/h2&gt;
 &lt;p&gt;OWIN全名：Open Web Interface for .NET. 它是一个说明，而非一个框架，该声明用来实现Web服务器和框架的松耦合。它提供了模块化、轻量级和便携的设计。类似Node.js, WSGI.&lt;/p&gt;
@@ -11445,7 +11557,7 @@ public ActionResult Details()
 
     }
 }
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="DotNet"></category><category term="Web"></category><category term="ASP.NET MVC"></category></entry><entry><title>ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器</title><link href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html" rel="alternate"></link><published>2014-10-31T09:28:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-31:aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="DotNet"></category><category term="Web"></category><category term="ASP.NET MVC"></category></entry><entry><title>ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器</title><link href="/aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html" rel="alternate"></link><published>2014-10-31T09:28:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-10-31:aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html</id><summary type="html">
 &lt;h1 id="aspnet-mvc5-1"&gt;ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器&lt;/h1&gt;
 &lt;h2 id="1-action"&gt;1. Action&lt;/h2&gt;
 &lt;h3 id="11"&gt;1.1 新建项目&lt;/h3&gt;
@@ -11719,7 +11831,7 @@ public ActionResult Contact(string message)
     &lt;span class="na"&gt;Product p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;db.Products.Find(id);&lt;/span&gt;
 &lt;span class="s"&gt;    return View(p);&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="DotNet"></category><category term="Web"></category><category term="ASP.NET MVC"></category></entry><entry><title>ASP.NET MVC5 学习笔记-2 Razor</title><link href="http://liulixiang1988.github.io/aspnet-mvc5-xue-xi-bi-ji-2-razor.html" rel="alternate"></link><published>2014-10-31T09:28:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-31:aspnet-mvc5-xue-xi-bi-ji-2-razor.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="DotNet"></category><category term="Web"></category><category term="ASP.NET MVC"></category></entry><entry><title>ASP.NET MVC5 学习笔记-2 Razor</title><link href="/aspnet-mvc5-xue-xi-bi-ji-2-razor.html" rel="alternate"></link><published>2014-10-31T09:28:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-10-31:aspnet-mvc5-xue-xi-bi-ji-2-razor.html</id><summary type="html">
 &lt;h1 id="aspnet-mvc5-2-razor"&gt;ASP.NET MVC5 学习笔记-2 Razor&lt;/h1&gt;
 &lt;h2 id="1-razor"&gt;1. Razor&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@*注释*@
@@ -11884,7 +11996,7 @@ ViewBag.movieGenre = new SelectList(GenreLst);
 &lt;p&gt;}
 ```&lt;/p&gt;
 &lt;h2 id="5-bootstrap"&gt;5. Bootstrap&lt;/h2&gt;
-&lt;p&gt;ASP.NET MVC 5默认支持BootStrap&lt;/p&gt;</summary><category term="DotNet"></category><category term="Web"></category><category term="ASP.NET MVC"></category></entry><entry><title>[翻译]使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</title><link href="http://liulixiang1988.github.io/fan-yi-shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html" rel="alternate"></link><published>2014-10-30T00:00:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-30:fan-yi-shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html</id><summary type="html">&lt;h1 id="aspnet-web-api-2owinidentitytoken1"&gt;使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)&lt;/h1&gt;
+&lt;p&gt;ASP.NET MVC 5默认支持BootStrap&lt;/p&gt;</summary><category term="DotNet"></category><category term="Web"></category><category term="ASP.NET MVC"></category></entry><entry><title>[翻译]使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</title><link href="/fan-yi-shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html" rel="alternate"></link><published>2014-10-30T00:00:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-10-30:fan-yi-shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html</id><summary type="html">&lt;h1 id="aspnet-web-api-2owinidentitytoken1"&gt;使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)&lt;/h1&gt;
 &lt;h2 id="0"&gt;0. 简介&lt;/h2&gt;
 &lt;h3 id="01-token"&gt;0.1 Token认证&lt;/h3&gt;
 &lt;h3 id="02-web-api"&gt;0.2 Web API&lt;/h3&gt;
@@ -12276,7 +12388,7 @@ namespace AngularJSAuthentication.API.Models
 &lt;p&gt;注意，content-type和payload type都是"x-www-form-urlencoded"类型，因此payload body将是form(grant_type=password&amp;amp;username="liulx"&amp;amp;password="123456")。如果一切正常我们会在响应中收到一个签名令牌。&lt;/p&gt;
 &lt;p&gt;"grant_type"指明授权类型，此处是密码。&lt;/p&gt;
 &lt;p&gt;现在既然有了token，我们就可以访问安全数据/api/Orders了：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt text" src="images/dot-net-owin-3.png" /&gt;&lt;/p&gt;</summary></entry><entry><title>Flask笔记－01 基本应用框架</title><link href="http://liulixiang1988.github.io/flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html" rel="alternate"></link><published>2014-10-18T23:11:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-18:flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html</id><summary type="html">&lt;h2 id="1"&gt;1. 初始化&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="images/dot-net-owin-3.png" /&gt;&lt;/p&gt;</summary></entry><entry><title>Flask笔记－01 基本应用框架</title><link href="/flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html" rel="alternate"></link><published>2014-10-18T23:11:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-10-18:flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html</id><summary type="html">&lt;h2 id="1"&gt;1. 初始化&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
 
 &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -12523,7 +12635,7 @@ optional arguments:
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;下一章我们将介绍模板。&lt;/p&gt;</summary><category term="Flask"></category><category term="Flask笔记"></category></entry><entry><title>使用Android开发一个阅后即焚－03 在tab中使用fragment</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html" rel="alternate"></link><published>2014-10-15T23:06:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-15:shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html</id><summary type="html">&lt;h2 id="1-fragment"&gt;1. 为什么使用fragment?&lt;/h2&gt;
+&lt;p&gt;下一章我们将介绍模板。&lt;/p&gt;</summary><category term="Flask"></category><category term="Flask笔记"></category></entry><entry><title>使用Android开发一个阅后即焚－03 在tab中使用fragment</title><link href="/shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html" rel="alternate"></link><published>2014-10-15T23:06:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-10-15:shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-03-zai-tabzhong-shi-yong-fragment.html</id><summary type="html">&lt;h2 id="1-fragment"&gt;1. 为什么使用fragment?&lt;/h2&gt;
 &lt;p&gt;简而言之，fragment可以让我们复用设计和代码。&lt;/p&gt;
 &lt;h2 id="2-fragmenttab"&gt;2. fragment如何作为tab使用&lt;/h2&gt;
 &lt;ul&gt;
@@ -12723,7 +12835,7 @@ optional arguments:
                         .setTabListener(this));
     }
 }
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android"></category></entry><entry><title>使用Android开发一个阅后即焚-02 使用Parse.com添加用户</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html" rel="alternate"></link><published>2014-10-05T10:12:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-05:shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html</id><summary type="html">&lt;h2 id="1-parsecom"&gt;1. 创建Parse.com账户和应用&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android"></category></entry><entry><title>使用Android开发一个阅后即焚-02 使用Parse.com添加用户</title><link href="/shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html" rel="alternate"></link><published>2014-10-05T10:12:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-10-05:shi-yong-androidkai-fa-yi-ge-yue-hou-ji-fen-02-shi-yong-parsecomtian-jia-yong-hu.html</id><summary type="html">&lt;h2 id="1-parsecom"&gt;1. 创建Parse.com账户和应用&lt;/h2&gt;
 &lt;h3 id="11-parsecom"&gt;1.1 创建Parse.com的账户&lt;/h3&gt;
 &lt;h3 id="12-parsecomsdk"&gt;1.2 添加Parse.com的SDK&lt;/h3&gt;
 &lt;p&gt;直接将Paser.com的SDK添加到app/libs文件夹内即可。&lt;/p&gt;
@@ -12994,7 +13106,7 @@ optional arguments:
 
 
 &lt;h2 id="7"&gt;7. 总结&lt;/h2&gt;
-&lt;p&gt;本节，我们学习了如何使用Parse，如何将Parse SDK添加到现有项目中，如何创建用户、用户登录、用户登出、使用对话框处理错误和使用指示器来显示注册、登录状态等等。&lt;/p&gt;</summary><category term="Android"></category></entry><entry><title>使用Android开发阅后即焚应用-01 开始</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html" rel="alternate"></link><published>2014-10-04T09:48:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-04:shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html</id><summary type="html">&lt;h2 id="1"&gt;1.阅后即焚应用介绍&lt;/h2&gt;
+&lt;p&gt;本节，我们学习了如何使用Parse，如何将Parse SDK添加到现有项目中，如何创建用户、用户登录、用户登出、使用对话框处理错误和使用指示器来显示注册、登录状态等等。&lt;/p&gt;</summary><category term="Android"></category></entry><entry><title>使用Android开发阅后即焚应用-01 开始</title><link href="/shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html" rel="alternate"></link><published>2014-10-04T09:48:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-10-04:shi-yong-androidkai-fa-yue-hou-ji-fen-ying-yong-01-kai-shi.html</id><summary type="html">&lt;h2 id="1"&gt;1.阅后即焚应用介绍&lt;/h2&gt;
 &lt;p&gt;阅后即焚是一款应用，用户可以适用它分享文字、照片给他的朋友，朋友们看过发来的消息之后该消息会自动销毁。&lt;/p&gt;
 &lt;p&gt;阅后即焚包含用户登录、用户注册、收件箱、好友列表、好友编辑、拍照等功能。&lt;/p&gt;
 &lt;hr /&gt;
@@ -13194,7 +13306,7 @@ optional arguments:
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;这样，当在登录界面时按返回按钮就不会有到收件箱这种现象了。&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category><category term="Androi阅后即焚"></category></entry><entry><title>使用Android开发一个博客阅读器-05 使用Intent显示和共享博客</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html" rel="alternate"></link><published>2014-10-01T13:30:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-10-01:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html</id><summary type="html">&lt;h2 id="1"&gt;1 在浏览器中打开网页&lt;/h2&gt;
+&lt;p&gt;这样，当在登录界面时按返回按钮就不会有到收件箱这种现象了。&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category><category term="Androi阅后即焚"></category></entry><entry><title>使用Android开发一个博客阅读器-05 使用Intent显示和共享博客</title><link href="/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html" rel="alternate"></link><published>2014-10-01T13:30:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-10-01:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-05-shi-yong-intentxian-shi-he-gong-xiang-bo-ke.html</id><summary type="html">&lt;h2 id="1"&gt;1 在浏览器中打开网页&lt;/h2&gt;
 &lt;h3 id="11-listview"&gt;1.1 &lt;code&gt;ListView&lt;/code&gt;添加单击事件响应&lt;/h3&gt;
 &lt;p&gt;要是&lt;code&gt;ListView&lt;/code&gt;响应单击事件，重载函数：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@Override&lt;/span&gt;
@@ -13350,7 +13462,7 @@ optional arguments:
 - &lt;code&gt;Intent.createChooser(shareIntent, getString(R.string.share_post))&lt;/code&gt;选择Intent菜单&lt;/p&gt;
 &lt;h2 id="4"&gt;4 总结&lt;/h2&gt;
 &lt;p&gt;本节主要学习了如何使用Intent在浏览器、应用中打开网址，以及如何使用简单的共享。&lt;/p&gt;
-&lt;p&gt;至此，该应用完结，你创建了一个完整的应用。&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category><category term="Androi博客阅读"></category></entry><entry><title>使用Android开发一个博客阅读器-04 在List中展现数据</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-04-zai-listzhong-zhan-xian-shu-ju.html" rel="alternate"></link><published>2014-09-27T11:30:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-09-27:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-04-zai-listzhong-zhan-xian-shu-ju.html</id><summary type="html">&lt;h2 id="1-asynctask"&gt;1 完成我们的异步任务AsyncTask&lt;/h2&gt;
+&lt;p&gt;至此，该应用完结，你创建了一个完整的应用。&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category><category term="Androi博客阅读"></category></entry><entry><title>使用Android开发一个博客阅读器-04 在List中展现数据</title><link href="/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-04-zai-listzhong-zhan-xian-shu-ju.html" rel="alternate"></link><published>2014-09-27T11:30:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-09-27:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-04-zai-listzhong-zhan-xian-shu-ju.html</id><summary type="html">&lt;h2 id="1-asynctask"&gt;1 完成我们的异步任务AsyncTask&lt;/h2&gt;
 &lt;p&gt;在&lt;a href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-03-cong-wang-luo-zhong-huo-qu-shu-ju.html"&gt;前一篇文章&lt;/a&gt;中，我们的JSON数据并不是从主线程中直接获取，而是使用了&lt;code&gt;AsyncTask&lt;/code&gt;类。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;AsyncTask&lt;/code&gt;类执行异步操作有4步：&lt;/p&gt;
 &lt;ol&gt;
@@ -13587,7 +13699,7 @@ optional arguments:
 
 
 &lt;h2 id="6"&gt;6 总结&lt;/h2&gt;
-&lt;p&gt;本节我们学习了如何处理异步的数据；Adapter适配器的使用；对话框的使用；进度指示器的使用；SimpleAdapter的使用。&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category><category term="Androi博客阅读"></category></entry><entry><title>Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移</title><link href="http://liulixiang1988.github.io/django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html" rel="alternate"></link><published>2014-09-26T18:55:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-09-26:django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html</id><summary type="html">&lt;h2 id="1-sql-sever"&gt;1. SQL Sever驱动&lt;/h2&gt;
+&lt;p&gt;本节我们学习了如何处理异步的数据；Adapter适配器的使用；对话框的使用；进度指示器的使用；SimpleAdapter的使用。&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category><category term="Androi博客阅读"></category></entry><entry><title>Django SQL Server数据库驱动,根据现有数据库生成models以及数据库迁移</title><link href="/django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html" rel="alternate"></link><published>2014-09-26T18:55:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-09-26:django-sql-servershu-ju-ku-qu-dong-gen-ju-xian-you-shu-ju-ku-sheng-cheng-modelsyi-ji-shu-ju-ku-qian-yi.html</id><summary type="html">&lt;h2 id="1-sql-sever"&gt;1. SQL Sever驱动&lt;/h2&gt;
 &lt;h3 id="11"&gt;1.1 安装&lt;/h3&gt;
 &lt;p&gt;mssql数据库 使用django-mssql，依赖pywin32，如果安装时发生错误，请用下面这种方法：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install django-mssql --pre
@@ -13661,7 +13773,7 @@ DATABASES = {
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;，可以使用&lt;code&gt;python mange.py sqlmigrate 迁移名 版本号&lt;/code&gt;查看迁移，比如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py sqlmigrate polls 00001
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Python"></category><category term="Django"></category></entry><entry><title>使用Android开发一个博客阅读器-03 从网络中获取数据</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-03-cong-wang-luo-zhong-huo-qu-shu-ju.html" rel="alternate"></link><published>2014-09-26T15:37:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-09-26:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-03-cong-wang-luo-zhong-huo-qu-shu-ju.html</id><summary type="html">&lt;h2 id="1-url"&gt;1 获取URL&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Python"></category><category term="Django"></category></entry><entry><title>使用Android开发一个博客阅读器-03 从网络中获取数据</title><link href="/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-03-cong-wang-luo-zhong-huo-qu-shu-ju.html" rel="alternate"></link><published>2014-09-26T15:37:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-09-26:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-03-cong-wang-luo-zhong-huo-qu-shu-ju.html</id><summary type="html">&lt;h2 id="1-url"&gt;1 获取URL&lt;/h2&gt;
 &lt;p&gt;在MainListActivity.java中添加两个常量：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kd"&gt;static&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;NUMBER_OF_POSTS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;//博客数目&lt;/span&gt;
 &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kd"&gt;static&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;TAG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MainListActivity&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getSimpleName&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt; &lt;span class="c1"&gt;//用来做日志输出时调用&lt;/span&gt;
@@ -13922,7 +14034,7 @@ DATABASES = {
 
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Response Status&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;responseCode&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 &lt;span class="o"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category><category term="Androi博客阅读"></category></entry><entry><title>使用Android开发一个博客阅读器-02 从头开始创建</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html" rel="alternate"></link><published>2014-09-24T16:16:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-09-24:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html</id><summary type="html">&lt;h2 id="1listactivity"&gt;1创建项目和ListActivity&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category><category term="Androi博客阅读"></category></entry><entry><title>使用Android开发一个博客阅读器-02 从头开始创建</title><link href="/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html" rel="alternate"></link><published>2014-09-24T16:16:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-09-24:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-02-cong-tou-kai-shi-chuang-jian.html</id><summary type="html">&lt;h2 id="1listactivity"&gt;1创建项目和ListActivity&lt;/h2&gt;
 &lt;h3 id="11"&gt;1.1 创建项目&lt;/h3&gt;
 &lt;p&gt;创建Android项目，项目名称BlogReader，视图名称为MainListActivity。&lt;/p&gt;
 &lt;h3 id="12-activity"&gt;1.2 更改Activity&lt;/h3&gt;
@@ -14071,7 +14183,7 @@ DATABASES = {
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;其中&lt;code&gt;getResources&lt;/code&gt;获得资源，&lt;code&gt;resource.getStringArrary&lt;/code&gt;获得数组。&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category><category term="Androi博客阅读"></category></entry><entry><title>使用Android开发一个博客阅读器-01 使用Master-Detail模板</title><link href="http://liulixiang1988.github.io/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html" rel="alternate"></link><published>2014-09-19T21:36:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-09-19:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html</id><summary type="html">&lt;p&gt;项目地址：https://github.com/liulixiang1988/android_demo/tree/master/MasterDetailExample&lt;/p&gt;
+&lt;p&gt;其中&lt;code&gt;getResources&lt;/code&gt;获得资源，&lt;code&gt;resource.getStringArrary&lt;/code&gt;获得数组。&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category><category term="Androi博客阅读"></category></entry><entry><title>使用Android开发一个博客阅读器-01 使用Master-Detail模板</title><link href="/shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html" rel="alternate"></link><published>2014-09-19T21:36:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-09-19:shi-yong-androidkai-fa-yi-ge-bo-ke-yue-du-qi-01-shi-yong-master-detailmo-ban.html</id><summary type="html">&lt;p&gt;项目地址：https://github.com/liulixiang1988/android_demo/tree/master/MasterDetailExample&lt;/p&gt;
 &lt;p&gt;我们使用Master-Detail模板来做本应用的模板。&lt;/p&gt;
 &lt;h2 id="master-detail"&gt;建立Master-Detail模板&lt;/h2&gt;
 &lt;p&gt;新建Android项目，命名为MasterDetailExample，模板类型选择为Master-Detail。&lt;/p&gt;
@@ -14208,7 +14320,7 @@ DATABASES = {
 
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;rootView&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
     &lt;span class="o"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category><category term="Androi博客阅读"></category></entry><entry><title>Nancy Web框架</title><link href="http://liulixiang1988.github.io/nancy-webkuang-jia.html" rel="alternate"></link><published>2014-09-12T23:39:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-09-12:nancy-webkuang-jia.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category><category term="Androi博客阅读"></category></entry><entry><title>Nancy Web框架</title><link href="/nancy-webkuang-jia.html" rel="alternate"></link><published>2014-09-12T23:39:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-09-12:nancy-webkuang-jia.html</id><summary type="html">
 &lt;h1 id="nancy"&gt;Nancy框架&lt;/h1&gt;
 &lt;h2 id="nancy_1"&gt;一、创建第一个Nancy应用&lt;/h2&gt;
 &lt;ol&gt;
@@ -15633,7 +15745,7 @@ var config =
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Authorization&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Token&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;token&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;goes&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;here&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h4 id="8_1"&gt;8. 幕后的工作&lt;/h4&gt;
-&lt;p&gt;https://github.com/NancyFx/Nancy/commit/9ae0a5494bc335c3d940d730ae5d5f18c1018836&lt;/p&gt;</summary><category term="Nancy"></category><category term="C#"></category><category term=".NET"></category><category term="web"></category></entry><entry><title>Django REST Framework笔记-01 介绍与安装</title><link href="http://liulixiang1988.github.io/django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html" rel="alternate"></link><published>2014-09-08T22:15:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-09-08:django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html</id><summary type="html">&lt;h2 id="django-rest-framework"&gt;一、 Django Rest Framework介绍&lt;/h2&gt;
+&lt;p&gt;https://github.com/NancyFx/Nancy/commit/9ae0a5494bc335c3d940d730ae5d5f18c1018836&lt;/p&gt;</summary><category term="Nancy"></category><category term="C#"></category><category term=".NET"></category><category term="web"></category></entry><entry><title>Django REST Framework笔记-01 介绍与安装</title><link href="/django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html" rel="alternate"></link><published>2014-09-08T22:15:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-09-08:django-rest-frameworkbi-ji-01-jie-shao-yu-an-zhuang.html</id><summary type="html">&lt;h2 id="django-rest-framework"&gt;一、 Django Rest Framework介绍&lt;/h2&gt;
 &lt;p&gt;项目地址：http://www.django-rest-framework.org/&lt;/p&gt;
 &lt;p&gt;Django REST framewrok（简称DRF），强大而且灵活的工具箱，它使创建Web API变得简单。&lt;/p&gt;
 &lt;p&gt;你需要使用REST框架的一些原因：&lt;/p&gt;
@@ -15750,7 +15862,7 @@ pip install django-filter  # Filtering support
 &lt;li&gt;&lt;a href="http://www.django-rest-framework.org/tutorial/5-relationships-and-hyperlinked-apis"&gt;5-关系和超链接API&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.django-rest-framework.org/tutorial/6-viewsets-and-routers"&gt;6-视图集合和路由&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;为了测试，我们提供了一个API教程结束时的例子，在&lt;a href="http://restframework.herokuapp.com/"&gt;这里&lt;/a&gt;.&lt;/p&gt;</summary><category term="Python"></category><category term="Django"></category></entry><entry><title>Android学习笔记-06 Android用户界面之布局</title><link href="http://liulixiang1988.github.io/androidxue-xi-bi-ji-06-androidyong-hu-jie-mian-zhi-bu-ju.html" rel="alternate"></link><published>2014-08-28T08:36:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-08-28:androidxue-xi-bi-ji-06-androidyong-hu-jie-mian-zhi-bu-ju.html</id><summary type="html">&lt;h2 id="1-relative-layout"&gt;1 Relative Layout&lt;/h2&gt;
+&lt;p&gt;为了测试，我们提供了一个API教程结束时的例子，在&lt;a href="http://restframework.herokuapp.com/"&gt;这里&lt;/a&gt;.&lt;/p&gt;</summary><category term="Python"></category><category term="Django"></category></entry><entry><title>Android学习笔记-06 Android用户界面之布局</title><link href="/androidxue-xi-bi-ji-06-androidyong-hu-jie-mian-zhi-bu-ju.html" rel="alternate"></link><published>2014-08-28T08:36:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-08-28:androidxue-xi-bi-ji-06-androidyong-hu-jie-mian-zhi-bu-ju.html</id><summary type="html">&lt;h2 id="1-relative-layout"&gt;1 Relative Layout&lt;/h2&gt;
 &lt;p&gt;根据子元素来调整位置&lt;/p&gt;
 &lt;h2 id="2-framely-layout"&gt;2 Framely Layout&lt;/h2&gt;
 &lt;p&gt;一直在左上角，速度快&lt;/p&gt;
@@ -15803,7 +15915,7 @@ pip install django-filter  # Filtering support
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;其中，btn是在程序中声明的，Layout的addView方法添加子元素&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>Android学习笔记 - 04 Android四大核心组件之Content Provider</title><link href="http://liulixiang1988.github.io/androidxue-xi-bi-ji-04-androidsi-da-he-xin-zu-jian-zhi-content-provider.html" rel="alternate"></link><published>2014-08-27T09:52:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-08-27:androidxue-xi-bi-ji-04-androidsi-da-he-xin-zu-jian-zhi-content-provider.html</id><summary type="html">&lt;h1 id="android-04-androidcontent-provider"&gt;Android学习笔记 - 04 Android四大核心组件之Content Provider&lt;/h1&gt;
+&lt;p&gt;其中，btn是在程序中声明的，Layout的addView方法添加子元素&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>Android学习笔记 - 04 Android四大核心组件之Content Provider</title><link href="/androidxue-xi-bi-ji-04-androidsi-da-he-xin-zu-jian-zhi-content-provider.html" rel="alternate"></link><published>2014-08-27T09:52:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-08-27:androidxue-xi-bi-ji-04-androidsi-da-he-xin-zu-jian-zhi-content-provider.html</id><summary type="html">&lt;h1 id="android-04-androidcontent-provider"&gt;Android学习笔记 - 04 Android四大核心组件之Content Provider&lt;/h1&gt;
 &lt;h2 id="_1"&gt;一、概述&lt;/h2&gt;
 &lt;p&gt;Content Provider用于应用之间共享数据，比如读取联系人数据，或者自己应用的数据共享给其它的应用&lt;/p&gt;
 &lt;p&gt;如果要共享数据，必须指定一个URI&lt;/p&gt;
@@ -15821,7 +15933,7 @@ pip install django-filter  # Filtering support
 
 &lt;h3 id="2androidmanifestxml"&gt;2、在AndroidManifest.xml的&lt;mainifest&gt;节点下添加读取权限：&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;uses-permission android:name=&amp;quot;android.permission.READ_CONTACTS&amp;quot; /&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>Android学习笔记 - 05 Android应用核心之Intent</title><link href="http://liulixiang1988.github.io/androidxue-xi-bi-ji-05-androidying-yong-he-xin-zhi-intent.html" rel="alternate"></link><published>2014-08-27T09:52:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-08-27:androidxue-xi-bi-ji-05-androidying-yong-he-xin-zhi-intent.html</id><summary type="html">&lt;h1 id="android-05-androidintent"&gt;Android学习笔记 - 05 Android应用核心之Intent&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>Android学习笔记 - 05 Android应用核心之Intent</title><link href="/androidxue-xi-bi-ji-05-androidying-yong-he-xin-zhi-intent.html" rel="alternate"></link><published>2014-08-27T09:52:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-08-27:androidxue-xi-bi-ji-05-androidying-yong-he-xin-zhi-intent.html</id><summary type="html">&lt;h1 id="android-05-androidintent"&gt;Android学习笔记 - 05 Android应用核心之Intent&lt;/h1&gt;
 &lt;h2 id="1-intent-intentfilter"&gt;1 Intent IntentFilter对象介绍&lt;/h2&gt;
 &lt;p&gt;Intent是与基本组件相关联的数据对象，每个基本组件都有一个对应的Intent，Intent指定了对应的组件对象。&lt;/p&gt;
 &lt;p&gt;IntentFilter用来描述一个Intent&lt;/p&gt;
@@ -15905,7 +16017,7 @@ pip install django-filter  # Filtering support
 &lt;h3 id="32"&gt;3.2 打开网页&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Intent&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Intent&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Intent&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;ACTION_VIEW&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Uri&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;parse&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.baidu.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
 &lt;span class="n"&gt;startActivity&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>Android学习笔记 - 03 Android四大核心组件之BroadCast</title><link href="http://liulixiang1988.github.io/androidxue-xi-bi-ji-03-androidsi-da-he-xin-zu-jian-zhi-broadcast.html" rel="alternate"></link><published>2014-08-27T09:51:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-08-27:androidxue-xi-bi-ji-03-androidsi-da-he-xin-zu-jian-zhi-broadcast.html</id><summary type="html">&lt;h1 id="android-03-androidbroadcast"&gt;Android学习笔记 - 03 Android四大核心组件之BroadCast&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>Android学习笔记 - 03 Android四大核心组件之BroadCast</title><link href="/androidxue-xi-bi-ji-03-androidsi-da-he-xin-zu-jian-zhi-broadcast.html" rel="alternate"></link><published>2014-08-27T09:51:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-08-27:androidxue-xi-bi-ji-03-androidsi-da-he-xin-zu-jian-zhi-broadcast.html</id><summary type="html">&lt;h1 id="android-03-androidbroadcast"&gt;Android学习笔记 - 03 Android四大核心组件之BroadCast&lt;/h1&gt;
 &lt;h2 id="broadcast-receiver"&gt;一、BroadCast Receiver静态声明&lt;/h2&gt;
 &lt;h3 id="1broadcast-receiver"&gt;1、声明BroadCast Receiver&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyBroadCast&lt;/span&gt; &lt;span class="kd"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;BroadcastReceiver&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
@@ -15980,7 +16092,7 @@ pip install django-filter  # Filtering support
 &lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt; 
 - 注册Broadcast使用&lt;code&gt;registerReceiver&lt;/code&gt;，其中的IntentFilter是用之前的Action来声明，起到过滤的作用;
 - 取消注册，使用&lt;code&gt;unregisterReceiver&lt;/code&gt;;
-- 发送消息给广播，是用Action声明的Intent.&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>Android学习笔记-02 Android 四大核心组件之Service</title><link href="http://liulixiang1988.github.io/androidxue-xi-bi-ji-02-android-si-da-he-xin-zu-jian-zhi-service.html" rel="alternate"></link><published>2014-08-27T09:50:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-08-27:androidxue-xi-bi-ji-02-android-si-da-he-xin-zu-jian-zhi-service.html</id><summary type="html">&lt;h1 id="android-02-android-service"&gt;Android学习笔记-02 Android 四大核心组件之Service&lt;/h1&gt;
+- 发送消息给广播，是用Action声明的Intent.&lt;/p&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>Android学习笔记-02 Android 四大核心组件之Service</title><link href="/androidxue-xi-bi-ji-02-android-si-da-he-xin-zu-jian-zhi-service.html" rel="alternate"></link><published>2014-08-27T09:50:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-08-27:androidxue-xi-bi-ji-02-android-si-da-he-xin-zu-jian-zhi-service.html</id><summary type="html">&lt;h1 id="android-02-android-service"&gt;Android学习笔记-02 Android 四大核心组件之Service&lt;/h1&gt;
 &lt;h2 id="service"&gt;一、Service声明&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;新建基于Service的类&lt;/li&gt;
@@ -16126,7 +16238,7 @@ eclipse cmd+d:删除行&lt;/p&gt;
 
     &lt;span class="o"&gt;}&lt;/span&gt;
 &lt;span class="o"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>Android学习笔记-01 Android四大核心组件之Actity</title><link href="http://liulixiang1988.github.io/androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html" rel="alternate"></link><published>2014-08-27T09:48:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-08-27:androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html</id><summary type="html">&lt;h1 id="android-01-androidactity"&gt;Android学习笔记-01 Android四大核心组件之Actity&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>Android学习笔记-01 Android四大核心组件之Actity</title><link href="/androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html" rel="alternate"></link><published>2014-08-27T09:48:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-08-27:androidxue-xi-bi-ji-01-androidsi-da-he-xin-zu-jian-zhi-actity.html</id><summary type="html">&lt;h1 id="android-01-androidactity"&gt;Android学习笔记-01 Android四大核心组件之Actity&lt;/h1&gt;
 &lt;h2 id="actity"&gt;一、Actity生命周期&lt;/h2&gt;
 &lt;h3 id="1"&gt;1、生命周期的七个方法&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;eclipse快捷键alt+/自动提示&lt;/strong&gt;&lt;/p&gt;
@@ -16184,7 +16296,7 @@ eclipse cmd+d:删除行&lt;/p&gt;
 &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;putExtra&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;hello&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;setResult&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
 &lt;span class="n"&gt;finish&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>使用Pelican搭建博客</title><link href="http://liulixiang1988.github.io/shi-yong-pelicanda-jian-bo-ke.html" rel="alternate"></link><published>2014-08-26T17:08:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-08-26:shi-yong-pelicanda-jian-bo-ke.html</id><summary type="html">&lt;h2 id="1"&gt;1 环境配置&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Android学习笔记"></category><category term="Android"></category></entry><entry><title>使用Pelican搭建博客</title><link href="/shi-yong-pelicanda-jian-bo-ke.html" rel="alternate"></link><published>2014-08-26T17:08:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-08-26:shi-yong-pelicanda-jian-bo-ke.html</id><summary type="html">&lt;h2 id="1"&gt;1 环境配置&lt;/h2&gt;
 &lt;h3 id="11-pelican"&gt;1.1 安装Pelican&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;注&lt;/strong&gt;:以下是在windows环境下安装pelican，Python版本使用的是3.41版本，该版本自带pip工具&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install virtualenv
@@ -16275,7 +16387,7 @@ git push --all
 &lt;h2 id="_1"&gt;参考&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;http://ntanjerome.org/blog/how-to-setup-github-user-page-with-pelican&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="Pelican"></category></entry><entry><title>[翻译]使用Python的魔术方法创造更好的正则API</title><link href="http://liulixiang1988.github.io/fan-yi-shi-yong-pythonde-mo-zhu-fang-fa-chuang-zao-geng-hao-de-zheng-ze-api.html" rel="alternate"></link><published>2014-07-27T10:28:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-07-27:fan-yi-shi-yong-pythonde-mo-zhu-fang-fa-chuang-zao-geng-hao-de-zheng-ze-api.html</id><summary type="html">&lt;p&gt;原文&lt;a href="http://charlesleifer.com/blog/playing-with-python-magic-methods-to-make-a-nicer-regex-api/"&gt;在此&lt;/a&gt;&lt;/p&gt;
+&lt;/ul&gt;</summary><category term="Pelican"></category></entry><entry><title>[翻译]使用Python的魔术方法创造更好的正则API</title><link href="/fan-yi-shi-yong-pythonde-mo-zhu-fang-fa-chuang-zao-geng-hao-de-zheng-ze-api.html" rel="alternate"></link><published>2014-07-27T10:28:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-07-27:fan-yi-shi-yong-pythonde-mo-zhu-fang-fa-chuang-zao-geng-hao-de-zheng-ze-api.html</id><summary type="html">&lt;p&gt;原文&lt;a href="http://charlesleifer.com/blog/playing-with-python-magic-methods-to-make-a-nicer-regex-api/"&gt;在此&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;我的一个同事说他怀念Ruby的正则表达式语法糖。我没有用过Ruby的正则表达式，但是我熟悉Python的，并且知道它的API需要一些语法糖来弥补一下。&lt;/p&gt;
 &lt;p&gt;首先，从正则表达式中获取分组需要2步。第一步，调用match()或者search()，并且将结果付值给一个变量。然后，需要检察结果是否为None(表示是否有找到匹配)。最后，如果匹配确实存在，你可以安全地取出分组。下面是一个例子：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;re&lt;/span&gt;
@@ -16409,7 +16521,7 @@ False
 &lt;p&gt;正则表达式高级教程：
 http://www.cofoh.com/advanced-regex-tutorial-python/traps&lt;/p&gt;
 &lt;h3 id="3"&gt;3楼&lt;/h3&gt;
-&lt;p&gt;使用parsely库可以用来写复杂的正则。&lt;/p&gt;</summary><category term="python"></category></entry><entry><title>python里被遗忘的else</title><link href="http://liulixiang1988.github.io/pythonli-bei-yi-wang-de-else.html" rel="alternate"></link><published>2014-07-20T17:08:00+08:00</published><author><name>刘理想</name></author><id>tag:liulixiang1988.github.io,2014-07-20:pythonli-bei-yi-wang-de-else.html</id><summary type="html">&lt;p&gt;本文讨论的是python中的&lt;code&gt;for … else&lt;/code&gt;和&lt;code&gt;while…else&lt;/code&gt;语法，最少被用到也最容易被误解的语法特性。&lt;/p&gt;
+&lt;p&gt;使用parsely库可以用来写复杂的正则。&lt;/p&gt;</summary><category term="python"></category></entry><entry><title>python里被遗忘的else</title><link href="/pythonli-bei-yi-wang-de-else.html" rel="alternate"></link><published>2014-07-20T17:08:00+08:00</published><author><name>刘理想</name></author><id>tag:,2014-07-20:pythonli-bei-yi-wang-de-else.html</id><summary type="html">&lt;p&gt;本文讨论的是python中的&lt;code&gt;for … else&lt;/code&gt;和&lt;code&gt;while…else&lt;/code&gt;语法，最少被用到也最容易被误解的语法特性。&lt;/p&gt;
 &lt;p&gt;python中的&lt;code&gt;for&lt;/code&gt;和&lt;code&gt;while&lt;/code&gt;循环都又一个可选的&lt;code&gt;else&lt;/code&gt;（有点像if语句和try语句中的那样），当循环正常完成时执行。也就是说，&lt;code&gt;else&lt;/code&gt;只有在循环正常退出时才能执行。&lt;code&gt;break&lt;/code&gt;、&lt;code&gt;return&lt;/code&gt;或者循环中产生的异常都不会让&lt;code&gt;else&lt;/code&gt;正常执行。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
