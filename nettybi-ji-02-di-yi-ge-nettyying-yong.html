@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="刘理想" />
+        <meta name="copyright" content="刘理想" />
+
+<meta name="keywords" content="Netty, Java, " />
+        <title>Netty笔记02-第一个Netty应用  · Liu Lixiang的博客
+</title>
+        <link href="http://liulixiang1988.github.io/theme/css/slim-081711.css" rel="stylesheet" type="text/css">
+        <link href="http://liulixiang1988.github.io/theme/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://liulixiang1988.github.io/theme/css/solarizedlight.css" media="screen">
+        <link rel="shortcut icon" href="http://liulixiang1988.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+        <link rel="icon" href="http://liulixiang1988.github.io/theme/images/apple-touch-icon-144x144.png" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://liulixiang1988.github.io/"><span class=site-name>Liu Lixiang的博客</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://liulixiang1988.github.io">Home</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/categories.html">Categories</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/tags.html">Tags</a></li>
+                            <li ><a href="http://liulixiang1988.github.io/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://liulixiang1988.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page_header span10 offset2">
+    <h1><a href="http://liulixiang1988.github.io/nettybi-ji-02-di-yi-ge-nettyying-yong.html"> Netty笔记02-第一个Netty应用  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+    <div class="span2 table-of-content">
+        <nav>
+        <h4>Contents</h4>
+        <div class="toc">
+<ul>
+<li><a href="#21">2.1 设置开发环境</a></li>
+<li><a href="#22-netty">2.2 Netty的客户端和服务器概览</a></li>
+<li><a href="#23-echo">2.3 编写Echo服务器</a><ul>
+<li><a href="#231-channelhandler">2.3.1 ChannelHandler和业务逻辑</a></li>
+<li><a href="#232-bootstrapping">2.3.2 Bootstrapping服务</a></li>
+</ul>
+</li>
+<li><a href="#24-echo">2.4 实现Echo客户端</a><ul>
+<li><a href="#241-channelhandler">2.4.1 使用ChannelHandler实现客户端逻辑</a></li>
+<li><a href="#242">2.4.2 启动客户端</a></li>
+</ul>
+</li>
+<li><a href="#25-serverclient">2.5 启动运行Server/Client</a><ul>
+<li><a href="#251">2.5.1 构建</a></li>
+<li><a href="#252-echo-serverclient">2.5.2 运行Echo Server和Client</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </nav>
+    </div>
+    <div class="span8 article-content">
+
+            
+<p>本章包含：
+- 设置开发环境
+- 一个Echo服务和客户端
+- 构建和测试应用</p>
+<h2 id="21">2.1 设置开发环境</h2>
+<p>下载安装JDK和MAVEN，设置<code>JAVA_HOME</code>，并且设置<code>M2_HOME</code></p>
+<h2 id="22-netty">2.2 Netty的客户端和服务器概览</h2>
+<p>下图是我们的Echo服务器和客户端一览。虽然我们大部分是在写web应用，但实现服务器和客户端有助于更好的理解Netty API.
+<img alt="Alt text" src="images/1470379065595.png"/></p>
+<h2 id="23-echo">2.3 编写Echo服务器</h2>
+<p>所有的Netty Server都需要：
+- <strong>至少一个</strong><code>ChannelHandler</code>:这个组建实现了服务端用于处理客户端提交的数据，它是业务逻辑。
+- <strong>Bootstrapping</strong>:用来配置服务的启动代码。最少的启动代码是绑定端口。</p>
+<h3 id="231-channelhandler">2.3.1 <code>ChannelHandler</code>和业务逻辑</h3>
+<p>在<a href="http://liulixiang1988.github.io/nettybi-ji-01-nettyjian-jie.html">上一篇</a>中，我们介绍了<code>Future</code>和回调，并且介绍了他们用于事件驱动设计。我们也讨论了<code>ChannelHandler</code>，用于接收和响应事件通知。在Netty应用中，所有的数据处理逻辑都是包含在这个核心概念里面的。</p>
+<p>因为Echo服务用于响应进来的消息，它需要实现<code>interface ChannelInboundHandler</code>，它定义了用于响应<code>inbound</code>事件的方法。这个简单的应用只包含几个方法，所以从<code>ChannelInboundHandlerAdapter</code>继承就可以了，它是<code>ChannelInboundHandler</code>的一个默认实现。</p>
+<p>下面的几个方法对我们很有用：
+- <code>channelRead()</code>：每个incoming消息都会调用
+- <code>channelReadComplete()</code>: 本批消息中最后一个<code>channelRead()</code>被调用时通知
+- <code>exceptionCaught()</code>:读操作发生异常时会调用。</p>
+<p>Echo服务的<code>ChannelHandler</code>实现是<code>EchoServerHandler</code>，如下：</p>
+<p><img alt="Alt text" src="images/1470379977358.png"/></p>
+<div class="highlight"><pre><span></span><span class="nd">@ChannelHandler.Sharable</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EchoServerHandler</span> <span class="kd">extends</span> <span class="n">ChannelInboundHandlerAdapter</span> <span class="o">{</span>
+    <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">EchoServerHandler</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">channelRead</span><span class="o">(</span><span class="n">ChannelHandlerContext</span> <span class="n">ctx</span><span class="o">,</span> <span class="n">Object</span> <span class="n">msg</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">ByteBuf</span> <span class="n">in</span> <span class="o">=</span> <span class="o">(</span><span class="n">ByteBuf</span><span class="o">)</span> <span class="n">msg</span><span class="o">;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Server received: {}"</span><span class="o">,</span> <span class="n">in</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">CharsetUtil</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">));</span>
+        <span class="n">ctx</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">in</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">channelReadComplete</span><span class="o">(</span><span class="n">ChannelHandlerContext</span> <span class="n">ctx</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">//flush pending messages to the remote peer and closes the channel</span>
+        <span class="n">ctx</span><span class="o">.</span><span class="na">writeAndFlush</span><span class="o">(</span><span class="n">Unpooled</span><span class="o">.</span><span class="na">EMPTY_BUFFER</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">addListener</span><span class="o">(</span><span class="n">ChannelFutureListener</span><span class="o">.</span><span class="na">CLOSE</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">exceptionCaught</span><span class="o">(</span><span class="n">ChannelHandlerContext</span> <span class="n">ctx</span><span class="o">,</span> <span class="n">Throwable</span> <span class="n">cause</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">logger</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Error: {}, {}"</span><span class="o">,</span> <span class="n">cause</span><span class="o">.</span><span class="na">getMessage</span><span class="o">(),</span> <span class="n">cause</span><span class="o">.</span><span class="na">getStackTrace</span><span class="o">());</span>
+        <span class="c1">//关闭channel</span>
+        <span class="n">ctx</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+<p><code>ChannelInboundHandlerAdapter</code>有很只管的API，每个方法都可以被重写。因为你要接受数据，因此需要重写<code>channelRead()</code>。</p>
+<p>重写<code>exceptionCaought()</code>允许你对任何<code>Throwable</code>子类型做出响应。</p>
+<p>每个<code>Channel</code>都有一个<code>ChannelPipeline</code>关联，后者有一个<code>ChannelHandler</code>实例链。他们一个挨一个的调用。因此如果没有<code>exceptionCaught()</code>实现，就回一直传递到<code>ChannelPipeline</code>结束，并且被日志记录。因此，在应用中至少有一个<code>ChannelHandler</code>提供<code>exceptionCaught()</code>。</p>
+<p>除了<code>ChannelInboundHandlerAdapter</code>之外，还有很多其他<code>ChannelHandler</code>子类型。现在只需要知道：
+- <code>ChannelHandler</code>被不同事件类型调用
+- 应用实现或扩展<code>ChannelHandler</code>以便在时间不同生命周期挂载并且提供自定义应用逻辑
+- 架构上，<code>ChannelHandler</code>帮助我们将业务逻辑从网络代码中解耦。</p>
+<h3 id="232-bootstrapping">2.3.2 Bootstrapping服务</h3>
+<p>在实现了业务逻辑<code>EchoServerHandler</code>之后，现在要启动服务，这包含：</p>
+<ul>
+<li>绑定端口用来监听请求</li>
+<li>配置<code>Channel</code>用来将<code>inbound</code>消息到通知<code>EchoServerHandler</code>实例</li>
+</ul>
+<blockquote>
+<p><strong>传输</strong>
+传输层是用来提供端到端的通信服务。Internet通信是基于TCP传输的。<em><code>NIO</code>传输</em>几乎与TCP等同，只是它使用Java NIO对服务端性能进行了增强。</p>
+</blockquote>
+<p>下面是<code>EchoServer</code>类的代码
+<img alt="Alt text" src="images/1470647423394.png"/></p>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EchoServer</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">EchoServer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">port</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">EchoServer</span><span class="o">(</span><span class="kt">int</span> <span class="n">port</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">port</span> <span class="o">=</span> <span class="n">port</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">!=</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">logger</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Usage: {} &lt;port&gt;"</span><span class="o">,</span> <span class="n">EchoServer</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">());</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+        <span class="k">new</span> <span class="n">EchoServer</span><span class="o">(</span><span class="n">port</span><span class="o">).</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span><span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">EchoServerHandler</span> <span class="n">serverHandler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EchoServerHandler</span><span class="o">();</span>
+        <span class="c1">//1. 创建事件循环组</span>
+        <span class="n">EventLoopGroup</span> <span class="n">group</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NioEventLoopGroup</span><span class="o">();</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">//2. 创建ServerBootstrap</span>
+            <span class="n">ServerBootstrap</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServerBootstrap</span><span class="o">();</span>
+
+            <span class="n">b</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="n">group</span><span class="o">)</span>
+                    <span class="c1">//3. 指定使用NIO传输Channel</span>
+                    <span class="o">.</span><span class="na">channel</span><span class="o">(</span><span class="n">NioServerSocketChannel</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> 
+                    <span class="c1">//4.指定socket端口</span>
+                    <span class="o">.</span><span class="na">localAddress</span><span class="o">(</span><span class="k">new</span> <span class="n">InetSocketAddress</span><span class="o">(</span><span class="n">port</span><span class="o">))</span> 
+                    <span class="c1">//5. 添加EchoServerHandler到ChannelPipeline</span>
+                    <span class="o">.</span><span class="na">childHandler</span><span class="o">(</span><span class="k">new</span> <span class="n">ChannelInitializer</span><span class="o">&lt;</span><span class="n">SocketChannel</span><span class="o">&gt;()</span> <span class="o">{</span>
+                        <span class="nd">@Override</span>
+                        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">initChannel</span><span class="o">(</span><span class="n">SocketChannel</span> <span class="n">socketChannel</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+                            <span class="c1">//因为EchoServerHandler是@Sharable的,所以我们一直可以使用同一个</span>
+                            <span class="n">socketChannel</span><span class="o">.</span><span class="na">pipeline</span><span class="o">().</span><span class="na">addLast</span><span class="o">(</span><span class="n">serverHandler</span><span class="o">);</span>
+                        <span class="o">}</span>
+                    <span class="o">});</span>
+            <span class="c1">//6. 异步绑定,使用sync()等待绑定完成</span>
+            <span class="n">ChannelFuture</span> <span class="n">f</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="na">bind</span><span class="o">().</span><span class="na">sync</span><span class="o">();</span> 
+            <span class="c1">//7. 获取Chaneel的CloseFuture,阻塞当前线程,知道其完成</span>
+            <span class="n">f</span><span class="o">.</span><span class="na">channel</span><span class="o">().</span><span class="na">closeFuture</span><span class="o">().</span><span class="na">sync</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+            <span class="c1">//8. 关闭EventLoopGroup,释放所有资源</span>
+            <span class="n">group</span><span class="o">.</span><span class="na">shutdownGracefully</span><span class="o">().</span><span class="na">sync</span><span class="o">();</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+<p>@2中创建了<code>ServerBootstrap</code>实例。因为使用的是NIO传输，所以指定<code>NioEventLoopGroup</code> @1来接受和处理新的连接，并且使用<code>NioServerSocketChannel</code>@3作为channel类型。之后，设置本地地址和端口给<code>InnetSocketAddress</code>@4. 服务会丙丁到这个地址监听新的连接请求。</p>
+<p>在@5中，创建了一个特殊的类<code>ChannelInitializer</code>，这是关键。当接收一个新连接时，一个新的<code>Channel</code>子类型会被创建，<code>ChannelInitializer</code>会添加一个<code>DchoServerHandler</code>的实例到<code>Channel</code>的<code>ChannelPipeline</code>中。</p>
+<p>虽然NIO可扩展，但对它的恰当配置，尤其是多线程配置，却不容易。Netty封装了这些复杂性。</p>
+<p>然后我们绑定服务@6， 登台绑定完成（<code>sync()</code>调用一起当前<code>Thread</code>阻塞直到完成）。在@7中，应用汇等待，直到服务的<code>Channel</code>关闭（因为调用了<code>Channel</code>的<code>CloseFuture</code>的<code>sync()</code>）。然后可以关闭<code>EventLoopGroup</code>并且释放资源（包括所创建的线程）@8</p>
+<p>这里使用NIO时因为它是目前应用最广泛的传输，得益于它的扩展性和异步性。但是也可以使用别的传输实现。如果你想在服务端使用OIO传输，那就指定<code>OioServerSocketChannel</code>和<code>OioEventLoopGroup</code>。</p>
+<p>同时，我们回顾一下服务端实现的重要步骤。下面的是服务端的基础代码。</p>
+<ul>
+<li><code>EchoServerHandler</code>实现业务逻辑</li>
+<li><code>main()</code>方法启动服务</li>
+</ul>
+<p>启动服务的步骤：</p>
+<ul>
+<li>创建<code>ServerBootstrap</code>实例</li>
+<li>创建<code>NioEventLoopGroup</code>实例用来处理事件，比如接收新连接，并且读写数据</li>
+<li>指定本地<code>InetSocketAddress</code>用来做服务绑定</li>
+<li>为每一个<code>Channel</code>使用<code>EchoServerHandler</code>实例初始化</li>
+<li>调用<code>ServerBootstrap.bind()</code>绑定到服务。</li>
+</ul>
+<p>至此，服务被初始化并且处于可用状态了。下一节我们实现客户端应用。</p>
+<h2 id="24-echo">2.4 实现Echo客户端</h2>
+<p>Echo客户端将：</p>
+<ul>
+<li>连接服务</li>
+<li>发送一个或多个消息</li>
+<li>对于每个消息，等待并接受服务器返回</li>
+<li>关闭连接</li>
+</ul>
+<p>服务端同样需要两步：业务逻辑和bootstrap</p>
+<h3 id="241-channelhandler">2.4.1 使用<code>ChannelHandler</code>实现客户端逻辑</h3>
+<p>客户端也使用<code>ChannelInboundHandler</code>来处理数据。这个例子中，我们扩展类<code>SimpleChannelInboundHandler</code>来处理所有的任务。这需要重写以下的方法：</p>
+<ul>
+<li><code>channelActive()</code>：与服务的链接建立后调用</li>
+<li><code>channelRead0()</code>: 从服务端读取到消息后调用</li>
+<li><code>exceptionCaught()</code>: 如果发生异常时调用</li>
+</ul>
+<p><img alt="Alt text" src="images/1470653326871.png"/></p>
+<div class="highlight"><pre><span></span><span class="nd">@ChannelHandler.Sharable</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EchoClientHandler</span> <span class="kd">extends</span> <span class="n">SimpleChannelInboundHandler</span><span class="o">&lt;</span><span class="n">ByteBuf</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">EchoClientHandler</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">channelActive</span><span class="o">(</span><span class="n">ChannelHandlerContext</span> <span class="n">ctx</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">//当链接建立时调用,发送消息</span>
+        <span class="n">ctx</span><span class="o">.</span><span class="na">writeAndFlush</span><span class="o">(</span><span class="n">Unpooled</span><span class="o">.</span><span class="na">copiedBuffer</span><span class="o">(</span><span class="s">"Netty rocks!"</span><span class="o">,</span> <span class="n">CharsetUtil</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">channelRead0</span><span class="o">(</span><span class="n">ChannelHandlerContext</span> <span class="n">ctx</span><span class="o">,</span> <span class="n">ByteBuf</span> <span class="n">msg</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">//记录收到的消息</span>
+        <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Client received: {}"</span><span class="o">,</span> <span class="n">msg</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">CharsetUtil</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">exceptionCaught</span><span class="o">(</span><span class="n">ChannelHandlerContext</span> <span class="n">ctx</span><span class="o">,</span> <span class="n">Throwable</span> <span class="n">cause</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">logger</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Error: {}, {}"</span><span class="o">,</span> <span class="n">cause</span><span class="o">.</span><span class="na">getMessage</span><span class="o">(),</span> <span class="n">cause</span><span class="o">.</span><span class="na">getStackTrace</span><span class="o">());</span>
+        <span class="n">ctx</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+<p>当有数据从服务端返回时调用<code>channelRead0()</code>。注意服务端返回的数据可能是分块的。也就是说，如果服务器返回5个字节，并不能保证5各字节一次性杯接收。及时如此小的数据，<code>channelRead0()</code>也有可能被调用两次，第一次用<code>ByteBuf</code>（Netty的<code>byte</code>容器）保存3个字节，第二个用<code>ByteBuf</code>保存2个字节。作为一个流协议，TCP保证每个字节按顺序接收。</p>
+<p><strong>SimpleChannelInboundHandler vs ChannelInboundHandler</strong></p>
+<p>在客户端，当<code>channelRead0()</code>完成，你就有了incoming消息。当方法返回时，<code>SimpleChannelInboundHandler</code>负责释放<code>ByteBuf</code>的内存。</p>
+<p>在服务端，你也要响应incoming消息，然后使用<code>write()</code>（它是异步的），但当<code>channelRead()</code>返回时操作还可能没完成。因此，<code>EchoServerHandler</code>继承<code>ChannelInboundHandlerAdapter</code>，它不负责释放消息。消息由<code>EchoServerHandler</code>的<code>channelReadComplet()</code>中<code>writeAndFlush()</code>释放。</p>
+<h3 id="242">2.4.2 启动客户端</h3>
+<p><img alt="Alt text" src="./1470654891688.png"/></p>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EchoClient</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">EchoClient</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">host</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">port</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">EchoClient</span><span class="o">(</span><span class="n">String</span> <span class="n">host</span><span class="o">,</span> <span class="kt">int</span> <span class="n">port</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">host</span> <span class="o">=</span> <span class="n">host</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">port</span> <span class="o">=</span> <span class="n">port</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">EventLoopGroup</span> <span class="n">group</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NioEventLoopGroup</span><span class="o">();</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">Bootstrap</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bootstrap</span><span class="o">();</span>
+            <span class="n">b</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="n">group</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">channel</span><span class="o">(</span><span class="n">NioSocketChannel</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">remoteAddress</span><span class="o">(</span><span class="k">new</span> <span class="n">InetSocketAddress</span><span class="o">(</span><span class="n">host</span><span class="o">,</span> <span class="n">port</span><span class="o">))</span>
+                    <span class="o">.</span><span class="na">handler</span><span class="o">(</span><span class="k">new</span> <span class="n">ChannelInitializer</span><span class="o">&lt;</span><span class="n">SocketChannel</span><span class="o">&gt;()</span> <span class="o">{</span>
+                        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">initChannel</span><span class="o">(</span><span class="n">SocketChannel</span> <span class="n">ch</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+                            <span class="n">ch</span><span class="o">.</span><span class="na">pipeline</span><span class="o">().</span><span class="na">addLast</span><span class="o">(</span><span class="k">new</span> <span class="n">EchoClientHandler</span><span class="o">());</span>
+                        <span class="o">}</span>
+                    <span class="o">});</span>
+            <span class="n">ChannelFuture</span> <span class="n">f</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="na">connect</span><span class="o">().</span><span class="na">sync</span><span class="o">();</span>
+            <span class="n">f</span><span class="o">.</span><span class="na">channel</span><span class="o">().</span><span class="na">closeFuture</span><span class="o">().</span><span class="na">sync</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+            <span class="n">group</span><span class="o">.</span><span class="na">shutdownGracefully</span><span class="o">().</span><span class="na">sync</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">!=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">logger</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Usage: {} &lt;host&gt; &lt;port&gt;"</span><span class="o">,</span> <span class="n">EchoClient</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">());</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">String</span> <span class="n">host</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+        <span class="k">new</span> <span class="n">EchoClient</span><span class="o">(</span><span class="n">host</span><span class="o">,</span> <span class="n">port</span><span class="o">).</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+<h2 id="25-serverclient">2.5 启动运行Server/Client</h2>
+<h3 id="251">2.5.1 构建</h3>
+<div class="highlight"><pre><span></span>mvn clean package
+</pre></div>
+<h3 id="252-echo-serverclient">2.5.2 运行Echo Server和Client</h3>
+<p>你可以直接使用Java命令行直接运行，也可以在pom中使用<code>exec-maven-plugin</code>插件来配置。</p>
+<p>打开两个窗口，分别切换到server和client对应的目录，然后运行:</p>
+<div class="highlight"><pre><span></span>mvn exec:java
+</pre></div>
+<p>源码：https://github.com/liulixiang1988/javademo/tree/master/netty/EchoNetty</p>
+
+ 
+<section> 
+<h1>评论</h1>
+<div id="DuoShuoComment" aria-live="polite">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="nettybi-ji-02-di-yi-ge-nettyying-yong.html" data-title="Netty笔记02-第一个Netty应用" data-url="http://liulixiang1988.github.io/nettybi-ji-02-di-yi-ge-nettyying-yong.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"liulixiang1988blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+</section> 
+            <aside>
+            <hr/>
+            <nav>
+            <ul class="articles_timeline">
+ 
+                <li class="previous_article">« <a href="http://liulixiang1988.github.io/nettybi-ji-01-nettyjian-jie.html" title="Previous: Netty笔记01-Netty简介">Netty笔记01-Netty简介</a></li>
+            </ul>
+            </nav>
+            </aside>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+ 
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2016-08-08T20:06:00+08:00"> 8 8, 2016</time>
+            <h4>Category</h4>
+            <a class="category-link" href="/categories.html#Java-ref">Java</a> 
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article"> 
+                <li><a href="/tags.html#Netty-ref">Netty
+                    <span>2</span>
+</a></li>
+            </ul>
+
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-subtitle"><span class="site-name">Liu Lixiang的博客</span> - 机器学习/Python/Android/Web</li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://liulixiang1988.github.io/theme/js/jquery.min.js"></script>
+        <script src="http://liulixiang1988.github.io/theme/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    </body>
+</html>
