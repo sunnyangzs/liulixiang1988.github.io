@@ -4,16 +4,17 @@
 
         <title>Liu Lixiang的博客</title>
         <meta charset="utf-8" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Full Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="./theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="./theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="./theme/pygment.css" />
 
-        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="./theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -28,19 +29,19 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="/">Liu Lixiang的博客 <small>数据科学/Python/Java</small></a></h1>
+                  <h1><a href="./">Liu Lixiang的博客 <small>数据科学/Python/Java</small></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="/">首页</a></li>
+                <li><a href="./">首页</a></li>
 
                 <li><a href="/categories.html">分类</a></li>
                 <li><a href="/tags.html">标签</a></li>
                 <li><a href="/archives.html">归档</a></li>
-                <li><a href="/pages/guan-yu.html">关于</a></li>
+                <li><a href="./pages/guan-yu.html">关于</a></li>
 
               </ul>
             </div>
@@ -55,11 +56,82 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="/wang-ye-bu-ju-ji-chu.html" rel="bookmark" title="Permalink to 网页布局基础">网页布局基础</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="./qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html" rel="bookmark" title="Permalink to 企业网站布局实践-01页面头部制作">企业网站布局实践-01页面头部制作</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-04-01"> 三 01 四月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <h2 id="1">1. 总体分析</h2>
+<p>网站的架构采用自顶向下渐进明细的过程进行规划。</p>
+<p>网站首页设计如下：
+<img alt="" src="images/qy-web-01.png" /></p>
+<h2 id="2">2. 页面头部制作</h2>
+<p>1、居中 </p>
+<div class="highlight"><pre><span></span><span class="n">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="n">auto</span><span class="o">;</span>
+</pre></div>
+
+
+<p>2、更改li的图标</p>
+<div class="highlight"><pre><span></span><span class="nt">list-style-image</span><span class="o">:</span> <span class="nt">url</span><span class="o">(../</span><span class="nt">images</span><span class="o">/</span><span class="nt">li_bg</span><span class="nc">.gif</span><span class="o">);</span>
+</pre></div>
+
+
+<p>去除li的默认图标</p>
+<div class="highlight"><pre><span></span><span class="nt">list-style-type</span><span class="nd">:none</span><span class="o">;</span>
+<span class="o">//</span><span class="nt">或者</span>
+<span class="nt">list-style</span><span class="nd">:none</span>
+</pre></div>
+
+
+<p>3、浮动菜单右侧</p>
+<div class="highlight"><pre><span></span><span class="n">float</span><span class="o">:</span> <span class="n">right</span><span class="o">;</span>
+</pre></div>
+
+
+<p>4、菜单的宽度直接设置li的width</p>
+<p>5、文本垂直居中
+设置元素文字行高等于盒子的高度</p>
+<div class="highlight"><pre><span></span><span class="nt">line-height</span><span class="o">:</span> <span class="nt">27px</span><span class="o">;</span>
+</pre></div>
+
+
+<p>6、去掉a链接的下划线</p>
+<div class="highlight"><pre><span></span><span class="nt">text-decoration</span><span class="o">:</span> <span class="nt">none</span><span class="o">;</span>
+</pre></div>
+
+
+<p>设置链接正常状态：</p>
+<div class="highlight"><pre><span></span><span class="nt">a</span><span class="p">{</span>
+    <span class="o">&amp;:</span><span class="n">link</span><span class="o">,</span> <span class="o">&amp;:</span><span class="n">visited</span><span class="err">{</span>
+        <span class="nb">color</span><span class="o">:</span><span class="m">#8E8E8E</span><span class="p">;</span>
+        <span class="nb">text-decoration</span><span class="o">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="o">&amp;</span><span class="nd">:hover</span><span class="o">,</span> <span class="o">&amp;</span><span class="nd">:active</span><span class="p">{</span>
+    <span class="nb">color ...</span></pre></div> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="./qi-ye-wang-zhan-bu-ju-shi-jian-01ye-mian-tou-bu-zhi-zuo.html" rel="bookmark" title="Permalink to 企业网站布局实践-01页面头部制作">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="./tag/css.html">CSS</a>
+                                            <a class="danger label" href="./tag/html.html">HTML</a>
+                                            <a class="danger label" href="./tag/less.html">LESS</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="./wang-ye-bu-ju-ji-chu.html" rel="bookmark" title="Permalink to 网页布局基础">网页布局基础</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-03-31"> 二 31 三月 2015 </abbr>
                                     <address class="vcard author">By 
-                                    <a class="url fn" href="/author/liu-li-xiang.html"> 刘理想</a>
+                                    <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <h2 id="1">1. 自动居中一列布局</h2>
@@ -84,25 +156,25 @@
 <p>常见块级元素：
     div ul li ...</p> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="/wang-ye-bu-ju-ji-chu.html" rel="bookmark" title="Permalink to 网页布局基础">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="./wang-ye-bu-ju-ji-chu.html" rel="bookmark" title="Permalink to 网页布局基础">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="/tag/css.html">CSS</a>
-                                            <a class="danger label" href="/tag/html.html">HTML</a>
+                                            <a class="danger label" href="./tag/css.html">CSS</a>
+                                            <a class="danger label" href="./tag/html.html">HTML</a>
                                 </div>
 
 
 
                         </article></li>
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="/lessxue-xi-bi-ji.html" rel="bookmark" title="Permalink to LESS学习笔记">LESS学习笔记</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="./lessxue-xi-bi-ji.html" rel="bookmark" title="Permalink to LESS学习笔记">LESS学习笔记</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-03-29"> 日 29 三月 2015 </abbr>
                                     <address class="vcard author">By 
-                                    <a class="url fn" href="/author/liu-li-xiang.html"> 刘理想</a>
+                                    <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <h2 id="1-less">1. LESS注释</h2>
@@ -155,25 +227,25 @@
 <h2 id="4">4. 匹配模式</h2>
 <div class="highlight"><pre><span></span><span class="na">.traingle</span><span class="p">(</span><span class="no">top</span><span class="p">,</span> <span class="na">@w</span><span class="p">:</span><span class="mi">5</span><span class="no">px ...</span></pre></div> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="/lessxue-xi-bi-ji.html" rel="bookmark" title="Permalink to LESS学习笔记">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="./lessxue-xi-bi-ji.html" rel="bookmark" title="Permalink to LESS学习笔记">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="/tag/css.html">CSS</a>
-                                            <a class="danger label" href="/tag/less.html">LESS</a>
+                                            <a class="danger label" href="./tag/css.html">CSS</a>
+                                            <a class="danger label" href="./tag/less.html">LESS</a>
                                 </div>
 
 
 
                         </article></li>
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="/phonegapming-ling-xing-de-shi-yong.html" rel="bookmark" title="Permalink to PhoneGap命令行的使用">PhoneGap命令行的使用</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="./phonegapming-ling-xing-de-shi-yong.html" rel="bookmark" title="Permalink to PhoneGap命令行的使用">PhoneGap命令行的使用</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-03-29"> 日 29 三月 2015 </abbr>
                                     <address class="vcard author">By 
-                                    <a class="url fn" href="/author/liu-li-xiang.html"> 刘理想</a>
+                                    <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <h2 id="1">1. 环境配置</h2>
@@ -203,24 +275,24 @@
 <h3 id="15-ant">1.5 Ant</h3>
 <p>定义ANT_HOME ...</p> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="/phonegapming-ling-xing-de-shi-yong.html" rel="bookmark" title="Permalink to PhoneGap命令行的使用">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="./phonegapming-ling-xing-de-shi-yong.html" rel="bookmark" title="Permalink to PhoneGap命令行的使用">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="/tag/phonegap.html">PhoneGap</a>
+                                            <a class="danger label" href="./tag/phonegap.html">PhoneGap</a>
                                 </div>
 
 
 
                         </article></li>
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="/aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-5 测试">ASP.NET MVC5 学习笔记-5 测试</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="./aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-5 测试">ASP.NET MVC5 学习笔记-5 测试</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-12-04"> 四 04 十二月 2014 </abbr>
                                     <address class="vcard author">By 
-                                    <a class="url fn" href="/author/liu-li-xiang.html"> 刘理想</a>
+                                    <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> 
@@ -255,26 +327,26 @@
         [TestMethod]
         public void About ...</pre></div> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="/aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-5 测试">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="./aspnet-mvc5-xue-xi-bi-ji-5-ce-shi.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-5 测试">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="/tag/dotnet.html">DotNet</a>
-                                            <a class="danger label" href="/tag/web.html">Web</a>
-                                            <a class="danger label" href="/tag/aspnet-mvc.html">ASP.NET MVC</a>
+                                            <a class="danger label" href="./tag/dotnet.html">DotNet</a>
+                                            <a class="danger label" href="./tag/web.html">Web</a>
+                                            <a class="danger label" href="./tag/aspnet-mvc.html">ASP.NET MVC</a>
                                 </div>
 
 
 
                         </article></li>
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="/aspnet-mvc5-xue-xi-bi-ji-3-model.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-3 Model">ASP.NET MVC5 学习笔记-3 Model</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="./aspnet-mvc5-xue-xi-bi-ji-3-model.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-3 Model">ASP.NET MVC5 学习笔记-3 Model</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-10-31"> 五 31 十月 2014 </abbr>
                                     <address class="vcard author">By 
-                                    <a class="url fn" href="/author/liu-li-xiang.html"> 刘理想</a>
+                                    <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> 
@@ -298,26 +370,26 @@
 <h3 id="12-mvc-5checkingaccountcontroller">1.2 添加一个“包含读写操作的MVC 5控制器”CheckingAccountController</h3>
 <p>去掉Details的参数Id，因为现在我没还没有数据库 ...</p> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="/aspnet-mvc5-xue-xi-bi-ji-3-model.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-3 Model">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="./aspnet-mvc5-xue-xi-bi-ji-3-model.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-3 Model">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="/tag/dotnet.html">DotNet</a>
-                                            <a class="danger label" href="/tag/web.html">Web</a>
-                                            <a class="danger label" href="/tag/aspnet-mvc.html">ASP.NET MVC</a>
+                                            <a class="danger label" href="./tag/dotnet.html">DotNet</a>
+                                            <a class="danger label" href="./tag/web.html">Web</a>
+                                            <a class="danger label" href="./tag/aspnet-mvc.html">ASP.NET MVC</a>
                                 </div>
 
 
 
                         </article></li>
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="/aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-4 OWIN和Katana">ASP.NET MVC5 学习笔记-4 OWIN和Katana</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="./aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-4 OWIN和Katana">ASP.NET MVC5 学习笔记-4 OWIN和Katana</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-10-31"> 五 31 十月 2014 </abbr>
                                     <address class="vcard author">By 
-                                    <a class="url fn" href="/author/liu-li-xiang.html"> 刘理想</a>
+                                    <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> 
@@ -334,26 +406,26 @@
 </pre></div>
 <p>我们看到 ...</p> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="/aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-4 OWIN和Katana">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="./aspnet-mvc5-xue-xi-bi-ji-4-owinhe-katana.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-4 OWIN和Katana">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="/tag/dotnet.html">DotNet</a>
-                                            <a class="danger label" href="/tag/web.html">Web</a>
-                                            <a class="danger label" href="/tag/aspnet-mvc.html">ASP.NET MVC</a>
+                                            <a class="danger label" href="./tag/dotnet.html">DotNet</a>
+                                            <a class="danger label" href="./tag/web.html">Web</a>
+                                            <a class="danger label" href="./tag/aspnet-mvc.html">ASP.NET MVC</a>
                                 </div>
 
 
 
                         </article></li>
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="/aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器">ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="./aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器">ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-10-31"> 五 31 十月 2014 </abbr>
                                     <address class="vcard author">By 
-                                    <a class="url fn" href="/author/liu-li-xiang.html"> 刘理想</a>
+                                    <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> 
@@ -373,26 +445,26 @@
 <h3 id="22-routeconfigcs">2.2 路由定义RouteConfig.cs</h3>
 <div class="highlight"><pre><span></span>public class RouteConfig ...</pre></div></hr/> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="/aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="./aspnet-mvc5-xue-xi-bi-ji-1-kong-zhi-qi-lu-you-fan-hui-lei-xing-xuan-ze-qi-guo-lu-qi.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-1 控制器、路由、返回类型、选择器、过滤器">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="/tag/dotnet.html">DotNet</a>
-                                            <a class="danger label" href="/tag/web.html">Web</a>
-                                            <a class="danger label" href="/tag/aspnet-mvc.html">ASP.NET MVC</a>
+                                            <a class="danger label" href="./tag/dotnet.html">DotNet</a>
+                                            <a class="danger label" href="./tag/web.html">Web</a>
+                                            <a class="danger label" href="./tag/aspnet-mvc.html">ASP.NET MVC</a>
                                 </div>
 
 
 
                         </article></li>
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="/aspnet-mvc5-xue-xi-bi-ji-2-razor.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-2 Razor">ASP.NET MVC5 学习笔记-2 Razor</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="./aspnet-mvc5-xue-xi-bi-ji-2-razor.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-2 Razor">ASP.NET MVC5 学习笔记-2 Razor</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-10-31"> 五 31 十月 2014 </abbr>
                                     <address class="vcard author">By 
-                                    <a class="url fn" href="/author/liu-li-xiang.html"> 刘理想</a>
+                                    <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> 
@@ -419,26 +491,26 @@
 {
     var color = "green ...</pre></div> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="/aspnet-mvc5-xue-xi-bi-ji-2-razor.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-2 Razor">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="./aspnet-mvc5-xue-xi-bi-ji-2-razor.html" rel="bookmark" title="Permalink to ASP.NET MVC5 学习笔记-2 Razor">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
                                         <span>Tagged as : </span>
-                                            <a class="danger label" href="/tag/dotnet.html">DotNet</a>
-                                            <a class="danger label" href="/tag/web.html">Web</a>
-                                            <a class="danger label" href="/tag/aspnet-mvc.html">ASP.NET MVC</a>
+                                            <a class="danger label" href="./tag/dotnet.html">DotNet</a>
+                                            <a class="danger label" href="./tag/web.html">Web</a>
+                                            <a class="danger label" href="./tag/aspnet-mvc.html">ASP.NET MVC</a>
                                 </div>
 
 
 
                         </article></li>
                         <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="/fan-yi-shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html" rel="bookmark" title="Permalink to [翻译]使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)">[翻译]使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</a></h2> </header>
+                                <header> <h2 class="entry-title"><a href="./fan-yi-shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html" rel="bookmark" title="Permalink to [翻译]使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)">[翻译]使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2014-10-30"> 四 30 十月 2014 </abbr>
                                     <address class="vcard author">By 
-                                    <a class="url fn" href="/author/liu-li-xiang.html"> 刘理想</a>
+                                    <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
                                     </address>
                                 </footer><!-- /.post-info -->
                                 <div class="entry-content"> <h1 id="aspnet-web-api-2owinidentitytoken1">使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)</h1>
@@ -454,58 +526,11 @@
 <div class="highlight"><pre><span></span>Install-Package Microsoft.AspNet.WebApi.Owin -Version 5.1.2
 Install-Package Microsoft.Owin.Host.SystemWeb -Version ...</pre></div> </div><!-- /.entry-content -->
 
-                                <div class="medium primary btn"><a href="/fan-yi-shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html" rel="bookmark" title="Permalink to [翻译]使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)">Read more <i class="icon-arrow-right"></i></a></div>
+                                <div class="medium primary btn"><a href="./fan-yi-shi-yong-aspnet-web-api-2-owinhe-identitylai-chuang-jian-tokenren-zheng-1.html" rel="bookmark" title="Permalink to [翻译]使用ASP.NET Web API 2、Owin和Identity来创建Token认证(1)">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
                                 <div class="row tag-row">
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="/flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html" rel="bookmark" title="Permalink to Flask笔记－01 基本应用框架">Flask笔记－01 基本应用框架</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2014-10-18"> 六 18 十月 2014 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="/author/liu-li-xiang.html"> 刘理想</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <h2 id="1">1. 初始化</h2>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
-</pre></div>
-
-
-<p><code>__name__</code>的作用是用来给Flask来判断应用的根路径的。</p>
-<h2 id="2">2. 路由和视图函数</h2>
-<div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s1">&#39;Hello World!&#39;</span>
-</pre></div>
-
-
-<p>如果要给路由添加参数，可以这样:</p>
-<div class="highlight"><pre><span></span>
-</pre></div>
-
-
-<p>其中<code>&lt;name&gt;</code>就是参数，如果你想给参数加上类型，可以使用<code>/user/&lt;int:id&gt;</code>，Flask支持在路由中使用<code>int</code>, <code>float</code>和<code>path</code>等类型。<code>path</code>是字符串，但是并不把<code>/</code>当作分隔符，而是把它看作动态组成的一部分。</p>
-<h2 id="3">3. 启动服务器</h2>
-<p>Flask包含了一个小型的开发服务器，启动它：</p>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="/flaskbi-ji-01-ji-ben-ying-yong-kuang-jia.html" rel="bookmark" title="Permalink to Flask笔记－01 基本应用框架">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="/tag/flask.html">Flask</a>
-                                            <a class="danger label" href="/tag/flaskbi-ji.html">Flask笔记</a>
                                 </div>
 
 
@@ -527,76 +552,76 @@ Install-Package Microsoft.Owin.Host.SystemWeb -Version ...</pre></div> </div><!-
 
 <h4>分类</h4>
 <ul class="blank">
-		<li><a href="/category/android.html">Android</a></li>
-		<li><a href="/category/database.html">Database</a></li>
-		<li><a href="/category/dotnet.html">DotNet</a></li>
-		<li><a href="/category/ionic.html">ionic</a></li>
-		<li><a href="/category/java.html">Java</a></li>
-		<li><a href="/category/python.html">Python</a></li>
-		<li><a href="/category/sheng-huo.html">生活</a></li>
-		<li><a href="/category/web.html">Web</a></li>
-		<li><a href="/category/yi-dong-kai-fa.html">移动开发</a></li>
+		<li><a href="./category/android.html">Android</a></li>
+		<li><a href="./category/database.html">Database</a></li>
+		<li><a href="./category/dotnet.html">DotNet</a></li>
+		<li><a href="./category/ionic.html">ionic</a></li>
+		<li><a href="./category/java.html">Java</a></li>
+		<li><a href="./category/python.html">Python</a></li>
+		<li><a href="./category/sheng-huo.html">生活</a></li>
+		<li><a href="./category/web.html">Web</a></li>
+		<li><a href="./category/yi-dong-kai-fa.html">移动开发</a></li>
 </ul>
 
 
 <h4>标签</h4>
 	<ul class="blank">
-	    <li class="tag-[<pelican.contents.Article object at 0x1046bb9b0>, <pelican.contents.Article object at 0x1046b1c18>, <pelican.contents.Article object at 0x10527cf28>, <pelican.contents.Article object at 0x104b8ac50>, <pelican.contents.Article object at 0x104969940>, <pelican.contents.Article object at 0x10496c6d8>, <pelican.contents.Article object at 0x104f629b0>, <pelican.contents.Article object at 0x10522dc50>, <pelican.contents.Article object at 0x1052265c0>, <pelican.contents.Article object at 0x104811588>, <pelican.contents.Article object at 0x104991320>, <pelican.contents.Article object at 0x10490d358>, <pelican.contents.Article object at 0x104fd3ac8>, <pelican.contents.Article object at 0x104b36780>, <pelican.contents.Article object at 0x1050ec0b8>, <pelican.contents.Article object at 0x104c594e0>, <pelican.contents.Article object at 0x104c5ddd8>, <pelican.contents.Article object at 0x105226748>, <pelican.contents.Article object at 0x104fff128>]"><a href="/tag/css.html">CSS</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x103d23b00>, <pelican.contents.Article object at 0x104603ba8>, <pelican.contents.Article object at 0x104635978>, <pelican.contents.Article object at 0x1050c8c50>, <pelican.contents.Article object at 0x1048430f0>, <pelican.contents.Article object at 0x104ff2e48>, <pelican.contents.Article object at 0x104c93f60>, <pelican.contents.Article object at 0x104623d68>, <pelican.contents.Article object at 0x10447a828>, <pelican.contents.Article object at 0x1048bc780>, <pelican.contents.Article object at 0x10498b080>, <pelican.contents.Article object at 0x1044b7a90>, <pelican.contents.Article object at 0x10464eba8>, <pelican.contents.Article object at 0x104663c18>, <pelican.contents.Article object at 0x104612278>, <pelican.contents.Article object at 0x10448be10>, <pelican.contents.Article object at 0x103d4d278>]"><a href="/tag/android.html">Android</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1046232e8>, <pelican.contents.Article object at 0x10499fda0>]"><a href="/tag/servlet.html">Servlet</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104601b70>, <pelican.contents.Article object at 0x104b83f28>]"><a href="/tag/xue-xi-bi-ji.html">学习笔记</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104b776a0>]"><a href="/tag/nancy.html">Nancy</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1048e5dd8>]"><a href="/tag/flaskbi-ji.html">Flask笔记</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10487e390>]"><a href="/tag/functional-programming.html">Functional Programming</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1052125f8>, <pelican.contents.Article object at 0x104894d68>, <pelican.contents.Article object at 0x10490d208>, <pelican.contents.Article object at 0x105212e10>, <pelican.contents.Article object at 0x104b144e0>]"><a href="/tag/css3.html">CSS3</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104618cc0>]"><a href="/tag/bu-shu.html">部署</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10498b898>, <pelican.contents.Article object at 0x1046f56d8>, <pelican.contents.Article object at 0x1049d6d68>, <pelican.contents.Article object at 0x1049ba940>, <pelican.contents.Article object at 0x104811eb8>, <pelican.contents.Article object at 0x1049a0ac8>, <pelican.contents.Article object at 0x1049287b8>, <pelican.contents.Article object at 0x104948f98>, <pelican.contents.Article object at 0x104854a58>]"><a href="/tag/jsp.html">JSP</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1048aafd0>, <pelican.contents.Article object at 0x10487afd0>, <pelican.contents.Article object at 0x10488f9b0>, <pelican.contents.Article object at 0x104806c50>, <pelican.contents.Article object at 0x104806e10>]"><a href="/tag/dotnet.html">DotNet</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10496e470>, <pelican.contents.Article object at 0x104941d68>]"><a href="/tag/pelican.html">Pelican</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104686908>, <pelican.contents.Article object at 0x104636c50>, <pelican.contents.Article object at 0x1044b8ef0>, <pelican.contents.Article object at 0x104684e80>, <pelican.contents.Article object at 0x1046cd668>, <pelican.contents.Article object at 0x104603128>]"><a href="/tag/angular.html">Angular</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1046fbac8>]"><a href="/tag/maven.html">Maven</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104c93f60>, <pelican.contents.Article object at 0x104623d68>, <pelican.contents.Article object at 0x10447a828>, <pelican.contents.Article object at 0x1048bc780>, <pelican.contents.Article object at 0x10498b080>]"><a href="/tag/androibo-ke-yue-du.html">Androi博客阅读</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104603ba8>, <pelican.contents.Article object at 0x104635978>, <pelican.contents.Article object at 0x104ff2e48>, <pelican.contents.Article object at 0x104c93f60>, <pelican.contents.Article object at 0x104623d68>, <pelican.contents.Article object at 0x10447a828>, <pelican.contents.Article object at 0x1048bc780>, <pelican.contents.Article object at 0x10498b080>, <pelican.contents.Article object at 0x1044b7a90>, <pelican.contents.Article object at 0x10464eba8>, <pelican.contents.Article object at 0x104663c18>, <pelican.contents.Article object at 0x104612278>, <pelican.contents.Article object at 0x10448be10>, <pelican.contents.Article object at 0x103d4d278>]"><a href="/tag/androidxue-xi-bi-ji.html">Android学习笔记</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10497b278>, <pelican.contents.Article object at 0x10491e080>]"><a href="/tag/yi-dong-kai-fa.html">移动开发</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10523ff60>]"><a href="/tag/phonegap.html">PhoneGap</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104caf9e8>]"><a href="/tag/requirejs.html">RequireJS</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104b776a0>]"><a href="/tag/net.html">.NET</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1052f2278>, <pelican.contents.Article object at 0x104618cc0>, <pelican.contents.Article object at 0x104939a58>, <pelican.contents.Article object at 0x104939f98>, <pelican.contents.Article object at 0x104b74eb8>, <pelican.contents.Article object at 0x104689eb8>]"><a href="/tag/python.html">Python</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104844f28>]"><a href="/tag/gulp.html">Gulp</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10490d208>, <pelican.contents.Article object at 0x105212e10>, <pelican.contents.Article object at 0x104b144e0>, <pelican.contents.Article object at 0x1046bb9b0>, <pelican.contents.Article object at 0x1046b1c18>, <pelican.contents.Article object at 0x10527cf28>, <pelican.contents.Article object at 0x104b8ac50>, <pelican.contents.Article object at 0x104969940>, <pelican.contents.Article object at 0x10496c6d8>]"><a href="/tag/sass.html">sass</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1048aafd0>, <pelican.contents.Article object at 0x10487afd0>, <pelican.contents.Article object at 0x10488f9b0>, <pelican.contents.Article object at 0x104806c50>, <pelican.contents.Article object at 0x104806e10>]"><a href="/tag/aspnet-mvc.html">ASP.NET MVC</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104febcc0>, <pelican.contents.Article object at 0x104fefb38>, <pelican.contents.Article object at 0x104f592b0>, <pelican.contents.Article object at 0x104caf828>, <pelican.contents.Article object at 0x104fe7cf8>, <pelican.contents.Article object at 0x1050de710>, <pelican.contents.Article object at 0x1050f7a20>, <pelican.contents.Article object at 0x104fd9470>, <pelican.contents.Article object at 0x1052125f8>, <pelican.contents.Article object at 0x104caf9e8>, <pelican.contents.Article object at 0x10461da90>, <pelican.contents.Article object at 0x104b885c0>]"><a href="/tag/javascript.html">JavaScript</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104894e48>]"><a href="/tag/mysql.html">MySQL</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1046f5b70>, <pelican.contents.Article object at 0x104b13b38>, <pelican.contents.Article object at 0x104618438>, <pelican.contents.Article object at 0x10487e390>, <pelican.contents.Article object at 0x1048e5390>, <pelican.contents.Article object at 0x10522dcc0>, <pelican.contents.Article object at 0x104623080>, <pelican.contents.Article object at 0x1046232e8>, <pelican.contents.Article object at 0x10499fda0>, <pelican.contents.Article object at 0x10498b898>, <pelican.contents.Article object at 0x1046f56d8>, <pelican.contents.Article object at 0x1049d6d68>, <pelican.contents.Article object at 0x1049ba940>, <pelican.contents.Article object at 0x104811eb8>, <pelican.contents.Article object at 0x1049a0ac8>, <pelican.contents.Article object at 0x1049287b8>, <pelican.contents.Article object at 0x104948f98>, <pelican.contents.Article object at 0x104854a58>]"><a href="/tag/java.html">Java</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1048e5390>]"><a href="/tag/hibernate.html">Hibernate</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x103d4d438>, <pelican.contents.Article object at 0x104892da0>, <pelican.contents.Article object at 0x104941d68>]"><a href="/tag/life.html">life</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104686908>, <pelican.contents.Article object at 0x104636c50>, <pelican.contents.Article object at 0x1044b8ef0>, <pelican.contents.Article object at 0x104684e80>, <pelican.contents.Article object at 0x1046cd668>, <pelican.contents.Article object at 0x104603128>, <pelican.contents.Article object at 0x104623080>, <pelican.contents.Article object at 0x1046232e8>, <pelican.contents.Article object at 0x10499fda0>, <pelican.contents.Article object at 0x10498b898>, <pelican.contents.Article object at 0x1046f56d8>, <pelican.contents.Article object at 0x1049d6d68>, <pelican.contents.Article object at 0x1049ba940>, <pelican.contents.Article object at 0x104811eb8>, <pelican.contents.Article object at 0x1049a0ac8>, <pelican.contents.Article object at 0x1049287b8>, <pelican.contents.Article object at 0x104948f98>, <pelican.contents.Article object at 0x104854a58>, <pelican.contents.Article object at 0x1048aafd0>, <pelican.contents.Article object at 0x10487afd0>, <pelican.contents.Article object at 0x10488f9b0>, <pelican.contents.Article object at 0x104806c50>, <pelican.contents.Article object at 0x104806e10>, <pelican.contents.Article object at 0x104b776a0>]"><a href="/tag/web.html">Web</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10497b278>, <pelican.contents.Article object at 0x10491e080>]"><a href="/tag/ionic.html">ionic</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104febcc0>, <pelican.contents.Article object at 0x104fefb38>, <pelican.contents.Article object at 0x104f592b0>, <pelican.contents.Article object at 0x104caf828>, <pelican.contents.Article object at 0x1050de710>, <pelican.contents.Article object at 0x1050f7a20>, <pelican.contents.Article object at 0x104fd9470>]"><a href="/tag/react.html">React</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104b776a0>]"><a href="/tag/c.html">C#</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x105244e10>, <pelican.contents.Article object at 0x105004898>]"><a href="/tag/netty.html">Netty</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104b7ab38>]"><a href="/tag/jquery.html">jQuery</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104f629b0>, <pelican.contents.Article object at 0x10522dc50>, <pelican.contents.Article object at 0x1052265c0>, <pelican.contents.Article object at 0x104811588>, <pelican.contents.Article object at 0x104991320>, <pelican.contents.Article object at 0x10490d358>, <pelican.contents.Article object at 0x104fd3ac8>, <pelican.contents.Article object at 0x104b36780>, <pelican.contents.Article object at 0x1050ec0b8>, <pelican.contents.Article object at 0x104c594e0>, <pelican.contents.Article object at 0x104c5ddd8>, <pelican.contents.Article object at 0x105226748>]"><a href="/tag/html.html">HTML</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104601b70>, <pelican.contents.Article object at 0x104b83f28>]"><a href="/tag/kotlin.html">Kotlin</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104fa5dd8>, <pelican.contents.Article object at 0x1048e5dd8>]"><a href="/tag/flask.html">Flask</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104618438>]"><a href="/tag/gradle.html">Gradle</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10490d208>, <pelican.contents.Article object at 0x105212e10>, <pelican.contents.Article object at 0x104b144e0>]"><a href="/tag/compass.html">compass</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104f629b0>, <pelican.contents.Article object at 0x10522dc50>, <pelican.contents.Article object at 0x1052265c0>, <pelican.contents.Article object at 0x104811588>, <pelican.contents.Article object at 0x104991320>, <pelican.contents.Article object at 0x10490d358>, <pelican.contents.Article object at 0x104fd3ac8>, <pelican.contents.Article object at 0x104b36780>, <pelican.contents.Article object at 0x1050ec0b8>, <pelican.contents.Article object at 0x104c594e0>, <pelican.contents.Article object at 0x104c5ddd8>, <pelican.contents.Article object at 0x104fff128>]"><a href="/tag/less.html">LESS</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104ff2e48>]"><a href="/tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104caf9e8>]"><a href="/tag/mo-kuai-hua.html">模块化</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104618cc0>, <pelican.contents.Article object at 0x104939a58>, <pelican.contents.Article object at 0x104939f98>]"><a href="/tag/django.html">Django</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10463ecc0>]"><a href="/tag/exmobi.html">Exmobi</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10522dcc0>]"><a href="/tag/spring.html">Spring</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x103d12a58>]"><a href="/tag/android-studio.html">Android Studio</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10468fc50>, <pelican.contents.Article object at 0x103d1e588>, <pelican.contents.Article object at 0x1046125f8>, <pelican.contents.Article object at 0x104b17160>]"><a href="/tag/shu-ju-fen-xi.html">数据分析</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1049957b8>, <pelican.contents.Article object at 0x10481a908>, <pelican.contents.Article object at 0x104903dd8>]"><a href="./tag/django.html">Django</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104ae9b70>]"><a href="./tag/nancy.html">Nancy</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1049c0358>, <pelican.contents.Article object at 0x104867470>]"><a href="./tag/flask.html">Flask</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1049bfa20>, <pelican.contents.Article object at 0x10453fb00>, <pelican.contents.Article object at 0x1049f4470>, <pelican.contents.Article object at 0x1048d0908>, <pelican.contents.Article object at 0x104835c18>, <pelican.contents.Article object at 0x10451b780>, <pelican.contents.Article object at 0x1045a37f0>, <pelican.contents.Article object at 0x10495bfd0>, <pelican.contents.Article object at 0x104a0a710>, <pelican.contents.Article object at 0x104956ac8>, <pelican.contents.Article object at 0x104a55ef0>, <pelican.contents.Article object at 0x104955c18>, <pelican.contents.Article object at 0x104985d68>, <pelican.contents.Article object at 0x1049fe780>, <pelican.contents.Article object at 0x1049dcef0>, <pelican.contents.Article object at 0x104806358>, <pelican.contents.Article object at 0x10494b588>, <pelican.contents.Article object at 0x1049ce198>]"><a href="./tag/java.html">Java</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104835c18>]"><a href="./tag/hibernate.html">Hibernate</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104800400>, <pelican.contents.Article object at 0x10456eeb8>]"><a href="./tag/pelican.html">Pelican</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x103d28c50>, <pelican.contents.Article object at 0x1044c6e48>, <pelican.contents.Article object at 0x1044ee860>, <pelican.contents.Article object at 0x105293f28>, <pelican.contents.Article object at 0x104a2ec18>, <pelican.contents.Article object at 0x1048dd080>, <pelican.contents.Article object at 0x105094470>, <pelican.contents.Article object at 0x104582470>, <pelican.contents.Article object at 0x1050927f0>, <pelican.contents.Article object at 0x104b70b38>, <pelican.contents.Article object at 0x104a20860>, <pelican.contents.Article object at 0x104499048>, <pelican.contents.Article object at 0x1044f6278>, <pelican.contents.Article object at 0x1044d6208>, <pelican.contents.Article object at 0x1044d6550>, <pelican.contents.Article object at 0x104492f60>, <pelican.contents.Article object at 0x104495208>]"><a href="./tag/android.html">Android</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104956ac8>, <pelican.contents.Article object at 0x104a55ef0>, <pelican.contents.Article object at 0x104955c18>, <pelican.contents.Article object at 0x104985d68>, <pelican.contents.Article object at 0x1049fe780>, <pelican.contents.Article object at 0x1049dcef0>, <pelican.contents.Article object at 0x104806358>, <pelican.contents.Article object at 0x10494b588>, <pelican.contents.Article object at 0x1049ce198>]"><a href="./tag/jsp.html">JSP</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104844358>, <pelican.contents.Article object at 0x10483fd68>, <pelican.contents.Article object at 0x10487fd30>, <pelican.contents.Article object at 0x10456b8d0>, <pelican.contents.Article object at 0x104828e10>]"><a href="./tag/aspnet-mvc.html">ASP.NET MVC</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1050929b0>, <pelican.contents.Article object at 0x104534048>, <pelican.contents.Article object at 0x1044b8b00>, <pelican.contents.Article object at 0x104af9cf8>, <pelican.contents.Article object at 0x10486e1d0>, <pelican.contents.Article object at 0x1049c4470>, <pelican.contents.Article object at 0x104b70b00>, <pelican.contents.Article object at 0x104539f98>, <pelican.contents.Article object at 0x104891c88>, <pelican.contents.Article object at 0x104f18ac8>, <pelican.contents.Article object at 0x104fdcd30>, <pelican.contents.Article object at 0x105092b00>]"><a href="./tag/html.html">HTML</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1044c6e10>, <pelican.contents.Article object at 0x10456ef98>, <pelican.contents.Article object at 0x10454e240>, <pelican.contents.Article object at 0x10458cb70>, <pelican.contents.Article object at 0x1044d9ef0>, <pelican.contents.Article object at 0x10454ef28>, <pelican.contents.Article object at 0x1045a37f0>, <pelican.contents.Article object at 0x10495bfd0>, <pelican.contents.Article object at 0x104a0a710>, <pelican.contents.Article object at 0x104956ac8>, <pelican.contents.Article object at 0x104a55ef0>, <pelican.contents.Article object at 0x104955c18>, <pelican.contents.Article object at 0x104985d68>, <pelican.contents.Article object at 0x1049fe780>, <pelican.contents.Article object at 0x1049dcef0>, <pelican.contents.Article object at 0x104806358>, <pelican.contents.Article object at 0x10494b588>, <pelican.contents.Article object at 0x1049ce198>, <pelican.contents.Article object at 0x104844358>, <pelican.contents.Article object at 0x10483fd68>, <pelican.contents.Article object at 0x10487fd30>, <pelican.contents.Article object at 0x10456b8d0>, <pelican.contents.Article object at 0x104828e10>, <pelican.contents.Article object at 0x104ae9b70>]"><a href="./tag/web.html">Web</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1049a14a8>]"><a href="./tag/maven.html">Maven</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1049957b8>]"><a href="./tag/bu-shu.html">部署</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1048676d8>]"><a href="./tag/gulp.html">Gulp</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10495bfd0>, <pelican.contents.Article object at 0x104a0a710>]"><a href="./tag/servlet.html">Servlet</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1050929b0>, <pelican.contents.Article object at 0x104534048>, <pelican.contents.Article object at 0x1044b8b00>, <pelican.contents.Article object at 0x104af9cf8>, <pelican.contents.Article object at 0x10486e1d0>, <pelican.contents.Article object at 0x1049c4470>, <pelican.contents.Article object at 0x104b70b00>, <pelican.contents.Article object at 0x104539f98>, <pelican.contents.Article object at 0x104891c88>, <pelican.contents.Article object at 0x104f18ac8>, <pelican.contents.Article object at 0x104fdcd30>, <pelican.contents.Article object at 0x10553cd68>]"><a href="./tag/less.html">LESS</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x105264d30>, <pelican.contents.Article object at 0x10501d390>, <pelican.contents.Article object at 0x105031c50>, <pelican.contents.Article object at 0x104ffb390>, <pelican.contents.Article object at 0x104ffb160>, <pelican.contents.Article object at 0x105039908>, <pelican.contents.Article object at 0x1050929b0>, <pelican.contents.Article object at 0x104534048>, <pelican.contents.Article object at 0x1044b8b00>, <pelican.contents.Article object at 0x104af9cf8>, <pelican.contents.Article object at 0x10486e1d0>, <pelican.contents.Article object at 0x1049c4470>, <pelican.contents.Article object at 0x104b70b00>, <pelican.contents.Article object at 0x104539f98>, <pelican.contents.Article object at 0x104891c88>, <pelican.contents.Article object at 0x104f18ac8>, <pelican.contents.Article object at 0x104fdcd30>, <pelican.contents.Article object at 0x105092b00>, <pelican.contents.Article object at 0x10553cd68>]"><a href="./tag/css.html">CSS</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1044c6e10>, <pelican.contents.Article object at 0x10456ef98>, <pelican.contents.Article object at 0x10454e240>, <pelican.contents.Article object at 0x10458cb70>, <pelican.contents.Article object at 0x1044d9ef0>, <pelican.contents.Article object at 0x10454ef28>]"><a href="./tag/angular.html">Angular</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1052c2470>, <pelican.contents.Article object at 0x10528ed30>, <pelican.contents.Article object at 0x10505f940>]"><a href="./tag/netty.html">Netty</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104ae18d0>]"><a href="./tag/jquery.html">jQuery</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10498e208>, <pelican.contents.Article object at 0x104ae98d0>]"><a href="./tag/kotlin.html">Kotlin</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104826198>, <pelican.contents.Article object at 0x104a6d048>, <pelican.contents.Article object at 0x104955dd8>, <pelican.contents.Article object at 0x1045bac50>]"><a href="./tag/shu-ju-fen-xi.html">数据分析</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1048d0908>]"><a href="./tag/functional-programming.html">Functional Programming</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1049f4470>]"><a href="./tag/gradle.html">Gradle</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10498e208>, <pelican.contents.Article object at 0x104ae98d0>]"><a href="./tag/xue-xi-bi-ji.html">学习笔记</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10523ee48>, <pelican.contents.Article object at 0x1050fc898>, <pelican.contents.Article object at 0x104f23470>, <pelican.contents.Article object at 0x104aaee48>, <pelican.contents.Article object at 0x105522ef0>, <pelican.contents.Article object at 0x104f48320>, <pelican.contents.Article object at 0x104f55ba8>, <pelican.contents.Article object at 0x1050f2470>, <pelican.contents.Article object at 0x1044b8780>, <pelican.contents.Article object at 0x104a18240>, <pelican.contents.Article object at 0x104a70ac8>, <pelican.contents.Article object at 0x104aec128>]"><a href="./tag/javascript.html">JavaScript</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1045394e0>, <pelican.contents.Article object at 0x104a189b0>, <pelican.contents.Article object at 0x104b41668>]"><a href="./tag/compass.html">compass</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10486ea20>]"><a href="./tag/mysql.html">MySQL</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1045ba780>]"><a href="./tag/phonegap.html">PhoneGap</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104a18240>]"><a href="./tag/mo-kuai-hua.html">模块化</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104867470>]"><a href="./tag/flaskbi-ji.html">Flask笔记</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104985240>, <pelican.contents.Article object at 0x1049957b8>, <pelican.contents.Article object at 0x10481a908>, <pelican.contents.Article object at 0x104903dd8>, <pelican.contents.Article object at 0x1049139b0>, <pelican.contents.Article object at 0x1049c4438>]"><a href="./tag/python.html">Python</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1044c6e48>, <pelican.contents.Article object at 0x1044ee860>, <pelican.contents.Article object at 0x1048dd080>, <pelican.contents.Article object at 0x105094470>, <pelican.contents.Article object at 0x104582470>, <pelican.contents.Article object at 0x1050927f0>, <pelican.contents.Article object at 0x104b70b38>, <pelican.contents.Article object at 0x104a20860>, <pelican.contents.Article object at 0x104499048>, <pelican.contents.Article object at 0x1044f6278>, <pelican.contents.Article object at 0x1044d6208>, <pelican.contents.Article object at 0x1044d6550>, <pelican.contents.Article object at 0x104492f60>, <pelican.contents.Article object at 0x104495208>]"><a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x103d512e8>, <pelican.contents.Article object at 0x104829fd0>, <pelican.contents.Article object at 0x10456eeb8>]"><a href="./tag/life.html">life</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1048dd080>]"><a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10451b780>]"><a href="./tag/spring.html">Spring</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1045394e0>, <pelican.contents.Article object at 0x104a189b0>, <pelican.contents.Article object at 0x104b41668>, <pelican.contents.Article object at 0x105264d30>, <pelican.contents.Article object at 0x10501d390>, <pelican.contents.Article object at 0x105031c50>, <pelican.contents.Article object at 0x104ffb390>, <pelican.contents.Article object at 0x104ffb160>, <pelican.contents.Article object at 0x105039908>]"><a href="./tag/sass.html">sass</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1044b8780>, <pelican.contents.Article object at 0x10481d748>, <pelican.contents.Article object at 0x1045394e0>, <pelican.contents.Article object at 0x104a189b0>, <pelican.contents.Article object at 0x104b41668>]"><a href="./tag/css3.html">CSS3</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1049c04a8>, <pelican.contents.Article object at 0x1049c0668>]"><a href="./tag/ionic.html">ionic</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10523ee48>, <pelican.contents.Article object at 0x1050fc898>, <pelican.contents.Article object at 0x104f23470>, <pelican.contents.Article object at 0x104aaee48>, <pelican.contents.Article object at 0x104f48320>, <pelican.contents.Article object at 0x104f55ba8>, <pelican.contents.Article object at 0x1050f2470>]"><a href="./tag/react.html">React</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104844358>, <pelican.contents.Article object at 0x10483fd68>, <pelican.contents.Article object at 0x10487fd30>, <pelican.contents.Article object at 0x10456b8d0>, <pelican.contents.Article object at 0x104828e10>]"><a href="./tag/dotnet.html">DotNet</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104a18240>]"><a href="./tag/requirejs.html">RequireJS</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104ae9b70>]"><a href="./tag/c.html">C#</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1049c04a8>, <pelican.contents.Article object at 0x1049c0668>]"><a href="./tag/yi-dong-kai-fa.html">移动开发</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104ae9b70>]"><a href="./tag/net.html">.NET</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x105094470>, <pelican.contents.Article object at 0x104582470>, <pelican.contents.Article object at 0x1050927f0>, <pelican.contents.Article object at 0x104b70b38>, <pelican.contents.Article object at 0x104a20860>]"><a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x103d510f0>]"><a href="./tag/android-studio.html">Android Studio</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10482d2b0>]"><a href="./tag/exmobi.html">Exmobi</a></li>
 </ul>
 
 </div> </div><!-- /.row -->
 
 <p class="paginator">
-            <a href="/index8.html"><i class="icon-arrow-left"></i></a>
+            <a href="./index8.html"><i class="icon-arrow-left"></i></a>
     Page 9 / 12
-        <a href="/index10.html"><i class="icon-arrow-right"></i></a>
+        <a href="./index10.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->
 
@@ -635,8 +660,8 @@ Install-Package Microsoft.Owin.Host.SystemWeb -Version ...</pre></div> </div><!-
     </div>
 
 
-  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="/theme/js/libs/gumby.min.js"></script>
-  <script src="/theme/js/plugins.js"></script>
+  <script src="./theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="./theme/js/libs/gumby.min.js"></script>
+  <script src="./theme/js/plugins.js"></script>
 </body>
 </html>
