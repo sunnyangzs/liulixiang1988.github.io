@@ -1,5 +1,410 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Liu Lixiang的博客</title><link href="/" rel="alternate"></link><link href="/feeds/all-zh.atom.xml" rel="self"></link><id>/</id><updated>2016-08-09T12:49:00+08:00</updated><entry><title>Netty笔记03-Netty组件和设计</title><link href="/nettybi-ji-03-nettyzu-jian-he-she-ji.html" rel="alternate"></link><published>2016-08-09T12:49:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-09:nettybi-ji-03-nettyzu-jian-he-she-ji.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Liu Lixiang的博客</title><link href="/" rel="alternate"></link><link href="/feeds/all-zh.atom.xml" rel="self"></link><id>/</id><updated>2016-08-10T17:29:00+08:00</updated><entry><title>Spring笔记01-构建应用</title><link href="/springbi-ji-01-gou-jian-ying-yong.html" rel="alternate"></link><published>2016-08-10T17:29:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-10:springbi-ji-01-gou-jian-ying-yong.html</id><summary type="html">
+&lt;h2 id="11-springjava"&gt;1.1 一个Spring的简单Java应用&lt;/h2&gt;
+&lt;h3 id="111"&gt;1.1.1 创建应用&lt;/h3&gt;
+&lt;p&gt;这里，我们用Gradle创建Spring的应用。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;group 'lx.spring.core'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.springframework', name: 'spring-context', version: '4.3.2.RELEASE'
+    testCompile group: 'org.springframework', name: 'spring-test', version: '4.3.2.RELEASE'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="112-entity"&gt;1.1.2 定义entity&lt;/h3&gt;
+&lt;p&gt;spring希望我们尽可能的使用接口，因此，我们声明，&lt;code&gt;Team&lt;/code&gt;, &lt;code&gt;Game&lt;/code&gt;接口，然后创建对应的实现：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public interface Team {
+    String getName();
+}
+
+public interface Game {
+    void setHomeTeam(Team team);
+    Team getHomeTeam();
+    void setAwayTeam(Team team);
+    Team getAwayTeam();
+    String playGame();
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;对应的实现类：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public class Cubs implements Team {
+    @Override
+    public String getName() {
+        return "Chicago Cubs";
+    }
+}
+
+public class RedSox implements Team {
+    @Override
+    public String getName() {
+        return "Bostom Red Sox";
+    }
+}
+
+public class Royals implements Team {
+    @Override
+    public String getName() {
+        return "Kansas City Royals";
+    }
+}
+
+public class BaseballGame implements Game {
+    private Team homeTeam;
+    private Team awayTeam;
+
+    public BaseballGame() {
+    }
+
+    public BaseballGame(Team homeTeam, Team awayTeam) {
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+    }
+
+    @Override
+    public Team getHomeTeam() {
+        return homeTeam;
+    }
+
+    @Override
+    public void setHomeTeam(Team homeTeam) {
+        this.homeTeam = homeTeam;
+    }
+
+    @Override
+    public Team getAwayTeam() {
+        return awayTeam;
+    }
+
+    @Override
+    public void setAwayTeam(Team awayTeam) {
+        this.awayTeam = awayTeam;
+    }
+
+    @Override
+    public String playGame() {
+        return Math.random() &amp;lt; 0.5 ? getHomeTeam().getName() :
+                getAwayTeam().getName();
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="113-java"&gt;1.1.3 使用Java注解来进行调用&lt;/h3&gt;
+&lt;p&gt;为了让我们的应用能够使用定义的entity，我们需要做配置，配置的方法多种多样，我们这里使用Java对象进行配置，创建一个配置类&lt;code&gt;AppConfig&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.context.annotation.Bean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.context.annotation.Configuration&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="nd"&gt;@Configuration&lt;/span&gt;
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AppConfig&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nd"&gt;@Bean&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Game&lt;/span&gt; &lt;span class="n"&gt;game&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;BaseballGame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;redSox&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;cubs&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@Bean&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Team&lt;/span&gt; &lt;span class="n"&gt;redSox&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;RedSox&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@Bean&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Team&lt;/span&gt; &lt;span class="n"&gt;cubs&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Cubs&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意这里的&lt;code&gt;game()&lt;/code&gt;方法中调用了&lt;code&gt;redSox()&lt;/code&gt;和&lt;code&gt;cubs()&lt;/code&gt;方法，后面我们会进行讲解。&lt;/p&gt;
+&lt;h3 id="114"&gt;1.1.4 运行应用&lt;/h3&gt;
+&lt;p&gt;现在有了bean和对应的config，我们可以对他们进行调用了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;lx.spring.core.entities.Game&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.context.ApplicationContext&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.context.annotation.AnnotationConfigApplicationContext&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;RunDemo&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;static&lt;/span&gt; &lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;ApplicationContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;AnnotationConfigApplicationContext&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AppConfig&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="n"&gt;Game&lt;/span&gt; &lt;span class="n"&gt;game&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getBean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"game"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Game&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="n"&gt;System&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;game&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;playGame&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;由此可见Spring隐藏了细节，让代码变得简单。&lt;/p&gt;
+&lt;h2 id="12-java"&gt;1.2 基于Java的配置&lt;/h2&gt;
+&lt;p&gt;基于Java的配置是目前Spring应用的推荐做法。之前有做法是基于XML进行配置的。&lt;/p&gt;
+&lt;p&gt;为什么现在推荐用java进行配置呢？&lt;/p&gt;
+&lt;p&gt;因为这样做能让配置集中，有时候一个java文件就能包含所有配置了。其次，能让IDE进行错误提示。最后，可以利用Java语言的强大功能做一些其他工作。&lt;/p&gt;
+&lt;p&gt;使用Java进行配置的缺点是你要记住你的源码中有一些是既不属于业务，也不属于repository，而只是配置文件。&lt;/p&gt;
+&lt;p&gt;我们来看看之前的注解。文档在http://docs.spring.io/spring/docs/current/javadoc-api/ &lt;/p&gt;
+&lt;h3 id="121-configuration"&gt;1.2.1 &lt;code&gt;@Configuration&lt;/code&gt;注解&lt;/h3&gt;
+&lt;p&gt;文档中关于&lt;code&gt;@Cofiguration&lt;/code&gt;注解内容如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Target(value=TYPE)
+ @Retention(value=RUNTIME)
+ @Documented
+ @Component
+public @interface Configuration
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Indicates that a class declares one or more @Bean methods and may be processed by the Spring container to generate bean definitions and service requests for those beans at runtime, for example:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Configuration
+public class AppConfig {
+     @Bean
+     public MyBean myBean() {
+         // instantiate, configure and return bean ...
+     }
+ }
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;对于上面的&lt;code&gt;public MyBean myBean()&lt;/code&gt;方法，在XML中&lt;code&gt;myBean&lt;/code&gt;对应ID（每个Bean都有一个唯一的ID），&lt;code&gt;MyBean&lt;/code&gt;则对应XML中的类型。也就是说我们有一个叫做&lt;code&gt;myBean&lt;/code&gt;的Bean，类型是&lt;code&gt;MyBean&lt;/code&gt;。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.context.annotation.Bean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.context.annotation.Configuration&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="nd"&gt;@Configuration&lt;/span&gt;
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AppConfig&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nd"&gt;@Bean&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Game&lt;/span&gt; &lt;span class="n"&gt;game&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;BaseballGame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;redSox&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;cubs&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@Bean&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Team&lt;/span&gt; &lt;span class="n"&gt;redSox&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;RedSox&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@Bean&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Team&lt;/span&gt; &lt;span class="n"&gt;cubs&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Cubs&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在我们的例子中，&lt;code&gt;game&lt;/code&gt;这个Bean又调用了&lt;code&gt;redSox()&lt;/code&gt;和&lt;code&gt;cubs()&lt;/code&gt;，后面我们会详细解释Bean的范围。现在我们要知道一件事情就是，基本上，Spring会假设这些类都是单例的，也就是如果实例不存在，就实例化，然后放入Spring Context中，如果实例存在，就返回实例。&lt;/p&gt;
+&lt;p&gt;要启动一个Spring容器，我们使用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ApplicationContext context = 
+    new AnnotationConfigApplicationContext(AppConfig.class);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;除此之外，我们还可以从Context中获取其他信息：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//获取Bean的数量
+System.out.println("Bean的数量" + context.getBeanDefinitionCount());
+//获取Bean的名称
+for (String name :
+        context.getBeanDefinitionNames()) {
+    System.out.println(name );
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;我们的输出：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Bean的数量12
+org.springframework.context.annotation.internalConfigurationAnnotationProcessor
+org.springframework.context.annotation.internalAutowiredAnnotationProcessor
+org.springframework.context.annotation.internalRequiredAnnotationProcessor
+org.springframework.context.annotation.internalCommonAnnotationProcessor
+org.springframework.context.event.internalEventListenerProcessor
+org.springframework.context.event.internalEventListenerFactory
+appConfig
+org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor
+org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor
+redSox
+cubs
+game
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;我们可以看到，除了自己的Bean之外，还有一些其他的基础设施Bean，此外&lt;code&gt;appConfig&lt;/code&gt;本身也是一个Bean.&lt;/p&gt;
+&lt;h3 id="122-importimportresource"&gt;1.2.2 &lt;code&gt;@Import&lt;/code&gt;和&lt;code&gt;@ImportResource&lt;/code&gt;注解&lt;/h3&gt;
+&lt;p&gt;与&lt;code&gt;@Cofiguration&lt;/code&gt;能一起用的还有:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;@Import&lt;/code&gt; 可以从别的Config中导入配置&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@ImportResource&lt;/code&gt; 从非Java文件中导入配置，比如从XML文件中导入配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这些能够用于项目模块比较多的情况下。&lt;/p&gt;
+&lt;p&gt;现在，我们新建一个类&lt;code&gt;InfrastructureConfig&lt;/code&gt;，一般来说基础设置配置的是数据库连接池、或者其他数据源等。 但是现在我们需要修改&lt;code&gt;build.gradle&lt;/code&gt;来添加&lt;code&gt;spring-jdbc&lt;/code&gt;依赖：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.2.RELEASE'
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;InfrastructureConfig&lt;/code&gt;内容如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="n"&gt;lx&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;spring&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.context.annotation.Bean&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.context.annotation.Configuration&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.jdbc.datasource.DriverManagerDataSource&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;javax.sql.DataSource&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="nd"&gt;@Configuration&lt;/span&gt;
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;InfrastructureConfig&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nd"&gt;@Bean&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;DataSource&lt;/span&gt; &lt;span class="n"&gt;dataSource&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;DriverManagerDataSource&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;现在，我们可以在&lt;code&gt;AppConfig&lt;/code&gt;中使用&lt;code&gt;InfrastructureConfig&lt;/code&gt;了：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Configuration
+@Import(InfrastructureConfig.class)
+public class AppConfig {...}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;现在假设我们的&lt;code&gt;BaseballGame&lt;/code&gt;需要一个&lt;code&gt;DataSource&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public class BaseballGame implements Game {
+    private DataSource dataSource;
+
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+    //...
+}    
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;现在，我们再修改&lt;code&gt;AppConfig&lt;/code&gt;，让Bean自动配置&lt;code&gt;DataSource&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Bean
+public Game game(DataSource dataSource) {
+    BaseballGame game = new BaseballGame(redSox(), cubs());
+    game.setDataSource(dataSource);
+    return game;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里，我们给&lt;code&gt;game()&lt;/code&gt;这个Bean添加了参数&lt;code&gt;DataSource&lt;/code&gt;，Spring会自动根据参数来查找对应的Bean（这里这个Bean在&lt;code&gt;InfrastructureConfig&lt;/code&gt;中），然后产生一个参数，来进行配置。&lt;/p&gt;
+&lt;p&gt;以上就是用Java进行配置的方法，下面我们用基于注解的配置。&lt;/p&gt;
+&lt;h2 id="13"&gt;1.3 基于注解的配置&lt;/h2&gt;
+&lt;p&gt;这一节我们需要接触两个概念：&lt;code&gt;Autowired&lt;/code&gt;、&lt;code&gt;ComponentScan&lt;/code&gt;和&lt;code&gt;Component&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id="131-autowired"&gt;1.3.1 &lt;code&gt;@Autowired&lt;/code&gt;注解&lt;/h3&gt;
+&lt;p&gt;我们再来看看之前关于&lt;code&gt;game&lt;/code&gt;的例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Configuration
+@Import(InfrastructureConfig.class)
+public class AppConfig {
+    @Bean
+    public Game game(DataSource dataSource) {
+        BaseballGame game = new BaseballGame(redSox(), cubs());
+        game.setDataSource(dataSource);
+        return game;
+    }
+    ...
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里，如果我们不知道&lt;code&gt;InfrastructureConfig&lt;/code&gt;里的内容的话，&lt;code&gt;DataSouce&lt;/code&gt;看起来有些奇怪，我们可以使用&lt;code&gt;Autowired&lt;/code&gt;来寻找所有的Bean并且找到匹配的Bean:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.beans.factory.annotation.Autowired&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AppConfig&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@Autowired&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="err"&gt;重点在这里&lt;/span&gt;
+    &lt;span class="n"&gt;private&lt;/span&gt; &lt;span class="n"&gt;DataSource&lt;/span&gt; &lt;span class="n"&gt;dataSource&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nd"&gt;@Bean&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Game&lt;/span&gt; &lt;span class="n"&gt;game&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="err"&gt;此处已经不需要参数了&lt;/span&gt;
+        &lt;span class="n"&gt;BaseballGame&lt;/span&gt; &lt;span class="n"&gt;game&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;BaseballGame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;redSox&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;cubs&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+        &lt;span class="n"&gt;game&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setDataSource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dataSource&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="err"&gt;直接引用&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;game&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;    
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;@Autowired&lt;/code&gt;意味着自动按照&lt;strong&gt;类型&lt;/strong&gt;触发，也就是&lt;strong&gt;只有一个&lt;/strong&gt;这种&lt;strong&gt;类型&lt;/strong&gt;的&lt;strong&gt;Bean&lt;/strong&gt;时才起作用。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@Autowired&lt;/code&gt;对Bean的声明形式没有要求，可以是XML, Java或者使用&lt;code&gt;@Component&lt;/code&gt;等声明。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们之前系统里只有一个&lt;code&gt;DataSource&lt;/code&gt;，所以这么做没问题，但是如果我们将这种方法用到&lt;code&gt;BaseballGame&lt;/code&gt;身上，就会有问题。下面我们来看看如何解决这个问题。&lt;/p&gt;
+&lt;h3 id="132-componentscancomponent-qualifier"&gt;1.3.2 &lt;code&gt;@ComponentScan&lt;/code&gt;,&lt;code&gt;@Component&lt;/code&gt; 以及&lt;code&gt;@Qualifier&lt;/code&gt;注解&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;@ComponentScan&lt;/code&gt;会扫描当前文件夹及其子文件夹下，但是最好指定&lt;code&gt;basePackages&lt;/code&gt;参数，告诉它从哪里开始扫描。 &lt;/p&gt;
+&lt;p&gt;现在我们再次修改&lt;code&gt;AppConfig&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Configuration
+@ComponentScan(basePackages = "lx.spring.core")
+public class AppConfig {
+
+    @Autowired
+    private DataSource dataSource;
+
+    @Autowired @Qualifier("redSox")
+    private Team home;
+
+
+    @Autowired @Qualifier("cubs")
+    private Team away;
+
+    @Bean
+    public Game game() {
+        BaseballGame game = new BaseballGame(home, away);
+        game.setDataSource(dataSource);
+        return game;
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意这里的&lt;code&gt;@Qualifier&lt;/code&gt;就是前面说的如果存在多个相同类型的Bean时，如何让&lt;code&gt;@Autowired&lt;/code&gt;能正常工作的解决方法。&lt;/p&gt;
+&lt;p&gt;另外，我们还需要对&lt;code&gt;RedSox&lt;/code&gt;和&lt;code&gt;Cubs&lt;/code&gt;类添加&lt;code&gt;@Component&lt;/code&gt;注解：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Component
+public class RedSox implements Team {...}
+
+@Component
+public class Cubs implements Team {...}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;使用注解声明的优点：我们不需要单独写Bean的配置，只需要声明就可以了。但这也有一些潜在的缺点：Bean可能散布在整个项目中，那我们需要大量的扫描，但是在现实中，我们一般会把Bean放到一个特殊的包中。一般来说，主要有下面几种常用的包：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;repositories&lt;/li&gt;
+&lt;li&gt;services&lt;/li&gt;
+&lt;li&gt;controllers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;，扫描只在应用启动时进行一次，运行的时候是不会再扫描的。&lt;/p&gt;
+&lt;h3 id="133-resource"&gt;1.3.3 &lt;code&gt;@Resource&lt;/code&gt;注解&lt;/h3&gt;
+&lt;p&gt;Java提供了一个标准的注解&lt;code&gt;@Resource&lt;/code&gt;，也是用来自动触发，但与Spring的&lt;code&gt;Autowired&lt;/code&gt;不同，它不是按照类型，而是&lt;strong&gt;按照名字&lt;/strong&gt;触发。 &lt;/p&gt;
+&lt;p&gt;下面的例子是就是Spring根据变量的名字去找对应的Bean.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;javax.annotation.Resource&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AppConfig&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nd"&gt;@Resource&lt;/span&gt;
+    &lt;span class="n"&gt;private&lt;/span&gt; &lt;span class="n"&gt;Team&lt;/span&gt; &lt;span class="n"&gt;redSox&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@Resource&lt;/span&gt;
+    &lt;span class="n"&gt;private&lt;/span&gt; &lt;span class="n"&gt;Team&lt;/span&gt; &lt;span class="n"&gt;cubs&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@Bean&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Game&lt;/span&gt; &lt;span class="n"&gt;game&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;BaseballGame&lt;/span&gt; &lt;span class="n"&gt;game&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;BaseballGame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;redSox&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cubs&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;但一般我们好少这么做，因为这样的话我们就没法改变量的名字了。&lt;/p&gt;
+&lt;p&gt;现在我们学习了使用Java配置、使用注解配置，接下来我们来看看使用XML进行配置，有点丑，但之前一直这么用，所以还是了解一下比较好。&lt;/p&gt;
+&lt;h2 id="14-xml"&gt;1.4 基于XML的配置&lt;/h2&gt;
+&lt;p&gt;对于基于注解的配置，我们必须要有源码才行。对于基于Java的配置，则是有些库根本就不支持这样的做法。XML配置有时会提供一些比较简便的配置方法，因此我们最好还是了解一下。 &lt;/p&gt;
+&lt;h3 id="141-xml"&gt;1.4.1 XML配置声明&lt;/h3&gt;
+&lt;p&gt;我们在&lt;code&gt;main/resources&lt;/code&gt;下创建&lt;code&gt;applicationContext.xml&lt;/code&gt;，注意，在IDEA中请用&lt;code&gt;new-&amp;gt;XML Configuration File-&amp;gt;Spring config&lt;/code&gt;来新建。&lt;/p&gt;
+&lt;p&gt;为了方便，现在，我们先把&lt;code&gt;AppConfig&lt;/code&gt;中的内容注释掉，把&lt;code&gt;RunDemo&lt;/code&gt;的调用容器的也注释掉。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?xml version="1.0" encoding="UTF-8"?&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;beans&lt;/span&gt; &lt;span class="na"&gt;xmlns=&lt;/span&gt;&lt;span class="s"&gt;"http://www.springframework.org/schema/beans"&lt;/span&gt;
+       &lt;span class="na"&gt;xmlns:xsi=&lt;/span&gt;&lt;span class="s"&gt;"http://www.w3.org/2001/XMLSchema-instance"&lt;/span&gt;
+       &lt;span class="na"&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class="s"&gt;"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;bean&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"redSox"&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"lx.spring.core.entities.RedSox"&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;bean&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"cubs"&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"lx.spring.core.entities.Cubs"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;bean&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"game"&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"lx.spring.core.entities.BaseballGame"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;property&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;"awayTeam"&lt;/span&gt; &lt;span class="na"&gt;ref=&lt;/span&gt;&lt;span class="s"&gt;"redSox"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;property&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;"homeTeam"&lt;/span&gt; &lt;span class="na"&gt;ref=&lt;/span&gt;&lt;span class="s"&gt;"cubs"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;property&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;"dataSource"&lt;/span&gt; &lt;span class="na"&gt;ref=&lt;/span&gt;&lt;span class="s"&gt;"dataSource"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;bean&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"dataSource"&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"org.springframework.jdbc.datasource.DriverManagerDataSource"&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;/beans&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Bean由3部分组成，&lt;code&gt;id&lt;/code&gt;, &lt;code&gt;class&lt;/code&gt;和&lt;code&gt;property&lt;/code&gt;。注意&lt;code&gt;property&lt;/code&gt;可以使用&lt;code&gt;ref&lt;/code&gt;来引用其他的Bean，也可以使用&lt;code&gt;value&lt;/code&gt;来指定值。&lt;/p&gt;
+&lt;h3 id="142-xml"&gt;1.4.2 加载XML配置&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;，此时输出的Bean的数量只有4个（也就是XML中声明的数量）。&lt;/p&gt;
+&lt;h3 id="143-xmlbean"&gt;1.4.3 在XML配置中使用Bean扫描&lt;/h3&gt;
+&lt;p&gt;我们要使用Bean扫描该怎么办呢？我们给XML添加命名空间就好了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/beans/spring-context.xsd"&amp;gt;
+
+    &amp;lt;context:component-scan base-package="lx.spring.core"/&amp;gt;
+    ...
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这个时候除了&lt;code&gt;DataSource&lt;/code&gt;需要声明外，其他的Bean不需要再XML文件中声明，只需要像之前那样使用注解声明就可以了。&lt;/p&gt;</summary><category term="Java"></category><category term="Spring"></category></entry><entry><title>Netty笔记03-Netty组件和设计</title><link href="/nettybi-ji-03-nettyzu-jian-he-she-ji.html" rel="alternate"></link><published>2016-08-09T12:49:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-09:nettybi-ji-03-nettyzu-jian-he-she-ji.html</id><summary type="html">
 &lt;p&gt;本章包含：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Netty的技术与架构&lt;/li&gt;
@@ -1557,7 +1962,7 @@ private static void delete(Contact contact) {
     session.getTransaction().commit();
     session.close();
 }
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Hibernate"></category></entry><entry><title>Spring学习笔记</title><link href="/springxue-xi-bi-ji.html" rel="alternate"></link><published>2016-04-30T15:43:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-04-30:springxue-xi-bi-ji.html</id><summary type="html">
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Hibernate"></category></entry><entry><title>Spring Boot学习笔记</title><link href="/spring-bootxue-xi-bi-ji.html" rel="alternate"></link><published>2016-04-30T15:43:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-04-30:spring-bootxue-xi-bi-ji.html</id><summary type="html">
 &lt;h2 id="1"&gt;1. 环境配置&lt;/h2&gt;
 &lt;h3 id="11"&gt;1.1 创建应用&lt;/h3&gt;
 &lt;p&gt;打开idea,新建应用：&lt;/p&gt;
