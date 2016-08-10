@@ -1,4 +1,4 @@
-Title: Spring学习笔记
+Title: Spring Boot学习笔记
 Date: 2016-04-30 15:43
 Category: Java
 Tags: Java, Spring
