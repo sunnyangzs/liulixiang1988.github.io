@@ -1,5 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Liu Lixiang的博客</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2016-08-10T17:29:00+08:00</updated><entry><title>Spring笔记01-构建应用</title><link href="/springbi-ji-01-gou-jian-ying-yong.html" rel="alternate"></link><published>2016-08-10T17:29:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-10:springbi-ji-01-gou-jian-ying-yong.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Liu Lixiang的博客</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2016-08-11T10:22:00+08:00</updated><entry><title>Spring笔记02-配置Bean</title><link href="/springbi-ji-02-pei-zhi-bean.html" rel="alternate"></link><published>2016-08-11T10:22:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-11:springbi-ji-02-pei-zhi-bean.html</id><summary type="html">
+&lt;h2 id="21-setter"&gt;2.1 构造函数和Setter注入&lt;/h2&gt;
+&lt;p&gt;之前我们基于注解的配置是这样的：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Configuration
+@ComponentScan(basePackages = "lx.spring.core")
+public class AppConfig {
+
+    @Autowired
+    private DataSource dataSource;
+
+    @Autowired @Qualifier("redSox")
+    private Team home;
+
+    @Autowired @Qualifier("cubs")
+    private Team away;
+
+    @Bean
+    public Game game() {
+        BaseballGame game = new BaseballGame(home, away);
+        game.setDataSource(dataSource);
+        return game;
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;我们知道如果没有&lt;code&gt;@Qualifier&lt;/code&gt;注解，就会报错。但是如果我们把&lt;code&gt;home&lt;/code&gt;和&lt;code&gt;away&lt;/code&gt;去掉，然后添加一个集合，像下面这样：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
+public class AppConfig {
+    ...
+    @Autowired
+    private List&amp;lt;Team&amp;gt; teams;
+
+    @Bean
+    public Game game() {
+        BaseballGame game = new BaseballGame(teams.get(0), teams.get(1));
+        ...
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果我们有多个相同类型的Bean，但是是以单个变量声明的，如&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Autowired @Qualifier("redSox")
+private Team home;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果没有&lt;code&gt;@Qualifier&lt;/code&gt;注解就会报错，但是想前面例子是用集合的形式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Autowired
+private List&amp;lt;Team&amp;gt; teams;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;就不会报错，他会扫描所有这个类型的Bean，然后放到集合中。&lt;/p&gt;
+&lt;p&gt;有的时候，我们需要确定是使用构造器注入还是setter方法注入，这里有一个指导原则：&lt;/p&gt;
+&lt;p&gt;如果这个依赖是必须的，比如数据库驱动等，那就使用构造器注入，这样初始化的时候就必须提供参数；如果依赖不是必须的，则使用setter注入。&lt;/p&gt;
+&lt;p&gt;在Bean构造好后，我们也可以修改，比如，我们在&lt;code&gt;RunDemo.java&lt;/code&gt;中添加修改：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public class RunDemo {
+    public static void main(String[] args) {
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        Game game = context.getBean("game", Game.class);
+        System.out.println(game.playGame());
+
+        Team royals = context.getBean("royals", Team.class);
+        game.setAwayTeam(royals);
+        System.out.println(game.playGame());
+        ...
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="22-bean-scopes"&gt;2.2 Bean Scopes&lt;/h2&gt;
+&lt;p&gt;其实之前对Bean的用法都不正确，但这是最简单的用法。&lt;/p&gt;
+&lt;p&gt;我们队&lt;code&gt;BaseballGame&lt;/code&gt;添加&lt;code&gt;toString()&lt;/code&gt;方法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Override
+public String toString() {
+    return String.format("Game between %s at %s", awayTeam.getName(), homeTeam.getName());
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;然后修改&lt;code&gt;RunDemo&lt;/code&gt;中的调用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public class RunDemo {
+    public static void main(String[] args) {
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        Team royals = context.getBean("royals", Team.class);
+
+        Game game1 = context.getBean("game", Game.class);
+        System.out.println(game1);
+
+        Game game2 = context.getBean("game", Game.class);
+        game2.setAwayTeam(royals);
+        System.out.println(game2);
+
+        System.out.println(game1);
+    }
+}
+//输出：
+//Game between Bostom Red Sox at Chicago Cubs
+//Game between Kansas City Royals at Chicago Cubs
+//Game between Kansas City Royals at Chicago Cubs
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;我们看一下输出，&lt;code&gt;game1&lt;/code&gt;和&lt;code&gt;game2&lt;/code&gt;输出是一样的，为什么？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;因为Spring Bean是单例模式&lt;/strong&gt;,但是这也不难改变。如果我们希望哪个Bean不是单例的，只要添加注解&lt;code&gt;@Scope("prototype")&lt;/code&gt;就可以了。比如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Configuration
+@ComponentScan(basePackages = "lx.spring.core")
+public class AppConfig {
+    ...
+    @Bean @Scope("prototype") //注意这里给Bean添加了@Scope
+    public Game game() {
+        BaseballGame game = new BaseballGame(teams.get(0), teams.get(1));
+        game.setDataSource(dataSource);
+        return game;
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;@Scope("prototype")&lt;/code&gt;表示每次调用时都返回一个新的Bean。&lt;/p&gt;
+&lt;p&gt;这里体现了Spring的一个哲学，它意味着Spring管理的主要是可以看做是单例的，比如Service， Repository， 或者数据库连接池。Spring致力于提供基础设施。&lt;/p&gt;
+&lt;p&gt;在&lt;a href="http://liulixiang1988.github.io/springbi-ji-01-gou-jian-ying-yong.html"&gt;上一节&lt;/a&gt;我们用Java进行配置：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Configuration
+public class AppConfig {
+    @Bean
+    public Game game() {
+        return new BaseballGame(redSox(), cubs());
+    }
+
+    @Bean
+    public Team redSox() {
+        return new RedSox();
+    }
+    ...
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意在&lt;code&gt;game()&lt;/code&gt;里，我们又调用了&lt;code&gt;redSox()&lt;/code&gt;，这是一个函数调用。那就有同学会问了，这难道不会产生新的Bean吗？不会的。这是为什么呢？因为Spring会重新继承配置，这里是&lt;code&gt;AppConfig&lt;/code&gt;，然后重写这里面的方法。在&lt;strong&gt;子类&lt;/strong&gt;中优点类似这样：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public Team redSox() {
+    if (redSox 已经在 appContext 中) {
+        return redSox;
+    } else {
+        //调用super.redSox()
+        //添加到appContext中
+        //return redSox
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;现在，我们再来看&lt;code&gt;@Scope&lt;/code&gt;注解，默认值是&lt;code&gt;@Scope("singleton")&lt;/code&gt;，还有&lt;code&gt;@Scope("prototype")&lt;/code&gt;，如果在Spring MVC中，则还有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;request&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;session&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当然你也可以定义自己的&lt;code&gt;Scope&lt;/code&gt;，但我们还是应该记住：&lt;strong&gt;默认情况下Spring的Bean是单例的&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id="23-bean"&gt;2.3 工厂方法和工厂Bean&lt;/h2&gt;
+&lt;p&gt;工厂方法和工厂Bean一般主要用于XML配置Bean时。&lt;/p&gt;
+&lt;h3 id="231"&gt;2.3.1 工厂方法&lt;/h3&gt;
+&lt;p&gt;我们来看一看后面如何在XML中调用工厂方法。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;java.text.NumberFormat&lt;/code&gt;是一个抽象类，所以也就没法直接生成对象，但是它有一些静态工厂方法可以用于生成对象。我们在XML中添加一个它的&lt;code&gt;Bean&lt;/code&gt;就需要像这样了：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;bean&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"nf"&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"java.text.NumberFormat"&lt;/span&gt; &lt;span class="na"&gt;factory-method=&lt;/span&gt;&lt;span class="s"&gt;"getCurrencyInstance"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意这里的&lt;strong&gt;factory-method&lt;/strong&gt;，此时，我们可以再应用中这样调用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;ApplicationContext&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ClassPathXmlApplicationContext&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"applicationContext.xml"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;NumberFormat&lt;/span&gt; &lt;span class="n"&gt;nf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getBean&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;NumberFormat&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="kt"&gt;double&lt;/span&gt; &lt;span class="n"&gt;amount&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;12345678.9012345&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;System&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;println&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;format&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;amount&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+&lt;span class="c1"&gt;//输出：&lt;/span&gt;
+&lt;span class="c1"&gt;//￥12,345,678.90&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;从这个我们可以看出，Spring需要知道怎么去创建实例（构造方法还是工厂方法）才能给我们创建Bean。&lt;/p&gt;
+&lt;h3 id="232-bean"&gt;2.3.2 工厂Bean&lt;/h3&gt;
+&lt;p&gt;有时候，我们需要用别的类中的工厂方法来创建类，这个时候我们就需要使用工厂Bean。&lt;/p&gt;
+&lt;p&gt;这里我们举一个例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;bean&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"factory"&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"javax.xml.parsers.DocumentBuilderFactory"&lt;/span&gt; &lt;span class="na"&gt;factory-method=&lt;/span&gt;&lt;span class="s"&gt;"newInstance"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;bean&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;"documentBuilder"&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"javax.xml.parsers.DocumentBuilder"&lt;/span&gt; &lt;span class="na"&gt;factory-bean=&lt;/span&gt;&lt;span class="s"&gt;"factory"&lt;/span&gt; &lt;span class="na"&gt;factory-method=&lt;/span&gt;&lt;span class="s"&gt;"newDocumentBuilder"&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;我们可以看到&lt;code&gt;documentBuilder&lt;/code&gt;是通过&lt;code&gt;factory&lt;/code&gt;这个Bean的&lt;code&gt;newDocumentBuilder&lt;/code&gt;方法中调用的。&lt;/p&gt;
+&lt;p&gt;当然，如果我们用的是Java配置，直接这么写就可以了：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Bean
+public NumberFormat nf() {
+    return NumberFormat.getCurrencyInstance();
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="24"&gt;2.4 初始化和销毁&lt;/h2&gt;
+&lt;p&gt;有时候，我们希望在Bean创建后和销毁前做一些动作。&lt;/p&gt;
+&lt;p&gt;比如，对于我们之前定义的&lt;code&gt;BaseballGame&lt;/code&gt;，我们添加两个方法&lt;code&gt;startGame&lt;/code&gt;和&lt;code&gt;endGame&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public class BaseballGame implements Game {
+    ...    
+    public void startGame() {
+        System.out.println("Start game!");
+    }
+
+    public void endGame() {
+        System.out.println("End game!");
+    }
+    ...
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="241-initmethoddestroymethod"&gt;2.4.1 initMethod和destroyMethod属性&lt;/h3&gt;
+&lt;p&gt;下面是重点，我们看看如何在创建后和销毁前调用&lt;code&gt;startGame&lt;/code&gt;和&lt;code&gt;endGame&lt;/code&gt;，再次返回到&lt;code&gt;AppConfig&lt;/code&gt;中：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Bean(initMethod = "startGame", destroyMethod = "endGame")
+@Scope("prototype")
+public Game game() {
+    BaseballGame game = new BaseballGame(teams.get(0), teams.get(1));
+    game.setDataSource(dataSource);
+    return game;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;注意，我们不能给intMethod和destroyMethod传递参数，因此必须要求对应的方法是无餐的。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这里，我们用&lt;code&gt;@Bean&lt;/code&gt;的&lt;code&gt;initMethod&lt;/code&gt;和&lt;code&gt;destroyMethod&lt;/code&gt;来指定对应的方法，接着我们再次执行下面的代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Game game1 = context.getBean("game", Game.class);
+System.out.println(game1);
+//输出
+//Start game!
+//Game between Bostom Red Sox at Chicago Cubs
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;但是我们执行时发现并没有输出销毁指定的方法，这是为什么？因为JVM可能这会并没有执行垃圾回收，所以对象也没有销毁。&lt;/p&gt;
+&lt;h3 id="242-postconstruct-predestroy"&gt;2.4.2 @PostConstruct 和 @PreDestroy&lt;/h3&gt;
+&lt;p&gt;除了使用&lt;code&gt;@Bean(initMethod, destroyMethod)&lt;/code&gt;， Java本身也提供了一些注解让我们来做初始化后和销毁前的一些工作，他们就是&lt;code&gt;@PostConstruct&lt;/code&gt;和&lt;code&gt;@PreDestroy&lt;/code&gt;，我们直接把它们应用到对应的方法上即可。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@PostConstruct
+public void startGame() {
+    System.out.println("Start game!");
+}
+
+@PreDestroy
+public void endGame() {
+    System.out.println("End game!");
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;但是这个方法我们必须有Bean对应的源码才行。&lt;/p&gt;
+&lt;h3 id="243-annotationconfigapplicationcontextclose"&gt;2.4.3 AnnotationConfigApplicationContext.close方法&lt;/h3&gt;
+&lt;p&gt;我们之前看到输出时并没有输出对应的销毁前方法，当然我们也有方法让Bean销毁，那就是用&lt;code&gt;AnnotationConfigApplicationContext.close()&lt;/code&gt;方法，注意这个方法会自动调用，但是对于&lt;code&gt;Scope("prototype")&lt;/code&gt;的无效，必须是单例的才行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+Game game1 = context.getBean("game", Game.class);
+System.out.println(game1);
+context.close();
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Java"></category><category term="Spring"></category></entry><entry><title>Spring笔记01-构建应用</title><link href="/springbi-ji-01-gou-jian-ying-yong.html" rel="alternate"></link><published>2016-08-10T17:29:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-10:springbi-ji-01-gou-jian-ying-yong.html</id><summary type="html">
 &lt;h2 id="11-springjava"&gt;1.1 一个Spring的简单Java应用&lt;/h2&gt;
 &lt;h3 id="111"&gt;1.1.1 创建应用&lt;/h3&gt;
 &lt;p&gt;这里，我们用Gradle创建Spring的应用。&lt;/p&gt;
