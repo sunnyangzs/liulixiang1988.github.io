@@ -1,5 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Liu Lixiang的博客</title><link href="/" rel="alternate"></link><link href="/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>/</id><updated>2016-08-12T16:15:00+08:00</updated><entry><title>Spring笔记03-面向切面编程AOP</title><link href="/springbi-ji-03-mian-xiang-qie-mian-bian-cheng-aop.html" rel="alternate"></link><published>2016-08-12T16:15:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-12:springbi-ji-03-mian-xiang-qie-mian-bian-cheng-aop.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Liu Lixiang的博客</title><link href="/" rel="alternate"></link><link href="/feeds/liu-li-xiang.atom.xml" rel="self"></link><id>/</id><updated>2016-08-12T17:22:00+08:00</updated><entry><title>Spring笔记04-使用Spring进行测试</title><link href="/springbi-ji-04-shi-yong-springjin-xing-ce-shi.html" rel="alternate"></link><published>2016-08-12T17:22:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-12:springbi-ji-04-shi-yong-springjin-xing-ce-shi.html</id><summary type="html">
+&lt;h2 id="41-injecting-fixture"&gt;4.1 标准测试注解和injecting fixture&lt;/h2&gt;
+&lt;p&gt;Spring的一个特点是测试Component非常方便。&lt;/p&gt;
+&lt;p&gt;现在我们为&lt;code&gt;BaseballGame&lt;/code&gt;创建&lt;code&gt;BaseballGameTest&lt;/code&gt;。然后做测试：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public class BaseballGameTest {
+    private Game game;
+    private ApplicationContext ctx;
+
+    @Before
+    public void setUp() throws Exception {
+        ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        game = ctx.getBean("game", Game.class);
+    }
+
+    @Test
+    public void playGame() throws Exception {
+        String home = game.getHomeTeam().getName();
+        String away = game.getAwayTeam().getName();
+
+        String result = game.playGame();
+
+        assertTrue(result.contains(home) || result.contains(away));
+    }
+
+    @Test
+    public void testGetAndSetHomeTeam() throws Exception {
+        Team royals = ctx.getBean("royals", Team.class);
+        game.setHomeTeam(royals);
+        assertEquals(royals.getName(), game.getHomeTeam().getName());
+    }
+
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里每次测试的时候，都要调用一次&lt;code&gt;setUp&lt;/code&gt;，也就是我们的&lt;code&gt;ApplicationContext&lt;/code&gt;会被反复创建很多次，Spring提供了一些方法让&lt;code&gt;ApplicationContext&lt;/code&gt;只执行一次。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@RunWith(SpringJUnit4ClassRunner.class) //
+@ContextConfiguration(classes = AppConfig.class) //
+public class BaseballGameTest {
+    @Autowired //
+    private Game game;
+
+    @Autowired //
+    private ApplicationContext ctx;
+
+    @Test
+    public void playGame() throws Exception {
+        String home = game.getHomeTeam().getName();
+        String away = game.getAwayTeam().getName();
+
+        String result = game.playGame();
+
+        assertTrue(result.contains(home) || result.contains(away));
+    }
+
+    @Test
+    public void testGetAndSetHomeTeam() throws Exception {
+        Team royals = ctx.getBean("royals", Team.class);
+        game.setHomeTeam(royals);
+        assertEquals(royals.getName(), game.getHomeTeam().getName());
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里我们用&lt;code&gt;@RunWith(SpringJUnit4ClassRunner.class)&lt;/code&gt;和&lt;code&gt;@ContextConfiguration(classes = AppConfig.class)&lt;/code&gt;让我们可以直接用Bean和&lt;code&gt;ApplicationContext&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id="42"&gt;4.2 事务测试&lt;/h2&gt;
+&lt;p&gt;事务测试是当测试完成后，所有的测试操作都会回滚。我们用&lt;code&gt;@Transactional&lt;/code&gt;来表示事务测试。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = AppConfig.class)
+@Transactional
+public class BaseballGameTest { ... }
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;还有&lt;code&gt;@Commit&lt;/code&gt;的注解，表示会提交；&lt;code&gt;@Rollback&lt;/code&gt;表示回滚；&lt;code&gt;@AfterTransaction&lt;/code&gt;表示事务执行后再执行。&lt;/p&gt;
+&lt;p&gt;还有就是&lt;code&gt;@DirtiesContext&lt;/code&gt;表示测试上下文会影响到应用中的上下文，当测试执行后重新加载应用的上下文。&lt;/p&gt;
+&lt;p&gt;我们看到Spring的事务测试和回滚机制非常棒，即使我们不用Spring也可以把它拿出来用于测试。&lt;/p&gt;</summary><category term="Java"></category><category term="Spring"></category></entry><entry><title>Spring笔记03-面向切面编程AOP</title><link href="/springbi-ji-03-mian-xiang-qie-mian-bian-cheng-aop.html" rel="alternate"></link><published>2016-08-12T16:15:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-12:springbi-ji-03-mian-xiang-qie-mian-bian-cheng-aop.html</id><summary type="html">
 &lt;h2 id="31-aop"&gt;3.1 AOP的概念&lt;/h2&gt;
 &lt;p&gt;AOP适用于以下场景：代码交织(code tangling)和代码分散(code scattering)&lt;/p&gt;
 &lt;p&gt;代码交织是指一个方法完成多个功能，这几个功能之间又没有必然联系，比如我们需要做日志、检查授权和执行业务逻辑，如果我们不用AOP的话那这三个就混在一起了。&lt;/p&gt;

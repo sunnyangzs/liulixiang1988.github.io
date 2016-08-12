@@ -2,10 +2,10 @@
 <html lang="zh">
 <head>
 
-        <title>Android学习笔记-08 ImageView控件</title>
+        <title>Spring笔记04-使用Spring进行测试</title>
         <meta charset="utf-8" />
         <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Full Atom Feed" />
-        <link href="/feeds/android.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Categories Atom Feed" />
+        <link href="/feeds/java.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -55,27 +55,104 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="./androidxue-xi-bi-ji-08-imageviewkong-jian.html" rel="bookmark"
-                   title="Permalink to Android学习笔记-08 ImageView控件">Android学习笔记-08 ImageView控件</a></h2>
+                <a href="./springbi-ji-04-shi-yong-springjin-xing-ce-shi.html" rel="bookmark"
+                   title="Permalink to Spring笔记04-使用Spring进行测试">Spring笔记04-使用Spring进行测试</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-04-19">
-                日 19 四月 2015
+              <abbr class="published" title="2016-08-12">
+                五 12 八月 2016
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
+                <div class="toc">
+<ul>
+<li><a href="#41-injecting-fixture">4.1 标准测试注解和injecting fixture</a></li>
+<li><a href="#42">4.2 事务测试</a></li>
+</ul>
+</div>
               
+<h2 id="41-injecting-fixture">4.1 标准测试注解和injecting fixture</h2>
+<p>Spring的一个特点是测试Component非常方便。</p>
+<p>现在我们为<code>BaseballGame</code>创建<code>BaseballGameTest</code>。然后做测试：</p>
+<div class="highlight"><pre><span></span>public class BaseballGameTest {
+    private Game game;
+    private ApplicationContext ctx;
+
+    @Before
+    public void setUp() throws Exception {
+        ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        game = ctx.getBean("game", Game.class);
+    }
+
+    @Test
+    public void playGame() throws Exception {
+        String home = game.getHomeTeam().getName();
+        String away = game.getAwayTeam().getName();
+
+        String result = game.playGame();
+
+        assertTrue(result.contains(home) || result.contains(away));
+    }
+
+    @Test
+    public void testGetAndSetHomeTeam() throws Exception {
+        Team royals = ctx.getBean("royals", Team.class);
+        game.setHomeTeam(royals);
+        assertEquals(royals.getName(), game.getHomeTeam().getName());
+    }
+
+}
+</pre></div>
+<p>这里每次测试的时候，都要调用一次<code>setUp</code>，也就是我们的<code>ApplicationContext</code>会被反复创建很多次，Spring提供了一些方法让<code>ApplicationContext</code>只执行一次。</p>
+<div class="highlight"><pre><span></span>@RunWith(SpringJUnit4ClassRunner.class) //
+@ContextConfiguration(classes = AppConfig.class) //
+public class BaseballGameTest {
+    @Autowired //
+    private Game game;
+
+    @Autowired //
+    private ApplicationContext ctx;
+
+    @Test
+    public void playGame() throws Exception {
+        String home = game.getHomeTeam().getName();
+        String away = game.getAwayTeam().getName();
+
+        String result = game.playGame();
+
+        assertTrue(result.contains(home) || result.contains(away));
+    }
+
+    @Test
+    public void testGetAndSetHomeTeam() throws Exception {
+        Team royals = ctx.getBean("royals", Team.class);
+        game.setHomeTeam(royals);
+        assertEquals(royals.getName(), game.getHomeTeam().getName());
+    }
+}
+</pre></div>
+<p>这里我们用<code>@RunWith(SpringJUnit4ClassRunner.class)</code>和<code>@ContextConfiguration(classes = AppConfig.class)</code>让我们可以直接用Bean和<code>ApplicationContext</code>。</p>
+<h2 id="42">4.2 事务测试</h2>
+<p>事务测试是当测试完成后，所有的测试操作都会回滚。我们用<code>@Transactional</code>来表示事务测试。</p>
+<div class="highlight"><pre><span></span>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = AppConfig.class)
+@Transactional
+public class BaseballGameTest { ... }
+</pre></div>
+<p>还有<code>@Commit</code>的注解，表示会提交；<code>@Rollback</code>表示回滚；<code>@AfterTransaction</code>表示事务执行后再执行。</p>
+<p>还有就是<code>@DirtiesContext</code>表示测试上下文会影响到应用中的上下文，当测试执行后重新加载应用的上下文。</p>
+<p>我们看到Spring的事务测试和回滚机制非常棒，即使我们不用Spring也可以把它拿出来用于测试。</p>
             </div><!-- /.entry-content -->
         
  
             <section>
             <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="androidxue-xi-bi-ji-08-imageviewkong-jian.html" data-title="Android学习笔记-08 ImageView控件" data-url="./androidxue-xi-bi-ji-08-imageviewkong-jian.html"></div>
+    <div class="ds-thread" data-thread-key="springbi-ji-04-shi-yong-springjin-xing-ce-shi.html" data-title="Spring笔记04-使用Spring进行测试" data-url="./springbi-ji-04-shi-yong-springjin-xing-ce-shi.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
