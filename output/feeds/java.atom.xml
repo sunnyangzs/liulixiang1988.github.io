@@ -1,5 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Liu Lixiang的博客</title><link href="/" rel="alternate"></link><link href="/feeds/java.atom.xml" rel="self"></link><id>/</id><updated>2016-08-11T10:22:00+08:00</updated><entry><title>Spring笔记02-配置Bean</title><link href="/springbi-ji-02-pei-zhi-bean.html" rel="alternate"></link><published>2016-08-11T10:22:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-11:springbi-ji-02-pei-zhi-bean.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Liu Lixiang的博客</title><link href="/" rel="alternate"></link><link href="/feeds/java.atom.xml" rel="self"></link><id>/</id><updated>2016-08-12T16:15:00+08:00</updated><entry><title>Spring笔记03-面向切面编程AOP</title><link href="/springbi-ji-03-mian-xiang-qie-mian-bian-cheng-aop.html" rel="alternate"></link><published>2016-08-12T16:15:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-12:springbi-ji-03-mian-xiang-qie-mian-bian-cheng-aop.html</id><summary type="html">
+&lt;h2 id="31-aop"&gt;3.1 AOP的概念&lt;/h2&gt;
+&lt;p&gt;AOP适用于以下场景：代码交织(code tangling)和代码分散(code scattering)&lt;/p&gt;
+&lt;p&gt;代码交织是指一个方法完成多个功能，这几个功能之间又没有必然联系，比如我们需要做日志、检查授权和执行业务逻辑，如果我们不用AOP的话那这三个就混在一起了。&lt;/p&gt;
+&lt;p&gt;代码分散式指比如我们有多处需要做日志，然后这些代码在多个地方重复。&lt;/p&gt;
+&lt;p&gt;AOP允许我们将这些动作封装成一个类，然后告诉Spring我们希望在多个地方调用这个类（成为Aspect），从而避免代码交织和分散。 &lt;/p&gt;
+&lt;p&gt;AOP会设计到一下几个概念：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;连接点Join Point&lt;/li&gt;
+&lt;li&gt;切入点Point Cut&lt;/li&gt;
+&lt;li&gt;Advice&lt;/li&gt;
+&lt;li&gt;Aspect&lt;/li&gt;
+&lt;li&gt;Weaving&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="311-join-pointpoint-cut"&gt;3.1.1 连接点(Join Point)和切入点(Point Cut)&lt;/h3&gt;
+&lt;p&gt;连接点，指的是我们能够应用我们Aspect的地方。这是告诉我们where to use the Aspects.
+在一般概念的AOP上，我们可以在任何地方用Aspect，但是Spring对这一规则做了限制，我们只能用在Spring管理的Bean的公共方法中。&lt;/p&gt;
+&lt;p&gt;切入点一般来说可以认为和连接点类似。表示我们实际声明的连接点。&lt;/p&gt;
+&lt;h3 id="312-advice"&gt;3.1.2 Advice&lt;/h3&gt;
+&lt;p&gt;Advice指的是我们想应用的方法(The functionality we want to apply)，比如是Before, After等。&lt;/p&gt;
+&lt;h3 id="313-aspect"&gt;3.1.3 Aspect&lt;/h3&gt;
+&lt;p&gt;Aspect是Point Cut和Advice的结合，也就是我们什么时候做、做什么。&lt;/p&gt;
+&lt;h3 id="314-weaving"&gt;3.1.4 Weaving&lt;/h3&gt;
+&lt;p&gt;将Aspect应用到系统的过程(The process of applying an aspect to our system)&lt;/p&gt;
+&lt;p&gt;好了，在将AOP应用到我们前面讲到的例子之前，我们先添加一些依赖：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;compile group: 'org.springframework', name: 'spring-aop', version: '4.3.2.RELEASE'
+compile group: 'aopalliance', name: 'aopalliance', version: '1.0'
+compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.8.9'
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;spring-aop&lt;/code&gt;底层是调用&lt;code&gt;aspectj&lt;/code&gt;，但是有时候我们会直接使用&lt;code&gt;aspectj&lt;/code&gt;因此这里还是直接添加一下依赖。&lt;/p&gt;
+&lt;h2 id="32-advice"&gt;3.2 定义切入点和应用Advice&lt;/h2&gt;
+&lt;p&gt;这一节我们对之前的例子应用AOP。我们对&lt;code&gt;Game&lt;/code&gt;做记录，记录下每个方法的调用，什么时候添加&lt;code&gt;setHomeTeam&lt;/code&gt;, &lt;code&gt;setAwayTeam&lt;/code&gt;等。&lt;/p&gt;
+&lt;p&gt;首先，我们需要在Bean配置里添加注解&lt;code&gt;@EnableAspectJAutoProxy&lt;/code&gt;。这个注解表示Spring使用AspectJ的注解代理。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Configuration
+@ComponentScan(basePackages = "lx.spring.core")
+@EnableAspectJAutoProxy
+public class AppConfig {...}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;第二部，我们新建一个&lt;code&gt;aspects&lt;/code&gt;包，并在包下面创建&lt;code&gt;LoggingAspect&lt;/code&gt;类:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.aspectj.lang.annotation.Aspect&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.aspectj.lang.annotation.Before&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.stereotype.Component&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;java.util.logging.Logger&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="nd"&gt;@Aspect&lt;/span&gt;
+&lt;span class="nd"&gt;@Component&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="err"&gt;这样使用起来方便&lt;/span&gt;
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;LoggingAspect&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;private&lt;/span&gt; &lt;span class="n"&gt;Logger&lt;/span&gt; &lt;span class="n"&gt;logger&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getLogger&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;getClass&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getName&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+    &lt;span class="nd"&gt;@Before&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"execution(void lx.spring.core..*.set*(*))"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="err"&gt;指定&lt;/span&gt;&lt;span class="n"&gt;Point&lt;/span&gt; &lt;span class="n"&gt;Cut&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;callSetters&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Setters called!"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里，我们创建了类，并用&lt;code&gt;@Aspect&lt;/code&gt;标示它是一个Aspect。一个Aspect由切入点和Advice组成，&lt;code&gt;@Before&lt;/code&gt;指定了切入点，也就是匹配所有&lt;code&gt;lx.spring.core&lt;/code&gt;包及其下面的包中的&lt;code&gt;set&lt;/code&gt;开头只有一个参数返回类型是&lt;code&gt;void&lt;/code&gt;类型的方法。&lt;code&gt;callSetters()&lt;/code&gt;方法是advice。&lt;/p&gt;
+&lt;p&gt;因为我们给Aspect加了&lt;code&gt;@Component&lt;/code&gt;，加之我们在配置时用了&lt;code&gt;@ComponentScan&lt;/code&gt;，所以现在我们什么都不用做，就会自动的调用这个方法了。是不是很神奇？&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Team royals = context.getBean("royals", Team.class);
+Team redSox = context.getBean("redSox", Team.class);
+Team cubs = context.getBean("cubs", Team.class);
+
+Game game1 = context.getBean("game", Game.class);
+System.out.println(game1);
+game1.setHomeTeam(royals);
+game1.setAwayTeam(redSox);
+//输出
+//Game between Bostom Red Sox at Chicago Cubs
+//八月 12, 2016 10:24:44 上午 lx.spring.core.aspects.LoggingAspect callSetters
+//信息: Setters called!
+//八月 12, 2016 10:24:44 上午 lx.spring.core.aspects.LoggingAspect callSetters
+//信息: Setters called!
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;其实，我们的&lt;code&gt;callSetters()&lt;/code&gt;方法可以添加&lt;code&gt;JoinPoint&lt;/code&gt;参数，用来提供一些调用信息，这样大大提高了AOP的功能，比如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;@Before&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"execution(void lx.spring.core..*.set*(*))"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;指定Point&lt;/span&gt; &lt;span class="nt"&gt;Cut&lt;/span&gt;
+&lt;span class="nt"&gt;public&lt;/span&gt; &lt;span class="nt"&gt;void&lt;/span&gt; &lt;span class="nt"&gt;callSetters&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;JoinPoint&lt;/span&gt; &lt;span class="nt"&gt;joinPoint&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;获取方法名&lt;/span&gt;
+    &lt;span class="nt"&gt;String&lt;/span&gt; &lt;span class="nt"&gt;method&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;joinPoint&lt;/span&gt;&lt;span class="nc"&gt;.getSignature&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;&lt;span class="nc"&gt;.getName&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;获取参数&lt;/span&gt;
+    &lt;span class="nt"&gt;String&lt;/span&gt; &lt;span class="nt"&gt;args&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;Arrays&lt;/span&gt;&lt;span class="nc"&gt;.stream&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;joinPoint&lt;/span&gt;&lt;span class="nc"&gt;.getArgs&lt;/span&gt;&lt;span class="o"&gt;())&lt;/span&gt;&lt;span class="nc"&gt;.map&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;Object&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;:toString&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="nc"&gt;.collect&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;Collectors&lt;/span&gt;&lt;span class="nc"&gt;.joining&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;", "&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nt"&gt;获取target&lt;/span&gt;&lt;span class="err"&gt;，&lt;/span&gt;&lt;span class="nt"&gt;也就是所属的类&lt;/span&gt;
+    &lt;span class="nt"&gt;Object&lt;/span&gt; &lt;span class="nt"&gt;target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;joinPoint&lt;/span&gt;&lt;span class="nc"&gt;.getTarget&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+    &lt;span class="nt"&gt;logger&lt;/span&gt;&lt;span class="nc"&gt;.info&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"在"&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nt"&gt;target&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;"上调用"&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nt"&gt;method&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s2"&gt;"参数:"&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nt"&gt;args&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="33-advice"&gt;3.3 Advice的类型&lt;/h2&gt;
+&lt;p&gt;Advice包含很多内容，请查看Spring文档的AspectJ部分。这里举一个例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Around("execution(String playGame())")
+public Object checkForRain(ProceedingJoinPoint pjp) throws Throwable {
+    boolean rain = Math.random() &amp;lt; 0.5;
+    Object result = null;
+    if (rain) {
+        logger.info(pjp.getTarget() + " rained out");
+    } else {
+        result = pjp.proceed();
+        logger.info(result.toString());
+    }
+    return result;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这个是在执行前和执行后都会执行，其中&lt;code&gt;ProceedingJoinPoint.proceed()&lt;/code&gt;会调用对应的方法。&lt;/p&gt;</summary><category term="Java"></category><category term="Spring"></category></entry><entry><title>Spring笔记02-配置Bean</title><link href="/springbi-ji-02-pei-zhi-bean.html" rel="alternate"></link><published>2016-08-11T10:22:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-11:springbi-ji-02-pei-zhi-bean.html</id><summary type="html">
 &lt;h2 id="21-setter"&gt;2.1 构造函数和Setter注入&lt;/h2&gt;
 &lt;p&gt;之前我们基于注解的配置是这样的：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Configuration

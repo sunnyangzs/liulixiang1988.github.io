@@ -2,10 +2,10 @@
 <html lang="zh">
 <head>
 
-        <title>JavaScript模块化</title>
+        <title>Spring笔记03-面向切面编程AOP</title>
         <meta charset="utf-8" />
         <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Full Atom Feed" />
-        <link href="/feeds/web.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Categories Atom Feed" />
+        <link href="/feeds/java.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -55,13 +55,13 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="./javascriptmo-kuai-hua.html" rel="bookmark"
-                   title="Permalink to JavaScript模块化">JavaScript模块化</a></h2>
+                <a href="./springbi-ji-03-mian-xiang-qie-mian-bian-cheng-aop.html" rel="bookmark"
+                   title="Permalink to Spring笔记03-面向切面编程AOP">Spring笔记03-面向切面编程AOP</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-11-04">
-                三 04 十一月 2015
+              <abbr class="published" title="2016-08-12">
+                五 12 八月 2016
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
@@ -70,82 +70,124 @@
             <div class="entry-content">
                 <div class="toc">
 <ul>
-<li><a href="#1">1. 模块化解读</a></li>
-<li><a href="#2-seajs">2. SeaJS的应用</a><ul>
-<li><a href="#21">2.1 在页面中加载模块</a></li>
-<li><a href="#22">2.2 模块代码</a></li>
+<li><a href="#31-aop">3.1 AOP的概念</a><ul>
+<li><a href="#311-join-pointpoint-cut">3.1.1 连接点(Join Point)和切入点(Point Cut)</a></li>
+<li><a href="#312-advice">3.1.2 Advice</a></li>
+<li><a href="#313-aspect">3.1.3 Aspect</a></li>
+<li><a href="#314-weaving">3.1.4 Weaving</a></li>
 </ul>
 </li>
+<li><a href="#32-advice">3.2 定义切入点和应用Advice</a></li>
+<li><a href="#33-advice">3.3 Advice的类型</a></li>
 </ul>
 </div>
               
-<h2 id="1">1. 模块化解读</h2>
-<p>AMD是RequireJS在推广过程中对模块定义的规范化产出。</p>
+<h2 id="31-aop">3.1 AOP的概念</h2>
+<p>AOP适用于以下场景：代码交织(code tangling)和代码分散(code scattering)</p>
+<p>代码交织是指一个方法完成多个功能，这几个功能之间又没有必然联系，比如我们需要做日志、检查授权和执行业务逻辑，如果我们不用AOP的话那这三个就混在一起了。</p>
+<p>代码分散式指比如我们有多处需要做日志，然后这些代码在多个地方重复。</p>
+<p>AOP允许我们将这些动作封装成一个类，然后告诉Spring我们希望在多个地方调用这个类（成为Aspect），从而避免代码交织和分散。 </p>
+<p>AOP会设计到一下几个概念：</p>
 <ul>
-<li>异步加载模块，依赖前置，提前执行</li>
-<li>Define定义模块 <code>define(['require', 'foo'], function(){return;});</code></li>
-<li>Require加载模块（依赖前置）<code>require(['foo', 'bar'], function(foo, bar){});</code></li>
+<li>连接点Join Point</li>
+<li>切入点Point Cut</li>
+<li>Advice</li>
+<li>Aspect</li>
+<li>Weaving</li>
 </ul>
-<p>CMD是SeaJS在推广过程中对模块定义的规范化产出。</p>
-<ul>
-<li>Define定义exports导出<code>define(function(require, exports, module){});</code> module上存储了当前模块的一些对象。</li>
-<li>require(./a)直接引。<code>Require.async</code>异步引入.</li>
-<li>同步加载，依赖就近，延迟执行。</li>
-</ul>
-<p>类似的还有CommonJS Module/2.0规范。</p>
-<h2 id="2-seajs">2. SeaJS的应用</h2>
-<p>目录结构：</p>
-<div class="highlight"><pre><span></span>examples/
-  |-- sea-modules      存放 seajs、jquery 等文件，这也是模块的部署目录
-  |-- static           存放各个项目的 js、css 文件
-  |     |-- hello
-  |     |-- lucky
-  |     `-- todo
-  `-- app              存放 html 等文件
-        |-- hello.html
-        |-- lucky.html
-        `-- todo.html
+<h3 id="311-join-pointpoint-cut">3.1.1 连接点(Join Point)和切入点(Point Cut)</h3>
+<p>连接点，指的是我们能够应用我们Aspect的地方。这是告诉我们where to use the Aspects.
+在一般概念的AOP上，我们可以在任何地方用Aspect，但是Spring对这一规则做了限制，我们只能用在Spring管理的Bean的公共方法中。</p>
+<p>切入点一般来说可以认为和连接点类似。表示我们实际声明的连接点。</p>
+<h3 id="312-advice">3.1.2 Advice</h3>
+<p>Advice指的是我们想应用的方法(The functionality we want to apply)，比如是Before, After等。</p>
+<h3 id="313-aspect">3.1.3 Aspect</h3>
+<p>Aspect是Point Cut和Advice的结合，也就是我们什么时候做、做什么。</p>
+<h3 id="314-weaving">3.1.4 Weaving</h3>
+<p>将Aspect应用到系统的过程(The process of applying an aspect to our system)</p>
+<p>好了，在将AOP应用到我们前面讲到的例子之前，我们先添加一些依赖：</p>
+<div class="highlight"><pre><span></span>compile group: 'org.springframework', name: 'spring-aop', version: '4.3.2.RELEASE'
+compile group: 'aopalliance', name: 'aopalliance', version: '1.0'
+compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.8.9'
 </pre></div>
-<p>我们从 <code>hello.html</code> 入手，来瞧瞧使用 Sea.js 如何组织代码。</p>
-<h3 id="21">2.1 在页面中加载模块</h3>
-<p>在 <code>hello.html</code> 页尾，通过 <code>script</code> 引入 <code>sea.js</code> 后，有一段配置代码：</p>
-<div class="highlight"><pre><span></span>// seajs 的简单配置
-seajs.config({
-  base: "../sea-modules/",
-  alias: {
-    "jquery": "jquery/jquery/1.10.1/jquery.js"
-  }
-})
-
-// 加载入口模块
-seajs.use("../static/hello/src/main")
+<p><code>spring-aop</code>底层是调用<code>aspectj</code>，但是有时候我们会直接使用<code>aspectj</code>因此这里还是直接添加一下依赖。</p>
+<h2 id="32-advice">3.2 定义切入点和应用Advice</h2>
+<p>这一节我们对之前的例子应用AOP。我们对<code>Game</code>做记录，记录下每个方法的调用，什么时候添加<code>setHomeTeam</code>, <code>setAwayTeam</code>等。</p>
+<p>首先，我们需要在Bean配置里添加注解<code>@EnableAspectJAutoProxy</code>。这个注解表示Spring使用AspectJ的注解代理。</p>
+<div class="highlight"><pre><span></span>@Configuration
+@ComponentScan(basePackages = "lx.spring.core")
+@EnableAspectJAutoProxy
+public class AppConfig {...}
 </pre></div>
-<p><code>sea.js</code> 在下载完成后，会自动加载入口模块。页面中的代码就这么简单。</p>
-<h3 id="22">2.2 模块代码</h3>
-<p>这个小游戏有两个模块 <code>spinning.js</code> 和 <code>main.js</code>，遵循统一的写法：</p>
-<div class="highlight"><pre><span></span>// 所有模块都通过 define 来定义
-define(function(require, exports, module) {
+<p>第二部，我们新建一个<code>aspects</code>包，并在包下面创建<code>LoggingAspect</code>类:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.aspectj.lang.annotation.Aspect</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.aspectj.lang.annotation.Before</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Component</span><span class="p">;</span>
 
-  // 通过 require 引入依赖
-  var $ = require('jquery');
-  var Spinning = require('./spinning');
+<span class="kn">import</span> <span class="nn">java.util.logging.Logger</span><span class="p">;</span>
 
-  // 通过 exports 对外提供接口
-  exports.doSomething = ...
-
-  // 或者通过 module.exports 提供整个接口
-  module.exports = ...
-
-});
+<span class="nd">@Aspect</span>
+<span class="nd">@Component</span> <span class="o">//</span><span class="err">这样使用起来方便</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">LoggingAspect</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">getClass</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">());</span>
+    <span class="nd">@Before</span><span class="p">(</span><span class="s2">"execution(void lx.spring.core..*.set*(*))"</span><span class="p">)</span> <span class="o">//</span><span class="err">指定</span><span class="n">Point</span> <span class="n">Cut</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">callSetters</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Setters called!"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
-<p>上面就是 <code>Sea.js</code> 推荐的 CMD 模块书写格式。如果你有使用过 Node.js，一切都很自然。</p>
+<p>这里，我们创建了类，并用<code>@Aspect</code>标示它是一个Aspect。一个Aspect由切入点和Advice组成，<code>@Before</code>指定了切入点，也就是匹配所有<code>lx.spring.core</code>包及其下面的包中的<code>set</code>开头只有一个参数返回类型是<code>void</code>类型的方法。<code>callSetters()</code>方法是advice。</p>
+<p>因为我们给Aspect加了<code>@Component</code>，加之我们在配置时用了<code>@ComponentScan</code>，所以现在我们什么都不用做，就会自动的调用这个方法了。是不是很神奇？</p>
+<div class="highlight"><pre><span></span>Team royals = context.getBean("royals", Team.class);
+Team redSox = context.getBean("redSox", Team.class);
+Team cubs = context.getBean("cubs", Team.class);
+
+Game game1 = context.getBean("game", Game.class);
+System.out.println(game1);
+game1.setHomeTeam(royals);
+game1.setAwayTeam(redSox);
+//输出
+//Game between Bostom Red Sox at Chicago Cubs
+//八月 12, 2016 10:24:44 上午 lx.spring.core.aspects.LoggingAspect callSetters
+//信息: Setters called!
+//八月 12, 2016 10:24:44 上午 lx.spring.core.aspects.LoggingAspect callSetters
+//信息: Setters called!
+</pre></div>
+<p>其实，我们的<code>callSetters()</code>方法可以添加<code>JoinPoint</code>参数，用来提供一些调用信息，这样大大提高了AOP的功能，比如：</p>
+<div class="highlight"><pre><span></span><span class="k">@Before</span><span class="o">(</span><span class="s2">"execution(void lx.spring.core..*.set*(*))"</span><span class="o">)</span> <span class="o">//</span><span class="nt">指定Point</span> <span class="nt">Cut</span>
+<span class="nt">public</span> <span class="nt">void</span> <span class="nt">callSetters</span><span class="o">(</span><span class="nt">JoinPoint</span> <span class="nt">joinPoint</span><span class="o">)</span> <span class="p">{</span>
+    <span class="o">//</span><span class="nt">获取方法名</span>
+    <span class="nt">String</span> <span class="nt">method</span> <span class="o">=</span> <span class="nt">joinPoint</span><span class="nc">.getSignature</span><span class="o">()</span><span class="nc">.getName</span><span class="o">();</span>
+    <span class="o">//</span><span class="nt">获取参数</span>
+    <span class="nt">String</span> <span class="nt">args</span> <span class="o">=</span> <span class="nt">Arrays</span><span class="nc">.stream</span><span class="o">(</span><span class="nt">joinPoint</span><span class="nc">.getArgs</span><span class="o">())</span><span class="nc">.map</span><span class="o">(</span><span class="nt">Object</span><span class="o">:</span><span class="nd">:toString</span><span class="o">)</span><span class="nc">.collect</span><span class="o">(</span><span class="nt">Collectors</span><span class="nc">.joining</span><span class="o">(</span><span class="s2">", "</span><span class="o">));</span>
+    <span class="o">//</span><span class="nt">获取target</span><span class="err">，</span><span class="nt">也就是所属的类</span>
+    <span class="nt">Object</span> <span class="nt">target</span> <span class="o">=</span> <span class="nt">joinPoint</span><span class="nc">.getTarget</span><span class="o">();</span>
+    <span class="nt">logger</span><span class="nc">.info</span><span class="o">(</span><span class="s2">"在"</span><span class="o">+</span><span class="nt">target</span><span class="o">+</span><span class="s2">"上调用"</span><span class="o">+</span><span class="nt">method</span><span class="o">+</span><span class="s2">"参数:"</span><span class="o">+</span><span class="nt">args</span><span class="o">);</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="33-advice">3.3 Advice的类型</h2>
+<p>Advice包含很多内容，请查看Spring文档的AspectJ部分。这里举一个例子：</p>
+<div class="highlight"><pre><span></span>@Around("execution(String playGame())")
+public Object checkForRain(ProceedingJoinPoint pjp) throws Throwable {
+    boolean rain = Math.random() &lt; 0.5;
+    Object result = null;
+    if (rain) {
+        logger.info(pjp.getTarget() + " rained out");
+    } else {
+        result = pjp.proceed();
+        logger.info(result.toString());
+    }
+    return result;
+}
+</pre></div>
+<p>这个是在执行前和执行后都会执行，其中<code>ProceedingJoinPoint.proceed()</code>会调用对应的方法。</p>
             </div><!-- /.entry-content -->
         
  
             <section>
             <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="javascriptmo-kuai-hua.html" data-title="JavaScript模块化" data-url="./javascriptmo-kuai-hua.html"></div>
+    <div class="ds-thread" data-thread-key="springbi-ji-03-mian-xiang-qie-mian-bian-cheng-aop.html" data-title="Spring笔记03-面向切面编程AOP" data-url="./springbi-ji-03-mian-xiang-qie-mian-bian-cheng-aop.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
