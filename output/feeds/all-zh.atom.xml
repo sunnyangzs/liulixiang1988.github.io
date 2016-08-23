@@ -1,5 +1,490 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Liu Lixiang的博客</title><link href="/" rel="alternate"></link><link href="/feeds/all-zh.atom.xml" rel="self"></link><id>/</id><updated>2016-08-12T17:22:00+08:00</updated><entry><title>Spring笔记04-使用Spring进行测试</title><link href="/springbi-ji-04-shi-yong-springjin-xing-ce-shi.html" rel="alternate"></link><published>2016-08-12T17:22:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-12:springbi-ji-04-shi-yong-springjin-xing-ce-shi.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Liu Lixiang的博客</title><link href="/" rel="alternate"></link><link href="/feeds/all-zh.atom.xml" rel="self"></link><id>/</id><updated>2016-08-23T21:22:00+08:00</updated><entry><title>Spring笔记06-使用JdbcTemplate进行数据访问</title><link href="/springbi-ji-06-shi-yong-jdbctemplatejin-xing-shu-ju-fang-wen.html" rel="alternate"></link><published>2016-08-23T21:22:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-23:springbi-ji-06-shi-yong-jdbctemplatejin-xing-shu-ju-fang-wen.html</id><summary type="html">
+&lt;h2 id="61"&gt;6.1 实例化和配置&lt;/h2&gt;
+&lt;p&gt;没有Spring的情况下，JDBC非常难用；有了Spring，JDBC就变得比较靠谱可用了。&lt;/p&gt;
+&lt;p&gt;这里我们在Bean中使用&lt;code&gt;DataSource&lt;/code&gt;对&lt;code&gt;JdbcTemplate&lt;/code&gt;进行初始化。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Repository
+@Profile("test")
+public class JdbcAccountRepository implements AccountRepository {
+
+    private JdbcTemplate template;
+    private static long nextId = 4;
+
+    @Autowired
+    public JdbcAccountRepository(DataSource dataSource) {
+        template = new JdbcTemplate(dataSource);
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;后面我们看如何配置多个&lt;code&gt;DataSource&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id="62-data-source"&gt;6.2 定义数据源Data Source&lt;/h2&gt;
+&lt;p&gt;之前我们已经讲了&lt;code&gt;@Component&lt;/code&gt;，但是在实际中我们更多的遇到的是&lt;code&gt;@Service&lt;/code&gt;和&lt;code&gt;@Repository&lt;/code&gt;，&lt;code&gt;@Controller&lt;/code&gt;，这些其实也是&lt;code&gt;@Component&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;首先我们来添加一些依赖：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dependencies {
+    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1.1'
+
+    compile group: 'org.springframework', name: 'spring-test', version: '4.3.2.RELEASE'
+    compile group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3'
+    //...
+
+    return'com.h2database:h2:1.4.192'
+
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意这里我们用了返回，这是因为需要对应的驱动&lt;/p&gt;
+&lt;p&gt;我们修改&lt;code&gt;AppConfig.java&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Bean(name = "dataSource", destroyMethod = "shutdown")
+@Profile("test")
+public DataSource dataSourceForTest() {
+    return new EmbeddedDatabaseBuilder()
+            .generateUniqueName(true)
+            .setType(EmbeddedDatabaseType.H2)
+            .setScriptEncoding("UTF-8")
+            .ignoreFailedDrops(true)
+            .addScript("schema.sql")
+            .addScripts("data.sql")
+            .build();
+}
+
+@Bean(name = "dataSource")
+@Profile("prod")
+public DataSource dataSourceForProd() {
+    BasicDataSource dataSource = new BasicDataSource();
+    dataSource.setDriverClassName(env.getProperty("db.driver"));
+    dataSource.setUrl(env.getProperty("db.url"));
+    dataSource.setUsername(env.getProperty("db.user"));
+    dataSource.setPassword(env.getProperty("db.pass"));
+    return dataSource;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="63-profileenvironment"&gt;6.3 Profile注解和Environment&lt;/h2&gt;
+&lt;p&gt;在项目中，我们需要多个环境（开发、测试、产品）等，每个环境对应的数据库也不同。Spring能通过&lt;code&gt;@Profile&lt;/code&gt;来给不同的环境提供不同的配置Bean但是有相同的名称。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;@Profile&lt;/code&gt;可以放在配置类上，也可以放在Bean的方法上，如果用在Bean方法上，需要给&lt;code&gt;@Bean&lt;/code&gt;提供&lt;code&gt;name&lt;/code&gt;属性，这样可以让不同的Bean有相同的名称。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Configuration
+@ComponentScan(basePackages = "lx.spring.core")
+@PropertySource("classpath:prod.properties")
+@EnableTransactionManagement
+public class AppConfig {
+
+    @Autowired
+    private Environment env;
+
+    @Bean(name = "dataSource", destroyMethod = "shutdown")
+    @Profile("test")
+    public DataSource dataSourceForTest() {
+        return new EmbeddedDatabaseBuilder()
+                .generateUniqueName(true)
+                .setType(EmbeddedDatabaseType.H2)
+                .setScriptEncoding("UTF-8")
+                .ignoreFailedDrops(true)
+                .addScript("schema.sql")
+                .addScript("data.sql")
+                .build();
+    }
+
+    @Bean(name = "transactionManager")
+    @Profile("test")
+    public PlatformTransactionManager transactionManagerForTest() {
+        return new DataSourceTransactionManager(dataSourceForTest());
+    }
+
+    @Bean(name = "dataSource")
+    @Profile("prod")
+    public DataSource dataSourceForProd() {
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setDriverClassName(env.getProperty("db.driver"));
+        dataSource.setUrl(env.getProperty("db.url"));
+        dataSource.setUserName(env.getProperty("db.user"));
+        dataSource.setPassword(env.getProperty("db.pass"));
+        return dataSource;
+    }
+
+    @Bean(name = "transactionManager")
+    @Profile("prod")
+    public PlatformTransactionManager transactionManagerForProd() {
+        return new DataSourceTransactionManager(dataSourceForProd());
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里我们看到&lt;code&gt;@Profile&lt;/code&gt;提供了不同环境下的使用方式。同时需要注意一点是我们使用了
+&lt;code&gt;@PropertySource("classpath:prod.properties")&lt;/code&gt;这样的注解，它会在&lt;code&gt;resources&lt;/code&gt;下寻找&lt;code&gt;prod.properties&lt;/code&gt;这个文件，然后使用了：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Autowired
+private Environment env;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;接着就能读取变量了：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;env.getProperty("db.url")
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="64-crud"&gt;6.4 实现CRUD方法&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Repository
+@Profile("test")
+public class JdbcAccountRepository implements AccountRepository {
+
+    private JdbcTemplate template;
+    private static long nextId = 4;
+
+    @Autowired
+    public JdbcAccountRepository(DataSource dataSource) {
+        template = new JdbcTemplate(dataSource);
+    }
+
+    @Override
+    public List&amp;lt;Account&amp;gt; getAccounts() {
+        String sqlText = "SELECT * FROM account";
+        return template.query(sqlText, new AccountMapper());
+    }
+
+    @Override
+    public Account getAccount(Long id) {
+        String sqlText = "SELECT * FROM account WHERE id=?";
+        return template.queryForObject(sqlText, new AccountMapper(), id);
+    }
+
+    @Override
+    public int getNumberOfCounts() {
+        String sqlText = "SELECT count(*) FROM account";
+        return template.queryForObject(sqlText, Integer.class);
+    }
+
+    @Override
+    public Long createAccount(BigDecimal initialBalance) {
+        String sqlText = "insert into account(id, balance) values(?, ?)";
+        long id = nextId ++;
+        int uc = template.update(sqlText, id, initialBalance);
+        return id;
+    }
+
+    @Override
+    public int deleteAccount(Long id) {
+        String sqlText = "delete from account where id=?";
+        return template.update(sqlText, id);
+    }
+
+    @Override
+    public void updateAccount(Account account) {
+        String sqlText = "update account set balance=? where id = ?";
+        template.update(sqlText, account.getBalance(), account.getId());
+    }
+
+    private class AccountMapper implements RowMapper&amp;lt;Account&amp;gt;{
+        @Override
+        public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return new Account(rs.getLong("id"), rs.getBigDecimal("balance"));
+        }
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意，我们需要提供实现&lt;code&gt;RowMapper&lt;/code&gt;来返回对象类型。&lt;/p&gt;
+&lt;h2 id="65-repository"&gt;6.5 测试Repository&lt;/h2&gt;
+&lt;p&gt;IDEA的打开最近文件、窗口的快捷键：&lt;code&gt;Cmd+E&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;我们创建&lt;code&gt;JdbcAccountRepositoryTest.java&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = AppConfig.class)
+@Transactional
+@ActiveProfiles("test")
+public class JdbcAccountRepositoryTest {
+
+    @Autowired
+    private AccountRepository repository;
+
+    @Test
+    public void getAccounts() throws Exception {
+        List&amp;lt;Account&amp;gt; accounts = repository.getAccounts();
+        //1. 比较
+        assertThat(accounts.size(), is(3));
+    }
+
+    @Test
+    public void getAccount() throws Exception {
+        Account account = repository.getAccount(1L);
+        assertThat(account.getId(), is(1L));
+        //2. 近似
+        assertThat(new BigDecimal("100.0"), is(closeTo(account.getBalance(), new BigDecimal("0.01"))));
+    }
+
+    @Test
+    public void createAccount() throws Exception {
+        Long id = repository.createAccount(new BigDecimal("250.00"));
+        //3. 非空
+        assertThat(id, is(notNullValue()));
+
+        Account account = repository.getAccount(id);
+        assertThat(account.getId(), is(id));
+        assertThat(new BigDecimal("250.0"), is(closeTo(account.getBalance(), new BigDecimal("0.01"))));
+    }
+
+    @Test
+    public void updateAccount() throws Exception {
+        Account account = repository.getAccount(1L);
+        BigDecimal current = account.getBalance();
+        BigDecimal amount = new BigDecimal("50.0");
+        account.setBalance(current.add(amount));
+        repository.updateAccount(account);
+
+        Account again = repository.getAccount(1L);
+        assertThat(again.getBalance(), is(closeTo(account.getBalance(), new BigDecimal("0.01"))));
+    }
+
+    @Test
+    public void deleteAccount() throws Exception {
+        for (Account account: repository.getAccounts()) {
+            repository.deleteAccount(account.getId());
+        }
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意里面的&lt;code&gt;assertThat&lt;/code&gt;, &lt;code&gt;is&lt;/code&gt;, &lt;code&gt;closeTo&lt;/code&gt;等。&lt;/p&gt;
+&lt;p&gt;现在我们再来看&lt;code&gt;AccountService&lt;/code&gt;,它有事务：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Service @Transactional
+@Profile("test")
+public class AccountService {
+    @Autowired
+    private AccountRepository repository;
+
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    public BigDecimal getBalance(Long id) {
+        return repository.getAccount(id).getBalance();
+    }
+
+    public BigDecimal deposit(Long id, BigDecimal amount) {
+        Account account = repository.getAccount(id);
+        BigDecimal newBalance = account.getBalance().add(amount);
+        account.setBalance(newBalance);
+        repository.updateAccount(account);
+        return newBalance;
+    }
+
+    public BigDecimal withdraw(Long id, BigDecimal amount) {
+        return deposit(id, amount.negate());
+    }
+
+    public void transfer(Long fromId, Long toId, BigDecimal amount) {
+        withdraw(fromId, amount);
+        deposit(toId, amount);
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;然后我们看看对应的测试：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = AppConfig.class)
+@Transactional
+@ActiveProfiles("test")
+public class AccountServiceTest {
+
+    @Autowired
+    private AccountService service;
+
+    @Test
+    public void deposit() throws Exception {
+        BigDecimal start = service.getBalance(1L);
+        BigDecimal amount = new BigDecimal("50.0");
+
+        service.deposit(1L, amount);
+        BigDecimal finish = start.add(amount);
+
+        assertThat(finish, is(closeTo(service.getBalance(1L), new BigDecimal("0.01"))));
+    }
+
+    @Test
+    public void withdraw() throws Exception {
+        BigDecimal start = service.getBalance(1L);
+        BigDecimal amount = new BigDecimal("50.0");
+
+        service.withdraw(1L, amount);
+        BigDecimal finish = start.subtract(amount);
+
+        assertThat(finish, is(closeTo(service.getBalance(1L), new BigDecimal("0.01"))));
+    }
+
+    @Test
+    public void transfer() throws Exception {
+        BigDecimal acct1start = service.getBalance(1L);
+        BigDecimal acct2start = service.getBalance(2L);
+
+        BigDecimal amount = new BigDecimal("50.0");
+        service.transfer(1L, 2L, amount);
+        BigDecimal acct1finish = acct1start.subtract(amount);
+        BigDecimal acct2finish = acct2start.add(amount);
+
+        assertThat(acct1finish, is(closeTo(service.getBalance(1L), new BigDecimal("0.01"))));
+        assertThat(acct2finish, is(closeTo(service.getBalance(2L), new BigDecimal("0.01"))));
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里事务运行的没问题。&lt;/p&gt;</summary><category term="Java"></category><category term="Spring"></category></entry><entry><title>Spring笔记05-Spring事务</title><link href="/springbi-ji-05-springshi-wu.html" rel="alternate"></link><published>2016-08-19T18:20:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-19:springbi-ji-05-springshi-wu.html</id><summary type="html">
+&lt;h2 id="51"&gt;5.1 声明事务管理&lt;/h2&gt;
+&lt;p&gt;ACID 属性:&lt;/p&gt;
+&lt;p&gt;Atomic原子：All or Nothing&lt;/p&gt;
+&lt;p&gt;Consistent一致性: DB integrity constraints never violated&lt;/p&gt;
+&lt;p&gt;Isolated: How transactions see work done by others&lt;/p&gt;
+&lt;p&gt;Durable: Committed changes are permanent&lt;/p&gt;
+&lt;p&gt;我们一般是在Service层声明事务。&lt;/p&gt;
+&lt;h3 id="511-transactional"&gt;5.1.1 @Transactional注解&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;@Transactional&lt;/code&gt;注解允许我们管理一个事务管理器。Spring不直接提供事务管理器，它提供一个hook连接到已经存在的事务管理器，比如我们使用关系数据库，那Spring就是使用关系数据库的事务管理器。Spring的Bean和Entity允许我们请求事务管理器，设置属性（比如超时、只读等）。&lt;/p&gt;
+&lt;p&gt;应用Spring的事务需要两步：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;应用&lt;code&gt;Transactional&lt;/code&gt;注解
+    a. XML格式
+    b. 写代码的方式&lt;/li&gt;
+&lt;li&gt;声明Platform Transaction Manager bean&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@EnableTransactionManagement&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;@Transactional&lt;/code&gt;注解可以用于方法或者类。如果应用于一个类，那么这个类中的所有方法都应用了了这个注解，对于应用了类的注解，我们对单独的类重新使用&lt;code&gt;@Transactional&lt;/code&gt;方法来覆盖。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;@Transactional&lt;/code&gt;方法提供了一些参数让我们来指定一些配置。&lt;/p&gt;
+&lt;h3 id="512-platformtransactionmanager"&gt;5.1.2 PlatformTransactionManager接口&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;PlatformTransactionManager&lt;/code&gt;用来代表依赖平台的事务管理器。它的实现类有Hibernate, JPA等事务管理器。&lt;/p&gt;
+&lt;h3 id="513"&gt;5.1.3 案例：账户应用&lt;/h3&gt;
+&lt;p&gt;首先，我们定义entity:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="n"&gt;lx&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;spring&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;entities&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;java.math.BigDecimal&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Account&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;private&lt;/span&gt; &lt;span class="n"&gt;Long&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;private&lt;/span&gt; &lt;span class="n"&gt;BigDecimal&lt;/span&gt; &lt;span class="n"&gt;balance&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Account&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Account&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Long&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;BigDecimal&lt;/span&gt; &lt;span class="n"&gt;balance&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;balance&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;balance&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;getter&lt;/span&gt; &lt;span class="n"&gt;setter&lt;/span&gt; &lt;span class="n"&gt;toString&lt;/span&gt; &lt;span class="n"&gt;equals&lt;/span&gt; &lt;span class="n"&gt;hashCode等&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里我们使用&lt;code&gt;BigDecimal&lt;/code&gt;类型来表示余额。&lt;/p&gt;
+&lt;p&gt;然后我们创建一个Repository，用来表示数据库的操作：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="n"&gt;lx&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;spring&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repositories&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;lx.spring.core.entities.Account&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;java.math.BigDecimal&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;java.util.List&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;interface&lt;/span&gt; &lt;span class="n"&gt;AccountRepository&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Account&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;getAccounts&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="n"&gt;Account&lt;/span&gt; &lt;span class="n"&gt;getAccount&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Long&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;getNumberOfCounts&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="n"&gt;Long&lt;/span&gt; &lt;span class="n"&gt;createAccount&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BigDecimal&lt;/span&gt; &lt;span class="n"&gt;initialBalance&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nb"&gt;int&lt;/span&gt; &lt;span class="n"&gt;deleteAccount&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Long&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;updateAccount&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Account&lt;/span&gt; &lt;span class="n"&gt;account&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;后面我们将看到如何用Spring Data来处理数据。&lt;/p&gt;
+&lt;p&gt;第一步，我们用&lt;code&gt;@Transactional&lt;/code&gt; 实体。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Service @Transactional
+@Profile("test")
+public class AccountService {
+    @Autowired
+    private AccountRepository repository;
+
+    public BigDecimal getBalance(Long id) {
+        return repository.getAccount(id).getBalance();
+    }
+
+    public BigDecimal deposit(Long id, BigDecimal amount) {
+        Account account = repository.getAccount(id);
+        BigDecimal newBalance = account.getBalance().add(amount);
+        account.setBalance(newBalance);
+        repository.updateAccount(account);
+        return newBalance;
+    }
+
+    public BigDecimal withdraw(Long id, BigDecimal amount) {
+        return deposit(id, amount.negate());
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;第二步是声明Bean来适应事务，我们打开&lt;code&gt;AppConfig&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;@Configuration
+@EnableTransactionManagement
+public class AppConfig {
+
+    @Bean(name = "transactionManager")
+    @Profile("test")
+    public PlatformTransactionManager transactionManagerForTest() {
+        return new DataSourceTransactionManager(dataSourceForTest());
+    }
+
+    @Bean(name = "dataSource")
+    @Profile("test")
+    public DataSource dataSourceForTest() {
+        DataSource dataSource = new BasicDataSource();
+        return dataSource;
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意这里的&lt;code&gt;transactionManagerForTest()&lt;/code&gt;是返回事务管理器的，同时，我们用&lt;code&gt;EnableTransactionManagement&lt;/code&gt;来指明我们的容器用了事务管理。&lt;/p&gt;
+&lt;h2 id="52-isolation-levels"&gt;5.2 Isolation levels 隔离层级&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;@Transactional&lt;/code&gt;有一个属性是&lt;code&gt;Isolation&lt;/code&gt;的，它是一个枚举，它有一下几个值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;DEFAULT&lt;/code&gt; 使用底层数据存储所用的隔离层级&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;READ_COMMITTED&lt;/code&gt; dirty reads are prevented; non-repeatable reads and phantom reads can occur.只有在其他事务提交时在一个事务里才能看到改变后的数据。如果事务需要很久，那就一直锁定直到事务完成。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;READ_UNCOMMITTED&lt;/code&gt; dirty reads, non-repeatable reads and phantom reads can occur. 两个事务同时对于一行操作。如果一个事务读取了行，然后又修改了数据，那另一个事务可以看到其他事务修改后的数据。这个好处是速度非常快，你没有锁定行，问题是它有一定风险，比如你根据没有提交的数据做了一些动作，但是这些改变又回滚了。所以，使用时需要分析一下。&lt;code&gt;READ_UNCOMMITTED&lt;/code&gt;是最高效但不是最优的选择。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;REPEATABLE_READ&lt;/code&gt; dirty reads and non-repeatable reads are prevented; phantom reads can occur.如果数据修改后发生了回滚，则回滚前后我们看到的数据都是一样的&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SERIALIZABLE&lt;/code&gt; dirty reads, non-repeatable reads and phantom reads are prevented 当我们查询或修改时，别的事务不能增加或修改表（整表锁定）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一般情况下我们不会修改这个属性。&lt;/p&gt;
+&lt;h2 id="53-propagation"&gt;5.3 Propagation 传播&lt;/h2&gt;
+&lt;p&gt;Propagation说的是当事务执行时，我们的方法是否也是执行的。我们再回到&lt;code&gt;@Transactional&lt;/code&gt;注解上来，它有一个属性是&lt;code&gt;Propagation&lt;/code&gt;枚举。它有以下值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;MANDATORY&lt;/code&gt;:  1. tx-&amp;gt;join tx; 2. no-&amp;gt;throw a TransactionRequiredException&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;NESTED&lt;/code&gt;: &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;NEVER&lt;/code&gt;: 1. tx-&amp;gt; throw an exception; 2. no-&amp;gt;nothing&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;NOT_SUPPORTED&lt;/code&gt;: 1. tx-&amp;gt;suspend tx; run outside tx; resume tx; 2. no-&amp;gt;nothing&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;REQUIRED&lt;/code&gt;：最常用，如果一个事务发生，那么我们加入，这是默认的；如果没有，我们创建一个事务。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;REQUIRES_NEW&lt;/code&gt;：1. tx1-&amp;gt; suspend tx1; create and run tx2; resume tx1; 2. no-&amp;gt;create and run tx&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SUPPORTS&lt;/code&gt;: 1. tx-&amp;gt;join tx; 2. no-&amp;gt;nothing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;除了&lt;code&gt;NESTED&lt;/code&gt;,其它的都是来自于J2EE。&lt;/p&gt;
+&lt;h2 id="54"&gt;5.4 高效事务管理&lt;/h2&gt;
+&lt;p&gt;Spring提供了两种高效高效管理事务的方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用&lt;code&gt;TransactionTemplate&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;PlatfromTransactionManager&lt;/code&gt;实现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="541-transactiontemplate"&gt;5.4.1 TransactionTemplate&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;TransactionTemplate&lt;/code&gt;非常有用。我们在&lt;code&gt;Service&lt;/code&gt;的构造方法里有提供&lt;code&gt;PlatformTransactionManager&lt;/code&gt;参数：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.transaction.PlatformTransactionManager&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.transaction.TransactionStatus&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.transaction.support.TransactionTemplate&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.springframework.util.Assert&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;SimpleService&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;private&lt;/span&gt; &lt;span class="n"&gt;final&lt;/span&gt; &lt;span class="n"&gt;TransactionTemplate&lt;/span&gt; &lt;span class="n"&gt;transactionTemplate&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;SimpleService&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PlatformTransactionManager&lt;/span&gt; &lt;span class="n"&gt;transactionManager&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;Assert&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;notNull&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;transactionManager&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"The 'transactionManager' argument must not be null"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;transactionTemplate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;TransactionTemplate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;transactionManager&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Object&lt;/span&gt; &lt;span class="n"&gt;someServiceMethod&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;transactionTemplate&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;TransactionStatus&lt;/span&gt; &lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;System&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"hello"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;"aaa"&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;});&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;someServiceMethodWithouResult&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;transactionTemplate&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;TransactionCallbackWithoutResult&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nd"&gt;@Override&lt;/span&gt;
+            &lt;span class="n"&gt;protected&lt;/span&gt; &lt;span class="n"&gt;void&lt;/span&gt; &lt;span class="n"&gt;doInTransactionWithoutResult&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TransactionStatus&lt;/span&gt; &lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="n"&gt;System&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="p"&gt;});&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;    
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;参数&lt;code&gt;TransactionStatus&lt;/code&gt;有&lt;code&gt;setRollbackOnly()&lt;/code&gt;方法，用于回滚事务。&lt;/p&gt;
+&lt;p&gt;我们可以在构造方法中设置事务：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;public SimpleService(PlatformTransactionManager transactionManager) {
+    Assert.notNull(transactionManager, "The 'transactionManager' argument must not be null");
+    this.transactionTemplate = new TransactionTemplate(transactionManager);
+    //这里我们可以设置会话
+    this.transactionTemplate.setIsolationLevel(TransactionDefinition.ISOLATION_READ_UNCOMMITTED);
+    this.transactionTemplate.setTimeout(30); //30秒
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="542-platformtransactionmanager"&gt;5.4.2 PlatformTransactionManager&lt;/h3&gt;
+&lt;p&gt;我们也可以使用&lt;code&gt;org.springframework.transaction.PlatformTransactionManager&lt;/code&gt;直接管理会话。将&lt;code&gt;PlatformTransactionManager&lt;/code&gt;直接传给bean，然后可以使用&lt;code&gt;TransactionDefinistion&lt;/code&gt;和&lt;code&gt;TransactionStatus&lt;/code&gt;来初始化会话、回滚、提交等。&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;TransactionTemplate&lt;/code&gt;和&lt;code&gt;PlatformTransactionManager&lt;/code&gt;之间有限推荐第一个。&lt;/p&gt;</summary><category term="Java"></category><category term="Spring"></category></entry><entry><title>Spring笔记04-使用Spring进行测试</title><link href="/springbi-ji-04-shi-yong-springjin-xing-ce-shi.html" rel="alternate"></link><published>2016-08-12T17:22:00+08:00</published><author><name>刘理想</name></author><id>tag:,2016-08-12:springbi-ji-04-shi-yong-springjin-xing-ce-shi.html</id><summary type="html">
 &lt;h2 id="41-injecting-fixture"&gt;4.1 标准测试注解和injecting fixture&lt;/h2&gt;
 &lt;p&gt;Spring的一个特点是测试Component非常方便。&lt;/p&gt;
 &lt;p&gt;现在我们为&lt;code&gt;BaseballGame&lt;/code&gt;创建&lt;code&gt;BaseballGameTest&lt;/code&gt;。然后做测试：&lt;/p&gt;

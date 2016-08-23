@@ -56,6 +56,82 @@
         <div class="eleven columns">
                  <ol id="post-list">
                         <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="./ionicshi-yong-jiao-cheng.html" rel="bookmark" title="Permalink to Ionic使用教程">Ionic使用教程</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-12"> 二 12 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>Ionic项目主页：http://ionicframework.com/ 它是用来构建混合应用的一款前端框架，使用Cordova和AngularJS，目前中文资料尚且较少。这篇文章主要是在学习中做的一个记录，也希望能为后面的学习者提供一些参考。</p>
+<h2 id="1">1. 要求</h2>
+<ul>
+<li>安装Node/NPM</li>
+<li>安装Ruby和SASS</li>
+<li>了解AngularJS</li>
+<li>安装Gulp(可选)</li>
+<li>安装Android SDK和XCode（可选）</li>
+</ul>
+<h2 id="2-ionic">2. ionic开发步骤</h2>
+<h3 id="21-cordovaionic">2.1 全局安装cordova和ionic</h3>
+<div class="highlight"><pre><span></span>npm install -g cordova ionic
+</pre></div>
+
+
+<h3 id="22">2.2 从模板中创建应用</h3>
+<div class="highlight"><pre><span></span>ionic start frontendAwesome sidemenu
+cd frontendAwesome
+</pre></div>
+
+
+<p>其中 frontendAwesome是项目名，sidemenu是模板名</p>
+<p>有3个默认模板：sidemenu(侧边菜单), tabs(底部标签), blank(空白)</p>
+<p>第一个命令结束后 ...</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="./ionicshi-yong-jiao-cheng.html" rel="bookmark" title="Permalink to Ionic使用教程">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="./tag/ionic.html">ionic</a>
+                                            <a class="danger label" href="./tag/yi-dong-kai-fa.html">移动开发</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="./angularjsxue-xi-bi-ji-05-zhi-ling.html" rel="bookmark" title="Permalink to AngularJS学习笔记05-指令">AngularJS学习笔记05-指令</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2015-05-04"> 一 04 五月 2015 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <h2 id="angularjs">AngularJS四大核心特性</h2>
+<ul>
+<li>MVC</li>
+<li>模块化和依赖注入</li>
+<li>双向数据绑定</li>
+<li>指令</li>
+</ul>
+<h2 id="hello">解析最简单的指令hello</h2> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="./angularjsxue-xi-bi-ji-05-zhi-ling.html" rel="bookmark" title="Permalink to AngularJS学习笔记05-指令">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="./tag/angular.html">Angular</a>
+                                            <a class="danger label" href="./tag/web.html">Web</a>
+                                </div>
+
+
+
+                        </article></li>
+                        <li><article class="hentry">
                                 <header> <h2 class="entry-title"><a href="./angularjsxue-xi-bi-ji-04-lu-you.html" rel="bookmark" title="Permalink to AngularJS学习笔记04 路由">AngularJS学习笔记04 路由</a></h2> </header>
                                 <footer class="post-info">
                                     <abbr class="published" title="2015-05-03"> 日 03 五月 2015 </abbr>
@@ -373,100 +449,6 @@ http://compass-style.org/reference/compass/css3/</p>
 
 
                         </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="./androidxue-xi-bi-ji-07-android-mu-lu-jie-gou.html" rel="bookmark" title="Permalink to Android学习笔记-07 Android 目录结构">Android学习笔记-07 Android 目录结构</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-19"> 日 19 四月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <p>src存放源代码
-gen存放系统自动生成的配置文件
-Android4.2下含android.jar包文件，所需的SDK
-assets存放资源文件，不会自动生成id且不会自动占用空间，没有应用时不会占空间
-bin存放被编译生成的可执行文件.apk
-libs里放一些jar包
-res存放所有资源。如图片等，res有多大，生成的APK就有多大
-drawable存放不同密度的图片资源，不同分辨率的设备，不同分辨率的图片
-layout存放布局文件。xml文件
-values存放字符串，主题，颜色，样式等资源，对应3.0版本，v11对应3.0和v14对应4.0
-menu菜单布局文件
-androidmanifest.xml清单文件，先执行的清单文件，配置一些与应用有关的重要信息，包含包名，权限，程序组件等等</p>
-<p><img alt="images/android-07-01.jpg" src="images/android-07-01.jpg" /></p> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="./androidxue-xi-bi-ji-07-android-mu-lu-jie-gou.html" rel="bookmark" title="Permalink to Android学习笔记-07 Android 目录结构">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a>
-                                            <a class="danger label" href="./tag/android.html">Android</a>
-                                </div>
-
-
-
-                        </article></li>
-                        <li><article class="hentry">
-                                <header> <h2 class="entry-title"><a href="./sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html" rel="bookmark" title="Permalink to Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)">Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)</a></h2> </header>
-                                <footer class="post-info">
-                                    <abbr class="published" title="2015-04-17"> 五 17 四月 2015 </abbr>
-                                    <address class="vcard author">By 
-                                    <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
-                                    </address>
-                                </footer><!-- /.post-info -->
-                                <div class="entry-content"> <h2 id="1-media">1. @media</h2>
-<p>sass中的@media跟CSS区别：</p>
-<p>sass中的media query可以内嵌在css规则中，在生成CSS的时候，
-media query 才会被提到样式的最高级</p>
-<p>好处：避免了重复书写选择器或者打乱样式表的流程。</p>
-<div class="highlight"><pre><span></span><span class="k">@mixin</span> <span class="nt">col</span><span class="o">($</span><span class="nt">width</span><span class="o">)</span><span class="p">{</span>
-    <span class="k">@media</span><span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">768px</span><span class="o">)</span><span class="p">{</span>
-        <span class="nt">width</span><span class="o">:</span> <span class="o">$</span><span class="nt">width</span><span class="o">;</span>
-        <span class="nt">float</span><span class="o">:</span> <span class="nt">left</span><span class="o">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<h2 id="2-at-root">2. @at-root</h2>
-<p>指定嵌套的内容生成CSS时，在最底层</p>
-<div class="highlight"><pre><span></span><span class="na">.main-sec</span><span class="err">{</span>
-    <span class="nl">font-family:</span> <span class="nf">$main-sec-ff</span><span class="err">;</span>
-    <span class="err">@</span><span class="nf">at-root</span><span class="err">{</span>
-        <span class="na">.main-sec-headline</span><span class="err">{</span>
-            <span class="nl">font:</span><span class="err">{</span>
-                <span class="nl">family:</span> <span class="nf">$main-sec-ff</span><span class="err">;</span>
-                <span class="nl">size:</span> <span class="err">16</span><span class="nf">px</span><span class="err">;</span>
-            <span class="err">}</span>
-        <span class="err">}</span>
-
-        <span class="na">.main-sec-detail</span><span class="err">{</span>
-            <span class="nl">font-size:</span> <span class="err">12</span><span class="nf">px</span><span class="err">;</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
-<span class="err">}</span>
-</pre></div>
-
-
-<h2 id="3">3. 逻辑</h2>
-<div class="highlight"><pre><span></span><span class="k">@mixin</span> <span class="nt">col</span><span class="o">($</span><span class="nt">width</span><span class="o">)</span><span class="p">{</span>
-    <span class="k">@if</span> <span class="nt">type-of</span><span class="o">($</span><span class="nt">width</span><span class="o">)</span> <span class="o">!=</span> <span class="nt">number ...</span></pre></div> </div><!-- /.entry-content -->
-
-                                <div class="medium primary btn"><a href="./sasshe-compassbi-bei-ji-neng-zhi-sasspian-04-sassyu-fa-jie-shao-gao-ji-pian.html" rel="bookmark" title="Permalink to Sass和Compass必备技能之Sass篇-04 Sass语法介绍(高级篇)">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-                                <div class="row tag-row">
-                                        <span>Tagged as : </span>
-                                            <a class="danger label" href="./tag/css.html">CSS</a>
-                                            <a class="danger label" href="./tag/sass.html">SASS</a>
-                                </div>
-
-
-
-                        </article></li>
                 </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -497,54 +479,54 @@ media query 才会被提到样式的最高级</p>
 
 <h4>标签</h4>
 	<ul class="blank">
-	    <li class="tag-[<pelican.contents.Article object at 0x104b02550>]"><a href="./tag/gradle.html">Gradle</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104c4bf98>, <pelican.contents.Article object at 0x1051c22b0>, <pelican.contents.Article object at 0x1051ccef0>, <pelican.contents.Article object at 0x104981978>, <pelican.contents.Article object at 0x104c63400>, <pelican.contents.Article object at 0x104ff12b0>, <pelican.contents.Article object at 0x104981908>, <pelican.contents.Article object at 0x105260710>, <pelican.contents.Article object at 0x1049d3908>, <pelican.contents.Article object at 0x104c8b5f8>, <pelican.contents.Article object at 0x1047f1b00>, <pelican.contents.Article object at 0x104bef080>]"><a href="./tag/javascript.html">JavaScript</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1049c7d30>, <pelican.contents.Article object at 0x1049c7c18>]"><a href="./tag/ionic.html">ionic</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104722550>]"><a href="./tag/hibernate.html">Hibernate</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x105119a90>, <pelican.contents.Article object at 0x104b16278>, <pelican.contents.Article object at 0x10512d5f8>, <pelican.contents.Article object at 0x10524bc88>, <pelican.contents.Article object at 0x1052662e8>, <pelican.contents.Article object at 0x105135588>, <pelican.contents.Article object at 0x105147eb8>, <pelican.contents.Article object at 0x104b65fd0>, <pelican.contents.Article object at 0x104cbeac8>, <pelican.contents.Article object at 0x10524b2e8>, <pelican.contents.Article object at 0x1049563c8>, <pelican.contents.Article object at 0x104653d30>, <pelican.contents.Article object at 0x1044b3390>, <pelican.contents.Article object at 0x104b0b1d0>, <pelican.contents.Article object at 0x104966cf8>, <pelican.contents.Article object at 0x104943da0>, <pelican.contents.Article object at 0x1049d6e10>, <pelican.contents.Article object at 0x104956748>, <pelican.contents.Article object at 0x1051c1f28>]"><a href="./tag/css.html">CSS</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10491edd8>]"><a href="./tag/gulp.html">Gulp</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10474cc18>, <pelican.contents.Article object at 0x10474ff60>, <pelican.contents.Article object at 0x10477fda0>, <pelican.contents.Article object at 0x1046a7940>, <pelican.contents.Article object at 0x10472d048>]"><a href="./tag/dotnet.html">DotNet</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104712fd0>]"><a href="./tag/mysql.html">MySQL</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1049f2a58>, <pelican.contents.Article object at 0x1047cd0b8>, <pelican.contents.Article object at 0x104948320>, <pelican.contents.Article object at 0x10498e470>, <pelican.contents.Article object at 0x104956160>, <pelican.contents.Article object at 0x1049a40f0>, <pelican.contents.Article object at 0x10477beb8>, <pelican.contents.Article object at 0x10497aa90>, <pelican.contents.Article object at 0x1049c6828>]"><a href="./tag/jsp.html">JSP</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104b04a20>]"><a href="./tag/phonegap.html">PhoneGap</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x103bdbdd8>, <pelican.contents.Article object at 0x1047262b0>, <pelican.contents.Article object at 0x1046ed400>]"><a href="./tag/life.html">life</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10471f8d0>]"><a href="./tag/flaskbi-ji.html">Flask笔记</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104b5ada0>, <pelican.contents.Article object at 0x104bebba8>]"><a href="./tag/kotlin.html">Kotlin</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104bebda0>]"><a href="./tag/c.html">C#</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104606d30>, <pelican.contents.Article object at 0x10462e898>, <pelican.contents.Article object at 0x105149e80>, <pelican.contents.Article object at 0x104ca5f98>, <pelican.contents.Article object at 0x10495f240>, <pelican.contents.Article object at 0x104b25b70>, <pelican.contents.Article object at 0x104fdbef0>, <pelican.contents.Article object at 0x104bf2828>, <pelican.contents.Article object at 0x104494128>, <pelican.contents.Article object at 0x104634320>, <pelican.contents.Article object at 0x104614940>, <pelican.contents.Article object at 0x104614278>, <pelican.contents.Article object at 0x104491dd8>, <pelican.contents.Article object at 0x1044943c8>]"><a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10474cac8>]"><a href="./tag/functional-programming.html">Functional Programming</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x103bf7ef0>, <pelican.contents.Article object at 0x104606d30>, <pelican.contents.Article object at 0x10462e898>, <pelican.contents.Article object at 0x105290e80>, <pelican.contents.Article object at 0x104c78f60>, <pelican.contents.Article object at 0x105149e80>, <pelican.contents.Article object at 0x104ca5f98>, <pelican.contents.Article object at 0x10495f240>, <pelican.contents.Article object at 0x104b25b70>, <pelican.contents.Article object at 0x104fdbef0>, <pelican.contents.Article object at 0x104bf2828>, <pelican.contents.Article object at 0x104494128>, <pelican.contents.Article object at 0x104634320>, <pelican.contents.Article object at 0x104614940>, <pelican.contents.Article object at 0x104614278>, <pelican.contents.Article object at 0x104491dd8>, <pelican.contents.Article object at 0x1044943c8>]"><a href="./tag/android.html">Android</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x105149e80>]"><a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104c4bf98>, <pelican.contents.Article object at 0x1051c22b0>, <pelican.contents.Article object at 0x1051ccef0>, <pelican.contents.Article object at 0x104981978>, <pelican.contents.Article object at 0x104ff12b0>, <pelican.contents.Article object at 0x104981908>, <pelican.contents.Article object at 0x105260710>]"><a href="./tag/react.html">React</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104b42b00>, <pelican.contents.Article object at 0x104c9bc50>, <pelican.contents.Article object at 0x105198dd8>, <pelican.contents.Article object at 0x104b454e0>, <pelican.contents.Article object at 0x1049dda20>, <pelican.contents.Article object at 0x104b5ab38>, <pelican.contents.Article object at 0x104b02550>, <pelican.contents.Article object at 0x10474cac8>, <pelican.contents.Article object at 0x104722550>, <pelican.contents.Article object at 0x1049267f0>, <pelican.contents.Article object at 0x104b067f0>, <pelican.contents.Article object at 0x1049e6160>, <pelican.contents.Article object at 0x104b162e8>, <pelican.contents.Article object at 0x1049f2a58>, <pelican.contents.Article object at 0x1047cd0b8>, <pelican.contents.Article object at 0x104948320>, <pelican.contents.Article object at 0x10498e470>, <pelican.contents.Article object at 0x104956160>, <pelican.contents.Article object at 0x1049a40f0>, <pelican.contents.Article object at 0x10477beb8>, <pelican.contents.Article object at 0x10497aa90>, <pelican.contents.Article object at 0x1049c6828>]"><a href="./tag/java.html">Java</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1046e1ef0>, <pelican.contents.Article object at 0x104758be0>, <pelican.contents.Article object at 0x104755080>]"><a href="./tag/django.html">Django</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104be4908>]"><a href="./tag/jquery.html">jQuery</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1049664a8>]"><a href="./tag/maven.html">Maven</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104606fd0>, <pelican.contents.Article object at 0x1046b1f28>, <pelican.contents.Article object at 0x1046984e0>, <pelican.contents.Article object at 0x1046ccc18>, <pelican.contents.Article object at 0x104619f98>, <pelican.contents.Article object at 0x10468e0b8>]"><a href="./tag/angular.html">Angular</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104ca5f98>, <pelican.contents.Article object at 0x10495f240>, <pelican.contents.Article object at 0x104b25b70>, <pelican.contents.Article object at 0x104fdbef0>, <pelican.contents.Article object at 0x104bf2828>]"><a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104bebda0>]"><a href="./tag/nancy.html">Nancy</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1049e6160>, <pelican.contents.Article object at 0x104b162e8>]"><a href="./tag/servlet.html">Servlet</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104bebda0>]"><a href="./tag/net.html">.NET</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104735630>, <pelican.contents.Article object at 0x1046e1ef0>, <pelican.contents.Article object at 0x104758be0>, <pelican.contents.Article object at 0x104755080>, <pelican.contents.Article object at 0x10466e3c8>, <pelican.contents.Article object at 0x104735160>]"><a href="./tag/python.html">Python</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1051a4400>, <pelican.contents.Article object at 0x105181e48>, <pelican.contents.Article object at 0x105181f60>]"><a href="./tag/compass.html">compass</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x10474cc18>, <pelican.contents.Article object at 0x10474ff60>, <pelican.contents.Article object at 0x10477fda0>, <pelican.contents.Article object at 0x1046a7940>, <pelican.contents.Article object at 0x10472d048>]"><a href="./tag/aspnet-mvc.html">ASP.NET MVC</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1049d3908>, <pelican.contents.Article object at 0x104726748>, <pelican.contents.Article object at 0x1051a4400>, <pelican.contents.Article object at 0x105181e48>, <pelican.contents.Article object at 0x105181f60>]"><a href="./tag/css3.html">CSS3</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1046e1ef0>]"><a href="./tag/bu-shu.html">部署</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104948a20>, <pelican.contents.Article object at 0x1046ed400>]"><a href="./tag/pelican.html">Pelican</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1052e7f98>, <pelican.contents.Article object at 0x10528fdd8>, <pelican.contents.Article object at 0x10515f0f0>]"><a href="./tag/netty.html">Netty</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104b5ada0>, <pelican.contents.Article object at 0x104bebba8>]"><a href="./tag/xue-xi-bi-ji.html">学习笔记</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x103c1d208>]"><a href="./tag/android-studio.html">Android Studio</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104b42b00>, <pelican.contents.Article object at 0x104c9bc50>, <pelican.contents.Article object at 0x105198dd8>, <pelican.contents.Article object at 0x104b454e0>, <pelican.contents.Article object at 0x1049267f0>]"><a href="./tag/spring.html">Spring</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x105147eb8>, <pelican.contents.Article object at 0x104b65fd0>, <pelican.contents.Article object at 0x104cbeac8>, <pelican.contents.Article object at 0x10524b2e8>, <pelican.contents.Article object at 0x1049563c8>, <pelican.contents.Article object at 0x104653d30>, <pelican.contents.Article object at 0x1044b3390>, <pelican.contents.Article object at 0x104b0b1d0>, <pelican.contents.Article object at 0x104966cf8>, <pelican.contents.Article object at 0x104943da0>, <pelican.contents.Article object at 0x1049d6e10>, <pelican.contents.Article object at 0x1051c1f28>]"><a href="./tag/less.html">LESS</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104b5e9b0>, <pelican.contents.Article object at 0x1047f1e10>, <pelican.contents.Article object at 0x1044b1358>, <pelican.contents.Article object at 0x1046b1668>]"><a href="./tag/shu-ju-fen-xi.html">数据分析</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104c8b5f8>]"><a href="./tag/mo-kuai-hua.html">模块化</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1046a79e8>, <pelican.contents.Article object at 0x10471f8d0>]"><a href="./tag/flask.html">Flask</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1049c7d30>, <pelican.contents.Article object at 0x1049c7c18>]"><a href="./tag/yi-dong-kai-fa.html">移动开发</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x105147eb8>, <pelican.contents.Article object at 0x104b65fd0>, <pelican.contents.Article object at 0x104cbeac8>, <pelican.contents.Article object at 0x10524b2e8>, <pelican.contents.Article object at 0x1049563c8>, <pelican.contents.Article object at 0x104653d30>, <pelican.contents.Article object at 0x1044b3390>, <pelican.contents.Article object at 0x104b0b1d0>, <pelican.contents.Article object at 0x104966cf8>, <pelican.contents.Article object at 0x104943da0>, <pelican.contents.Article object at 0x1049d6e10>, <pelican.contents.Article object at 0x104956748>]"><a href="./tag/html.html">HTML</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x1051a4400>, <pelican.contents.Article object at 0x105181e48>, <pelican.contents.Article object at 0x105181f60>, <pelican.contents.Article object at 0x105119a90>, <pelican.contents.Article object at 0x104b16278>, <pelican.contents.Article object at 0x10512d5f8>, <pelican.contents.Article object at 0x10524bc88>, <pelican.contents.Article object at 0x1052662e8>, <pelican.contents.Article object at 0x105135588>]"><a href="./tag/sass.html">sass</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104725c50>]"><a href="./tag/exmobi.html">Exmobi</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104606fd0>, <pelican.contents.Article object at 0x1046b1f28>, <pelican.contents.Article object at 0x1046984e0>, <pelican.contents.Article object at 0x1046ccc18>, <pelican.contents.Article object at 0x104619f98>, <pelican.contents.Article object at 0x10468e0b8>, <pelican.contents.Article object at 0x104b067f0>, <pelican.contents.Article object at 0x1049e6160>, <pelican.contents.Article object at 0x104b162e8>, <pelican.contents.Article object at 0x1049f2a58>, <pelican.contents.Article object at 0x1047cd0b8>, <pelican.contents.Article object at 0x104948320>, <pelican.contents.Article object at 0x10498e470>, <pelican.contents.Article object at 0x104956160>, <pelican.contents.Article object at 0x1049a40f0>, <pelican.contents.Article object at 0x10477beb8>, <pelican.contents.Article object at 0x10497aa90>, <pelican.contents.Article object at 0x1049c6828>, <pelican.contents.Article object at 0x10474cc18>, <pelican.contents.Article object at 0x10474ff60>, <pelican.contents.Article object at 0x10477fda0>, <pelican.contents.Article object at 0x1046a7940>, <pelican.contents.Article object at 0x10472d048>, <pelican.contents.Article object at 0x104bebda0>]"><a href="./tag/web.html">Web</a></li>
-	    <li class="tag-[<pelican.contents.Article object at 0x104c8b5f8>]"><a href="./tag/requirejs.html">RequireJS</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104ba74e0>, <pelican.contents.Article object at 0x104e094e0>, <pelican.contents.Article object at 0x1046a52e8>, <pelican.contents.Article object at 0x1045d3cc0>, <pelican.contents.Article object at 0x10467a2b0>, <pelican.contents.Article object at 0x104a94cf8>, <pelican.contents.Article object at 0x104abc390>, <pelican.contents.Article object at 0x104ac6710>, <pelican.contents.Article object at 0x104594470>, <pelican.contents.Article object at 0x105104470>, <pelican.contents.Article object at 0x105107ef0>, <pelican.contents.Article object at 0x104a11128>]"><a href="./tag/html.html">HTML</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104a94668>]"><a href="./tag/maven.html">Maven</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104aa5e48>]"><a href="./tag/phonegap.html">PhoneGap</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104899898>]"><a href="./tag/jquery.html">jQuery</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1046ae128>, <pelican.contents.Article object at 0x10513a2b0>, <pelican.contents.Article object at 0x104e09a90>, <pelican.contents.Article object at 0x105180860>, <pelican.contents.Article object at 0x10517fc88>, <pelican.contents.Article object at 0x104dac0b8>, <pelican.contents.Article object at 0x104adf940>, <pelican.contents.Article object at 0x10482c198>, <pelican.contents.Article object at 0x104676588>, <pelican.contents.Article object at 0x1051047b8>, <pelican.contents.Article object at 0x10463ca58>, <pelican.contents.Article object at 0x1048a7c50>]"><a href="./tag/javascript.html">JavaScript</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1048a3780>]"><a href="./tag/nancy.html">Nancy</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104bd6dd8>]"><a href="./tag/androiyue-hou-ji-fen.html">Androi阅后即焚</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104ebcdd8>, <pelican.contents.Article object at 0x10517fa20>, <pelican.contents.Article object at 0x104b87d30>]"><a href="./tag/compass.html">compass</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1051047b8>]"><a href="./tag/requirejs.html">RequireJS</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104a81630>, <pelican.contents.Article object at 0x104a815c0>]"><a href="./tag/ionic.html">ionic</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1048054a8>, <pelican.contents.Article object at 0x10480ff60>, <pelican.contents.Article object at 0x10483fda0>, <pelican.contents.Article object at 0x104668940>, <pelican.contents.Article object at 0x1046ee048>]"><a href="./tag/dotnet.html">DotNet</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1045c5f98>, <pelican.contents.Article object at 0x104671f28>, <pelican.contents.Article object at 0x104642f98>, <pelican.contents.Article object at 0x10468dbe0>, <pelican.contents.Article object at 0x1045d5048>, <pelican.contents.Article object at 0x10464e128>]"><a href="./tag/angular.html">Angular</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104a396a0>, <pelican.contents.Article object at 0x10460ddd8>, <pelican.contents.Article object at 0x104a608d0>, <pelican.contents.Article object at 0x104a60358>, <pelican.contents.Article object at 0x10467add8>, <pelican.contents.Article object at 0x104a9e7f0>, <pelican.contents.Article object at 0x1048b67f0>, <pelican.contents.Article object at 0x10467ab38>, <pelican.contents.Article object at 0x104abc9b0>]"><a href="./tag/jsp.html">JSP</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104aa1c18>, <pelican.contents.Article object at 0x1048a36d8>]"><a href="./tag/xue-xi-bi-ji.html">学习笔记</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1046d77b8>]"><a href="./tag/gulp.html">Gulp</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104676588>, <pelican.contents.Article object at 0x1046e19b0>, <pelican.contents.Article object at 0x104ebcdd8>, <pelican.contents.Article object at 0x10517fa20>, <pelican.contents.Article object at 0x104b87d30>]"><a href="./tag/css3.html">CSS3</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x105307470>, <pelican.contents.Article object at 0x1046b8a90>, <pelican.contents.Article object at 0x1046a5fd0>, <pelican.contents.Article object at 0x1046db278>, <pelican.contents.Article object at 0x10531e940>, <pelican.contents.Article object at 0x1045e2b70>]"><a href="./tag/python.html">Python</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104601518>, <pelican.contents.Article object at 0x105180588>, <pelican.contents.Article object at 0x1045f3048>, <pelican.contents.Article object at 0x1046126a0>, <pelican.contents.Article object at 0x104826128>]"><a href="./tag/androibo-ke-yue-du.html">Androi博客阅读</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1048a3780>]"><a href="./tag/net.html">.NET</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x103bf6f98>, <pelican.contents.Article object at 0x1045c5da0>, <pelican.contents.Article object at 0x1045f0780>, <pelican.contents.Article object at 0x1051e64a8>, <pelican.contents.Article object at 0x104e31f98>, <pelican.contents.Article object at 0x104bd6dd8>, <pelican.contents.Article object at 0x104601518>, <pelican.contents.Article object at 0x105180588>, <pelican.contents.Article object at 0x1045f3048>, <pelican.contents.Article object at 0x1046126a0>, <pelican.contents.Article object at 0x104826128>, <pelican.contents.Article object at 0x104594358>, <pelican.contents.Article object at 0x1045f32e8>, <pelican.contents.Article object at 0x1045d34e0>, <pelican.contents.Article object at 0x1045d3278>, <pelican.contents.Article object at 0x104590fd0>, <pelican.contents.Article object at 0x10458ff98>]"><a href="./tag/android.html">Android</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1048054a8>, <pelican.contents.Article object at 0x10480ff60>, <pelican.contents.Article object at 0x10483fda0>, <pelican.contents.Article object at 0x104668940>, <pelican.contents.Article object at 0x1046ee048>]"><a href="./tag/aspnet-mvc.html">ASP.NET MVC</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1045d0fd0>]"><a href="./tag/mysql.html">MySQL</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104a22e48>, <pelican.contents.Article object at 0x104a394a8>]"><a href="./tag/servlet.html">Servlet</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10482b3c8>, <pelican.contents.Article object at 0x104665f98>]"><a href="./tag/pelican.html">Pelican</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104aa1c18>, <pelican.contents.Article object at 0x1048a36d8>]"><a href="./tag/kotlin.html">Kotlin</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1046ae128>, <pelican.contents.Article object at 0x10513a2b0>, <pelican.contents.Article object at 0x104e09a90>, <pelican.contents.Article object at 0x105180860>, <pelican.contents.Article object at 0x104dac0b8>, <pelican.contents.Article object at 0x104adf940>, <pelican.contents.Article object at 0x10482c198>]"><a href="./tag/react.html">React</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1045c5f98>, <pelican.contents.Article object at 0x104671f28>, <pelican.contents.Article object at 0x104642f98>, <pelican.contents.Article object at 0x10468dbe0>, <pelican.contents.Article object at 0x1045d5048>, <pelican.contents.Article object at 0x10464e128>, <pelican.contents.Article object at 0x104a22f28>, <pelican.contents.Article object at 0x104a22e48>, <pelican.contents.Article object at 0x104a394a8>, <pelican.contents.Article object at 0x104a396a0>, <pelican.contents.Article object at 0x10460ddd8>, <pelican.contents.Article object at 0x104a608d0>, <pelican.contents.Article object at 0x104a60358>, <pelican.contents.Article object at 0x10467add8>, <pelican.contents.Article object at 0x104a9e7f0>, <pelican.contents.Article object at 0x1048b67f0>, <pelican.contents.Article object at 0x10467ab38>, <pelican.contents.Article object at 0x104abc9b0>, <pelican.contents.Article object at 0x1048054a8>, <pelican.contents.Article object at 0x10480ff60>, <pelican.contents.Article object at 0x10483fda0>, <pelican.contents.Article object at 0x104668940>, <pelican.contents.Article object at 0x1046ee048>, <pelican.contents.Article object at 0x1048a3780>]"><a href="./tag/web.html">Web</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104a1b588>]"><a href="./tag/gradle.html">Gradle</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104805438>]"><a href="./tag/flaskbi-ji.html">Flask笔记</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104eaeac8>, <pelican.contents.Article object at 0x105114c88>, <pelican.contents.Article object at 0x1051044a8>, <pelican.contents.Article object at 0x105118dd8>, <pelican.contents.Article object at 0x104ea2f60>, <pelican.contents.Article object at 0x1048da198>, <pelican.contents.Article object at 0x104e09940>]"><a href="./tag/spring.html">Spring</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1046b8a90>]"><a href="./tag/bu-shu.html">部署</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x103bdcf28>, <pelican.contents.Article object at 0x1046e1c18>, <pelican.contents.Article object at 0x104665f98>]"><a href="./tag/life.html">life</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1046e91d0>]"><a href="./tag/exmobi.html">Exmobi</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1046b8a90>, <pelican.contents.Article object at 0x1046a5fd0>, <pelican.contents.Article object at 0x1046db278>]"><a href="./tag/django.html">Django</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1051047b8>]"><a href="./tag/mo-kuai-hua.html">模块化</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104eaeac8>, <pelican.contents.Article object at 0x105114c88>, <pelican.contents.Article object at 0x1051044a8>, <pelican.contents.Article object at 0x105118dd8>, <pelican.contents.Article object at 0x104ea2f60>, <pelican.contents.Article object at 0x1048da198>, <pelican.contents.Article object at 0x104aa5be0>, <pelican.contents.Article object at 0x10462f668>, <pelican.contents.Article object at 0x104a1b588>, <pelican.contents.Article object at 0x1046fdfd0>, <pelican.contents.Article object at 0x1046eefd0>, <pelican.contents.Article object at 0x104e09940>, <pelican.contents.Article object at 0x104a22f28>, <pelican.contents.Article object at 0x104a22e48>, <pelican.contents.Article object at 0x104a394a8>, <pelican.contents.Article object at 0x104a396a0>, <pelican.contents.Article object at 0x10460ddd8>, <pelican.contents.Article object at 0x104a608d0>, <pelican.contents.Article object at 0x104a60358>, <pelican.contents.Article object at 0x10467add8>, <pelican.contents.Article object at 0x104a9e7f0>, <pelican.contents.Article object at 0x1048b67f0>, <pelican.contents.Article object at 0x10467ab38>, <pelican.contents.Article object at 0x104abc9b0>]"><a href="./tag/java.html">Java</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104a42fd0>, <pelican.contents.Article object at 0x104a13048>, <pelican.contents.Article object at 0x104a56f60>, <pelican.contents.Article object at 0x1051925f8>, <pelican.contents.Article object at 0x10461a550>, <pelican.contents.Article object at 0x10461b7b8>, <pelican.contents.Article object at 0x104ba74e0>, <pelican.contents.Article object at 0x104e094e0>, <pelican.contents.Article object at 0x1046a52e8>, <pelican.contents.Article object at 0x1045d3cc0>, <pelican.contents.Article object at 0x10467a2b0>, <pelican.contents.Article object at 0x104a94cf8>, <pelican.contents.Article object at 0x104abc390>, <pelican.contents.Article object at 0x104ac6710>, <pelican.contents.Article object at 0x104594470>, <pelican.contents.Article object at 0x105104470>, <pelican.contents.Article object at 0x105107ef0>, <pelican.contents.Article object at 0x104a11128>, <pelican.contents.Article object at 0x104bdeac8>]"><a href="./tag/css.html">CSS</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104a81630>, <pelican.contents.Article object at 0x104a815c0>]"><a href="./tag/yi-dong-kai-fa.html">移动开发</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1048059b0>, <pelican.contents.Article object at 0x104805438>]"><a href="./tag/flask.html">Flask</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1051dd5c0>, <pelican.contents.Article object at 0x1051d2d30>, <pelican.contents.Article object at 0x104ea5da0>]"><a href="./tag/netty.html">Netty</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1048a3780>]"><a href="./tag/c.html">C#</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104ba74e0>, <pelican.contents.Article object at 0x104e094e0>, <pelican.contents.Article object at 0x1046a52e8>, <pelican.contents.Article object at 0x1045d3cc0>, <pelican.contents.Article object at 0x10467a2b0>, <pelican.contents.Article object at 0x104a94cf8>, <pelican.contents.Article object at 0x104abc390>, <pelican.contents.Article object at 0x104ac6710>, <pelican.contents.Article object at 0x104594470>, <pelican.contents.Article object at 0x105104470>, <pelican.contents.Article object at 0x105107ef0>, <pelican.contents.Article object at 0x104bdeac8>]"><a href="./tag/less.html">LESS</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x10468dcf8>, <pelican.contents.Article object at 0x104a92518>, <pelican.contents.Article object at 0x1048570f0>, <pelican.contents.Article object at 0x104aba470>]"><a href="./tag/shu-ju-fen-xi.html">数据分析</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1046eefd0>]"><a href="./tag/hibernate.html">Hibernate</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x104ebcdd8>, <pelican.contents.Article object at 0x10517fa20>, <pelican.contents.Article object at 0x104b87d30>, <pelican.contents.Article object at 0x104a42fd0>, <pelican.contents.Article object at 0x104a13048>, <pelican.contents.Article object at 0x104a56f60>, <pelican.contents.Article object at 0x1051925f8>, <pelican.contents.Article object at 0x10461a550>, <pelican.contents.Article object at 0x10461b7b8>]"><a href="./tag/sass.html">sass</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x103c1c240>]"><a href="./tag/android-studio.html">Android Studio</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1045c5da0>, <pelican.contents.Article object at 0x1045f0780>, <pelican.contents.Article object at 0x104bd6dd8>, <pelican.contents.Article object at 0x104601518>, <pelican.contents.Article object at 0x105180588>, <pelican.contents.Article object at 0x1045f3048>, <pelican.contents.Article object at 0x1046126a0>, <pelican.contents.Article object at 0x104826128>, <pelican.contents.Article object at 0x104594358>, <pelican.contents.Article object at 0x1045f32e8>, <pelican.contents.Article object at 0x1045d34e0>, <pelican.contents.Article object at 0x1045d3278>, <pelican.contents.Article object at 0x104590fd0>, <pelican.contents.Article object at 0x10458ff98>]"><a href="./tag/androidxue-xi-bi-ji.html">Android学习笔记</a></li>
+	    <li class="tag-[<pelican.contents.Article object at 0x1046fdfd0>]"><a href="./tag/functional-programming.html">Functional Programming</a></li>
 </ul>
 
 </div> </div><!-- /.row -->
