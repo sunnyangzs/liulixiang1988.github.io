@@ -2,10 +2,10 @@
 <html lang="zh">
 <head>
 
-        <title>PhoneGap命令行的使用</title>
+        <title>Spring笔记05-Spring事务</title>
         <meta charset="utf-8" />
         <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Full Atom Feed" />
-        <link href="/feeds/yi-dong-kai-fa.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Categories Atom Feed" />
+        <link href="/feeds/java.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -55,165 +55,218 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="./phonegapming-ling-xing-de-shi-yong.html" rel="bookmark"
-                   title="Permalink to PhoneGap命令行的使用">PhoneGap命令行的使用</a></h2>
+                <a href="./springbi-ji-05-springshi-wu.html" rel="bookmark"
+                   title="Permalink to Spring笔记05-Spring事务">Spring笔记05-Spring事务</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-03-29">
-                日 29 三月 2015
+              <abbr class="published" title="2016-08-19">
+                五 19 八月 2016
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <h2 id="1">1. 环境配置</h2>
-<h3 id="11">1.1 常用框架</h3>
+                <div class="toc">
 <ul>
-<li>jQuery</li>
-<li>Backbone.js</li>
-<li>dojo</li>
-<li>bootstrap</li>
-<li>kendo UI</li>
-<li>Sencha</li>
-<li>jQuery Mobile</li>
-<li>PhoneJS</li>
-<li>AngularJS</li>
-<li>ICENIUM</li>
+<li><a href="#51">5.1 声明事务管理</a><ul>
+<li><a href="#511-transactional">5.1.1 @Transactional注解</a></li>
+<li><a href="#512-platformtransactionmanager">5.1.2 PlatformTransactionManager接口</a></li>
+<li><a href="#513">5.1.3 案例：账户应用</a></li>
 </ul>
-<h3 id="12-nodejs">1.2 Node.js</h3>
-<p>下载并安装nodejs</p>
-<h3 id="13-ios">1.3 iOS</h3>
-<p>下载Xcode
-打开Xcode 
-<img alt="" src="images/1.jpg" />
-<img alt="" src="images/2.jpg" /></p>
-<h3 id="14-android">1.4 Android</h3>
-<p>定义ANDROID_HOME=E:\adt\sdk
-将<code>E:\adt\sdk\platform-tools</code>和<code>E:\adt\sdk\tools</code>加入到环境变量中去。</p>
-<h3 id="15-ant">1.5 Ant</h3>
-<p>定义ANT_HOME=C:\apache-ant-1.9.3</p>
-<h2 id="2-phonegap">2 安装PhoneGap</h2>
-<h3 id="21-phonegap">2.1 安装PhoneGap</h3>
-<div class="highlight"><pre><span></span>npm install -g phonegap
+</li>
+<li><a href="#52-isolation-levels">5.2 Isolation levels 隔离层级</a></li>
+<li><a href="#53-propagation">5.3 Propagation 传播</a></li>
+<li><a href="#54">5.4 高效事务管理</a><ul>
+<li><a href="#541-transactiontemplate">5.4.1 TransactionTemplate</a></li>
+<li><a href="#542-platformtransactionmanager">5.4.2 PlatformTransactionManager</a></li>
+</ul>
+</li>
+</ul>
+</div>
+              
+<h2 id="51">5.1 声明事务管理</h2>
+<p>ACID 属性:</p>
+<p>Atomic原子：All or Nothing</p>
+<p>Consistent一致性: DB integrity constraints never violated</p>
+<p>Isolated: How transactions see work done by others</p>
+<p>Durable: Committed changes are permanent</p>
+<p>我们一般是在Service层声明事务。</p>
+<h3 id="511-transactional">5.1.1 @Transactional注解</h3>
+<p><code>@Transactional</code>注解允许我们管理一个事务管理器。Spring不直接提供事务管理器，它提供一个hook连接到已经存在的事务管理器，比如我们使用关系数据库，那Spring就是使用关系数据库的事务管理器。Spring的Bean和Entity允许我们请求事务管理器，设置属性（比如超时、只读等）。</p>
+<p>应用Spring的事务需要两步：</p>
+<ol>
+<li>应用<code>Transactional</code>注解
+    a. XML格式
+    b. 写代码的方式</li>
+<li>声明Platform Transaction Manager bean</li>
+<li><code>@EnableTransactionManagement</code></li>
+</ol>
+<p><code>@Transactional</code>注解可以用于方法或者类。如果应用于一个类，那么这个类中的所有方法都应用了了这个注解，对于应用了类的注解，我们对单独的类重新使用<code>@Transactional</code>方法来覆盖。</p>
+<p><code>@Transactional</code>方法提供了一些参数让我们来指定一些配置。</p>
+<h3 id="512-platformtransactionmanager">5.1.2 PlatformTransactionManager接口</h3>
+<p><code>PlatformTransactionManager</code>用来代表依赖平台的事务管理器。它的实现类有Hibernate, JPA等事务管理器。</p>
+<h3 id="513">5.1.3 案例：账户应用</h3>
+<p>首先，我们定义entity:</p>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">lx</span><span class="o">.</span><span class="n">spring</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">entities</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.math.BigDecimal</span><span class="p">;</span>
+
+<span class="n">public</span> <span class="k">class</span> <span class="nc">Account</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">Long</span> <span class="nb">id</span><span class="p">;</span>
+    <span class="n">private</span> <span class="n">BigDecimal</span> <span class="n">balance</span><span class="p">;</span>
+
+    <span class="n">public</span> <span class="n">Account</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">Account</span><span class="p">(</span><span class="n">Long</span> <span class="nb">id</span><span class="p">,</span> <span class="n">BigDecimal</span> <span class="n">balance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span><span class="p">;</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="o">//</span> <span class="n">getter</span> <span class="n">setter</span> <span class="n">toString</span> <span class="n">equals</span> <span class="n">hashCode等</span>
+<span class="p">}</span>
 </pre></div>
+<p>这里我们使用<code>BigDecimal</code>类型来表示余额。</p>
+<p>然后我们创建一个Repository，用来表示数据库的操作：</p>
+<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">lx</span><span class="o">.</span><span class="n">spring</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">repositories</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">lx.spring.core.entities.Account</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.math.BigDecimal</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="p">;</span>
 
-
-<p>安装过后通过<code>phonegap -v</code>看是否安装成功</p>
-<h3 id="22-cordova">2.2 安装cordova</h3>
-<div class="highlight"><pre><span></span>npm install -g cordova
+<span class="n">public</span> <span class="n">interface</span> <span class="n">AccountRepository</span> <span class="p">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Account</span><span class="o">&gt;</span> <span class="n">getAccounts</span><span class="p">();</span>
+    <span class="n">Account</span> <span class="n">getAccount</span><span class="p">(</span><span class="n">Long</span> <span class="nb">id</span><span class="p">);</span>
+    <span class="nb">int</span> <span class="n">getNumberOfCounts</span><span class="p">();</span>
+    <span class="n">Long</span> <span class="n">createAccount</span><span class="p">(</span><span class="n">BigDecimal</span> <span class="n">initialBalance</span><span class="p">);</span>
+    <span class="nb">int</span> <span class="n">deleteAccount</span><span class="p">(</span><span class="n">Long</span> <span class="nb">id</span><span class="p">);</span>
+    <span class="n">void</span> <span class="n">updateAccount</span><span class="p">(</span><span class="n">Account</span> <span class="n">account</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
+<p>后面我们将看到如何用Spring Data来处理数据。</p>
+<p>第一步，我们用<code>@Transactional</code> 实体。</p>
+<div class="highlight"><pre><span></span>@Service @Transactional
+@Profile("test")
+public class AccountService {
+    @Autowired
+    private AccountRepository repository;
 
+    public BigDecimal getBalance(Long id) {
+        return repository.getAccount(id).getBalance();
+    }
 
-<p>通过<code>cordova -v</code>来查看是否成功</p>
-<p>一般安装phonegap即可</p>
-<h2 id="3-phonegapcordova">3 使用PhoneGap和Cordova</h2>
-<h3 id="31">3.1 创建项目</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap create project_name project_id display_name
+    public BigDecimal deposit(Long id, BigDecimal amount) {
+        Account account = repository.getAccount(id);
+        BigDecimal newBalance = account.getBalance().add(amount);
+        account.setBalance(newBalance);
+        repository.updateAccount(account);
+        return newBalance;
+    }
+
+    public BigDecimal withdraw(Long id, BigDecimal amount) {
+        return deposit(id, amount.negate());
+    }
+}
 </pre></div>
+<p>第二步是声明Bean来适应事务，我们打开<code>AppConfig</code>：</p>
+<div class="highlight"><pre><span></span>@Configuration
+@EnableTransactionManagement
+public class AppConfig {
 
+    @Bean(name = "transactionManager")
+    @Profile("test")
+    public PlatformTransactionManager transactionManagerForTest() {
+        return new DataSourceTransactionManager(dataSourceForTest());
+    }
 
-<p>或者使用cordova创建：</p>
-<div class="highlight"><pre><span></span>&gt;cordova create project_name project_id displayname
+    @Bean(name = "dataSource")
+    @Profile("test")
+    public DataSource dataSourceForTest() {
+        DataSource dataSource = new BasicDataSource();
+        return dataSource;
+    }
+}
 </pre></div>
-
-
-<h3 id="32">3.2 应用结构</h3>
+<p>注意这里的<code>transactionManagerForTest()</code>是返回事务管理器的，同时，我们用<code>EnableTransactionManagement</code>来指明我们的容器用了事务管理。</p>
+<h2 id="52-isolation-levels">5.2 Isolation levels 隔离层级</h2>
+<p><code>@Transactional</code>有一个属性是<code>Isolation</code>的，它是一个枚举，它有一下几个值：</p>
 <ul>
-<li>hooks</li>
-<li>platforms:平台</li>
-<li>plugins: 插件</li>
-<li>www：应用代码目录</li>
+<li><code>DEFAULT</code> 使用底层数据存储所用的隔离层级</li>
+<li><code>READ_COMMITTED</code> dirty reads are prevented; non-repeatable reads and phantom reads can occur.只有在其他事务提交时在一个事务里才能看到改变后的数据。如果事务需要很久，那就一直锁定直到事务完成。</li>
+<li><code>READ_UNCOMMITTED</code> dirty reads, non-repeatable reads and phantom reads can occur. 两个事务同时对于一行操作。如果一个事务读取了行，然后又修改了数据，那另一个事务可以看到其他事务修改后的数据。这个好处是速度非常快，你没有锁定行，问题是它有一定风险，比如你根据没有提交的数据做了一些动作，但是这些改变又回滚了。所以，使用时需要分析一下。<code>READ_UNCOMMITTED</code>是最高效但不是最优的选择。</li>
+<li><code>REPEATABLE_READ</code> dirty reads and non-repeatable reads are prevented; phantom reads can occur.如果数据修改后发生了回滚，则回滚前后我们看到的数据都是一样的</li>
+<li><code>SERIALIZABLE</code> dirty reads, non-repeatable reads and phantom reads are prevented 当我们查询或修改时，别的事务不能增加或修改表（整表锁定）</li>
 </ul>
-<h3 id="33-build">3.3 build</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap build android
-&gt;phonegap build ios
-</pre></div>
-
-
-<p>或者使用cordova命令</p>
-<div class="highlight"><pre><span></span>&gt;cordova platform add android
-&gt;cordova build android
-
-&gt;cordova platform add ios
-&gt;cordova build ios
-
-&gt;cordova build
-</pre></div>
-
-
-<p>如果想要移除某个平台</p>
-<div class="highlight"><pre><span></span>&gt;cordova platform remove android
-</pre></div>
-
-
-<h2 id="4">4 测试</h2>
-<h3 id="41-ios">4.1 iOS测试</h3>
-<div class="highlight"><pre><span></span>&gt;sudo npm install -g ios-deploy
-&gt;sudo npm install -g ios-sim 
-&gt;phonegap run ios
-</pre></div>
-
-
-<h3 id="42-android">4.2 Android测试</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap run android
-</pre></div>
-
-
-<h3 id="43-cordova">4.3 cordova</h3>
-<div class="highlight"><pre><span></span>&gt;cordova run android
-</pre></div>
-
-
-<h2 id="5">5 插件</h2>
-<h3 id="51">5.1 安装插件</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap plugin add org.apache.cordova.device
-</pre></div>
-
-
-<p>或者直接使用url</p>
-<h3 id="52">5.2 移除插件</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap plugin remove org.apache.cordova.device
-</pre></div>
-
-
-<h3 id="53">5.3 查看安装的插件</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap plugin list
-</pre></div>
-
-
-<h2 id="6">6 合并</h2>
-<h2 id="7-hooks">7 Hooks</h2>
-<p>before_prepare, before_build, before_install, 等
-after_prepare, after_build, after_build, etc</p>
-<div class="highlight"><pre><span></span>&gt;cordova prepare
-</pre></div>
-
-
-<h2 id="8">8 编译部署</h2>
-<h3 id="81-phonegap-build">8.1 phoneGap build</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap remote login -u username -p password
-&gt;phonegap remote build android
-</pre></div>
-
-
-<h3 id="82-phonegap-serve">8.2 phonegap serve</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap serve #能直接运行
-</pre></div>
-
-
-<h2 id="9">9 下一步</h2>
+<p>一般情况下我们不会修改这个属性。</p>
+<h2 id="53-propagation">5.3 Propagation 传播</h2>
+<p>Propagation说的是当事务执行时，我们的方法是否也是执行的。我们再回到<code>@Transactional</code>注解上来，它有一个属性是<code>Propagation</code>枚举。它有以下值：</p>
 <ul>
-<li>grunt-phonegap</li>
+<li><code>MANDATORY</code>:  1. tx-&gt;join tx; 2. no-&gt;throw a TransactionRequiredException</li>
+<li><code>NESTED</code>: </li>
+<li><code>NEVER</code>: 1. tx-&gt; throw an exception; 2. no-&gt;nothing</li>
+<li><code>NOT_SUPPORTED</code>: 1. tx-&gt;suspend tx; run outside tx; resume tx; 2. no-&gt;nothing</li>
+<li><code>REQUIRED</code>：最常用，如果一个事务发生，那么我们加入，这是默认的；如果没有，我们创建一个事务。</li>
+<li><code>REQUIRES_NEW</code>：1. tx1-&gt; suspend tx1; create and run tx2; resume tx1; 2. no-&gt;create and run tx</li>
+<li><code>SUPPORTS</code>: 1. tx-&gt;join tx; 2. no-&gt;nothing</li>
 </ul>
+<p>除了<code>NESTED</code>,其它的都是来自于J2EE。</p>
+<h2 id="54">5.4 高效事务管理</h2>
+<p>Spring提供了两种高效高效管理事务的方法：</p>
+<ul>
+<li>使用<code>TransactionTemplate</code></li>
+<li>使用<code>PlatfromTransactionManager</code>实现</li>
+</ul>
+<h3 id="541-transactiontemplate">5.4.1 TransactionTemplate</h3>
+<p><code>TransactionTemplate</code>非常有用。我们在<code>Service</code>的构造方法里有提供<code>PlatformTransactionManager</code>参数：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.springframework.transaction.PlatformTransactionManager</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.transaction.TransactionStatus</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.transaction.support.TransactionTemplate</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.util.Assert</span><span class="p">;</span>
+
+<span class="n">public</span> <span class="k">class</span> <span class="nc">SimpleService</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">final</span> <span class="n">TransactionTemplate</span> <span class="n">transactionTemplate</span><span class="p">;</span>
+
+    <span class="n">public</span> <span class="n">SimpleService</span><span class="p">(</span><span class="n">PlatformTransactionManager</span> <span class="n">transactionManager</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Assert</span><span class="o">.</span><span class="n">notNull</span><span class="p">(</span><span class="n">transactionManager</span><span class="p">,</span> <span class="s2">"The 'transactionManager' argument must not be null"</span><span class="p">);</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">transactionTemplate</span> <span class="o">=</span> <span class="n">new</span> <span class="n">TransactionTemplate</span><span class="p">(</span><span class="n">transactionManager</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">Object</span> <span class="n">someServiceMethod</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">transactionTemplate</span><span class="o">.</span><span class="n">execute</span><span class="p">((</span><span class="n">TransactionStatus</span> <span class="n">status</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="s2">"aaa"</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">someServiceMethodWithouResult</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">transactionTemplate</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">new</span> <span class="n">TransactionCallbackWithoutResult</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nd">@Override</span>
+            <span class="n">protected</span> <span class="n">void</span> <span class="n">doInTransactionWithoutResult</span><span class="p">(</span><span class="n">TransactionStatus</span> <span class="n">status</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">status</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>    
+<span class="p">}</span>
+</pre></div>
+<p>参数<code>TransactionStatus</code>有<code>setRollbackOnly()</code>方法，用于回滚事务。</p>
+<p>我们可以在构造方法中设置事务：</p>
+<div class="highlight"><pre><span></span>public SimpleService(PlatformTransactionManager transactionManager) {
+    Assert.notNull(transactionManager, "The 'transactionManager' argument must not be null");
+    this.transactionTemplate = new TransactionTemplate(transactionManager);
+    //这里我们可以设置会话
+    this.transactionTemplate.setIsolationLevel(TransactionDefinition.ISOLATION_READ_UNCOMMITTED);
+    this.transactionTemplate.setTimeout(30); //30秒
+}
+</pre></div>
+<h3 id="542-platformtransactionmanager">5.4.2 PlatformTransactionManager</h3>
+<p>我们也可以使用<code>org.springframework.transaction.PlatformTransactionManager</code>直接管理会话。将<code>PlatformTransactionManager</code>直接传给bean，然后可以使用<code>TransactionDefinistion</code>和<code>TransactionStatus</code>来初始化会话、回滚、提交等。</p>
+<p>在<code>TransactionTemplate</code>和<code>PlatformTransactionManager</code>之间有限推荐第一个。</p>
             </div><!-- /.entry-content -->
         
  
             <section>
             <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="phonegapming-ling-xing-de-shi-yong.html" data-title="PhoneGap命令行的使用" data-url="./phonegapming-ling-xing-de-shi-yong.html"></div>
+    <div class="ds-thread" data-thread-key="springbi-ji-05-springshi-wu.html" data-title="Spring笔记05-Spring事务" data-url="./springbi-ji-05-springshi-wu.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

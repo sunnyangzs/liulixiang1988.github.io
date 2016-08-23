@@ -2,10 +2,10 @@
 <html lang="zh">
 <head>
 
-        <title>PhoneGap命令行的使用</title>
+        <title>Spring笔记06-使用JdbcTemplate进行数据访问</title>
         <meta charset="utf-8" />
         <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Full Atom Feed" />
-        <link href="/feeds/yi-dong-kai-fa.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Categories Atom Feed" />
+        <link href="/feeds/java.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -55,165 +55,347 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="./phonegapming-ling-xing-de-shi-yong.html" rel="bookmark"
-                   title="Permalink to PhoneGap命令行的使用">PhoneGap命令行的使用</a></h2>
+                <a href="./springbi-ji-06-shi-yong-jdbctemplatejin-xing-shu-ju-fang-wen.html" rel="bookmark"
+                   title="Permalink to Spring笔记06-使用JdbcTemplate进行数据访问">Spring笔记06-使用JdbcTemplate进行数据访问</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-03-29">
-                日 29 三月 2015
+              <abbr class="published" title="2016-08-23">
+                二 23 八月 2016
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <h2 id="1">1. 环境配置</h2>
-<h3 id="11">1.1 常用框架</h3>
+                <div class="toc">
 <ul>
-<li>jQuery</li>
-<li>Backbone.js</li>
-<li>dojo</li>
-<li>bootstrap</li>
-<li>kendo UI</li>
-<li>Sencha</li>
-<li>jQuery Mobile</li>
-<li>PhoneJS</li>
-<li>AngularJS</li>
-<li>ICENIUM</li>
+<li><a href="#61">6.1 实例化和配置</a></li>
+<li><a href="#62-data-source">6.2 定义数据源Data Source</a></li>
+<li><a href="#63-profileenvironment">6.3 Profile注解和Environment</a></li>
+<li><a href="#64-crud">6.4 实现CRUD方法</a></li>
+<li><a href="#65-repository">6.5 测试Repository</a></li>
 </ul>
-<h3 id="12-nodejs">1.2 Node.js</h3>
-<p>下载并安装nodejs</p>
-<h3 id="13-ios">1.3 iOS</h3>
-<p>下载Xcode
-打开Xcode 
-<img alt="" src="images/1.jpg" />
-<img alt="" src="images/2.jpg" /></p>
-<h3 id="14-android">1.4 Android</h3>
-<p>定义ANDROID_HOME=E:\adt\sdk
-将<code>E:\adt\sdk\platform-tools</code>和<code>E:\adt\sdk\tools</code>加入到环境变量中去。</p>
-<h3 id="15-ant">1.5 Ant</h3>
-<p>定义ANT_HOME=C:\apache-ant-1.9.3</p>
-<h2 id="2-phonegap">2 安装PhoneGap</h2>
-<h3 id="21-phonegap">2.1 安装PhoneGap</h3>
-<div class="highlight"><pre><span></span>npm install -g phonegap
+</div>
+              
+<h2 id="61">6.1 实例化和配置</h2>
+<p>没有Spring的情况下，JDBC非常难用；有了Spring，JDBC就变得比较靠谱可用了。</p>
+<p>这里我们在Bean中使用<code>DataSource</code>对<code>JdbcTemplate</code>进行初始化。</p>
+<div class="highlight"><pre><span></span>@Repository
+@Profile("test")
+public class JdbcAccountRepository implements AccountRepository {
+
+    private JdbcTemplate template;
+    private static long nextId = 4;
+
+    @Autowired
+    public JdbcAccountRepository(DataSource dataSource) {
+        template = new JdbcTemplate(dataSource);
+    }
+}
 </pre></div>
+<p>后面我们看如何配置多个<code>DataSource</code>。</p>
+<h2 id="62-data-source">6.2 定义数据源Data Source</h2>
+<p>之前我们已经讲了<code>@Component</code>，但是在实际中我们更多的遇到的是<code>@Service</code>和<code>@Repository</code>，<code>@Controller</code>，这些其实也是<code>@Component</code>。</p>
+<p>首先我们来添加一些依赖：</p>
+<div class="highlight"><pre><span></span>dependencies {
+    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1.1'
 
+    compile group: 'org.springframework', name: 'spring-test', version: '4.3.2.RELEASE'
+    compile group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3'
+    //...
 
-<p>安装过后通过<code>phonegap -v</code>看是否安装成功</p>
-<h3 id="22-cordova">2.2 安装cordova</h3>
-<div class="highlight"><pre><span></span>npm install -g cordova
+    return'com.h2database:h2:1.4.192'
+
+}
 </pre></div>
+<p>注意这里我们用了返回，这是因为需要对应的驱动</p>
+<p>我们修改<code>AppConfig.java</code>：</p>
+<div class="highlight"><pre><span></span>@Bean(name = "dataSource", destroyMethod = "shutdown")
+@Profile("test")
+public DataSource dataSourceForTest() {
+    return new EmbeddedDatabaseBuilder()
+            .generateUniqueName(true)
+            .setType(EmbeddedDatabaseType.H2)
+            .setScriptEncoding("UTF-8")
+            .ignoreFailedDrops(true)
+            .addScript("schema.sql")
+            .addScripts("data.sql")
+            .build();
+}
 
-
-<p>通过<code>cordova -v</code>来查看是否成功</p>
-<p>一般安装phonegap即可</p>
-<h2 id="3-phonegapcordova">3 使用PhoneGap和Cordova</h2>
-<h3 id="31">3.1 创建项目</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap create project_name project_id display_name
+@Bean(name = "dataSource")
+@Profile("prod")
+public DataSource dataSourceForProd() {
+    BasicDataSource dataSource = new BasicDataSource();
+    dataSource.setDriverClassName(env.getProperty("db.driver"));
+    dataSource.setUrl(env.getProperty("db.url"));
+    dataSource.setUsername(env.getProperty("db.user"));
+    dataSource.setPassword(env.getProperty("db.pass"));
+    return dataSource;
+}
 </pre></div>
+<h2 id="63-profileenvironment">6.3 Profile注解和Environment</h2>
+<p>在项目中，我们需要多个环境（开发、测试、产品）等，每个环境对应的数据库也不同。Spring能通过<code>@Profile</code>来给不同的环境提供不同的配置Bean但是有相同的名称。</p>
+<p><code>@Profile</code>可以放在配置类上，也可以放在Bean的方法上，如果用在Bean方法上，需要给<code>@Bean</code>提供<code>name</code>属性，这样可以让不同的Bean有相同的名称。</p>
+<div class="highlight"><pre><span></span>@Configuration
+@ComponentScan(basePackages = "lx.spring.core")
+@PropertySource("classpath:prod.properties")
+@EnableTransactionManagement
+public class AppConfig {
 
+    @Autowired
+    private Environment env;
 
-<p>或者使用cordova创建：</p>
-<div class="highlight"><pre><span></span>&gt;cordova create project_name project_id displayname
+    @Bean(name = "dataSource", destroyMethod = "shutdown")
+    @Profile("test")
+    public DataSource dataSourceForTest() {
+        return new EmbeddedDatabaseBuilder()
+                .generateUniqueName(true)
+                .setType(EmbeddedDatabaseType.H2)
+                .setScriptEncoding("UTF-8")
+                .ignoreFailedDrops(true)
+                .addScript("schema.sql")
+                .addScript("data.sql")
+                .build();
+    }
+
+    @Bean(name = "transactionManager")
+    @Profile("test")
+    public PlatformTransactionManager transactionManagerForTest() {
+        return new DataSourceTransactionManager(dataSourceForTest());
+    }
+
+    @Bean(name = "dataSource")
+    @Profile("prod")
+    public DataSource dataSourceForProd() {
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setDriverClassName(env.getProperty("db.driver"));
+        dataSource.setUrl(env.getProperty("db.url"));
+        dataSource.setUserName(env.getProperty("db.user"));
+        dataSource.setPassword(env.getProperty("db.pass"));
+        return dataSource;
+    }
+
+    @Bean(name = "transactionManager")
+    @Profile("prod")
+    public PlatformTransactionManager transactionManagerForProd() {
+        return new DataSourceTransactionManager(dataSourceForProd());
+    }
+}
 </pre></div>
-
-
-<h3 id="32">3.2 应用结构</h3>
-<ul>
-<li>hooks</li>
-<li>platforms:平台</li>
-<li>plugins: 插件</li>
-<li>www：应用代码目录</li>
-</ul>
-<h3 id="33-build">3.3 build</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap build android
-&gt;phonegap build ios
+<p>这里我们看到<code>@Profile</code>提供了不同环境下的使用方式。同时需要注意一点是我们使用了
+<code>@PropertySource("classpath:prod.properties")</code>这样的注解，它会在<code>resources</code>下寻找<code>prod.properties</code>这个文件，然后使用了：</p>
+<div class="highlight"><pre><span></span>@Autowired
+private Environment env;
 </pre></div>
-
-
-<p>或者使用cordova命令</p>
-<div class="highlight"><pre><span></span>&gt;cordova platform add android
-&gt;cordova build android
-
-&gt;cordova platform add ios
-&gt;cordova build ios
-
-&gt;cordova build
+<p>接着就能读取变量了：</p>
+<div class="highlight"><pre><span></span>env.getProperty("db.url")
 </pre></div>
+<h2 id="64-crud">6.4 实现CRUD方法</h2>
+<div class="highlight"><pre><span></span>@Repository
+@Profile("test")
+public class JdbcAccountRepository implements AccountRepository {
 
+    private JdbcTemplate template;
+    private static long nextId = 4;
 
-<p>如果想要移除某个平台</p>
-<div class="highlight"><pre><span></span>&gt;cordova platform remove android
+    @Autowired
+    public JdbcAccountRepository(DataSource dataSource) {
+        template = new JdbcTemplate(dataSource);
+    }
+
+    @Override
+    public List&lt;Account&gt; getAccounts() {
+        String sqlText = "SELECT * FROM account";
+        return template.query(sqlText, new AccountMapper());
+    }
+
+    @Override
+    public Account getAccount(Long id) {
+        String sqlText = "SELECT * FROM account WHERE id=?";
+        return template.queryForObject(sqlText, new AccountMapper(), id);
+    }
+
+    @Override
+    public int getNumberOfCounts() {
+        String sqlText = "SELECT count(*) FROM account";
+        return template.queryForObject(sqlText, Integer.class);
+    }
+
+    @Override
+    public Long createAccount(BigDecimal initialBalance) {
+        String sqlText = "insert into account(id, balance) values(?, ?)";
+        long id = nextId ++;
+        int uc = template.update(sqlText, id, initialBalance);
+        return id;
+    }
+
+    @Override
+    public int deleteAccount(Long id) {
+        String sqlText = "delete from account where id=?";
+        return template.update(sqlText, id);
+    }
+
+    @Override
+    public void updateAccount(Account account) {
+        String sqlText = "update account set balance=? where id = ?";
+        template.update(sqlText, account.getBalance(), account.getId());
+    }
+
+    private class AccountMapper implements RowMapper&lt;Account&gt;{
+        @Override
+        public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return new Account(rs.getLong("id"), rs.getBigDecimal("balance"));
+        }
+    }
+}
 </pre></div>
+<p>注意，我们需要提供实现<code>RowMapper</code>来返回对象类型。</p>
+<h2 id="65-repository">6.5 测试Repository</h2>
+<p>IDEA的打开最近文件、窗口的快捷键：<code>Cmd+E</code>.</p>
+<p>我们创建<code>JdbcAccountRepositoryTest.java</code>：</p>
+<div class="highlight"><pre><span></span>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = AppConfig.class)
+@Transactional
+@ActiveProfiles("test")
+public class JdbcAccountRepositoryTest {
 
+    @Autowired
+    private AccountRepository repository;
 
-<h2 id="4">4 测试</h2>
-<h3 id="41-ios">4.1 iOS测试</h3>
-<div class="highlight"><pre><span></span>&gt;sudo npm install -g ios-deploy
-&gt;sudo npm install -g ios-sim 
-&gt;phonegap run ios
+    @Test
+    public void getAccounts() throws Exception {
+        List&lt;Account&gt; accounts = repository.getAccounts();
+        //1. 比较
+        assertThat(accounts.size(), is(3));
+    }
+
+    @Test
+    public void getAccount() throws Exception {
+        Account account = repository.getAccount(1L);
+        assertThat(account.getId(), is(1L));
+        //2. 近似
+        assertThat(new BigDecimal("100.0"), is(closeTo(account.getBalance(), new BigDecimal("0.01"))));
+    }
+
+    @Test
+    public void createAccount() throws Exception {
+        Long id = repository.createAccount(new BigDecimal("250.00"));
+        //3. 非空
+        assertThat(id, is(notNullValue()));
+
+        Account account = repository.getAccount(id);
+        assertThat(account.getId(), is(id));
+        assertThat(new BigDecimal("250.0"), is(closeTo(account.getBalance(), new BigDecimal("0.01"))));
+    }
+
+    @Test
+    public void updateAccount() throws Exception {
+        Account account = repository.getAccount(1L);
+        BigDecimal current = account.getBalance();
+        BigDecimal amount = new BigDecimal("50.0");
+        account.setBalance(current.add(amount));
+        repository.updateAccount(account);
+
+        Account again = repository.getAccount(1L);
+        assertThat(again.getBalance(), is(closeTo(account.getBalance(), new BigDecimal("0.01"))));
+    }
+
+    @Test
+    public void deleteAccount() throws Exception {
+        for (Account account: repository.getAccounts()) {
+            repository.deleteAccount(account.getId());
+        }
+    }
+}
 </pre></div>
+<p>注意里面的<code>assertThat</code>, <code>is</code>, <code>closeTo</code>等。</p>
+<p>现在我们再来看<code>AccountService</code>,它有事务：</p>
+<div class="highlight"><pre><span></span>@Service @Transactional
+@Profile("test")
+public class AccountService {
+    @Autowired
+    private AccountRepository repository;
 
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    public BigDecimal getBalance(Long id) {
+        return repository.getAccount(id).getBalance();
+    }
 
-<h3 id="42-android">4.2 Android测试</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap run android
+    public BigDecimal deposit(Long id, BigDecimal amount) {
+        Account account = repository.getAccount(id);
+        BigDecimal newBalance = account.getBalance().add(amount);
+        account.setBalance(newBalance);
+        repository.updateAccount(account);
+        return newBalance;
+    }
+
+    public BigDecimal withdraw(Long id, BigDecimal amount) {
+        return deposit(id, amount.negate());
+    }
+
+    public void transfer(Long fromId, Long toId, BigDecimal amount) {
+        withdraw(fromId, amount);
+        deposit(toId, amount);
+    }
+}
 </pre></div>
+<p>然后我们看看对应的测试：</p>
+<div class="highlight"><pre><span></span>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = AppConfig.class)
+@Transactional
+@ActiveProfiles("test")
+public class AccountServiceTest {
 
+    @Autowired
+    private AccountService service;
 
-<h3 id="43-cordova">4.3 cordova</h3>
-<div class="highlight"><pre><span></span>&gt;cordova run android
+    @Test
+    public void deposit() throws Exception {
+        BigDecimal start = service.getBalance(1L);
+        BigDecimal amount = new BigDecimal("50.0");
+
+        service.deposit(1L, amount);
+        BigDecimal finish = start.add(amount);
+
+        assertThat(finish, is(closeTo(service.getBalance(1L), new BigDecimal("0.01"))));
+    }
+
+    @Test
+    public void withdraw() throws Exception {
+        BigDecimal start = service.getBalance(1L);
+        BigDecimal amount = new BigDecimal("50.0");
+
+        service.withdraw(1L, amount);
+        BigDecimal finish = start.subtract(amount);
+
+        assertThat(finish, is(closeTo(service.getBalance(1L), new BigDecimal("0.01"))));
+    }
+
+    @Test
+    public void transfer() throws Exception {
+        BigDecimal acct1start = service.getBalance(1L);
+        BigDecimal acct2start = service.getBalance(2L);
+
+        BigDecimal amount = new BigDecimal("50.0");
+        service.transfer(1L, 2L, amount);
+        BigDecimal acct1finish = acct1start.subtract(amount);
+        BigDecimal acct2finish = acct2start.add(amount);
+
+        assertThat(acct1finish, is(closeTo(service.getBalance(1L), new BigDecimal("0.01"))));
+        assertThat(acct2finish, is(closeTo(service.getBalance(2L), new BigDecimal("0.01"))));
+    }
+}
 </pre></div>
-
-
-<h2 id="5">5 插件</h2>
-<h3 id="51">5.1 安装插件</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap plugin add org.apache.cordova.device
-</pre></div>
-
-
-<p>或者直接使用url</p>
-<h3 id="52">5.2 移除插件</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap plugin remove org.apache.cordova.device
-</pre></div>
-
-
-<h3 id="53">5.3 查看安装的插件</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap plugin list
-</pre></div>
-
-
-<h2 id="6">6 合并</h2>
-<h2 id="7-hooks">7 Hooks</h2>
-<p>before_prepare, before_build, before_install, 等
-after_prepare, after_build, after_build, etc</p>
-<div class="highlight"><pre><span></span>&gt;cordova prepare
-</pre></div>
-
-
-<h2 id="8">8 编译部署</h2>
-<h3 id="81-phonegap-build">8.1 phoneGap build</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap remote login -u username -p password
-&gt;phonegap remote build android
-</pre></div>
-
-
-<h3 id="82-phonegap-serve">8.2 phonegap serve</h3>
-<div class="highlight"><pre><span></span>&gt;phonegap serve #能直接运行
-</pre></div>
-
-
-<h2 id="9">9 下一步</h2>
-<ul>
-<li>grunt-phonegap</li>
-</ul>
+<p>这里事务运行的没问题。</p>
             </div><!-- /.entry-content -->
         
  
             <section>
             <div id="DuoShuoComment" aria-live="polite">
 <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="phonegapming-ling-xing-de-shi-yong.html" data-title="PhoneGap命令行的使用" data-url="./phonegapming-ling-xing-de-shi-yong.html"></div>
+    <div class="ds-thread" data-thread-key="springbi-ji-06-shi-yong-jdbctemplatejin-xing-shu-ju-fang-wen.html" data-title="Spring笔记06-使用JdbcTemplate进行数据访问" data-url="./springbi-ji-06-shi-yong-jdbctemplatejin-xing-shu-ju-fang-wen.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
