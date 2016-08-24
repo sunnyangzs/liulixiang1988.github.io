@@ -2,10 +2,9 @@
 <html lang="zh">
 <head>
 
-        <title>AngularJS学习笔记02-路由、模块和依赖注入</title>
+        <title>Liu Lixiang的博客</title>
         <meta charset="utf-8" />
         <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Full Atom Feed" />
-        <link href="/feeds/web.atom.xml" type="application/atom+xml" rel="alternate" title="Liu Lixiang的博客 Categories Atom Feed" />
 
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -47,100 +46,42 @@
               </ul>
             </div>
 
-<section id="content" class="body">
+<section id="content">
+
+
 
    <div class="row">
+
+
         <div class="eleven columns">
+                 <ol id="post-list">
+                        <li><article class="hentry">
+                                <header> <h2 class="entry-title"><a href="./hello-world.html" rel="bookmark" title="Permalink to 你好，世界！">你好，世界！</a></h2> </header>
+                                <footer class="post-info">
+                                    <abbr class="published" title="2014-03-16"> 日 16 三月 2014 </abbr>
+                                    <address class="vcard author">By 
+                                    <a class="url fn" href="./author/li-xiang.html"> 理想</a>
+                                    </address>
+                                </footer><!-- /.post-info -->
+                                <div class="entry-content"> <p>你好，世界！这是我使用pelican和github搭建的博客。以前转战多次，这次应该会定下来了。</p> </div><!-- /.entry-content -->
+
+                                <div class="medium primary btn"><a href="./hello-world.html" rel="bookmark" title="Permalink to 你好，世界！">Read more <i class="icon-arrow-right"></i></a></div>
 
 
-            <header>
-              <h2 class="entry-title">
-                <a href="./angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html" rel="bookmark"
-                   title="Permalink to AngularJS学习笔记02-路由、模块和依赖注入">AngularJS学习笔记02-路由、模块和依赖注入</a></h2>
-           
-            </header>
-            <footer class="post-info">
-              <abbr class="published" title="2015-04-30">
-                四 30 四月 2015
-              </abbr>
-              <address class="vcard author">By 
-                <a class="url fn" href="./author/liu-li-xiang.html"> 刘理想</a>
-              </address>
-            </footer><!-- /.post-info -->
-            <div class="entry-content">
-              <p>内容简介：</p>
-<ul>
-<li>AngularJS的模块化实现</li>
-<li>一个完整项目结构</li>
-<li>使用ngRoute进行视图之间的路由</li>
-<li>一切都是从模块开始的</li>
-<li>ng官方推荐的模块切分方式是什么？</li>
-<li>模块之间的依赖该怎么做？--依赖注入</li>
-</ul>
-<h2 id="1">1. 模块</h2>
-<p>模块就是功能的集合</p>
-<h2 id="2">2. 目录结构</h2>
-<div class="highlight"><pre><span></span>BookStore
-|-app
-    |-css
-    |-img
-    |-js
-        |-app.js
-        |-controllers.js
-        |-directives.js
-        |-filters.js
-        |-services.js
-    |-framework
-    |-tpls//模板
-    |-index.html
-|-node_modules
-|-package.json
-</pre></div>
+
+                                <div class="row tag-row">
+                                        <span>Tagged as : </span>
+                                            <a class="danger label" href="./tag/pelican.html">pelican</a>
+                                            <a class="danger label" href="./tag/life.html">life</a>
+                                </div>
 
 
-<h2 id="3-ngroute">3. ngRoute进行视图之间的路由</h2>
-<div class="highlight"><pre><span></span><span class="x">var bookStoreApp = angular.module(&#39;bookStoreApp&#39;,</span>
-<span class="x"> [&#39;ngRoute&#39;, &#39;ngAnimate&#39;, &#39;bookStoreCtrls&#39;, &#39;BookStoreFilters&#39;,</span>
-<span class="x"> &#39;bookStoreServices&#39;, &#39;bookStoreDirectives&#39;]);</span>
 
-<span class="x">bookStoreApp.config(function(</span><span class="p">$</span><span class="nv">routeProvider</span><span class="x">) </span><span class="err">{</span><span class="x"></span>
-<span class="x">    </span><span class="p">$</span><span class="nv">routeProvider</span><span class="p">.</span><span class="nv">when</span><span class="p">(</span><span class="s1">&#39;/hello&#39;</span><span class="p">,{</span>
-            <span class="err">templateUrl</span><span class="p">:</span><span class="s1">&#39;tpls/hello.html&#39;</span><span class="p">,</span>
-            <span class="err">controller</span><span class="p">:</span> <span class="s1">&#39;HelloCtrl&#39;</span>
-        <span class="p">}).</span><span class="nv">when</span><span class="p">(</span><span class="s1">&#39;/list&#39;</span><span class="p">,</span> <span class="p">{</span>
-            <span class="err">templateUrl</span><span class="p">:</span><span class="s1">&#39;tpls/bookList.html&#39;</span><span class="p">,</span>
-            <span class="err">controller</span><span class="p">:</span> <span class="s1">&#39;BookListCtrl&#39;</span>
-        <span class="p">}).</span><span class="nv">otherwise</span><span class="p">({</span>
-            <span class="err">redirectTo</span><span class="p">:</span><span class="s1">&#39;/hello&#39;</span>
-        <span class="p">})</span><span class="x">;</span>
-<span class="x">})</span>
-</pre></div>
-            </div><!-- /.entry-content -->
-        
- 
-            <section>
-            <div id="DuoShuoComment" aria-live="polite">
-<!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html" data-title="AngularJS学习笔记02-路由、模块和依赖注入" data-url="./angularjsxue-xi-bi-ji-02-lu-you-mo-kuai-he-yi-lai-zhu-ru.html"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"liulixiang1988blog"};
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] 
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-    </script>
-<!-- 多说公共JS代码 end -->
-            </div>
-            </section> 
+                        </article></li>
+                </ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
-
+        
 <div class="three columns">
 
 <nav class="widget">
@@ -219,8 +160,11 @@ var duoshuoQuery = {short_name:"liulixiang1988blog"};
 
 </div> </div><!-- /.row -->
 
-
-</section>
+<p class="paginator">
+            <a href="./index12.html"><i class="icon-arrow-left"></i></a>
+    Page 13 / 13
+</p>
+</section><!-- /#content -->
 
        </div><!-- /.row -->
     </div><!-- /.container -->
