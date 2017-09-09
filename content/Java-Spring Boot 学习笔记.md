@@ -87,3 +87,46 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/common-applicatio
 
 
 ### 1.2 应用配置 
+
+
+
+## 2. Spring Boot中使用数据库
+
+
+
+### 2.1 MySQL与JPA
+
+JPA(Java Persistence API)是Java EE的持久化标准规范。Spring Boot可以使用JPA实现对数据库操作。JPA将POJO(Plain Ordinary Java Object)通过ORM(Object-Relational Mapping)持久化到数据库中。
+
+JPA官方介绍：http://docs.oracle.com/javaee/6/tutorial/doc/bnbpz.html
+
+JPA 教程：https://www.tutorialspoint.com/jpa/index.htm
+
+JPA和MySQL依赖配置：
+
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+<dependency>
+  <groupId>mysql</groupId>
+  <artifactId>mysql-connector-java</artifactId>
+  <scope>runtime</scope>
+</dependency>
+```
+
+
+
+
+
+### 2.2 MyBatis与Spring Boot集成
+
+
+
+### 2.3 Redis
+
+### 2.4 MongoDB
+
+### 2.5 Neo4j
